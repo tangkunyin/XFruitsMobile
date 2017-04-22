@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862C59EE1EA3677100C2323D /* XFConstants.swift */; };
-		862C59F11EA367E200C2323D /* XFFunsDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862C59F01EA367E200C2323D /* XFFunsDefine.swift */; };
 		864430731E9A23A700D41BCC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 864430721E9A23A700D41BCC /* Default-568h@2x.png */; };
 		864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */; };
 		864430831E9A27A600D41BCC /* XFruitsBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430821E9A27A600D41BCC /* XFruitsBaseViewController.swift */; };
@@ -18,6 +17,8 @@
 		8644308B1E9A294500D41BCC /* XFruitsIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8644308A1E9A294500D41BCC /* XFruitsIndexViewController.swift */; };
 		8644308D1E9A295A00D41BCC /* XFruitsCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8644308C1E9A295A00D41BCC /* XFruitsCategoryViewController.swift */; };
 		8644308F1E9A296E00D41BCC /* XFruitsShopCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8644308E1E9A296E00D41BCC /* XFruitsShopCarViewController.swift */; };
+		865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AA5B71EAB9E9500E94312 /* XFEnum.swift */; };
+		865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AA5BF1EABA14C00E94312 /* XFUIFuncDefines.swift */; };
 		865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865F4F461E9A173E0059502C /* AppDelegate.swift */; };
 		865F4F4E1E9A173E0059502C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 865F4F4D1E9A173E0059502C /* Assets.xcassets */; };
 		86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE61EAB495A009972A8 /* Alamofire.framework */; };
@@ -31,7 +32,6 @@
 
 /* Begin PBXFileReference section */
 		862C59EE1EA3677100C2323D /* XFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFConstants.swift; sourceTree = "<group>"; };
-		862C59F01EA367E200C2323D /* XFFunsDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFFunsDefine.swift; sourceTree = "<group>"; };
 		864430721E9A23A700D41BCC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsHomeViewController.swift; sourceTree = "<group>"; };
 		864430821E9A27A600D41BCC /* XFruitsBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsBaseViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +41,8 @@
 		8644308A1E9A294500D41BCC /* XFruitsIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsIndexViewController.swift; sourceTree = "<group>"; };
 		8644308C1E9A295A00D41BCC /* XFruitsCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsCategoryViewController.swift; sourceTree = "<group>"; };
 		8644308E1E9A296E00D41BCC /* XFruitsShopCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsShopCarViewController.swift; sourceTree = "<group>"; };
+		865AA5B71EAB9E9500E94312 /* XFEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEnum.swift; sourceTree = "<group>"; };
+		865AA5BF1EABA14C00E94312 /* XFUIFuncDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFUIFuncDefines.swift; sourceTree = "<group>"; };
 		865F4F431E9A173E0059502C /* XFruits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XFruits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		865F4F461E9A173E0059502C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		865F4F4D1E9A173E0059502C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -167,7 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				862C59EE1EA3677100C2323D /* XFConstants.swift */,
-				862C59F01EA367E200C2323D /* XFFunsDefine.swift */,
+				865AA5B71EAB9E9500E94312 /* XFEnum.swift */,
+				865AA5BF1EABA14C00E94312 /* XFUIFuncDefines.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -318,14 +321,15 @@
 			files = (
 				8644308D1E9A295A00D41BCC /* XFruitsCategoryViewController.swift in Sources */,
 				864430851E9A27E400D41BCC /* XFruitsBaseRequest.swift in Sources */,
+				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
 				864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */,
 				864430831E9A27A600D41BCC /* XFruitsBaseViewController.swift in Sources */,
-				862C59F11EA367E200C2323D /* XFFunsDefine.swift in Sources */,
 				8644308B1E9A294500D41BCC /* XFruitsIndexViewController.swift in Sources */,
 				862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */,
 				864430891E9A28F400D41BCC /* XFruitsUserRegistViewController.swift in Sources */,
 				8644308F1E9A296E00D41BCC /* XFruitsShopCarViewController.swift in Sources */,
 				864430871E9A28C500D41BCC /* XFruitsUserLoginViewController.swift in Sources */,
+				865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */,
 				865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
