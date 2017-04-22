@@ -1,0 +1,22 @@
+{
+  "commitish" : "0.6.0",
+  "iOS" : [
+    {
+      "hash" : "56061ff2742e44c87ed9b96c938a888a1e6110c2ec3099a4746150c3d56dd80d",
+      "name" : "APNGKit"
+    }
+  ],
+  "xcodeVersion" : "Xcode 8.3\nBuild version 8E162",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+    {
+      "hash" : "114c19f5d18c2ae61742651e4904c3e83b7f67fe0fdcd89e8bf8cf40e5f81ee2",
+      "name" : "APNGKit"
+    }
+  ]
+}

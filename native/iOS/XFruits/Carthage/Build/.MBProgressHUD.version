@@ -1,0 +1,19 @@
+{
+  "commitish" : "1.0.0",
+  "iOS" : [
+    {
+      "hash" : "08ee8c6e9cb5e9a5eb664df0fef05331e4c0ecae78341fd72777f9e91c83bef5",
+      "name" : "MBProgressHUD"
+    }
+  ],
+  "xcodeVersion" : "Xcode 8.3\nBuild version 8E162",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+
+  ]
+}

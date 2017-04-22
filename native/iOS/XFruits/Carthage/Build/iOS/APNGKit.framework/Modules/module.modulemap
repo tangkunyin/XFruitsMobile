@@ -1,0 +1,10 @@
+framework module APNGKit {
+  umbrella header "APNGKit.h"
+
+  export *
+  module * { export * }
+}
+
+module APNGKit.Swift {
+    header "APNGKit-Swift.h"
+}
