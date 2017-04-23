@@ -8,7 +8,7 @@
 
 import UIKit
 
-class XFruitsUserRegistViewController: XFruitsBaseViewController {
+class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

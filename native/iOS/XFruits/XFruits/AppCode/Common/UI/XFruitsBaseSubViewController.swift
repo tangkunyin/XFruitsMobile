@@ -1,22 +1,23 @@
 //
-//  XFruitsUserLoginViewController.swift
+//  XFruitsBaseSubViewController.swift
 //  XFruits
 //
-//  Created by tangkunyin on 2017/4/9.
+//  Created by tangkunyin on 2017/4/23.
 //  Copyright © 2017年 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
 
-class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
+class XFruitsBaseSubViewController: XFruitsBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
 
         
+        
     }
 
-    
+
 
 }
