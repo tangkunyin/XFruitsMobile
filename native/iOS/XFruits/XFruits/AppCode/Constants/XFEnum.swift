@@ -8,21 +8,16 @@
 
 import Foundation
 
-// 位置类型
-enum FSLayoutAlignmentType:Int {
-    case AlignmentCenter = 0, AlignmentTop , AlignmentBottom , AlignmentLeft , AlignmentRight
-}
-
 
 // 网络状态
-enum FSNetStateCode {
+public enum FSNetStateCode {
     case FSNetStatusReachable       //有网络
     case FSNetStatusNotReachable    //无网络
 }
 
 
 // HTTP返回码
-enum FSHttpStatusCode:Int {
+public enum FSHttpStatusCode:Int {
     //通用状态码
     case HttpStatusSuccessCode = 200           //请求成功
     case HttpStatusNotModifyCode = 304         //资源未修改
