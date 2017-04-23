@@ -24,6 +24,7 @@
 		8686131F1EAC6A3200A44338 /* XFruitsBaseSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8686131E1EAC6A3200A44338 /* XFruitsBaseSubViewController.swift */; };
 		868613211EAC6A5E00A44338 /* XFruitsUserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868613201EAC6A5E00A44338 /* XFruitsUserCenterViewController.swift */; };
 		868613231EAC731200A44338 /* XFruitsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868613221EAC731200A44338 /* XFruitsNavigationController.swift */; };
+		868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868613251EACCCE400A44338 /* XFImageExtension.swift */; };
 		86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE61EAB495A009972A8 /* Alamofire.framework */; };
 		86CB2FEE1EAB495A009972A8 /* APNGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE71EAB495A009972A8 /* APNGKit.framework */; };
 		86CB2FEF1EAB495A009972A8 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE81EAB495A009972A8 /* Kingfisher.framework */; };
@@ -53,6 +54,7 @@
 		8686131E1EAC6A3200A44338 /* XFruitsBaseSubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsBaseSubViewController.swift; sourceTree = "<group>"; };
 		868613201EAC6A5E00A44338 /* XFruitsUserCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsUserCenterViewController.swift; sourceTree = "<group>"; };
 		868613221EAC731200A44338 /* XFruitsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsNavigationController.swift; sourceTree = "<group>"; };
+		868613251EACCCE400A44338 /* XFImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFImageExtension.swift; sourceTree = "<group>"; };
 		86CB2FE61EAB495A009972A8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		86CB2FE71EAB495A009972A8 /* APNGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APNGKit.framework; path = Carthage/Build/iOS/APNGKit.framework; sourceTree = "<group>"; };
 		86CB2FE81EAB495A009972A8 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		8644307D1E9A277B00D41BCC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				868613241EACCC6C00A44338 /* Category */,
 				8644307E1E9A277B00D41BCC /* Model */,
 				8644307F1E9A277B00D41BCC /* UI */,
 			);
@@ -216,6 +219,14 @@
 				865F4F461E9A173E0059502C /* AppDelegate.swift */,
 			);
 			path = XFruits;
+			sourceTree = "<group>";
+		};
+		868613241EACCC6C00A44338 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				868613251EACCCE400A44338 /* XFImageExtension.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		86CB2FE51EAB4959009972A8 /* Frameworks */ = {
@@ -343,6 +354,7 @@
 				864430871E9A28C500D41BCC /* XFruitsUserLoginViewController.swift in Sources */,
 				865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */,
 				865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */,
+				868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -62,27 +62,36 @@ struct XFConstants {
         
     }
     
-    /// 通用视觉规范
+    /// 视觉规范
     struct Color {
+        /// 通用颜色
         static let whiteColor:UIColor = colorWithRGB(255, g: 255, b: 255)          //纯白
-        static let blueColor:UIColor = colorWithRGB(0, g: 153, b: 255)             //蓝色
-        static let orangeColor:UIColor = colorWithRGB(253, g: 106, b: 60)          //橙色
-        static let yellowColor:UIColor = colorWithRGB(239, g: 166, b: 68)          //黄色
-        static let blackColor:UIColor = colorWithRGB(68, g: 68, b: 68)             //浅黑色
-        static let grayColor:UIColor = colorWithRGB(102, g: 102, b: 102)           //灰色
-        static let lightGrayColor:UIColor = colorWithRGB(153, g:153, b:153)        //浅灰色
-        static let coffeeColor:UIColor = colorWithRGB(185,g: 152,b: 99)            //咖啡色
         static let commonBgColor:UIColor = colorWithRGB(248, g: 248, b: 248)       //灰白色
         static let separatorLineColor:UIColor = colorWithRGB(232, g: 232, b: 232)  //分割线颜色
         static let translucentColor:UIColor = colorWithRGB(0,g: 0,b: 0, alpha: 0.55)//半透明颜色
+        /// App主题色
+        static let lightishGreen:UIColor = colorWithRGB(68,g: 219,b: 94)//亮绿色
+        static let orangeRed:UIColor = colorWithRGB(254,g: 56,b: 36)//橙红色
+        static let tangerine:UIColor = colorWithRGB(255,g: 150,b: 0)//浅橙色
+        static let skyBlue:UIColor = colorWithRGB(84,g: 199,b: 252)//天蓝色
+        static let sunflowerYellow:UIColor = colorWithRGB(255,g: 205,b: 0)//浅黄色
+        static let reddishPink:UIColor = colorWithRGB(254,g: 40,b: 81)//红色
+        static let purpleyGrey:UIColor = colorWithRGB(143,g: 142,b: 148)//灰色
+        static let brightBlue:UIColor = colorWithRGB(0,g: 118,b: 255)//亮蓝色
+        static let black:UIColor = colorWithRGB(3,g: 3,b: 3)//黑色
+        static let paleGrey:UIColor = colorWithRGB(239,g: 239,b: 244)//浅灰色
+        static let coolGrey:UIColor = colorWithRGB(164,g: 170,b: 179)//亮灰色
+        static let silver:UIColor = colorWithRGB(199,g: 199,b: 205)//银色
+        static let greyishBrown:UIColor = colorWithRGB(83,g: 83,b: 83)//浅黑色
+        static let salmon:UIColor = colorWithRGB(255,g: 102,b: 102)//苹果红
     }
     
     /// 通用字体
     struct Font {
-        static let mainBodyFont: UIFont = htscFontWithSize(12)
-        static let mainMenuFont: UIFont = htscFontWithSize(17)
-        static let titleFont: UIFont = htscFontWithSize(14)
-        static let bottomMenuFont: UIFont = htscFontWithSize(11)
+        static let mainBodyFont: UIFont = pfnFontWithSize(12)
+        static let mainMenuFont: UIFont = pfnFontWithSize(14)
+        static let titleFont: UIFont = pfnFontWithSize(18)
+        static let bottomMenuFont: UIFont = pfnFontWithSize(10)
     }
     
 }

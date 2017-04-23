@@ -16,7 +16,7 @@ class XFruitsNavigationController: UINavigationController {
         
         let bar = UINavigationBar.appearance()
         
-        bar.barTintColor = XFConstants.Color.orangeColor
+        bar.barTintColor = XFConstants.Color.salmon
         bar.titleTextAttributes = barAttr;
         
         

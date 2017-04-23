@@ -43,12 +43,12 @@ class XFruitsHomeViewController: UITabBarController {
                                         selectedImage:String) {
                 
         childController.tabBarItem = UITabBarItem.init(title: title,
-                                                       image: UIImage.init(named: image),
-                                                       selectedImage: UIImage.init(named: selectedImage))
+                                                       image: UIImage.imageWithNamed(image),
+                                                       selectedImage: UIImage.imageWithNamed(selectedImage))
         
-        let normalAttr = [NSForegroundColorAttributeName:XFConstants.Color.blackColor,
+        let normalAttr = [NSForegroundColorAttributeName:XFConstants.Color.greyishBrown,
                           NSFontAttributeName:XFConstants.Font.bottomMenuFont]
-        let hilighAttr = [NSForegroundColorAttributeName:XFConstants.Color.orangeColor,
+        let hilighAttr = [NSForegroundColorAttributeName:XFConstants.Color.salmon,
                           NSFontAttributeName:XFConstants.Font.bottomMenuFont]
         
         childController.tabBarItem.setTitleTextAttributes(normalAttr, for: UIControlState.normal)
