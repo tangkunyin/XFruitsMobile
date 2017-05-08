@@ -26,11 +26,11 @@
 		868613231EAC731200A44338 /* XFruitsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868613221EAC731200A44338 /* XFruitsNavigationController.swift */; };
 		868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868613251EACCCE400A44338 /* XFImageExtension.swift */; };
 		868613291EACDC5300A44338 /* XFPicSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868613281EACDC5300A44338 /* XFPicSlider.swift */; };
+		86C055481EBC410F0087E135 /* XFruitsViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C055471EBC410F0087E135 /* XFruitsViewPager.swift */; };
 		86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE61EAB495A009972A8 /* Alamofire.framework */; };
 		86CB2FEE1EAB495A009972A8 /* APNGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE71EAB495A009972A8 /* APNGKit.framework */; };
 		86CB2FEF1EAB495A009972A8 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE81EAB495A009972A8 /* Kingfisher.framework */; };
 		86CB2FF01EAB495A009972A8 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE91EAB495A009972A8 /* MBProgressHUD.framework */; };
-		86CB2FF11EAB495A009972A8 /* Rainbow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FEA1EAB495A009972A8 /* Rainbow.framework */; };
 		86CB2FF21EAB495A009972A8 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FEB1EAB495A009972A8 /* SnapKit.framework */; };
 		86CB2FF31EAB495A009972A8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FEC1EAB495A009972A8 /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
@@ -57,11 +57,11 @@
 		868613221EAC731200A44338 /* XFruitsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsNavigationController.swift; sourceTree = "<group>"; };
 		868613251EACCCE400A44338 /* XFImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFImageExtension.swift; sourceTree = "<group>"; };
 		868613281EACDC5300A44338 /* XFPicSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFPicSlider.swift; sourceTree = "<group>"; };
+		86C055471EBC410F0087E135 /* XFruitsViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsViewPager.swift; sourceTree = "<group>"; };
 		86CB2FE61EAB495A009972A8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		86CB2FE71EAB495A009972A8 /* APNGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APNGKit.framework; path = Carthage/Build/iOS/APNGKit.framework; sourceTree = "<group>"; };
 		86CB2FE81EAB495A009972A8 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		86CB2FE91EAB495A009972A8 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
-		86CB2FEA1EAB495A009972A8 /* Rainbow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Rainbow.framework; path = Carthage/Build/iOS/Rainbow.framework; sourceTree = "<group>"; };
 		86CB2FEB1EAB495A009972A8 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		86CB2FEC1EAB495A009972A8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,7 +75,6 @@
 				86CB2FEE1EAB495A009972A8 /* APNGKit.framework in Frameworks */,
 				86CB2FEF1EAB495A009972A8 /* Kingfisher.framework in Frameworks */,
 				86CB2FF01EAB495A009972A8 /* MBProgressHUD.framework in Frameworks */,
-				86CB2FF11EAB495A009972A8 /* Rainbow.framework in Frameworks */,
 				86CB2FF21EAB495A009972A8 /* SnapKit.framework in Frameworks */,
 				86CB2FF31EAB495A009972A8 /* SwiftyJSON.framework in Frameworks */,
 			);
@@ -128,6 +127,8 @@
 		8644307A1E9A277B00D41BCC /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				86C055451EBC40DC0087E135 /* Model */,
+				86C055461EBC40DC0087E135 /* View */,
 				8644308A1E9A294500D41BCC /* XFruitsIndexViewController.swift */,
 			);
 			path = HomePage;
@@ -240,6 +241,21 @@
 			path = widget;
 			sourceTree = "<group>";
 		};
+		86C055451EBC40DC0087E135 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		86C055461EBC40DC0087E135 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				86C055471EBC410F0087E135 /* XFruitsViewPager.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		86CB2FE51EAB4959009972A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,7 +263,6 @@
 				86CB2FE71EAB495A009972A8 /* APNGKit.framework */,
 				86CB2FE81EAB495A009972A8 /* Kingfisher.framework */,
 				86CB2FE91EAB495A009972A8 /* MBProgressHUD.framework */,
-				86CB2FEA1EAB495A009972A8 /* Rainbow.framework */,
 				86CB2FEB1EAB495A009972A8 /* SnapKit.framework */,
 				86CB2FEC1EAB495A009972A8 /* SwiftyJSON.framework */,
 			);
@@ -333,7 +348,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/APNGKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Rainbow.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
@@ -356,6 +370,7 @@
 				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
 				864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */,
 				864430831E9A27A600D41BCC /* XFruitsBaseViewController.swift in Sources */,
+				86C055481EBC410F0087E135 /* XFruitsViewPager.swift in Sources */,
 				8644308B1E9A294500D41BCC /* XFruitsIndexViewController.swift in Sources */,
 				862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */,
 				864430891E9A28F400D41BCC /* XFruitsUserRegistViewController.swift in Sources */,

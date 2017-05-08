@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class XFruitsIndexViewController: XFruitsBaseViewController {
 
@@ -14,6 +15,20 @@ class XFruitsIndexViewController: XFruitsBaseViewController {
         super.viewDidLoad()
 
     
+        let imageUrls = ["https://shuoit.net/img/2017/hexo-blog-basic.jpg",
+                         "https://shuoit.net/img/2017/free-mac-usefull-tools.jpg",
+                         "https://shuoit.net/images/rssFeed-bg.jpg"];
+        
+        let pagerView = XFruitsViewPager.init(source: imageUrls, placeHolder: nil)
+        
+        self.view.addSubview(pagerView!)
+
+        pagerView?.snp.makeConstraints({ (make) in
+            make.size.width.equalTo(self.view)
+            make.size.height.equalTo(150)
+            make.centerX.equalTo(self.view)
+            make.top.equalTo(self.view)
+        })
         
     }
 

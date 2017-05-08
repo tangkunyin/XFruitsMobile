@@ -1,24 +1,23 @@
 {
-  "commitish" : "3.2.0",
   "iOS" : [
     {
-      "hash" : "74f771011062fedac6bdaf754e5d6383d407286ab88f7150f9b5f37d2968d673",
+      "hash" : "c5fae2e0cbd2d92764586997c837f1a01c9ac8981b042adc2e4529c606239a99",
       "name" : "SnapKit"
     }
   ],
-  "xcodeVersion" : "Xcode 8.3\nBuild version 8E162",
+  "commitish" : "3.2.0",
   "watchOS" : [
 
   ],
   "tvOS" : [
     {
-      "hash" : "2e7619a89875422796552df1e6b65c691664b12667df1a6ffa72c88795bc1df4",
+      "hash" : "0cbe0b4b389abcfc9c7f159fec49f03eb664c45eb85dc8ef321b094b6e760157",
       "name" : "SnapKit"
     }
   ],
   "Mac" : [
     {
-      "hash" : "871dcf9ef5a48d7bf04baa174690ab905000d49a7c7bfa7e1a8ed4972c6a6b90",
+      "hash" : "2aded2569406418c8631fa6aea4442ff1b033d56f8277342c173743f5383ce66",
       "name" : "SnapKit"
     }
   ]
