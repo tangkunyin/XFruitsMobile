@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-class XFruitsViewPager: UIView {
+class XFruitsViewPager: UIView,UIScrollViewDelegate {
     
     lazy var pageControl:UIPageControl = {
         let pageControl = UIPageControl()
@@ -22,6 +22,7 @@ class XFruitsViewPager: UIView {
     
     lazy var container:UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.delegate = self
         scrollView.bounces = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
@@ -68,6 +69,13 @@ class XFruitsViewPager: UIView {
         }
     }
     
+    // MARK: - paging start
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = scrollView.contentOffset.x / scrollView.frame.size.width;
+        self.pageControl.currentPage = Int(page);
+    }
+    
+    // MARK: - private funcs
     private func imagePagerView(urlString:String,placeHolder:String?,index:Int) -> UIImageView {
         
         var placeHolderImage:UIImage? = nil
