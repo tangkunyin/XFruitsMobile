@@ -24,10 +24,7 @@ class XFruitsIndexViewController: XFruitsBaseViewController {
         self.view.addSubview(pagerView!)
 
         pagerView?.snp.makeConstraints({ (make) in
-            make.size.width.equalTo(self.view)
             make.size.height.equalTo(150)
-            make.centerX.equalTo(self.view)
-            make.top.equalTo(self.view)
         })
         
     }

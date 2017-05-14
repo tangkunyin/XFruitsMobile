@@ -136,8 +136,8 @@ class XFruitsUserCenterViewController: XFruitsBaseViewController ,UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         tableView.deselectRow(at: indexPath, animated: true)
-        let section = indexPath.section
-        let row = indexPath.row
+//        let section = indexPath.section
+//        let row = indexPath.row
         
     }
     

@@ -11,18 +11,16 @@ import Kingfisher
 import SnapKit
 
 class XFruitsViewPager: UIScrollView {
-
-
+    
+    
     convenience init?(source:Array<String>, placeHolder:String?)  {
         
-        if source.count < 1 {
-            return nil
-        }
-        
         self.init()
-    
         
-        let placeHolderImage = (placeHolder ?? nil) == nil ? nil : UIImage.imageWithNamed(placeHolder!)
+        var placeHolderImage:UIImage? = nil
+        if let placeHolder = placeHolder {
+            placeHolderImage = UIImage.imageWithNamed(placeHolder)
+        }
         
     
         let pageControl = UIPageControl()
@@ -45,9 +43,7 @@ class XFruitsViewPager: UIScrollView {
             pageView.snp.makeConstraints({ (make) in
                 make.size.equalTo(self)
                 make.top.equalTo(self)
-//                make.left.equalTo(CGFloat(index) * CGFloat(self.snp.left))
-                
-                
+                make.left.equalTo(self).offset(CGFloat(index) * self.frame.size.width)
             })
         }
         self.addSubview(pageControl)
@@ -61,5 +57,5 @@ class XFruitsViewPager: UIScrollView {
         self.contentSize = CGSize(width: frame.width * CGFloat(source.count), height: frame.height)
     }
     
-
+    
 }
