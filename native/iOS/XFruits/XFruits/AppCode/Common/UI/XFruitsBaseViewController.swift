@@ -12,8 +12,9 @@ class XFruitsBaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.edgesForExtendedLayout = UIRectEdge(rawValue: 0)
 
-        // Do any additional setup after loading the view.
+        
     }
 
     

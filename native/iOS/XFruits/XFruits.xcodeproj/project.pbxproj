@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16ED36071EC19D7900CB2FCB /* UserCenterAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED36061EC19D7900CB2FCB /* UserCenterAvatarCell.swift */; };
-		16ED36091EC1A53200CB2FCB /* MyBillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED36081EC1A53200CB2FCB /* MyBillTableViewCell.swift */; };
-		16ED360B1EC1B78E00CB2FCB /* FourBillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED360A1EC1B78E00CB2FCB /* FourBillCollectionViewCell.swift */; };
 		862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862C59EE1EA3677100C2323D /* XFConstants.swift */; };
 		864430731E9A23A700D41BCC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 864430721E9A23A700D41BCC /* Default-568h@2x.png */; };
 		864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */; };
@@ -34,16 +31,13 @@
 		86CB2FF01EAB495A009972A8 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE91EAB495A009972A8 /* MBProgressHUD.framework */; };
 		86CB2FF21EAB495A009972A8 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FEB1EAB495A009972A8 /* SnapKit.framework */; };
 		86CB2FF31EAB495A009972A8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FEC1EAB495A009972A8 /* SwiftyJSON.framework */; };
-		86EC80EE1EC72D2E009AB47D /* FourBillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80EB1EC72D2E009AB47D /* FourBillCollectionViewCell.swift */; };
-		86EC80EF1EC72D2E009AB47D /* MyBillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80EC1EC72D2E009AB47D /* MyBillTableViewCell.swift */; };
-		86EC80F01EC72D2E009AB47D /* UserCenterAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80ED1EC72D2E009AB47D /* UserCenterAvatarCell.swift */; };
 		86EC80F21EC7DCBD009AB47D /* XFruitsViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F11EC7DCBD009AB47D /* XFruitsViewPager.swift */; };
+		86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */; };
+		86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */; };
+		86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F51EC86C34009AB47D /* UserCenterAvatarCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		16ED36061EC19D7900CB2FCB /* UserCenterAvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterAvatarCell.swift; sourceTree = "<group>"; };
-		16ED36081EC1A53200CB2FCB /* MyBillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBillTableViewCell.swift; sourceTree = "<group>"; };
-		16ED360A1EC1B78E00CB2FCB /* FourBillCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourBillCollectionViewCell.swift; sourceTree = "<group>"; };
 		862C59EE1EA3677100C2323D /* XFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFConstants.swift; sourceTree = "<group>"; };
 		864430721E9A23A700D41BCC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsHomeViewController.swift; sourceTree = "<group>"; };
@@ -70,10 +64,10 @@
 		86CB2FE91EAB495A009972A8 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		86CB2FEB1EAB495A009972A8 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		86CB2FEC1EAB495A009972A8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		86EC80EB1EC72D2E009AB47D /* FourBillCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourBillCollectionViewCell.swift; sourceTree = "<group>"; };
-		86EC80EC1EC72D2E009AB47D /* MyBillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBillTableViewCell.swift; sourceTree = "<group>"; };
-		86EC80ED1EC72D2E009AB47D /* UserCenterAvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterAvatarCell.swift; sourceTree = "<group>"; };
 		86EC80F11EC7DCBD009AB47D /* XFruitsViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsViewPager.swift; sourceTree = "<group>"; };
+		86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourBillCollectionViewCell.swift; sourceTree = "<group>"; };
+		86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBillTableViewCell.swift; sourceTree = "<group>"; };
+		86EC80F51EC86C34009AB47D /* UserCenterAvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterAvatarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,16 +87,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		16ED36051EC19D7900CB2FCB /* View */ = {
-			isa = PBXGroup;
-			children = (
-				16ED36061EC19D7900CB2FCB /* UserCenterAvatarCell.swift */,
-				16ED36081EC1A53200CB2FCB /* MyBillTableViewCell.swift */,
-				16ED360A1EC1B78E00CB2FCB /* FourBillCollectionViewCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		864430741E9A23CD00D41BCC /* AppSystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,9 +276,9 @@
 		86EC80EA1EC72D2E009AB47D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				86EC80EB1EC72D2E009AB47D /* FourBillCollectionViewCell.swift */,
-				86EC80EC1EC72D2E009AB47D /* MyBillTableViewCell.swift */,
-				86EC80ED1EC72D2E009AB47D /* UserCenterAvatarCell.swift */,
+				86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */,
+				86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */,
+				86EC80F51EC86C34009AB47D /* UserCenterAvatarCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -394,27 +378,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86EC80EF1EC72D2E009AB47D /* MyBillTableViewCell.swift in Sources */,
 				8644308D1E9A295A00D41BCC /* XFruitsCategoryViewController.swift in Sources */,
 				8686131F1EAC6A3200A44338 /* XFruitsBaseSubViewController.swift in Sources */,
 				864430851E9A27E400D41BCC /* XFruitsBaseRequest.swift in Sources */,
 				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
-				16ED360B1EC1B78E00CB2FCB /* FourBillCollectionViewCell.swift in Sources */,
 				864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */,
 				864430831E9A27A600D41BCC /* XFruitsBaseViewController.swift in Sources */,
-				86EC80F01EC72D2E009AB47D /* UserCenterAvatarCell.swift in Sources */,
-				86EC80EE1EC72D2E009AB47D /* FourBillCollectionViewCell.swift in Sources */,
 				8644308B1E9A294500D41BCC /* XFruitsIndexViewController.swift in Sources */,
+				86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */,
 				862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */,
 				86EC80F21EC7DCBD009AB47D /* XFruitsViewPager.swift in Sources */,
 				864430891E9A28F400D41BCC /* XFruitsUserRegistViewController.swift in Sources */,
 				868613231EAC731200A44338 /* XFruitsNavigationController.swift in Sources */,
 				8644308F1E9A296E00D41BCC /* XFruitsShopCarViewController.swift in Sources */,
 				868613211EAC6A5E00A44338 /* XFruitsUserCenterViewController.swift in Sources */,
+				86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */,
 				864430871E9A28C500D41BCC /* XFruitsUserLoginViewController.swift in Sources */,
 				865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */,
-				16ED36071EC19D7900CB2FCB /* UserCenterAvatarCell.swift in Sources */,
 				865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */,
+				86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */,
 				868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

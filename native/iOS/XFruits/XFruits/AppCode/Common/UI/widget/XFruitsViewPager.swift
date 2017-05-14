@@ -10,52 +10,88 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-class XFruitsViewPager: UIScrollView {
+class XFruitsViewPager: UIView {
+    
+    lazy var pageControl:UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.pageIndicatorTintColor = XFConstants.Color.paleGrey
+        pageControl.currentPageIndicatorTintColor = XFConstants.Color.salmon
+        pageControl.isEnabled = true
+        return pageControl
+    }()
+    
+    lazy var container:UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.bounces = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.isPagingEnabled = true
+        return scrollView;
+    }()
+    
+    var pagerDidClicked: ((Int) -> Void)?
     
     
-    convenience init?(source:Array<String>, placeHolder:String?)  {
+    convenience init(source:Array<String>, placeHolder:String?)  {
         
         self.init()
+        
+        self.addSubview(self.container)
+        container.snp.makeConstraints { (make) in
+            make.center.equalTo(self)
+            make.size.equalTo(self)
+        }
+        
+        for (index, item) in source.enumerated() {
+            let pageView = imagePagerView(urlString: item, placeHolder: placeHolder, index: index)
+            self.container.addSubview(pageView)
+            pageView.snp.makeConstraints({ (make) in
+                make.top.size.equalTo(self.container)
+                if index == 0 {
+                    make.left.equalTo(self.container)
+                }
+                else if let previousView = self.container.subviews[index-1] as? UIImageView {
+                    make.left.equalTo(previousView.snp.right).offset(0)
+                }
+                if index == source.count - 1 {
+                    make.right.equalTo(self.container)
+                }
+            })
+        }
+        
+        self.pageControl.numberOfPages = source.count
+        self.addSubview(self.pageControl)
+        self.pageControl.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self)
+            make.size.equalTo(CGSize(width: 200, height:40))
+            make.bottom.equalTo(0)
+        }
+    }
+    
+    private func imagePagerView(urlString:String,placeHolder:String?,index:Int) -> UIImageView {
         
         var placeHolderImage:UIImage? = nil
         if let placeHolder = placeHolder {
             placeHolderImage = UIImage.imageWithNamed(placeHolder)
         }
         
-    
-        let pageControl = UIPageControl()
-        pageControl.pageIndicatorTintColor = XFConstants.Color.paleGrey
-        pageControl.currentPageIndicatorTintColor = XFConstants.Color.salmon
-        pageControl.isEnabled = true
-        pageControl.numberOfPages = source.count
+        let pageView = UIImageView()
+        pageView.tag = index
+        pageView.contentMode = .scaleAspectFit
+        pageView.kf.setImage(with: URL(string: urlString),
+                             placeholder: placeHolderImage,
+                             options: [.transition(.fade(1))],
+                             progressBlock: nil,
+                             completionHandler: nil)
+        pageView.isUserInteractionEnabled = true
+        pageView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(pagerClicked(_:))))
         
-        for (index, item) in source.enumerated() {
-            let pageView = UIImageView()
-            pageView.tag = index
-            pageView.kf.setImage(with: URL(string: item),
-                                 placeholder: placeHolderImage,
-                                 options: [.transition(.fade(1))],
-                                 progressBlock: nil,
-                                 completionHandler: nil)
-            pageView.isUserInteractionEnabled = true
-            self.addSubview(pageView)
-            
-            pageView.snp.makeConstraints({ (make) in
-                make.size.equalTo(self)
-                make.top.equalTo(self)
-                make.left.equalTo(self).offset(CGFloat(index) * self.frame.size.width)
-            })
-        }
-        self.addSubview(pageControl)
-        
-        pageControl.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 150, height:50))
-            make.centerX.equalTo(self.center)
-            make.bottom.equalTo(20)
-        }
-        
-        self.contentSize = CGSize(width: frame.width * CGFloat(source.count), height: frame.height)
+        return pageView
     }
     
-    
+    @objc private func pagerClicked(_ tap:UITapGestureRecognizer) {
+        if let pagerView = tap.view, let pagerClicked = self.pagerDidClicked {
+            pagerClicked(pagerView.tag)
+        }
+    }
 }
