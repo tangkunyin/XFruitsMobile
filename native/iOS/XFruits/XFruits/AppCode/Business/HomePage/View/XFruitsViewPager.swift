@@ -45,7 +45,7 @@ class XFruitsViewPager: UIScrollView {
             pageView.snp.makeConstraints({ (make) in
                 make.size.equalTo(self)
                 make.top.equalTo(self)
-                make.left.equalTo(CGFloat(index) * CGFloat(self.snp.left))
+//                make.left.equalTo(CGFloat(index) * CGFloat(self.snp.left))
                 
                 
             })

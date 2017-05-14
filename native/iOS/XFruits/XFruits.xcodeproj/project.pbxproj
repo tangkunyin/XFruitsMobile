@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16ED36071EC19D7900CB2FCB /* UserCenterAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED36061EC19D7900CB2FCB /* UserCenterAvatarCell.swift */; };
+		16ED36091EC1A53200CB2FCB /* MyBillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED36081EC1A53200CB2FCB /* MyBillTableViewCell.swift */; };
+		16ED360B1EC1B78E00CB2FCB /* FourBillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ED360A1EC1B78E00CB2FCB /* FourBillCollectionViewCell.swift */; };
 		862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862C59EE1EA3677100C2323D /* XFConstants.swift */; };
 		864430731E9A23A700D41BCC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 864430721E9A23A700D41BCC /* Default-568h@2x.png */; };
 		864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */; };
@@ -36,6 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16ED36061EC19D7900CB2FCB /* UserCenterAvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterAvatarCell.swift; sourceTree = "<group>"; };
+		16ED36081EC1A53200CB2FCB /* MyBillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBillTableViewCell.swift; sourceTree = "<group>"; };
+		16ED360A1EC1B78E00CB2FCB /* FourBillCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourBillCollectionViewCell.swift; sourceTree = "<group>"; };
 		862C59EE1EA3677100C2323D /* XFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFConstants.swift; sourceTree = "<group>"; };
 		864430721E9A23A700D41BCC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsHomeViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +89,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16ED36051EC19D7900CB2FCB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				16ED36061EC19D7900CB2FCB /* UserCenterAvatarCell.swift */,
+				16ED36081EC1A53200CB2FCB /* MyBillTableViewCell.swift */,
+				16ED360A1EC1B78E00CB2FCB /* FourBillCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		864430741E9A23CD00D41BCC /* AppSystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +161,7 @@
 		8644307C1E9A277B00D41BCC /* UserCenter */ = {
 			isa = PBXGroup;
 			children = (
+				16ED36051EC19D7900CB2FCB /* View */,
 				864430861E9A28C500D41BCC /* XFruitsUserLoginViewController.swift */,
 				864430881E9A28F400D41BCC /* XFruitsUserRegistViewController.swift */,
 				868613201EAC6A5E00A44338 /* XFruitsUserCenterViewController.swift */,
@@ -364,10 +381,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16ED36091EC1A53200CB2FCB /* MyBillTableViewCell.swift in Sources */,
 				8644308D1E9A295A00D41BCC /* XFruitsCategoryViewController.swift in Sources */,
 				8686131F1EAC6A3200A44338 /* XFruitsBaseSubViewController.swift in Sources */,
 				864430851E9A27E400D41BCC /* XFruitsBaseRequest.swift in Sources */,
 				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
+				16ED360B1EC1B78E00CB2FCB /* FourBillCollectionViewCell.swift in Sources */,
 				864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */,
 				864430831E9A27A600D41BCC /* XFruitsBaseViewController.swift in Sources */,
 				86C055481EBC410F0087E135 /* XFruitsViewPager.swift in Sources */,
@@ -380,6 +399,7 @@
 				868613291EACDC5300A44338 /* XFPicSlider.swift in Sources */,
 				864430871E9A28C500D41BCC /* XFruitsUserLoginViewController.swift in Sources */,
 				865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */,
+				16ED36071EC19D7900CB2FCB /* UserCenterAvatarCell.swift in Sources */,
 				865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */,
 				868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */,
 			);
