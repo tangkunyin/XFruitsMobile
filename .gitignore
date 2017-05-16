@@ -293,7 +293,7 @@ native/iOS/XFruits/!default.mode2v3
 native/iOS/XFruits/*.perspectivev3
 native/iOS/XFruits/!default.perspectivev3
 native/iOS/XFruits/xcuserdata/
-native/iOS/XFruits/XFruits.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad/UserInterfaceState.xcuserstate
+native/iOS/XFruits/XFruits.xcodeproj/project.xcworkspace/xcuserdata/
 
 ## Other
 native/iOS/XFruits/*.moved-aside
