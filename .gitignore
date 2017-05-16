@@ -314,14 +314,6 @@ native/iOS/XFruits/*.dSYM
 
 native/iOS/XFruits/Pods/
 
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
-
-native/iOS/XFruits/Carthage/Checkouts/
-native/iOS/XFruits/Carthage/Build/
-
 
 ### Objective-C Patch ###
 
@@ -362,3 +354,11 @@ Session.vim
 .netrwhist
 # auto-generated tag files
 tags
+
+# Carthage
+#
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# Carthage/Checkouts
+
+native/iOS/XFruits/Carthage/Checkouts/
+native/iOS/XFruits/Carthage/Build/
