@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		164C21EC1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C21EB1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift */; };
+		1668B0591ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668B0581ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift */; };
+		16F6519C1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F6519B1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift */; };
+		16F6519E1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F6519D1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift */; };
+		16F651DA1ECD481E00EB477D /* XFruitsAddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F651D91ECD481E00EB477D /* XFruitsAddAddressViewController.swift */; };
+		16F651DD1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F651DC1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift */; };
 		862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862C59EE1EA3677100C2323D /* XFConstants.swift */; };
 		864430731E9A23A700D41BCC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 864430721E9A23A700D41BCC /* Default-568h@2x.png */; };
 		864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */; };
@@ -38,6 +44,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		164C21EB1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsUserRegistSecondPageViewController.swift; sourceTree = "<group>"; };
+		1668B0581ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift; sourceTree = "<group>"; };
+		16F6519B1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsUserAddressesMangageViewController.swift; sourceTree = "<group>"; };
+		16F6519D1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddressesManageTableViewCell.swift; sourceTree = "<group>"; };
+		16F651D91ECD481E00EB477D /* XFruitsAddAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddAddressViewController.swift; sourceTree = "<group>"; };
+		16F651DC1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddAddressTableViewCell.swift; sourceTree = "<group>"; };
 		862C59EE1EA3677100C2323D /* XFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFConstants.swift; sourceTree = "<group>"; };
 		864430721E9A23A700D41BCC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsHomeViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +165,9 @@
 				864430861E9A28C500D41BCC /* XFruitsUserLoginViewController.swift */,
 				864430881E9A28F400D41BCC /* XFruitsUserRegistViewController.swift */,
 				868613201EAC6A5E00A44338 /* XFruitsUserCenterViewController.swift */,
+				164C21EB1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift */,
+				16F6519B1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift */,
+				16F651D91ECD481E00EB477D /* XFruitsAddAddressViewController.swift */,
 			);
 			path = UserCenter;
 			sourceTree = "<group>";
@@ -279,6 +294,9 @@
 				86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */,
 				86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */,
 				86EC80F51EC86C34009AB47D /* UserCenterAvatarCell.swift */,
+				16F6519D1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift */,
+				16F651DC1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift */,
+				1668B0581ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -382,12 +400,15 @@
 				8686131F1EAC6A3200A44338 /* XFruitsBaseSubViewController.swift in Sources */,
 				864430851E9A27E400D41BCC /* XFruitsBaseRequest.swift in Sources */,
 				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
+				164C21EC1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift in Sources */,
 				864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */,
 				864430831E9A27A600D41BCC /* XFruitsBaseViewController.swift in Sources */,
 				8644308B1E9A294500D41BCC /* XFruitsIndexViewController.swift in Sources */,
 				86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */,
+				16F6519C1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift in Sources */,
 				862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */,
 				86EC80F21EC7DCBD009AB47D /* XFruitsViewPager.swift in Sources */,
+				1668B0591ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift in Sources */,
 				864430891E9A28F400D41BCC /* XFruitsUserRegistViewController.swift in Sources */,
 				868613231EAC731200A44338 /* XFruitsNavigationController.swift in Sources */,
 				8644308F1E9A296E00D41BCC /* XFruitsShopCarViewController.swift in Sources */,
@@ -395,6 +416,9 @@
 				86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */,
 				864430871E9A28C500D41BCC /* XFruitsUserLoginViewController.swift in Sources */,
 				865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */,
+				16F651DA1ECD481E00EB477D /* XFruitsAddAddressViewController.swift in Sources */,
+				16F6519E1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift in Sources */,
+				16F651DD1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift in Sources */,
 				865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */,
 				86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */,
 				868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */,
@@ -508,6 +532,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = XFruits/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.10fruits.net.XFruits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -524,6 +549,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = XFruits/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.10fruits.net.XFruits;
 				PRODUCT_NAME = "$(TARGET_NAME)";

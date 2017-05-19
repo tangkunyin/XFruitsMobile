@@ -136,8 +136,14 @@ class XFruitsUserCenterViewController: XFruitsBaseViewController ,UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         tableView.deselectRow(at: indexPath, animated: true)
-//        let section = indexPath.section
-//        let row = indexPath.row
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        if section == 2 && row == 3  {
+            let addressManageVC = XFruitsUserAddressesMangageViewController()
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+            self.navigationController?.show(addressManageVC, sender: self)
+        }
         
     }
     

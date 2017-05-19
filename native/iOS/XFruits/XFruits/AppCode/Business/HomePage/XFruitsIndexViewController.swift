@@ -35,6 +35,13 @@ class XFruitsIndexViewController: XFruitsBaseViewController {
             make.centerX.equalTo(self.view)
         })
         
+        // 跳转到登录页面
+//        let loginVC  = XFruitsUserLoginViewController()
+//        let nav = UINavigationController(rootViewController:loginVC)
+//
+//        self.present(nav, animated: true, completion: nil)
+
+        
     }
 
     
