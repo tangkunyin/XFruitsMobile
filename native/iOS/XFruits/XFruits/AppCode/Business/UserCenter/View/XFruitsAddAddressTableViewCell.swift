@@ -30,9 +30,9 @@ class XFruitsAddAddressTableViewCell: UITableViewCell {
     func  setUpUI() {
         // 用户名
         leftTipLabel = UILabel.init()
-        leftTipLabel?.text = "收货人"
+//        leftTipLabel?.text = "收货人"
         leftTipLabel?.textColor = colorWithRGB(153, g: 153, b: 153)
-        leftTipLabel?.font  = UIFont.systemFont(ofSize: 14)
+        leftTipLabel?.font  = UIFont.systemFont(ofSize: 16)
         
         self.addSubview(self.leftTipLabel!)
         leftTipLabel?.textAlignment = NSTextAlignment.left
@@ -41,7 +41,7 @@ class XFruitsAddAddressTableViewCell: UITableViewCell {
             make.top.equalTo(self.snp.top).offset(12)
             make.left.equalTo(self.snp.left).offset(13)
             
-            make.width.equalTo(50)
+            make.width.equalTo(70)
             make.height.equalTo(19)
         })
         

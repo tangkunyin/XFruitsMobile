@@ -13,6 +13,8 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
     var brandImageView:UIImageView? // 品牌logo
     var mobileTextField:UITextField?  // 手机号
     var validateTextField:UITextField? // 图片验证码
+    var codeImageView:UIImageView? // 验证码图片
+    
     var nextStepBtn:UIButton?  //下一步按钮
     var backToLoginBtn:UIButton? // 已有帐号去登录
     var userProtocalBtn:UIButton? // 用户协议
@@ -45,6 +47,8 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
             make.top.equalTo((self.brandImageView?.snp.bottom)!).offset(30)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
+            make.height.equalTo(30)
+
         })
         
         // 图片验证码
@@ -57,6 +61,20 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
             make.top.equalTo((self.mobileTextField?.snp.bottom)!).offset(30)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-XFConstants.UI.deviceWidth/2)
+            make.height.equalTo(30)
+
+        })
+        
+        // 验证码图片
+        self.codeImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
+        self.view.addSubview(self.codeImageView!)
+        self.codeImageView?.snp.makeConstraints({ (make) in
+            
+            make.top.equalTo((self.mobileTextField?.snp.bottom)!).offset(30)
+            make.left.equalTo(self.view).offset(XFConstants.UI.deviceWidth/2+20)
+            make.right.equalTo(self.view).offset(-30)
+            make.height.equalTo(30)
+
         })
         
         // 下一步按钮

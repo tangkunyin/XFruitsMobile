@@ -71,8 +71,8 @@ class XFruitsAddressTextViewWithPlaceHolderTableViewCell: UITableViewCell ,UITex
         
         placeHolderLabel?.snp.makeConstraints({ (make) in
             make.top.equalTo(self.snp.top).offset(15)
-            make.left.equalTo(self.snp.left).offset(10)
-            make.right.equalTo(self.snp.right).offset(10)
+            make.left.equalTo(self.snp.left).offset(15)
+            make.right.equalTo(self.snp.right).offset(15)
 
             make.height.equalTo(14)
           

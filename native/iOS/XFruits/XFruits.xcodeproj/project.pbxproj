@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		164C21EC1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C21EB1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift */; };
 		1668B0591ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668B0581ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift */; };
+		1668B05B1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668B05A1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift */; };
 		16F6519C1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F6519B1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift */; };
 		16F6519E1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F6519D1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift */; };
 		16F651DA1ECD481E00EB477D /* XFruitsAddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F651D91ECD481E00EB477D /* XFruitsAddAddressViewController.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		164C21EB1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsUserRegistSecondPageViewController.swift; sourceTree = "<group>"; };
 		1668B0581ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift; sourceTree = "<group>"; };
+		1668B05A1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddressesCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		16F6519B1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsUserAddressesMangageViewController.swift; sourceTree = "<group>"; };
 		16F6519D1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddressesManageTableViewCell.swift; sourceTree = "<group>"; };
 		16F651D91ECD481E00EB477D /* XFruitsAddAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddAddressViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				16F6519D1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift */,
 				16F651DC1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift */,
 				1668B0581ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift */,
+				1668B05A1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				164C21EC1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift in Sources */,
 				864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */,
 				864430831E9A27A600D41BCC /* XFruitsBaseViewController.swift in Sources */,
+				1668B05B1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift in Sources */,
 				8644308B1E9A294500D41BCC /* XFruitsIndexViewController.swift in Sources */,
 				86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */,
 				16F6519C1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift in Sources */,

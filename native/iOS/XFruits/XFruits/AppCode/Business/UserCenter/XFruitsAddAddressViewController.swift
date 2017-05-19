@@ -9,7 +9,12 @@
 import UIKit
 
 class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableViewDataSource,UITableViewDelegate {
-
+   
+    var editStyle: NSString?  // 0 为增加模式，1为编辑模式。
+    var leftTipArray:NSArray? // 左侧提示
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
@@ -27,9 +32,20 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
             make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         })
         
+        self.leftTipArray  = ["收货人","联系电话","收货地址"]
+        
+        // 导航栏右侧保存按钮
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "", style: .plain, target: self, action: #selector(saveAddress(sender:)))
         
         // Do any additional setup after loading the view.
     }
+    
+    // 导航栏右侧按钮-保存-触发的事件
+    func saveAddress(sender:UIButton?) {
+        print("save")
+        
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,7 +61,7 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
-        return 5
+        return 4
     }
     
     
@@ -58,10 +74,19 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
         print(row)
         let identifier = "addAddressManageCell"
         let cell = XFruitsAddAddressTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
+        
+        if row < 3{
+            let leftTip  = self.leftTipArray?[row]
+            cell.leftTipLabel?.text = leftTip as? String
+        }
+       
+        
+        
         if row == 2 {
             cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             
         }
+      
         else if row == 3 {
             let identifier = "addAddressTextViewManageCell"
             let cell = XFruitsAddressTextViewWithPlaceHolderTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
