@@ -14,6 +14,17 @@ class XFruitsIndexViewController: XFruitsBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("scan-icon"),
+                                                                style: .plain,
+                                                               target: self,
+                                                               action: #selector(onScanItemClick))
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("msg-icon"),
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(onMessageItemClick))
+        
     
         let imageUrls = ["http://desk.fd.zol-img.com.cn/g5/M00/02/0B/ChMkJ1bK1fSIOoJHAAFWaDrqe94AALJsANLr7kAAVaA928.jpg",
                          "http://b.zol-img.com.cn/desk/bizhi/image/2/960x600/1359447948761.jpg",
@@ -41,6 +52,16 @@ class XFruitsIndexViewController: XFruitsBaseViewController {
 //
 //        self.present(nav, animated: true, completion: nil)
 
+        
+    }
+    
+    @objc private func onScanItemClick(){
+        
+        print("扫描毛线啊")
+    }
+    
+    @objc private func onMessageItemClick(){
+        print("客服点毛线啊")
         
     }
 
