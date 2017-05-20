@@ -33,6 +33,7 @@
 		868613231EAC731200A44338 /* XFruitsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868613221EAC731200A44338 /* XFruitsNavigationController.swift */; };
 		868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868613251EACCCE400A44338 /* XFImageExtension.swift */; };
 		86A45C2D1ECFD20E00772D13 /* XFruitsSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C2C1ECFD20E00772D13 /* XFruitsSearchBar.swift */; };
+		86A45C301ECFDBE500772D13 /* XFruitsMBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C2F1ECFDBE500772D13 /* XFruitsMBProgressHUD.swift */; };
 		86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE61EAB495A009972A8 /* Alamofire.framework */; };
 		86CB2FEE1EAB495A009972A8 /* APNGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE71EAB495A009972A8 /* APNGKit.framework */; };
 		86CB2FEF1EAB495A009972A8 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE81EAB495A009972A8 /* Kingfisher.framework */; };
@@ -75,6 +76,7 @@
 		868613251EACCCE400A44338 /* XFImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFImageExtension.swift; sourceTree = "<group>"; };
 		86A45C2C1ECFD20E00772D13 /* XFruitsSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsSearchBar.swift; sourceTree = "<group>"; };
 		86A45C2E1ECFD81D00772D13 /* XFruits-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XFruits-Bridging-Header.h"; sourceTree = "<group>"; };
+		86A45C2F1ECFDBE500772D13 /* XFruitsMBProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsMBProgressHUD.swift; sourceTree = "<group>"; };
 		86CB2FE61EAB495A009972A8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		86CB2FE71EAB495A009972A8 /* APNGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APNGKit.framework; path = Carthage/Build/iOS/APNGKit.framework; sourceTree = "<group>"; };
 		86CB2FE81EAB495A009972A8 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				868613251EACCCE400A44338 /* XFImageExtension.swift */,
+				86A45C2F1ECFDBE500772D13 /* XFruitsMBProgressHUD.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				8644308B1E9A294500D41BCC /* XFruitsIndexViewController.swift in Sources */,
 				86A45C2D1ECFD20E00772D13 /* XFruitsSearchBar.swift in Sources */,
 				86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */,
+				86A45C301ECFDBE500772D13 /* XFruitsMBProgressHUD.swift in Sources */,
 				16F6519C1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift in Sources */,
 				862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */,
 				86EC80F21EC7DCBD009AB47D /* XFruitsViewPager.swift in Sources */,

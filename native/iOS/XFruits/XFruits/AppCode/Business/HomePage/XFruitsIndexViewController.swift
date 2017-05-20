@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import MBProgressHUD
 
 class XFruitsIndexViewController: XFruitsBaseViewController {
 
@@ -57,11 +58,17 @@ class XFruitsIndexViewController: XFruitsBaseViewController {
     
     @objc private func onScanItemClick(){
         
-        print("扫描毛线啊")
+        MBProgressHUD.showMessage("搞毛线啊...") {
+            print("扫描毛线啊")
+        }
     }
     
     @objc private func onMessageItemClick(){
-        print("客服点毛线啊")
+        
+        
+        MBProgressHUD.showError("点个毛线啊")
+        
+//        MBProgressHUD.loaddingWithMessage("waiting...")
         
     }
 
