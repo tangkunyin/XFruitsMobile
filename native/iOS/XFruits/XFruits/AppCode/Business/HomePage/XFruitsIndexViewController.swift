@@ -36,6 +36,7 @@ class XFruitsIndexViewController: XFruitsBaseViewController {
         let pagerView = XFruitsViewPager(source: imageUrls, placeHolder: nil)
         pagerView.pagerDidClicked = {(index:Int) -> Void in
             print("\(index) 号被点击")
+            MBProgressHUD.showError("点个毛线啊，链接都没有")
         }
         
         
@@ -58,17 +59,14 @@ class XFruitsIndexViewController: XFruitsBaseViewController {
     
     @objc private func onScanItemClick(){
         
-        MBProgressHUD.showMessage("搞毛线啊...") {
+        MBProgressHUD.showMessage("扫描毛线啊...") {
             print("扫描毛线啊")
         }
     }
     
     @objc private func onMessageItemClick(){
         
-        
-        MBProgressHUD.showError("点个毛线啊")
-        
-//        MBProgressHUD.loaddingWithMessage("waiting...")
+        MBProgressHUD.loaddingWithMessage("玩儿命加载中...")
         
     }
 
