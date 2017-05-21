@@ -7,18 +7,29 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class XFruitsCategoryViewController: XFruitsBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("msg-icon"),
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(onMoreItemClick))
+
         
     }
 
     
+    @objc private func onMoreItemClick(){
+        
+        let allVC = XFAllCategoryListViewController()
+        navigationController?.pushViewController(allVC, animated: true)
     
+    }
 
     
 
