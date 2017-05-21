@@ -49,6 +49,7 @@ class XFruitsChatViewController: V5ChatViewController,V5ChatViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = UIColor.white
         
         let v5chatVC = V5ClientAgent.createChatViewController()
         v5chatVC.delegate = self

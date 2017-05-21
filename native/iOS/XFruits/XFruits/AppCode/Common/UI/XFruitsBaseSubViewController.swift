@@ -12,8 +12,9 @@ class XFruitsBaseSubViewController: XFruitsBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        
+        //统一设置所有返回图标为白色
+        navigationController?.navigationBar.tintColor = UIColor.white
         
         
     }
