@@ -65,9 +65,8 @@ class XFruitsIndexViewController: XFruitsBaseViewController {
     }
     
     @objc private func onMessageItemClick(){
-        
-        MBProgressHUD.loaddingWithMessage("玩儿命加载中...")
-        
+        let chatViewController = XFruitsChatViewController.init(withUser: nil, goodsInfo: nil)
+        self.navigationController?.pushViewController(chatViewController, animated: true)
     }
 
     

@@ -46,6 +46,14 @@
 		86A45C601ED110AB00772D13 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C5F1ED110AB00772D13 /* CFNetwork.framework */; };
 		86A45C621ED110B500772D13 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C611ED110B500772D13 /* Security.framework */; };
 		86A45C641ED110C000772D13 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C631ED110C000772D13 /* MediaPlayer.framework */; };
+		86A45C661ED1184E00772D13 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C651ED1184E00772D13 /* AssetsLibrary.framework */; };
+		86A45C681ED1186100772D13 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C671ED1186100772D13 /* Photos.framework */; };
+		86A45C6A1ED1186A00772D13 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C691ED1186A00772D13 /* PhotosUI.framework */; };
+		86A45C6C1ED1187D00772D13 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C6B1ED1187D00772D13 /* libz.tbd */; };
+		86A45C6E1ED11A4100772D13 /* XFruitsChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C6D1ED11A4100772D13 /* XFruitsChatViewController.swift */; };
+		86A45C701ED11B4B00772D13 /* XFruitsUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C6F1ED11B4B00772D13 /* XFruitsUser.swift */; };
+		86A45C721ED1209F00772D13 /* XFCommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C711ED1209F00772D13 /* XFCommonUtils.swift */; };
+		86A45C741ED121D300772D13 /* XFruitsGoodsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C731ED121D300772D13 /* XFruitsGoodsInfo.swift */; };
 		86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE61EAB495A009972A8 /* Alamofire.framework */; };
 		86CB2FEE1EAB495A009972A8 /* APNGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE71EAB495A009972A8 /* APNGKit.framework */; };
 		86CB2FEF1EAB495A009972A8 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE81EAB495A009972A8 /* Kingfisher.framework */; };
@@ -123,6 +131,14 @@
 		86A45C5F1ED110AB00772D13 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		86A45C611ED110B500772D13 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		86A45C631ED110C000772D13 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		86A45C651ED1184E00772D13 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		86A45C671ED1186100772D13 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		86A45C691ED1186A00772D13 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		86A45C6B1ED1187D00772D13 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		86A45C6D1ED11A4100772D13 /* XFruitsChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsChatViewController.swift; sourceTree = "<group>"; };
+		86A45C6F1ED11B4B00772D13 /* XFruitsUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsUser.swift; sourceTree = "<group>"; };
+		86A45C711ED1209F00772D13 /* XFCommonUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCommonUtils.swift; sourceTree = "<group>"; };
+		86A45C731ED121D300772D13 /* XFruitsGoodsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsGoodsInfo.swift; sourceTree = "<group>"; };
 		86CB2FE61EAB495A009972A8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		86CB2FE71EAB495A009972A8 /* APNGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APNGKit.framework; path = Carthage/Build/iOS/APNGKit.framework; sourceTree = "<group>"; };
 		86CB2FE81EAB495A009972A8 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -140,6 +156,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86A45C6C1ED1187D00772D13 /* libz.tbd in Frameworks */,
+				86A45C6A1ED1186A00772D13 /* PhotosUI.framework in Frameworks */,
+				86A45C681ED1186100772D13 /* Photos.framework in Frameworks */,
+				86A45C661ED1184E00772D13 /* AssetsLibrary.framework in Frameworks */,
 				86A45C641ED110C000772D13 /* MediaPlayer.framework in Frameworks */,
 				86A45C621ED110B500772D13 /* Security.framework in Frameworks */,
 				86A45C601ED110AB00772D13 /* CFNetwork.framework in Frameworks */,
@@ -170,6 +190,7 @@
 				865F4F4D1E9A173E0059502C /* Assets.xcassets */,
 				865F4F521E9A173E0059502C /* Info.plist */,
 				86A45C2E1ECFD81D00772D13 /* XFruits-Bridging-Header.h */,
+				865F4F461E9A173E0059502C /* AppDelegate.swift */,
 			);
 			name = AppSystem;
 			sourceTree = "<group>";
@@ -251,6 +272,8 @@
 			isa = PBXGroup;
 			children = (
 				864430841E9A27E400D41BCC /* XFruitsBaseRequest.swift */,
+				86A45C6F1ED11B4B00772D13 /* XFruitsUser.swift */,
+				86A45C731ED121D300772D13 /* XFruitsGoodsInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -262,6 +285,7 @@
 				864430821E9A27A600D41BCC /* XFruitsBaseViewController.swift */,
 				8686131E1EAC6A3200A44338 /* XFruitsBaseSubViewController.swift */,
 				868613221EAC731200A44338 /* XFruitsNavigationController.swift */,
+				86A45C6D1ED11A4100772D13 /* XFruitsChatViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -279,6 +303,7 @@
 		864430811E9A277B00D41BCC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				86A45C711ED1209F00772D13 /* XFCommonUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -306,7 +331,6 @@
 				864430751E9A242000D41BCC /* AppCode */,
 				864430741E9A23CD00D41BCC /* AppSystem */,
 				86A45C321ED10F9A00772D13 /* ThirdLib */,
-				865F4F461E9A173E0059502C /* AppDelegate.swift */,
 			);
 			path = XFruits;
 			sourceTree = "<group>";
@@ -411,6 +435,10 @@
 		86CB2FE51EAB4959009972A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				86A45C6B1ED1187D00772D13 /* libz.tbd */,
+				86A45C691ED1186A00772D13 /* PhotosUI.framework */,
+				86A45C671ED1186100772D13 /* Photos.framework */,
+				86A45C651ED1184E00772D13 /* AssetsLibrary.framework */,
 				86A45C631ED110C000772D13 /* MediaPlayer.framework */,
 				86A45C611ED110B500772D13 /* Security.framework */,
 				86A45C5F1ED110AB00772D13 /* CFNetwork.framework */,
@@ -545,11 +573,13 @@
 				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
 				164C21EC1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift in Sources */,
 				864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */,
+				86A45C721ED1209F00772D13 /* XFCommonUtils.swift in Sources */,
 				864430831E9A27A600D41BCC /* XFruitsBaseViewController.swift in Sources */,
 				1668B05B1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift in Sources */,
 				8644308B1E9A294500D41BCC /* XFruitsIndexViewController.swift in Sources */,
 				86A45C2D1ECFD20E00772D13 /* XFruitsSearchBar.swift in Sources */,
 				86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */,
+				86A45C701ED11B4B00772D13 /* XFruitsUser.swift in Sources */,
 				86A45C301ECFDBE500772D13 /* XFruitsMBProgressHUD.swift in Sources */,
 				16F6519C1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift in Sources */,
 				862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */,
@@ -560,11 +590,13 @@
 				8644308F1E9A296E00D41BCC /* XFruitsShopCarViewController.swift in Sources */,
 				868613211EAC6A5E00A44338 /* XFruitsUserCenterViewController.swift in Sources */,
 				86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */,
+				86A45C741ED121D300772D13 /* XFruitsGoodsInfo.swift in Sources */,
 				864430871E9A28C500D41BCC /* XFruitsUserLoginViewController.swift in Sources */,
 				865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */,
 				16F651DA1ECD481E00EB477D /* XFruitsAddAddressViewController.swift in Sources */,
 				16F6519E1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift in Sources */,
 				16F651DD1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift in Sources */,
+				86A45C6E1ED11A4100772D13 /* XFruitsChatViewController.swift in Sources */,
 				865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */,
 				86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */,
 				868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */,

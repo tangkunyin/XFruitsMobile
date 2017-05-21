@@ -33,6 +33,13 @@ struct XFConstants {
     /// 分页每页的条数
     static let pageRows:Int = 10
     
+    struct SDK {
+        struct V5KF {
+            static let siteId = "145039"
+            static let appId = "2368f0801ca49"
+        }
+    }
+    
     
     /// 事件消息key定义
     struct MessageKey {
