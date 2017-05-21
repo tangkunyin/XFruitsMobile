@@ -9,7 +9,6 @@
 import UIKit
 import MBProgressHUD
 
-// 网络状态
 fileprivate enum MBProgressTipType:Int {
     case tipNone       //无提示符
     case tipSuccess    //正确提示符

@@ -7,3 +7,5 @@ github "SwiftyJSON/SwiftyJSON" ~> 3.1.4
 
 # import obj-c libs
 github "jdg/MBProgressHUD" ~> 1.0.0
+# 暂不支持，等官方更新了，再用依赖管理
+#github "V5KF/V5KFClientSDK-iOS" ~> 1.2.6
