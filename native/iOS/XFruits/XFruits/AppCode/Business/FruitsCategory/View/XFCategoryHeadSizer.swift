@@ -15,17 +15,12 @@ class XFCategoryHeadSizer: UIView {
         let segmente = UISegmentedControl(items: ["综合","销量","新品","价格"])
         segmente.selectedSegmentIndex = 0
         segmente.apportionsSegmentWidthsByContent = true
-        segmente.tintColor = UIColor.white
+        segmente.tintColor = XFConstants.Color.commonBgColor
         segmente.addTarget(self, action: #selector(sizerChangedAction(_:)), for: .valueChanged)
         return segmente
     }()
     
-    lazy var bottomLine:UIView = {
-        let line = UIView();
-        line.backgroundColor = grayColor(204)
-        return line
-    }()
-    
+
     convenience init(textColor:UIColor?, selectTextColor:UIColor?) {
         self.init()
         
@@ -39,15 +34,9 @@ class XFCategoryHeadSizer: UIView {
         
         
         addSubview(sizer)
-        addSubview(bottomLine)
+    
         sizer.snp.makeConstraints { (make) in
-            make.top.left.right.equalTo(self)
-            make.bottom.equalTo(self.bottomLine.snp.top)
-        }
-        bottomLine.snp.makeConstraints { (make) in
-            make.top.equalTo(self.sizer.snp.bottom)
-            make.height.equalTo(0.6)
-            make.left.right.equalTo(self)
+            make.edges.equalTo(self)
         }
     }
     

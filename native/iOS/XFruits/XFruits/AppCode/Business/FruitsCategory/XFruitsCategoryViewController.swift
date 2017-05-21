@@ -51,11 +51,11 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
     fileprivate func makeViewConstrains(){
         headSizer.snp.makeConstraints { (make) in
             make.top.equalTo(0)
-            make.height.equalTo(44)
+            make.height.equalTo(30)
             make.left.right.equalTo(self.view)
         }
         cateListView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.headSizer.snp.bottom).offset(10)
+            make.top.equalTo(self.headSizer.snp.bottom).offset(5)
             make.left.right.equalTo(self.view)
             make.bottom.equalTo(self.view).offset(-5)
         }
@@ -68,20 +68,18 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
 
     // MARK: - delegates
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: XFCellViewReuseIdentifier, for: indexPath)
         
-        cell.backgroundColor = UIColor.orange
-        
-        
+    
         return cell;
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 110, height: 151)
+        return CGSize(width: 110, height: 200)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
