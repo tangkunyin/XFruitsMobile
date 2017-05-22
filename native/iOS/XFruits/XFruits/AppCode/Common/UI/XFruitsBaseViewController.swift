@@ -12,8 +12,8 @@ class XFruitsBaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.edgesForExtendedLayout = UIRectEdge(rawValue: 0)
-
+        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
+        navigationController?.navigationBar.tintColor = UIColor.white
         
     }
 

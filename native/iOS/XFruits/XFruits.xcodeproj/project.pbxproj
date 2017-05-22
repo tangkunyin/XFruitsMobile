@@ -55,7 +55,6 @@
 		86A45C681ED1186100772D13 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C671ED1186100772D13 /* Photos.framework */; };
 		86A45C6A1ED1186A00772D13 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C691ED1186A00772D13 /* PhotosUI.framework */; };
 		86A45C6C1ED1187D00772D13 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C6B1ED1187D00772D13 /* libz.tbd */; };
-		86A45C6E1ED11A4100772D13 /* XFruitsChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C6D1ED11A4100772D13 /* XFruitsChatViewController.swift */; };
 		86A45C701ED11B4B00772D13 /* XFruitsUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C6F1ED11B4B00772D13 /* XFruitsUser.swift */; };
 		86A45C721ED1209F00772D13 /* XFCommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C711ED1209F00772D13 /* XFCommonUtils.swift */; };
 		86A45C741ED121D300772D13 /* XFruitsGoodsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C731ED121D300772D13 /* XFruitsGoodsInfo.swift */; };
@@ -145,7 +144,6 @@
 		86A45C671ED1186100772D13 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		86A45C691ED1186A00772D13 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		86A45C6B1ED1187D00772D13 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		86A45C6D1ED11A4100772D13 /* XFruitsChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsChatViewController.swift; sourceTree = "<group>"; };
 		86A45C6F1ED11B4B00772D13 /* XFruitsUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsUser.swift; sourceTree = "<group>"; };
 		86A45C711ED1209F00772D13 /* XFCommonUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCommonUtils.swift; sourceTree = "<group>"; };
 		86A45C731ED121D300772D13 /* XFruitsGoodsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsGoodsInfo.swift; sourceTree = "<group>"; };
@@ -300,7 +298,6 @@
 				864430821E9A27A600D41BCC /* XFruitsBaseViewController.swift */,
 				8686131E1EAC6A3200A44338 /* XFruitsBaseSubViewController.swift */,
 				868613221EAC731200A44338 /* XFruitsNavigationController.swift */,
-				86A45C6D1ED11A4100772D13 /* XFruitsChatViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -648,7 +645,6 @@
 				16F651DA1ECD481E00EB477D /* XFruitsAddAddressViewController.swift in Sources */,
 				16F6519E1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift in Sources */,
 				16F651DD1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift in Sources */,
-				86A45C6E1ED11A4100772D13 /* XFruitsChatViewController.swift in Sources */,
 				865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */,
 				86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */,
 				868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */,
