@@ -23,20 +23,14 @@ class XFruitsChatViewController: V5ChatViewController,V5ChatViewDelegate {
                 config.vip = user.vip ?? 0
                 config.openId = user.userId
             } else {
-                config.nickname = "未登录匿名用户"
+                config.nickname = "iOS端未登录的匿名用户"
                 config.gender = 0
-                config.avatar = ""
-                config.vip = -1
                 //未登录的匿名用户使用时间戳作为唯一标示符
-                config.openId = "\(currentTimestamp())"
+                config.openId = "iOS_RandomUser_\(currentTimestamp())"
             }
             if let goodsInfo = goodsInfo {
                 config.userInfo = JSON(goodsInfo).dictionaryValue
             }
-            //用于推送消息
-            config.deviceToken = ""
-            //更新用户信息或者切换用户时需调用shouldUpdateUserInfo
-            config.shouldUpdateUserInfo()
         }
     }
     
@@ -73,7 +67,7 @@ class XFruitsChatViewController: V5ChatViewController,V5ChatViewDelegate {
         
         // 设置开场白方式,启动会话前设置，默认ClientOpenModeDefault
         // ClientOpenModeQuestion结合后台机器人培训内容可根据使用场景配置不同需求的开场消息
-        v5chatVC.setClientOpenMode(.ClientOpenModeDefault, withParam: nil)
+        v5chatVC.setClientOpenMode(.ClientOpenModeQuestion, withParam: nil)
         
         self.view.addSubview(v5chatVC.view)
     }
