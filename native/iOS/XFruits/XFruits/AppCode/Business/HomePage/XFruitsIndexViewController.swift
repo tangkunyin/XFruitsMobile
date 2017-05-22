@@ -107,7 +107,7 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
     func clientViewController(_ chatVC: V5ChatViewController, servingStatusChange status: KV5ClientServingStatus) {
         switch status {
         case .ServingStatus_queue,.ServingStatus_robot:
-            chatVC.title = "正在排队等人工，云客服服务中"
+            chatVC.title = "正在排队等人工..."
         case .ServingStatus_worker:
             chatVC.title = "\(V5ClientAgent.shareClient().config?.workerName ?? "小果拾")为您服务"
         case .ServingStatus_inTrust:
