@@ -4,8 +4,11 @@ github "Alamofire/Alamofire" ~> 4.4
 github "onevcat/Kingfisher" ~> 3.6.2
 github "onevcat/APNGKit" ~> 0.6
 github "SwiftyJSON/SwiftyJSON" ~> 3.1.4
+github "stephencelis/SQLite.swift" ~> 0.11.3
+github "ashleymills/Reachability.swift" ~> 3.0
+github "SwiftyJSON/Alamofire-SwiftyJSON" "master"
 
-# import obj-c libs
+
+# import obj-c or not pure swift libs
 github "jdg/MBProgressHUD" ~> 1.0.0
-# 暂不支持，等官方更新了，再用依赖管理
-#github "V5KF/V5KFClientSDK-iOS" ~> 1.2.6
+github "V5KF/V5KFClientSDK-iOS" ~> 1.2.7
