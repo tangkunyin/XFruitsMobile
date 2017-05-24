@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import V5ClientAgent
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     fileprivate func initExternalSDK(){
-        V5ClientAgent .initWithSiteId(XFConstants.SDK.V5KF.siteId,
-                                      appId: XFConstants.SDK.V5KF.appId) { (status, desc) in
+        V5ClientAgent.initWithSiteId(XFConstants.SDK.V5KF.siteId,
+                                     appId: XFConstants.SDK.V5KF.appId) { (status, desc) in
             print("[V5 Init result] status:\(status) desc:\(desc ?? "desc none")")
         }
     }
