@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import V5ClientAgent
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

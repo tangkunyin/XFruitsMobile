@@ -37,12 +37,12 @@
 		8690FEDF1ED178900051A16D /* XFShopCartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEDE1ED178900051A16D /* XFShopCartViewCell.swift */; };
 		8690FEE11ED178AF0051A16D /* XFShopCartActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEE01ED178AF0051A16D /* XFShopCartActionBar.swift */; };
 		8690FEE31ED179560051A16D /* XFAllCategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEE21ED179560051A16D /* XFAllCategoryListViewController.swift */; };
+		8690FF301ED538E90051A16D /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2C1ED538E90051A16D /* AlamofireSwiftyJSON.framework */; };
+		8690FF311ED538E90051A16D /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2D1ED538E90051A16D /* Reachability.framework */; };
+		8690FF321ED538E90051A16D /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2E1ED538E90051A16D /* SQLite.framework */; };
+		8690FF331ED538E90051A16D /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
 		86A45C2D1ECFD20E00772D13 /* XFruitsSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C2C1ECFD20E00772D13 /* XFruitsSearchBar.swift */; };
 		86A45C301ECFDBE500772D13 /* XFruitsMBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C2F1ECFDBE500772D13 /* XFruitsMBProgressHUD.swift */; };
-		86A45C511ED10F9A00772D13 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C351ED10F9A00772D13 /* libopencore-amrnb.a */; };
-		86A45C521ED10F9A00772D13 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C361ED10F9A00772D13 /* libopencore-amrwb.a */; };
-		86A45C531ED10F9A00772D13 /* libV5Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C371ED10F9A00772D13 /* libV5Client.a */; };
-		86A45C541ED10F9A00772D13 /* V5Client.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 86A45C411ED10F9A00772D13 /* V5Client.bundle */; };
 		86A45C561ED1106D00772D13 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C551ED1106D00772D13 /* libsqlite3.tbd */; };
 		86A45C581ED1108500772D13 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C571ED1108500772D13 /* libicucore.tbd */; };
 		86A45C5A1ED1109100772D13 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C591ED1109100772D13 /* libstdc++.tbd */; };
@@ -103,35 +103,13 @@
 		8690FEDE1ED178900051A16D /* XFShopCartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFShopCartViewCell.swift; sourceTree = "<group>"; };
 		8690FEE01ED178AF0051A16D /* XFShopCartActionBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFShopCartActionBar.swift; sourceTree = "<group>"; };
 		8690FEE21ED179560051A16D /* XFAllCategoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAllCategoryListViewController.swift; sourceTree = "<group>"; };
+		8690FF2C1ED538E90051A16D /* AlamofireSwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireSwiftyJSON.framework; path = Carthage/Build/iOS/AlamofireSwiftyJSON.framework; sourceTree = "<group>"; };
+		8690FF2D1ED538E90051A16D /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
+		8690FF2E1ED538E90051A16D /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
+		8690FF2F1ED538E90051A16D /* V5Client.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = V5Client.framework; path = Carthage/Build/iOS/V5Client.framework; sourceTree = "<group>"; };
 		86A45C2C1ECFD20E00772D13 /* XFruitsSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsSearchBar.swift; sourceTree = "<group>"; };
 		86A45C2E1ECFD81D00772D13 /* XFruits-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XFruits-Bridging-Header.h"; sourceTree = "<group>"; };
 		86A45C2F1ECFDBE500772D13 /* XFruitsMBProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsMBProgressHUD.swift; sourceTree = "<group>"; };
-		86A45C351ED10F9A00772D13 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
-		86A45C361ED10F9A00772D13 /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
-		86A45C371ED10F9A00772D13 /* libV5Client.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libV5Client.a; sourceTree = "<group>"; };
-		86A45C391ED10F9A00772D13 /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
-		86A45C3A1ED10F9A00772D13 /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
-		86A45C3C1ED10F9A00772D13 /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
-		86A45C3D1ED10F9A00772D13 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
-		86A45C3E1ED10F9A00772D13 /* V5Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5Article.h; sourceTree = "<group>"; };
-		86A45C3F1ED10F9A00772D13 /* V5ArticlesMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5ArticlesMessage.h; sourceTree = "<group>"; };
-		86A45C401ED10F9A00772D13 /* V5ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5ChatViewController.h; sourceTree = "<group>"; };
-		86A45C411ED10F9A00772D13 /* V5Client.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = V5Client.bundle; sourceTree = "<group>"; };
-		86A45C421ED10F9A00772D13 /* V5ClientAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5ClientAgent.h; sourceTree = "<group>"; };
-		86A45C431ED10F9A00772D13 /* V5Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5Config.h; sourceTree = "<group>"; };
-		86A45C441ED10F9A00772D13 /* V5ControlMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5ControlMessage.h; sourceTree = "<group>"; };
-		86A45C451ED10F9A00772D13 /* V5Defination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5Defination.h; sourceTree = "<group>"; };
-		86A45C461ED10F9A00772D13 /* V5Delegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5Delegate.h; sourceTree = "<group>"; };
-		86A45C471ED10F9A00772D13 /* V5ImageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5ImageMessage.h; sourceTree = "<group>"; };
-		86A45C481ED10F9A00772D13 /* V5LocationMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5LocationMessage.h; sourceTree = "<group>"; };
-		86A45C491ED10F9A00772D13 /* V5MediaMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5MediaMessage.h; sourceTree = "<group>"; };
-		86A45C4A1ED10F9A00772D13 /* V5Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5Message.h; sourceTree = "<group>"; };
-		86A45C4B1ED10F9A00772D13 /* V5MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5MessageManager.h; sourceTree = "<group>"; };
-		86A45C4C1ED10F9A00772D13 /* V5MusicMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5MusicMessage.h; sourceTree = "<group>"; };
-		86A45C4D1ED10F9A00772D13 /* V5TextMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5TextMessage.h; sourceTree = "<group>"; };
-		86A45C4E1ED10F9A00772D13 /* V5UndefinedMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5UndefinedMessage.h; sourceTree = "<group>"; };
-		86A45C4F1ED10F9A00772D13 /* V5VideoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5VideoMessage.h; sourceTree = "<group>"; };
-		86A45C501ED10F9A00772D13 /* V5VoiceMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V5VoiceMessage.h; sourceTree = "<group>"; };
 		86A45C551ED1106D00772D13 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		86A45C571ED1108500772D13 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		86A45C591ED1109100772D13 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
@@ -164,6 +142,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8690FF301ED538E90051A16D /* AlamofireSwiftyJSON.framework in Frameworks */,
+				8690FF311ED538E90051A16D /* Reachability.framework in Frameworks */,
+				8690FF321ED538E90051A16D /* SQLite.framework in Frameworks */,
+				8690FF331ED538E90051A16D /* V5Client.framework in Frameworks */,
 				86A45C6C1ED1187D00772D13 /* libz.tbd in Frameworks */,
 				86A45C6A1ED1186A00772D13 /* PhotosUI.framework in Frameworks */,
 				86A45C681ED1186100772D13 /* Photos.framework in Frameworks */,
@@ -176,13 +158,10 @@
 				86A45C5A1ED1109100772D13 /* libstdc++.tbd in Frameworks */,
 				86A45C581ED1108500772D13 /* libicucore.tbd in Frameworks */,
 				86A45C561ED1106D00772D13 /* libsqlite3.tbd in Frameworks */,
-				86A45C531ED10F9A00772D13 /* libV5Client.a in Frameworks */,
 				86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */,
 				86CB2FEE1EAB495A009972A8 /* APNGKit.framework in Frameworks */,
-				86A45C521ED10F9A00772D13 /* libopencore-amrwb.a in Frameworks */,
 				86CB2FEF1EAB495A009972A8 /* Kingfisher.framework in Frameworks */,
 				86CB2FF01EAB495A009972A8 /* MBProgressHUD.framework in Frameworks */,
-				86A45C511ED10F9A00772D13 /* libopencore-amrnb.a in Frameworks */,
 				86CB2FF21EAB495A009972A8 /* SnapKit.framework in Frameworks */,
 				86CB2FF31EAB495A009972A8 /* SwiftyJSON.framework in Frameworks */,
 			);
@@ -342,7 +321,6 @@
 			children = (
 				864430751E9A242000D41BCC /* AppCode */,
 				864430741E9A23CD00D41BCC /* AppSystem */,
-				86A45C321ED10F9A00772D13 /* ThirdLib */,
 			);
 			path = XFruits;
 			sourceTree = "<group>";
@@ -397,71 +375,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		86A45C321ED10F9A00772D13 /* ThirdLib */ = {
-			isa = PBXGroup;
-			children = (
-				86A45C331ED10F9A00772D13 /* V5ClientSDK */,
-			);
-			path = ThirdLib;
-			sourceTree = "<group>";
-		};
-		86A45C331ED10F9A00772D13 /* V5ClientSDK */ = {
-			isa = PBXGroup;
-			children = (
-				86A45C341ED10F9A00772D13 /* lib */,
-				86A45C381ED10F9A00772D13 /* opencore-amrnb */,
-				86A45C3B1ED10F9A00772D13 /* opencore-amrwb */,
-				86A45C3E1ED10F9A00772D13 /* V5Article.h */,
-				86A45C3F1ED10F9A00772D13 /* V5ArticlesMessage.h */,
-				86A45C401ED10F9A00772D13 /* V5ChatViewController.h */,
-				86A45C411ED10F9A00772D13 /* V5Client.bundle */,
-				86A45C421ED10F9A00772D13 /* V5ClientAgent.h */,
-				86A45C431ED10F9A00772D13 /* V5Config.h */,
-				86A45C441ED10F9A00772D13 /* V5ControlMessage.h */,
-				86A45C451ED10F9A00772D13 /* V5Defination.h */,
-				86A45C461ED10F9A00772D13 /* V5Delegate.h */,
-				86A45C471ED10F9A00772D13 /* V5ImageMessage.h */,
-				86A45C481ED10F9A00772D13 /* V5LocationMessage.h */,
-				86A45C491ED10F9A00772D13 /* V5MediaMessage.h */,
-				86A45C4A1ED10F9A00772D13 /* V5Message.h */,
-				86A45C4B1ED10F9A00772D13 /* V5MessageManager.h */,
-				86A45C4C1ED10F9A00772D13 /* V5MusicMessage.h */,
-				86A45C4D1ED10F9A00772D13 /* V5TextMessage.h */,
-				86A45C4E1ED10F9A00772D13 /* V5UndefinedMessage.h */,
-				86A45C4F1ED10F9A00772D13 /* V5VideoMessage.h */,
-				86A45C501ED10F9A00772D13 /* V5VoiceMessage.h */,
-			);
-			path = V5ClientSDK;
-			sourceTree = "<group>";
-		};
-		86A45C341ED10F9A00772D13 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				86A45C351ED10F9A00772D13 /* libopencore-amrnb.a */,
-				86A45C361ED10F9A00772D13 /* libopencore-amrwb.a */,
-				86A45C371ED10F9A00772D13 /* libV5Client.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		86A45C381ED10F9A00772D13 /* opencore-amrnb */ = {
-			isa = PBXGroup;
-			children = (
-				86A45C391ED10F9A00772D13 /* interf_dec.h */,
-				86A45C3A1ED10F9A00772D13 /* interf_enc.h */,
-			);
-			path = "opencore-amrnb";
-			sourceTree = "<group>";
-		};
-		86A45C3B1ED10F9A00772D13 /* opencore-amrwb */ = {
-			isa = PBXGroup;
-			children = (
-				86A45C3C1ED10F9A00772D13 /* dec_if.h */,
-				86A45C3D1ED10F9A00772D13 /* if_rom.h */,
-			);
-			path = "opencore-amrwb";
-			sourceTree = "<group>";
-		};
 		86C055451EBC40DC0087E135 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +392,10 @@
 		86CB2FE51EAB4959009972A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8690FF2C1ED538E90051A16D /* AlamofireSwiftyJSON.framework */,
+				8690FF2D1ED538E90051A16D /* Reachability.framework */,
+				8690FF2E1ED538E90051A16D /* SQLite.framework */,
+				8690FF2F1ED538E90051A16D /* V5Client.framework */,
 				86A45C6B1ED1187D00772D13 /* libz.tbd */,
 				86A45C691ED1186A00772D13 /* PhotosUI.framework */,
 				86A45C671ED1186100772D13 /* Photos.framework */,
@@ -578,7 +495,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				865F4F4E1E9A173E0059502C /* Assets.xcassets in Resources */,
-				86A45C541ED10F9A00772D13 /* V5Client.bundle in Resources */,
 				864430731E9A23A700D41BCC /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,6 +514,10 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireSwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SQLite.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/V5Client.framework",
 			);
 			outputPaths = (
 			);
