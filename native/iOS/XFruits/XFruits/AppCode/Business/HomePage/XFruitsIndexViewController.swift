@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import MBProgressHUD
 
+
 class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {

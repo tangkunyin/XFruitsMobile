@@ -40,7 +40,7 @@
 		8690FF301ED538E90051A16D /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2C1ED538E90051A16D /* AlamofireSwiftyJSON.framework */; };
 		8690FF311ED538E90051A16D /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2D1ED538E90051A16D /* Reachability.framework */; };
 		8690FF321ED538E90051A16D /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2E1ED538E90051A16D /* SQLite.framework */; };
-		8690FF331ED538E90051A16D /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
+		8698752A1ED555C300B1B757 /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
 		86A45C2D1ECFD20E00772D13 /* XFruitsSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C2C1ECFD20E00772D13 /* XFruitsSearchBar.swift */; };
 		86A45C301ECFDBE500772D13 /* XFruitsMBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C2F1ECFDBE500772D13 /* XFruitsMBProgressHUD.swift */; };
 		86A45C561ED1106D00772D13 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C551ED1106D00772D13 /* libsqlite3.tbd */; };
@@ -52,8 +52,8 @@
 		86A45C621ED110B500772D13 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C611ED110B500772D13 /* Security.framework */; };
 		86A45C641ED110C000772D13 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C631ED110C000772D13 /* MediaPlayer.framework */; };
 		86A45C661ED1184E00772D13 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C651ED1184E00772D13 /* AssetsLibrary.framework */; };
-		86A45C681ED1186100772D13 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C671ED1186100772D13 /* Photos.framework */; };
-		86A45C6A1ED1186A00772D13 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C691ED1186A00772D13 /* PhotosUI.framework */; };
+		86A45C681ED1186100772D13 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C671ED1186100772D13 /* Photos.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		86A45C6A1ED1186A00772D13 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C691ED1186A00772D13 /* PhotosUI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		86A45C6C1ED1187D00772D13 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C6B1ED1187D00772D13 /* libz.tbd */; };
 		86A45C701ED11B4B00772D13 /* XFruitsUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C6F1ED11B4B00772D13 /* XFruitsUser.swift */; };
 		86A45C721ED1209F00772D13 /* XFCommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C711ED1209F00772D13 /* XFCommonUtils.swift */; };
@@ -142,10 +142,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8698752A1ED555C300B1B757 /* V5Client.framework in Frameworks */,
 				8690FF301ED538E90051A16D /* AlamofireSwiftyJSON.framework in Frameworks */,
 				8690FF311ED538E90051A16D /* Reachability.framework in Frameworks */,
 				8690FF321ED538E90051A16D /* SQLite.framework in Frameworks */,
-				8690FF331ED538E90051A16D /* V5Client.framework in Frameworks */,
 				86A45C6C1ED1187D00772D13 /* libz.tbd in Frameworks */,
 				86A45C6A1ED1186A00772D13 /* PhotosUI.framework in Frameworks */,
 				86A45C681ED1186100772D13 /* Photos.framework in Frameworks */,
@@ -682,12 +682,10 @@
 				INFOPLIST_FILE = XFruits/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/XFruits/ThirdLib/V5ClientSDK/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiaomi.mihome.store.admin.xxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Carthage/Build/iOS/V5Client.framework/**";
 				SWIFT_OBJC_BRIDGING_HEADER = "XFruits/XFruits-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -705,12 +703,10 @@
 				INFOPLIST_FILE = XFruits/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/XFruits/ThirdLib/V5ClientSDK/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiaomi.mihome.store.admin.xxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Carthage/Build/iOS/V5Client.framework/**";
 				SWIFT_OBJC_BRIDGING_HEADER = "XFruits/XFruits-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
