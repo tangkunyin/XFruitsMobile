@@ -55,9 +55,9 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
             make.left.right.equalTo(self.view)
         }
         cateListView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.headSizer.snp.bottom).offset(5)
+            make.top.equalTo(self.headSizer.snp.bottom).offset(0)
             make.left.right.equalTo(self.view)
-            make.bottom.equalTo(self.view).offset(-5)
+            make.bottom.equalTo(self.view).offset(0)
         }
     }
 
