@@ -45,11 +45,11 @@ class XFruitsShopCarViewController: XFruitsBaseViewController,UITableViewDelegat
         cartListView.snp.makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.right.equalTo(self.view)
-            make.bottom.equalTo(self.actionBar.snp.top).offset(-5)
+            make.bottom.equalTo(self.actionBar.snp.top).offset(0)
         }
         actionBar.snp.makeConstraints { (make) in
             make.height.equalTo(40)
-            make.top.equalTo(self.cartListView.snp.bottom).offset(5)
+            make.top.equalTo(self.cartListView.snp.bottom).offset(0)
             make.left.right.equalTo(self.view)
             make.bottom.equalTo(self.view)
         }
