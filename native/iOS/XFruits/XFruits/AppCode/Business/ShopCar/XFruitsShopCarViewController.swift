@@ -24,7 +24,7 @@ class XFruitsShopCarViewController: XFruitsBaseViewController,UITableViewDelegat
     
     
     lazy var actionBar:XFShopCartActionBar = {
-        let bar = XFShopCartActionBar(textColor: nil, selectTextColor: nil)
+        let bar = XFShopCartActionBar()
         return bar;
     }()
     
