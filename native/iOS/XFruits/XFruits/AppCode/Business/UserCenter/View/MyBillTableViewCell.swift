@@ -12,8 +12,6 @@ class MyBillTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollection
 
     
     
-    var collectionView:UICollectionView?
-    
     required init?(coder aDecoder:NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -25,10 +23,7 @@ class MyBillTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollection
         self.setUpUI();
     }
     
- 
-    
-    func  setUpUI() {
-        
+    lazy var collectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width:60,height:60)
         layout.scrollDirection = .horizontal
@@ -38,20 +33,30 @@ class MyBillTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollection
         layout.minimumLineSpacing = 10
         layout.sectionInset  = UIEdgeInsetsMake(10, 20, 10, 20)
         
-        collectionView = UICollectionView(frame:CGRect.zero,collectionViewLayout:layout)
-        collectionView?.register(FourBillCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView?.dataSource = self;
-        collectionView?.delegate = self;
-        collectionView?.backgroundColor = UIColor.white
+        let collectionView = UICollectionView(frame:CGRect.zero,collectionViewLayout:layout)
+        collectionView.register(FourBillCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.dataSource = self;
+        collectionView.delegate = self;
+        collectionView.backgroundColor = UIColor.white
+        return collectionView
+    }()
+    
+    
+  
+    
+    let tipLabelArray = ["待付款","待发货","待收货","待评价"]
+    
+    func  setUpUI() {
         
-        self.addSubview(collectionView!)
+        addSubview(collectionView)
         
-        self.collectionView?.snp.makeConstraints({ (make) in
+        collectionView.snp.makeConstraints({ (make) in
             make.edges.equalTo(self).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))//将
         })
         
-      
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int  {
         return 4;
@@ -60,8 +65,8 @@ class MyBillTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FourBillCollectionViewCell;
-//        let cell = UserCenterAvatarCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
-
+        let row = indexPath.row
+        cell.typeDescLabel.text = tipLabelArray[row]
         return cell;
     }
     

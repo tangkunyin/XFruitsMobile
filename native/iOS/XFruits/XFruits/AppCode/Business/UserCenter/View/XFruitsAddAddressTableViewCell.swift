@@ -34,7 +34,7 @@ class XFruitsAddAddressTableViewCell: UITableViewCell {
         leftTipLabel?.textColor = colorWithRGB(153, g: 153, b: 153)
         leftTipLabel?.font  = UIFont.systemFont(ofSize: 16)
         
-        self.addSubview(self.leftTipLabel!)
+        addSubview(self.leftTipLabel!)
         leftTipLabel?.textAlignment = NSTextAlignment.left
         
         leftTipLabel?.snp.makeConstraints({ (make) in
@@ -48,7 +48,7 @@ class XFruitsAddAddressTableViewCell: UITableViewCell {
         
         self.inputConntentTextFiled = UITextField.init()
         self.inputConntentTextFiled?.text = "测试"
-        self.addSubview(self.inputConntentTextFiled!)
+        addSubview(self.inputConntentTextFiled!)
         self.inputConntentTextFiled?.textColor  = colorWithRGB(102, g: 102, b: 102)
         self.inputConntentTextFiled?.font = UIFont.systemFont(ofSize: 16)
         self.inputConntentTextFiled?.snp.makeConstraints({ (make) in

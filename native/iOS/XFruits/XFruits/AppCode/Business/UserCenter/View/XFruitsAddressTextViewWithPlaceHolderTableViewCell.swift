@@ -51,7 +51,7 @@ class XFruitsAddressTextViewWithPlaceHolderTableViewCell: UITableViewCell ,UITex
     func  setUpUI() {
         // 详细地址
         descAddress = UITextView()
-        self.addSubview(descAddress!)
+        addSubview(descAddress!)
         descAddress?.delegate = self
         descAddress?.font = UIFont.systemFont(ofSize: 14)
 //        descAddress?.isScrollEnabled = false
@@ -66,7 +66,7 @@ class XFruitsAddressTextViewWithPlaceHolderTableViewCell: UITableViewCell ,UITex
         placeHolderLabel?.textColor = colorWithRGB(153, g: 153, b: 153)
         placeHolderLabel?.text = "详细地址（具体到门牌号）"
         placeHolderLabel?.font = UIFont.systemFont(ofSize: 14)
-        self.addSubview(placeHolderLabel!)
+        addSubview(placeHolderLabel!)
 
         
         placeHolderLabel?.snp.makeConstraints({ (make) in
@@ -77,8 +77,6 @@ class XFruitsAddressTextViewWithPlaceHolderTableViewCell: UITableViewCell ,UITex
             make.height.equalTo(14)
           
         })
-//        placeHolderLabel?.text = ""
-    
     
     }
     override func awakeFromNib() {

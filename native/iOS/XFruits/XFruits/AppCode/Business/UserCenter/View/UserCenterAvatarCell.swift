@@ -9,12 +9,7 @@
 import UIKit
 
 class UserCenterAvatarCell: UITableViewCell {
-
-    var avatarBtn:UIButton?
-    var userNameLabel:UILabel?
-    var identityLevelImageView:UIImageView?
-    var identityDescriptionLabel:UILabel?
-    
+  
     required init?(coder aDecoder:NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -23,65 +18,71 @@ class UserCenterAvatarCell: UITableViewCell {
     override init(style:UITableViewCellStyle, reuseIdentifier:String?) {
        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.setUpUI();
+        setUpUI();
     }
     
+    lazy var avatarBtn:UIButton = {
+        let avatarBtn = UIButton()
+        avatarBtn.setImage(UIImage(named:"apple"), for: .normal)
+        return avatarBtn
+    }()
+    
+    lazy var userNameLabel:UILabel = {
+        let  userNameLabel = UILabel()
+        userNameLabel.text = "zhaojian"
+        userNameLabel.textColor = colorWithRGB(83, g: 83, b: 83)
+        userNameLabel.font  = UIFont.systemFont(ofSize: 18)
+        return userNameLabel
+    }()
+    
+    lazy var identityLevelImageView:UIImageView = {
+        let identityLevelImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
+        return identityLevelImageView
+    }()
+    
+    
+    lazy var  identityDescriptionLabel:UILabel = {
+        let identityDescriptionLabel = UILabel.init()
+        identityDescriptionLabel.text = "荣耀黄铜v"
+        identityDescriptionLabel.textColor = colorWithRGB(83, g: 83, b: 83)
+        identityDescriptionLabel.font  = UIFont.systemFont(ofSize: 12)
+        return identityDescriptionLabel
+    }()
+    
     func  setUpUI() {
-        self.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-        self.avatarBtn  = UIButton.init()
-        self.avatarBtn?.setImage(UIImage(named:"apple"), for: .normal)
+        accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         
-        self.addSubview(self.avatarBtn!)
-        self.avatarBtn?.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.snp.top).offset(10)
-            make.left.equalTo(self.snp.left).offset(10)
+        addSubview(avatarBtn)
+        avatarBtn.snp.makeConstraints({ (make) in
+            make.top.equalTo(snp.top).offset(10)
+            make.left.equalTo(snp.left).offset(10)
             make.height.equalTo(83)
             make.width.equalTo(83)
         })
         
+        addSubview(userNameLabel)
         
-        
-        self.userNameLabel = UILabel.init()
-        self.userNameLabel?.text = "zhaojian"
-        self.userNameLabel?.textColor = colorWithRGB(83, g: 83, b: 83)
-        self.userNameLabel?.font  = UIFont.systemFont(ofSize: 18)
-       
-        self.addSubview(self.userNameLabel!)
-        
-        self.userNameLabel?.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.snp.top).offset(20)
-            make.left.equalTo((self.avatarBtn?.snp.right)!).offset(20)
-//            make.height.equalTo(40)
-//            make.width.equalTo(40)
+        userNameLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(snp.top).offset(20)
+            make.left.equalTo(avatarBtn.snp.right).offset(0)
+ 
         })
         
     
-        self.identityLevelImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
-        self.addSubview(self.identityLevelImageView!)
+        addSubview(identityLevelImageView)
         
-        self.identityLevelImageView?.snp.makeConstraints({ (make) in
-            make.top.equalTo((self.userNameLabel?.snp.bottom)!).offset(10)
-            make.left.equalTo((self.avatarBtn?.snp.right)!).offset(20)
-            //            make.height.equalTo(40)
-            //            make.width.equalTo(40)
+        identityLevelImageView.snp.makeConstraints({ (make) in
+            make.top.equalTo(userNameLabel.snp.bottom).offset(15)
+            make.left.equalTo(avatarBtn.snp.right).offset(5)
         })
         
+      
+        addSubview(identityDescriptionLabel)
         
-        self.identityDescriptionLabel = UILabel.init()
-        self.identityDescriptionLabel?.text = "荣耀黄铜v"
-        self.identityDescriptionLabel?.textColor = colorWithRGB(83, g: 83, b: 83)
-        self.identityDescriptionLabel?.font  = UIFont.systemFont(ofSize: 12)
-        
-        self.addSubview(self.identityDescriptionLabel!)
-        
-        self.identityDescriptionLabel?.snp.makeConstraints({ (make) in
-            make.top.equalTo((self.userNameLabel?.snp.bottom)!).offset(10)
-            make.left.equalTo((self.identityLevelImageView?.snp.right)!).offset(5)
-            //            make.height.equalTo(40)
-            //            make.width.equalTo(40)
+        identityDescriptionLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(userNameLabel.snp.bottom).offset(10)
+            make.left.equalTo(identityLevelImageView.snp.right).offset(5)
         })
-        
-        
     }
     
     

@@ -43,7 +43,7 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
         self.userNameLabel?.textColor = colorWithRGB(102, g: 102, b: 102)
         self.userNameLabel?.font  = UIFont.systemFont(ofSize: 14)
         self.userNameLabel?.numberOfLines = 0
-        self.addSubview(self.userNameLabel!)
+        addSubview(self.userNameLabel!)
         self.userNameLabel?.textAlignment = NSTextAlignment.left
 
         self.userNameLabel?.snp.makeConstraints({ (make) in
@@ -59,7 +59,7 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
         self.addressCategoryBtn?.setTitle("家", for: .normal)
         self.addressCategoryBtn?.setTitleColor(colorWithRGB(255, g: 105, b: 105), for:.normal)
         self.addressCategoryBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 10)
-        self.addSubview(self.addressCategoryBtn!)
+        addSubview(self.addressCategoryBtn!)
         self.addressCategoryBtn?.layer.borderColor = colorWithRGB(255, g: 105, b: 105).cgColor
         self.addressCategoryBtn?.layer.borderWidth = 1
         
@@ -79,7 +79,7 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
         // 编辑按钮
         self.editAddressBtn = UIButton.init(type:.custom)
         self.editAddressBtn?.setImage(UIImage.imageWithNamed("myScore"), for: .normal)
-        self.addSubview(self.editAddressBtn!)
+        addSubview(self.editAddressBtn!)
         
         self.editAddressBtn?.snp.makeConstraints({ (make) in
             make.centerY.equalTo(self)
@@ -96,7 +96,7 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
         self.mobileLabel?.textColor = colorWithRGB(102, g: 102, b: 102)
         self.mobileLabel?.font  = UIFont.systemFont(ofSize: 14)
         
-        self.addSubview(self.mobileLabel!)
+        addSubview(self.mobileLabel!)
         self.mobileLabel?.textAlignment = NSTextAlignment.left
         
         self.mobileLabel?.snp.makeConstraints({ (make) in
@@ -115,7 +115,7 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
          self.addressLabel?.textColor = colorWithRGB(102, g: 102, b: 102)
          self.addressLabel?.font  = UIFont.systemFont(ofSize: 12)
  
-         self.addSubview(self.addressLabel!)
+         addSubview(self.addressLabel!)
          self.addressLabel?.textAlignment = NSTextAlignment.left
          self.addressLabel?.numberOfLines = 0
          self.addressLabel?.snp.makeConstraints({ (make) in

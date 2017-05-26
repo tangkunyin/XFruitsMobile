@@ -35,7 +35,7 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
         self.leftTipArray  = ["收货人","联系电话","收货地址"]
         
         // 导航栏右侧保存按钮
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "", style: .plain, target: self, action: #selector(saveAddress(sender:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "保存", style: .plain, target: self, action: #selector(saveAddress(sender:)))
         
         // Do any additional setup after loading the view.
     }
@@ -61,7 +61,7 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
-        return 4
+        return 5
     }
     
     
@@ -81,15 +81,19 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
         }
        
         
-        
         if row == 2 {
             cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-            
+            cell.inputConntentTextFiled?.isEnabled = false
         }
       
         else if row == 3 {
             let identifier = "addAddressTextViewManageCell"
             let cell = XFruitsAddressTextViewWithPlaceHolderTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
+            return cell
+        }
+        else if row == 4 {
+            let identifier = "XFruitsAddressesCategoryTableViewCell"
+            let cell = XFruitsAddressesCategoryTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
             return cell
         }
         
@@ -99,8 +103,11 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         tableView.deselectRow(at: indexPath, animated: true)
-        //        let section = indexPath.section
-        //        let row = indexPath.row
+        let section = indexPath.section
+        let row = indexPath.row
+        if row == 2 {
+            print("开始选择三级联动")
+        }
         
     }
     
@@ -118,6 +125,9 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
         let row = indexPath.row
         if row == 3 {
             return 100
+        }
+        else if row == 4 {
+            return 250
         }
         else {
             return tableView.rowHeight
