@@ -12,7 +12,7 @@ class XFruitsAddAddressTableViewCell: UITableViewCell {
     
     
     var leftTipLabel:UILabel?
-    var inputConntentTextFiled:UITextField?
+    var inputContentTextFiled:UITextField?
     
     required init?(coder aDecoder:NSCoder) {
         super.init(coder: aDecoder)
@@ -46,12 +46,13 @@ class XFruitsAddAddressTableViewCell: UITableViewCell {
         })
         
         
-        self.inputConntentTextFiled = UITextField.init()
-        self.inputConntentTextFiled?.text = "测试"
-        addSubview(self.inputConntentTextFiled!)
-        self.inputConntentTextFiled?.textColor  = colorWithRGB(102, g: 102, b: 102)
-        self.inputConntentTextFiled?.font = UIFont.systemFont(ofSize: 16)
-        self.inputConntentTextFiled?.snp.makeConstraints({ (make) in
+        inputContentTextFiled = UITextField.init()
+//        self.inputContentTextFiled?.text = "测试"
+        addSubview(self.inputContentTextFiled!)
+
+        inputContentTextFiled?.textColor  = colorWithRGB(102, g: 102, b: 102)
+        inputContentTextFiled?.font = UIFont.systemFont(ofSize: 16)
+        inputContentTextFiled?.snp.makeConstraints({ (make) in
             make.top.equalTo(self.snp.top).offset(12)
             make.left.equalTo((self.leftTipLabel?.snp.right)!).offset(13)
             make.right.equalTo(self.snp.right).offset(-13)

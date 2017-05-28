@@ -10,6 +10,8 @@
 		164C21EC1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C21EB1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift */; };
 		1668B0591ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668B0581ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift */; };
 		1668B05B1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668B05A1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift */; };
+		16DCE3C11EDA68480047F559 /* CityChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCE3C01EDA68480047F559 /* CityChooseView.swift */; };
+		16DCE3C31EDA68960047F559 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16DCE3C21EDA68960047F559 /* city.plist */; };
 		16F6519C1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F6519B1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift */; };
 		16F6519E1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F6519D1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift */; };
 		16F651DA1ECD481E00EB477D /* XFruitsAddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F651D91ECD481E00EB477D /* XFruitsAddAddressViewController.swift */; };
@@ -75,6 +77,8 @@
 		164C21EB1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsUserRegistSecondPageViewController.swift; sourceTree = "<group>"; };
 		1668B0581ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift; sourceTree = "<group>"; };
 		1668B05A1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddressesCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		16DCE3C01EDA68480047F559 /* CityChooseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityChooseView.swift; sourceTree = "<group>"; };
+		16DCE3C21EDA68960047F559 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		16F6519B1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsUserAddressesMangageViewController.swift; sourceTree = "<group>"; };
 		16F6519D1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddressesManageTableViewCell.swift; sourceTree = "<group>"; };
 		16F651D91ECD481E00EB477D /* XFruitsAddAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddAddressViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +176,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16DCE3BD1EDA65C10047F559 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				16DCE3C21EDA68960047F559 /* city.plist */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		864430741E9A23CD00D41BCC /* AppSystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +253,7 @@
 		8644307C1E9A277B00D41BCC /* UserCenter */ = {
 			isa = PBXGroup;
 			children = (
+				16DCE3BD1EDA65C10047F559 /* Model */,
 				86EC80EA1EC72D2E009AB47D /* View */,
 				864430861E9A28C500D41BCC /* XFruitsUserLoginViewController.swift */,
 				864430881E9A28F400D41BCC /* XFruitsUserRegistViewController.swift */,
@@ -424,6 +437,7 @@
 		86EC80EA1EC72D2E009AB47D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				16DCE3C01EDA68480047F559 /* CityChooseView.swift */,
 				86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */,
 				86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */,
 				86EC80F51EC86C34009AB47D /* UserCenterAvatarCell.swift */,
@@ -497,6 +511,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16DCE3C31EDA68960047F559 /* city.plist in Resources */,
 				865F4F4E1E9A173E0059502C /* Assets.xcassets in Resources */,
 				864430731E9A23A700D41BCC /* Default-568h@2x.png in Resources */,
 			);
@@ -552,6 +567,7 @@
 				86A45C2D1ECFD20E00772D13 /* XFruitsSearchBar.swift in Sources */,
 				86E695201ED6AA35004864A6 /* XFCartUtils.swift in Sources */,
 				86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */,
+				16DCE3C11EDA68480047F559 /* CityChooseView.swift in Sources */,
 				86A45C701ED11B4B00772D13 /* XFruitsUser.swift in Sources */,
 				86A45C301ECFDBE500772D13 /* XFruitsMBProgressHUD.swift in Sources */,
 				16F6519C1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift in Sources */,

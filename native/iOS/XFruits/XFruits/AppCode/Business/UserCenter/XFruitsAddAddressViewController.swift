@@ -8,13 +8,12 @@
 
 import UIKit
 
-class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableViewDataSource,UITableViewDelegate {
+class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableViewDataSource,UITableViewDelegate  {
    
     var editStyle: NSString?  // 0 为增加模式，1为编辑模式。
     var leftTipArray:NSArray? // 左侧提示
     
-    
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
@@ -23,7 +22,7 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
             let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
             tableView.delegate = self
             tableView.dataSource = self
-            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "addAddressManageCell")
+            tableView.register(XFruitsAddAddressTableViewCell.self, forCellReuseIdentifier: "XFruitsAddAddressTableViewCell")
             return tableView
         }()
       
@@ -72,10 +71,10 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
         
         print(section)
         print(row)
-        let identifier = "addAddressManageCell"
+        let identifier = "XFruitsAddAddressTableViewCell"
         let cell = XFruitsAddAddressTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
         
-        if row < 3{
+        if row <= 2{
             let leftTip  = self.leftTipArray?[row]
             cell.leftTipLabel?.text = leftTip as? String
         }
@@ -83,7 +82,8 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
         
         if row == 2 {
             cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-            cell.inputConntentTextFiled?.isEnabled = false
+            cell.inputContentTextFiled?.isEnabled = false
+            cell.inputContentTextFiled?.tag = 1000
         }
       
         else if row == 3 {
@@ -107,9 +107,22 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
         let row = indexPath.row
         if row == 2 {
             print("开始选择三级联动")
+            let cityView = CityChooseView.init(frame: self.view.bounds)
+            
+            cityView.myClosure = { (provinceStr: String, cityStr: String , areaStr: String) -> Void in
+                
+                print(provinceStr+cityStr+areaStr)
+                
+                let inputAddress = self.view.viewWithTag(1000) as! UITextField
+                inputAddress.text = provinceStr + " " + cityStr + " " + areaStr
+         
+            }
+            self.view.addSubview(cityView)
         }
         
     }
+    
+    
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -134,15 +147,9 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
         }
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //设置选择框的列数为3列,继承于UIPickerViewDataSource协议
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 3
     }
-    */
-
+    
 }
