@@ -35,16 +35,18 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
                                                                  action: #selector(onMessageItemClick))
         
     
-        let imageUrls = ["http://desk.fd.zol-img.com.cn/g5/M00/02/0B/ChMkJ1bK1fSIOoJHAAFWaDrqe94AALJsANLr7kAAVaA928.jpg",
-                         "http://b.zol-img.com.cn/desk/bizhi/image/2/960x600/1359447948761.jpg",
-                         "http://www.xs-a.com/userfiles/2016510271041230.08.jpg",
-                         "http://i2.download.fd.pchome.net/t_960x600/g1/M00/08/1D/ooYBAFOnwieIezFzAAKCDjZ0CaoAABoWgCQspUAAoIm250.jpg"];
+        /// 经计算，1920*1080的图，刚好
+        let imageUrls = ["http://www.4j4j.cn/upload/pic/20130307/7e4674248d.jpg",
+                         "http://bizhi.zhuoku.com/2013/07/20/xinlingchahua/xinlingchahua12.jpg",
+                         "http://bizhi.zhuoku.com/2011/07/20/Benbenmiao/Benbenmiao130.jpg",
+                         "http://img3.iqilu.com/data/attachment/forum/201308/22/161503hoakfzi7fqkk7711.jpg",
+                         "http://www.33lc.com/article/UploadPic/2012-8/20128179522243094.jpg"];
         
         
         let pagerView = XFruitsViewPager(source: imageUrls, placeHolder: nil)
         pagerView.pagerDidClicked = {(index:Int) -> Void in
             print("\(index) 号被点击")
-            MBProgressHUD.showError("点个毛线啊，链接都没有")
+            MBProgressHUD.showError("链接没有准备好呢，小果拾表示骚瑞~")
         }
         
         
@@ -52,7 +54,7 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
 
         pagerView.snp.makeConstraints({ (make) in
             make.top.equalTo(0)
-            make.height.equalTo(204)
+            make.height.lessThanOrEqualTo(240)
             make.centerX.equalTo(self.view)
         })
         
@@ -67,8 +69,8 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
     
     @objc private func onScanItemClick(){
         
-        MBProgressHUD.showMessage("扫描毛线啊...") {
-            print("扫描毛线啊")
+        MBProgressHUD.showMessage("小果拾表示这个功能还没想好怎么做...") {
+            print("扫描：小果拾表示这个功能还没想好怎么做...")
         }
     }
     
