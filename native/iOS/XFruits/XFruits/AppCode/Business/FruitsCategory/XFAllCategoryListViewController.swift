@@ -8,12 +8,15 @@
 
 import UIKit
 
+
 class XFAllCategoryListViewController: XFruitsBaseSubViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "所有分类"
-    
+        view.backgroundColor = UIColor.white
+        
+        
     }
 
     

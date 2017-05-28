@@ -10,6 +10,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import MBProgressHUD
 
 class XFCategoryCell: UICollectionViewCell {
  
@@ -45,6 +46,7 @@ class XFCategoryCell: UICollectionViewCell {
     lazy var cartBtn:UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.imageWithNamed("shopcart-hilight"), for: .normal)
+        btn.addTarget(self, action: #selector(addToCartFromCategoryItem), for: .touchUpInside)
         return btn
     }()
     
@@ -104,5 +106,8 @@ class XFCategoryCell: UICollectionViewCell {
         }
     }
     
+    @objc private func addToCartFromCategoryItem(){
+        MBProgressHUD.showSuccess("成功添加到果篮")
+    }
 
 }

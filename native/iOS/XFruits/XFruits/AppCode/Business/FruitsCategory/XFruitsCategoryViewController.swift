@@ -87,7 +87,8 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let detail = XFruitsDetailViewController()
+        navigationController?.pushViewController(detail, animated: true)
     }
     
 

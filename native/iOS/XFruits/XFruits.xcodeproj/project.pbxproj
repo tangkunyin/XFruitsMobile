@@ -67,6 +67,11 @@
 		86CB2FF21EAB495A009972A8 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FEB1EAB495A009972A8 /* SnapKit.framework */; };
 		86CB2FF31EAB495A009972A8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FEC1EAB495A009972A8 /* SwiftyJSON.framework */; };
 		86E695201ED6AA35004864A6 /* XFCartUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E6951F1ED6AA35004864A6 /* XFCartUtils.swift */; };
+		86E8DF6C1EDAA901000A489F /* XFruitsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF6B1EDAA901000A489F /* XFruitsDetailViewController.swift */; };
+		86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF731EDAB0BB000A489F /* XFDetailHeaderView.swift */; };
+		86E8DF761EDAB0C9000A489F /* XFDetailCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF751EDAB0C9000A489F /* XFDetailCommentView.swift */; };
+		86E8DF781EDAB0D6000A489F /* XFDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF771EDAB0D6000A489F /* XFDetailDescriptionView.swift */; };
+		86E8DF7A1EDAB0EC000A489F /* XFDetailActionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF791EDAB0EC000A489F /* XFDetailActionBarView.swift */; };
 		86EC80F21EC7DCBD009AB47D /* XFruitsViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F11EC7DCBD009AB47D /* XFruitsViewPager.swift */; };
 		86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */; };
 		86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */; };
@@ -137,6 +142,11 @@
 		86CB2FEB1EAB495A009972A8 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		86CB2FEC1EAB495A009972A8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		86E6951F1ED6AA35004864A6 /* XFCartUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCartUtils.swift; sourceTree = "<group>"; };
+		86E8DF6B1EDAA901000A489F /* XFruitsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsDetailViewController.swift; sourceTree = "<group>"; };
+		86E8DF731EDAB0BB000A489F /* XFDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailHeaderView.swift; sourceTree = "<group>"; };
+		86E8DF751EDAB0C9000A489F /* XFDetailCommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailCommentView.swift; sourceTree = "<group>"; };
+		86E8DF771EDAB0D6000A489F /* XFDetailDescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailDescriptionView.swift; sourceTree = "<group>"; };
+		86E8DF791EDAB0EC000A489F /* XFDetailActionBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailActionBarView.swift; sourceTree = "<group>"; };
 		86EC80F11EC7DCBD009AB47D /* XFruitsViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsViewPager.swift; sourceTree = "<group>"; };
 		86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourBillCollectionViewCell.swift; sourceTree = "<group>"; };
 		86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBillTableViewCell.swift; sourceTree = "<group>"; };
@@ -226,6 +236,7 @@
 				8690FED71ED176730051A16D /* View */,
 				8644308C1E9A295A00D41BCC /* XFruitsCategoryViewController.swift */,
 				8690FEE21ED179560051A16D /* XFAllCategoryListViewController.swift */,
+				86E8DF6B1EDAA901000A489F /* XFruitsDetailViewController.swift */,
 			);
 			path = FruitsCategory;
 			sourceTree = "<group>";
@@ -371,6 +382,10 @@
 			children = (
 				8690FEDA1ED177B80051A16D /* XFCategoryHeadSizer.swift */,
 				8690FEDC1ED178120051A16D /* XFCategoryCell.swift */,
+				86E8DF731EDAB0BB000A489F /* XFDetailHeaderView.swift */,
+				86E8DF751EDAB0C9000A489F /* XFDetailCommentView.swift */,
+				86E8DF771EDAB0D6000A489F /* XFDetailDescriptionView.swift */,
+				86E8DF791EDAB0EC000A489F /* XFDetailActionBarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -555,6 +570,7 @@
 				864430851E9A27E400D41BCC /* XFruitsBaseRequest.swift in Sources */,
 				8690FEE11ED178AF0051A16D /* XFShopCartActionBar.swift in Sources */,
 				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
+				86E8DF7A1EDAB0EC000A489F /* XFDetailActionBarView.swift in Sources */,
 				164C21EC1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift in Sources */,
 				8690FEDD1ED178120051A16D /* XFCategoryCell.swift in Sources */,
 				864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */,
@@ -574,10 +590,14 @@
 				8690FEDB1ED177B80051A16D /* XFCategoryHeadSizer.swift in Sources */,
 				862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */,
 				86EC80F21EC7DCBD009AB47D /* XFruitsViewPager.swift in Sources */,
+				86E8DF781EDAB0D6000A489F /* XFDetailDescriptionView.swift in Sources */,
 				1668B0591ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift in Sources */,
+				86E8DF6C1EDAA901000A489F /* XFruitsDetailViewController.swift in Sources */,
 				864430891E9A28F400D41BCC /* XFruitsUserRegistViewController.swift in Sources */,
+				86E8DF761EDAB0C9000A489F /* XFDetailCommentView.swift in Sources */,
 				868613231EAC731200A44338 /* XFruitsNavigationController.swift in Sources */,
 				8644308F1E9A296E00D41BCC /* XFruitsShopCarViewController.swift in Sources */,
+				86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */,
 				868613211EAC6A5E00A44338 /* XFruitsUserCenterViewController.swift in Sources */,
 				86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */,
 				86A45C741ED121D300772D13 /* XFruitsGoodsInfo.swift in Sources */,
