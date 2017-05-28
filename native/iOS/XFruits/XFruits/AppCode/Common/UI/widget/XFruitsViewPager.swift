@@ -16,7 +16,7 @@ class XFruitsViewPager: UIView,UIScrollViewDelegate {
         let pageControl = UIPageControl()
         pageControl.pageIndicatorTintColor = XFConstants.Color.paleGrey
         pageControl.currentPageIndicatorTintColor = XFConstants.Color.salmon
-        pageControl.isEnabled = true
+        pageControl.isEnabled = false
         return pageControl
     }()
     
