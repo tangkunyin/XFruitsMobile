@@ -21,7 +21,6 @@
 		16F651DA1ECD481E00EB477D /* XFruitsAddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F651D91ECD481E00EB477D /* XFruitsAddAddressViewController.swift */; };
 		16F651DD1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F651DC1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift */; };
 		862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862C59EE1EA3677100C2323D /* XFConstants.swift */; };
-		864430731E9A23A700D41BCC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 864430721E9A23A700D41BCC /* Default-568h@2x.png */; };
 		864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */; };
 		864430831E9A27A600D41BCC /* XFruitsBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430821E9A27A600D41BCC /* XFruitsBaseViewController.swift */; };
 		864430851E9A27E400D41BCC /* XFruitsBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430841E9A27E400D41BCC /* XFruitsBaseRequest.swift */; };
@@ -97,7 +96,6 @@
 		16F651D91ECD481E00EB477D /* XFruitsAddAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddAddressViewController.swift; sourceTree = "<group>"; };
 		16F651DC1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddAddressTableViewCell.swift; sourceTree = "<group>"; };
 		862C59EE1EA3677100C2323D /* XFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFConstants.swift; sourceTree = "<group>"; };
-		864430721E9A23A700D41BCC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsHomeViewController.swift; sourceTree = "<group>"; };
 		864430821E9A27A600D41BCC /* XFruitsBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsBaseViewController.swift; sourceTree = "<group>"; };
 		864430841E9A27E400D41BCC /* XFruitsBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsBaseRequest.swift; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 		864430741E9A23CD00D41BCC /* AppSystem */ = {
 			isa = PBXGroup;
 			children = (
-				864430721E9A23A700D41BCC /* Default-568h@2x.png */,
 				865F4F4D1E9A173E0059502C /* Assets.xcassets */,
 				865F4F521E9A173E0059502C /* Info.plist */,
 				86A45C2E1ECFD81D00772D13 /* XFruits-Bridging-Header.h */,
@@ -540,7 +537,6 @@
 			files = (
 				16DCE3C31EDA68960047F559 /* city.plist in Resources */,
 				865F4F4E1E9A173E0059502C /* Assets.xcassets in Resources */,
-				864430731E9A23A700D41BCC /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,6 +726,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 5Z3RQE949K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -744,6 +741,7 @@
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Carthage/Build/iOS/V5Client.framework/**";
 				SWIFT_OBJC_BRIDGING_HEADER = "XFruits/XFruits-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -751,6 +749,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 5Z3RQE949K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -765,6 +764,7 @@
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Carthage/Build/iOS/V5Client.framework/**";
 				SWIFT_OBJC_BRIDGING_HEADER = "XFruits/XFruits-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
