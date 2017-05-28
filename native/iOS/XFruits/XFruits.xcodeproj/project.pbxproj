@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		164C21EC1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C21EB1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift */; };
+		165608D71EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D41EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift */; };
+		165608D81EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D51EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift */; };
+		165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */; };
+		165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */; };
 		1668B0591ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668B0581ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift */; };
 		1668B05B1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668B05A1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift */; };
 		16DCE3C11EDA68480047F559 /* CityChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCE3C01EDA68480047F559 /* CityChooseView.swift */; };
@@ -80,6 +84,10 @@
 
 /* Begin PBXFileReference section */
 		164C21EB1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsUserRegistSecondPageViewController.swift; sourceTree = "<group>"; };
+		165608D41EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFPayWayBillContentTableViewCell.swift; sourceTree = "<group>"; };
+		165608D51EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFPayWayBillInfoTableViewCell.swift; sourceTree = "<group>"; };
+		165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFTPayModeableViewCell.swift; sourceTree = "<group>"; };
+		165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFChoosePayWayViewController.swift; sourceTree = "<group>"; };
 		1668B0581ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift; sourceTree = "<group>"; };
 		1668B05A1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddressesCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		16DCE3C01EDA68480047F559 /* CityChooseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityChooseView.swift; sourceTree = "<group>"; };
@@ -257,6 +265,7 @@
 				8690FED81ED1768E0051A16D /* Model */,
 				8690FED91ED1768E0051A16D /* View */,
 				8644308E1E9A296E00D41BCC /* XFruitsShopCarViewController.swift */,
+				165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */,
 			);
 			path = ShopCar;
 			sourceTree = "<group>";
@@ -400,6 +409,9 @@
 		8690FED91ED1768E0051A16D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				165608D41EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift */,
+				165608D51EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift */,
+				165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */,
 				8690FEDE1ED178900051A16D /* XFShopCartViewCell.swift */,
 				8690FEE01ED178AF0051A16D /* XFShopCartActionBar.swift */,
 			);
@@ -588,13 +600,16 @@
 				86A45C301ECFDBE500772D13 /* XFruitsMBProgressHUD.swift in Sources */,
 				16F6519C1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift in Sources */,
 				8690FEDB1ED177B80051A16D /* XFCategoryHeadSizer.swift in Sources */,
+				165608D81EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift in Sources */,
 				862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */,
 				86EC80F21EC7DCBD009AB47D /* XFruitsViewPager.swift in Sources */,
 				86E8DF781EDAB0D6000A489F /* XFDetailDescriptionView.swift in Sources */,
 				1668B0591ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift in Sources */,
 				86E8DF6C1EDAA901000A489F /* XFruitsDetailViewController.swift in Sources */,
 				864430891E9A28F400D41BCC /* XFruitsUserRegistViewController.swift in Sources */,
+				165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */,
 				86E8DF761EDAB0C9000A489F /* XFDetailCommentView.swift in Sources */,
+				165608D71EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift in Sources */,
 				868613231EAC731200A44338 /* XFruitsNavigationController.swift in Sources */,
 				8644308F1E9A296E00D41BCC /* XFruitsShopCarViewController.swift in Sources */,
 				86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */,
@@ -606,6 +621,7 @@
 				16F651DA1ECD481E00EB477D /* XFruitsAddAddressViewController.swift in Sources */,
 				16F6519E1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift in Sources */,
 				16F651DD1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift in Sources */,
+				165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */,
 				865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */,
 				86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */,
 				868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */,
