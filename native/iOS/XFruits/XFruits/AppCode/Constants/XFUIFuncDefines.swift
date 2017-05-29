@@ -70,4 +70,9 @@ func htscFontWithSize(_ size:CGFloat) -> UIFont {
     return UIFont.init(name: "Heiti SC", size: size)!
 }
 
-
+//: 创建分割线
+func createSeperateLine() ->UIView {
+    let line = UIView()
+    line.backgroundColor = XFConstants.Color.pinkishGrey
+    return line
+}

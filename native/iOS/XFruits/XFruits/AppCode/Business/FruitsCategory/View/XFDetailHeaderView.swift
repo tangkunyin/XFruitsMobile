@@ -118,8 +118,8 @@ class XFDetailHeaderView: UIView {
     
     private func customInit(){
         
-        let specificationDescLabelTopLine:UIView = createLine()
-        let specificationDescLabelBottomLine:UIView = createLine()
+        let specificationDescLabelTopLine:UIView = createSeperateLine()
+        let specificationDescLabelBottomLine:UIView = createSeperateLine()
         
         addSubview(detailViewPager)
         addSubview(titleLabel)
@@ -151,7 +151,7 @@ class XFDetailHeaderView: UIView {
         }
         specificationDescLabelTopLine.snp.makeConstraints { (make) in
             make.width.equalTo(self)
-            make.height.equalTo(0.5)
+            make.height.equalTo(0.4)
             make.bottom.equalTo(self.specificationDescLabel.snp.top)
         }
         specificationDescLabel.snp.makeConstraints { (make) in
@@ -163,7 +163,7 @@ class XFDetailHeaderView: UIView {
         }
         specificationDescLabelBottomLine.snp.makeConstraints { (make) in
             make.width.equalTo(self)
-            make.height.equalTo(0.5)
+            make.height.equalTo(0.4)
             make.bottom.equalTo(self.serviceTitleLabel.snp.top)
         }
         serviceTitleLabel.snp.makeConstraints { (make) in
@@ -196,10 +196,4 @@ class XFDetailHeaderView: UIView {
         return btn
     }
     
-    func createLine() ->UIView {
-        let line = UIView()
-        line.backgroundColor = XFConstants.Color.pinkishGrey
-        return line
-    }
-
 }
