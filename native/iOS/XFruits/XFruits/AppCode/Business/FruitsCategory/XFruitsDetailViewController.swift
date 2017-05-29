@@ -39,7 +39,6 @@ class XFruitsDetailViewController: XFruitsBaseSubViewController {
     
     private lazy var actionBarView: XFDetailActionBarView = {
         let view = XFDetailActionBarView()
-        view.backgroundColor = XFConstants.Color.silver
         return view
     }()
     

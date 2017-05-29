@@ -14,21 +14,37 @@ class XFDetailActionBarView: UIView {
 
     lazy var link2ChatBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
+        btn.setImage(UIImage.imageWithNamed("service_chat"), for: .normal)
+        btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
+        btn.layer.borderColor = grayColor(102).cgColor
         return btn
     }()
     
     lazy var add2CollectionBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
+        btn.setImage(UIImage.imageWithNamed("service_collect"), for: .normal)
+        btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
+        btn.layer.borderColor = grayColor(102).cgColor
         return btn
     }()
     
     lazy var add2CartBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
+        btn.setTitle("放进果篮", for: .normal)
+        btn.setTitleColor(grayColor(102), for: .normal)
+        btn.titleLabel?.font = XFConstants.Font.mainMenuFont
+        btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
+        btn.layer.borderColor = grayColor(102).cgColor
         return btn
     }()
     
     lazy var link2BuyBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
+        btn.backgroundColor = XFConstants.Color.salmon
+        btn.setTitle("立即购买", for: .normal)
+        btn.titleLabel?.font = XFConstants.Font.mainMenuFont
+        btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
+        btn.layer.borderColor = grayColor(102).cgColor
         return btn
     }()
     
@@ -44,8 +60,6 @@ class XFDetailActionBarView: UIView {
     }
     
     private func customInit(){
-        layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
-        layer.borderColor = grayColor(102).cgColor
         
         addSubview(link2ChatBtn)
         addSubview(add2CollectionBtn)
@@ -66,12 +80,13 @@ class XFDetailActionBarView: UIView {
             make.left.equalTo(self.add2CollectionBtn.snp.right)
             make.right.equalTo(self.link2BuyBtn.snp.left)
             make.top.bottom.equalTo(self)
+            make.width.equalTo(self.link2BuyBtn.snp.width)
         }
         link2BuyBtn.snp.makeConstraints { (make) in
             make.left.equalTo(self.add2CartBtn.snp.right)
             make.right.equalTo(self)
             make.top.bottom.equalTo(self)
-            make.width.greaterThanOrEqualTo(142)
+            make.width.equalTo(self.add2CartBtn.snp.width)
         }
     }
 
