@@ -56,8 +56,8 @@ class XFruitsDetailViewController: XFruitsBaseSubViewController {
         view.addSubview(backgroundView)
         view.addSubview(actionBarView)
         backgroundView.addSubview(headerView)
-        backgroundView.addSubview(commentView)
-        backgroundView.addSubview(descriptionView)
+//        backgroundView.addSubview(commentView)
+//        backgroundView.addSubview(descriptionView)
         
         backgroundView.snp.makeConstraints { (make) in
             make.left.right.top.equalTo(self.view)
@@ -69,9 +69,15 @@ class XFruitsDetailViewController: XFruitsBaseSubViewController {
             make.left.right.bottom.equalTo(self.view)
         }
         
-        descriptionView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(self.backgroundView)
+        headerView.snp.makeConstraints { (make) in
+            make.top.width.equalTo(self.backgroundView)
+//            make.height.equalTo(400)
         }
+        
+        
+//        descriptionView.snp.makeConstraints { (make) in
+//            make.left.right.bottom.equalTo(self.backgroundView)
+//        }
         
         
     }

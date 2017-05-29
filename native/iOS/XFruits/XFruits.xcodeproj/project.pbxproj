@@ -75,6 +75,7 @@
 		86E8DF761EDAB0C9000A489F /* XFDetailCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF751EDAB0C9000A489F /* XFDetailCommentView.swift */; };
 		86E8DF781EDAB0D6000A489F /* XFDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF771EDAB0D6000A489F /* XFDetailDescriptionView.swift */; };
 		86E8DF7A1EDAB0EC000A489F /* XFDetailActionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF791EDAB0EC000A489F /* XFDetailActionBarView.swift */; };
+		86E8DF7E1EDBCC90000A489F /* XFButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF7D1EDBCC90000A489F /* XFButtonExtension.swift */; };
 		86EC80F21EC7DCBD009AB47D /* XFruitsViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F11EC7DCBD009AB47D /* XFruitsViewPager.swift */; };
 		86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */; };
 		86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */; };
@@ -153,6 +154,7 @@
 		86E8DF751EDAB0C9000A489F /* XFDetailCommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailCommentView.swift; sourceTree = "<group>"; };
 		86E8DF771EDAB0D6000A489F /* XFDetailDescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailDescriptionView.swift; sourceTree = "<group>"; };
 		86E8DF791EDAB0EC000A489F /* XFDetailActionBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailActionBarView.swift; sourceTree = "<group>"; };
+		86E8DF7D1EDBCC90000A489F /* XFButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFButtonExtension.swift; sourceTree = "<group>"; };
 		86EC80F11EC7DCBD009AB47D /* XFruitsViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsViewPager.swift; sourceTree = "<group>"; };
 		86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourBillCollectionViewCell.swift; sourceTree = "<group>"; };
 		86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBillTableViewCell.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 			children = (
 				868613251EACCCE400A44338 /* XFImageExtension.swift */,
 				86A45C2F1ECFDBE500772D13 /* XFruitsMBProgressHUD.swift */,
+				86E8DF7D1EDBCC90000A489F /* XFButtonExtension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				8686131F1EAC6A3200A44338 /* XFruitsBaseSubViewController.swift in Sources */,
 				864430851E9A27E400D41BCC /* XFruitsBaseRequest.swift in Sources */,
 				8690FEE11ED178AF0051A16D /* XFShopCartActionBar.swift in Sources */,
+				86E8DF7E1EDBCC90000A489F /* XFButtonExtension.swift in Sources */,
 				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
 				86E8DF7A1EDAB0EC000A489F /* XFDetailActionBarView.swift in Sources */,
 				164C21EC1ECAA4D3000FA221 /* XFruitsUserRegistSecondPageViewController.swift in Sources */,
