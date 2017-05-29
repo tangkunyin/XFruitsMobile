@@ -39,28 +39,36 @@ class XFruitsViewPager: UIView,UIScrollViewDelegate {
         
         self.addSubview(self.container)
         container.snp.makeConstraints { (make) in
-            make.center.equalTo(self)
-            make.size.equalTo(self)
+            make.center.size.equalTo(self)
         }
         
-        for (index, item) in source.enumerated() {
-            let pageView = imagePagerView(urlString: item, placeHolder: placeHolder, index: index)
-            self.container.addSubview(pageView)
-            pageView.snp.makeConstraints({ (make) in
-                make.top.size.equalTo(self.container)
-                if index == 0 {
-                    make.left.equalTo(self.container)
-                }
-                else if let previousView = self.container.subviews[index-1] as? UIImageView {
-                    make.left.equalTo(previousView.snp.right).offset(0)
-                }
-                if index == source.count - 1 {
-                    make.right.equalTo(self.container)
-                }
+        if source.count == 1 {
+            
+            let singleView:UIImageView = imagePagerView(urlString: source.first!, placeHolder: placeHolder, index: 0)
+            self.container.addSubview(singleView)
+            singleView.snp.makeConstraints({ (make) in
+                make.center.size.equalTo(self.container)
             })
-        }
-        
-        if source.count > 1 {
+            
+        } else if source.count > 1 {
+            
+            for (index, item) in source.enumerated() {
+                let pageView:UIImageView = imagePagerView(urlString: item, placeHolder: placeHolder, index: index)
+                self.container.addSubview(pageView)
+                pageView.snp.makeConstraints({ (make) in
+                    make.top.size.equalTo(self.container)
+                    if index == 0 {
+                        make.left.equalTo(self.container)
+                    }
+                    else if let previousView = self.container.subviews[index-1] as? UIImageView {
+                        make.left.equalTo(previousView.snp.right).offset(0)
+                    }
+                    if index == source.count - 1 {
+                        make.right.equalTo(self.container)
+                    }
+                })
+            }
+            
             self.pageControl.numberOfPages = source.count
             self.addSubview(self.pageControl)
             self.pageControl.snp.makeConstraints { (make) in
@@ -88,6 +96,8 @@ class XFruitsViewPager: UIView,UIScrollViewDelegate {
         let pageView = UIImageView()
         pageView.tag = index
         pageView.contentMode = .scaleAspectFit
+        pageView.layer.masksToBounds = true
+        pageView.clipsToBounds = true
         pageView.kf.setImage(with: URL(string: urlString),
                              placeholder: placeHolderImage,
                              options: [.transition(.fade(1))],
