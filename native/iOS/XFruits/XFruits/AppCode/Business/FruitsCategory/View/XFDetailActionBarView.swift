@@ -16,7 +16,7 @@ class XFDetailActionBarView: UIView {
         let btn = UIButton.init(type: .custom)
         btn.setImage(UIImage.imageWithNamed("service_chat"), for: .normal)
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
-        btn.layer.borderColor = grayColor(102).cgColor
+        btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
         return btn
     }()
     
@@ -24,17 +24,17 @@ class XFDetailActionBarView: UIView {
         let btn = UIButton.init(type: .custom)
         btn.setImage(UIImage.imageWithNamed("service_collect"), for: .normal)
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
-        btn.layer.borderColor = grayColor(102).cgColor
+        btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
         return btn
     }()
     
     lazy var add2CartBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle("放进果篮", for: .normal)
-        btn.setTitleColor(grayColor(102), for: .normal)
+        btn.setTitleColor(XFConstants.Color.darkGray, for: .normal)
         btn.titleLabel?.font = XFConstants.Font.mainMenuFont
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
-        btn.layer.borderColor = grayColor(102).cgColor
+        btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
         return btn
     }()
     
@@ -44,7 +44,7 @@ class XFDetailActionBarView: UIView {
         btn.setTitle("立即购买", for: .normal)
         btn.titleLabel?.font = XFConstants.Font.mainMenuFont
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
-        btn.layer.borderColor = grayColor(102).cgColor
+        btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
         return btn
     }()
     

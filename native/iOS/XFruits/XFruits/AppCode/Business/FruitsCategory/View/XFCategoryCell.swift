@@ -23,7 +23,7 @@ class XFCategoryCell: UICollectionViewCell {
     
     lazy var titleLabel:UILabel = {
         let title = UILabel()
-        title.textColor = grayColor(102)
+        title.textColor = XFConstants.Color.darkGray
         title.font = XFConstants.Font.mainBodyFont
         title.textAlignment = .center
         title.numberOfLines = 1
@@ -64,7 +64,7 @@ class XFCategoryCell: UICollectionViewCell {
     fileprivate func customInit(){
         
         layer.borderWidth = 1
-        layer.borderColor = XFConstants.Color.commonBgColor.cgColor
+        layer.borderColor = XFConstants.Color.commonBackground.cgColor
         
         titleLabel.text = "拾个苹果圣诞果一箱6个"
         priceLabel.text = "¥ 36"

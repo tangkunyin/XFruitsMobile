@@ -15,7 +15,7 @@ class XFCategoryHeadSizer: UIView {
         let segmente = UISegmentedControl(items: ["综合","销量","新品","价格"])
         segmente.selectedSegmentIndex = 0
         segmente.apportionsSegmentWidthsByContent = true
-        segmente.tintColor = XFConstants.Color.commonBgColor
+        segmente.tintColor = XFConstants.Color.commonBackground
         segmente.addTarget(self, action: #selector(sizerChangedAction(_:)), for: .valueChanged)
         return segmente
     }()
@@ -24,7 +24,7 @@ class XFCategoryHeadSizer: UIView {
     convenience init(textColor:UIColor?, selectTextColor:UIColor?) {
         self.init()
         
-        let normalAttributes = [NSForegroundColorAttributeName:textColor ?? grayColor(102),
+        let normalAttributes = [NSForegroundColorAttributeName:textColor ?? XFConstants.Color.darkGray,
                                 NSFontAttributeName:pfnFontWithSize(14)]
         let selectAttributes = [NSForegroundColorAttributeName:selectTextColor ?? colorWithRGB(255, g: 102, b: 102),
                                 NSFontAttributeName:pfnFontWithSize(14)]

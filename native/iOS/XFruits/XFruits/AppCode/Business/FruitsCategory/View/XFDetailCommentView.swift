@@ -11,6 +11,18 @@ import UIKit
 /// 详情页中部商品评论
 class XFDetailCommentView: UIView {
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        customInit()
+    }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        customInit()
+    }
+    
+    private func customInit(){
+        
+    }
 
 }

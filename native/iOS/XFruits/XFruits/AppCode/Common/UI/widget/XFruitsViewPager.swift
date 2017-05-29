@@ -12,7 +12,7 @@ import SnapKit
 
 class XFruitsViewPager: UIView,UIScrollViewDelegate {
     
-    lazy var pageControl:UIPageControl = {
+    private lazy var pageControl:UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.pageIndicatorTintColor = XFConstants.Color.paleGrey
         pageControl.currentPageIndicatorTintColor = XFConstants.Color.salmon
@@ -20,7 +20,7 @@ class XFruitsViewPager: UIView,UIScrollViewDelegate {
         return pageControl
     }()
     
-    lazy var container:UIScrollView = {
+    private lazy var container:UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.delegate = self
         scrollView.bounces = false
@@ -30,7 +30,7 @@ class XFruitsViewPager: UIView,UIScrollViewDelegate {
         return scrollView;
     }()
     
-    var pagerDidClicked: ((Int) -> Void)?
+    public var pagerDidClicked: ((Int) -> Void)?
     
     
     convenience init(source:Array<String>, placeHolder:String?)  {
@@ -60,12 +60,14 @@ class XFruitsViewPager: UIView,UIScrollViewDelegate {
             })
         }
         
-        self.pageControl.numberOfPages = source.count
-        self.addSubview(self.pageControl)
-        self.pageControl.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self)
-            make.size.equalTo(CGSize(width: 200, height:40))
-            make.bottom.equalTo(0)
+        if source.count > 1 {
+            self.pageControl.numberOfPages = source.count
+            self.addSubview(self.pageControl)
+            self.pageControl.snp.makeConstraints { (make) in
+                make.centerX.equalTo(self)
+                make.size.equalTo(CGSize(width: 200, height:40))
+                make.bottom.equalTo(0)
+            }
         }
     }
     

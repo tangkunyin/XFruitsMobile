@@ -23,20 +23,20 @@ class XFShopCartViewCell: UITableViewCell {
     lazy var plusBtn:UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle("+", for: .normal)
-        btn.setTitleColor(grayColor(102), for: .normal)
+        btn.setTitleColor(XFConstants.Color.darkGray, for: .normal)
         btn.setTitleColor(grayColor(200), for: .disabled)
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
-        btn.layer.borderColor = grayColor(102).cgColor
+        btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
         return btn
     }()
     
     lazy var minusBtn:UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle("-", for: .normal)
-        btn.setTitleColor(grayColor(102), for: .normal)
+        btn.setTitleColor(XFConstants.Color.darkGray, for: .normal)
         btn.setTitleColor(grayColor(200), for: .disabled)
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
-        btn.layer.borderColor = grayColor(102).cgColor
+        btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
         return btn
     }()
     
@@ -49,7 +49,7 @@ class XFShopCartViewCell: UITableViewCell {
     
     lazy var titleLabel:UILabel = {
         let title = UILabel()
-        title.textColor = grayColor(102)
+        title.textColor = XFConstants.Color.darkGray
         title.font = XFConstants.Font.mainBodyFont
         title.textAlignment = .left
         title.numberOfLines = 1
@@ -61,7 +61,7 @@ class XFShopCartViewCell: UITableViewCell {
     
     lazy var descLabel:UILabel = {
         let title = UILabel()
-        title.textColor = grayColor(102)
+        title.textColor = XFConstants.Color.darkGray
         title.font = XFConstants.Font.bottomMenuFont
         title.textAlignment = .left
         title.numberOfLines = 2
@@ -73,7 +73,7 @@ class XFShopCartViewCell: UITableViewCell {
     
     lazy var priceLabel:UILabel = {
         let title = UILabel()
-        title.textColor = grayColor(102)
+        title.textColor = XFConstants.Color.darkGray
         title.font = XFConstants.Font.bottomMenuFont
         title.textAlignment = .left
         title.numberOfLines = 2
@@ -85,13 +85,13 @@ class XFShopCartViewCell: UITableViewCell {
     
     lazy var quanityLabel:UILabel = {
         let title = UILabel()
-        title.textColor = grayColor(102)
+        title.textColor = XFConstants.Color.darkGray
         title.font = XFConstants.Font.bottomMenuFont
         title.textAlignment = .center
         title.numberOfLines = 1
         title.adjustsFontSizeToFitWidth = false
         title.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
-        title.layer.borderColor = grayColor(102).cgColor
+        title.layer.borderColor = XFConstants.Color.darkGray.cgColor
         title.text = "2"
         return title
     }()

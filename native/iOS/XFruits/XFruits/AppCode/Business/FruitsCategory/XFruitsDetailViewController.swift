@@ -14,7 +14,7 @@ class XFruitsDetailViewController: XFruitsBaseSubViewController {
 
     private lazy var backgroundView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = XFConstants.Color.commonBgColor
+        scrollView.backgroundColor = XFConstants.Color.commonBackground
         scrollView.bounces = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
@@ -62,7 +62,6 @@ class XFruitsDetailViewController: XFruitsBaseSubViewController {
         backgroundView.snp.makeConstraints { (make) in
             make.left.right.top.equalTo(self.view)
             make.bottom.equalTo(self.actionBarView.snp.top)
-        
         }
         actionBarView.snp.makeConstraints { (make) in
             make.height.equalTo(45)
@@ -70,6 +69,9 @@ class XFruitsDetailViewController: XFruitsBaseSubViewController {
             make.left.right.bottom.equalTo(self.view)
         }
         
+        descriptionView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalTo(self.backgroundView)
+        }
         
         
     }

@@ -11,7 +11,7 @@ import UIKit
 class XFruitsNavigationController: UINavigationController {
     
     private static let initAppearance: Void = {
-        let barAttr = [NSForegroundColorAttributeName:XFConstants.Color.whiteColor,
+        let barAttr = [NSForegroundColorAttributeName:XFConstants.Color.white,
                        NSFontAttributeName:XFConstants.Font.titleFont];
         
         let bar = UINavigationBar.appearance()

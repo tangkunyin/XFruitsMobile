@@ -14,7 +14,7 @@ class XFShopCartActionBar: UIView {
     
     lazy var countlabel:UILabel = {
         let label = UILabel()
-        label.textColor = grayColor(102)
+        label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .left
         label.font = XFConstants.Font.mainMenuFont
         label.text = "全部(0)"
@@ -51,7 +51,7 @@ class XFShopCartActionBar: UIView {
     }
     
     fileprivate func customInit(){
-        backgroundColor = XFConstants.Color.commonBgColor
+        backgroundColor = XFConstants.Color.commonBackground
         addSubview(countlabel)
         addSubview(pricelabel)
         addSubview(actionBtn)
