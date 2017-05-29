@@ -92,6 +92,7 @@ struct XFConstants {
         static let silver:UIColor = colorWithRGB(199,g: 199,b: 205)//银色
         static let greyishBrown:UIColor = colorWithRGB(83,g: 83,b: 83)//浅黑色
         static let salmon:UIColor = colorWithRGB(255,g: 102,b: 102)//苹果红
+        static let pinkishGrey:UIColor = colorWithRGB(204, g: 204, b: 204)//分割线灰色
     }
     
     /// 通用字体
