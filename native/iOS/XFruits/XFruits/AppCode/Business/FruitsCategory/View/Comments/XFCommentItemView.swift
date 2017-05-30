@@ -44,10 +44,24 @@ class XFCommentItemView: UIView {
         return label
     }()
     
-    lazy var contentText: UITextView = {
-        let textView = UITextView()
-        textView.text = "乌云在我们心里搁下一块阴影，我聆听沉寂已久的心情清。晰透明就像美丽的风景，总在回忆里才看的清。被伤透的心能不能够继续爱我，我用力牵起没温度的双手 ..."
-        return textView
+    lazy var contentLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = false
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.firstLineHeadIndent = 0
+        paragraphStyle.lineSpacing = 5
+        paragraphStyle.lineBreakMode = .byTruncatingTail
+        let attributes = [NSFontAttributeName:XFConstants.Font.mainMenuFont,
+                          NSForegroundColorAttributeName:XFConstants.Color.darkGray,
+                          NSParagraphStyleAttributeName:paragraphStyle];
+        
+        let text = "乌云在我们心里搁下一块阴影，我聆听沉寂已久的心情清。晰透明就像美丽的风景，总在回忆里才看的清。被伤透的心能不能够继续爱我，我用力牵起没温度的双手。过往温柔 已经被时间上锁，只剩挥散不去的难过。缓缓飘落的枫叶像思念，我点燃烛火温暖岁末的秋天。极光掠夺天边，北风掠过想你的容颜。我把爱烧成了落叶，却换不回熟悉的那张脸。缓缓飘落的枫叶像思念，为何挽回要赶在冬天来之前。爱你穿越时间，两行来自秋末的眼泪。让爱渗透了地面，我要的只是你在我身边。"
+        let attributeText = NSAttributedString.init(string: text, attributes: attributes)
+        label.attributedText = attributeText
+        return label
     }()
     
     
@@ -63,30 +77,37 @@ class XFCommentItemView: UIView {
     
     private func customInit(){
         
+        backgroundColor = UIColor.white
         layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
         layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
         
         addSubview(userAvatar)
         addSubview(userName)
         addSubview(commentDate)
-        addSubview(contentText)
+        addSubview(contentLabel)
         
         userAvatar.snp.makeConstraints { (make) in
             make.left.top.equalTo(self).offset(10)
             make.size.equalTo(42)
+            make.bottom.equalTo(self.contentLabel.snp.top)
         }
         userName.snp.makeConstraints { (make) in
             make.top.height.equalTo(self.userAvatar)
             make.left.equalTo(self.userAvatar.snp.right).offset(10)
+            make.width.equalTo(self.commentDate.snp.width)
+            make.bottom.equalTo(self.contentLabel.snp.top)
         }
         commentDate.snp.makeConstraints { (make) in
             make.top.height.equalTo(self.userAvatar)
             make.left.equalTo(self.userName.snp.right)
             make.right.equalTo(self).offset(-10)
+            make.width.equalTo(self.userName.snp.width)
+            make.bottom.equalTo(self.contentLabel.snp.top)
         }
-        contentText.snp.makeConstraints { (make) in
-            make.top.equalTo(userAvatar.snp.bottom).offset(10)
-            make.left.right.bottom.equalTo(self)
+        contentLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(userAvatar.snp.bottom)
+            make.left.equalTo(self).offset(10)
+            make.right.bottom.equalTo(self).offset(-10)
             make.height.lessThanOrEqualTo(115.6)
         }
         
