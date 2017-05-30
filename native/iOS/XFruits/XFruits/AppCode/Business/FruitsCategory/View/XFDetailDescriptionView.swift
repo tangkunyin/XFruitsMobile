@@ -16,19 +16,27 @@ class XFDetailDescriptionView: UIView {
 
     let descSource:Array<String> = ["default-detailIntroduce","default-apple"]
     
+    deinit {
+        print("XFDetailDescriptionView deinit...")
+    }
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = XFConstants.Font.mainMenuFont
-        label.textColor = XFConstants.Color.darkGray
+    lazy var titleLabel: UILabel = {
+        let label = UILabel();
+        label.backgroundColor = UIColor.white
+        label.numberOfLines = 1
         label.textAlignment = .left
-        label.text = "商品详情"
-        label.layer.borderColor = XFConstants.Color.darkGray.cgColor
-        label.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
+        label.adjustsFontSizeToFitWidth = false
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.firstLineHeadIndent = 10
+        let attributes = [NSFontAttributeName:XFConstants.Font.mainMenuFont,
+                          NSForegroundColorAttributeName:XFConstants.Color.darkGray,
+                          NSParagraphStyleAttributeName:paragraphStyle];
+        let attributeText = NSAttributedString.init(string: "商品详情", attributes: attributes)
+        label.attributedText = attributeText
         return label
     }()
     
-    private lazy var descBackgroundView: UIScrollView = {
+    lazy var descBackgroundView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.bounces = false
         scrollView.showsVerticalScrollIndicator = false
@@ -47,27 +55,38 @@ class XFDetailDescriptionView: UIView {
     }
     
     private func customInit(){
+        backgroundColor = UIColor.white
     
+        let line:UIView = createSeperateLine()
+        
         addSubview(titleLabel)
+        addSubview(line)
         addSubview(descBackgroundView)
         
         titleLabel.snp.makeConstraints { (make) in
-            make.left.right.top.equalTo(self)
-            make.height.equalTo(30)
+            make.top.width.equalTo(self)
+            make.height.equalTo(42)
+            make.bottom.equalTo(line.snp.top)
+        }
+        line.snp.makeConstraints { (make) in
+            make.top.equalTo(self.titleLabel.snp.bottom)
+            make.width.equalTo(self)
+            make.height.equalTo(0.4)
             make.bottom.equalTo(self.descBackgroundView.snp.top)
         }
         descBackgroundView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.titleLabel.snp.bottom)
-            make.left.right.bottom.equalTo(self)
+            make.top.equalTo(line.snp.bottom)
+            make.width.bottom.equalTo(self)
         }
-        
         
         for (index, item) in descSource.enumerated() {
             let imageView = UIImageView.init(image: UIImage.imageWithNamed(item))
-            imageView.contentMode = .scaleAspectFit
+            imageView.contentMode = .scaleAspectFill
+            imageView.layer.masksToBounds = true
+            imageView.clipsToBounds = true
             descBackgroundView.addSubview(imageView)
             imageView.snp.makeConstraints({ (make) in
-                make.left.right.equalTo(self.descBackgroundView)
+                make.width.equalTo(self.descBackgroundView)
                 if index == 0 {
                     make.top.equalTo(self.descBackgroundView)
                 }
@@ -81,5 +100,5 @@ class XFDetailDescriptionView: UIView {
         }
         
     }
-    
+
 }

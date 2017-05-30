@@ -48,40 +48,42 @@ class XFruitsDetailViewController: XFruitsBaseSubViewController {
         title = "产品详情页"
         view.backgroundColor = UIColor.white
         
-        
         makeViewConstrains()
     }
     
     private func makeViewConstrains(){
         view.addSubview(backgroundView)
         view.addSubview(actionBarView)
-        backgroundView.addSubview(headerView)
-//        backgroundView.addSubview(commentView)
-//        backgroundView.addSubview(descriptionView)
-        
         backgroundView.snp.makeConstraints { (make) in
-            make.left.right.top.equalTo(self.view)
-            make.bottom.equalTo(self.actionBarView.snp.top)
+            make.width.top.equalTo(self.view)
         }
         actionBarView.snp.makeConstraints { (make) in
             make.height.equalTo(45)
             make.top.equalTo(self.backgroundView.snp.bottom)
-            make.left.right.bottom.equalTo(self.view)
+            make.width.bottom.equalTo(self.view)
         }
+        
+        backgroundView.addSubview(headerView)
+        backgroundView.addSubview(commentView)
+        backgroundView.addSubview(descriptionView)
         
         headerView.snp.makeConstraints { (make) in
             make.top.width.equalTo(self.backgroundView)
-//            make.height.equalTo(400)
+            make.bottom.equalTo(self.commentView.snp.top).offset(-10)
         }
-        
-        
-//        descriptionView.snp.makeConstraints { (make) in
-//            make.left.right.bottom.equalTo(self.backgroundView)
-//        }
-        
-        
+        commentView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.headerView.snp.bottom).offset(10)
+            make.width.equalTo(self.backgroundView)
+            make.bottom.equalTo(self.descriptionView.snp.top).offset(-10)
+        }
+        descriptionView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.commentView.snp.bottom).offset(10)
+            make.width.bottom.equalTo(self.backgroundView)
+        }
+        descriptionView.descBackgroundView.snp.makeConstraints { (make) in
+            make.height.equalTo(self.backgroundView.snp.height).offset(-42)
+        }
     }
 
-    
 
 }
