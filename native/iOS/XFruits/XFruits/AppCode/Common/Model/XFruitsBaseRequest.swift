@@ -10,7 +10,7 @@ import UIKit
 
 class XFruitsBaseRequest: NSObject {
 
-    public var code:XFHttpStatusCode?
+    public var code:Int?
     
     var msg:String?
     

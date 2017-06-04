@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import MBProgressHUD
+import Alamofire
+import AlamofireSwiftyJSON
+import SwiftyJSON
+import Reachability
 
 class XFruitsNetworking: NSObject {
 
