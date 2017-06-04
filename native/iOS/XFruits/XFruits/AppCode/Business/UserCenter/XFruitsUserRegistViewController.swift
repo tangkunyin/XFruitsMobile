@@ -159,13 +159,13 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
 
     
     func backToLoginVC(sender:UIButton?) {
-        print("eyes")
+        dPrint("eyes")
         self.navigationController?.popViewController(animated: true)
         
     }
     
     func nextStepToSecondRegistPageVC(sender:UIButton?) {
-        print("eyes")
+        dPrint("eyes")
         let secondRegistVC = XFruitsUserRegistSecondPageViewController()
         self.show(secondRegistVC, sender: self)
         

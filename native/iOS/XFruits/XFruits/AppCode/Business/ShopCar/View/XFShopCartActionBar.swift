@@ -74,7 +74,7 @@ class XFShopCartActionBar: UIView {
     }
     
     @objc private func onCartBtnClicked(_ btn:UIButton){
-        print("Hello")
+        dPrint("Hello")
     }
     
 

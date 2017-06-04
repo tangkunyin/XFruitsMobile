@@ -22,7 +22,7 @@ struct XFConstants {
     static let serverTimeout:Double = 45.0
     
     /// API服务器地址
-    static let appServer:String = "http://www.10fruits.net"
+    static let appServer:String = "https://www.10fruits.net"
     
     /// DES3 KEY (必须是24位)
     static let desKey:String = "123456781234567812345678"

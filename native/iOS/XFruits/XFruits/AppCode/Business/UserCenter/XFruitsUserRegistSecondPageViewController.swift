@@ -135,7 +135,7 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
 
     
     func gotoPrivacyVC(sender:UIButton?) {
-        print("eyes")
+        dPrint("eyes")
 //        self.navigationController?.popViewController(animated: true)
         
     }

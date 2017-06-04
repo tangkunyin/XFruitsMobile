@@ -21,10 +21,12 @@
 		16F651DA1ECD481E00EB477D /* XFruitsAddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F651D91ECD481E00EB477D /* XFruitsAddAddressViewController.swift */; };
 		16F651DD1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F651DC1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift */; };
 		860A43001EE3A58A00798678 /* XFruitsNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A42FF1EE3A58A00798678 /* XFruitsNetworking.swift */; };
+		860A43011EE415FF00798678 /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
+		860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A43021EE415FF00798678 /* HandyJSON.framework */; };
+		860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A43041EE4178000798678 /* XFBaseResponse.swift */; };
 		862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862C59EE1EA3677100C2323D /* XFConstants.swift */; };
 		864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */; };
 		864430831E9A27A600D41BCC /* XFruitsBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430821E9A27A600D41BCC /* XFruitsBaseViewController.swift */; };
-		864430851E9A27E400D41BCC /* XFruitsBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430841E9A27E400D41BCC /* XFruitsBaseRequest.swift */; };
 		864430871E9A28C500D41BCC /* XFruitsUserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430861E9A28C500D41BCC /* XFruitsUserLoginViewController.swift */; };
 		864430891E9A28F400D41BCC /* XFruitsUserRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430881E9A28F400D41BCC /* XFruitsUserRegistViewController.swift */; };
 		8644308B1E9A294500D41BCC /* XFruitsIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8644308A1E9A294500D41BCC /* XFruitsIndexViewController.swift */; };
@@ -44,9 +46,7 @@
 		8690FEE11ED178AF0051A16D /* XFShopCartActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEE01ED178AF0051A16D /* XFShopCartActionBar.swift */; };
 		8690FEE31ED179560051A16D /* XFAllCategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEE21ED179560051A16D /* XFAllCategoryListViewController.swift */; };
 		8690FF301ED538E90051A16D /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2C1ED538E90051A16D /* AlamofireSwiftyJSON.framework */; };
-		8690FF311ED538E90051A16D /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2D1ED538E90051A16D /* Reachability.framework */; };
 		8690FF321ED538E90051A16D /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2E1ED538E90051A16D /* SQLite.framework */; };
-		8698752A1ED555C300B1B757 /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
 		86A45C2D1ECFD20E00772D13 /* XFruitsSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C2C1ECFD20E00772D13 /* XFruitsSearchBar.swift */; };
 		86A45C301ECFDBE500772D13 /* XFruitsMBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C2F1ECFDBE500772D13 /* XFruitsMBProgressHUD.swift */; };
 		86A45C561ED1106D00772D13 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C551ED1106D00772D13 /* libsqlite3.tbd */; };
@@ -99,10 +99,11 @@
 		16F651D91ECD481E00EB477D /* XFruitsAddAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddAddressViewController.swift; sourceTree = "<group>"; };
 		16F651DC1ECD6CE400EB477D /* XFruitsAddAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddAddressTableViewCell.swift; sourceTree = "<group>"; };
 		860A42FF1EE3A58A00798678 /* XFruitsNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsNetworking.swift; sourceTree = "<group>"; };
+		860A43021EE415FF00798678 /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HandyJSON.framework; path = Carthage/Build/iOS/HandyJSON.framework; sourceTree = "<group>"; };
+		860A43041EE4178000798678 /* XFBaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFBaseResponse.swift; sourceTree = "<group>"; };
 		862C59EE1EA3677100C2323D /* XFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFConstants.swift; sourceTree = "<group>"; };
 		864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsHomeViewController.swift; sourceTree = "<group>"; };
 		864430821E9A27A600D41BCC /* XFruitsBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsBaseViewController.swift; sourceTree = "<group>"; };
-		864430841E9A27E400D41BCC /* XFruitsBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsBaseRequest.swift; sourceTree = "<group>"; };
 		864430861E9A28C500D41BCC /* XFruitsUserLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsUserLoginViewController.swift; sourceTree = "<group>"; };
 		864430881E9A28F400D41BCC /* XFruitsUserRegistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsUserRegistViewController.swift; sourceTree = "<group>"; };
 		8644308A1E9A294500D41BCC /* XFruitsIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsIndexViewController.swift; sourceTree = "<group>"; };
@@ -124,7 +125,6 @@
 		8690FEE01ED178AF0051A16D /* XFShopCartActionBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFShopCartActionBar.swift; sourceTree = "<group>"; };
 		8690FEE21ED179560051A16D /* XFAllCategoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAllCategoryListViewController.swift; sourceTree = "<group>"; };
 		8690FF2C1ED538E90051A16D /* AlamofireSwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireSwiftyJSON.framework; path = Carthage/Build/iOS/AlamofireSwiftyJSON.framework; sourceTree = "<group>"; };
-		8690FF2D1ED538E90051A16D /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
 		8690FF2E1ED538E90051A16D /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		8690FF2F1ED538E90051A16D /* V5Client.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = V5Client.framework; path = Carthage/Build/iOS/V5Client.framework; sourceTree = "<group>"; };
 		86A45C2C1ECFD20E00772D13 /* XFruitsSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsSearchBar.swift; sourceTree = "<group>"; };
@@ -170,9 +170,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8698752A1ED555C300B1B757 /* V5Client.framework in Frameworks */,
+				860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */,
+				860A43011EE415FF00798678 /* V5Client.framework in Frameworks */,
 				8690FF301ED538E90051A16D /* AlamofireSwiftyJSON.framework in Frameworks */,
-				8690FF311ED538E90051A16D /* Reachability.framework in Frameworks */,
 				8690FF321ED538E90051A16D /* SQLite.framework in Frameworks */,
 				86A45C6C1ED1187D00772D13 /* libz.tbd in Frameworks */,
 				86A45C6A1ED1186A00772D13 /* PhotosUI.framework in Frameworks */,
@@ -301,9 +301,9 @@
 		8644307E1E9A277B00D41BCC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				864430841E9A27E400D41BCC /* XFruitsBaseRequest.swift */,
 				86A45C6F1ED11B4B00772D13 /* XFruitsUser.swift */,
 				86A45C731ED121D300772D13 /* XFruitsGoodsInfo.swift */,
+				860A43041EE4178000798678 /* XFBaseResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -441,8 +441,8 @@
 		86CB2FE51EAB4959009972A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				860A43021EE415FF00798678 /* HandyJSON.framework */,
 				8690FF2C1ED538E90051A16D /* AlamofireSwiftyJSON.framework */,
-				8690FF2D1ED538E90051A16D /* Reachability.framework */,
 				8690FF2E1ED538E90051A16D /* SQLite.framework */,
 				8690FF2F1ED538E90051A16D /* V5Client.framework */,
 				86A45C6B1ED1187D00772D13 /* libz.tbd */,
@@ -573,9 +573,9 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireSwiftyJSON.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SQLite.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/V5Client.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/HandyJSON.framework",
 			);
 			outputPaths = (
 			);
@@ -592,7 +592,6 @@
 			files = (
 				8644308D1E9A295A00D41BCC /* XFruitsCategoryViewController.swift in Sources */,
 				8686131F1EAC6A3200A44338 /* XFruitsBaseSubViewController.swift in Sources */,
-				864430851E9A27E400D41BCC /* XFruitsBaseRequest.swift in Sources */,
 				8690FEE11ED178AF0051A16D /* XFShopCartActionBar.swift in Sources */,
 				86E8DF7E1EDBCC90000A489F /* XFButtonExtension.swift in Sources */,
 				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
@@ -629,6 +628,7 @@
 				868613231EAC731200A44338 /* XFruitsNavigationController.swift in Sources */,
 				8644308F1E9A296E00D41BCC /* XFruitsShopCarViewController.swift in Sources */,
 				86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */,
+				860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */,
 				868613211EAC6A5E00A44338 /* XFruitsUserCenterViewController.swift in Sources */,
 				86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */,
 				86A45C741ED121D300772D13 /* XFruitsGoodsInfo.swift in Sources */,
@@ -756,6 +756,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xiaomi.mihome.store.admin.xxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Carthage/Build/iOS/V5Client.framework/**";

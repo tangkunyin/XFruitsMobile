@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func initExternalSDK(){
         V5ClientAgent.initWithSiteId(XFConstants.SDK.V5KF.siteId,
                                      appId: XFConstants.SDK.V5KF.appId) { (status, desc) in
-            print("[V5 Init result] status:\(status) desc:\(desc ?? "desc none")")
+            dPrint("[V5 Init result] status:\(status) desc:\(desc ?? "desc none")")
         }
     }
 

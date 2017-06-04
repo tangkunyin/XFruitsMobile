@@ -139,7 +139,7 @@ class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
     }
 
     func securityEyeClick(sender:UIButton?) {
-        print("eyes")
+        dPrint("eyes")
         let btn = sender
         if (btn?.isSelected)! {
             self.passwordTextField?.isSecureTextEntry  = true
@@ -152,7 +152,7 @@ class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
     
     
     func createAccount(sender:UIButton?) {
-        print("createAccount")
+        dPrint("createAccount")
         let registVC = XFruitsUserRegistViewController()
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.show(registVC, sender: self)

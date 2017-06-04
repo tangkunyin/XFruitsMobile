@@ -45,7 +45,7 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
         
         let pagerView = XFruitsViewPager(source: imageUrls, placeHolder: nil)
         pagerView.pagerDidClicked = {(index:Int) -> Void in
-            print("\(index) 号被点击")
+            dPrint("\(index) 号被点击")
             MBProgressHUD.showError("链接没有准备好呢，小果拾表示骚瑞~")
         }
         
@@ -70,8 +70,18 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
     @objc private func onScanItemClick(){
         
         MBProgressHUD.showMessage("小果拾表示这个功能还没想好怎么做...") {
-            print("扫描：小果拾表示这个功能还没想好怎么做...")
+            dPrint("扫描：小果拾表示这个功能还没想好怎么做...")
         }
+        
+        // test net request
+        
+        XFruitsNetworking().doGet(withUrl: "http://api.10fruits.net/auth/captcha", respObj: nil) { (success, respData) in
+            
+            
+            
+        }
+        
+        
     }
     
     @objc private func onMessageItemClick(){
@@ -83,19 +93,19 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
     
     // MARK: - 客户端连接成功
     func onClientViewConnect() {
-        print("客户端连接成功")
+        dPrint("客户端连接成功")
     }
     
     //MARK: - 会话即将关闭
     func clientViewDidDisappear() {
-        print("客户即将离开聊天")
+        dPrint("客户即将离开聊天")
     }
     
     //MARK: - 用户将要发送消息
     func userWillSend(_ message: V5Message) -> V5Message {
         
         // 此处可进行拦截，将客户的会话记录到我方数据库
-        print("用户说：\(message.getDefaultContent())")
+        dPrint("用户说：\(message.getDefaultContent())")
         
         return message
     }
@@ -103,7 +113,7 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
     // MARK: - 用户在会话中收到消息
     func clientDidReceive(_ message: V5Message) {
         // 我们的客服说了啥
-        print("客服说：\(message.getDefaultContent())")
+        dPrint("客服说：\(message.getDefaultContent())")
     }
     
     // MARK: - 客户服务状态改变(可在此相应改变对话页标题)

@@ -17,7 +17,7 @@ class XFDetailDescriptionView: UIView {
     let descSource:Array<String> = ["default-detailIntroduce","default-apple"]
     
     deinit {
-        print("XFDetailDescriptionView deinit...")
+        dPrint("XFDetailDescriptionView deinit...")
     }
     
     lazy var titleLabel: UILabel = {

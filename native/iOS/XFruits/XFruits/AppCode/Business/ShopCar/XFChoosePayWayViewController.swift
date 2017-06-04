@@ -52,8 +52,8 @@ class XFChoosePayWayViewController: XFruitsBaseViewController ,UITableViewDataSo
         let section = indexPath.section
         let row = indexPath.row
         
-        print(section)
-        print(row)
+        dPrint(section)
+        dPrint(row)
         
         if section == 0  {
             if row == 0 {

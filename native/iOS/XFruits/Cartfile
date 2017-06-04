@@ -6,7 +6,7 @@ github "onevcat/APNGKit" ~> 0.6
 github "SwiftyJSON/SwiftyJSON" ~> 3.1.4
 github "stephencelis/SQLite.swift" ~> 0.11.3
 github "SwiftyJSON/Alamofire-SwiftyJSON" "master"
-
+github "alibaba/HandyJSON" ~> 1.7.1
 
 # import obj-c or not pure swift libs
 github "jdg/MBProgressHUD" ~> 1.0.0

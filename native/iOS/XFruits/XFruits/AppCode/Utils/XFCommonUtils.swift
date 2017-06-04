@@ -11,6 +11,13 @@ import UIKit
 import SwiftyJSON
 
 
+/// 调试日志输出，正式版会自动屏蔽Log打印
+func dPrint(_ item: Any) {
+    #if DEBUG
+    debugPrint(item)
+    #endif
+}
+
 /// 当前时间的时间戳
 func currentTimestamp() ->Int {
     let now = Date()

@@ -42,7 +42,7 @@ class XFCategoryHeadSizer: UIView {
     
     @objc private func sizerChangedAction(_ segment:UISegmentedControl){
         let status:Int = segment.selectedSegmentIndex + 1;
-        print("\(status)")
+        dPrint("\(status)")
     }
 
 }
