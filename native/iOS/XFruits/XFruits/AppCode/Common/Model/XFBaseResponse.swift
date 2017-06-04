@@ -8,14 +8,12 @@
 
 import HandyJSON
 
-class XFBaseResponse: HandyJSON {
+struct XFBaseResponse: HandyJSON {
 
-    public var code:Int?
+    public var code:XFHttpStatusCode = .success
     
-    var msg:String?
+    var msg:String = ""
     
     var data:Any?
-    
-    public required init() {}
-    
+        
 }

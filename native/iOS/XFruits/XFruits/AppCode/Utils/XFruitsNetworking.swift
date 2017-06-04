@@ -24,7 +24,7 @@ public enum XFNetStateCode {
 
 
 // HTTP返回码
-public enum XFHttpStatusCode:Int {
+public enum XFHttpStatusCode:Int,HandyJSONEnum {
     //通用状态码
     case success = 200           //请求成功
     case notModify = 304         //资源未修改
@@ -115,36 +115,29 @@ public class XFruitsNetworking: NSObject {
             completion(false, nil)
             return
         }
-                
-        Alamofire.request(url,
-                          method: method,
-                          parameters: params,
-                          encoding: JSONEncoding.default,
-                          headers: headers).responseSwiftyJSON { (respJSON) in
-                            if let error = respJSON.error {
+        
+        Alamofire.request(url, method: method, parameters: params, encoding: URLEncoding.default,
+                          headers: headers).responseSwiftyJSON { (dataResponse) in
+                            switch dataResponse.result {
+                            case .success(let value):
+                                if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: value.rawString()) {
+                                    switch obj.code {
+                                    case .success:
+                                        dPrint(obj.data)
+                                    case .forbidden:
+                                        dPrint("禁止访问")
+                                    default:
+                                        dPrint("未知")
+                                    }
+                                    
+                                    
+                                }
+                            case .failure(let error):
                                 dPrint(error)
                                 completion(false, error)
-                                return
-                            }
-                            if let request = respJSON.request,
-                                let response = respJSON.response,
-                                 let value = respJSON.value {
-                                
-                                
-                                dPrint(request)
-                                dPrint(response)
-                                dPrint(value)
-                                
-//                                if let obj = XFBaseResponse.deserialize(from: value) {
-//                                
-//                                    
-//                                }
-                                
-                                
-                                
                             }
         }
-        
     }
     
+
 }
