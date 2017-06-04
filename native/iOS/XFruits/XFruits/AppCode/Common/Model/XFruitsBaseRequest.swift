@@ -10,4 +10,12 @@ import UIKit
 
 class XFruitsBaseRequest: NSObject {
 
+    public var code:XFHttpStatusCode?
+    
+    var msg:String?
+    
+    var data:Any?
+ 
+    public required override init() {}
+    
 }
