@@ -12,6 +12,7 @@
 		165608D81EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D51EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift */; };
 		165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */; };
 		165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */; };
+		16582DC31EE4F8D400A58846 /* XFEditMyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */; };
 		1668B0591ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668B0581ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift */; };
 		1668B05B1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668B05A1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift */; };
 		16DCE3C11EDA68480047F559 /* CityChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DCE3C01EDA68480047F559 /* CityChooseView.swift */; };
@@ -90,6 +91,7 @@
 		165608D51EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFPayWayBillInfoTableViewCell.swift; sourceTree = "<group>"; };
 		165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFTPayModeableViewCell.swift; sourceTree = "<group>"; };
 		165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFChoosePayWayViewController.swift; sourceTree = "<group>"; };
+		16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEditMyAddressView.swift; sourceTree = "<group>"; };
 		1668B0581ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift; sourceTree = "<group>"; };
 		1668B05A1ECF139F00ECBE71 /* XFruitsAddressesCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsAddressesCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		16DCE3C01EDA68480047F559 /* CityChooseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityChooseView.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 		86EC80EA1EC72D2E009AB47D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */,
 				16DCE3C01EDA68480047F559 /* CityChooseView.swift */,
 				86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */,
 				86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */,
@@ -621,6 +624,7 @@
 				86E8DF781EDAB0D6000A489F /* XFDetailDescriptionView.swift in Sources */,
 				1668B0591ECE805A00ECBE71 /* XFruitsAddressTextViewWithPlaceHolderTableViewCell.swift in Sources */,
 				86E8DF6C1EDAA901000A489F /* XFruitsDetailViewController.swift in Sources */,
+				16582DC31EE4F8D400A58846 /* XFEditMyAddressView.swift in Sources */,
 				864430891E9A28F400D41BCC /* XFruitsUserRegistViewController.swift in Sources */,
 				165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */,
 				86E8DF761EDAB0C9000A489F /* XFDetailCommentView.swift in Sources */,

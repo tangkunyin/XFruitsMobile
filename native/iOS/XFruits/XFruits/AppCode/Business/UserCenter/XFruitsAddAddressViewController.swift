@@ -18,30 +18,56 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.title = "新增地址"
-        let addressesTable: UITableView! = {
-            let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.register(XFruitsAddAddressTableViewCell.self, forCellReuseIdentifier: "XFruitsAddAddressTableViewCell")
-            return tableView
-        }()
-      
-        self.view.addSubview(addressesTable)
-        addressesTable.snp.makeConstraints({ (make) in
+        
+        
+        // 测试用。
+        let eidtAddressView = XFEditMyAddressView()
+        self.view.addSubview(eidtAddressView)
+        
+        eidtAddressView.snp.makeConstraints({ (make) in
             make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         })
         
-        self.leftTipArray  = ["收货人","联系电话","收货地址"]
         
-        // 导航栏右侧保存按钮
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "保存", style: .plain, target: self, action: #selector(saveAddress(sender:)))
         
-        // Do any additional setup after loading the view.
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        let addressesTable: UITableView! = {
+//            let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
+//            tableView.delegate = self
+//            tableView.dataSource = self
+//            tableView.register(XFruitsAddAddressTableViewCell.self, forCellReuseIdentifier: "XFruitsAddAddressTableViewCell")
+//            return tableView
+//        }()
+//      
+//       self.view.addSubview(addressesTable)
+//        addressesTable.snp.makeConstraints({ (make) in
+//            make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+//        })
+//        
+//        self.leftTipArray  = ["收货人","联系电话","收货地址"]
+//        
+//        // 导航栏右侧保存按钮
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "保存", style: .plain, target: self, action: #selector(saveAddress(sender:)))
+        
+        
     }
     
     // 导航栏右侧按钮-保存-触发的事件
     func saveAddress(sender:UIButton?) {
-        dPrint("save")
+        print("save")
         
     }
     
@@ -69,8 +95,7 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
         let section = indexPath.section
         let row = indexPath.row
         
-        dPrint(section)
-        dPrint(row)
+        
         let identifier = "XFruitsAddAddressTableViewCell"
         let cell = XFruitsAddAddressTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
         
@@ -106,12 +131,12 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
         let section = indexPath.section
         let row = indexPath.row
         if row == 2 {
-            dPrint("开始选择三级联动")
+            print("开始选择三级联动")
             let cityView = CityChooseView.init(frame: self.view.bounds)
             
             cityView.myClosure = { (provinceStr: String, cityStr: String , areaStr: String) -> Void in
                 
-                dPrint(provinceStr+cityStr+areaStr)
+                print(provinceStr+cityStr+areaStr)
                 
                 let inputAddress = self.view.viewWithTag(1000) as! UITextField
                 inputAddress.text = provinceStr + " " + cityStr + " " + areaStr

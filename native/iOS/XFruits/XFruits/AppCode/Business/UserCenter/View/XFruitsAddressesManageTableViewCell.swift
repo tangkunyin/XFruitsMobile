@@ -78,7 +78,7 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
      
         // 编辑按钮
         self.editAddressBtn = UIButton.init(type:.custom)
-        self.editAddressBtn?.setImage(UIImage.imageWithNamed("myScore"), for: .normal)
+        self.editAddressBtn?.setImage(UIImage.imageWithNamed("edit"), for: .normal)
         addSubview(self.editAddressBtn!)
         
         self.editAddressBtn?.snp.makeConstraints({ (make) in

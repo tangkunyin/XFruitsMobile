@@ -25,7 +25,7 @@ class MyBillTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollection
     
     lazy var collectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width:60,height:60)
+        layout.itemSize = CGSize(width:XFConstants.UI.deviceWidth/5,height:XFConstants.UI.deviceWidth/5)
         layout.scrollDirection = .horizontal
         //每个Item之间最小的间距
         layout.minimumInteritemSpacing = 10
@@ -45,7 +45,7 @@ class MyBillTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollection
   
     
     let tipLabelArray = ["待付款","待发货","待收货","待评价"]
-    
+    let tipBtnImage = ["myWallet","waitSend","waitReceive","waitComment"]
     func  setUpUI() {
         
         addSubview(collectionView)
@@ -67,6 +67,7 @@ class MyBillTableViewCell: UITableViewCell,UICollectionViewDelegate,UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! FourBillCollectionViewCell;
         let row = indexPath.row
         cell.typeDescLabel.text = tipLabelArray[row]
+        cell.typeBtn.setImage(UIImage.imageWithNamed(tipBtnImage[row]), for: .normal)
         return cell;
     }
     

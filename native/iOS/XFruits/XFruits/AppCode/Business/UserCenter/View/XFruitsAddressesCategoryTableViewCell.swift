@@ -105,41 +105,6 @@ class XFruitsAddressesCategoryTableViewCell: UITableViewCell ,UICollectionViewDe
         return CGSize(width:20 + widthForLabel(text: cate as NSString, font: 10),height:22)
     }
 
-    
-    
-//    - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-//    {
-//    return self.dataArray.count;
-//    }
-//    
-//    - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//    {
-//    ListModel *model = self.dataArray[indexPath.row];
-//    CGFloat width = [self widthForLabel:[NSString stringWithFormat:@"%@",model.title] fontSize:16];
-//    return CGSizeMake(width+10,22);
-//    }
-//    - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-//    {
-//    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"jin" forIndexPath:indexPath];
-//    ListModel *model = self.dataArray[indexPath.row];
-//    UILabel *label = [[UILabel alloc] init];
-//    label.text = [NSString stringWithFormat:@"%@",model.title];
-//    label.frame = CGRectMake(0, 0, ([self widthForLabel:label.text fontSize:16] + 10), 22);
-//    label.font = [UIFont systemFontOfSize:16];
-//    label.layer.cornerRadius = 2.0;
-//    label.layer.masksToBounds = YES;
-//    label.layer.borderWidth = 1.0;
-//    label.textAlignment = NSTextAlignmentCenter;
-//    label.textColor = [UIColor colorWithHexString:model.color];
-//    label.layer.borderColor = [UIColor colorWithHexString:model.color].CGColor;
-//    [cell.contentView addSubview:label];
-//    return cell;
-//    }
-//    
-//    - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//    {
-//    
-//    }
-
+     
 
 }

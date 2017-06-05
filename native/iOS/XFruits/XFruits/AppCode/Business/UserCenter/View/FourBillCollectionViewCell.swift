@@ -14,7 +14,7 @@ class FourBillCollectionViewCell: UICollectionViewCell {
     
     lazy var typeBtn:UIButton = {
         let typeBtn = UIButton()
-        typeBtn.setImage(UIImage(named:"apple"), for: .normal)
+//        typeBtn.setImage(UIImage(named:"apple"), for: .normal)
         return typeBtn
     }()
     
@@ -43,14 +43,14 @@ class FourBillCollectionViewCell: UICollectionViewCell {
 
         
         typeBtn.snp.makeConstraints({ (make) in
-            make.edges.equalTo(self).inset(UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0))
+            make.edges.equalTo(self).inset(UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0))
         })
         
         typeDescLabel.snp.makeConstraints({ (make) in
             make.bottom.equalTo(snp.bottom).offset(0)
             make.left.equalTo(snp.left).offset(0)
             make.right.equalTo(snp.right).offset(0)
-            make.top.equalTo(typeBtn.snp.bottom).offset(10)
+            make.top.equalTo(typeBtn.snp.bottom).offset(0)
         })
     }
 }

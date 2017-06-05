@@ -23,7 +23,7 @@ class UserCenterAvatarCell: UITableViewCell {
     
     lazy var avatarBtn:UIButton = {
         let avatarBtn = UIButton()
-        avatarBtn.setImage(UIImage(named:"apple"), for: .normal)
+        avatarBtn.setImage(UIImage(named:"avatar"), for: .normal)
         return avatarBtn
     }()
     
@@ -54,17 +54,20 @@ class UserCenterAvatarCell: UITableViewCell {
         
         addSubview(avatarBtn)
         avatarBtn.snp.makeConstraints({ (make) in
-            make.top.equalTo(snp.top).offset(10)
+//            make.top.equalTo(snp.top).offset(10)
             make.left.equalTo(snp.left).offset(10)
-            make.height.equalTo(83)
-            make.width.equalTo(83)
+            make.width.height.equalTo(70)
+           
+            make.centerY.equalTo(self)
         })
-        
+        avatarBtn.layer.cornerRadius = 35
+        avatarBtn.layer.masksToBounds = true
+
         addSubview(userNameLabel)
         
         userNameLabel.snp.makeConstraints({ (make) in
-            make.top.equalTo(snp.top).offset(20)
-            make.left.equalTo(avatarBtn.snp.right).offset(0)
+            make.centerY.equalTo(self).offset(-10)
+            make.left.equalTo(avatarBtn.snp.right).offset(15)
  
         })
         
@@ -73,14 +76,14 @@ class UserCenterAvatarCell: UITableViewCell {
         
         identityLevelImageView.snp.makeConstraints({ (make) in
             make.top.equalTo(userNameLabel.snp.bottom).offset(15)
-            make.left.equalTo(avatarBtn.snp.right).offset(5)
+            make.left.equalTo(avatarBtn.snp.right).offset(15)
         })
         
       
         addSubview(identityDescriptionLabel)
         
         identityDescriptionLabel.snp.makeConstraints({ (make) in
-            make.top.equalTo(userNameLabel.snp.bottom).offset(10)
+            make.top.equalTo(userNameLabel.snp.bottom).offset(15)
             make.left.equalTo(identityLevelImageView.snp.right).offset(5)
         })
     }

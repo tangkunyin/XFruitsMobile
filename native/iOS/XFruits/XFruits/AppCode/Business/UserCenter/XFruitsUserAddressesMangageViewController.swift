@@ -32,7 +32,7 @@ class XFruitsUserAddressesMangageViewController: XFruitsBaseSubViewController,UI
         // 导航栏右侧添加地址按钮
         let addAddressBtn  = UIButton.init(type:.custom)
         addAddressBtn.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-        addAddressBtn.setImage(UIImage.imageWithNamed("myScore"), for: .normal)
+        addAddressBtn.setImage(UIImage.imageWithNamed("add"), for: .normal)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: addAddressBtn)
             
         addAddressBtn.addTarget(self, action: #selector(addAddressEvent(sender:)), for:.touchUpInside)
@@ -44,7 +44,7 @@ class XFruitsUserAddressesMangageViewController: XFruitsBaseSubViewController,UI
     
     
     func addAddressEvent(sender:UIButton?) {
-        dPrint("eyes")
+        print("eyes")
         let addAddressVC = XFruitsAddAddressViewController()
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.show(addAddressVC, sender: self)
@@ -72,8 +72,7 @@ class XFruitsUserAddressesMangageViewController: XFruitsBaseSubViewController,UI
         let section = indexPath.section
         let row = indexPath.row
         
-        dPrint(section)
-        dPrint(row)
+      
         let identifier = "addressManageCell"
         let cell = XFruitsAddressesManageTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
         

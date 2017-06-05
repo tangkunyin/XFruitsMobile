@@ -32,10 +32,11 @@ class XFruitsUserCenterViewController: XFruitsBaseViewController ,UITableViewDat
         })
         
         secondGroupTitleArray  =  ["我的积分","我的优惠券","我的红包","地址管理"]
-        secondGroupIconArray = ["myScore","myScore","myScore","myScore"]
-       
+        secondGroupIconArray = ["myScore","myDiscountCoupon","myRedPacket","myLocation"]
+        
+        
         thirdGroupTitleArray = ["联系客服","吐槽&建议","关于我们"]
-        thirdGourpIconArray = ["myScore","myScore","myScore"]
+        thirdGourpIconArray = ["myService","myAdvice","aboutme"]
         
         
         
@@ -77,13 +78,12 @@ class XFruitsUserCenterViewController: XFruitsBaseViewController ,UITableViewDat
         let section = indexPath.section
         let row = indexPath.row
         
-        dPrint(section)
-        dPrint(row)
+        
         
         if section == 0 {
             let identifier = "mainCell"
             let cell = UserCenterAvatarCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
-        
+            
             return cell
         }
             
@@ -93,15 +93,15 @@ class XFruitsUserCenterViewController: XFruitsBaseViewController ,UITableViewDat
                 let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
                 cell.textLabel?.text = "我的订单"
                 cell.textLabel?.textColor = colorWithRGB(83, g: 83, b: 83)
-                cell.imageView?.image = UIImage.imageWithNamed("myScore")
-
+                cell.imageView?.image = UIImage.imageWithNamed("mybill")
+                
                 cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
                 cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
                 
                 return cell
             }
-            
-            
+                
+                
             else {
                 let identifier = "billCell"
                 let cell = MyBillTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
@@ -114,13 +114,14 @@ class XFruitsUserCenterViewController: XFruitsBaseViewController ,UITableViewDat
             let identifier = "commonCell"
             let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
             cell.textLabel?.text = secondGroupTitleArray![row] as? String
+            
             cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
             cell.textLabel?.textColor = colorWithRGB(83, g: 83, b: 83)
             cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             cell.imageView?.image = UIImage.imageWithNamed((secondGroupIconArray![row] as? String)!)
             return cell
         }
-
+            
         else {
             let identifier = "commonCell"
             let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
@@ -131,7 +132,7 @@ class XFruitsUserCenterViewController: XFruitsBaseViewController ,UITableViewDat
             cell.imageView?.image = UIImage.imageWithNamed((thirdGourpIconArray![row] as? String)!)
             return cell
         }
-       
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -155,7 +156,7 @@ class XFruitsUserCenterViewController: XFruitsBaseViewController ,UITableViewDat
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 6
     }
-
+    
     
     
 }
