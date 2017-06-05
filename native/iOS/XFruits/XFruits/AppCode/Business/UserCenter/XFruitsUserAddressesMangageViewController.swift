@@ -44,7 +44,7 @@ class XFruitsUserAddressesMangageViewController: XFruitsBaseSubViewController,UI
     
     
     func addAddressEvent(sender:UIButton?) {
-        print("eyes")
+        dPrint("eyes")
         let addAddressVC = XFruitsAddAddressViewController()
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.show(addAddressVC, sender: self)
@@ -71,8 +71,9 @@ class XFruitsUserAddressesMangageViewController: XFruitsBaseSubViewController,UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let section = indexPath.section
         let row = indexPath.row
-        
-      
+        dPrint(section)
+        dPrint(row)
+
         let identifier = "addressManageCell"
         let cell = XFruitsAddressesManageTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
         

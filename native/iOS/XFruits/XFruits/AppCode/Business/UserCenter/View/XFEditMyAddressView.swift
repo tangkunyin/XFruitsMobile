@@ -22,7 +22,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         let leftTipReceiveLabel = UILabel.init()
         leftTipReceiveLabel.text = "收货人"
         leftTipReceiveLabel.textColor = colorWithRGB(153, g: 153, b: 153)
-        leftTipReceiveLabel.font  = UIFont.systemFont(ofSize: 16)
+        leftTipReceiveLabel.font  = sysFontWithSize(16)
         leftTipReceiveLabel.textAlignment = NSTextAlignment.left
         
         return leftTipReceiveLabel
@@ -32,8 +32,8 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     lazy var receiveInput:UITextField = {
        let receiveInput = UITextField.init()
         receiveInput.text = "赵健"
-        receiveInput.textColor  = colorWithRGB(102, g: 102, b: 102)
-        receiveInput.font = UIFont.systemFont(ofSize: 16)
+        receiveInput.textColor  = XFConstants.Color.darkGray
+        receiveInput.font = sysFontWithSize(16)
       return receiveInput
 
     }()
@@ -44,7 +44,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         let leftMobileLabel = UILabel.init()
         leftMobileLabel.text = "联系电话"
         leftMobileLabel.textColor = colorWithRGB(153, g: 153, b: 153)
-        leftMobileLabel.font  = UIFont.systemFont(ofSize: 16)
+        leftMobileLabel.font  = sysFontWithSize(16)
         leftMobileLabel.textAlignment = NSTextAlignment.left
         
         return leftMobileLabel
@@ -55,8 +55,8 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         // 联系电话输入框
         let mobileInput = UITextField.init()
         mobileInput.text = "18658054127"
-        mobileInput.textColor  = colorWithRGB(102, g: 102, b: 102)
-        mobileInput.font = UIFont.systemFont(ofSize: 16)
+        mobileInput.textColor  = XFConstants.Color.darkGray
+        mobileInput.font = sysFontWithSize(16)
         return mobileInput
     }()
     
@@ -66,7 +66,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         let leftAddressLabel = UILabel.init()
         leftAddressLabel.text = "收货地址"
         leftAddressLabel.textColor = colorWithRGB(153, g: 153, b: 153)
-        leftAddressLabel.font  = UIFont.systemFont(ofSize: 16)
+        leftAddressLabel.font  = sysFontWithSize(16)
         leftAddressLabel.textAlignment = NSTextAlignment.left
         
         return leftAddressLabel
@@ -77,8 +77,8 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
        let addressChooseLabel  = UILabel.init()
         addressChooseLabel.text = "内蒙古兴安盟扎赉特旗"
       
-        addressChooseLabel.textColor  = colorWithRGB(102, g: 102, b: 102)
-       addressChooseLabel.font = UIFont.systemFont(ofSize: 16)
+        addressChooseLabel.textColor  = XFConstants.Color.darkGray
+       addressChooseLabel.font = sysFontWithSize(16)
         return addressChooseLabel
     }()
     
@@ -99,8 +99,6 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         weak var weakSelf = self
         cityView.myClosure = { (provinceStr: String, cityStr: String , areaStr: String) -> Void in
             
-            print(provinceStr+cityStr+areaStr)
-
             weakSelf?.addressChooseLabel.text = provinceStr + " " + cityStr + " " + areaStr
             
         }
@@ -115,7 +113,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         let descAddress = UITextView()
         descAddress.delegate = self
 
-        descAddress.font = UIFont.systemFont(ofSize: 16)
+        descAddress.font = sysFontWithSize(16)
         descAddress.isScrollEnabled = false
         return descAddress
         
@@ -141,11 +139,11 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     }()
     
     lazy var placeHolderLabel : UILabel  = {
-        let        placeHolderLabel = UILabel()
-                placeHolderLabel.textColor = colorWithRGB(153, g: 153, b: 153)
-                placeHolderLabel.text = "详细地址（具体到门牌号）"
-                placeHolderLabel.font = UIFont.systemFont(ofSize: 14)
-            return placeHolderLabel
+        let placeHolderLabel = UILabel()
+        placeHolderLabel.textColor = colorWithRGB(153, g: 153, b: 153)
+        placeHolderLabel.text = "详细地址（具体到门牌号）"
+        placeHolderLabel.font = sysFontWithSize(14)
+        return placeHolderLabel
     }()
     
  
@@ -361,22 +359,22 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         
         let label = UILabel.init()
         label.text = categoryArray[indexPath.row]
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = sysFontWithSize(10)
         
         label.frame =  CGRect(x:0, y:20, width: 20 + widthForLabel(text: label.text! as NSString, font: 10), height:22)
         label.layer.cornerRadius = 10.0
         label.layer.masksToBounds = true
         label.textAlignment = .center
-        label.textColor = colorWithRGB(255, g: 102, b: 102)
+        label.textColor = XFConstants.Color.salmon
         
-        label.layer.borderColor = colorWithRGB(255, g: 102, b: 102).cgColor
+        label.layer.borderColor = XFConstants.Color.salmon.cgColor
         label.layer.borderWidth = 0.5
         cell.contentView.addSubview(label)
         return cell;
     }
     
     func widthForLabel(text:NSString ,font :CGFloat) -> CGFloat {
-        let size = text.size(attributes:[NSFontAttributeName:UIFont.systemFont(ofSize: font)])
+        let size = text.size(attributes:[NSFontAttributeName:sysFontWithSize(font)])
         return size.width
     }
     

@@ -40,7 +40,7 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
         // 用户名
         self.userNameLabel = UILabel.init()
         self.userNameLabel?.text = "姜小码"
-        self.userNameLabel?.textColor = colorWithRGB(102, g: 102, b: 102)
+        self.userNameLabel?.textColor = XFConstants.Color.darkGray
         self.userNameLabel?.font  = UIFont.systemFont(ofSize: 14)
         self.userNameLabel?.numberOfLines = 0
         addSubview(self.userNameLabel!)
@@ -93,8 +93,8 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
         // 手机号
         self.mobileLabel = UILabel.init()
         self.mobileLabel?.text = "18658054127"
-        self.mobileLabel?.textColor = colorWithRGB(102, g: 102, b: 102)
-        self.mobileLabel?.font  = UIFont.systemFont(ofSize: 14)
+        self.mobileLabel?.textColor = XFConstants.Color.darkGray
+        self.mobileLabel?.font  =  UIFont.systemFont(ofSize: 14)
         
         addSubview(self.mobileLabel!)
         self.mobileLabel?.textAlignment = NSTextAlignment.left
@@ -112,7 +112,7 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
          // 地址
          self.addressLabel = UILabel.init()
          self.addressLabel?.text = "海淀区农大南路厢黄旗远东青年公寓393"
-         self.addressLabel?.textColor = colorWithRGB(102, g: 102, b: 102)
+         self.addressLabel?.textColor = XFConstants.Color.darkGray
          self.addressLabel?.font  = UIFont.systemFont(ofSize: 12)
  
          addSubview(self.addressLabel!)

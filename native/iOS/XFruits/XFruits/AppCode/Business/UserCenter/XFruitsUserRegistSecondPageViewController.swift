@@ -65,7 +65,7 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
         // 注册按钮
         self.registBtn = UIButton.init(type: .custom)
         self.registBtn?.setTitle("注册", for: .normal)
-        self.registBtn?.backgroundColor = colorWithRGB(255, g: 102, b: 102)
+        self.registBtn?.backgroundColor = XFConstants.Color.salmon
         self.registBtn?.titleLabel?.textColor = UIColor.white
         self.view.addSubview(self.registBtn!)
         self.registBtn?.layer.cornerRadius = 15

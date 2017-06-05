@@ -53,7 +53,7 @@ class CityChooseView: UIView,  UIPickerViewDelegate , UIPickerViewDataSource {
         btn.setTitle("取消", for: UIControlState.normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         btn.layer.cornerRadius = 5
-        btn.setTitleColor(colorWithRGB(102, g: 102, b: 102), for: .normal)
+        btn.setTitleColor(XFConstants.Color.darkGray, for: .normal)
 
 //        btn.backgroundColor = UIColor.orange
         btn.addTarget(self, action: #selector(cancleBtnClick), for: UIControlEvents.touchUpInside)
@@ -66,7 +66,7 @@ class CityChooseView: UIView,  UIPickerViewDelegate , UIPickerViewDataSource {
         btn.setTitle("确定", for: UIControlState.normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         btn.layer.cornerRadius = 5
-        btn.setTitleColor(colorWithRGB(102, g: 102, b: 102), for: .normal)
+        btn.setTitleColor(XFConstants.Color.darkGray, for: .normal)
 //        btn.backgroundColor = UIColor.orange
         btn.addTarget(self, action: #selector(sureBtnClick), for: UIControlEvents.touchUpInside)
 

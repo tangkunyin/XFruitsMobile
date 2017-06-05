@@ -67,7 +67,7 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
     
     // 导航栏右侧按钮-保存-触发的事件
     func saveAddress(sender:UIButton?) {
-        print("save")
+        dPrint("save")
         
     }
     
@@ -94,6 +94,7 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let section = indexPath.section
         let row = indexPath.row
+        dPrint(section)
         
         
         let identifier = "XFruitsAddAddressTableViewCell"
@@ -130,13 +131,14 @@ class XFruitsAddAddressViewController: XFruitsBaseSubViewController ,UITableView
         tableView.deselectRow(at: indexPath, animated: true)
         let section = indexPath.section
         let row = indexPath.row
+        dPrint(section)
         if row == 2 {
-            print("开始选择三级联动")
+            dPrint("开始选择三级联动")
             let cityView = CityChooseView.init(frame: self.view.bounds)
             
             cityView.myClosure = { (provinceStr: String, cityStr: String , areaStr: String) -> Void in
                 
-                print(provinceStr+cityStr+areaStr)
+                dPrint(provinceStr+cityStr+areaStr)
                 
                 let inputAddress = self.view.viewWithTag(1000) as! UITextField
                 inputAddress.text = provinceStr + " " + cityStr + " " + areaStr

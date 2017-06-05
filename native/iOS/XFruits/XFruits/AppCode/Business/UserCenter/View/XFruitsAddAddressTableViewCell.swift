@@ -50,7 +50,7 @@ class XFruitsAddAddressTableViewCell: UITableViewCell {
 //        self.inputContentTextFiled?.text = "测试"
         addSubview(self.inputContentTextFiled!)
 
-        inputContentTextFiled?.textColor  = colorWithRGB(102, g: 102, b: 102)
+        inputContentTextFiled?.textColor  = XFConstants.Color.darkGray
         inputContentTextFiled?.font = UIFont.systemFont(ofSize: 16)
         inputContentTextFiled?.snp.makeConstraints({ (make) in
             make.top.equalTo(self.snp.top).offset(12)

@@ -85,9 +85,9 @@ class XFruitsAddressesCategoryTableViewCell: UITableViewCell ,UICollectionViewDe
         label.layer.cornerRadius = 10.0
         label.layer.masksToBounds = true
         label.textAlignment = .center
-        label.textColor = colorWithRGB(255, g: 102, b: 102)
+        label.textColor = XFConstants.Color.salmon
 
-        label.layer.borderColor = colorWithRGB(255, g: 102, b: 102).cgColor
+        label.layer.borderColor = XFConstants.Color.salmon.cgColor
         label.layer.borderWidth = 0.5
         cell.contentView.addSubview(label)
         return cell;

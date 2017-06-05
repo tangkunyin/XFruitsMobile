@@ -80,7 +80,7 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
         // 下一步按钮
         self.nextStepBtn = UIButton.init(type: .custom)
         self.nextStepBtn?.setTitle("下一步", for: .normal)
-        self.nextStepBtn?.backgroundColor = colorWithRGB(255, g: 102, b: 102)
+        self.nextStepBtn?.backgroundColor = XFConstants.Color.salmon
         self.nextStepBtn?.titleLabel?.textColor = UIColor.white
         self.view.addSubview(self.nextStepBtn!)
         self.nextStepBtn?.layer.cornerRadius = 15

@@ -88,7 +88,7 @@ class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
        // 登录按钮
         self.loginBtn = UIButton.init(type: .custom)
         self.loginBtn?.setTitle("登录", for: .normal)
-        self.loginBtn?.backgroundColor = colorWithRGB(255, g: 102, b: 102)
+        self.loginBtn?.backgroundColor = XFConstants.Color.salmon
         self.loginBtn?.titleLabel?.textColor = UIColor.white
         self.view.addSubview(self.loginBtn!)
         self.loginBtn?.layer.cornerRadius = 15
