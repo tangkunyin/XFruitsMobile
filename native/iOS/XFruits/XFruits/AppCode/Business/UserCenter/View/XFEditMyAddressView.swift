@@ -11,6 +11,9 @@ import UIKit
 /// 新增或编辑地址
 class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UITextViewDelegate{
     
+    // 声明闭包
+//    typealias inputClosureType = (String)-> Void
+    
     let categoryArray = ["老婆家","丈母娘家","前女友家","前男友家","路人家~","A家","老婆婆1家","丈母娘3家","前女友6家","前男友家","路人甲家~","家","老婆婆家","丈母娘家","家","前3男友家","路人甲家~","家","老婆婆家","丈母娘家","前女友家","前男友家","路人甲家~","家","老婆婆家","丈母娘家","前3女友家","前男友家","路人3甲家~","家","老婆婆家","丈母娘家","前女友家","前男友家","路人甲家~","家","老婆婆家","丈母娘家","前女友家","前男友家","路人4甲家~","家","老婆婆家","丈母娘家","前女友家","前男友家","路人甲家~"]
     
     lazy var leftTipReceiveLabel: UILabel = {
@@ -47,6 +50,16 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         return leftMobileLabel
     }()
     
+    
+    lazy var mobileInput :UITextField = {
+        // 联系电话输入框
+        let mobileInput = UITextField.init()
+        mobileInput.text = "18658054127"
+        mobileInput.textColor  = colorWithRGB(102, g: 102, b: 102)
+        mobileInput.font = UIFont.systemFont(ofSize: 16)
+        return mobileInput
+    }()
+    
     lazy var leftAddressLabel: UILabel = {
         
         // 收货地址
@@ -59,12 +72,51 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         return leftAddressLabel
     }()
     
+    
+    lazy var addressChooseLabel:UILabel = {
+       let addressChooseLabel  = UILabel.init()
+        addressChooseLabel.text = "内蒙古兴安盟扎赉特旗"
+      
+        addressChooseLabel.textColor  = colorWithRGB(102, g: 102, b: 102)
+       addressChooseLabel.font = UIFont.systemFont(ofSize: 16)
+        return addressChooseLabel
+    }()
+    
+    
+    
+    // 收货地址透明按钮
+    lazy var addressBtn : UIButton = {
+        let addressBtn = UIButton.init()
+        addressBtn.backgroundColor = UIColor.clear
+        addressBtn.addTarget(self, action: #selector(chooseAddress(_:)), for: .touchUpInside)
+
+        return addressBtn
+    }()
+    
+    
+    @objc private func chooseAddress(_ btn:UIButton){
+        let cityView = CityChooseView.init(frame: self.bounds)
+        weak var weakSelf = self
+        cityView.myClosure = { (provinceStr: String, cityStr: String , areaStr: String) -> Void in
+            
+            print(provinceStr+cityStr+areaStr)
+
+            weakSelf?.addressChooseLabel.text = provinceStr + " " + cityStr + " " + areaStr
+            
+        }
+        self.addSubview(cityView)
+       
+    }
+    
+    
+    
+    
     lazy var addressDescTextView:UITextView = {
         let descAddress = UITextView()
         descAddress.delegate = self
 
         descAddress.font = UIFont.systemFont(ofSize: 16)
-                descAddress.isScrollEnabled = false
+        descAddress.isScrollEnabled = false
         return descAddress
         
     }()
@@ -166,6 +218,15 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             make.height.equalTo(19)
         })
         
+        // 联系电话输入框
+        addSubview(mobileInput)
+        mobileInput.snp.makeConstraints({ (make) in
+            make.top.equalTo(line1.snp.bottom).offset(12)
+            make.left.equalTo(leftMobileLabel.snp.right).offset(13)
+            make.right.equalTo(self.snp.right).offset(-13)
+            //            make.bottom.equalTo(self.snp.bottom).offset(-12)
+            make.height.equalTo(19)
+        })
         
         let line2:UIView = createSeperateLine()
 
@@ -188,6 +249,29 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             make.width.equalTo(70)
             make.height.equalTo(19)
         })
+        
+        
+        // 收货地址内容
+        addSubview(addressChooseLabel)
+        addressChooseLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(line2.snp.bottom).offset(12)
+            make.left.equalTo(leftMobileLabel.snp.right).offset(13)
+            make.right.equalTo(self.snp.right).offset(-13)
+            //            make.bottom.equalTo(self.snp.bottom).offset(-12)
+            make.height.equalTo(19)
+        })
+        
+        
+        // 收货地址透明按钮
+        addSubview( addressBtn)
+        addressBtn.snp.makeConstraints({ (make) in
+            make.top.equalTo(line2.snp.bottom).offset(0)
+            make.left.equalTo(self.snp.left)
+            make.right.equalTo(self.snp.right)
+            make.height.equalTo(45)
+        })
+        
+        
         
         // 第3个分割线
         let line3:UIView = createSeperateLine()
