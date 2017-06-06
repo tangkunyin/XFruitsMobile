@@ -13,9 +13,13 @@ import AlamofireSwiftyJSON
 import SwiftyJSON
 import HandyJSON
 
+
+public typealias XFNetCompletion = ((_ success: Bool, _ respData: Any?)->Void)
+
+
 // 网络状态
 public enum XFNetStateCode {
-    case unKnown
+    case unKnown        //未知网络
     case reachable      //有网络
     case notReachable   //无网络
     case wwan           //无网络
@@ -24,26 +28,61 @@ public enum XFNetStateCode {
 
 
 // HTTP返回码
-public enum XFHttpStatusCode:Int,HandyJSONEnum {
+public enum XFHttpStatus:Int, HandyJSONEnum {
     //通用状态码
-    case success = 200           //请求成功
-    case notModify = 304         //资源未修改
-    case unAuthoriztion = 401    //请求未授权
-    case forbidden = 403         //禁止访问
-    case notFound = 404          //资源不存在
-    case reqMethodError = 405    //请求方法错误。例如要求用POST请求，用了GET
-    case serverError = 500       //服务器内部错误
-    
+    case success = 200
+    case notModify = 304
+    case unAuthoriztion = 401
+    case forbidden = 403
+    case notFound = 404
+    case reqMethodError = 405
+    case serverError = 500
     //自定义状态码(可根据接口实际情况更改)
-    case dataParseError = -1     //数据解析错误
-    case returnNull = 0          //服务返回为空
-    case returnFalse = 1000      //请求失败(可能是未知原因)
-    case returnTrue = 1001       //请求成功
-    case missingArgs = 1002      //请求缺少参数，或参数不符合要求
-    case verifyError = 1003      //验证码错误
-    case missingSign = 1004      //缺少签名或签名字段错误
-    case signError = 1005        //签名错误
-    case uploadError = 1006      //上传文件失败
+    case dataParseError = -1
+    case returnNull = 0
+    case returnFalse = 1000
+    case returnTrue = 1001
+    case missingArgs = 1002
+    case verifyError = 1003
+    case missingSign = 1004
+    case signError = 1005
+    case uploadError = 1006
+    var description: String {
+        switch self {
+        case .success:
+            return "请求成功"
+        case .notModify:
+            return "资源未更改"
+        case .unAuthoriztion:
+            return "请求未授权"
+        case .forbidden:
+            return "禁止访问"
+        case .notFound:
+            return "资源不存在"
+        case .reqMethodError:
+            return "请求方法错误"
+        case .serverError:
+            return "服务器内部错误"
+        case .dataParseError:
+            return "数据解析错误"
+        case .returnNull:
+            return "服务器返回空"
+        case .returnFalse:
+            return "操作失败，返回false"
+        case .returnTrue:
+            return "操作成功，返回true"
+        case .missingArgs:
+            return "参数丢失或不符合接口规范"
+        case .verifyError:
+            return "验证码错误"
+        case .missingSign:
+            return "签名丢失"
+        case .signError:
+            return "签名错误"
+        case .uploadError:
+            return "上传错误"
+        }
+    }
 }
 
 
@@ -92,14 +131,14 @@ public class XFruitsNetworking: NSObject {
 
     public func doGet(withUrl url:String,
                       respObj:AnyClass?,
-                      completion:@escaping (_ success: Bool, _ respData: Any)->Void) {
+                      completion:@escaping XFNetCompletion) {
         self.doRequest(withUrl: url, method: .get, params: nil, respObj: respObj, headers: nil, completion: completion)
     }
     
     public func doPost(withUrl url:String,
                        respObj:AnyClass?,
                        params:Dictionary<String,Any>,
-                       completion:@escaping (_ success: Bool, _ respData: Any)->Void) {
+                       completion:@escaping XFNetCompletion) {
         self.doRequest(withUrl: url, method: .post, params: nil, respObj: respObj, headers: nil, completion: completion)
     }
     
@@ -108,7 +147,7 @@ public class XFruitsNetworking: NSObject {
                           params:Dictionary<String,Any>?,
                           respObj:AnyClass?,
                           headers:Dictionary<String,String>?,
-                          completion:@escaping (_ success: Bool, _ respData: Any?)->Void) {
+                          completion:@escaping XFNetCompletion) {
         
         guard XFNetworkStatus.shareInstance.canReachable() else {
             MBProgressHUD.showError("网络不可用，请检查先~")
@@ -122,15 +161,12 @@ public class XFruitsNetworking: NSObject {
                             case .success(let value):
                                 if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: value.rawString()) {
                                     switch obj.code {
-                                    case .success:
-                                        dPrint(obj.data)
-                                    case .forbidden:
-                                        dPrint("禁止访问")
+                                    case .success,.notModify,.returnTrue:
+                                        completion(true,obj.data)
                                     default:
-                                        dPrint("未知")
+                                        MBProgressHUD.showError(obj.code.description)
+                                        completion(false,nil)
                                     }
-                                    
-                                    
                                 }
                             case .failure(let error):
                                 dPrint(error)

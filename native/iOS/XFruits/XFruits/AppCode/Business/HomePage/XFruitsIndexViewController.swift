@@ -77,7 +77,9 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
         
         XFruitsNetworking().doGet(withUrl: "http://api.10fruits.net/auth/captcha", respObj: nil) { (success, respData) in
             
-            
+            if success {
+                dPrint(respData)
+            }
             
         }
         

@@ -9,8 +9,8 @@
 import HandyJSON
 
 struct XFBaseResponse: HandyJSON {
-
-    public var code:XFHttpStatusCode = .success
+    
+    var code:XFHttpStatus = .success
     
     var msg:String = ""
     
