@@ -129,16 +129,18 @@ public final class XFNetworkStatus: NSObject {
 
 public class XFruitsNetworking: NSObject {
 
-    public func doGet(withUrl url:String,
+    public func doGet(withUri uri:String,
                       respObj:AnyClass?,
                       completion:@escaping XFNetCompletion) {
+        let url = XFConstants.appServer + uri
         self.doRequest(withUrl: url, method: .get, params: nil, respObj: respObj, headers: nil, completion: completion)
     }
     
-    public func doPost(withUrl url:String,
+    public func doPost(withUri uri:String,
                        respObj:AnyClass?,
                        params:Dictionary<String,Any>,
                        completion:@escaping XFNetCompletion) {
+        let url = XFConstants.appServer + uri
         self.doRequest(withUrl: url, method: .post, params: nil, respObj: respObj, headers: nil, completion: completion)
     }
     
