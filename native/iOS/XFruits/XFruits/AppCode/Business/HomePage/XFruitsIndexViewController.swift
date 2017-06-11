@@ -73,17 +73,10 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
             dPrint("扫描：小果拾表示这个功能还没想好怎么做...")
         }
         
-        // test net request
-        
-        XFruitsNetworking().doGet(withUri: "/auth/captcha", respObj: nil) { (success, respData) in
-            
-            if success {
-                dPrint(respData ?? "null data")
-            }
-            
+        // 获取验证码请求测试
+        XFruitsService().getVerifyImage { (data) in
+            dPrint(data)
         }
-        
-        
     }
     
     @objc private func onMessageItemClick(){

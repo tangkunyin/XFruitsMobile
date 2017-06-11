@@ -10,7 +10,7 @@ import UIKit
 
 
 /// 用户模型
-class XFruitsUser: NSObject {
+struct XFruitsUser {
     
     //用户ID
     var userId:String?

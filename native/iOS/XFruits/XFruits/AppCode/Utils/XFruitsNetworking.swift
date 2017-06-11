@@ -129,25 +129,19 @@ public final class XFNetworkStatus: NSObject {
 
 public class XFruitsNetworking: NSObject {
 
-    public func doGet(withUri uri:String,
-                      respObj:AnyClass?,
-                      completion:@escaping XFNetCompletion) {
-        let url = XFConstants.appServer + uri
-        self.doRequest(withUrl: url, method: .get, params: nil, respObj: respObj, headers: nil, completion: completion)
+    public func doGet(withUrl url:String, completion:@escaping XFNetCompletion) {
+        self.doRequest(withUrl: url, method: .get, params: nil, headers: nil, completion: completion)
     }
     
-    public func doPost(withUri uri:String,
-                       respObj:AnyClass?,
+    public func doPost(withUrl url:String,
                        params:Dictionary<String,Any>,
                        completion:@escaping XFNetCompletion) {
-        let url = XFConstants.appServer + uri
-        self.doRequest(withUrl: url, method: .post, params: nil, respObj: respObj, headers: nil, completion: completion)
+        self.doRequest(withUrl: url, method: .post, params: params, headers: nil, completion: completion)
     }
     
     public func doRequest(withUrl url:String,
                           method:Alamofire.HTTPMethod,
                           params:Dictionary<String,Any>?,
-                          respObj:AnyClass?,
                           headers:Dictionary<String,String>?,
                           completion:@escaping XFNetCompletion) {
         
@@ -164,7 +158,7 @@ public class XFruitsNetworking: NSObject {
                                 if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: value.rawString()) {
                                     switch obj.code {
                                     case .success,.notModify,.returnTrue:
-                                        completion(true,obj.data)
+                                        completion(true, obj.data)
                                     default:
                                         MBProgressHUD.showError(obj.code.description)
                                         completion(false,nil)

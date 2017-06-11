@@ -71,6 +71,8 @@
 		86CB2FF01EAB495A009972A8 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE91EAB495A009972A8 /* MBProgressHUD.framework */; };
 		86CB2FF21EAB495A009972A8 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FEB1EAB495A009972A8 /* SnapKit.framework */; };
 		86CB2FF31EAB495A009972A8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FEC1EAB495A009972A8 /* SwiftyJSON.framework */; };
+		86E35BF11EEC9CD400032DD2 /* XFruitsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E35BF01EEC9CD400032DD2 /* XFruitsService.swift */; };
+		86E35BF31EED1B0000032DD2 /* XFruitsVerify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E35BF21EED1B0000032DD2 /* XFruitsVerify.swift */; };
 		86E695201ED6AA35004864A6 /* XFCartUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E6951F1ED6AA35004864A6 /* XFCartUtils.swift */; };
 		86E8DF6C1EDAA901000A489F /* XFruitsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF6B1EDAA901000A489F /* XFruitsDetailViewController.swift */; };
 		86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF731EDAB0BB000A489F /* XFDetailHeaderView.swift */; };
@@ -153,6 +155,8 @@
 		86CB2FE91EAB495A009972A8 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		86CB2FEB1EAB495A009972A8 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		86CB2FEC1EAB495A009972A8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		86E35BF01EEC9CD400032DD2 /* XFruitsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsService.swift; sourceTree = "<group>"; };
+		86E35BF21EED1B0000032DD2 /* XFruitsVerify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsVerify.swift; sourceTree = "<group>"; };
 		86E6951F1ED6AA35004864A6 /* XFCartUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCartUtils.swift; sourceTree = "<group>"; };
 		86E8DF6B1EDAA901000A489F /* XFruitsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsDetailViewController.swift; sourceTree = "<group>"; };
 		86E8DF731EDAB0BB000A489F /* XFDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailHeaderView.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				86A45C6F1ED11B4B00772D13 /* XFruitsUser.swift */,
 				86A45C731ED121D300772D13 /* XFruitsGoodsInfo.swift */,
 				860A43041EE4178000798678 /* XFBaseResponse.swift */,
+				86E35BF21EED1B0000032DD2 /* XFruitsVerify.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				86A45C711ED1209F00772D13 /* XFCommonUtils.swift */,
 				86E6951F1ED6AA35004864A6 /* XFCartUtils.swift */,
 				860A42FF1EE3A58A00798678 /* XFruitsNetworking.swift */,
+				86E35BF01EEC9CD400032DD2 /* XFruitsService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -613,6 +619,7 @@
 				86E695201ED6AA35004864A6 /* XFCartUtils.swift in Sources */,
 				86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */,
 				16DCE3C11EDA68480047F559 /* CityChooseView.swift in Sources */,
+				86E35BF31EED1B0000032DD2 /* XFruitsVerify.swift in Sources */,
 				86A45C701ED11B4B00772D13 /* XFruitsUser.swift in Sources */,
 				86A45C301ECFDBE500772D13 /* XFruitsMBProgressHUD.swift in Sources */,
 				16F6519C1ECAF77800EB477D /* XFruitsUserAddressesMangageViewController.swift in Sources */,
@@ -631,6 +638,7 @@
 				165608D71EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift in Sources */,
 				868613231EAC731200A44338 /* XFruitsNavigationController.swift in Sources */,
 				8644308F1E9A296E00D41BCC /* XFruitsShopCarViewController.swift in Sources */,
+				86E35BF11EEC9CD400032DD2 /* XFruitsService.swift in Sources */,
 				86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */,
 				860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */,
 				868613211EAC6A5E00A44338 /* XFruitsUserCenterViewController.swift in Sources */,

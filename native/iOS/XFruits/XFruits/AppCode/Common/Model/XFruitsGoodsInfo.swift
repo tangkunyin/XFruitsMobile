@@ -9,7 +9,7 @@
 import UIKit
 
 /// 商品数据模型
-class XFruitsGoodsInfo: NSObject {
+struct XFruitsGoodsInfo {
 
     //商品ID
     var gid:String?
