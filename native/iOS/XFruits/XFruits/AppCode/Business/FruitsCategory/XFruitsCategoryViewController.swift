@@ -46,6 +46,7 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
         view.addSubview(cateListView)
         
         makeViewConstrains()
+        
     }
     
     fileprivate func makeViewConstrains(){
@@ -62,8 +63,13 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
     }
 
     @objc private func onAllItemClick(){
-        let allVC = XFAllCategoryListViewController()
-        navigationController?.pushViewController(allVC, animated: true)
+//        let allVC = XFAllCategoryListViewController()
+//        navigationController?.pushViewController(allVC, animated: true)
+        
+        let params:XFruitsParams = ["userId":"","fruit":1000,"order":101,"sequence":1,"page":0,"pageSize":6]
+        XFruitsService().getAllProducts(params: params) { (data) in
+            dPrint(data)
+        }
     }
 
     // MARK: - delegates
