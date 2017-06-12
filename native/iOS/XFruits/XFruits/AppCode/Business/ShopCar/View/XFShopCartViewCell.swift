@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import MBProgressHUD
 
 
 class XFShopCartViewCell: UITableViewCell {
@@ -17,26 +18,31 @@ class XFShopCartViewCell: UITableViewCell {
         let btn = UIButton.init(type: .custom)
         btn.setImage(UIImage.imageWithNamed("std_icon_checkbox_uncheck"), for: .normal)
         btn.setImage(UIImage.imageWithNamed("std_icon_checkbox_check"), for: .selected)
+        btn.addTarget(self, action: #selector(selectChanged(btn:)), for: .touchUpInside)
         return btn
     }()
     
     lazy var plusBtn:UIButton = {
         let btn = UIButton.init(type: .custom)
+        btn.tag = 1
         btn.setTitle("+", for: .normal)
         btn.setTitleColor(XFConstants.Color.darkGray, for: .normal)
         btn.setTitleColor(grayColor(200), for: .disabled)
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
         btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
+        btn.addTarget(self, action: #selector(quantityChanged(btn:)), for: .touchUpInside)
         return btn
     }()
     
     lazy var minusBtn:UIButton = {
         let btn = UIButton.init(type: .custom)
+        btn.tag = -1
         btn.setTitle("-", for: .normal)
         btn.setTitleColor(XFConstants.Color.darkGray, for: .normal)
         btn.setTitleColor(grayColor(200), for: .disabled)
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
         btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
+        btn.addTarget(self, action: #selector(quantityChanged(btn:)), for: .touchUpInside)
         return btn
     }()
     
@@ -83,7 +89,7 @@ class XFShopCartViewCell: UITableViewCell {
         return title
     }()
     
-    lazy var quanityLabel:UILabel = {
+    lazy var quantityLabel:UILabel = {
         let title = UILabel()
         title.textColor = XFConstants.Color.darkGray
         title.font = XFConstants.Font.bottomMenuFont
@@ -92,7 +98,7 @@ class XFShopCartViewCell: UITableViewCell {
         title.adjustsFontSizeToFitWidth = false
         title.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
         title.layer.borderColor = XFConstants.Color.darkGray.cgColor
-        title.text = "2"
+        title.text = "0"
         return title
     }()
     
@@ -106,6 +112,24 @@ class XFShopCartViewCell: UITableViewCell {
         customInit()
     }
     
+    
+    @objc private func selectChanged(btn:UIButton) {
+        btn.isSelected = !btn.isSelected
+    }
+    
+    @objc private func quantityChanged(btn:UIButton) {
+        if let quantity:Int = Int(quantityLabel.text!) {
+            if -1 == btn.tag, quantity > 0 {
+                quantityLabel.text = "\(quantity - 1)"
+            } else if 1 == btn.tag {
+                quantityLabel.text = "\(quantity + 1)"
+            } else {
+                dPrint("果篮数量数量值或按钮的tag值设置有误：\(btn.tag) --- quantity: \(quantity)")
+            }
+        }
+    }
+    
+    // MARK: - make constrains
     fileprivate func customInit(){
         
         addSubview(radioBtn)
@@ -114,7 +138,7 @@ class XFShopCartViewCell: UITableViewCell {
         addSubview(descLabel)
         addSubview(priceLabel)
         addSubview(minusBtn)
-        addSubview(quanityLabel)
+        addSubview(quantityLabel)
         addSubview(plusBtn)
         
         radioBtn.snp.makeConstraints { (make) in
@@ -148,22 +172,22 @@ class XFShopCartViewCell: UITableViewCell {
             make.bottom.equalTo(self.thumbnail.snp.bottom).offset(0)
         }
         minusBtn.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize.init(width: 25, height: 18))
+            make.size.equalTo(CGSize.init(width: 35, height: 25))
             make.left.equalTo(self.priceLabel.snp.right)
-            make.right.equalTo(self.quanityLabel.snp.left)
+            make.right.equalTo(self.quantityLabel.snp.left)
             make.bottom.equalTo(self.priceLabel.snp.bottom).offset(0)
         }
-        quanityLabel.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize.init(width: 25, height: 18))
+        quantityLabel.snp.makeConstraints { (make) in
+            make.size.equalTo(CGSize.init(width: 40, height: 25))
             make.left.equalTo(self.minusBtn.snp.right)
             make.right.equalTo(self.plusBtn.snp.left)
             make.bottom.equalTo(self.minusBtn.snp.bottom)
         }
         plusBtn.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize.init(width: 25, height: 18))
-            make.left.equalTo(self.quanityLabel.snp.right)
+            make.size.equalTo(CGSize.init(width: 35, height: 25))
+            make.left.equalTo(self.quantityLabel.snp.right)
             make.right.equalTo(self).offset(-10)
-            make.bottom.equalTo(self.quanityLabel.snp.bottom)
+            make.bottom.equalTo(self.quantityLabel.snp.bottom)
         }
     
     }
