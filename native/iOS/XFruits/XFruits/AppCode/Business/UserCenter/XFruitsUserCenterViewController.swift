@@ -38,7 +38,10 @@ class XFruitsUserCenterViewController: XFruitsBaseViewController ,UITableViewDat
         thirdGroupTitleArray = ["联系客服","吐槽&建议","关于我们"]
         thirdGourpIconArray = ["myService","myAdvice","aboutme"]
         
-        
+        // 进入登录页面
+        let login = XFruitsUserLoginViewController()
+        let nav = UINavigationController.init(rootViewController: login)
+        present(nav, animated: true, completion: nil)
         
         
     }

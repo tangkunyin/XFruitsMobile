@@ -20,6 +20,9 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
     var userProtocalBtn:UIButton? // 用户协议
     var privacyBtn:UIButton? // 隐私政策
     
+    var captchaImgString:NSString?  // 图片验证码
+    var uniqueCodeString:NSString?  //唯一吗
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,7 +69,7 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
         })
         
         // 验证码图片
-        self.codeImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
+        self.codeImageView = UIImageView.init()
         self.view.addSubview(self.codeImageView!)
         self.codeImageView?.snp.makeConstraints({ (make) in
             
@@ -151,11 +154,46 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
         })
         self.privacyBtn?.addTarget(self, action: #selector(backToLoginVC(sender:)), for:.touchUpInside)
         
-
-        
-        
+        getImageVertifyCode()
         
     }
+    
+    
+    func getImageVertifyCode(){
+        // 获取验证码请求测试
+        XFruitsService().getVerifyImage { (data) in
+            dPrint((data as! VerifyImage).captchaImg)
+            self.captchaImgString = (data as! VerifyImage).captchaImg as NSString
+            self.uniqueCodeString =  (data as! VerifyImage).uniqueCode as NSString
+            
+            self.codeImageView?.image = self.base64StringToUIImage(base64String: self.captchaImgString! as String)
+            
+        }
+
+    }
+    
+    ///传入base64的字符串，可以是没有经过修改的转换成的以data开头的，也可以是base64的内容字符串，然后转换成UIImage
+    func base64StringToUIImage(base64String:String)->UIImage? {
+        var str = base64String
+        
+        // 1、判断用户传过来的base64的字符串是否是以data开口的，如果是以data开头的，那么就获取字符串中的base代码，然后在转换，如果不是以data开头的，那么就直接转换
+        if str.hasPrefix("data:image") {
+            guard let newBase64String = str.components(separatedBy: ",").last else {
+                return nil
+            }
+            str = newBase64String
+        }
+        // 2、将处理好的base64String代码转换成NSData
+        guard let imgNSData = NSData(base64Encoded: str, options: NSData.Base64DecodingOptions()) else {
+            return nil
+        }
+        // 3、将NSData的图片，转换成UIImage
+        guard let codeImage = UIImage(data: imgNSData as Data) else {
+            return nil
+        }
+        return codeImage
+    }
+    
 
     
     func backToLoginVC(sender:UIButton?) {
@@ -164,10 +202,28 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
         
     }
     
+    
+    
+    
+    
+    
     func nextStepToSecondRegistPageVC(sender:UIButton?) {
-        dPrint("eyes")
-        let secondRegistVC = XFruitsUserRegistSecondPageViewController()
-        self.show(secondRegistVC, sender: self)
+        
+        let para = ["uniqueCode":self.uniqueCodeString!,"code":self.validateTextField?.text! as Any,"phone":self.mobileTextField?.text! as Any] as [String : Any]
+        weak var weakSelf = self
+
+        XFruitsService().vertifyImageCodeAndSendMessageCode(params: para) { (data) in
+            dPrint(data)
+            if data as! Bool {
+                dPrint("eyes")
+                let secondRegistVC = XFruitsUserRegistSecondPageViewController()
+                
+                weakSelf?.show(secondRegistVC, sender: weakSelf)
+            }
+        }
+
+    
+        
         
     }
 

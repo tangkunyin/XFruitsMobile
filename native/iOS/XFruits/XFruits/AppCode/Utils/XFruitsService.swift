@@ -54,6 +54,14 @@ public final class XFruitsService: XFruitsNetworking {
         }
     }
     
+    func vertifyImageCodeAndSendMessageCode( params:XFruitsParams,  _ completion:@escaping XFruitsResponse) {
+        self.doPost(withUrl: url("/auth/captcha"), params: params){ (success, respData) in
+            if success  {
+                completion(respData as! Bool)
+            }
+        }
+    }
+    
     func getAllCategoryies(_ completion:@escaping XFruitsResponse) {
         self.doGet(withUrl: url("/product/type")) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
