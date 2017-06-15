@@ -9,6 +9,7 @@
 import Foundation
 import MBProgressHUD
 import SQLite
+import HandyJSON
 
 // 果篮专用工具类
 public struct XFCartUtils {
