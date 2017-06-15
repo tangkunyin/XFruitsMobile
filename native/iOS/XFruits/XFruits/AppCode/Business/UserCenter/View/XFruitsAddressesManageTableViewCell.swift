@@ -11,12 +11,12 @@ import UIKit
 class XFruitsAddressesManageTableViewCell: UITableViewCell {
 
     
-    var userNameLabel:UILabel?
-    var mobileLabel:UILabel?
-    var addressLabel:UILabel?
+    var userNameLabel:UILabel?   // 用户名
+    var mobileLabel:UILabel?   // 手机号
+    var addressLabel:UILabel?    // 地址详情
 
-    var addressCategoryBtn:UIButton?
-    var editAddressBtn:UIButton?
+    var addressCategoryBtn:UIButton?  // 地址类别
+    var editAddressBtn:UIButton?  // 编辑按钮
 
 
     required init?(coder aDecoder:NSCoder) {
@@ -27,63 +27,76 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
     override init(style:UITableViewCellStyle, reuseIdentifier:String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.setUpUI();
+        setUpUI();
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
        
     }
+    
+    
+    func widthForLabel(text:NSString ,font :CGFloat) -> CGFloat {
+        let size = text.size(attributes:[NSFontAttributeName:sysFontWithSize(font)])
+        return size.width
+    }
 
     func  setUpUI() {
         
         // 用户名
-        self.userNameLabel = UILabel.init()
-        self.userNameLabel?.text = "姜小码"
-        self.userNameLabel?.textColor = XFConstants.Color.darkGray
-        self.userNameLabel?.font  = UIFont.systemFont(ofSize: 14)
-        self.userNameLabel?.numberOfLines = 0
-        addSubview(self.userNameLabel!)
-        self.userNameLabel?.textAlignment = NSTextAlignment.left
+        userNameLabel = UILabel.init()
+        userNameLabel?.text = "赵小贱"
+        userNameLabel?.textColor = XFConstants.Color.darkGray
+        userNameLabel?.font  = UIFont.systemFont(ofSize: 14)
+        userNameLabel?.numberOfLines = 0
+        addSubview(userNameLabel!)
+        userNameLabel?.textAlignment = NSTextAlignment.left
 
-        self.userNameLabel?.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.snp.top).offset(12)
-            make.left.equalTo(self.snp.left).offset(13)
+        userNameLabel?.snp.makeConstraints({ (make) in
+            make.top.equalTo(snp.top).offset(12)
+            make.left.equalTo(snp.left).offset(13)
             
             make.width.equalTo(50)
             make.height.equalTo(17)
         })
         
         // 类别按钮
-        self.addressCategoryBtn = UIButton.init(type: .custom)
-        self.addressCategoryBtn?.setTitle("家", for: .normal)
-        self.addressCategoryBtn?.setTitleColor(colorWithRGB(255, g: 105, b: 105), for:.normal)
-        self.addressCategoryBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 10)
-        addSubview(self.addressCategoryBtn!)
-        self.addressCategoryBtn?.layer.borderColor = colorWithRGB(255, g: 105, b: 105).cgColor
-        self.addressCategoryBtn?.layer.borderWidth = 1
+        addressCategoryBtn = UIButton.init(type: .custom)
+        addressCategoryBtn?.setTitle("自己家", for: .normal)
+        addressCategoryBtn?.setTitleColor(colorWithRGB(255, g: 105, b: 105), for:.normal)
+        addressCategoryBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+        addSubview(addressCategoryBtn!)
+        addressCategoryBtn?.layer.borderColor = colorWithRGB(255, g: 105, b: 105).cgColor
+        addressCategoryBtn?.layer.borderWidth = 1
+       let cateTitleText = addressCategoryBtn?.titleLabel?.text
         
-        self.addressCategoryBtn?.layer.cornerRadius = 8
-        self.addressCategoryBtn?.layer.masksToBounds = true
-        self.addressCategoryBtn?.snp.makeConstraints({ (make) in
-            make.top.equalTo((self.userNameLabel?.snp.bottom)!).offset(5)
-            make.left.equalTo(self.snp.left).offset(13)
+        let cateTitleWidth =  widthForLabel(text: cateTitleText! as NSString, font: 10)  + 20
+        
+        print(cateTitleWidth)
+        print(cateTitleWidth / 4)
+        addressCategoryBtn?.layer.cornerRadius = cateTitleWidth / 4 > 8 ? 8 :   cateTitleWidth / 4
+        addressCategoryBtn?.layer.masksToBounds = true
+        
+        
+        
+        addressCategoryBtn?.snp.makeConstraints({ (make) in
+            make.top.equalTo((userNameLabel?.snp.bottom)!).offset(5)
+            make.left.equalTo(snp.left).offset(13)
             
-            make.width.equalTo(50)
+            make.width.equalTo(cateTitleWidth)
             make.height.equalTo(15)
-//            make.bottom.equalTo(self.snp.bottom).offset(-6)
 
         })
  
      
         // 编辑按钮
-        self.editAddressBtn = UIButton.init(type:.custom)
-        self.editAddressBtn?.setImage(UIImage.imageWithNamed("edit"), for: .normal)
-        addSubview(self.editAddressBtn!)
+        editAddressBtn = UIButton.init(type:.custom)
+        editAddressBtn?.setImage(UIImage.imageWithNamed("edit"), for: .normal)
+        addSubview(editAddressBtn!)
         
-        self.editAddressBtn?.snp.makeConstraints({ (make) in
+        editAddressBtn?.snp.makeConstraints({ (make) in
             make.centerY.equalTo(self)
-            make.right.equalTo(self.snp.right).offset(-20)
+            make.right.equalTo(snp.right).offset(-20)
             
             make.width.equalTo(20)
             make.height.equalTo(20)
@@ -91,18 +104,18 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
        
         
         // 手机号
-        self.mobileLabel = UILabel.init()
-        self.mobileLabel?.text = "18658054127"
-        self.mobileLabel?.textColor = XFConstants.Color.darkGray
-        self.mobileLabel?.font  =  UIFont.systemFont(ofSize: 14)
+        mobileLabel = UILabel.init()
+        mobileLabel?.text = "18658054127"
+        mobileLabel?.textColor = XFConstants.Color.darkGray
+        mobileLabel?.font  =  UIFont.systemFont(ofSize: 14)
         
-        addSubview(self.mobileLabel!)
-        self.mobileLabel?.textAlignment = NSTextAlignment.left
+        addSubview(mobileLabel!)
+        mobileLabel?.textAlignment = NSTextAlignment.left
         
-        self.mobileLabel?.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.snp.top).offset(12)
-            make.left.equalTo((self.userNameLabel?.snp.right)!).offset(13)
-            make.right.equalTo((self.editAddressBtn?.snp.left)!).offset(-13)
+        mobileLabel?.snp.makeConstraints({ (make) in
+            make.top.equalTo(snp.top).offset(12)
+            make.left.equalTo((userNameLabel?.snp.right)!).offset(15)
+            make.right.equalTo((editAddressBtn?.snp.left)!).offset(-13)
             
             make.height.equalTo(17)
         })
@@ -110,31 +123,26 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
     
          
          // 地址
-         self.addressLabel = UILabel.init()
-         self.addressLabel?.text = "海淀区农大南路厢黄旗远东青年公寓393"
-         self.addressLabel?.textColor = XFConstants.Color.darkGray
-         self.addressLabel?.font  = UIFont.systemFont(ofSize: 12)
+         addressLabel = UILabel.init()
+         addressLabel?.text = "海淀区农大南路厢黄旗远东青年公寓"
+         addressLabel?.textColor = XFConstants.Color.darkGray
+         addressLabel?.font  = UIFont.systemFont(ofSize: 12)
  
-         addSubview(self.addressLabel!)
-         self.addressLabel?.textAlignment = NSTextAlignment.left
-         self.addressLabel?.numberOfLines = 0
-         self.addressLabel?.snp.makeConstraints({ (make) in
-            make.top.equalTo((self.mobileLabel?.snp.bottom)!).offset(4)
-            make.left.equalTo((self.addressCategoryBtn?.snp.right)!).offset(13)
-            make.right.equalTo((self.editAddressBtn?.snp.left)!).offset(-13)
+         addSubview(addressLabel!)
+         addressLabel?.textAlignment = NSTextAlignment.left
+         addressLabel?.numberOfLines = 0
+         addressLabel?.snp.makeConstraints({ (make) in
+            make.top.equalTo((mobileLabel?.snp.bottom)!).offset(4)
+            make.left.equalTo((addressCategoryBtn?.snp.right)!).offset(15)
+            make.right.equalTo((editAddressBtn?.snp.left)!).offset(-13)
          
-            make.bottom.equalTo(self.snp.bottom).offset(-6)
+            make.bottom.equalTo(snp.bottom).offset(-6)
 
           })
-
-     
-
-        
+      
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

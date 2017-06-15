@@ -16,7 +16,7 @@ class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
     var passwordTextField:UITextField? // 密码
     
     var pwdSecurityBtn:UIButton?  //密码眼睛
-
+    
     var loginBtn:UIButton?  //登录按钮
     var forgetPwdBtn:UIButton? // 忘记密码
     var registAccount:UIButton? // 注册用户
@@ -24,20 +24,19 @@ class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.view.backgroundColor = UIColor.white
-        
+        self.title = "登录"
         // 背景图（预备）
-//        self.backgroudImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
-//        self.view.addSubview(self.backgroudImageView!)
-//        
-//        self.brandImageView?.snp.makeConstraints({ (make) in
-//            // 屏幕大小
-//            make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-//        })
+        //        self.backgroudImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
+        //        self.view.addSubview(self.backgroudImageView!)
+        //
+        //        self.brandImageView?.snp.makeConstraints({ (make) in
+        //            // 屏幕大小
+        //            make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        //        })
         
         // 品牌logo
-        self.brandImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
+        self.brandImageView = UIImageView.init(image: UIImage.imageWithNamed("logo"))
         self.view.addSubview(self.brandImageView!)
         
         self.brandImageView?.snp.makeConstraints({ (make) in
@@ -53,12 +52,18 @@ class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
         // 手机号
         self.mobileTextField = UITextField()
         self.view.addSubview(self.mobileTextField!)
-        self.mobileTextField?.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes: [NSForegroundColorAttributeName:colorWithRGB(204, g: 204, b: 204),NSFontAttributeName:UIFont.systemFont(ofSize: 14)])
+        
+        self.mobileTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
+        self.mobileTextField?.layer.borderWidth = 0.5
+        self.mobileTextField?.layer.cornerRadius = 10
+        self.mobileTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
+        self.mobileTextField?.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes: [NSForegroundColorAttributeName:XFConstants.Color.pinkishGrey,NSFontAttributeName:UIFont.systemFont(ofSize: 14)])
         self.mobileTextField?.snp.makeConstraints({ (make) in
-           
-            make.top.equalTo((self.brandImageView?.snp.bottom)!).offset(30)
+            
+            make.top.equalTo((self.brandImageView?.snp.bottom)!).offset(20)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
+            make.height.equalTo(40)
         })
         
         
@@ -67,36 +72,46 @@ class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
         self.view.addSubview(self.passwordTextField!)
         
         self.passwordTextField?.isSecureTextEntry  = true
+        self.passwordTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
+        self.passwordTextField?.layer.borderWidth = 0.5
+        self.passwordTextField?.layer.cornerRadius = 10
+        self.passwordTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
         
-        self.passwordTextField?.attributedPlaceholder = NSAttributedString(string: "请输入密码", attributes: [NSForegroundColorAttributeName:colorWithRGB(204, g: 204, b: 204),NSFontAttributeName:UIFont.systemFont(ofSize: 14)]) //NSAttributedString(string:"请输入密码",attributes:[NSForegroundColorAttributeName: UIColor.blackColor])
+        self.passwordTextField?.attributedPlaceholder = NSAttributedString(string: "请输入密码", attributes: [NSForegroundColorAttributeName:XFConstants.Color.pinkishGrey,NSFontAttributeName:UIFont.systemFont(ofSize: 14)])
         self.passwordTextField?.snp.makeConstraints({ (make) in
             make.top.equalTo((self.mobileTextField?.snp.bottom)!).offset(20)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
+            make.height.equalTo(40)
         })
         
-       
-        self.pwdSecurityBtn = UIButton.init(type:.custom)
-        self.pwdSecurityBtn?.setImage(UIImage.imageWithNamed("level"), for: .normal)
-
-        self.passwordTextField?.rightView  = pwdSecurityBtn
-        self.passwordTextField?.rightViewMode = .always;
-//        self.pwdSecurityBtn?.addTarget(self, action:#sele,for:.touchUpInside)
-        self.pwdSecurityBtn?.addTarget(self, action: #selector(securityEyeClick(sender:)), for: .touchUpInside)
-
         
-       // 登录按钮
+        self.pwdSecurityBtn = UIButton.init(frame:CGRect.init(x: 0, y:0, width: 22, height:22))
+        self.pwdSecurityBtn?.setImage(UIImage.imageWithNamed("eye"), for: .normal)
+        self.view?.addSubview(self.pwdSecurityBtn!)
+        
+        self.pwdSecurityBtn?.addTarget(self, action: #selector(securityEyeClick(sender:)), for: .touchUpInside)
+        self.pwdSecurityBtn?.snp.makeConstraints({ (make) in
+            
+            make.centerY.equalTo(self.passwordTextField!)
+            make.right.equalTo((self.passwordTextField?.snp.right)!).offset(-20)
+            make.width.height.equalTo(22)
+        })
+        
+        
+        // 登录按钮
         self.loginBtn = UIButton.init(type: .custom)
         self.loginBtn?.setTitle("登录", for: .normal)
         self.loginBtn?.backgroundColor = XFConstants.Color.salmon
         self.loginBtn?.titleLabel?.textColor = UIColor.white
         self.view.addSubview(self.loginBtn!)
-        self.loginBtn?.layer.cornerRadius = 15
+        self.loginBtn?.layer.cornerRadius = 20
         self.loginBtn?.layer.masksToBounds = true
         self.loginBtn?.snp.makeConstraints({ (make) in
             make.top.equalTo((self.passwordTextField?.snp.bottom)!).offset(20)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
+            make.height.equalTo(40)
         })
         
         // 忘记密码
@@ -104,10 +119,9 @@ class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
         self.forgetPwdBtn?.setTitle("忘记密码", for: .normal)
         self.view.addSubview(self.forgetPwdBtn!)
         self.forgetPwdBtn?.backgroundColor = UIColor.white
-//        self.forgetPwdBtn?.titleLabel?.textColor = colorWithRGB(153, g: 153, b: 153)
         self.forgetPwdBtn?.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         self.forgetPwdBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-
+        
         
         self.forgetPwdBtn?.snp.makeConstraints({ (make) in
             make.top.equalTo((self.loginBtn?.snp.bottom)!).offset(20)
@@ -115,14 +129,13 @@ class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
             make.width.equalTo(75)
             make.height.equalTo(20)
         })
-
+        
         
         // 注册帐号
         self.registAccount = UIButton.init(type: .custom)
         self.registAccount?.setTitle("注册帐号", for: .normal)
         self.view.addSubview(self.registAccount!)
         self.registAccount?.backgroundColor = UIColor.white
-        //        self.forgetPwdBtn?.titleLabel?.textColor = colorWithRGB(153, g: 153, b: 153)
         self.registAccount?.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         self.registAccount?.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         
@@ -134,19 +147,18 @@ class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
             make.height.equalTo(20)
         })
         self.registAccount?.addTarget(self, action: #selector(createAccount(sender:)), for:.touchUpInside)
-
+        
         
     }
-
+    
     func securityEyeClick(sender:UIButton?) {
-        dPrint("eyes")
-        let btn = sender
-        if (btn?.isSelected)! {
-            self.passwordTextField?.isSecureTextEntry  = true
+        
+        if (self.passwordTextField?.isSecureTextEntry)! {
+            self.passwordTextField?.isSecureTextEntry  = false
         }
         else{
-            self.passwordTextField?.isSecureTextEntry  = false
-
+            self.passwordTextField?.isSecureTextEntry  = true
+            
         }
     }
     
@@ -159,6 +171,4 @@ class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
         
     }
     
-    
-
 }

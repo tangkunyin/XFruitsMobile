@@ -9,7 +9,7 @@
 import UIKit
 
 class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
-
+    
     var brandImageView:UIImageView? // 品牌logo
     var mobileTextField:UITextField?  // 手机号
     var validateTextField:UITextField? // 图片验证码
@@ -27,9 +27,9 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
-    
+        self.title = "注册"
         // 品牌logo
-        self.brandImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
+        self.brandImageView = UIImageView.init(image: UIImage.imageWithNamed("logo"))
         self.view.addSubview(self.brandImageView!)
         
         self.brandImageView?.snp.makeConstraints({ (make) in
@@ -40,32 +40,41 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
             make.centerX.equalTo(self.view)
             
         })
-
+        
         // 手机号
         self.mobileTextField = UITextField()
         self.view.addSubview(self.mobileTextField!)
+        self.mobileTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
+        self.mobileTextField?.layer.borderWidth = 0.5
+        self.mobileTextField?.layer.cornerRadius = 10
+        self.mobileTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
         self.mobileTextField?.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes: [NSForegroundColorAttributeName:colorWithRGB(204, g: 204, b: 204),NSFontAttributeName:UIFont.systemFont(ofSize: 14)])
         self.mobileTextField?.snp.makeConstraints({ (make) in
             
-            make.top.equalTo((self.brandImageView?.snp.bottom)!).offset(30)
+            make.top.equalTo((self.brandImageView?.snp.bottom)!).offset(15)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
-            make.height.equalTo(30)
-
+            make.height.equalTo(40)
+            
         })
         
         // 图片验证码
         self.validateTextField = UITextField()
         self.view.addSubview(self.validateTextField!)
+        self.validateTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
+        self.validateTextField?.layer.borderWidth = 0.5
+        self.validateTextField?.layer.cornerRadius = 10
+        self.validateTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
+        
         self.validateTextField?.attributedPlaceholder = NSAttributedString(string: "图片验证码", attributes: [NSForegroundColorAttributeName:colorWithRGB(204, g: 204, b: 204),NSFontAttributeName:UIFont.systemFont(ofSize: 14)])
         
         self.validateTextField?.snp.makeConstraints({ (make) in
             
-            make.top.equalTo((self.mobileTextField?.snp.bottom)!).offset(30)
+            make.top.equalTo((self.mobileTextField?.snp.bottom)!).offset(22)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-XFConstants.UI.deviceWidth/2)
-            make.height.equalTo(30)
-
+            make.height.equalTo(40)
+            
         })
         
         // 验证码图片
@@ -73,11 +82,11 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
         self.view.addSubview(self.codeImageView!)
         self.codeImageView?.snp.makeConstraints({ (make) in
             
-            make.top.equalTo((self.mobileTextField?.snp.bottom)!).offset(30)
+            make.top.equalTo((self.mobileTextField?.snp.bottom)!).offset(22)
             make.left.equalTo(self.view).offset(XFConstants.UI.deviceWidth/2+20)
             make.right.equalTo(self.view).offset(-30)
-            make.height.equalTo(30)
-
+            make.height.equalTo(40)
+            
         })
         
         // 下一步按钮
@@ -92,10 +101,11 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
             make.top.equalTo((self.validateTextField?.snp.bottom)!).offset(20)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
+            make.height.equalTo(40)
         })
         self.nextStepBtn?.addTarget(self, action: #selector(nextStepToSecondRegistPageVC(sender:)), for:.touchUpInside)
-
-
+        
+        
         
         // 已有帐号，去登录
         self.backToLoginBtn = UIButton.init(type: .custom)
@@ -108,7 +118,7 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
         
         
         self.backToLoginBtn?.snp.makeConstraints({ (make) in
-            make.top.equalTo((self.nextStepBtn?.snp.bottom)!).offset(20)
+            make.top.equalTo((self.nextStepBtn?.snp.bottom)!).offset(22)
             make.right.equalTo(self.view).offset(-20)
             make.width.equalTo(150)
             make.height.equalTo(20)
@@ -123,7 +133,6 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
         self.userProtocalBtn?.setTitle("用户协议", for: .normal)
         self.view.addSubview(self.userProtocalBtn!)
         self.userProtocalBtn?.backgroundColor = UIColor.white
-        //        self.forgetPwdBtn?.titleLabel?.textColor = colorWithRGB(153, g: 153, b: 153)
         self.userProtocalBtn?.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         self.userProtocalBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         
@@ -141,7 +150,6 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
         self.privacyBtn?.setTitle("隐私政策", for: .normal)
         self.view.addSubview(self.privacyBtn!)
         self.privacyBtn?.backgroundColor = UIColor.white
-        //        self.forgetPwdBtn?.titleLabel?.textColor = colorWithRGB(153, g: 153, b: 153)
         self.privacyBtn?.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         self.privacyBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         
@@ -154,11 +162,13 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
         })
         self.privacyBtn?.addTarget(self, action: #selector(backToLoginVC(sender:)), for:.touchUpInside)
         
+        // 获取图片验证码
         getImageVertifyCode()
         
     }
     
     
+    // 获取图片验证码
     func getImageVertifyCode(){
         // 获取验证码请求测试
         XFruitsService().getVerifyImage { (data) in
@@ -169,10 +179,10 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
             self.codeImageView?.image = self.base64StringToUIImage(base64String: self.captchaImgString! as String)
             
         }
-
+        
     }
     
-    ///传入base64的字符串，可以是没有经过修改的转换成的以data开头的，也可以是base64的内容字符串，然后转换成UIImage
+    // 传入base64的字符串，可以是没有经过修改的转换成的以data开头的，也可以是base64的内容字符串，然后转换成UIImage
     func base64StringToUIImage(base64String:String)->UIImage? {
         var str = base64String
         
@@ -194,8 +204,8 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
         return codeImage
     }
     
-
     
+    // 返回登录页面
     func backToLoginVC(sender:UIButton?) {
         dPrint("eyes")
         self.navigationController?.popViewController(animated: true)
@@ -203,15 +213,12 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
     }
     
     
-    
-    
-    
-    
+    // 点击下一步触发的事件
     func nextStepToSecondRegistPageVC(sender:UIButton?) {
         
         let para = ["uniqueCode":self.uniqueCodeString!,"code":self.validateTextField?.text! as Any,"phone":self.mobileTextField?.text! as Any] as [String : Any]
         weak var weakSelf = self
-
+        
         XFruitsService().vertifyImageCodeAndSendMessageCode(params: para) { (data) in
             dPrint(data)
             if data as! Bool {
@@ -221,11 +228,5 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
                 weakSelf?.show(secondRegistVC, sender: weakSelf)
             }
         }
-
-    
-        
-        
     }
-
-
 }
