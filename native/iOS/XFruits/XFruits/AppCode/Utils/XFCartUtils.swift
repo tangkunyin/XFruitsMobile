@@ -18,7 +18,7 @@ struct XFCartUtils {
         XFSQLiteDataSource.sharedInstance.createTables()
     }
     
-    private func getAll() -> Array<XFCart?> {
+    func getAll() -> Array<XFCart?> {
         var dataList:Array<XFCart?> = []
         do {
             let result =  try XFCartDataHelper.findAll()
@@ -34,7 +34,7 @@ struct XFCartUtils {
         return dataList
     }
 
-    private func selectItem(gid:String, checked:Bool){
+    func selectItem(gid:String, checked:Bool){
         do {
             let paramCart = XFCart(index: nil,
                                    id: gid,
@@ -52,7 +52,7 @@ struct XFCartUtils {
     }
     
     
-    private func changeCount(gid:String, count:Int){
+    func changeCount(gid:String, count:Int){
         do {
             let paramCart = XFCart(index: nil,
                                    id: gid,
@@ -69,7 +69,7 @@ struct XFCartUtils {
         }
     }
     
-    private func addItem(item: ProductItem){
+    func addItem(item: ProductItem){
         do {
             let paramCart = XFCart(index: nil,
                                    id: String(item.id),
@@ -86,7 +86,7 @@ struct XFCartUtils {
         }
     }
     
-    private func deleteItem(gid: String?){
+    func deleteItem(gid: String?){
         do {
             if let gid = gid {
                 try XFCartDataHelper.delete(gid: gid)

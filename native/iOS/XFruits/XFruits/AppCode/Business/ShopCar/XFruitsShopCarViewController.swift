@@ -28,6 +28,11 @@ class XFruitsShopCarViewController: XFruitsBaseViewController,UITableViewDelegat
         return bar;
     }()
     
+    
+    lazy var cartList:Array<XFCart?> = {
+        let list = XFCartUtils.sharedInstance.getAll()
+        return list
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +72,7 @@ class XFruitsShopCarViewController: XFruitsBaseViewController,UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return cartList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -92,7 +97,10 @@ class XFruitsShopCarViewController: XFruitsBaseViewController,UITableViewDelegat
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            dPrint("删掉了...\(indexPath.row)")
+            
+            
+            
+            
         }
     }
     
