@@ -23,6 +23,8 @@
 		860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A43021EE415FF00798678 /* HandyJSON.framework */; };
 		860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A43041EE4178000798678 /* XFBaseResponse.swift */; };
 		862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862C59EE1EA3677100C2323D /* XFConstants.swift */; };
+		8630B31D1EF7BC86002F5B5C /* XFSQLiteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8630B31C1EF7BC86002F5B5C /* XFSQLiteDataSource.swift */; };
+		8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8630B31E1EF7BCB1002F5B5C /* XFCartDataHelper.swift */; };
 		864430771E9A246200D41BCC /* XFruitsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */; };
 		864430831E9A27A600D41BCC /* XFruitsBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430821E9A27A600D41BCC /* XFruitsBaseViewController.swift */; };
 		864430871E9A28C500D41BCC /* XFruitsUserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864430861E9A28C500D41BCC /* XFruitsUserLoginViewController.swift */; };
@@ -102,6 +104,8 @@
 		860A43021EE415FF00798678 /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HandyJSON.framework; path = Carthage/Build/iOS/HandyJSON.framework; sourceTree = "<group>"; };
 		860A43041EE4178000798678 /* XFBaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFBaseResponse.swift; sourceTree = "<group>"; };
 		862C59EE1EA3677100C2323D /* XFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFConstants.swift; sourceTree = "<group>"; };
+		8630B31C1EF7BC86002F5B5C /* XFSQLiteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFSQLiteDataSource.swift; sourceTree = "<group>"; };
+		8630B31E1EF7BCB1002F5B5C /* XFCartDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCartDataHelper.swift; sourceTree = "<group>"; };
 		864430761E9A246200D41BCC /* XFruitsHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsHomeViewController.swift; sourceTree = "<group>"; };
 		864430821E9A27A600D41BCC /* XFruitsBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsBaseViewController.swift; sourceTree = "<group>"; };
 		864430861E9A28C500D41BCC /* XFruitsUserLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFruitsUserLoginViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +212,15 @@
 				16DCE3C21EDA68960047F559 /* city.plist */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8630B31B1EF7B7EB002F5B5C /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				8630B31C1EF7BC86002F5B5C /* XFSQLiteDataSource.swift */,
+				8630B31E1EF7BCB1002F5B5C /* XFCartDataHelper.swift */,
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 		864430741E9A23CD00D41BCC /* AppSystem */ = {
@@ -339,6 +352,7 @@
 		864430811E9A277B00D41BCC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8630B31B1EF7B7EB002F5B5C /* DataBase */,
 				86A45C711ED1209F00772D13 /* XFCommonUtils.swift */,
 				86E6951F1ED6AA35004864A6 /* XFCartUtils.swift */,
 				860A42FF1EE3A58A00798678 /* XFruitsNetworking.swift */,
@@ -608,6 +622,7 @@
 				8690FEE31ED179560051A16D /* XFAllCategoryListViewController.swift in Sources */,
 				86E8DF811EDC0EAB000A489F /* XFCommentItemView.swift in Sources */,
 				86A45C721ED1209F00772D13 /* XFCommonUtils.swift in Sources */,
+				8630B31D1EF7BC86002F5B5C /* XFSQLiteDataSource.swift in Sources */,
 				8690FEDF1ED178900051A16D /* XFShopCartViewCell.swift in Sources */,
 				864430831E9A27A600D41BCC /* XFruitsBaseViewController.swift in Sources */,
 				8644308B1E9A294500D41BCC /* XFruitsIndexViewController.swift in Sources */,
@@ -645,6 +660,7 @@
 				865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */,
 				16F651DA1ECD481E00EB477D /* XFruitsAddAddressViewController.swift in Sources */,
 				16F6519E1ECAF79900EB477D /* XFruitsAddressesManageTableViewCell.swift in Sources */,
+				8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */,
 				165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */,
 				865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */,
 				86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */,
