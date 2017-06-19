@@ -8,39 +8,94 @@
 
 import Foundation
 import MBProgressHUD
-import SQLite
-import HandyJSON
 
 // 果篮专用工具类
-public struct XFCartUtils {
+struct XFCartUtils {
     
-    public static func getAll() -> Array<Any>?{
-        
-        return nil
+    static let sharedInstance = XFCartUtils()
+    
+    private init(){
+        XFSQLiteDataSource.sharedInstance.createTables()
+    }
+    
+    private func getAll() -> Array<XFCart?> {
+        var dataList:Array<XFCart?> = []
+        do {
+            let result =  try XFCartDataHelper.findAll()
+            for cart:XFCart in result {
+                if let status = cart.status, status == 0 {
+                    dataList.append(cart)
+                }
+            }
+            return dataList
+        } catch let error as NSError {
+            dPrint(error.localizedDescription)
+        }
+        return dataList
     }
 
-    public static func selectItem(withID id:String){
-        
+    private func selectItem(gid:String, checked:Bool){
+        do {
+            let paramCart = XFCart(index: nil,
+                                   id: gid,
+                                   name: nil,
+                                   cover: nil,
+                                   primePrice: nil,
+                                   salesPrice: nil,
+                                   quantity: nil,
+                                   selected: checked,
+                                   status: nil)
+            try XFCartDataHelper.update(item: paramCart)
+        } catch let error as NSError {
+            dPrint(error.localizedDescription)
+        }
     }
     
-    public static func deSelectItem(withID id:String){
-        
+    
+    private func changeCount(gid:String, count:Int){
+        do {
+            let paramCart = XFCart(index: nil,
+                                   id: gid,
+                                   name: nil,
+                                   cover: nil,
+                                   primePrice: nil,
+                                   salesPrice: nil,
+                                   quantity: Int64(count),
+                                   selected: nil,
+                                   status: nil)
+            try XFCartDataHelper.update(item: paramCart)
+        } catch let error as NSError {
+            dPrint(error.localizedDescription)
+        }
     }
     
-    public static func changeCount(_ count:Int){
-        
+    private func addItem(item: ProductItem){
+        do {
+            let paramCart = XFCart(index: nil,
+                                   id: String(item.id),
+                                   name: item.name,
+                                   cover: item.cover,
+                                   primePrice: Double(item.primePrice),
+                                   salesPrice: Double(item.salesPrice),
+                                   quantity: Int64(0),
+                                   selected: false,
+                                   status: 0)
+            try XFCartDataHelper.update(item: paramCart)
+        } catch let error as NSError {
+            dPrint(error.localizedDescription)
+        }
     }
     
-    public static func addItem(withID id:String){
-        
+    private func deleteItem(gid: String?){
+        do {
+            if let gid = gid {
+                try XFCartDataHelper.delete(gid: gid)
+            } else {
+                try XFCartDataHelper.deleteAll()
+            }
+        } catch let error as NSError {
+            dPrint(error.localizedDescription)
+        }
     }
-    
-    public static func deleteItem(withID id:String){
-        
-    }
-    
-    public static func deleteItems(ids:Array<String>){
-        
-    }
-    
+
 }

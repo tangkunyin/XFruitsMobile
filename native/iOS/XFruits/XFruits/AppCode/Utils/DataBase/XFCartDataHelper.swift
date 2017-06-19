@@ -12,7 +12,7 @@ import SQLite
 
 typealias XFCart = (
     index:Int64?,
-    id:Int64?,
+    id:String?,
     name:String?,
     cover:String?,
     primePrice:Double?,
@@ -30,7 +30,7 @@ class XFCartDataHelper: DataHelperProtocol {
     static let table = Table(TABLE_NAME)
     
     static let index = Expression<Int64>("index")//自增索引
-    static let id = Expression<Int64>("id")
+    static let id = Expression<String>("id")
     static let name = Expression<String>("name")
     static let cover = Expression<String>("cover")
     static let primePrice = Expression<Double>("primePrice")
@@ -87,25 +87,9 @@ class XFCartDataHelper: DataHelperProtocol {
         throw DataAccessError.Nil_In_Data
     }
     
-    
-    static func delete(gid: Int64) throws  {
-        guard let DB = XFSQLiteDataSource.sharedInstance.Db else {
-            throw DataAccessError.Datastore_Connection_Error
-        }
-        let query = table.filter(id == gid)
-        do {
-            let tmp = try DB.run(query.delete())
-            guard tmp == 1 else {
-                throw DataAccessError.Delete_Error
-            }
-        } catch let error as NSError {
-            dPrint(error.localizedDescription)
-        }
-    }
-    
-    static func update(gid: Int64, item: T) throws {
-        guard let DB = XFSQLiteDataSource.sharedInstance.Db else {
-            throw DataAccessError.Datastore_Connection_Error
+    static func update(item: T) throws {
+        guard let DB = XFSQLiteDataSource.sharedInstance.Db, let gid = item.id else {
+            throw DataAccessError.Nil_In_Data
         }
         do {
             let query = table.filter(id == gid)
@@ -129,7 +113,7 @@ class XFCartDataHelper: DataHelperProtocol {
         }
     }
     
-    static func find(gid:Int64) throws -> T? {
+    static func find(gid: String) throws -> T? {
         guard let DB = XFSQLiteDataSource.sharedInstance.Db else {
             throw DataAccessError.Datastore_Connection_Error
         }
@@ -177,6 +161,30 @@ class XFCartDataHelper: DataHelperProtocol {
         return retArray
     }
 
+    static func delete(gid: String) throws  {
+        guard let DB = XFSQLiteDataSource.sharedInstance.Db else {
+            throw DataAccessError.Datastore_Connection_Error
+        }
+        let query = table.filter(id == gid)
+        do {
+            let tmp = try DB.run(query.delete())
+            guard tmp == 1 else {
+                throw DataAccessError.Delete_Error
+            }
+        } catch let error as NSError {
+            dPrint(error.localizedDescription)
+        }
+    }
     
+    static func deleteAll() throws {
+        guard let DB = XFSQLiteDataSource.sharedInstance.Db else {
+            throw DataAccessError.Datastore_Connection_Error
+        }
+        do {
+            try DB.run(table.delete())
+        } catch let error as NSError {
+            dPrint(error.localizedDescription)
+        }
+    }
     
 }

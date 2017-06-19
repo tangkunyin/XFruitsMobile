@@ -22,10 +22,11 @@ protocol DataHelperProtocol {
     associatedtype T
     static func createTable() throws -> Void
     static func insert(item: T) throws -> Int64
-    static func delete(gid: Int64) throws -> Void
-    static func update(gid: Int64, item: T) throws -> Void
-    static func find(gid:Int64) throws -> T?
+    static func update(item: T) throws -> Void
+    static func find(gid: String) throws -> T?
     static func findAll() throws -> [T]
+    static func delete(gid: String) throws -> Void
+    static func deleteAll() throws -> Void
 }
 
 class XFSQLiteDataSource {
@@ -54,13 +55,10 @@ class XFSQLiteDataSource {
     
     func createTables() {
         do {
-//            try UserDataHelper.createTable()
+            try XFCartDataHelper.createTable()
         } catch let error as NSError {
             dPrint(error.localizedDescription)
         }
     }
 
-    
-    
-    
 }
