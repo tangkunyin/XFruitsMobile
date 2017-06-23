@@ -11,8 +11,8 @@ import UIKit
 class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
     
     var brandImageView:UIImageView? // 品牌logo
-    var mobileTextField:UITextField?  // 手机号
-    var validateTextField:UITextField? // 图片验证码
+    var mobileTextField:UITextField!  // 手机号
+    var validateTextField:UITextField! // 图片验证码
     var codeImageView:UIImageView? // 验证码图片
     
     var nextStepBtn:UIButton?  //下一步按钮
@@ -215,16 +215,30 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
     
     // 点击下一步触发的事件
     func nextStepToSecondRegistPageVC(sender:UIButton?) {
+        let code:String! =  self.validateTextField.text
+        let phone:String! = self.mobileTextField.text
         
-        let para = ["uniqueCode":self.uniqueCodeString!,"code":self.validateTextField?.text! as Any,"phone":self.mobileTextField?.text! as Any] as [String : Any]
+        let para:[String:String]  = ["uniqueCode":self.uniqueCodeString! as String,"code":code  ,"phone":phone]
+        
+        
+        dPrint(para)
+        
         weak var weakSelf = self
+        
+        // 测试
+//        let secondRegistVC = XFruitsUserRegistSecondPageViewController()
+//        secondRegistVC.para = para as NSDictionary
+//        weakSelf?.show(secondRegistVC, sender: weakSelf)
+        
+        
+        
         
         XFruitsService().vertifyImageCodeAndSendMessageCode(params: para) { (data) in
             dPrint(data)
             if data as! Bool {
-                dPrint("eyes")
+                dPrint("返回成功，跳转到注册下一步页面")
                 let secondRegistVC = XFruitsUserRegistSecondPageViewController()
-                
+                secondRegistVC.para  = para as NSDictionary
                 weakSelf?.show(secondRegistVC, sender: weakSelf)
             }
         }

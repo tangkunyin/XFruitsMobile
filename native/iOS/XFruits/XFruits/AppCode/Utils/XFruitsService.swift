@@ -50,6 +50,7 @@ public final class XFruitsService: XFruitsNetworking {
         self.doGet(withUrl: url("/auth/captcha")) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(VerifyImage.deserialize(from: dict) ?? VerifyImage())
+               
             }
         }
     }
@@ -61,6 +62,15 @@ public final class XFruitsService: XFruitsNetworking {
             }
         }
     }
+    func register( params:XFruitsParams,  _ completion:@escaping XFruitsResponse) {
+        self.doPost(withUrl: url("/auth/register"), params: params){ (success, respData) in
+            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
+                completion(XFruitsUser.deserialize(from: dict) ?? XFruitsUser())
+            }
+        }
+    }
+    
+    
     
     func getAllCategoryies(_ completion:@escaping XFruitsResponse) {
         self.doGet(withUrl: url("/product/type")) { (success, respData) in

@@ -7,10 +7,30 @@
 //
 
 import UIKit
+import HandyJSON
 
 
 /// 用户模型
-struct XFruitsUser {
+struct XFruitsUser: HandyJSON {
+    
+    
+    // 用户id
+    var id:Int?
+    
+    // 用户名称
+    var username:String?
+    
+    // 用户性别
+    var sex:Int?
+    
+    // 手机号
+    var cellPhone:String?
+    
+    // token
+    var token:String?
+    
+    
+    
     
     //用户ID
     var userId:String?

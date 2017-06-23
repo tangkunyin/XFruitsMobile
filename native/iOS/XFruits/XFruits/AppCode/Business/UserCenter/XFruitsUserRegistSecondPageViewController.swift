@@ -21,8 +21,14 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
     var userProtocalBtn:UIButton? // 用户协议
     var privacyBtn:UIButton? // 隐私政策
     
+    var para:NSDictionary? // 上个界面传过来的
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dPrint(para)
+        
+        
         self.view.backgroundColor = UIColor.white
         // 品牌logo
         self.brandImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
@@ -70,6 +76,8 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
         self.view.addSubview(self.registBtn!)
         self.registBtn?.layer.cornerRadius = 15
         self.registBtn?.layer.masksToBounds = true
+        self.registBtn?.addTarget(self, action: #selector(gotoRegister(sender:)), for:.touchUpInside)
+
         self.registBtn?.snp.makeConstraints({ (make) in
             make.top.equalTo((self.passwordTextField?.snp.bottom)!).offset(20)
             make.left.equalTo(self.view).offset(20)
@@ -86,7 +94,7 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
         self.sendCodeAgainBtn?.layer.masksToBounds = true
         self.sendCodeAgainBtn?.snp.makeConstraints({ (make) in
             make.top.equalTo((self.registBtn?.snp.bottom)!).offset(20)
-            make.left.equalTo(self.view).offset(20)
+//            make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
         })
 
@@ -95,7 +103,7 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
         self.userProtocalBtn?.setTitle("用户协议", for: .normal)
         self.view.addSubview(self.userProtocalBtn!)
         self.userProtocalBtn?.backgroundColor = UIColor.white
-        //        self.forgetPwdBtn?.titleLabel?.textColor = colorWithRGB(153, g: 153, b: 153)
+        
         self.userProtocalBtn?.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         self.userProtocalBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         
@@ -137,6 +145,32 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
     func gotoPrivacyVC(sender:UIButton?) {
         dPrint("eyes")
 //        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+    // 
+    func gotoRegister(sender:UIButton?) {
+        dPrint("eyes")
+//        {
+//            "phone":"15701203653", //手机号
+//            "password":"jj123456", //密码
+//            "phoneCaptcha":"5812"  //短信验证码
+//        }
+        let phone:String  = self.para?["phone"] as! String
+        
+        let registPara:[String:String] = ["phone":phone,
+                                          "password":(self.passwordTextField?.text)!,
+                                          "phoneCaptcha":self.para?["code"] as! String]
+        
+        weak var weakSelf = self
+        dPrint(registPara)
+        XFruitsService().register(params: registPara) { (data) in
+            dPrint(data)
+            
+            dPrint("注册成功")
+            self.dismiss(animated: true, completion: nil)
+            
+        }
         
     }
     
