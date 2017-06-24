@@ -184,7 +184,7 @@ class XFDetailHeaderView: UIView {
     
     func btnWithTitle(_ title:String,imageName:String) -> UIButton {
         let btn = UIButton.buttonWithTitle(title,
-                                           imageName: imageName,
+                                           image: imageName,
                                            textColor: XFConstants.Color.darkGray,
                                            textFont: XFConstants.Font.mainBodyFont,
                                            directionType: .left,

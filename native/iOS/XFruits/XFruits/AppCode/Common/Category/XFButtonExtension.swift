@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 // 按钮中的图文混排类型
 public enum BtnImgDirectionType {
@@ -24,7 +25,7 @@ extension UIButton {
     ///
     /// - Parameters:
     ///   - title: 按钮标题
-    ///   - imageName: 按钮icon图
+    ///   - image: 按钮icon图本地名称或远程URL
     ///   - textColor: 标题颜色
     ///   - textFont: 标题字体
     ///   - directionType: 图文混排中图的位置类型
@@ -36,7 +37,7 @@ extension UIButton {
     ///   - action: 事件名称
     /// - Returns: 图文混排后的按钮
     public class func buttonWithTitle(_ title:String,
-                                      imageName:String,
+                                      image:String,
                                       textColor:UIColor,
                                       textFont:UIFont,
                                       directionType:BtnImgDirectionType,
@@ -50,7 +51,13 @@ extension UIButton {
         btn.setTitle(title, for: .normal)
         btn.setTitleColor(textColor, for: .normal)
         btn.titleLabel?.font = textFont
-        btn.setImage(UIImage.imageWithNamed(imageName), for: .normal)
+        
+        if let url = URL.init(string: image) {
+            btn.kf.setImage(with: url, for: .normal)
+        } else {
+            btn.setImage(UIImage.imageWithNamed(image), for: .normal)
+        }
+        
         btn.contentHorizontalAlignment = chAlignment
         btn.contentVerticalAlignment = cvAlignment
         btn.contentEdgeInsets = cEdgeInsets

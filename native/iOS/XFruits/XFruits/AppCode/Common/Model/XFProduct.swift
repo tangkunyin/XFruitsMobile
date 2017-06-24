@@ -18,11 +18,20 @@ struct ProductType: HandyJSON {
 }
 
 struct ProductItem: HandyJSON {
-    var id:Int = 1001
+    var id:Int?
     var name:String = ""
+    var fruit:Int?
     var cover:String = ""
+    var specification:String = ""
     var primePrice:Float = 0
     var salesPrice:Float = 0
+}
+
+struct CategoryList: HandyJSON {
+    var size:Int?
+    var totalPages:Int?
+    var totalElements:Int?
+    var content:Array<ProductItem>?
 }
 
 struct ProductDetail: HandyJSON {

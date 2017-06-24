@@ -34,68 +34,68 @@ struct XFCartUtils {
         return dataList
     }
 
-    func selectItem(gid:String, checked:Bool){
-        do {
-            let paramCart = XFCart(index: nil,
-                                   id: gid,
-                                   name: nil,
-                                   cover: nil,
-                                   primePrice: nil,
-                                   salesPrice: nil,
-                                   quantity: nil,
-                                   selected: checked,
-                                   status: nil)
-            try XFCartDataHelper.update(item: paramCart)
-        } catch let error as NSError {
-            dPrint(error.localizedDescription)
-        }
-    }
-    
-    
-    func changeCount(gid:String, count:Int){
-        do {
-            let paramCart = XFCart(index: nil,
-                                   id: gid,
-                                   name: nil,
-                                   cover: nil,
-                                   primePrice: nil,
-                                   salesPrice: nil,
-                                   quantity: Int64(count),
-                                   selected: nil,
-                                   status: nil)
-            try XFCartDataHelper.update(item: paramCart)
-        } catch let error as NSError {
-            dPrint(error.localizedDescription)
-        }
-    }
-    
-    func addItem(item: ProductItem){
-        do {
-            let paramCart = XFCart(index: nil,
-                                   id: String(item.id),
-                                   name: item.name,
-                                   cover: item.cover,
-                                   primePrice: Double(item.primePrice),
-                                   salesPrice: Double(item.salesPrice),
-                                   quantity: Int64(0),
-                                   selected: false,
-                                   status: 0)
-            try XFCartDataHelper.update(item: paramCart)
-        } catch let error as NSError {
-            dPrint(error.localizedDescription)
-        }
-    }
-    
-    func deleteItem(gid: String?){
-        do {
-            if let gid = gid {
-                try XFCartDataHelper.delete(gid: gid)
-            } else {
-                try XFCartDataHelper.deleteAll()
-            }
-        } catch let error as NSError {
-            dPrint(error.localizedDescription)
-        }
-    }
+//    func selectItem(gid:String, checked:Bool){
+//        do {
+//            let paramCart = XFCart(index: nil,
+//                                   id: gid,
+//                                   name: nil,
+//                                   cover: nil,
+//                                   primePrice: nil,
+//                                   salesPrice: nil,
+//                                   quantity: nil,
+//                                   selected: checked,
+//                                   status: nil)
+//            try XFCartDataHelper.update(item: paramCart)
+//        } catch let error as NSError {
+//            dPrint(error.localizedDescription)
+//        }
+//    }
+//    
+//    
+//    func changeCount(gid:String, count:Int){
+//        do {
+//            let paramCart = XFCart(index: nil,
+//                                   id: gid,
+//                                   name: nil,
+//                                   cover: nil,
+//                                   primePrice: nil,
+//                                   salesPrice: nil,
+//                                   quantity: Int64(count),
+//                                   selected: nil,
+//                                   status: nil)
+//            try XFCartDataHelper.update(item: paramCart)
+//        } catch let error as NSError {
+//            dPrint(error.localizedDescription)
+//        }
+//    }
+//    
+//    func addItem(item: ProductItem){
+//        do {
+//            let paramCart = XFCart(index: nil,
+//                                   id: String(item.id),
+//                                   name: item.name,
+//                                   cover: item.cover,
+//                                   primePrice: Double(item.primePrice),
+//                                   salesPrice: Double(item.salesPrice),
+//                                   quantity: Int64(0),
+//                                   selected: false,
+//                                   status: 0)
+//            try XFCartDataHelper.update(item: paramCart)
+//        } catch let error as NSError {
+//            dPrint(error.localizedDescription)
+//        }
+//    }
+//    
+//    func deleteItem(gid: String?){
+//        do {
+//            if let gid = gid {
+//                try XFCartDataHelper.delete(gid: gid)
+//            } else {
+//                try XFCartDataHelper.deleteAll()
+//            }
+//        } catch let error as NSError {
+//            dPrint(error.localizedDescription)
+//        }
+//    }
 
 }

@@ -9,6 +9,7 @@
 import Foundation
 import MBProgressHUD
 import HandyJSON
+import SwiftyJSON
 
 public typealias XFResponse = ((_ data: Any)->Void)
 
@@ -70,12 +71,10 @@ public final class XFCommonService: XFNetworking {
         }
     }
     
-    
-    
     func getAllCategoryies(_ completion:@escaping XFResponse) {
         self.doGet(withUrl: url("/product/type")) { (success, respData) in
-            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
-                completion(ProductType.deserialize(from: dict) ?? ProductType())
+            if success, respData is Array<Any>, let list = respData as? Array<Any> {
+                completion([ProductType].deserialize(from: JSON(list).rawString()) ?? [])
             }
         }
     }
@@ -83,7 +82,7 @@ public final class XFCommonService: XFNetworking {
     func getAllProducts(params:XFParams, completion:@escaping XFResponse) {
         self.doGet(withUrl: url("/product/list", params: params)) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
-                completion(ProductItem.deserialize(from: dict) ?? ProductItem())
+                completion(CategoryList.deserialize(from: dict) ?? CategoryList())
             }
         }
     }

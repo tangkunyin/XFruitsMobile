@@ -48,6 +48,12 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
         
         makeViewConstrains()
         
+        
+        let params:XFParams = ["fruit":1000,"sort":101,"sequence":1,"page":1,"size":6]
+        XFCommonService().getAllProducts(params: params) { (data) in
+            dPrint(data)
+        }
+        
     }
     
     fileprivate func makeViewConstrains(){
@@ -64,13 +70,8 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
     }
     
     @objc private func onAllItemClick(){
-        //        let allVC = XFAllCategoryListViewController()
-        //        navigationController?.pushViewController(allVC, animated: true)
-        
-        let params:XFParams = ["fruit":1000,"sort":101,"sequence":1,"page":1,"size":6]
-        XFCommonService().getAllProducts(params: params) { (data) in
-            dPrint(data)
-        }
+        let allVC = XFAllCategoryListViewController()
+        navigationController?.pushViewController(allVC, animated: true)
     }
     
     // MARK: - delegates
