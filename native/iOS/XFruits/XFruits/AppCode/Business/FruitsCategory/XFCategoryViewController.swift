@@ -67,7 +67,7 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
         //        let allVC = XFAllCategoryListViewController()
         //        navigationController?.pushViewController(allVC, animated: true)
         
-        let params:XFParams = ["userId":"","fruit":1000,"order":101,"sequence":1,"page":0,"pageSize":6]
+        let params:XFParams = ["fruit":1000,"sort":101,"sequence":1,"page":1,"size":6]
         XFCommonService().getAllProducts(params: params) { (data) in
             dPrint(data)
         }

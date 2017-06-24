@@ -156,12 +156,20 @@ public class XFNetworking: NSObject {
                             switch dataResponse.result {
                             case .success(let value):
                                 if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: value.rawString()) {
-                                    switch obj.code {
-                                    case .success,.notModify,.returnTrue:
+                                    guard let code = obj.code, let msg = obj.msg else {
+                                        dPrint(obj.msg ?? "异常数据返回，请稍后再试~")
+                                        MBProgressHUD.showError("异常数据返回，请稍后再试~")
+                                        completion(false, nil)
+                                        return
+                                    }
+                                    switch code {
+                                    case XFHttpStatus.success.rawValue,
+                                         XFHttpStatus.notModify.rawValue,
+                                         XFHttpStatus.returnTrue.rawValue:
                                         completion(true, obj.data)
                                     default:
-                                        MBProgressHUD.showError(obj.code.description)
-                                        completion(false,nil)
+                                        MBProgressHUD.showError(msg)
+                                        completion(false, msg)
                                     }
                                 }
                             case .failure(let error):
