@@ -9,7 +9,7 @@
 import UIKit
 
 
-class XFAllCategoryListViewController: XFruitsBaseSubViewController {
+class XFAllCategoryListViewController: XFBaseSubViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

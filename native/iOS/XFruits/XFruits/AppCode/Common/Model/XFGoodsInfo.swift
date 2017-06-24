@@ -1,16 +1,17 @@
+
 //
-//  XFruitsGoodsInfo.swift
+//  XFGoodsInfo.swift
 //  XFruits
 //
-//  Created by tangkunyin on 21/05/2017.
+//  Created by tangkunyin on 24/06/2017.
 //  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
 
 /// 商品数据模型
-struct XFruitsGoodsInfo {
-
+struct XFGoodsInfo {
+    
     //商品ID
     var gid:String?
     
@@ -19,7 +20,7 @@ struct XFruitsGoodsInfo {
     
     //商品名称
     var goodsName:String?
-
+    
     //商品价格
     var price:Float?
     

@@ -1,21 +1,21 @@
 //
-//  XFruitsBaseViewController.swift
+//  XFBaseViewController.swift
 //  XFruits
 //
-//  Created by tangkunyin on 2017/4/9.
-//  Copyright © 2017年 www.10fruits.net. All rights reserved.
+//  Created by tangkunyin on 24/06/2017.
+//  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
 
-class XFruitsBaseViewController: UIViewController {
-
+class XFBaseViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         edgesForExtendedLayout = UIRectEdge(rawValue: 0)
         navigationController?.navigationBar.tintColor = UIColor.white
         
     }
-
+    
     
 }

@@ -1,14 +1,14 @@
 //
-//  XFruitsUserCenterViewController.swift
+//  XFUserCenterViewController.swift
 //  XFruits
 //
-//  Created by tangkunyin on 2017/4/23.
-//  Copyright © 2017年 www.10fruits.net. All rights reserved.
+//  Created by tangkunyin on 24/06/2017.
+//  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
 
-class XFruitsUserCenterViewController: XFruitsBaseViewController ,UITableViewDataSource,UITableViewDelegate {
+class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UITableViewDelegate {
     var secondGroupTitleArray: NSArray?
     var secondGroupIconArray: NSArray?
     
@@ -39,7 +39,7 @@ class XFruitsUserCenterViewController: XFruitsBaseViewController ,UITableViewDat
         thirdGourpIconArray = ["myService","myAdvice","aboutme"]
         
         // 进入登录页面
-        let login = XFruitsUserLoginViewController()
+        let login = XFUserLoginViewController()
         let nav = UINavigationController.init(rootViewController: login)
         present(nav, animated: true, completion: nil)
         
@@ -144,7 +144,7 @@ class XFruitsUserCenterViewController: XFruitsBaseViewController ,UITableViewDat
         let row = indexPath.row
         
         if section == 2 && row == 3  {
-            let addressManageVC = XFruitsUserAddressesMangageViewController()
+            let addressManageVC = XFUserAddressesMangageViewController()
             self.navigationController?.navigationBar.tintColor = UIColor.white
             self.navigationController?.show(addressManageVC, sender: self)
         }
@@ -163,3 +163,4 @@ class XFruitsUserCenterViewController: XFruitsBaseViewController ,UITableViewDat
     
     
 }
+

@@ -1,16 +1,16 @@
 //
-//  XFruitsViewPager.swift
+//  XFViewPager.swift
 //  XFruits
 //
-//  Created by tangkunyin on 2017/5/5.
-//  Copyright © 2017年 www.10fruits.net. All rights reserved.
+//  Created by tangkunyin on 24/06/2017.
+//  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
 import Kingfisher
 import SnapKit
 
-class XFruitsViewPager: UIView,UIScrollViewDelegate {
+class XFViewPager: UIView,UIScrollViewDelegate {
     
     private lazy var pageControl:UIPageControl = {
         let pageControl = UIPageControl()
@@ -115,3 +115,4 @@ class XFruitsViewPager: UIView,UIScrollViewDelegate {
         }
     }
 }
+

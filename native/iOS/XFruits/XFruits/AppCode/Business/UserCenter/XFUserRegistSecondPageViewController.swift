@@ -1,15 +1,15 @@
 //
-//  XFruitsUserRegistSecondPageViewController.swift
+//  XFUserRegistSecondPageViewController.swift
 //  XFruits
 //
-//  Created by zhaojian on 5/16/17.
+//  Created by tangkunyin on 24/06/2017.
 //  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
 
-class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
-
+class XFUserRegistSecondPageViewController: XFBaseSubViewController {
+    
     var brandImageView:UIImageView? // 品牌logo
     
     var messageCodeTextField:UITextField?  // 验证码
@@ -42,7 +42,7 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
             make.centerX.equalTo(self.view)
             
         })
-
+        
         // 短信验证码
         self.messageCodeTextField = UITextField()
         self.view.addSubview(self.messageCodeTextField!)
@@ -53,7 +53,7 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
         })
-
+        
         
         // 密码
         self.passwordTextField = UITextField()
@@ -77,13 +77,13 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
         self.registBtn?.layer.cornerRadius = 15
         self.registBtn?.layer.masksToBounds = true
         self.registBtn?.addTarget(self, action: #selector(gotoRegister(sender:)), for:.touchUpInside)
-
+        
         self.registBtn?.snp.makeConstraints({ (make) in
             make.top.equalTo((self.passwordTextField?.snp.bottom)!).offset(20)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
         })
-
+        
         // 重发验证码按钮
         self.sendCodeAgainBtn = UIButton.init(type: .custom)
         self.sendCodeAgainBtn?.setTitle("验证码没收到？再发一遍", for: .normal)
@@ -94,10 +94,10 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
         self.sendCodeAgainBtn?.layer.masksToBounds = true
         self.sendCodeAgainBtn?.snp.makeConstraints({ (make) in
             make.top.equalTo((self.registBtn?.snp.bottom)!).offset(20)
-//            make.left.equalTo(self.view).offset(20)
+            //            make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
         })
-
+        
         // 用户协议
         self.userProtocalBtn = UIButton.init(type: .custom)
         self.userProtocalBtn?.setTitle("用户协议", for: .normal)
@@ -135,27 +135,27 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
         self.privacyBtn?.addTarget(self, action: #selector(gotoPrivacyVC(sender:)), for:.touchUpInside)
         
         
- 
+        
         
         
         // Do any additional setup after loading the view.
     }
-
+    
     
     func gotoPrivacyVC(sender:UIButton?) {
         dPrint("eyes")
-//        self.navigationController?.popViewController(animated: true)
+        //        self.navigationController?.popViewController(animated: true)
         
     }
     
-    // 
+    //
     func gotoRegister(sender:UIButton?) {
         dPrint("eyes")
-//        {
-//            "phone":"15701203653", //手机号
-//            "password":"jj123456", //密码
-//            "phoneCaptcha":"5812"  //短信验证码
-//        }
+        //        {
+        //            "phone":"15701203653", //手机号
+        //            "password":"jj123456", //密码
+        //            "phoneCaptcha":"5812"  //短信验证码
+        //        }
         let phone:String  = self.para?["phone"] as! String
         
         let registPara:[String:String] = ["phone":phone,
@@ -164,7 +164,7 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
         
         weak var weakSelf = self
         dPrint(registPara)
-        XFruitsService().register(params: registPara) { (data) in
+        XFCommonService().register(params: registPara) { (data) in
             dPrint(data)
             
             dPrint("注册成功")
@@ -179,15 +179,15 @@ class XFruitsUserRegistSecondPageViewController: XFruitsBaseSubViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

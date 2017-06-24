@@ -1,14 +1,14 @@
 //
-//  XFruitsUserRegistViewController.swift
+//  XFUserRegistViewController.swift
 //  XFruits
 //
-//  Created by tangkunyin on 2017/4/9.
-//  Copyright © 2017年 www.10fruits.net. All rights reserved.
+//  Created by tangkunyin on 24/06/2017.
+//  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
 
-class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
+class XFUserRegistViewController: XFBaseSubViewController {
     
     var brandImageView:UIImageView? // 品牌logo
     var mobileTextField:UITextField!  // 手机号
@@ -171,10 +171,10 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
     // 获取图片验证码
     func getImageVertifyCode(){
         // 获取验证码请求测试
-        XFruitsService().getVerifyImage { (data) in
-            dPrint((data as! VerifyImage).captchaImg)
-            self.captchaImgString = (data as! VerifyImage).captchaImg as NSString
-            self.uniqueCodeString =  (data as! VerifyImage).uniqueCode as NSString
+        XFCommonService().getVerifyImage { (data) in
+            dPrint((data as! XFVerifyImage).captchaImg)
+            self.captchaImgString = (data as! XFVerifyImage).captchaImg as NSString
+            self.uniqueCodeString =  (data as! XFVerifyImage).uniqueCode as NSString
             
             self.codeImageView?.image = self.base64StringToUIImage(base64String: self.captchaImgString! as String)
             
@@ -225,22 +225,16 @@ class XFruitsUserRegistViewController: XFruitsBaseSubViewController {
         
         weak var weakSelf = self
         
-        // 测试
-//        let secondRegistVC = XFruitsUserRegistSecondPageViewController()
-//        secondRegistVC.para = para as NSDictionary
-//        weakSelf?.show(secondRegistVC, sender: weakSelf)
         
-        
-        
-        
-        XFruitsService().vertifyImageCodeAndSendMessageCode(params: para) { (data) in
+        XFCommonService().vertifyImageCodeAndSendMessageCode(params: para) { (data) in
             dPrint(data)
             if data as! Bool {
                 dPrint("返回成功，跳转到注册下一步页面")
-                let secondRegistVC = XFruitsUserRegistSecondPageViewController()
+                let secondRegistVC = XFUserRegistSecondPageViewController()
                 secondRegistVC.para  = para as NSDictionary
                 weakSelf?.show(secondRegistVC, sender: weakSelf)
             }
         }
     }
 }
+

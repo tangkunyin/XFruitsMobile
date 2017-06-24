@@ -1,9 +1,9 @@
 //
-//  XFruitsShopCarViewController.swift
+//  XFShopCarViewController.swift
 //  XFruits
 //
-//  Created by tangkunyin on 2017/4/9.
-//  Copyright © 2017年 www.10fruits.net. All rights reserved.
+//  Created by tangkunyin on 24/06/2017.
+//  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import MBProgressHUD
 
 fileprivate let XFCartCellReuseIdentifier:String = "XFShopCartCellReuseIdentifier"
 
-class XFruitsShopCarViewController: XFruitsBaseViewController,UITableViewDelegate,UITableViewDataSource {
+class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableViewDataSource {
     
     lazy var cartListView:UITableView = {
         let listView = UITableView.init(frame: CGRect.zero, style: .plain)
@@ -33,10 +33,10 @@ class XFruitsShopCarViewController: XFruitsBaseViewController,UITableViewDelegat
         let list = XFCartUtils.sharedInstance.getAll()
         return list
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "编辑",
                                                                  style: .plain,
                                                                  target: self,
@@ -59,7 +59,7 @@ class XFruitsShopCarViewController: XFruitsBaseViewController,UITableViewDelegat
             make.bottom.equalTo(self.view)
         }
     }
-
+    
     
     @objc private func onShopCartEdit(){
         MBProgressHUD.showError("您有毛线可编辑吗？")
@@ -107,8 +107,9 @@ class XFruitsShopCarViewController: XFruitsBaseViewController,UITableViewDelegat
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "删除"
     }
-
+    
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .delete
     }
 }
+

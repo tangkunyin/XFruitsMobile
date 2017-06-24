@@ -12,8 +12,8 @@ import SnapKit
 /// 详情页首部商品介绍、幻灯片
 class XFDetailHeaderView: UIView {
 
-    lazy var detailViewPager: XFruitsViewPager = {
-        let pager = XFruitsViewPager.init(source: [""], placeHolder: "default-apple")
+    lazy var detailViewPager: XFViewPager = {
+        let pager = XFViewPager.init(source: [""], placeHolder: "default-apple")
         return pager
     }()
     

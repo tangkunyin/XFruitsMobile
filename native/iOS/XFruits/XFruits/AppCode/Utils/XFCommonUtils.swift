@@ -33,7 +33,7 @@ func currentTimestamp() ->Int {
 ///   - user: 用户信息
 ///   - goodsInfo: 商品信息（当浏览商品时可传入，便于客服了解用户咨询的产品）
 /// - Returns: 聊天室
-func createChatViewController(withUser user:XFruitsUser?, goodsInfo:XFruitsGoodsInfo?) -> V5ChatViewController {
+func createChatViewController(withUser user:XFUser?, goodsInfo:XFGoodsInfo?) -> V5ChatViewController {
     
     let config = V5ClientAgent.shareClient().config
     /// 配置用户信息和商品信息

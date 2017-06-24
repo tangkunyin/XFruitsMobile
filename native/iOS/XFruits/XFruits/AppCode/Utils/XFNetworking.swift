@@ -1,8 +1,8 @@
 //
-//  XFruitsNetworking.swift
+//  XFNetworking.swift
 //  XFruits
 //
-//  Created by tangkunyin on 04/06/2017.
+//  Created by tangkunyin on 24/06/2017.
 //  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
@@ -96,7 +96,7 @@ public final class XFNetworkStatus: NSObject {
     public var currentStatus: XFNetStateCode = .unKnown
     
     private var reachability:NetworkReachabilityManager = NetworkReachabilityManager(host: "www.qq.com")!
-
+    
     private override init() {
         super.init()
         weak var weakSelf = self
@@ -127,8 +127,8 @@ public final class XFNetworkStatus: NSObject {
 }
 
 
-public class XFruitsNetworking: NSObject {
-
+public class XFNetworking: NSObject {
+    
     public func doGet(withUrl url:String, completion:@escaping XFNetCompletion) {
         self.doRequest(withUrl: url, method: .get, params: nil, headers: nil, completion: completion)
     }
@@ -171,5 +171,6 @@ public class XFruitsNetworking: NSObject {
         }
     }
     
-
+    
 }
+

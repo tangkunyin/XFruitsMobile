@@ -1,14 +1,14 @@
 //
-//  XFruitsNavigationController.swift
+//  XFNavigationController.swift
 //  XFruits
 //
-//  Created by tangkunyin on 2017/4/23.
-//  Copyright © 2017年 www.10fruits.net. All rights reserved.
+//  Created by tangkunyin on 24/06/2017.
+//  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
 
-class XFruitsNavigationController: UINavigationController {
+class XFNavigationController: UINavigationController {
     
     private static let initAppearance: Void = {
         let barAttr = [NSForegroundColorAttributeName:XFConstants.Color.white,
@@ -33,9 +33,10 @@ class XFruitsNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        XFruitsNavigationController.initAppearance
+        XFNavigationController.initAppearance
         
         
     }
-        
+    
 }
+

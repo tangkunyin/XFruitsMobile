@@ -1,21 +1,22 @@
 //
-//  XFruitsCategoryViewController.swift
+//  XFCategoryViewController.swift
 //  XFruits
 //
-//  Created by tangkunyin on 2017/4/9.
-//  Copyright © 2017年 www.10fruits.net. All rights reserved.
+//  Created by tangkunyin on 24/06/2017.
+//  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
 import MBProgressHUD
 import SnapKit
 
+
 fileprivate let XFCellViewReuseIdentifier:String = "XFCategoryCellReuseIdentifier"
 
-class XFruitsCategoryViewController: XFruitsBaseViewController,
+class XFCategoryViewController: XFBaseViewController,
 UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
-
-
+    
+    
     lazy var headSizer:XFCategoryHeadSizer = {
         let sizer = XFCategoryHeadSizer(textColor: nil, selectTextColor: nil)
         return sizer;
@@ -40,8 +41,8 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
                                                                  style: .plain,
                                                                  target: self,
                                                                  action: #selector(onAllItemClick))
-
-    
+        
+        
         view.addSubview(headSizer)
         view.addSubview(cateListView)
         
@@ -61,17 +62,17 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
             make.bottom.equalTo(self.view).offset(0)
         }
     }
-
+    
     @objc private func onAllItemClick(){
-//        let allVC = XFAllCategoryListViewController()
-//        navigationController?.pushViewController(allVC, animated: true)
+        //        let allVC = XFAllCategoryListViewController()
+        //        navigationController?.pushViewController(allVC, animated: true)
         
-        let params:XFruitsParams = ["userId":"","fruit":1000,"order":101,"sequence":1,"page":0,"pageSize":6]
-        XFruitsService().getAllProducts(params: params) { (data) in
+        let params:XFParams = ["userId":"","fruit":1000,"order":101,"sequence":1,"page":0,"pageSize":6]
+        XFCommonService().getAllProducts(params: params) { (data) in
             dPrint(data)
         }
     }
-
+    
     // MARK: - delegates
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 6
@@ -80,7 +81,7 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: XFCellViewReuseIdentifier, for: indexPath)
         
-    
+        
         return cell;
     }
     
@@ -93,9 +94,10 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detail = XFruitsDetailViewController()
+        let detail = XFDetailViewController()
         navigationController?.pushViewController(detail, animated: true)
     }
     
-
+    
 }
+

@@ -1,11 +1,13 @@
+
 //
-//  XFruitsProduct.swift
+//  XFProduct.swift
 //  XFruits
 //
-//  Created by tangkunyin on 11/06/2017.
+//  Created by tangkunyin on 24/06/2017.
 //  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
+import Foundation
 import HandyJSON
 
 struct ProductType: HandyJSON {
@@ -33,6 +35,6 @@ struct ProductDetail: HandyJSON {
     var salesPrice:Float = 0
     var description:String = ""
     var service:String = ""
-    var commentList:Array<XFruitsCommen>?
+//    var commentList:Array<XFCommen>?
 }
 

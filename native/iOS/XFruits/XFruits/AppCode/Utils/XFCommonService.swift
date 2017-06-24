@@ -1,8 +1,8 @@
 //
-//  XFruitsService.swift
+//  XFCommonService.swift
 //  XFruits
 //
-//  Created by tangkunyin on 11/06/2017.
+//  Created by tangkunyin on 24/06/2017.
 //  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
@@ -10,9 +10,9 @@ import Foundation
 import MBProgressHUD
 import HandyJSON
 
-public typealias XFruitsResponse = ((_ data: Any)->Void)
+public typealias XFResponse = ((_ data: Any)->Void)
 
-public typealias XFruitsParams = Dictionary<String,Any>
+public typealias XFParams = Dictionary<String,Any>
 
 
 struct ApiServer {
@@ -28,9 +28,9 @@ struct ApiServer {
 
 
 /// 具体业务请求
-public final class XFruitsService: XFruitsNetworking {
+public final class XFCommonService: XFNetworking {
     
-    func url(_ uri:String, params:XFruitsParams? = nil) -> String {
+    func url(_ uri:String, params:XFParams? = nil) -> String {
         if let params = params, !params.isEmpty {
             var url:String = ApiServer.onLine + uri + "?"
             for (index, obj) in params.enumerated() {
@@ -45,34 +45,34 @@ public final class XFruitsService: XFruitsNetworking {
             return ApiServer.onLine + uri
         }
     }
-
-    func getVerifyImage(_ completion:@escaping XFruitsResponse) {
+    
+    func getVerifyImage(_ completion:@escaping XFResponse) {
         self.doGet(withUrl: url("/auth/captcha")) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
-                completion(VerifyImage.deserialize(from: dict) ?? VerifyImage())
-               
+                completion(XFVerifyImage.deserialize(from: dict) ?? XFVerifyImage())
+                
             }
         }
     }
     
-    func vertifyImageCodeAndSendMessageCode( params:XFruitsParams,  _ completion:@escaping XFruitsResponse) {
+    func vertifyImageCodeAndSendMessageCode( params:XFParams,  _ completion:@escaping XFResponse) {
         self.doPost(withUrl: url("/auth/captcha"), params: params){ (success, respData) in
             if success  {
                 completion(respData as! Bool)
             }
         }
     }
-    func register( params:XFruitsParams,  _ completion:@escaping XFruitsResponse) {
+    func register( params:XFParams,  _ completion:@escaping XFResponse) {
         self.doPost(withUrl: url("/auth/register"), params: params){ (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
-                completion(XFruitsUser.deserialize(from: dict) ?? XFruitsUser())
+                completion(XFUser.deserialize(from: dict) ?? XFUser())
             }
         }
     }
     
     
     
-    func getAllCategoryies(_ completion:@escaping XFruitsResponse) {
+    func getAllCategoryies(_ completion:@escaping XFResponse) {
         self.doGet(withUrl: url("/product/type")) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(ProductType.deserialize(from: dict) ?? ProductType())
@@ -80,7 +80,7 @@ public final class XFruitsService: XFruitsNetworking {
         }
     }
     
-    func getAllProducts(params:XFruitsParams, completion:@escaping XFruitsResponse) {
+    func getAllProducts(params:XFParams, completion:@escaping XFResponse) {
         self.doGet(withUrl: url("/product/list", params: params)) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(ProductItem.deserialize(from: dict) ?? ProductItem())
@@ -88,7 +88,7 @@ public final class XFruitsService: XFruitsNetworking {
         }
     }
     
-    func getProductDetail(_ completion:@escaping XFruitsResponse) {
+    func getProductDetail(_ completion:@escaping XFResponse) {
         
         
     }
@@ -97,3 +97,4 @@ public final class XFruitsService: XFruitsNetworking {
     
     
 }
+

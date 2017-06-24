@@ -1,15 +1,16 @@
+
 //
-//  XFruitsBaseSubViewController.swift
+//  XFBaseSubViewController.swift
 //  XFruits
 //
-//  Created by tangkunyin on 2017/4/23.
-//  Copyright © 2017年 www.10fruits.net. All rights reserved.
+//  Created by tangkunyin on 24/06/2017.
+//  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
 
-class XFruitsBaseSubViewController: XFruitsBaseViewController {
-
+class XFBaseSubViewController: XFBaseViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,7 +19,7 @@ class XFruitsBaseSubViewController: XFruitsBaseViewController {
         
         
     }
-
-
-
+    
+    
+    
 }

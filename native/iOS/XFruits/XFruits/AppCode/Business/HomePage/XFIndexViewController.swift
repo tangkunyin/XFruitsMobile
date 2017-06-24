@@ -1,9 +1,9 @@
 //
-//  XFruitsIndexViewController.swift
+//  XFIndexViewController.swift
 //  XFruits
 //
-//  Created by tangkunyin on 2017/4/9.
-//  Copyright © 2017年 www.10fruits.net. All rights reserved.
+//  Created by tangkunyin on 24/06/2017.
+//  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import SnapKit
 import MBProgressHUD
 
 
-class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
+class XFIndexViewController: XFBaseViewController,V5ChatViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -19,22 +19,22 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
             V5ClientAgent.shareClient().stopClient()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("scan-icon"),
                                                                 style: .plain,
-                                                               target: self,
-                                                               action: #selector(onScanItemClick))
+                                                                target: self,
+                                                                action: #selector(onScanItemClick))
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("msg-icon"),
                                                                  style: .plain,
                                                                  target: self,
                                                                  action: #selector(onMessageItemClick))
         
-    
+        
         /// 经计算，1920*1080的图，刚好
         let imageUrls = ["http://www.4j4j.cn/upload/pic/20130307/7e4674248d.jpg",
                          "http://bizhi.zhuoku.com/2013/07/20/xinlingchahua/xinlingchahua12.jpg",
@@ -43,7 +43,7 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
                          "http://www.33lc.com/article/UploadPic/2012-8/20128179522243094.jpg"];
         
         
-        let pagerView = XFruitsViewPager(source: imageUrls, placeHolder: nil)
+        let pagerView = XFViewPager(source: imageUrls, placeHolder: nil)
         pagerView.pagerDidClicked = {(index:Int) -> Void in
             dPrint("\(index) 号被点击")
             MBProgressHUD.showError("链接没有准备好呢，小果拾表示骚瑞~")
@@ -51,19 +51,13 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
         
         
         self.view.addSubview(pagerView)
-
+        
         pagerView.snp.makeConstraints({ (make) in
             make.top.equalTo(0)
             make.height.lessThanOrEqualTo(240)
             make.centerX.equalTo(self.view)
         })
         
-        // 跳转到登录页面
-//        let loginVC  = XFruitsUserLoginViewController()
-//        let nav = UINavigationController(rootViewController:loginVC)
-//
-//        self.present(nav, animated: true, completion: nil)
-
         
     }
     
@@ -73,10 +67,6 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
             dPrint("扫描：小果拾表示这个功能还没想好怎么做...")
         }
         
-        // 获取验证码请求测试
-        XFruitsService().getVerifyImage { (data) in
-            dPrint(data)
-        }
     }
     
     @objc private func onMessageItemClick(){
@@ -84,7 +74,7 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
         chatVC.delegate = self
         navigationController?.pushViewController(chatVC, animated: true)
     }
-
+    
     
     // MARK: - 客户端连接成功
     func onClientViewConnect() {
@@ -122,7 +112,8 @@ class XFruitsIndexViewController: XFruitsBaseViewController,V5ChatViewDelegate {
             chatVC.title = "云客服服务中"
         }
     }
-
     
-
+    
+    
 }
+

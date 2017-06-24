@@ -1,24 +1,24 @@
 //
-//  XFruitsAddressesManageTableViewCell.swift
+//  XFAddressesManageTableViewCell.swift
 //  XFruits
 //
-//  Created by zhaojian on 5/16/17.
+//  Created by tangkunyin on 24/06/2017.
 //  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
 
-class XFruitsAddressesManageTableViewCell: UITableViewCell {
-
+class XFAddressesManageTableViewCell: UITableViewCell {
+    
     
     var userNameLabel:UILabel?   // 用户名
     var mobileLabel:UILabel?   // 手机号
     var addressLabel:UILabel?    // 地址详情
-
+    
     var addressCategoryBtn:UIButton?  // 地址类别
     var editAddressBtn:UIButton?  // 编辑按钮
-
-
+    
+    
     required init?(coder aDecoder:NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -32,7 +32,7 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        
     }
     
     
@@ -40,7 +40,7 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
         let size = text.size(attributes:[NSFontAttributeName:sysFontWithSize(font)])
         return size.width
     }
-
+    
     func  setUpUI() {
         
         // 用户名
@@ -51,7 +51,7 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
         userNameLabel?.numberOfLines = 0
         addSubview(userNameLabel!)
         userNameLabel?.textAlignment = NSTextAlignment.left
-
+        
         userNameLabel?.snp.makeConstraints({ (make) in
             make.top.equalTo(snp.top).offset(12)
             make.left.equalTo(snp.left).offset(13)
@@ -68,7 +68,7 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
         addSubview(addressCategoryBtn!)
         addressCategoryBtn?.layer.borderColor = colorWithRGB(255, g: 105, b: 105).cgColor
         addressCategoryBtn?.layer.borderWidth = 1
-       let cateTitleText = addressCategoryBtn?.titleLabel?.text
+        let cateTitleText = addressCategoryBtn?.titleLabel?.text
         
         let cateTitleWidth =  widthForLabel(text: cateTitleText! as NSString, font: 10)  + 20
         
@@ -85,10 +85,10 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
             
             make.width.equalTo(cateTitleWidth)
             make.height.equalTo(15)
-
+            
         })
- 
-     
+        
+        
         // 编辑按钮
         editAddressBtn = UIButton.init(type:.custom)
         editAddressBtn?.setImage(UIImage.imageWithNamed("edit"), for: .normal)
@@ -101,7 +101,7 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
             make.width.equalTo(20)
             make.height.equalTo(20)
         })
-       
+        
         
         // 手机号
         mobileLabel = UILabel.init()
@@ -120,29 +120,30 @@ class XFruitsAddressesManageTableViewCell: UITableViewCell {
             make.height.equalTo(17)
         })
         
-    
-         
-         // 地址
-         addressLabel = UILabel.init()
-         addressLabel?.text = "海淀区农大南路厢黄旗远东青年公寓"
-         addressLabel?.textColor = XFConstants.Color.darkGray
-         addressLabel?.font  = UIFont.systemFont(ofSize: 12)
- 
-         addSubview(addressLabel!)
-         addressLabel?.textAlignment = NSTextAlignment.left
-         addressLabel?.numberOfLines = 0
-         addressLabel?.snp.makeConstraints({ (make) in
+        
+        
+        // 地址
+        addressLabel = UILabel.init()
+        addressLabel?.text = "海淀区农大南路厢黄旗远东青年公寓"
+        addressLabel?.textColor = XFConstants.Color.darkGray
+        addressLabel?.font  = UIFont.systemFont(ofSize: 12)
+        
+        addSubview(addressLabel!)
+        addressLabel?.textAlignment = NSTextAlignment.left
+        addressLabel?.numberOfLines = 0
+        addressLabel?.snp.makeConstraints({ (make) in
             make.top.equalTo((mobileLabel?.snp.bottom)!).offset(4)
             make.left.equalTo((addressCategoryBtn?.snp.right)!).offset(15)
             make.right.equalTo((editAddressBtn?.snp.left)!).offset(-13)
-         
+            
             make.bottom.equalTo(snp.bottom).offset(-6)
-
-          })
-      
+            
+        })
+        
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
+    
 }
+

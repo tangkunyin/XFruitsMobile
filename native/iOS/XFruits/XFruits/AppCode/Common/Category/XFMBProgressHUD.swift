@@ -1,8 +1,9 @@
+
 //
-//  XFruitsMBProgressHUD.swift
+//  XFMBProgressHUD.swift
 //  XFruits
 //
-//  Created by tangkunyin on 20/05/2017.
+//  Created by tangkunyin on 24/06/2017.
 //  Copyright © 2017 www.10fruits.net. All rights reserved.
 //
 
@@ -87,7 +88,7 @@ extension MBProgressHUD {
             }
         }
     }
-
+    
     
     fileprivate class func show(text:String ,type:MBProgressTipType, completion:(()->Void)?){
         if let window = UIApplication.shared.keyWindow,text.characters.count > 0 {
@@ -109,7 +110,7 @@ extension MBProgressHUD {
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.6, execute: {
                 DispatchQueue.main.async {
-                    UIView.animate(withDuration: 0.2, animations: { 
+                    UIView.animate(withDuration: 0.2, animations: {
                         mbHub.transform = CGAffineTransform(scaleX: 0.8, y: 0.8);
                     }, completion: { (finish) in
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8, execute: {
@@ -125,3 +126,4 @@ extension MBProgressHUD {
         }
     }
 }
+

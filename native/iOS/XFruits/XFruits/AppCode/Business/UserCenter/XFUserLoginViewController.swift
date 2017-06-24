@@ -1,14 +1,14 @@
 //
-//  XFruitsUserLoginViewController.swift
+//  XFUserLoginViewController.swift
 //  XFruits
 //
-//  Created by tangkunyin on 2017/4/9.
-//  Copyright © 2017年 www.10fruits.net. All rights reserved.
+//  Created by tangkunyin on 24/06/2017.
+//  Copyright © 2017 www.10fruits.net. All rights reserved.
 // 登录
 
 import UIKit
 
-class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
+class XFUserLoginViewController: XFBaseSubViewController {
     var backgroudImageView:UIImageView? // 背景图
     var brandImageView:UIImageView? // 品牌logo
     
@@ -165,10 +165,11 @@ class XFruitsUserLoginViewController: XFruitsBaseSubViewController {
     
     func createAccount(sender:UIButton?) {
         dPrint("createAccount")
-        let registVC = XFruitsUserRegistViewController()
+        let registVC = XFUserRegistViewController()
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.show(registVC, sender: self)
         
     }
     
 }
+

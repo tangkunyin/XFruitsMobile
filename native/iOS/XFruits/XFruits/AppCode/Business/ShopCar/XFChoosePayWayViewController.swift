@@ -8,7 +8,7 @@
 
 import UIKit
 
-class XFChoosePayWayViewController: XFruitsBaseViewController ,UITableViewDataSource,UITableViewDelegate{
+class XFChoosePayWayViewController: XFBaseViewController ,UITableViewDataSource,UITableViewDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
