@@ -13,9 +13,7 @@ import AlamofireSwiftyJSON
 import SwiftyJSON
 import HandyJSON
 
-
 public typealias XFNetCompletion = ((_ success: Bool, _ respData: Any?)->Void)
-
 
 // 网络状态
 public enum XFNetStateCode {
@@ -129,20 +127,24 @@ public final class XFNetworkStatus: NSObject {
 
 public class XFNetworking: NSObject {
     
-    public func doGet(withUrl url:String, completion:@escaping XFNetCompletion) {
-        self.doRequest(withUrl: url, method: .get, params: nil, headers: nil, completion: completion)
+    public func doGet(withUrl url:String,
+                      encoding:ParameterEncoding = URLEncoding.default,
+                      completion:@escaping XFNetCompletion) {
+        self.doRequest(withUrl: url, method: .get, params: nil, paramsEncoding: encoding, completion: completion)
     }
     
     public func doPost(withUrl url:String,
                        params:Dictionary<String,Any>,
+                       encoding:ParameterEncoding = URLEncoding.default,
                        completion:@escaping XFNetCompletion) {
-        self.doRequest(withUrl: url, method: .post, params: params, headers: nil, completion: completion)
+        
+        self.doRequest(withUrl: url, method: .post, params: params, paramsEncoding: encoding, completion: completion)
     }
     
     public func doRequest(withUrl url:String,
                           method:Alamofire.HTTPMethod,
                           params:Dictionary<String,Any>?,
-                          headers:Dictionary<String,String>?,
+                          paramsEncoding:ParameterEncoding,
                           completion:@escaping XFNetCompletion) {
         
         guard XFNetworkStatus.shareInstance.canReachable() else {
@@ -151,31 +153,31 @@ public class XFNetworking: NSObject {
             return
         }
         
-        Alamofire.request(url, method: method, parameters: params, encoding: URLEncoding.default,
-                          headers: headers).responseSwiftyJSON { (dataResponse) in
-                            switch dataResponse.result {
-                            case .success(let value):
-                                if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: value.rawString()) {
-                                    guard let code = obj.code, let msg = obj.msg else {
-                                        dPrint(obj.msg ?? "异常数据返回，请稍后再试~")
-                                        MBProgressHUD.showError("异常数据返回，请稍后再试~")
-                                        completion(false, nil)
-                                        return
-                                    }
-                                    switch code {
-                                    case XFHttpStatus.success.rawValue,
-                                         XFHttpStatus.notModify.rawValue,
-                                         XFHttpStatus.returnTrue.rawValue:
-                                        completion(true, obj.data)
-                                    default:
-                                        MBProgressHUD.showError(msg)
-                                        completion(false, msg)
-                                    }
-                                }
-                            case .failure(let error):
-                                dPrint(error)
-                                completion(false, error)
-                            }
+        Alamofire.request(url, method: method, parameters: params, encoding: paramsEncoding)
+            .responseSwiftyJSON { (response) in
+                switch response.result {
+                case .success(let value):
+                    if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: value.rawString()) {
+                        guard let code = obj.code, let msg = obj.msg else {
+                            dPrint(obj.msg ?? "异常数据返回，请稍后再试~")
+                            MBProgressHUD.showError("异常数据返回，请稍后再试~")
+                            completion(false, nil)
+                            return
+                        }
+                        switch code {
+                        case XFHttpStatus.success.rawValue,
+                             XFHttpStatus.notModify.rawValue,
+                             XFHttpStatus.returnTrue.rawValue:
+                            completion(true, obj.data)
+                        default:
+                            MBProgressHUD.showError(msg)
+                            completion(false, msg)
+                        }
+                    }
+                case .failure(let error):
+                    dPrint(error)
+                    completion(false, error)
+                }
         }
     }
     

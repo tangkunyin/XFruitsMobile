@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class XFUserRegistSecondPageViewController: XFBaseSubViewController {
     
@@ -150,26 +151,31 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
     
     //
     func gotoRegister(sender:UIButton?) {
-        dPrint("eyes")
-        //        {
-        //            "phone":"15701203653", //手机号
-        //            "password":"jj123456", //密码
-        //            "phoneCaptcha":"5812"  //短信验证码
-        //        }
-        let phone:String  = self.para?["phone"] as! String
+//        if let phone = self.para["phone"],let password = passwordTextField?.text,let code = messageCodeTextField?.text {
+//            
+//        }
         
-        let registPara:[String:String] = ["phone":phone,
-                                          "password":(self.passwordTextField?.text)!,
-                                          "phoneCaptcha":self.para?["code"] as! String]
+        guard let phone:String = para?["phone"] as? String else {
+            MBProgressHUD.showError("手机号不能为空")
+            return
+        }
+        guard let phoneCaptcha = messageCodeTextField?.text else {
+            MBProgressHUD.showError("验证码不能为空")
+            return
+        }
+        guard let password = passwordTextField?.text else {
+            MBProgressHUD.showError("密码不能为空")
+            return
+        }
+        
+        let registPara:[String:String] = ["phone":phone,"password":password,"phoneCaptcha":phoneCaptcha]
+        dPrint(registPara)
         
         weak var weakSelf = self
-        dPrint(registPara)
         XFCommonService().register(params: registPara) { (data) in
             dPrint(data)
-            
             dPrint("注册成功")
-            self.dismiss(animated: true, completion: nil)
-            
+            weakSelf!.dismiss(animated: true, completion: nil)
         }
         
     }

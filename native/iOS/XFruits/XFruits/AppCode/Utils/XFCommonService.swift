@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 import MBProgressHUD
 import HandyJSON
 import SwiftyJSON
@@ -64,7 +65,7 @@ public final class XFCommonService: XFNetworking {
         }
     }
     func register( params:XFParams,  _ completion:@escaping XFResponse) {
-        self.doPost(withUrl: url("/auth/register"), params: params){ (success, respData) in
+        self.doPost(withUrl: url("/auth/register"), params: params, encoding: JSONEncoding.default){ (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(XFUser.deserialize(from: dict) ?? XFUser())
             }
