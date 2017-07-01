@@ -34,6 +34,8 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
         return listView
     }()
     
+    var dataSource:[ProductItem] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +50,13 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
         
         makeViewConstrains()
         
-        
+        weak var weakSelf = self
         let params:XFParams = ["fruit":1000,"sort":101,"sequence":1,"page":1,"size":6]
         XFCommonService().getAllProducts(params: params) { (data) in
-            dPrint(data)
+            if let cateList = data as? CategoryList, let dataSource = cateList.content {
+                weakSelf?.dataSource = dataSource
+                weakSelf?.cateListView.reloadData()
+            }
         }
         
     }
@@ -76,14 +81,16 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
     
     // MARK: - delegates
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: XFCellViewReuseIdentifier, for: indexPath)
-        
-        
-        return cell;
+        guard let cateCell:XFCategoryCell = cell as? XFCategoryCell  else {
+            return cell
+        }
+        cateCell.dataSource = dataSource[indexPath.row]
+        return cateCell;
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

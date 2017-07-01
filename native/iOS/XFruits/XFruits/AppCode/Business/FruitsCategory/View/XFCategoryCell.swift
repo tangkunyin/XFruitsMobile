@@ -14,6 +14,16 @@ import MBProgressHUD
 
 class XFCategoryCell: UICollectionViewCell {
  
+    var dataSource:ProductItem? {
+        didSet {
+            if let item = dataSource {
+                thumbnail.kf.setImage(with: URL.init(string: item.cover))
+                titleLabel.text = item.name
+                priceLabel.text = String(format:"%.2f",item.salesPrice)
+            }
+        }
+    }
+    
     lazy var thumbnail:UIImageView = {
         let imageView = UIImageView.init(image: UIImage.imageWithNamed("sampleGoodsInCategoryCell"))
         imageView.contentMode = .scaleAspectFit
@@ -108,6 +118,9 @@ class XFCategoryCell: UICollectionViewCell {
     
     @objc private func addToCartFromCategoryItem(){
         MBProgressHUD.showSuccess("成功添加到果篮")
+        dPrint(dataSource)
     }
 
+    
+    
 }

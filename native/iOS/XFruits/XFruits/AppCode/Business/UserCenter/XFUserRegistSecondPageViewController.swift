@@ -26,9 +26,7 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        dPrint(para)
-        
+    
         
         self.view.backgroundColor = UIColor.white
         // 品牌logo
