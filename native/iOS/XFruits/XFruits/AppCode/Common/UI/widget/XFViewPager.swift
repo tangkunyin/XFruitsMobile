@@ -12,6 +12,71 @@ import SnapKit
 
 class XFViewPager: UIView,UIScrollViewDelegate {
     
+    private var placeHolder:String?
+    
+    public var pagerDidClicked: ((Int) -> Void)?
+    
+    public var dataSource:Array<String>? {
+        didSet {
+            if let imageSource = dataSource {
+                if self.container.subviews.count > 0 {
+                    self.container.subviews.forEach {$0.removeFromSuperview()}
+                }
+                renderPager(source: imageSource)
+            }
+        }
+    }
+    
+    convenience init(placeHolder:String?)  {
+        self.init()
+        self.addSubview(self.container)
+        container.snp.makeConstraints { (make) in
+            make.center.size.equalTo(self)
+        }
+        self.placeHolder = placeHolder
+    }
+    
+    convenience init(source:Array<String>, placeHolder:String?)  {
+        self.init(placeHolder: placeHolder)
+        renderPager(source: source)
+    }
+    
+    private func renderPager(source:Array<String>){
+        if source.count == 1 {
+            let singleView:UIImageView = imagePagerView(urlString: source.first!, placeHolder: placeHolder, index: 0)
+            self.container.addSubview(singleView)
+            singleView.snp.makeConstraints({ (make) in
+                make.center.size.equalTo(self.container)
+            })
+        } else if source.count > 1 {
+            // render views
+            for (index, item) in source.enumerated() {
+                let pageView:UIImageView = imagePagerView(urlString: item, placeHolder: placeHolder, index: index)
+                self.container.addSubview(pageView)
+                pageView.snp.makeConstraints({ (make) in
+                    make.top.size.equalTo(self.container)
+                    if index == 0 {
+                        make.left.equalTo(self.container)
+                    }
+                    else if let previousView = self.container.subviews[index-1] as? UIImageView {
+                        make.left.equalTo(previousView.snp.right).offset(0)
+                    }
+                    if index == source.count - 1 {
+                        make.right.equalTo(self.container)
+                    }
+                })
+            }
+            // render page control view
+            self.pageControl.numberOfPages = source.count
+            self.addSubview(self.pageControl)
+            self.pageControl.snp.makeConstraints { (make) in
+                make.centerX.equalTo(self)
+                make.size.equalTo(CGSize(width: 200, height:40))
+                make.bottom.equalTo(0)
+            }
+        }
+    }
+    
     private lazy var pageControl:UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.pageIndicatorTintColor = XFConstants.Color.paleGrey
@@ -29,55 +94,6 @@ class XFViewPager: UIView,UIScrollViewDelegate {
         scrollView.isPagingEnabled = true
         return scrollView;
     }()
-    
-    public var pagerDidClicked: ((Int) -> Void)?
-    
-    
-    convenience init(source:Array<String>, placeHolder:String?)  {
-        
-        self.init()
-        
-        self.addSubview(self.container)
-        container.snp.makeConstraints { (make) in
-            make.center.size.equalTo(self)
-        }
-        
-        if source.count == 1 {
-            
-            let singleView:UIImageView = imagePagerView(urlString: source.first!, placeHolder: placeHolder, index: 0)
-            self.container.addSubview(singleView)
-            singleView.snp.makeConstraints({ (make) in
-                make.center.size.equalTo(self.container)
-            })
-            
-        } else if source.count > 1 {
-            
-            for (index, item) in source.enumerated() {
-                let pageView:UIImageView = imagePagerView(urlString: item, placeHolder: placeHolder, index: index)
-                self.container.addSubview(pageView)
-                pageView.snp.makeConstraints({ (make) in
-                    make.top.size.equalTo(self.container)
-                    if index == 0 {
-                        make.left.equalTo(self.container)
-                    }
-                    else if let previousView = self.container.subviews[index-1] as? UIImageView {
-                        make.left.equalTo(previousView.snp.right).offset(0)
-                    }
-                    if index == source.count - 1 {
-                        make.right.equalTo(self.container)
-                    }
-                })
-            }
-            
-            self.pageControl.numberOfPages = source.count
-            self.addSubview(self.pageControl)
-            self.pageControl.snp.makeConstraints { (make) in
-                make.centerX.equalTo(self)
-                make.size.equalTo(CGSize(width: 200, height:40))
-                make.bottom.equalTo(0)
-            }
-        }
-    }
     
     // MARK: - paging start
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
