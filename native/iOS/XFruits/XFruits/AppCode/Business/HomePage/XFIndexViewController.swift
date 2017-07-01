@@ -13,6 +13,22 @@ import MBProgressHUD
 
 class XFIndexViewController: XFBaseViewController,V5ChatViewDelegate {
     
+    lazy var realImageUrls = {
+        return ["http://www.4j4j.cn/upload/pic/20130307/7e4674248d.jpg",
+                "http://bizhi.zhuoku.com/2013/07/20/xinlingchahua/xinlingchahua12.jpg",
+                "http://bizhi.zhuoku.com/2011/07/20/Benbenmiao/Benbenmiao130.jpg",
+                "http://img3.iqilu.com/data/attachment/forum/201308/22/161503hoakfzi7fqkk7711.jpg",
+                "http://www.33lc.com/article/UploadPic/2012-8/20128179522243094.jpg"]
+    }()
+    
+    lazy var pagerView:XFViewPager = {
+        /// 经计算，1920*1080的图，刚好
+        let imageUrls = ["http://www.4j4j.cn/upload/pic/20130307/7e4674248d.jpg",
+                         "http://bizhi.zhuoku.com/2013/07/20/xinlingchahua/xinlingchahua12.jpg",
+                         "http://bizhi.zhuoku.com/2011/07/20/Benbenmiao/Benbenmiao130.jpg"]
+        return XFViewPager(source: imageUrls, placeHolder: nil)
+    }()
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if V5ClientAgent.shareClient().isConnected {
@@ -34,22 +50,6 @@ class XFIndexViewController: XFBaseViewController,V5ChatViewDelegate {
                                                                  target: self,
                                                                  action: #selector(onMessageItemClick))
         
-        
-        /// 经计算，1920*1080的图，刚好
-        let imageUrls = ["http://www.4j4j.cn/upload/pic/20130307/7e4674248d.jpg",
-                         "http://bizhi.zhuoku.com/2013/07/20/xinlingchahua/xinlingchahua12.jpg",
-                         "http://bizhi.zhuoku.com/2011/07/20/Benbenmiao/Benbenmiao130.jpg",
-                         "http://img3.iqilu.com/data/attachment/forum/201308/22/161503hoakfzi7fqkk7711.jpg",
-                         "http://www.33lc.com/article/UploadPic/2012-8/20128179522243094.jpg"];
-        
-        
-        let pagerView = XFViewPager(source: imageUrls, placeHolder: nil)
-        pagerView.pagerDidClicked = {(index:Int) -> Void in
-            dPrint("\(index) 号被点击")
-            MBProgressHUD.showError("链接没有准备好呢，小果拾表示骚瑞~")
-        }
-        
-        
         self.view.addSubview(pagerView)
         
         pagerView.snp.makeConstraints({ (make) in
@@ -58,6 +58,10 @@ class XFIndexViewController: XFBaseViewController,V5ChatViewDelegate {
             make.centerX.equalTo(self.view)
         })
         
+        pagerView.pagerDidClicked = {(index:Int) -> Void in
+            dPrint("\(index) 号被点击")
+            MBProgressHUD.showError("链接没有准备好呢，小果拾表示骚瑞~")
+        }
         
     }
     
@@ -67,6 +71,7 @@ class XFIndexViewController: XFBaseViewController,V5ChatViewDelegate {
             dPrint("扫描：小果拾表示这个功能还没想好怎么做...")
         }
         
+        pagerView.dataSource = realImageUrls
     }
     
     @objc private func onMessageItemClick(){

@@ -34,16 +34,22 @@ struct CategoryList: HandyJSON {
     var content:Array<ProductItem>?
 }
 
+struct ProductDetailService: HandyJSON {
+    var ico:String = ""
+    var name:String = ""
+}
+
 struct ProductDetail: HandyJSON {
     var id:Int = 1001
     var name:String = ""
     var fruit:String = ""
-    var cover:String = ""
+    var cover:Array<String> = [""]
     var specification:String = ""
     var primePrice:Float = 0
     var salesPrice:Float = 0
-    var description:String = ""
-    var service:String = ""
-//    var commentList:Array<XFCommen>?
+    var description:Array<String> = [""]
+    var priority:Int = 0
+    var service:Array<ProductDetailService>?
+    var commentList:Array<XFComment>?
 }
 

@@ -103,6 +103,8 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detail = XFDetailViewController()
+        let item:ProductItem = dataSource[indexPath.row]
+        detail.prodId = item.id
         navigationController?.pushViewController(detail, animated: true)
     }
     

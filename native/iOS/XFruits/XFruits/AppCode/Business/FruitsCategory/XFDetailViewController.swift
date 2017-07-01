@@ -12,28 +12,43 @@ import MBProgressHUD
 
 class XFDetailViewController: XFBaseSubViewController {
     
+    var prodId:Int?
+    var _detailData:ProductDetail? {
+        didSet {
+            if let dataSource = _detailData {
+                headerView.dataSource = dataSource
+                commentView.dataSource = dataSource
+                descriptionView.dataSource = dataSource
+            }
+        }
+    }
+    
+    lazy var request:XFCommonService = {
+        let serviceRequest = XFCommonService()
+        return serviceRequest
+    }()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "产品详情页"
+        view.backgroundColor = UIColor.white
+        
+        makePagingViewConstrains()
+        
+        weak var weakSelf = self
+        if let prodId = prodId {
+            request.getProductDetail(pid: prodId, { (data) in
+                if let detailData = data as? ProductDetail {
+                    weakSelf?._detailData = detailData
+                }
+            })
+        }
+    }
+    
     private lazy var backgroundView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = XFConstants.Color.commonBackground
-        scrollView.isPagingEnabled = true
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
-        return scrollView
-    }()
-    
-    /// 商品概览
-    private lazy var pagingOverview: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.bounces = false
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
-        return scrollView
-    }()
-    
-    /// 商品详情
-    private lazy var pagingDetail: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.bounces = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         return scrollView
@@ -63,15 +78,6 @@ class XFDetailViewController: XFBaseSubViewController {
         return view
     }()
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = "产品详情页"
-        view.backgroundColor = UIColor.white
-        
-        makePagingViewConstrains()
-    }
-    
     private func makePagingViewConstrains(){
         view.addSubview(backgroundView)
         view.addSubview(actionBarView)
@@ -83,39 +89,25 @@ class XFDetailViewController: XFBaseSubViewController {
             make.top.equalTo(self.backgroundView.snp.bottom)
             make.width.bottom.equalTo(self.view)
         }
-        backgroundView.addSubview(pagingOverview)
-        backgroundView.addSubview(pagingDetail)
-        pagingOverview.snp.makeConstraints { (make) in
-            make.size.top.equalTo(self.backgroundView)
-            make.bottom.equalTo(pagingDetail.snp.top)
-        }
-        pagingDetail.snp.makeConstraints { (make) in
-            make.size.bottom.equalTo(self.backgroundView)
-            make.top.equalTo(pagingOverview.snp.bottom)
-        }
-        makesubViewsConstrains()
-    }
-    
-    private func makesubViewsConstrains(){
-        pagingOverview.addSubview(headerView)
-        pagingOverview.addSubview(commentView)
-        pagingDetail.addSubview(descriptionView)
+        
+        backgroundView.addSubview(headerView)
+        backgroundView.addSubview(commentView)
+        backgroundView.addSubview(descriptionView)
         headerView.snp.makeConstraints { (make) in
-            make.top.width.equalTo(self.pagingOverview)
-            make.bottom.equalTo(self.commentView.snp.top).offset(-10)
+            make.top.width.equalTo(self.backgroundView)
         }
         commentView.snp.makeConstraints { (make) in
+            make.width.equalTo(self.backgroundView)
             make.top.equalTo(self.headerView.snp.bottom).offset(10)
-            make.width.bottom.equalTo(self.pagingOverview)
         }
         descriptionView.snp.makeConstraints { (make) in
-            make.width.top.bottom.equalTo(self.pagingDetail)
+            make.top.equalTo(self.commentView.snp.bottom).offset(10)
+            make.width.bottom.equalTo(self.backgroundView)
         }
         descriptionView.descBackgroundView.snp.makeConstraints { (make) in
-            make.height.equalTo(self.pagingDetail.snp.height).offset(-42)
+            make.height.equalTo(self.backgroundView.snp.height).offset(-42)
         }
     }
-    
     
 }
 

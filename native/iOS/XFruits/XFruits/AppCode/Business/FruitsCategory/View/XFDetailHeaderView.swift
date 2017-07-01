@@ -12,8 +12,28 @@ import SnapKit
 /// 详情页首部商品介绍、幻灯片
 class XFDetailHeaderView: UIView {
 
+    var dataSource:ProductDetail? {
+        didSet {
+            detailViewPager.dataSource = dataSource!.cover
+            titleLabel.text = dataSource!.name
+            priceLabel.text = String(format:"%.2f",dataSource!.salesPrice)
+            specificationDescLabel.text = dataSource!.specification
+            
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        customInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        customInit()
+    }
+    
     lazy var detailViewPager: XFViewPager = {
-        let pager = XFViewPager.init(source: [""], placeHolder: "default-apple")
+        let pager = XFViewPager.init(placeHolder: "default-apple")
         return pager
     }()
     
@@ -52,7 +72,7 @@ class XFDetailHeaderView: UIView {
         label.text = "服务："
         return label
     }()
-
+    
     lazy var serviceDescriptions: UIView = {
         let view:UIView = UIView();
         let baoyou:UIButton = self.btnWithTitle("包邮", imageName: "service_you")
@@ -105,16 +125,6 @@ class XFDetailHeaderView: UIView {
         }
         return view
     }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        customInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        customInit()
-    }
     
     private func customInit(){
         backgroundColor = UIColor.white

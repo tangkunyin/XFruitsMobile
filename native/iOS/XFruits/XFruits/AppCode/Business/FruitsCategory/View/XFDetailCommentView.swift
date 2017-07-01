@@ -11,6 +11,22 @@ import UIKit
 /// 详情页中部商品评论
 class XFDetailCommentView: UIView {
 
+    var dataSource:ProductDetail? {
+        didSet {
+            
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        customInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        customInit()
+    }
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel();
         label.backgroundColor = UIColor.white
@@ -37,17 +53,6 @@ class XFDetailCommentView: UIView {
         btn.contentEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 10)
         return btn
     }()
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        customInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        customInit()
-    }
     
     private func customInit(){
         

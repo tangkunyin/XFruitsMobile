@@ -14,10 +14,20 @@ import Kingfisher
 /// 详情页底部商品图文介绍
 class XFDetailDescriptionView: UIView {
 
-    let descSource:Array<String> = ["default-detailIntroduce","default-apple"]
+    var dataSource:ProductDetail? {
+        didSet {
+            renderDescriptionsView(descSource: dataSource!.description)
+        }
+    }
     
-    deinit {
-        dPrint("XFDetailDescriptionView deinit...")
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        customInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        customInit()
     }
     
     lazy var titleLabel: UILabel = {
@@ -44,16 +54,6 @@ class XFDetailDescriptionView: UIView {
         return scrollView
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        customInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        customInit()
-    }
-    
     private func customInit(){
         backgroundColor = UIColor.white
     
@@ -78,12 +78,20 @@ class XFDetailDescriptionView: UIView {
             make.top.equalTo(line.snp.bottom)
             make.width.bottom.equalTo(self)
         }
-        
+
+    }
+    
+    private func renderDescriptionsView(descSource: Array<String>) {
         for (index, item) in descSource.enumerated() {
-            let imageView = UIImageView.init(image: UIImage.imageWithNamed(item))
-            imageView.contentMode = .scaleAspectFill
+            let imageView = UIImageView()
+            imageView.contentMode = .scaleAspectFit
             imageView.layer.masksToBounds = true
             imageView.clipsToBounds = true
+            imageView.kf.setImage(with: URL.init(string: item),
+                                  placeholder: UIImage.imageWithNamed("default-detailIntroduce"),
+                                  options: [.transition(.fade(1))],
+                                  progressBlock: nil,
+                                  completionHandler: nil)
             descBackgroundView.addSubview(imageView)
             imageView.snp.makeConstraints({ (make) in
                 make.width.equalTo(self.descBackgroundView)
@@ -98,7 +106,6 @@ class XFDetailDescriptionView: UIView {
                 }
             })
         }
-        
     }
 
 }
