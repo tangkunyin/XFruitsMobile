@@ -26,6 +26,10 @@ class XFUserLoginViewController: XFBaseSubViewController {
         
         self.view.backgroundColor = UIColor.white
         self.title = "登录"
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "取消", style: .plain, target: self, action: #selector(cancelLogin))
+        
+        
         // 背景图（预备）
         //        self.backgroudImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
         //        self.view.addSubview(self.backgroudImageView!)
@@ -169,6 +173,10 @@ class XFUserLoginViewController: XFBaseSubViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.show(registVC, sender: self)
         
+    }
+    
+    @objc private func cancelLogin(){
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
