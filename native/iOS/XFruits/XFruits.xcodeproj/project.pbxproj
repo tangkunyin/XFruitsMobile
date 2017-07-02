@@ -40,6 +40,7 @@
 		862672F91EFE499D0062B52B /* XFNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672F81EFE499D0062B52B /* XFNavigationController.swift */; };
 		862672FB1EFE4F3A0062B52B /* XFVerifyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672FA1EFE4F3A0062B52B /* XFVerifyImage.swift */; };
 		862AF70B1F0926A700409CCB /* XFComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862AF70A1F0926A700409CCB /* XFComment.swift */; };
+		862AF70D1F09271F00409CCB /* XFUserGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862AF70C1F09271E00409CCB /* XFUserGlobal.swift */; };
 		862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862C59EE1EA3677100C2323D /* XFConstants.swift */; };
 		8630B31D1EF7BC86002F5B5C /* XFSQLiteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8630B31C1EF7BC86002F5B5C /* XFSQLiteDataSource.swift */; };
 		8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8630B31E1EF7BCB1002F5B5C /* XFCartDataHelper.swift */; };
@@ -119,6 +120,7 @@
 		862672F81EFE499D0062B52B /* XFNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFNavigationController.swift; sourceTree = "<group>"; };
 		862672FA1EFE4F3A0062B52B /* XFVerifyImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFVerifyImage.swift; sourceTree = "<group>"; };
 		862AF70A1F0926A700409CCB /* XFComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFComment.swift; sourceTree = "<group>"; };
+		862AF70C1F09271E00409CCB /* XFUserGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFUserGlobal.swift; sourceTree = "<group>"; };
 		862C59EE1EA3677100C2323D /* XFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFConstants.swift; sourceTree = "<group>"; };
 		8630B31C1EF7BC86002F5B5C /* XFSQLiteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFSQLiteDataSource.swift; sourceTree = "<group>"; };
 		8630B31E1EF7BCB1002F5B5C /* XFCartDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCartDataHelper.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				86E6951F1ED6AA35004864A6 /* XFCartUtils.swift */,
 				862672EC1EFE48420062B52B /* XFNetworking.swift */,
 				862672EE1EFE487B0062B52B /* XFCommonService.swift */,
+				862AF70C1F09271E00409CCB /* XFUserGlobal.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				86A45C721ED1209F00772D13 /* XFCommonUtils.swift in Sources */,
 				862672F91EFE499D0062B52B /* XFNavigationController.swift in Sources */,
 				862672D11EFE432C0062B52B /* XFIndexViewController.swift in Sources */,
+				862AF70D1F09271F00409CCB /* XFUserGlobal.swift in Sources */,
 				8630B31D1EF7BC86002F5B5C /* XFSQLiteDataSource.swift in Sources */,
 				862672D31EFE43680062B52B /* XFShopCarViewController.swift in Sources */,
 				8690FEDF1ED178900051A16D /* XFShopCartViewCell.swift in Sources */,
