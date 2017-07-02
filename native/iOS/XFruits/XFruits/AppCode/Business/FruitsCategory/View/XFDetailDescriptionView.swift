@@ -84,17 +84,15 @@ class XFDetailDescriptionView: UIView {
     private func renderDescriptionsView(descSource: Array<String>) {
         for (index, item) in descSource.enumerated() {
             let imageView = UIImageView()
-            imageView.contentMode = .scaleAspectFit
+            imageView.contentMode = .scaleAspectFill
             imageView.layer.masksToBounds = true
             imageView.clipsToBounds = true
-            imageView.kf.setImage(with: URL.init(string: item),
-                                  placeholder: UIImage.imageWithNamed("default-detailIntroduce"),
-                                  options: [.transition(.fade(1))],
-                                  progressBlock: nil,
-                                  completionHandler: nil)
             descBackgroundView.addSubview(imageView)
+            
+            var imgViewHeightConstraint: Constraint?
             imageView.snp.makeConstraints({ (make) in
                 make.width.equalTo(self.descBackgroundView)
+                imgViewHeightConstraint = make.height.equalTo(240).constraint
                 if index == 0 {
                     make.top.equalTo(self.descBackgroundView)
                 }
@@ -104,6 +102,19 @@ class XFDetailDescriptionView: UIView {
                 if index == descSource.count - 1 {
                     make.bottom.equalTo(self.descBackgroundView)
                 }
+            })
+            weak var weakSelf = self
+            imageView.kf.setImage(with: URL.init(string: item),
+                                  placeholder: UIImage.imageWithNamed("default-detailIntroduce"),
+                                  options: [.transition(.fade(1))],
+                                  progressBlock: nil,
+                                  completionHandler: { (image, error, type, url) in
+                                    if let image = image {
+                                        let size = image.size
+                                        let newOffset = floor(XFConstants.UI.deviceWidth/(size.width / size.height))
+                                        imgViewHeightConstraint?.update(offset: newOffset)
+                                        weakSelf!.descBackgroundView.setNeedsUpdateConstraints()
+                                    }
             })
         }
     }
