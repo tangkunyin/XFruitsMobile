@@ -11,7 +11,7 @@ import UIKit
 /// 详情页中部商品评论
 class XFDetailCommentView: UIView {
 
-    var dataSource:ProductDetail? {
+    var dataSource:Array<XFComment>? {
         didSet {
             
         }

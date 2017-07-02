@@ -17,8 +17,14 @@ class XFDetailViewController: XFBaseSubViewController {
         didSet {
             if let dataSource = _detailData {
                 headerView.dataSource = dataSource
-                commentView.dataSource = dataSource
                 descriptionView.dataSource = dataSource
+                var hasComments = false
+                if let comments = dataSource.commentList, comments.count > 1 {
+                    hasComments = true
+                    commentView.dataSource = comments
+                }
+                updateSubViewContraints(hasComments: hasComments)
+                view.setNeedsUpdateConstraints()
             }
         }
     }
@@ -34,7 +40,7 @@ class XFDetailViewController: XFBaseSubViewController {
         title = "产品详情页"
         view.backgroundColor = UIColor.white
         
-        makePagingViewConstrains()
+        makeMainViewConstrains()
         
         weak var weakSelf = self
         if let prodId = prodId {
@@ -78,7 +84,7 @@ class XFDetailViewController: XFBaseSubViewController {
         return view
     }()
     
-    private func makePagingViewConstrains(){
+    private func makeMainViewConstrains(){
         view.addSubview(backgroundView)
         view.addSubview(actionBarView)
         backgroundView.snp.makeConstraints { (make) in
@@ -89,23 +95,35 @@ class XFDetailViewController: XFBaseSubViewController {
             make.top.equalTo(self.backgroundView.snp.bottom)
             make.width.bottom.equalTo(self.view)
         }
-        
+    }
+    
+    private func updateSubViewContraints(hasComments:Bool) {
         backgroundView.addSubview(headerView)
-        backgroundView.addSubview(commentView)
         backgroundView.addSubview(descriptionView)
         headerView.snp.makeConstraints { (make) in
             make.top.width.equalTo(self.backgroundView)
         }
-        commentView.snp.makeConstraints { (make) in
-            make.width.equalTo(self.backgroundView)
-            make.top.equalTo(self.headerView.snp.bottom).offset(10)
-        }
-        descriptionView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.commentView.snp.bottom).offset(10)
-            make.width.bottom.equalTo(self.backgroundView)
-        }
-        descriptionView.descBackgroundView.snp.makeConstraints { (make) in
-            make.height.equalTo(self.backgroundView.snp.height).offset(-42)
+        if hasComments {
+            backgroundView.addSubview(commentView)
+            commentView.snp.makeConstraints { (make) in
+                make.width.equalTo(self.backgroundView)
+                make.top.equalTo(self.headerView.snp.bottom).offset(10)
+            }
+            descriptionView.snp.makeConstraints { (make) in
+                make.top.equalTo(self.commentView.snp.bottom).offset(10)
+                make.width.bottom.equalTo(self.backgroundView)
+            }
+            descriptionView.descBackgroundView.snp.makeConstraints { (make) in
+                make.height.equalTo(self.backgroundView.snp.height).offset(-42)
+            }
+        } else {
+            descriptionView.snp.makeConstraints { (make) in
+                make.top.equalTo(self.headerView.snp.bottom).offset(10)
+                make.width.bottom.equalTo(self.backgroundView)
+            }
+            descriptionView.descBackgroundView.snp.makeConstraints { (make) in
+                make.height.equalTo(self.backgroundView.snp.height).offset(-42)
+            }
         }
     }
     
