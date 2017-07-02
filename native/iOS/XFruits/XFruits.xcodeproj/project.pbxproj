@@ -30,7 +30,6 @@
 		862672E11EFE46AE0062B52B /* XFAddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672E01EFE46AE0062B52B /* XFAddAddressViewController.swift */; };
 		862672E51EFE47010062B52B /* XFMBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672E41EFE47010062B52B /* XFMBProgressHUD.swift */; };
 		862672E71EFE47AE0062B52B /* XFUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672E61EFE47AE0062B52B /* XFUser.swift */; };
-		862672E91EFE47CB0062B52B /* XFGoodsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672E81EFE47CB0062B52B /* XFGoodsInfo.swift */; };
 		862672EB1EFE480B0062B52B /* XFProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672EA1EFE480B0062B52B /* XFProduct.swift */; };
 		862672ED1EFE48420062B52B /* XFNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672EC1EFE48420062B52B /* XFNetworking.swift */; };
 		862672EF1EFE487B0062B52B /* XFCommonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672EE1EFE487B0062B52B /* XFCommonService.swift */; };
@@ -40,12 +39,12 @@
 		862672F71EFE497D0062B52B /* XFBaseSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672F61EFE497D0062B52B /* XFBaseSubViewController.swift */; };
 		862672F91EFE499D0062B52B /* XFNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672F81EFE499D0062B52B /* XFNavigationController.swift */; };
 		862672FB1EFE4F3A0062B52B /* XFVerifyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672FA1EFE4F3A0062B52B /* XFVerifyImage.swift */; };
+		862AF70B1F0926A700409CCB /* XFComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862AF70A1F0926A700409CCB /* XFComment.swift */; };
 		862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862C59EE1EA3677100C2323D /* XFConstants.swift */; };
 		8630B31D1EF7BC86002F5B5C /* XFSQLiteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8630B31C1EF7BC86002F5B5C /* XFSQLiteDataSource.swift */; };
 		8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8630B31E1EF7BCB1002F5B5C /* XFCartDataHelper.swift */; };
 		865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AA5B71EAB9E9500E94312 /* XFEnum.swift */; };
 		865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AA5BF1EABA14C00E94312 /* XFUIFuncDefines.swift */; };
-		865BD21F1F07D8910086C866 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865BD21E1F07D8910086C866 /* File.swift */; };
 		865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865F4F461E9A173E0059502C /* AppDelegate.swift */; };
 		865F4F4E1E9A173E0059502C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 865F4F4D1E9A173E0059502C /* Assets.xcassets */; };
 		868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868613251EACCCE400A44338 /* XFImageExtension.swift */; };
@@ -110,7 +109,6 @@
 		862672E01EFE46AE0062B52B /* XFAddAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAddAddressViewController.swift; sourceTree = "<group>"; };
 		862672E41EFE47010062B52B /* XFMBProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFMBProgressHUD.swift; sourceTree = "<group>"; };
 		862672E61EFE47AE0062B52B /* XFUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFUser.swift; sourceTree = "<group>"; };
-		862672E81EFE47CB0062B52B /* XFGoodsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFGoodsInfo.swift; sourceTree = "<group>"; };
 		862672EA1EFE480B0062B52B /* XFProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFProduct.swift; sourceTree = "<group>"; };
 		862672EC1EFE48420062B52B /* XFNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFNetworking.swift; sourceTree = "<group>"; };
 		862672EE1EFE487B0062B52B /* XFCommonService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCommonService.swift; sourceTree = "<group>"; };
@@ -120,12 +118,12 @@
 		862672F61EFE497D0062B52B /* XFBaseSubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFBaseSubViewController.swift; sourceTree = "<group>"; };
 		862672F81EFE499D0062B52B /* XFNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFNavigationController.swift; sourceTree = "<group>"; };
 		862672FA1EFE4F3A0062B52B /* XFVerifyImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFVerifyImage.swift; sourceTree = "<group>"; };
+		862AF70A1F0926A700409CCB /* XFComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFComment.swift; sourceTree = "<group>"; };
 		862C59EE1EA3677100C2323D /* XFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFConstants.swift; sourceTree = "<group>"; };
 		8630B31C1EF7BC86002F5B5C /* XFSQLiteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFSQLiteDataSource.swift; sourceTree = "<group>"; };
 		8630B31E1EF7BCB1002F5B5C /* XFCartDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCartDataHelper.swift; sourceTree = "<group>"; };
 		865AA5B71EAB9E9500E94312 /* XFEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEnum.swift; sourceTree = "<group>"; };
 		865AA5BF1EABA14C00E94312 /* XFUIFuncDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFUIFuncDefines.swift; sourceTree = "<group>"; };
-		865BD21E1F07D8910086C866 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		865F4F431E9A173E0059502C /* XFruits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XFruits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		865F4F461E9A173E0059502C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		865F4F4D1E9A173E0059502C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -318,10 +316,9 @@
 			children = (
 				860A43041EE4178000798678 /* XFBaseResponse.swift */,
 				862672E61EFE47AE0062B52B /* XFUser.swift */,
-				862672E81EFE47CB0062B52B /* XFGoodsInfo.swift */,
 				862672EA1EFE480B0062B52B /* XFProduct.swift */,
 				862672FA1EFE4F3A0062B52B /* XFVerifyImage.swift */,
-				865BD21E1F07D8910086C866 /* File.swift */,
+				862AF70A1F0926A700409CCB /* XFComment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -625,8 +622,8 @@
 				8630B31D1EF7BC86002F5B5C /* XFSQLiteDataSource.swift in Sources */,
 				862672D31EFE43680062B52B /* XFShopCarViewController.swift in Sources */,
 				8690FEDF1ED178900051A16D /* XFShopCartViewCell.swift in Sources */,
-				862672E91EFE47CB0062B52B /* XFGoodsInfo.swift in Sources */,
 				862672F51EFE49550062B52B /* XFBaseViewController.swift in Sources */,
+				862AF70B1F0926A700409CCB /* XFComment.swift in Sources */,
 				862672ED1EFE48420062B52B /* XFNetworking.swift in Sources */,
 				862672EF1EFE487B0062B52B /* XFCommonService.swift in Sources */,
 				862672E51EFE47010062B52B /* XFMBProgressHUD.swift in Sources */,
@@ -650,7 +647,6 @@
 				862672CF1EFE42EF0062B52B /* XFDetailViewController.swift in Sources */,
 				86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */,
 				860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */,
-				865BD21F1F07D8910086C866 /* File.swift in Sources */,
 				86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */,
 				865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */,
 				8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */,
