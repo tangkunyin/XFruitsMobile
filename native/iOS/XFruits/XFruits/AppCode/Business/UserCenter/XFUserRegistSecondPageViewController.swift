@@ -26,7 +26,9 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        //        dPrint(para)
+        
         
         self.view.backgroundColor = UIColor.white
         // 品牌logo
@@ -45,12 +47,20 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         // 短信验证码
         self.messageCodeTextField = UITextField()
         self.view.addSubview(self.messageCodeTextField!)
+        
+        self.messageCodeTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
+        self.messageCodeTextField?.layer.borderWidth = 0.5
+        self.messageCodeTextField?.layer.cornerRadius = 10
+        self.messageCodeTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
+        
         self.messageCodeTextField?.attributedPlaceholder = NSAttributedString(string: "请输入短信验证码，5分钟有效", attributes: [NSForegroundColorAttributeName:colorWithRGB(204, g: 204, b: 204),NSFontAttributeName:UIFont.systemFont(ofSize: 14)])
         self.messageCodeTextField?.snp.makeConstraints({ (make) in
             
             make.top.equalTo((self.brandImageView?.snp.bottom)!).offset(30)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
+            make.height.equalTo(40)
+            
         })
         
         
@@ -59,12 +69,19 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         self.view.addSubview(self.passwordTextField!)
         
         self.passwordTextField?.isSecureTextEntry  = true
+        self.passwordTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
+        self.passwordTextField?.layer.borderWidth = 0.5
+        self.passwordTextField?.layer.cornerRadius = 10
+        self.passwordTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
+        
         
         self.passwordTextField?.attributedPlaceholder = NSAttributedString(string: "请输入密码", attributes: [NSForegroundColorAttributeName:colorWithRGB(204, g: 204, b: 204),NSFontAttributeName:UIFont.systemFont(ofSize: 14)]) //NSAttributedString(string:"请输入密码",attributes:[NSForegroundColorAttributeName: UIColor.blackColor])
         self.passwordTextField?.snp.makeConstraints({ (make) in
             make.top.equalTo((self.messageCodeTextField?.snp.bottom)!).offset(20)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
+            make.height.equalTo(40)
+            
         })
         
         // 注册按钮
@@ -133,11 +150,6 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         })
         self.privacyBtn?.addTarget(self, action: #selector(gotoPrivacyVC(sender:)), for:.touchUpInside)
         
-        
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     
@@ -149,9 +161,9 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
     
     //
     func gotoRegister(sender:UIButton?) {
-//        if let phone = self.para["phone"],let password = passwordTextField?.text,let code = messageCodeTextField?.text {
-//            
-//        }
+        //        if let phone = self.para["phone"],let password = passwordTextField?.text,let code = messageCodeTextField?.text {
+        //
+        //        }
         
         guard let phone:String = para?["phone"] as? String else {
             MBProgressHUD.showError("手机号不能为空")

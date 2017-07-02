@@ -33,20 +33,20 @@ struct XFUser: HandyJSON {
     
     
     //用户ID
-    var userId:String?
-    
-    //用户昵称
-    var nickName:String?
-    
-    //用户性别
-    var gender:Int?
-    
-    //用户头像URL
-    var avatar:String?
-    
-    
-    //用户等级
-    var vip:Int?
+//    var userId:String?
+//    
+//    //用户昵称
+//    var nickName:String?
+//    
+//    //用户性别
+//    var gender:Int?
+//    
+//    //用户头像URL
+//    var avatar:String?
+//    
+//    
+//    //用户等级
+//    var vip:Int?
     
     
     

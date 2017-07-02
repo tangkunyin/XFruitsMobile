@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class XFUserRegistViewController: XFBaseSubViewController {
     
@@ -215,8 +216,18 @@ class XFUserRegistViewController: XFBaseSubViewController {
     
     // 点击下一步触发的事件
     func nextStepToSecondRegistPageVC(sender:UIButton?) {
-        let code:String! =  self.validateTextField.text
-        let phone:String! = self.mobileTextField.text
+//        let code:String! =  self.validateTextField.text
+//        let phone:String! = self.mobileTextField.text
+        
+        guard let phone:String = self.mobileTextField.text else {
+            MBProgressHUD.showError("手机号不能为空")
+            return
+        }
+
+        guard let code:String = self.validateTextField.text else {
+            MBProgressHUD.showError("手机号不能为空")
+            return
+        }
         
         let para:[String:String]  = ["uniqueCode":self.uniqueCodeString! as String,"code":code  ,"phone":phone]
         

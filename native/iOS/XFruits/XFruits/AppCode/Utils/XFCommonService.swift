@@ -72,6 +72,15 @@ public final class XFCommonService: XFNetworking {
         }
     }
     
+    func login( params:XFParams,  _ completion:@escaping XFResponse) {
+        self.doPost(withUrl: url("/auth/login"), params: params){ (success, respData) in
+            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
+                completion(XFUser.deserialize(from: dict) ?? XFUser())
+            }
+        }
+    }
+    
+    
     func getAllCategoryies(_ completion:@escaping XFResponse) {
         self.doGet(withUrl: url("/product/type")) { (success, respData) in
             if success, respData is Array<Any>, let list = respData as? Array<Any> {

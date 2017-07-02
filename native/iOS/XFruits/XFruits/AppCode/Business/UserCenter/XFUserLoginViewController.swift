@@ -7,6 +7,7 @@
 // 登录
 
 import UIKit
+import MBProgressHUD
 
 class XFUserLoginViewController: XFBaseSubViewController {
     var backgroudImageView:UIImageView? // 背景图
@@ -26,9 +27,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
         
         self.view.backgroundColor = UIColor.white
         self.title = "登录"
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "取消", style: .plain, target: self, action: #selector(cancelLogin))
-        
         
         // 背景图（预备）
         //        self.backgroudImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
@@ -56,7 +55,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
         // 手机号
         self.mobileTextField = UITextField()
         self.view.addSubview(self.mobileTextField!)
-        
+    
         self.mobileTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
         self.mobileTextField?.layer.borderWidth = 0.5
         self.mobileTextField?.layer.cornerRadius = 10
@@ -90,6 +89,10 @@ class XFUserLoginViewController: XFBaseSubViewController {
         })
         
         
+        // test
+        self.mobileTextField?.text = "18658054127"
+        self.passwordTextField?.text = "123456"
+        
         self.pwdSecurityBtn = UIButton.init(frame:CGRect.init(x: 0, y:0, width: 22, height:22))
         self.pwdSecurityBtn?.setImage(UIImage.imageWithNamed("eye"), for: .normal)
         self.view?.addSubview(self.pwdSecurityBtn!)
@@ -117,6 +120,9 @@ class XFUserLoginViewController: XFBaseSubViewController {
             make.right.equalTo(self.view).offset(-20)
             make.height.equalTo(40)
         })
+        self.loginBtn?.addTarget(self, action: #selector(xfruiltLogin(sender:)), for:.touchUpInside)
+        
+        
         
         // 忘记密码
         self.forgetPwdBtn = UIButton.init(type: .custom)
@@ -175,9 +181,39 @@ class XFUserLoginViewController: XFBaseSubViewController {
         
     }
     
+    func xfruiltLogin(sender:UIButton?){
+        dPrint("login")
+        
+        weak var weakSelf = self
+        
+        guard let phone = mobileTextField?.text else {
+            MBProgressHUD.showError("手机号不能为空")
+            return
+        }
+        
+        guard let password = passwordTextField?.text else {
+            MBProgressHUD.showError("密码不能为空")
+            return
+        }
+        
+        let loginData = ["phone":phone,"password":password]
+        XFCommonService().login(params: loginData) { (data) in
+            dPrint(data)
+            let data1 = data as! XFUser
+            print(data1.toJSON()!)
+             // 未完待续
+            
+
+            
+            dPrint("登录成功")
+            weakSelf!.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     @objc private func cancelLogin(){
         self.dismiss(animated: true, completion: nil)
     }
+    
     
 }
 
