@@ -199,9 +199,18 @@ class XFUserLoginViewController: XFBaseSubViewController {
         let loginData = ["phone":phone,"password":password]
         XFCommonService().login(params: loginData) { (data) in
             dPrint(data)
-            let data1 = data as! XFUser
-            print(data1.toJSON()!)
-             // 未完待续
+            let data = data as! XFUser
+
+             // 保存
+            let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] as NSString
+            let filePath = path.appendingPathComponent("user.archive")  // 这个后缀要不要改
+            let cachedSuccess   = NSKeyedArchiver.archiveRootObject(data.toJSON()!, toFile: filePath)
+            print(cachedSuccess)
+            
+            // 读取
+            let cachedCotent = NSKeyedUnarchiver.unarchiveObject(withFile: filePath)
+            print(cachedCotent!)
+            
             
 
             
