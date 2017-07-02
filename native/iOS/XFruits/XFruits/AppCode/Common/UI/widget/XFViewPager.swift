@@ -111,17 +111,16 @@ class XFViewPager: UIView,UIScrollViewDelegate {
         
         let pageView = UIImageView()
         pageView.tag = index
-        pageView.contentMode = .scaleAspectFit
+        pageView.contentMode = .scaleAspectFill
         pageView.layer.masksToBounds = true
         pageView.clipsToBounds = true
+        pageView.isUserInteractionEnabled = true
+        pageView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(pagerClicked(_:))))
         pageView.kf.setImage(with: URL(string: urlString),
                              placeholder: placeHolderImage,
                              options: [.transition(.fade(1))],
                              progressBlock: nil,
                              completionHandler: nil)
-        pageView.isUserInteractionEnabled = true
-        pageView.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(pagerClicked(_:))))
-        
         return pageView
     }
     

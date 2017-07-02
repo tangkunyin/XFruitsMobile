@@ -22,7 +22,6 @@ class XFIndexViewController: XFBaseViewController,V5ChatViewDelegate {
     }()
     
     lazy var pagerView:XFViewPager = {
-        /// 经计算，1920*1080的图，刚好
         let imageUrls = ["http://www.4j4j.cn/upload/pic/20130307/7e4674248d.jpg",
                          "http://bizhi.zhuoku.com/2013/07/20/xinlingchahua/xinlingchahua12.jpg",
                          "http://bizhi.zhuoku.com/2011/07/20/Benbenmiao/Benbenmiao130.jpg"]
@@ -53,9 +52,9 @@ class XFIndexViewController: XFBaseViewController,V5ChatViewDelegate {
         self.view.addSubview(pagerView)
         
         pagerView.snp.makeConstraints({ (make) in
-            make.top.equalTo(0)
-            make.height.lessThanOrEqualTo(240)
-            make.centerX.equalTo(self.view)
+            make.left.right.top.equalTo(self.view)
+            // TODO: 提前约定好宽高比
+            make.height.equalTo(floor(XFConstants.UI.deviceWidth/(1920/1080)))
         })
         
         pagerView.pagerDidClicked = {(index:Int) -> Void in
