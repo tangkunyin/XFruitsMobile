@@ -18,7 +18,6 @@ class XFDetailHeaderView: UIView {
             titleLabel.text = dataSource!.name
             priceLabel.text = String(format:"%.2f",dataSource!.salesPrice)
             specificationDescLabel.text = dataSource!.specification
-            
         }
     }
     
@@ -179,7 +178,7 @@ class XFDetailHeaderView: UIView {
             make.bottom.equalTo(self.serviceTitleLabel.snp.top)
         }
         serviceTitleLabel.snp.makeConstraints { (make) in
-            make.width.equalTo(44)
+            make.size.equalTo(CGSize.init(width: 44, height: 26))
             make.left.equalTo(self).offset(10)
             make.top.equalTo(specificationDescLabelBottomLine.snp.bottom)
             make.right.equalTo(self.serviceDescriptions.snp.left)

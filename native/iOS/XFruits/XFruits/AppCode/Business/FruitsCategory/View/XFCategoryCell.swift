@@ -12,22 +12,30 @@ import SnapKit
 import Kingfisher
 import MBProgressHUD
 
+public let XFCategoryCellWidth = (XFConstants.UI.deviceWidth - 30) / 2
+
+
 class XFCategoryCell: UICollectionViewCell {
  
+    private var imgViewHeightConstraint: Constraint?
+    
     var dataSource:ProductItem? {
         didSet {
             if let item = dataSource {
-                thumbnail.kf.setImage(with: URL.init(string: item.cover))
                 titleLabel.text = item.name
                 priceLabel.text = String(format:"%.2f",item.salesPrice)
+                thumbnail.kf.setImage(with: URL.init(string: item.cover),
+                                      placeholder: UIImage.imageWithNamed("sampleGoodsInCategoryCell"),
+                                      options: [.transition(.fade(1))])
             }
         }
     }
     
     lazy var thumbnail:UIImageView = {
         let imageView = UIImageView.init(image: UIImage.imageWithNamed("sampleGoodsInCategoryCell"))
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
         return imageView
     }()
     
