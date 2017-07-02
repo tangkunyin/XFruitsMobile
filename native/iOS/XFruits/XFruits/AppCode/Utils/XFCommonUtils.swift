@@ -26,6 +26,17 @@ func currentTimestamp() ->Int {
     return timeStamp
 }
 
+func stringDateByTimestamp(timeStamp:Int, formatter:String? = "yyyy-MM-dd HH:mm:ss") -> String {
+    let dformatter = DateFormatter()
+    dformatter.dateFormat = formatter
+    
+    let timeInterval:TimeInterval = TimeInterval(timeStamp)
+    let date = Date(timeIntervalSince1970: timeInterval)
+    
+    let stringDate = dformatter.string(from: date)
+    return stringDate
+}
+
 
 /// 创建通用客服聊天室
 ///

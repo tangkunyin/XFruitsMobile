@@ -12,17 +12,23 @@ import Kingfisher
 
 
 class XFCommentItemView: UIView {
+    
+    var data: XFComment? {
+        didSet {
+            userAvatar.kf.setImage(with: URL(string: data!.avatar),
+                                   placeholder: UIImage.imageWithNamed("logo"),
+                                   options: [.transition(.fade(1))])
+            userName.text = data!.username
+            commentDate.text = stringDateByTimestamp(timeStamp: data!.createAt/1000)
+            contentLabel.attributedText = renderCommentAttriText(text: data!.content)
+        }
+    }
 
     lazy var userAvatar : UIImageView = {
         let avatar = UIImageView()
         avatar.layer.cornerRadius = 21
         avatar.layer.masksToBounds = true
         avatar.clipsToBounds = true
-        avatar.kf.setImage(with: URL(string: "http://file-www.sioe.cn/201012/5/1655299809.jpg"),
-                             placeholder: nil,
-                             options: [.transition(.fade(1))],
-                             progressBlock: nil,
-                             completionHandler: nil)
         return avatar
     }()
     
@@ -31,7 +37,7 @@ class XFCommentItemView: UIView {
         label.font = XFConstants.Font.mainMenuFont
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .left
-        label.text = "独孤求**"
+        label.text = "小果拾"
         return label
     }()
     
@@ -49,18 +55,6 @@ class XFCommentItemView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = false
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.firstLineHeadIndent = 0
-        paragraphStyle.lineSpacing = 5
-        paragraphStyle.lineBreakMode = .byTruncatingTail
-        let attributes = [NSFontAttributeName:XFConstants.Font.mainMenuFont,
-                          NSForegroundColorAttributeName:XFConstants.Color.darkGray,
-                          NSParagraphStyleAttributeName:paragraphStyle];
-        
-        let text = "乌云在我们心里搁下一块阴影，我聆听沉寂已久的心情清。晰透明就像美丽的风景，总在回忆里才看的清。被伤透的心能不能够继续爱我，我用力牵起没温度的双手。过往温柔 已经被时间上锁，只剩挥散不去的难过。缓缓飘落的枫叶像思念，我点燃烛火温暖岁末的秋天。极光掠夺天边，北风掠过想你的容颜。我把爱烧成了落叶，却换不回熟悉的那张脸。缓缓飘落的枫叶像思念，为何挽回要赶在冬天来之前。爱你穿越时间，两行来自秋末的眼泪。让爱渗透了地面，我要的只是你在我身边。"
-        let attributeText = NSAttributedString.init(string: text, attributes: attributes)
-        label.attributedText = attributeText
         return label
     }()
     
@@ -89,28 +83,44 @@ class XFCommentItemView: UIView {
         userAvatar.snp.makeConstraints { (make) in
             make.left.top.equalTo(self).offset(10)
             make.size.equalTo(42)
-            make.bottom.equalTo(self.contentLabel.snp.top)
+            make.bottom.equalTo(self.contentLabel.snp.top).offset(-5)
         }
         userName.snp.makeConstraints { (make) in
             make.top.height.equalTo(self.userAvatar)
             make.left.equalTo(self.userAvatar.snp.right).offset(10)
             make.width.equalTo(self.commentDate.snp.width)
-            make.bottom.equalTo(self.contentLabel.snp.top)
+            make.bottom.equalTo(self.contentLabel.snp.top).offset(-5)
         }
         commentDate.snp.makeConstraints { (make) in
             make.top.height.equalTo(self.userAvatar)
             make.left.equalTo(self.userName.snp.right)
             make.right.equalTo(self).offset(-10)
             make.width.equalTo(self.userName.snp.width)
-            make.bottom.equalTo(self.contentLabel.snp.top)
+            make.bottom.equalTo(self.contentLabel.snp.top).offset(-5)
         }
         contentLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(userAvatar.snp.bottom)
+            make.top.equalTo(userAvatar.snp.bottom).offset(5)
             make.left.equalTo(self).offset(10)
             make.right.bottom.equalTo(self).offset(-10)
             make.height.lessThanOrEqualTo(115.6)
         }
         
+    }
+    
+    private func renderCommentAttriText(text:String?) -> NSAttributedString {
+        var defaultText = "你是我滴小丫小苹果，怎么买你都不嫌多..."
+        if let text = text {
+            defaultText = text
+        }
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.firstLineHeadIndent = 0
+        paragraphStyle.lineSpacing = 5
+        paragraphStyle.lineBreakMode = .byTruncatingTail
+        let attributes = [NSFontAttributeName:XFConstants.Font.mainMenuFont,
+                          NSForegroundColorAttributeName:XFConstants.Color.darkGray,
+                          NSParagraphStyleAttributeName:paragraphStyle];
+        let attributeText = NSAttributedString.init(string: defaultText, attributes: attributes)
+        return attributeText
     }
 
 }

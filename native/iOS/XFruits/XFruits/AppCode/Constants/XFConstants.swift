@@ -18,6 +18,8 @@ struct XFConstants {
     /// 开发模式
     static let isDevelopModel:Bool = true
     
+    /// 详情页商品评论数控制，默认最多展示三条
+    static let detailCommentsLimit:Int = 3
     
     /// DES3 KEY (必须是24位)
     static let desKey:String = "123456781234567812345678"

@@ -12,7 +12,11 @@ extension UIImage {
 
     public class func imageWithNamed(_ name:String) -> UIImage{
         let image = UIImage.init(named: name)?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-        return image!;
+        if let renderedImage = image {
+            return renderedImage
+        }
+        // 返回默认
+        return UIImage.init(named: "logo")!.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
     }
     
 }

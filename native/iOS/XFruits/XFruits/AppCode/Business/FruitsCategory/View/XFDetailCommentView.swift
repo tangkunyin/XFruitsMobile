@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 /// 详情页中部商品评论
 class XFDetailCommentView: UIView {
 
     var dataSource:Array<XFComment>? {
         didSet {
-            
+            addCommentList(comments: dataSource!)
         }
     }
     
@@ -51,41 +52,62 @@ class XFDetailCommentView: UIView {
         btn.contentHorizontalAlignment = .right
         btn.backgroundColor = UIColor.white
         btn.contentEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 10)
+        btn.addTarget(self, action: #selector(showAllCommentClick), for: .touchUpInside)
         return btn
     }()
     
+    lazy var commentContainer: UIView = {
+        let container = UIView()
+        return container
+    }()
+    
     private func customInit(){
-        
-        let topComment = XFCommentItemView()
-        let bottomComment = XFCommentItemView()
-        
         addSubview(titleLabel)
         addSubview(showAllBtn)
-        addSubview(topComment)
-        addSubview(bottomComment)
-        
+        addSubview(commentContainer)
         titleLabel.snp.makeConstraints { (make) in
             make.top.left.equalTo(self)
             make.height.equalTo(41)
-            make.bottom.equalTo(topComment.snp.top)
             make.right.equalTo(self.showAllBtn.snp.left)
             make.width.equalTo(self.showAllBtn.snp.width)
+            make.bottom.equalTo(commentContainer.snp.top)
         }
         showAllBtn.snp.makeConstraints { (make) in
             make.top.height.width.equalTo(self.titleLabel)
             make.left.equalTo(self.titleLabel.snp.right)
             make.right.equalTo(self)
-            make.bottom.equalTo(topComment.snp.top)
+            make.bottom.equalTo(commentContainer.snp.top)
         }
-        topComment.snp.makeConstraints { (make) in
+        commentContainer.snp.makeConstraints { (make) in
             make.top.equalTo(self.titleLabel.snp.bottom)
-            make.width.equalTo(self)
-            make.bottom.equalTo(bottomComment.snp.top)
-        }
-        bottomComment.snp.makeConstraints { (make) in
-            make.top.equalTo(topComment.snp.bottom)
             make.width.bottom.equalTo(self)
         }
+    }
+    
+    private func addCommentList(comments: Array<XFComment>){
+        for (index, comment) in comments.enumerated() {
+            if index < XFConstants.detailCommentsLimit - 1 {
+                let commentItem = XFCommentItemView()
+                commentItem.data = comment
+                commentContainer.addSubview(commentItem)
+                commentItem.snp.makeConstraints({ (make) in
+                    make.width.equalTo(self)
+                    if index == 0 {
+                        make.top.equalTo(self.titleLabel.snp.bottom)
+                    } else if let previousView = commentContainer.subviews[index-1] as? XFCommentItemView {
+                        make.top.equalTo(previousView.snp.bottom).offset(0)
+                    }
+                    if index == comments.count - 1 {
+                        make.bottom.equalTo(self)
+                    }
+                })
+            }
+        }
+        
+    }
+    
+    @objc private func showAllCommentClick() {
+        MBProgressHUD.showError("暂无更多评论，敬请期待...")
     }
 
 }
