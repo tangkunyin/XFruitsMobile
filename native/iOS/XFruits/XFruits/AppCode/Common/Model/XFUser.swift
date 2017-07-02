@@ -12,11 +12,7 @@ import HandyJSON
 
 /// 用户模型
 struct XFUser: HandyJSON {
-    
-    
-    // 用户id
-    var id:Int?
-    
+
     // 用户名称
     var username:String?
     
@@ -26,32 +22,13 @@ struct XFUser: HandyJSON {
     // 手机号
     var cellPhone:String?
     
-    // token
+    //用户头像URL
+    var avatar:String?
+    
+    //用户等级
+    var vip:Int?
+    
+    // token，等同于用户唯一标识，30天过期不是固定的
     var token:String?
-    
-    
-    
-    
-    //用户ID
-//    var userId:String?
-//    
-//    //用户昵称
-//    var nickName:String?
-//    
-//    //用户性别
-//    var gender:Int?
-//    
-//    //用户头像URL
-//    var avatar:String?
-//    
-//    
-//    //用户等级
-//    var vip:Int?
-    
-    
-    
-    
-    
-    
 }
 

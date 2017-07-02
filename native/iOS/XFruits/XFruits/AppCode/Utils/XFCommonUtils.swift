@@ -50,11 +50,11 @@ func createChatViewController(withUser user:XFUser?, goodsInfo:XFGoodsInfo?) -> 
     /// 配置用户信息和商品信息
     if let config = config {
         if let user = user {
-            config.nickname = user.nickName
-            config.gender = user.gender ?? 0
+            config.nickname = user.username
+            config.gender = user.sex ?? 0
             config.avatar = user.avatar
             config.vip = user.vip ?? 0
-            config.openId = user.userId
+            config.openId = user.token
         } else {
             config.nickname = "iOS端未登录的匿名用户"
             config.gender = 0
