@@ -212,7 +212,15 @@ class XFUserLoginViewController: XFBaseSubViewController {
             print(cachedCotent!)
             
             
-
+            // =========== 试试用工具类缓存会不会更优雅！！！
+            XFUserGlobal.shared.signIn(user: data)
+            if XFUserGlobal.shared.isLogin {
+                dPrint("用户已登录")
+                dPrint("Token is: \(XFUserGlobal.shared.token!)")
+            }
+            // 试试用工具类缓存会不会更优雅！！！ =========== 
+            
+            
             
             dPrint("登录成功")
             weakSelf!.dismiss(animated: true, completion: nil)

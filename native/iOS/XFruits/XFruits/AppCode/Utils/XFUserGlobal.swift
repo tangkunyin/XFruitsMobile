@@ -9,10 +9,16 @@
 import Foundation
 import HandyJSON
 
-struct XFUserGlobal {
+class XFUserGlobal {
 
     static let shared = XFUserGlobal()
-    private init(){}
+    private init(){
+        let cachedUser:XFUser? = getCachedUser()
+        if let user = cachedUser {
+            isLogin = true
+            currentUser = user
+        }
+    }
     
     
     /// 记录登录状态，是否登录
@@ -41,7 +47,7 @@ struct XFUserGlobal {
     
     
     /// 登录
-    mutating func signIn(user:XFUser) {
+    func signIn(user:XFUser) {
         if let token:String = user.token, token.characters.count > 0 {
             isLogin = true
             currentUser = user
@@ -51,7 +57,7 @@ struct XFUserGlobal {
     
     
     /// 退出
-    mutating func signOff() {
+    func signOff() {
         isLogin = false
         currentUser = nil
         clearCachedUser()
@@ -59,7 +65,7 @@ struct XFUserGlobal {
     
     
     /// 归档用户模型到本地缓存
-    private mutating func cacheUser(_ user:XFUser) {
+    private func cacheUser(_ user:XFUser) {
         let userInfo:NSDictionary = user.toJSON()! as NSDictionary
         if let filePath = userCacheFilePath {
             let success:Bool = NSKeyedArchiver.archiveRootObject(userInfo, toFile: filePath)
@@ -71,7 +77,7 @@ struct XFUserGlobal {
     /// 从缓存中取得用户
     ///
     /// - Returns: 缓存中的用户
-    private mutating func getCachedUser() -> XFUser? {
+    private func getCachedUser() -> XFUser? {
         if let filePath = userCacheFilePath {
             let userInfo = NSKeyedUnarchiver.unarchiveObject(withFile: filePath)
             if userInfo is NSDictionary, let info:NSDictionary = userInfo as? NSDictionary {
@@ -84,7 +90,7 @@ struct XFUserGlobal {
     
     
     /// 清楚用户缓存信息
-    private mutating func clearCachedUser() {
+    private func clearCachedUser() {
         do {
             let fileManager = FileManager.default
             if let filePath = userCacheFilePath {
