@@ -52,9 +52,14 @@ extension UIButton {
         btn.setTitleColor(textColor, for: .normal)
         btn.titleLabel?.font = textFont
         
-        if let url = URL.init(string: image) {
-            btn.kf.setImage(with: url, for: .normal)
-        } else {
+        do {
+            if let url = URL.init(string: image), try url.checkResourceIsReachable() {
+                btn.kf.setImage(with: url, for: .normal)
+            } else {
+                btn.setImage(UIImage.imageWithNamed(image), for: .normal)
+            }
+        } catch let error as NSError {
+            dPrint(error.localizedDescription)
             btn.setImage(UIImage.imageWithNamed(image), for: .normal)
         }
         
