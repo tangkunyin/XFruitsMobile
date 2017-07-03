@@ -117,10 +117,10 @@ public final class XFCommonService: XFNetworking {
         let isDefault:String = params["isDefault"] as! String
         let label:String  = params["label"] as! String
         
-        let url_combile = url("/address/add?code=\(code)&address=\(address)&recipient=\(recipient)&cellPhone=\(cellPhone)&isDefault=\(isDefault)&label=\(label)")
+//        let url_combile = url("/address/add?code=\(code)&address=\(address)&recipient=\(recipient)&cellPhone=\(cellPhone)&isDefault=\(isDefault)&label=\(label)")
         
- 
-        self.doPost(withUrl: url_combile, params: params) { (success, respData) in
+        // 注意Post请求不需要拼接&参数，其实url函数你用法错了，看看定义！！！
+        self.doPost(withUrl: url("/address/add"), params: params) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(ProductDetail.deserialize(from: dict) ?? ProductDetail())
             }
