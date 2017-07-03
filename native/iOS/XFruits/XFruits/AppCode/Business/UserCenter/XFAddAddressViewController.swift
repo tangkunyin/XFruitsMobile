@@ -37,7 +37,12 @@ class XFAddAddressViewController: XFBaseSubViewController    {
     // 导航栏右侧按钮-保存-触发的事件
     func saveAddress(sender:UIButton?) {
         dPrint("save")
+//        http://api.10fruits.net/address/add?code=110101&&address=成寿寺2&recipient=王小码&cellPhone=13269528888&isDefault=1&label=家2
+        let addressDict:[String:String]  = ["code":"110101","address":"厢黄旗","recipient":"赵小贱","cellPhone":"18658054127","isDefault":"1","label":"老婆婆家"]
         
+        XFCommonService().addAddress(params: addressDict) { (data) in
+            dPrint(data)
+        }
     }
     
     

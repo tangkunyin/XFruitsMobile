@@ -106,6 +106,27 @@ public final class XFCommonService: XFNetworking {
     }
     
     
+    func addAddress(params:XFParams, _ completion:@escaping XFResponse) {
+        print(params)
+       // http://api.10fruits.net/address/add?code=110101&&address=成寿寺2&recipient=王小码&cellPhone=13269528888&isDefault=1&label=家2
+        
+        let code:String  = params["code"] as! String
+        let address:String = params["address"] as! String
+        let recipient:String = params["recipient"] as! String
+        let cellPhone:String = params["cellPhone"] as! String
+        let isDefault:String = params["isDefault"] as! String
+        let label:String  = params["label"] as! String
+        
+        let url_combile = url("/address/add?code=\(code)&address=\(address)&recipient=\(recipient)&cellPhone=\(cellPhone)&isDefault=\(isDefault)&label=\(label)")
+        
+ 
+        self.doPost(withUrl: url_combile, params: params) { (success, respData) in
+            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
+                completion(ProductDetail.deserialize(from: dict) ?? ProductDetail())
+            }
+        }
+    }
+    
     
     
 }

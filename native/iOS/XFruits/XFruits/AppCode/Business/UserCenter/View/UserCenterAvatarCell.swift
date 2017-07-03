@@ -29,7 +29,7 @@ class UserCenterAvatarCell: UITableViewCell {
     
     lazy var userNameLabel:UILabel = {
         let  userNameLabel = UILabel()
-        userNameLabel.text = "zhaojian"
+        userNameLabel.text = XFUserGlobal.shared.currentUser?.username //"zhaojian"
         userNameLabel.textColor = colorWithRGB(83, g: 83, b: 83)
         userNameLabel.font  = UIFont.systemFont(ofSize: 18)
         return userNameLabel

@@ -201,15 +201,15 @@ class XFUserLoginViewController: XFBaseSubViewController {
             dPrint(data)
             let data = data as! XFUser
 
-             // 保存
-            let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] as NSString
-            let filePath = path.appendingPathComponent("user.archive")  // 这个后缀要不要改
-            let cachedSuccess   = NSKeyedArchiver.archiveRootObject(data.toJSON()!, toFile: filePath)
-            print(cachedSuccess)
-            
-            // 读取
-            let cachedCotent = NSKeyedUnarchiver.unarchiveObject(withFile: filePath)
-            print(cachedCotent!)
+//             // 保存
+//            let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] as NSString
+//            let filePath = path.appendingPathComponent("user.archive")  // 这个后缀要不要改
+//            let cachedSuccess   = NSKeyedArchiver.archiveRootObject(data.toJSON()!, toFile: filePath)
+//            print(cachedSuccess)
+//            
+//            // 读取
+//            let cachedCotent = NSKeyedUnarchiver.unarchiveObject(withFile: filePath)
+//            print(cachedCotent!)
             
             
             // =========== 试试用工具类缓存会不会更优雅！！！
@@ -217,6 +217,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
             if XFUserGlobal.shared.isLogin {
                 dPrint("用户已登录")
                 dPrint("Token is: \(XFUserGlobal.shared.token!)")
+               
             }
             // 试试用工具类缓存会不会更优雅！！！ =========== 
             
