@@ -62,6 +62,21 @@ class XFDetailViewController: XFBaseSubViewController {
     
     private lazy var actionBarView: XFDetailActionBarView = {
         let view = XFDetailActionBarView()
+        weak var weakSelf = self
+        view.actionHandler = {(type:Int) -> Void in
+            switch type {
+            case 0:
+                let chatVC = createChatViewController(withUser: XFUserGlobal.shared.currentUser, goodsInfo: weakSelf?._detailData)
+                weakSelf?.navigationController?.pushViewController(chatVC, animated: true)
+            case 1:
+                MBProgressHUD.showSuccess("已成功加入收藏！")
+            case 2:
+                MBProgressHUD.showSuccess("已成功加入果篮！")
+            case 3:
+                MBProgressHUD.showSuccess("将带您结账")
+            default:break
+            }
+        }
         return view
     }()
     

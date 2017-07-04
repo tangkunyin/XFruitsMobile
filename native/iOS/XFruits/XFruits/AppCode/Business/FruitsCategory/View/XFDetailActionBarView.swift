@@ -12,11 +12,15 @@ import SnapKit
 /// 详情页底部事件响应区
 class XFDetailActionBarView: UIView {
 
+    var actionHandler: ((Int) -> Void)?
+    
     lazy var link2ChatBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setImage(UIImage.imageWithNamed("service_chat"), for: .normal)
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
         btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
+        btn.tag = 0
+        btn.addTarget(self, action: #selector(actionHandler(btn:)), for: .touchUpInside)
         return btn
     }()
     
@@ -25,6 +29,8 @@ class XFDetailActionBarView: UIView {
         btn.setImage(UIImage.imageWithNamed("service_collect"), for: .normal)
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
         btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
+        btn.tag = 1
+        btn.addTarget(self, action: #selector(actionHandler(btn:)), for: .touchUpInside)
         return btn
     }()
     
@@ -35,6 +41,8 @@ class XFDetailActionBarView: UIView {
         btn.titleLabel?.font = XFConstants.Font.mainMenuFont
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
         btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
+        btn.tag = 2
+        btn.addTarget(self, action: #selector(actionHandler(btn:)), for: .touchUpInside)
         return btn
     }()
     
@@ -45,6 +53,8 @@ class XFDetailActionBarView: UIView {
         btn.titleLabel?.font = XFConstants.Font.mainMenuFont
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
         btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
+        btn.tag = 3
+        btn.addTarget(self, action: #selector(actionHandler(btn:)), for: .touchUpInside)
         return btn
     }()
     
@@ -57,6 +67,12 @@ class XFDetailActionBarView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         customInit()
+    }
+    
+    @objc private func actionHandler(btn:UIButton) {
+        if let action = actionHandler {
+            action(btn.tag)
+        }
     }
     
     private func customInit(){
