@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import MBProgressHUD
 
-class XFDetailViewController: XFBaseSubViewController {
+class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
     
     var prodId:Int?
     var _detailData:ProductDetail? {
@@ -34,11 +34,13 @@ class XFDetailViewController: XFBaseSubViewController {
         return serviceRequest
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "产品详情页"
         view.backgroundColor = UIColor.white
+    
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
         
         makeMainViewConstrains()
         
@@ -52,9 +54,25 @@ class XFDetailViewController: XFBaseSubViewController {
         }
     }
     
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let minAlphaOffset:CGFloat = -64
+        let maxAlphaOffset:CGFloat = 200
+        let offset:CGFloat = scrollView.contentOffset.y
+        let alpha:CGFloat = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset)
+        navigationBar.subviews.first?.alpha = alpha
+    }
+    
+    // MARK: - private and lazy variables
+    private lazy var navigationBar:UINavigationBar = {
+        let navBar = self.navigationController?.navigationBar
+        return navBar!
+    }()
+    
     private lazy var backgroundView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = XFConstants.Color.commonBackground
+        scrollView.delegate = self
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         return scrollView
