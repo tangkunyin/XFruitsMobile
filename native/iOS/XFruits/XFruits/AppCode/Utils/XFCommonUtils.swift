@@ -87,7 +87,8 @@ func createChatViewController(withUser user:XFUser?, goodsInfo:ProductDetail?) -
     // 设置开场白方式,启动会话前设置，默认ClientOpenModeDefault
     // ClientOpenModeQuestion结合后台机器人培训内容可根据使用场景配置不同需求的开场消息
     v5chatVC.setClientOpenMode(.ClientOpenModeQuestion, withParam: nil)
-    
+    // 设置聊天背景色
+    v5chatVC.chatTableView.backgroundColor = XFConstants.Color.commonBackground
     return v5chatVC
 }
 
