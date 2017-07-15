@@ -12,8 +12,7 @@ class XFBaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
-        navigationController?.navigationBar.tintColor = UIColor.white
+        
         
     }
     

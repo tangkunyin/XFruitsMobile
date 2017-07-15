@@ -16,9 +16,9 @@ class XFNavigationController: UINavigationController {
         
         let bar = UINavigationBar.appearance()
         
+        bar.tintColor = UIColor.white
         bar.barTintColor = XFConstants.Color.salmon
         bar.titleTextAttributes = barAttr;
-        
         
         let barButtonItem = UIBarButtonItem.appearance()
         barButtonItem.setTitleTextAttributes(barAttr, for: UIControlState.normal)

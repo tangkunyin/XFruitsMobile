@@ -52,9 +52,11 @@ class XFIndexViewController: XFBaseViewController,V5ChatViewDelegate {
         self.view.addSubview(pagerView)
         
         pagerView.snp.makeConstraints({ (make) in
-            make.left.right.top.equalTo(self.view)
+            make.top.equalTo(self.view).offset(64)
+            make.width.equalTo(self.view)
             // TODO: 提前约定好宽高比
             make.height.equalTo(floor(XFConstants.UI.deviceWidth/(1920/1080)))
+            
         })
         
         pagerView.pagerDidClicked = {(index:Int) -> Void in

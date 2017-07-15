@@ -34,13 +34,27 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         return serviceRequest
     }()
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationBar.setBackgroundImage(nil, for: .default)
+        navigationBar.shadowImage = nil
+        navigationBar.isTranslucent = false
+        navigationBar.barTintColor = XFConstants.Color.salmon
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.isTranslucent = true
+        navigationBar.barTintColor = UIColor.clear
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "产品详情页"
         view.backgroundColor = UIColor.white
-    
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
+        
         
         makeMainViewConstrains()
         
@@ -60,7 +74,10 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         let maxAlphaOffset:CGFloat = 200
         let offset:CGFloat = scrollView.contentOffset.y
         let alpha:CGFloat = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset)
+        dPrint(alpha)
+        dPrint(navigationBar.subviews.first?.alpha)
         navigationBar.subviews.first?.alpha = alpha
+        dPrint(navigationBar.subviews.first?.alpha)
     }
     
     // MARK: - private and lazy variables
@@ -72,6 +89,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
     private lazy var backgroundView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = XFConstants.Color.commonBackground
+        scrollView.bounces = false
         scrollView.delegate = self
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false

@@ -31,9 +31,10 @@ class XFViewPager: UIView,UIScrollViewDelegate {
         self.init()
         self.addSubview(self.container)
         container.snp.makeConstraints { (make) in
-            make.center.size.equalTo(self)
+            make.edges.equalTo(self).inset(UIEdgeInsets.zero)
         }
         self.placeHolder = placeHolder
+        self.container.bounds.origin = CGPoint.init(x: 0, y: 0)
     }
     
     convenience init(source:Array<String>, placeHolder:String?)  {
@@ -46,7 +47,7 @@ class XFViewPager: UIView,UIScrollViewDelegate {
             let singleView:UIImageView = imagePagerView(urlString: source.first!, placeHolder: placeHolder, index: 0)
             self.container.addSubview(singleView)
             singleView.snp.makeConstraints({ (make) in
-                make.center.size.equalTo(self.container)
+                make.edges.equalTo(self.container).inset(UIEdgeInsets.zero)
             })
         } else if source.count > 1 {
             // render views
@@ -97,7 +98,7 @@ class XFViewPager: UIView,UIScrollViewDelegate {
     
     // MARK: - paging start
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = scrollView.contentOffset.x / scrollView.frame.size.width;
+        let page = scrollView.contentOffset.x / XFConstants.UI.deviceWidth;
         self.pageControl.currentPage = Int(page);
     }
     
