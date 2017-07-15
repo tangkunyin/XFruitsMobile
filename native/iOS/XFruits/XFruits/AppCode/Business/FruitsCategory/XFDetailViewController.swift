@@ -23,8 +23,8 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
                     hasComments = true
                     commentView.dataSource = comments
                 }
-                updateSubViewContraints(hasComments: hasComments)
-                view.setNeedsUpdateConstraints()
+//                updateSubViewContraints(hasComments: hasComments)
+//                view.setNeedsUpdateConstraints()
             }
         }
     }
@@ -36,24 +36,25 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
+        navigationBar.isTranslucent = false
         navigationBar.setBackgroundImage(nil, for: .default)
         navigationBar.shadowImage = nil
-        navigationBar.isTranslucent = false
-        navigationBar.barTintColor = XFConstants.Color.salmon
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        edgesForExtendedLayout = .all
+        navigationBar.isTranslucent = true
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
-        navigationBar.isTranslucent = true
-        navigationBar.barTintColor = UIColor.clear
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "产品详情页"
-        view.backgroundColor = UIColor.white
+
+        
         
         
         makeMainViewConstrains()
@@ -86,9 +87,14 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         return navBar!
     }()
     
-    private lazy var backgroundView: UIScrollView = {
+    private lazy var contentView: UIView = {
+        let view = UIView();
+        view.backgroundColor = XFConstants.Color.commonBackground
+        return view
+    }()
+    
+    private lazy var detailScrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = XFConstants.Color.commonBackground
         scrollView.bounces = false
         scrollView.delegate = self
         scrollView.showsVerticalScrollIndicator = false
@@ -136,44 +142,51 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
     }()
     
     private func makeMainViewConstrains(){
-        view.addSubview(backgroundView)
+        view.addSubview(contentView)
         view.addSubview(actionBarView)
-        backgroundView.snp.makeConstraints { (make) in
+        contentView.snp.makeConstraints { (make) in
             make.width.top.equalTo(self.view)
         }
         actionBarView.snp.makeConstraints { (make) in
             make.height.equalTo(45)
-            make.top.equalTo(self.backgroundView.snp.bottom)
+            make.top.equalTo(self.contentView.snp.bottom)
             make.width.bottom.equalTo(self.view)
         }
+        
+//        contentView.addSubview(detailScrollView)
+//        detailScrollView.snp.makeConstraints { (make) in
+//            make.left.right.top.bottom.equalTo(contentView)
+//        }
+        
+        
     }
     
     private func updateSubViewContraints(hasComments:Bool) {
-        backgroundView.addSubview(headerView)
-        backgroundView.addSubview(descriptionView)
+        detailScrollView.addSubview(headerView)
+        detailScrollView.addSubview(descriptionView)
         headerView.snp.makeConstraints { (make) in
-            make.top.width.equalTo(self.backgroundView)
+            make.top.width.equalTo(self.detailScrollView)
         }
         if hasComments {
-            backgroundView.addSubview(commentView)
+            detailScrollView.addSubview(commentView)
             commentView.snp.makeConstraints { (make) in
-                make.width.equalTo(self.backgroundView)
+                make.width.equalTo(self.detailScrollView)
                 make.top.equalTo(self.headerView.snp.bottom).offset(10)
             }
             descriptionView.snp.makeConstraints { (make) in
                 make.top.equalTo(self.commentView.snp.bottom).offset(10)
-                make.width.bottom.equalTo(self.backgroundView)
+                make.width.bottom.equalTo(self.detailScrollView)
             }
             descriptionView.descBackgroundView.snp.makeConstraints { (make) in
-                make.height.equalTo(self.backgroundView.snp.height).offset(-42)
+                make.height.equalTo(self.detailScrollView.snp.height).offset(-42)
             }
         } else {
             descriptionView.snp.makeConstraints { (make) in
                 make.top.equalTo(self.headerView.snp.bottom).offset(10)
-                make.width.bottom.equalTo(self.backgroundView)
+                make.width.bottom.equalTo(self.detailScrollView)
             }
             descriptionView.descBackgroundView.snp.makeConstraints { (make) in
-                make.height.equalTo(self.backgroundView.snp.height).offset(-42)
+                make.height.equalTo(self.detailScrollView.snp.height).offset(-42)
             }
         }
     }

@@ -26,8 +26,6 @@ class XFUserRegistViewController: XFBaseSubViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor.white
         self.title = "注册"
         // 品牌logo
         self.brandImageView = UIImageView.init(image: UIImage.imageWithNamed("logo"))

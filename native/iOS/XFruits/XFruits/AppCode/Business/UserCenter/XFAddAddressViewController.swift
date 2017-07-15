@@ -16,7 +16,6 @@ class XFAddAddressViewController: XFBaseSubViewController    {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
         self.title = "新增地址"
         
         

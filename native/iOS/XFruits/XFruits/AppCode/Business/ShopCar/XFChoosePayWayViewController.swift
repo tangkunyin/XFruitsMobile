@@ -12,7 +12,6 @@ class XFChoosePayWayViewController: XFBaseViewController ,UITableViewDataSource,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
         
         let addressesTable: UITableView! = {
             let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)

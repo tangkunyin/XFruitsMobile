@@ -25,7 +25,6 @@ class XFUserLoginViewController: XFBaseSubViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.white
         self.title = "登录"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "取消", style: .plain, target: self, action: #selector(cancelLogin))
         

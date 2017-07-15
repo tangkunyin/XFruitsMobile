@@ -13,20 +13,20 @@ import MBProgressHUD
 
 class XFIndexViewController: XFBaseViewController,V5ChatViewDelegate {
     
-    lazy var realImageUrls = {
-        return ["http://www.4j4j.cn/upload/pic/20130307/7e4674248d.jpg",
-                "http://bizhi.zhuoku.com/2013/07/20/xinlingchahua/xinlingchahua12.jpg",
-                "http://bizhi.zhuoku.com/2011/07/20/Benbenmiao/Benbenmiao130.jpg",
-                "http://img3.iqilu.com/data/attachment/forum/201308/22/161503hoakfzi7fqkk7711.jpg",
-                "http://www.33lc.com/article/UploadPic/2012-8/20128179522243094.jpg"]
-    }()
-    
     lazy var pagerView:XFViewPager = {
         let imageUrls = ["http://www.4j4j.cn/upload/pic/20130307/7e4674248d.jpg",
                          "http://bizhi.zhuoku.com/2013/07/20/xinlingchahua/xinlingchahua12.jpg",
-                         "http://bizhi.zhuoku.com/2011/07/20/Benbenmiao/Benbenmiao130.jpg"]
-        return XFViewPager(source: imageUrls, placeHolder: nil)
+                         "http://bizhi.zhuoku.com/2011/07/20/Benbenmiao/Benbenmiao130.jpg",
+                         "http://img3.iqilu.com/data/attachment/forum/201308/22/161503hoakfzi7fqkk7711.jpg",
+                         "http://www.33lc.com/article/UploadPic/2012-8/20128179522243094.jpg"]
+        let pagerView = XFViewPager(source: imageUrls, placeHolder: nil)
+            pagerView.pagerDidClicked = {(index:Int) -> Void in
+                dPrint("\(index) 号被点击")
+                MBProgressHUD.showError("链接没有准备好呢，小果拾表示骚瑞~")
+            }
+        return pagerView
     }()
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -50,19 +50,13 @@ class XFIndexViewController: XFBaseViewController,V5ChatViewDelegate {
                                                                  action: #selector(onMessageItemClick))
         
         self.view.addSubview(pagerView)
-        
         pagerView.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.view).offset(64)
+            make.top.equalTo(self.view).offset(0)
             make.width.equalTo(self.view)
             // TODO: 提前约定好宽高比
             make.height.equalTo(floor(XFConstants.UI.deviceWidth/(1920/1080)))
             
         })
-        
-        pagerView.pagerDidClicked = {(index:Int) -> Void in
-            dPrint("\(index) 号被点击")
-            MBProgressHUD.showError("链接没有准备好呢，小果拾表示骚瑞~")
-        }
         
     }
     
@@ -72,7 +66,6 @@ class XFIndexViewController: XFBaseViewController,V5ChatViewDelegate {
             dPrint("扫描：小果拾表示这个功能还没想好怎么做...")
         }
         
-        pagerView.dataSource = realImageUrls
     }
     
     @objc private func onMessageItemClick(){
