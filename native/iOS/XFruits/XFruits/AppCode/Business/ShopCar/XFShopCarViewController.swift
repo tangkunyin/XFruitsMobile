@@ -22,6 +22,10 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
         return listView
     }()
     
+    lazy var cartEmptyView: XFShopCartEmptyView = {
+        let emptyView = XFShopCartEmptyView()
+        return emptyView
+    }()
     
     lazy var actionBar:XFShopCartActionBar = {
         let bar = XFShopCartActionBar()
@@ -34,10 +38,23 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
         return list
     }()
     
+    lazy var shopCartViewCount: Int = 0
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        dPrint("卧槽，又来了》。。。")
+        if cartList.count > 0 {
+            shopCartViewCount = 0
+            cartEmptyView.alpha = 0
+            cartListView.alpha = 1
+            actionBar.alpha = 1
+            cartListView.reloadData()
+        } else {
+            shopCartViewCount += 1
+            cartEmptyView.alpha = 1
+            cartListView.alpha = 0
+            actionBar.alpha = 0
+            cartEmptyView.viewCount = shopCartViewCount
+        }
     }
     
     override func viewDidLoad() {
@@ -46,23 +63,17 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
                                                                  style: .plain,
                                                                  target: self,
                                                                  action: #selector(onShopCartEdit))
-        if cartList.count > 0 {
-            view.addSubview(cartListView)
-            view.addSubview(actionBar)
-            makeContentViewConstrains()
-        } else {
-            // TODO . 空数据提示
-            
-            
-            makeEmptyViewConstrains()
-        }
-    }
-    
-    fileprivate func makeEmptyViewConstrains(){
-    
+        
+        view.addSubview(cartEmptyView)
+        view.addSubview(cartListView)
+        view.addSubview(actionBar)
+        makeContentViewConstrains()
     }
     
     fileprivate func makeContentViewConstrains(){
+        cartEmptyView.snp.makeConstraints { (make) in
+            make.left.right.top.bottom.equalTo(self.view)
+        }
         cartListView.snp.makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.right.equalTo(self.view)
@@ -129,5 +140,7 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .delete
     }
+    
+
 }
 
