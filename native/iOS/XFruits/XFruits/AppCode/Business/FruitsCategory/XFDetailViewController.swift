@@ -39,6 +39,9 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
         self.clearNavigationBar = true
+        // 设置详情页专属返回按钮
+        self.backButtonImages = [XFBackButtonImages.normal: "detail_BackHighlight",
+                                 XFBackButtonImages.highlighted: "detail_BackNormal"]
         
         makeMainViewConstrains()
         
