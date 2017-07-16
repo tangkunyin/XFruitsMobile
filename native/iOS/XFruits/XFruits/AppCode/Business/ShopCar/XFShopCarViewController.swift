@@ -34,19 +34,35 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
         return list
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        dPrint("卧槽，又来了》。。。")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "编辑",
                                                                  style: .plain,
                                                                  target: self,
                                                                  action: #selector(onShopCartEdit))
-        view.addSubview(cartListView)
-        view.addSubview(actionBar)
-        makeViewConstrains()
+        if cartList.count > 0 {
+            view.addSubview(cartListView)
+            view.addSubview(actionBar)
+            makeContentViewConstrains()
+        } else {
+            // TODO . 空数据提示
+            
+            
+            makeEmptyViewConstrains()
+        }
     }
     
-    fileprivate func makeViewConstrains(){
+    fileprivate func makeEmptyViewConstrains(){
+    
+    }
+    
+    fileprivate func makeContentViewConstrains(){
         cartListView.snp.makeConstraints { (make) in
             make.top.equalTo(0)
             make.left.right.equalTo(self.view)
@@ -62,7 +78,9 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     
     
     @objc private func onShopCartEdit(){
-        MBProgressHUD.showError("您有毛线可编辑吗？")
+        
+        
+        
     }
     
     
