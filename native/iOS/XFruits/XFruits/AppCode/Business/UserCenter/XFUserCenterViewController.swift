@@ -16,21 +16,15 @@ class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UI
     
     var thirdGroupTitleArray: NSArray?
     var thirdGourpIconArray: NSArray?
-    
-    
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weak var weakSelf = self
-
+      
+        XFAvailableAddressUtils.shared.cacheAddressAvailable()
         
-        DispatchQueue.global().async {
-            weakSelf?.cacheAddressAvailable()
-            
-        }
+       
         
         let centerTable: UITableView! = {
             let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
@@ -59,50 +53,9 @@ class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UI
             let nav = UINavigationController.init(rootViewController: login)
             present(nav, animated: true, completion: nil)
         }
-        
-        
     }
     
     
-    func cacheAddressAvailable(){
-        // 把地址的json文件下载下来
-        
-        // if为寻找本地json地址文件
-        if  let add:XFAvailableAddressDict = XFAvailableAddressUtils.shared.getCachedAddress() {
-            print(add)
-            let addressList:Array = add.content!
-            
-            
-            for item in addressList {
-                let address: XFAvailableAddressSingle  = item
-                print( address.province!)
-
-            }
-        }
-            
-        else{  // 没找到
-            
-            XFCommonService().allAvailableAddress(page: 1, size: 4000 ) { (data) in
-                
-                if let addresses = data  as? XFAvailableAddressDict{
-                    
-                    XFAvailableAddressUtils.shared.cacheAddress(addresses)
-                    
-                    let add:XFAvailableAddressDict = XFAvailableAddressUtils.shared.getCachedAddress()!
-                    
-                    let addressList:Array = add.content!
-                    
-                    
-                    for item in addressList {
-                        let address: XFAvailableAddressSingle  = item
-                        print( address.province!)
-                       
-                    }
-                    
-                }
-            }
-        }
-    }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -218,8 +171,6 @@ class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UI
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 6
     }
-    
-    
     
 }
 

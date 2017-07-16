@@ -11,18 +11,19 @@ import HandyJSON
 
 class XFAvailableAddressUtils {
     
+    /// 当前登录用户
+    var addressDict:XFAvailableAddressDict?
+    
     static let shared = XFAvailableAddressUtils()
     private init(){
         let cachedAddr:XFAvailableAddressDict? = getCachedAddress()
         if let addr = cachedAddr {
-          
             addressDict = addr
         }
     }
     
-    /// 当前登录用户
-    var addressDict:XFAvailableAddressDict?
-
+ 
+    
     
     
     /// 用户信息缓存文件地址
@@ -43,9 +44,9 @@ class XFAvailableAddressUtils {
     }
     
     
-    /// 从缓存中取得用户
+    /// 从缓存中取得地址
     ///
-    /// - Returns: 缓存中的用户
+    /// - Returns: 缓存中的地址
     func getCachedAddress() -> XFAvailableAddressDict? {
         if let filePath = availableAddressPath {
             let userInfo = NSKeyedUnarchiver.unarchiveObject(withFile: filePath)
@@ -58,7 +59,7 @@ class XFAvailableAddressUtils {
     }
     
     
-    /// 清楚用户缓存信息
+    /// 清楚缓存地址信息
     private func clearCachedUser() {
         do {
             let fileManager = FileManager.default
@@ -71,5 +72,50 @@ class XFAvailableAddressUtils {
             dPrint("用户缓存信息删除失败: \(error.localizedDescription)")
         }
     }
+    
+    
+    func cacheAddressAvailable()    {
+        // 把地址的json文件下载下来
+        DispatchQueue.global().async {
+            
+            // if为寻找本地json地址文件
+            if  let add:XFAvailableAddressDict = XFAvailableAddressUtils.shared.getCachedAddress() {
+                //            print(add)
+                let addressList:Array = add.content!
+                
+                for item in addressList {
+                    let address: XFAvailableAddressSingle  = item
+                    print( address.province!)
+                    
+                }
+                
+            }
+                
+            else{  // 没找到
+                
+                XFCommonService().allAvailableAddress(page: 1, size: 4000 ) { (data) in
+                    
+                    if let addresses = data  as? XFAvailableAddressDict{
+                        
+                        XFAvailableAddressUtils.shared.cacheAddress(addresses)
+                        
+                        let add:XFAvailableAddressDict = XFAvailableAddressUtils.shared.getCachedAddress()!
+                        
+                        let addressList:Array = add.content!
+                        
+                        
+                        for item in addressList {
+                            let address: XFAvailableAddressSingle  = item
+                            print( address.province!)
+                            
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    
     
 }
