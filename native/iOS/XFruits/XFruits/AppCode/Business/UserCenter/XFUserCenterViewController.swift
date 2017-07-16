@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 
+
 class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UITableViewDelegate {
     var secondGroupTitleArray: NSArray?
     var secondGroupIconArray: NSArray?
@@ -16,8 +17,20 @@ class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UI
     var thirdGroupTitleArray: NSArray?
     var thirdGourpIconArray: NSArray?
     
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        weak var weakSelf = self
+
+        
+        DispatchQueue.global().async {
+            weakSelf?.cacheAddressAvailable()
+            
+        }
         
         let centerTable: UITableView! = {
             let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
@@ -40,56 +53,57 @@ class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UI
         thirdGourpIconArray = ["myService","myAdvice","aboutme"]
         
         
-//        if XFUserGlobal.shared.isLogin == false {
+        if XFUserGlobal.shared.isLogin == false {
             // 进入登录页面
             let login = XFUserLoginViewController()
             let nav = UINavigationController.init(rootViewController: login)
             present(nav, animated: true, completion: nil)
-//        }
-//        else{
-//            print(XFUserGlobal.shared.currentUser)
-//        }
-       
+        }
+        
+        
+    }
+    
+    
+    func cacheAddressAvailable(){
+        // 把地址的json文件下载下来
+        
+        // if为寻找本地json地址文件
+        if  let add:XFAvailableAddressDict = XFAvailableAddressUtils.shared.getCachedAddress() {
+            print(add)
+            let addressList:Array = add.content!
+            
+            
+            for item in addressList {
+                let address: XFAvailableAddressSingle  = item
+                print( address.province!)
 
-        let path:String = Bundle.main.path(forResource: "city", ofType: "json")!
-        print(path)
-        
-        let provinceArr = NSMutableArray.init()
-        
-        do {
-           let data:NSData = try NSData.init(contentsOfFile: path)
-            print(data)
-            let json = JSON(data:data as Data)
-            print(json["content"])
-            let contentArr = json["content"].array
-            for item in contentArr! {
-                if let province  = item["province"].string {
-                    print(province)
+            }
+        }
+            
+        else{  // 没找到
+            
+            XFCommonService().allAvailableAddress(page: 1, size: 4000 ) { (data) in
+                
+                if let addresses = data  as? XFAvailableAddressDict{
                     
-                    if provinceArr.count > 0 , let lastObject:String = provinceArr.lastObject as? String {
-                        
-                            if lastObject != province {
-                                 provinceArr.add(province)
-                          
-                            }
-                    }
-                    else{
-                        provinceArr.add(province)
+                    XFAvailableAddressUtils.shared.cacheAddress(addresses)
+                    
+                    let add:XFAvailableAddressDict = XFAvailableAddressUtils.shared.getCachedAddress()!
+                    
+                    let addressList:Array = add.content!
+                    
+                    
+                    for item in addressList {
+                        let address: XFAvailableAddressSingle  = item
+                        print( address.province!)
+                       
                     }
                     
                 }
             }
-            
-            print(provinceArr)
-            
-        } catch   {
-            print("error")
         }
-        
-
-        
-        
     }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4;

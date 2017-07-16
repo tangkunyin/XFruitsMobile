@@ -31,3 +31,21 @@ struct XFAddress: HandyJSON {
     
     
 }
+
+
+struct XFAvailableAddressDict:  HandyJSON{
+    
+    var page:Int?
+    var size:Int?
+    var content:Array<XFAvailableAddressSingle>?
+    
+     
+}
+
+
+struct XFAvailableAddressSingle: HandyJSON {
+    var code:Int?
+    var city:String?
+    var county:String?
+    var province:String?
+}
