@@ -13,48 +13,13 @@ fileprivate let XFCartCellReuseIdentifier:String = "XFShopCartCellReuseIdentifie
 
 class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableViewDataSource {
     
-    lazy var cartListView:UITableView = {
-        let listView = UITableView.init(frame: CGRect.zero, style: .plain)
-        listView.delegate = self
-        listView.dataSource = self
-        listView.backgroundColor = UIColor.white
-        listView.register(XFShopCartViewCell.self, forCellReuseIdentifier: XFCartCellReuseIdentifier)
-        return listView
-    }()
+    var cartList:Array<XFCart?> = []
     
-    lazy var cartEmptyView: XFShopCartEmptyView = {
-        let emptyView = XFShopCartEmptyView()
-        return emptyView
-    }()
-    
-    lazy var actionBar:XFShopCartActionBar = {
-        let bar = XFShopCartActionBar()
-        return bar;
-    }()
-    
-    
-    lazy var cartList:Array<XFCart?> = {
-        let list = XFCartUtils.sharedInstance.getAll()
-        return list
-    }()
-    
-    lazy var shopCartViewCount: Int = 0
+    var shopCartViewCount: Int = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if cartList.count > 0 {
-            shopCartViewCount = 0
-            cartEmptyView.alpha = 0
-            cartListView.alpha = 1
-            actionBar.alpha = 1
-            cartListView.reloadData()
-        } else {
-            shopCartViewCount += 1
-            cartEmptyView.alpha = 1
-            cartListView.alpha = 0
-            actionBar.alpha = 0
-            cartEmptyView.viewCount = shopCartViewCount
-        }
+        reloadShopCartData()
     }
     
     override func viewDidLoad() {
@@ -70,24 +35,7 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
         makeContentViewConstrains()
     }
     
-    fileprivate func makeContentViewConstrains(){
-        cartEmptyView.snp.makeConstraints { (make) in
-            make.left.right.top.bottom.equalTo(self.view)
-        }
-        cartListView.snp.makeConstraints { (make) in
-            make.top.equalTo(0)
-            make.left.right.equalTo(self.view)
-            make.bottom.equalTo(self.actionBar.snp.top).offset(0)
-        }
-        actionBar.snp.makeConstraints { (make) in
-            make.height.equalTo(40)
-            make.top.equalTo(self.cartListView.snp.bottom).offset(0)
-            make.left.right.equalTo(self.view)
-            make.bottom.equalTo(self.view)
-        }
-    }
-    
-    
+
     @objc private func onShopCartEdit(){
         
         
@@ -109,27 +57,29 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: XFCartCellReuseIdentifier, for: indexPath)
-        
-        
-        
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: XFCartCellReuseIdentifier, for: indexPath) as! XFShopCartViewCell
+        if let item:XFCart = cartList[indexPath.row] {
+            cell.dataSource = item
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cell:XFShopCartViewCell = tableView.cellForRow(at: indexPath) as! XFShopCartViewCell
-        cell.radioBtn.isSelected = !cell.radioBtn.isSelected
-        
+        if let item:XFCart = cartList[indexPath.row] {
+            let cell:XFShopCartViewCell = tableView.cellForRow(at: indexPath) as! XFShopCartViewCell
+            let checked = !cell.radioBtn.isSelected
+            if XFCartUtils.sharedInstance.selectItem(gid: item.id, checked: checked) {
+                cell.radioBtn.isSelected = checked
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-            
-            
-            
+        if let item:XFCart = cartList[indexPath.row], editingStyle == .delete {
+            if XFCartUtils.sharedInstance.deleteItem(gid: item.id) {
+                reloadShopCartData()
+            }
         }
     }
     
@@ -142,5 +92,60 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     }
     
 
+    // MARK: - Cart private func and variables
+    private func reloadShopCartData() {
+        cartList = XFCartUtils.sharedInstance.getAll()
+        if cartList.count > 0 {
+            shopCartViewCount = 0
+            cartEmptyView.alpha = 0
+            cartListView.alpha = 1
+            actionBar.alpha = 1
+            cartListView.reloadData()
+        } else {
+            shopCartViewCount += 1
+            cartEmptyView.alpha = 1
+            cartListView.alpha = 0
+            actionBar.alpha = 0
+            cartEmptyView.viewCount = shopCartViewCount
+        }
+    }
+    
+    
+    private lazy var cartListView:UITableView = {
+        let listView = UITableView.init(frame: CGRect.zero, style: .plain)
+        listView.delegate = self
+        listView.dataSource = self
+        listView.backgroundColor = UIColor.white
+        listView.register(XFShopCartViewCell.self, forCellReuseIdentifier: XFCartCellReuseIdentifier)
+        listView.tableFooterView = UIView()
+        return listView
+    }()
+    
+    private lazy var cartEmptyView: XFShopCartEmptyView = {
+        let emptyView = XFShopCartEmptyView()
+        return emptyView
+    }()
+    
+    private lazy var actionBar:XFShopCartActionBar = {
+        let bar = XFShopCartActionBar()
+        return bar;
+    }()
+    
+    private func makeContentViewConstrains(){
+        cartEmptyView.snp.makeConstraints { (make) in
+            make.left.right.top.bottom.equalTo(self.view)
+        }
+        cartListView.snp.makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.right.equalTo(self.view)
+            make.bottom.equalTo(self.actionBar.snp.top).offset(0)
+        }
+        actionBar.snp.makeConstraints { (make) in
+            make.height.equalTo(40)
+            make.top.equalTo(self.cartListView.snp.bottom).offset(0)
+            make.left.right.equalTo(self.view)
+            make.bottom.equalTo(self.view)
+        }
+    }
 }
 

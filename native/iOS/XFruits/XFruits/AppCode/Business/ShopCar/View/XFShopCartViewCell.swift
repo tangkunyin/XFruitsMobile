@@ -13,6 +13,22 @@ import MBProgressHUD
 
 
 class XFShopCartViewCell: UITableViewCell {
+    
+    var dataSource:XFCart? {
+        didSet {
+            if let item = dataSource {
+                radioBtn.isSelected = item.selected!
+                quantityLabel.text = "\(item.quantity ?? 0)"
+                titleLabel.text = item.name
+                descLabel.text = item.desc ?? ""
+                priceLabel.text = String(format:"%.2f",item.salesPrice!)
+                thumbnail.kf.setImage(with: URL.init(string: item.cover!),
+                                      placeholder: UIImage.imageWithNamed("sampleGoodsInCategoryCell"),
+                                      options: [.transition(.fade(1))])
+            }
+        }
+    }
+    
 
     lazy var radioBtn:UIButton = {
         let btn = UIButton.init(type: .custom)

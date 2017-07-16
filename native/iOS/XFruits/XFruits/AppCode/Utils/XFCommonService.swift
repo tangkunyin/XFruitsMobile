@@ -97,7 +97,7 @@ public final class XFCommonService: XFNetworking {
         }
     }
 
-    func getProductDetail(pid:Int, _ completion:@escaping XFResponse) {
+    func getProductDetail(pid:String, _ completion:@escaping XFResponse) {
         self.doGet(withUrl: url("/product/detail?prodId=\(pid)")) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(ProductDetail.deserialize(from: dict) ?? ProductDetail())

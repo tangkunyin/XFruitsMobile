@@ -12,7 +12,7 @@ import MBProgressHUD
 
 class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
     
-    var prodId:Int?
+    var prodId:String?
     var _detailData:ProductDetail? {
         didSet {
             if let dataSource = _detailData {
@@ -86,7 +86,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
             case 1:
                 MBProgressHUD.showSuccess("已成功加入收藏！")
             case 2:
-                MBProgressHUD.showSuccess("已成功加入果篮！")
+                weakSelf?.addToShopCart()
             case 3:
                 MBProgressHUD.showSuccess("将带您结账")
             default:break
@@ -95,6 +95,17 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         return view
     }()
     
+    private func addToShopCart() {
+        if let detailData: ProductDetail = _detailData {
+            let item: ProductItem = detailData.convertToProductItem()
+            let result = XFCartUtils.sharedInstance.addItem(item: item)
+            if result {
+                MBProgressHUD.showSuccess("成功添加到果篮")
+            } else {
+                MBProgressHUD.showError("添加到果篮失败，请稍后尝试~")
+            }
+        }
+    }
     
     /// 轮播及商品信息
     private lazy var headerView: XFDetailHeaderView = {

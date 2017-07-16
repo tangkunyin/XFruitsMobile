@@ -125,10 +125,15 @@ class XFCategoryCell: UICollectionViewCell {
     }
     
     @objc private func addToCartFromCategoryItem(){
-        MBProgressHUD.showSuccess("成功添加到果篮")
-        dPrint(dataSource)
+        if let item: ProductItem = dataSource {
+            let result = XFCartUtils.sharedInstance.addItem(item: item)
+            if result {
+                MBProgressHUD.showSuccess("成功添加到果篮")
+            } else {
+            
+                MBProgressHUD.showError("添加到果篮失败，请稍后尝试~")
+            }
+        }
     }
 
-    
-    
 }

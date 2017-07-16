@@ -21,12 +21,12 @@ enum DataAccessError: Error {
 protocol DataHelperProtocol {
     associatedtype T
     static func createTable() throws -> Void
-    static func insert(item: T) throws -> Int64
-    static func update(item: T) throws -> Void
-    static func find(gid: String) throws -> T?
+    static func insert(item: T) throws -> Bool
+    static func update(item: T) throws -> Bool
+    static func find(gid: String?) throws -> T?
     static func findAll() throws -> [T]
-    static func delete(gid: String) throws -> Void
-    static func deleteAll() throws -> Void
+    static func delete(gid: String?) throws -> Bool
+    static func deleteAll() throws -> Bool
 }
 
 class XFSQLiteDataSource {
@@ -39,6 +39,7 @@ class XFSQLiteDataSource {
         let path:String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         do {
             let dbFilePath = "\(path)/XFruits.sqlite3"
+            dPrint("dbFilePath is: \(dbFilePath)")
             Db = try Connection(dbFilePath)
             // Thread-Safety
             Db?.busyHandler({ (tries) -> Bool in

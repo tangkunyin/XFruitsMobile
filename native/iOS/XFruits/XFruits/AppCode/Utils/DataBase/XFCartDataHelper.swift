@@ -14,6 +14,7 @@ typealias XFCart = (
     index:Int64?,
     id:String?,
     name:String?,
+    desc:String?,
     cover:String?,
     primePrice:Double?,
     salesPrice:Double?,
@@ -32,6 +33,7 @@ class XFCartDataHelper: DataHelperProtocol {
     static let index = Expression<Int64>("index")//自增索引
     static let id = Expression<String>("id")
     static let name = Expression<String>("name")
+    static let desc = Expression<String>("desc")
     static let cover = Expression<String>("cover")
     static let primePrice = Expression<Double>("primePrice")
     static let salesPrice = Expression<Double>("salesPrice")
@@ -48,6 +50,7 @@ class XFCartDataHelper: DataHelperProtocol {
                 t.column(index, primaryKey: .autoincrement)
                 t.column(id, unique:true)
                 t.column(name)
+                t.column(desc)
                 t.column(cover)
                 t.column(primePrice)
                 t.column(salesPrice)
@@ -60,26 +63,28 @@ class XFCartDataHelper: DataHelperProtocol {
         }
     }
     
-    static func insert(item: T) throws -> Int64 {
+    static func insert(item: T) throws -> Bool {
         guard let DB = XFSQLiteDataSource.sharedInstance.Db else {
             throw DataAccessError.Datastore_Connection_Error
         }
         if let gid = item.id,
             let gname = item.name,
+            let gdesc = item.desc,
             let gcover = item.cover,
             let gprimePrice = item.primePrice,
             let gsalesPrice = item.salesPrice {
             let insert = table.insert(id <- gid,
                                       name <- gname,
+                                      desc <- gdesc,
                                       cover <- gcover,
                                       primePrice <- gprimePrice,
                                       salesPrice <- gsalesPrice)
             do {
                 let rowId = try DB.run(insert)
                 guard rowId > 0 else {
-                    throw DataAccessError.Insert_Error
+                    return false
                 }
-                return rowId
+                return true
             } catch let error as NSError {
                 dPrint(error.localizedDescription)
             }
@@ -87,7 +92,7 @@ class XFCartDataHelper: DataHelperProtocol {
         throw DataAccessError.Nil_In_Data
     }
     
-    static func update(item: T) throws {
+    static func update(item: T) throws -> Bool {
         guard let DB = XFSQLiteDataSource.sharedInstance.Db, let gid = item.id else {
             throw DataAccessError.Nil_In_Data
         }
@@ -106,14 +111,19 @@ class XFCartDataHelper: DataHelperProtocol {
             }
             let tmp = try DB.run(query.update(updateSetter))
             guard tmp == 1 else {
-                throw DataAccessError.Update_Error
+                return false
             }
+            return true
         } catch let error as NSError {
             dPrint(error.localizedDescription)
+            return false
         }
     }
     
-    static func find(gid: String) throws -> T? {
+    static func find(gid: String?) throws -> T? {
+        guard let gid = gid else {
+            return nil
+        }
         guard let DB = XFSQLiteDataSource.sharedInstance.Db else {
             throw DataAccessError.Datastore_Connection_Error
         }
@@ -124,6 +134,7 @@ class XFCartDataHelper: DataHelperProtocol {
                 return XFCart(index:item[index],
                               id:item[id],
                               name:item[name],
+                              desc:item[desc],
                               cover:item[cover],
                               primePrice:item[primePrice],
                               salesPrice:item[salesPrice],
@@ -148,6 +159,7 @@ class XFCartDataHelper: DataHelperProtocol {
                 retArray.append(XFCart(index:item[index],
                                        id:item[id],
                                        name:item[name],
+                                       desc:item[desc],
                                        cover:item[cover],
                                        primePrice:item[primePrice],
                                        salesPrice:item[salesPrice],
@@ -161,7 +173,10 @@ class XFCartDataHelper: DataHelperProtocol {
         return retArray
     }
 
-    static func delete(gid: String) throws  {
+    static func delete(gid: String?) throws -> Bool {
+        guard let gid = gid else {
+            return false
+        }
         guard let DB = XFSQLiteDataSource.sharedInstance.Db else {
             throw DataAccessError.Datastore_Connection_Error
         }
@@ -169,21 +184,28 @@ class XFCartDataHelper: DataHelperProtocol {
         do {
             let tmp = try DB.run(query.delete())
             guard tmp == 1 else {
-                throw DataAccessError.Delete_Error
+                return false
             }
+            return true
         } catch let error as NSError {
             dPrint(error.localizedDescription)
+            return false
         }
     }
     
-    static func deleteAll() throws {
+    static func deleteAll() throws -> Bool {
         guard let DB = XFSQLiteDataSource.sharedInstance.Db else {
             throw DataAccessError.Datastore_Connection_Error
         }
         do {
-            try DB.run(table.delete())
+            let tmp = try DB.run(table.delete())
+            guard tmp == 1 else {
+                return false
+            }
+            return true
         } catch let error as NSError {
             dPrint(error.localizedDescription)
+            return false
         }
     }
     

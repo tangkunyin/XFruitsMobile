@@ -10,37 +10,42 @@
 import Foundation
 import HandyJSON
 
-struct ProductType: HandyJSON {
-    var id:Int = 1001
+class ProductType: HandyJSON {
+    var id:String = "1001"
     var name:String = ""
     var fruit:String = ""
     var image:String = ""
+    required init() {}
 }
 
-struct ProductItem: HandyJSON {
-    var id:Int?
+class ProductItem: HandyJSON {
+    var id:String?
     var name:String = ""
-    var fruit:Int?
+    var fruit:String = ""
     var cover:String = ""
     var specification:String = ""
     var primePrice:Float = 0
     var salesPrice:Float = 0
+    
+    required init() {}
 }
 
-struct CategoryList: HandyJSON {
+class CategoryList: HandyJSON {
     var size:Int?
     var totalPages:Int?
     var totalElements:Int?
     var content:Array<ProductItem>?
+    required init() {}
 }
 
-struct ProductDetailService: HandyJSON {
+class ProductDetailService: HandyJSON {
     var ico:String = ""
     var name:String = ""
+    required init() {}
 }
 
-struct ProductDetail: HandyJSON {
-    var id:Int = 1001
+class ProductDetail: HandyJSON {
+    var id:String = "1001"
     var name:String = ""
     var fruit:String = ""
     var cover:Array<String> = [""]
@@ -51,5 +56,19 @@ struct ProductDetail: HandyJSON {
     var priority:Int = 0
     var service:Array<ProductDetailService>?
     var commentList:Array<XFComment>?
+    
+    required init() {}
+    
+    func convertToProductItem() -> ProductItem {
+        let item = ProductItem()
+        item.id = self.id
+        item.name = self.name
+        item.fruit = self.fruit
+        item.cover = self.cover.first!
+        item.specification = self.specification
+        item.primePrice = self.primePrice
+        item.salesPrice = self.salesPrice
+        return item
+    }
 }
 
