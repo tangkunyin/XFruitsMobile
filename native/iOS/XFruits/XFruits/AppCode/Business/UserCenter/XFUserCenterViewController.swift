@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UITableViewDelegate {
     var secondGroupTitleArray: NSArray?
@@ -39,15 +40,54 @@ class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UI
         thirdGourpIconArray = ["myService","myAdvice","aboutme"]
         
         
-        if XFUserGlobal.shared.isLogin == false {
+//        if XFUserGlobal.shared.isLogin == false {
             // 进入登录页面
             let login = XFUserLoginViewController()
             let nav = UINavigationController.init(rootViewController: login)
             present(nav, animated: true, completion: nil)
+//        }
+//        else{
+//            print(XFUserGlobal.shared.currentUser)
+//        }
+       
+
+        let path:String = Bundle.main.path(forResource: "city", ofType: "json")!
+        print(path)
+        
+        let provinceArr = NSMutableArray.init()
+        
+        do {
+           let data:NSData = try NSData.init(contentsOfFile: path)
+            print(data)
+            let json = JSON(data:data as Data)
+            print(json["content"])
+            let contentArr = json["content"].array
+            for item in contentArr! {
+                if let province  = item["province"].string {
+                    print(province)
+                    
+                    if provinceArr.count > 0 , let lastObject:String = provinceArr.lastObject as? String {
+                        
+                            if lastObject != province {
+                                 provinceArr.add(province)
+                          
+                            }
+                    }
+                    else{
+                        provinceArr.add(province)
+                    }
+                    
+                }
+            }
+            
+            print(provinceArr)
+            
+        } catch   {
+            print("error")
         }
-        else{
-            print(XFUserGlobal.shared.currentUser)
-        }
+        
+
+        
         
     }
     

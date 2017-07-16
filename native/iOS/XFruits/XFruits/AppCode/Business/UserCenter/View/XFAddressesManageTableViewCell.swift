@@ -41,11 +41,19 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         return size.width
     }
     
+    func setMyAddress(address:XFAddress)  {
+        
+        userNameLabel?.text = address.recipient
+        mobileLabel?.text = address.cellPhone
+        addressLabel?.text = address.districtCode
+        addressCategoryBtn?.setTitle(address.label, for: .normal)
+    }
+    
     func  setUpUI() {
         
         // 用户名
         userNameLabel = UILabel.init()
-        userNameLabel?.text = "赵小贱"
+//        userNameLabel?.text = "赵小贱"
         userNameLabel?.textColor = XFConstants.Color.darkGray
         userNameLabel?.font  = UIFont.systemFont(ofSize: 14)
         userNameLabel?.numberOfLines = 0
@@ -93,7 +101,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         editAddressBtn = UIButton.init(type:.custom)
         editAddressBtn?.setImage(UIImage.imageWithNamed("edit"), for: .normal)
         addSubview(editAddressBtn!)
-        
+//        editAddressBtn?.tag = 101
         editAddressBtn?.snp.makeConstraints({ (make) in
             make.centerY.equalTo(self)
             make.right.equalTo(snp.right).offset(-20)
@@ -105,7 +113,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         
         // 手机号
         mobileLabel = UILabel.init()
-        mobileLabel?.text = "18658054127"
+//        mobileLabel?.text = "18658054127"
         mobileLabel?.textColor = XFConstants.Color.darkGray
         mobileLabel?.font  =  UIFont.systemFont(ofSize: 14)
         
@@ -124,7 +132,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         
         // 地址
         addressLabel = UILabel.init()
-        addressLabel?.text = "海淀区农大南路厢黄旗远东青年公寓"
+//        addressLabel?.text = "海淀区农大南路厢黄旗远东青年公寓"
         addressLabel?.textColor = XFConstants.Color.darkGray
         addressLabel?.font  = UIFont.systemFont(ofSize: 12)
         

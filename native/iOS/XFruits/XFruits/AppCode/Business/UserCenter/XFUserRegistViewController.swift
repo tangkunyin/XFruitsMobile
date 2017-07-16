@@ -26,6 +26,8 @@ class XFUserRegistViewController: XFBaseSubViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         self.title = "注册"
         // 品牌logo
         self.brandImageView = UIImageView.init(image: UIImage.imageWithNamed("logo"))
@@ -214,26 +216,22 @@ class XFUserRegistViewController: XFBaseSubViewController {
     
     // 点击下一步触发的事件
     func nextStepToSecondRegistPageVC(sender:UIButton?) {
-//        let code:String! =  self.validateTextField.text
-//        let phone:String! = self.mobileTextField.text
         
-        guard let phone:String = self.mobileTextField.text else {
-            MBProgressHUD.showError("手机号不能为空")
-            return
-        }
-
-        guard let code:String = self.validateTextField.text else {
+        guard let phone:String = self.mobileTextField.text , phone != "" else {
             MBProgressHUD.showError("手机号不能为空")
             return
         }
         
-        let para:[String:String]  = ["uniqueCode":self.uniqueCodeString! as String,"code":code  ,"phone":phone]
+        guard let code:String = self.validateTextField.text , code != "" else {
+            MBProgressHUD.showError("图片验证码不能为空")
+            return
+        }
         
+        let para:[String:String]  = ["uniqueCode":self.uniqueCodeString! as String,"code":code ,"phone":phone]
         
-        dPrint(para)
+        //        dPrint(para)
         
         weak var weakSelf = self
-        
         
         XFCommonService().vertifyImageCodeAndSendMessageCode(params: para) { (data) in
             dPrint(data)

@@ -11,10 +11,23 @@ import HandyJSON
 
 struct XFAddress: HandyJSON {
     
-    var code:Int?
+    var id:Int!
     
-    var msg:String?
+    var userId:Int?
     
-    var data:Any?
+    var recipient:String?
+    
+    var districtCode:String?
+    
+    var address:String?
+    
+    var cellPhone:String?
+    
+    var isDefault:String?
+    
+    var label:String?
+    
+    var expressFee:String?
+    
     
 }

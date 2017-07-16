@@ -12,7 +12,7 @@ import UIKit
 class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UITextViewDelegate{
     
     // 声明闭包
-//    typealias inputClosureType = (String)-> Void
+    //    typealias inputClosureType = (String)-> Void
     
     let categoryArray = ["老婆家","丈母娘家","前女友家","前男友家","路人家~","A家","老婆婆1家","丈母娘3家","前女友6家","前男友家","路人甲家~","家","老婆婆家","丈母娘家","家","前3男友家","路人甲家~","家","老婆婆家","丈母娘家","前女友家","前男友家","路人甲家~","家","老婆婆家","丈母娘家","前3女友家","前男友家","路人3甲家~","家","老婆婆家","丈母娘家","前女友家","前男友家","路人甲家~","家","老婆婆家","丈母娘家","前女友家","前男友家","路人4甲家~","家","老婆婆家","丈母娘家","前女友家","前男友家","路人甲家~"]
     
@@ -30,12 +30,12 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     
     
     lazy var receiveInput:UITextField = {
-       let receiveInput = UITextField.init()
+        let receiveInput = UITextField.init()
         receiveInput.text = "赵健"
         receiveInput.textColor  = XFConstants.Color.darkGray
         receiveInput.font = sysFontWithSize(16)
-      return receiveInput
-
+        return receiveInput
+        
     }()
     
     lazy var leftMobileLabel: UILabel = {
@@ -74,11 +74,11 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     
     
     lazy var addressChooseLabel:UILabel = {
-       let addressChooseLabel  = UILabel.init()
+        let addressChooseLabel  = UILabel.init()
         addressChooseLabel.text = "内蒙古兴安盟扎赉特旗"
-      
+        
         addressChooseLabel.textColor  = XFConstants.Color.darkGray
-       addressChooseLabel.font = sysFontWithSize(16)
+        addressChooseLabel.font = sysFontWithSize(16)
         return addressChooseLabel
     }()
     
@@ -89,7 +89,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         let addressBtn = UIButton.init()
         addressBtn.backgroundColor = UIColor.clear
         addressBtn.addTarget(self, action: #selector(chooseAddress(_:)), for: .touchUpInside)
-
+        
         return addressBtn
     }()
     
@@ -103,24 +103,35 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             
         }
         self.addSubview(cityView)
-       
+        
     }
     
-    
+    func setMyAddress(address:XFAddress)  {
+        receiveInput.text = address.recipient
+        mobileInput.text = address.cellPhone
+        addressChooseLabel.text = address.districtCode
+        
+        addressBtn.setTitle(address.label, for: .normal)
+        addressDescTextView.text = address.address
+        if  addressDescTextView.text.characters.count > 0 {
+            placeHolderLabel.text = ""
+        }
+        else{
+            
+        }
+    }
     
     
     lazy var addressDescTextView:UITextView = {
         let descAddress = UITextView()
         descAddress.delegate = self
-
+        
         descAddress.font = sysFontWithSize(16)
         descAddress.isScrollEnabled = false
         return descAddress
         
     }()
     
-    
-    // 
     lazy var categoryCollectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         //        layout.itemSize = CGSize(width:60,height:60)
@@ -140,14 +151,11 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     
     lazy var placeHolderLabel : UILabel  = {
         let placeHolderLabel = UILabel()
-        placeHolderLabel.textColor = colorWithRGB(153, g: 153, b: 153)
+        placeHolderLabel.textColor = XFConstants.Color.darkGray
         placeHolderLabel.text = "详细地址（具体到门牌号）"
         placeHolderLabel.font = sysFontWithSize(14)
         return placeHolderLabel
     }()
-    
- 
-
     
     
     
@@ -163,7 +171,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     
     private func customInit(){
         
-     // 收货人
+        // 收货人
         addSubview(leftTipReceiveLabel)
         leftTipReceiveLabel.snp.makeConstraints({ (make) in
             make.top.equalTo(self.snp.top).offset(12)
@@ -173,13 +181,13 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             make.height.equalTo(19)
         })
         
-    // 收货人输入框
+        // 收货人输入框
         addSubview(receiveInput)
         receiveInput.snp.makeConstraints({ (make) in
             make.top.equalTo(self.snp.top).offset(12)
             make.left.equalTo(leftTipReceiveLabel.snp.right).offset(13)
             make.right.equalTo(self).offset(-13)
-//            make.width.equalTo(70)
+            //            make.width.equalTo(70)
             make.height.equalTo(19)
         })
         
@@ -188,18 +196,18 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             make.top.equalTo(self.snp.top).offset(12)
             make.left.equalTo(leftTipReceiveLabel.snp.right).offset(13)
             make.right.equalTo(self.snp.right).offset(-13)
-//            make.bottom.equalTo(self.snp.bottom).offset(-12)
-             make.height.equalTo(19)
+            //            make.bottom.equalTo(self.snp.bottom).offset(-12)
+            make.height.equalTo(19)
         })
         
         
         let line1:UIView = createSeperateLine()
-         // 第1个分割线
+        // 第1个分割线
         self.addSubview(line1)
         
         line1.snp.makeConstraints { (make) in
             make.top.equalTo(leftTipReceiveLabel.snp.bottom).offset(10)
-          
+            
             make.height.equalTo(0.4)
             make.left.right.equalTo(self)
         }
@@ -227,7 +235,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         })
         
         let line2:UIView = createSeperateLine()
-
+        
         // 第2个分割线
         self.addSubview(line2)
         line2.snp.makeConstraints { (make) in
@@ -273,7 +281,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         
         // 第3个分割线
         let line3:UIView = createSeperateLine()
-
+        
         self.addSubview(line3)
         line3.snp.makeConstraints { (make) in
             make.top.equalTo(leftAddressLabel.snp.bottom).offset(10)
@@ -289,20 +297,20 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             make.top.equalTo(line3.snp.bottom).offset(12)
             make.left.equalTo(self.snp.left).offset(13)
             make.right.equalTo(self.snp.right).offset(13)
-
+            
             make.height.equalTo(100)
         })
         
         // 添加占位的placeholder
         addressDescTextView.addSubview(placeHolderLabel)
-                placeHolderLabel.snp.makeConstraints({ (make) in
-                    make.top.equalTo(addressDescTextView.snp.top).offset(10)
-                    make.left.equalTo(self.snp.left).offset(15)
-                    make.right.equalTo(self.snp.right).offset(15)
-        
-                    make.height.equalTo(14)
-        
-                })
+        placeHolderLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(addressDescTextView.snp.top).offset(10)
+            make.left.equalTo(self.snp.left).offset(15)
+            make.right.equalTo(self.snp.right).offset(15)
+            
+            make.height.equalTo(14)
+            
+        })
         
         
         // 第4个分割线
@@ -317,7 +325,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         }
         
         // 地址分类
-       self.addSubview(categoryCollectionView)
+        self.addSubview(categoryCollectionView)
         categoryCollectionView.snp.makeConstraints({ (make) in
             make.top.equalTo(line4.snp.bottom).offset(5)
             make.left.equalTo(self.snp.left).offset(5)
@@ -326,7 +334,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             make.height.equalTo(150)
         })
         
-
+        
         
     }
     
@@ -384,6 +392,6 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         let cate  = categoryArray[row]
         return CGSize(width:20 + widthForLabel(text: cate as NSString, font: 10),height:22)
     }
-
+    
     
 }

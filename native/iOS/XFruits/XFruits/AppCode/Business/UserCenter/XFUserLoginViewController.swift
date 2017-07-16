@@ -25,6 +25,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.title = "登录"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "取消", style: .plain, target: self, action: #selector(cancelLogin))
         
@@ -54,7 +55,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
         // 手机号
         self.mobileTextField = UITextField()
         self.view.addSubview(self.mobileTextField!)
-    
+        
         self.mobileTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
         self.mobileTextField?.layer.borderWidth = 0.5
         self.mobileTextField?.layer.cornerRadius = 10
@@ -199,26 +200,15 @@ class XFUserLoginViewController: XFBaseSubViewController {
         XFCommonService().login(params: loginData) { (data) in
             dPrint(data)
             let data = data as! XFUser
-
-//             // 保存
-//            let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] as NSString
-//            let filePath = path.appendingPathComponent("user.archive")  // 这个后缀要不要改
-//            let cachedSuccess   = NSKeyedArchiver.archiveRootObject(data.toJSON()!, toFile: filePath)
-//            print(cachedSuccess)
-//            
-//            // 读取
-//            let cachedCotent = NSKeyedUnarchiver.unarchiveObject(withFile: filePath)
-//            print(cachedCotent!)
-            
             
             // =========== 试试用工具类缓存会不会更优雅！！！
             XFUserGlobal.shared.signIn(user: data)
             if XFUserGlobal.shared.isLogin {
                 dPrint("用户已登录")
                 dPrint("Token is: \(XFUserGlobal.shared.token!)")
-               
+                
             }
-            // 试试用工具类缓存会不会更优雅！！！ =========== 
+            // 试试用工具类缓存会不会更优雅！！！ ===========
             
             
             
