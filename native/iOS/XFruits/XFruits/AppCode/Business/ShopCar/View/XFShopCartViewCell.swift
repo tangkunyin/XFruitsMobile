@@ -141,21 +141,24 @@ class XFShopCartViewCell: UITableViewCell {
     
     @objc private func quantityChanged(btn:UIButton) {
         if var quantity:Int = Int(quantityLabel.text!) {
-            guard quantity > 0 else {
-                dPrint("果篮数量数量值或按钮的tag值设置有误：\(btn.tag) --- quantity: \(quantity)")
-                return
-            }
+            var priceChange: Float?
             switch btn.tag {
             case -1:
-                quantity = (quantity == 1) ? 1 : quantity - 1
+                quantity -= 1
+                priceChange = -Float(dataSource!.salesPrice!)
             case 1:
-                quantity = quantity + 1
+                quantity += 1
+                priceChange = Float(dataSource!.salesPrice!)
             default:
+                quantity = 0
                 break
+            }
+            guard quantity > 0 else {
+                return
             }
             if XFCartUtils.sharedInstance.changeCount(gid: dataSource!.id!, count: quantity) {
                 quantityLabel.text = "\(quantity)"
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: XFConstants.MessageKey.NeedRefreshShopCartData), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: XFConstants.MessageKey.NeedRefreshShopCartData), object: priceChange)
             }
         }
     }

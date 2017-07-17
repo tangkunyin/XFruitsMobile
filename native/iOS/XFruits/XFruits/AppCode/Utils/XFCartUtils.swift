@@ -9,8 +9,8 @@
 import Foundation
 import MBProgressHUD
 
-// 果篮专用工具类
-struct XFCartUtils {
+/// 果篮专用工具类
+class XFCartUtils {
     
     static let sharedInstance = XFCartUtils()
     
@@ -18,13 +18,23 @@ struct XFCartUtils {
         XFSQLiteDataSource.sharedInstance.createTables()
     }
     
+    /// 已选的数据集
+    var selectedList: Array<XFCart?> = []
+    
+    
     func getAll() -> Array<XFCart?> {
         var dataList:Array<XFCart?> = []
         do {
             let result =  try XFCartDataHelper.findAll()
+            if selectedList.count > 0 {
+                selectedList.removeAll()
+            }
             for cart:XFCart in result {
                 if let status = cart.status, status == 0 {
                     dataList.append(cart)
+                }
+                if let selected = cart.selected, selected == true {
+                    selectedList.append(cart)
                 }
             }
             return dataList

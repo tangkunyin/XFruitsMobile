@@ -12,6 +12,8 @@ import SnapKit
 
 class XFShopCartActionBar: UIView {
     
+    var onCartConfirmPress: (()->Void)?
+    
     lazy var countlabel:UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
@@ -26,7 +28,7 @@ class XFShopCartActionBar: UIView {
         label.textColor = XFConstants.Color.salmon
         label.textAlignment = .center
         label.font = XFConstants.Font.mainMenuFont
-        label.text = "¥ 168.00"
+        label.text = "¥ 00.00"
         return label
     }()
     
@@ -36,10 +38,15 @@ class XFShopCartActionBar: UIView {
         btn.setTitle("下 单", for: .normal)
         btn.setTitleColor(grayColor(255), for: .normal)
         btn.titleLabel?.font = XFConstants.Font.mainMenuFont
-        btn.addTarget(self, action: #selector(onCartBtnClicked(_:)), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(onCartConfirmAction), for: .touchUpInside)
         return btn
     }()
 
+    func update(total: Int, amount: Float)  {
+        countlabel.text = "全部(\(total))"
+        pricelabel.text = String(format:"¥ %.2f",amount)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         customInit()
@@ -73,9 +80,9 @@ class XFShopCartActionBar: UIView {
         }
     }
     
-    @objc private func onCartBtnClicked(_ btn:UIButton){
-        dPrint("Hello")
+    @objc private func onCartConfirmAction() {
+        if let confirmPress = onCartConfirmPress {
+            confirmPress()
+        }
     }
-    
-
 }

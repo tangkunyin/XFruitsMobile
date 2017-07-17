@@ -17,9 +17,13 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     
     var shopCartViewCount: Int = 0
     
+    var selectedItemCount: Int = 0
+    
+    var selectedTotalAmount: Float = 0
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadShopCartData()
+        reloadShopCartData(nil)
     }
     
     override func viewDidLoad() {
@@ -30,23 +34,22 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
         view.addSubview(actionBar)
         makeContentViewConstrains()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "编辑",
-                                                                 style: .plain,
-                                                                 target: self,
-                                                                 action: #selector(onShopCartEdit))
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(reloadShopCartData),
                                                name: NSNotification.Name(rawValue: XFConstants.MessageKey.NeedRefreshShopCartData),
                                                object: nil)
     }
     
-
-    @objc private func onShopCartEdit(){
-        
-        
-        
+    fileprivate func checkoutShopCart() {
+        guard selectedItemCount > 0 else {
+            MBProgressHUD.showError("请至少选择一项下单")
+            return
+        }
+        let checkoutVC = XFCheckoutViewController()
+        checkoutVC.totalAmount = selectedTotalAmount
+        navigationController?.pushViewController(checkoutVC, animated: true)
     }
-    
+
     
     // MARK: - Cart Tableview delegates
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -76,7 +79,7 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
             let checked = !cell.radioBtn.isSelected
             if XFCartUtils.sharedInstance.selectItem(gid: item.id, checked: checked) {
                 cell.radioBtn.isSelected = checked
-                reloadShopCartData()
+                reloadShopCartData(nil)
             }
         }
     }
@@ -84,7 +87,7 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if let item:XFCart = cartList[indexPath.row], editingStyle == .delete {
             if XFCartUtils.sharedInstance.deleteItem(gid: item.id) {
-                reloadShopCartData()
+                reloadShopCartData(nil)
             }
         }
     }
@@ -99,7 +102,28 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     
 
     // MARK: - Cart private func and variables
-    @objc private func reloadShopCartData() {
+    private func calculateTotalAmount(_ object: Notification?) {
+        let selectedData: Array<XFCart> = XFCartUtils.sharedInstance.selectedList as! Array<XFCart>
+        selectedItemCount = selectedData.count
+        if selectedItemCount == 0 {
+            selectedTotalAmount = 0
+        } else {
+            // 控制数量变化
+            if let obj = object, let price: Float = obj.object as? Float {
+                selectedTotalAmount += price
+            } else {
+                for cart: XFCart in selectedData {
+                    if let count = cart.quantity, let price = cart.salesPrice {
+                        selectedTotalAmount += Float(Double(count) * price)
+                    }
+                }
+            }
+        }
+        actionBar.update(total: selectedItemCount, amount: selectedTotalAmount)
+    }
+    
+    
+    @objc private func reloadShopCartData(_ object: Notification?) {
         cartList = XFCartUtils.sharedInstance.getAll()
         if cartList.count > 0 {
             shopCartViewCount = 0
@@ -107,6 +131,7 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
             cartListView.alpha = 1
             actionBar.alpha = 1
             cartListView.reloadData()
+            calculateTotalAmount(object)
         } else {
             shopCartViewCount += 1
             cartEmptyView.alpha = 1
@@ -122,8 +147,9 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
         listView.delegate = self
         listView.dataSource = self
         listView.backgroundColor = UIColor.white
-        listView.register(XFShopCartViewCell.self, forCellReuseIdentifier: XFCartCellReuseIdentifier)
         listView.tableFooterView = UIView()
+        listView.showsVerticalScrollIndicator = false
+        listView.register(XFShopCartViewCell.self, forCellReuseIdentifier: XFCartCellReuseIdentifier)
         return listView
     }()
     
@@ -134,6 +160,10 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     
     private lazy var actionBar:XFShopCartActionBar = {
         let bar = XFShopCartActionBar()
+        weak var weakSelf = self
+        bar.onCartConfirmPress = {
+            weakSelf?.checkoutShopCart()
+        }
         return bar;
     }()
     
