@@ -44,20 +44,15 @@ struct XFCartUtils {
                                    cover: item.cover,
                                    primePrice: Double(item.primePrice),
                                    salesPrice: Double(item.salesPrice),
-                                   quantity: Int64(0),
+                                   quantity: Int64(1),
                                    selected: false,
                                    status: 0)
-            var result: Bool?
             if nil == obj {
-                result = try XFCartDataHelper.insert(item: paramCart)
+                return try XFCartDataHelper.insert(item: paramCart)
             } else {
                 paramCart.quantity = (obj?.quantity)! + 1
-                result = try XFCartDataHelper.update(item: paramCart)
+                return try XFCartDataHelper.update(item: paramCart)
             }
-            if let result = result {
-                return result
-            }
-            return false
         } catch let error as NSError {
             dPrint(error.localizedDescription)
             return false
@@ -68,8 +63,7 @@ struct XFCartUtils {
     func deleteItem(gid: String?) ->Bool {
         do {
             if let gid = gid {
-                let reuslt = try XFCartDataHelper.delete(gid: gid)
-                return reuslt
+                return  try XFCartDataHelper.delete(gid: gid)
             }
             return false
         } catch let error as NSError {
@@ -80,8 +74,7 @@ struct XFCartUtils {
     
     func deleteAllCart() -> Bool {
         do {
-            let reuslt = try XFCartDataHelper.deleteAll()
-            return reuslt
+            return try XFCartDataHelper.deleteAll()
         } catch let error as NSError {
             dPrint(error.localizedDescription)
             return false
@@ -100,8 +93,7 @@ struct XFCartUtils {
                                    quantity: nil,
                                    selected: checked,
                                    status: nil)
-            let result = try XFCartDataHelper.update(item: paramCart)
-            return result
+            return try XFCartDataHelper.update(item: paramCart)
         } catch let error as NSError {
             dPrint(error.localizedDescription)
             return false
@@ -109,25 +101,24 @@ struct XFCartUtils {
     }
 
     
-//    func changeCount(gid:String, count:Int){
-//        do {
-//            let paramCart = XFCart(index: nil,
-//                                   id: gid,
-//                                   name: nil,
-//                                   cover: nil,
-//                                   primePrice: nil,
-//                                   salesPrice: nil,
-//                                   quantity: Int64(count),
-//                                   selected: nil,
-//                                   status: nil)
-//            try XFCartDataHelper.update(item: paramCart)
-//        } catch let error as NSError {
-//            dPrint(error.localizedDescription)
-//        }
-//    }
-//    
-//    
-//    
-
-
+    func changeCount(gid:String, count:Int) -> Bool{
+        do {
+            let paramCart = XFCart(index: nil,
+                                   id: gid,
+                                   name: nil,
+                                   desc: nil,
+                                   cover: nil,
+                                   primePrice: nil,
+                                   salesPrice: nil,
+                                   quantity: Int64(count),
+                                   selected: nil,
+                                   status: nil)
+            return try XFCartDataHelper.update(item: paramCart)
+        } catch let error as NSError {
+            dPrint(error.localizedDescription)
+            return false
+        }
+    }
+    
+    
 }

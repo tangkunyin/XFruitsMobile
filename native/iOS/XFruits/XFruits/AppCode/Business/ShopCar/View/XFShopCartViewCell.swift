@@ -14,6 +14,9 @@ import MBProgressHUD
 
 class XFShopCartViewCell: UITableViewCell {
     
+//    var onSelectChanged: ((String, Bool)->Void)?
+//    var onQuantityChanged: ((String, Int)->Void)?
+    
     var dataSource:XFCart? {
         didSet {
             if let item = dataSource {
@@ -130,17 +133,27 @@ class XFShopCartViewCell: UITableViewCell {
     
     
     @objc private func selectChanged(btn:UIButton) {
-        btn.isSelected = !btn.isSelected
+        if XFCartUtils.sharedInstance.selectItem(gid: dataSource!.id!, checked: !btn.isSelected) {
+            btn.isSelected = !btn.isSelected
+        }
     }
     
     @objc private func quantityChanged(btn:UIButton) {
-        if let quantity:Int = Int(quantityLabel.text!) {
-            if -1 == btn.tag, quantity > 0 {
-                quantityLabel.text = "\(quantity - 1)"
-            } else if 1 == btn.tag {
-                quantityLabel.text = "\(quantity + 1)"
-            } else {
+        if var quantity:Int = Int(quantityLabel.text!) {
+            guard quantity > 0 else {
                 dPrint("果篮数量数量值或按钮的tag值设置有误：\(btn.tag) --- quantity: \(quantity)")
+                return
+            }
+            switch btn.tag {
+            case -1:
+                quantity = (quantity == 1) ? 1 : quantity - 1
+            case 1:
+                quantity = quantity + 1
+            default:
+                break
+            }
+            if XFCartUtils.sharedInstance.changeCount(gid: dataSource!.id!, count: quantity) {
+                quantityLabel.text = "\(quantity)"
             }
         }
     }
@@ -205,9 +218,5 @@ class XFShopCartViewCell: UITableViewCell {
             make.right.equalTo(self).offset(-10)
             make.bottom.equalTo(self.quantityLabel.snp.bottom)
         }
-    
     }
-    
-    
-
 }

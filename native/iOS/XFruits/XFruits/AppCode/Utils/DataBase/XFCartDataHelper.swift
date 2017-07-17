@@ -54,7 +54,7 @@ class XFCartDataHelper: DataHelperProtocol {
                 t.column(cover)
                 t.column(primePrice)
                 t.column(salesPrice)
-                t.column(quantity, defaultValue:0)
+                t.column(quantity, defaultValue:1)
                 t.column(selected, defaultValue:false)
                 t.column(status, defaultValue:0)
             })
@@ -78,7 +78,8 @@ class XFCartDataHelper: DataHelperProtocol {
                                       desc <- gdesc,
                                       cover <- gcover,
                                       primePrice <- gprimePrice,
-                                      salesPrice <- gsalesPrice)
+                                      salesPrice <- gsalesPrice,
+                                      quantity <- 1)
             do {
                 let rowId = try DB.run(insert)
                 guard rowId > 0 else {
