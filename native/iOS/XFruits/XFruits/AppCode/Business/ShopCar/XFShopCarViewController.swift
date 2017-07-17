@@ -24,15 +24,20 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "编辑",
-                                                                 style: .plain,
-                                                                 target: self,
-                                                                 action: #selector(onShopCartEdit))
         
         view.addSubview(cartEmptyView)
         view.addSubview(cartListView)
         view.addSubview(actionBar)
         makeContentViewConstrains()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "编辑",
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(onShopCartEdit))
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadShopCartData),
+                                               name: NSNotification.Name(rawValue: XFConstants.MessageKey.NeedRefreshShopCartData),
+                                               object: nil)
     }
     
 
@@ -71,6 +76,7 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
             let checked = !cell.radioBtn.isSelected
             if XFCartUtils.sharedInstance.selectItem(gid: item.id, checked: checked) {
                 cell.radioBtn.isSelected = checked
+                reloadShopCartData()
             }
         }
     }
@@ -93,7 +99,7 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     
 
     // MARK: - Cart private func and variables
-    private func reloadShopCartData() {
+    @objc private func reloadShopCartData() {
         cartList = XFCartUtils.sharedInstance.getAll()
         if cartList.count > 0 {
             shopCartViewCount = 0

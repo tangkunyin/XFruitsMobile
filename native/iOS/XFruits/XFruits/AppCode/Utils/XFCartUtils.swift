@@ -50,7 +50,9 @@ struct XFCartUtils {
             if nil == obj {
                 return try XFCartDataHelper.insert(item: paramCart)
             } else {
-                paramCart.quantity = (obj?.quantity)! + 1
+                if obj?.status! == 0 {
+                    paramCart.quantity = (obj?.quantity)! + 1
+                }
                 return try XFCartDataHelper.update(item: paramCart)
             }
         } catch let error as NSError {
@@ -63,7 +65,7 @@ struct XFCartUtils {
     func deleteItem(gid: String?) ->Bool {
         do {
             if let gid = gid {
-                return  try XFCartDataHelper.delete(gid: gid)
+                return try XFCartDataHelper.delete(gid: gid)
             }
             return false
         } catch let error as NSError {

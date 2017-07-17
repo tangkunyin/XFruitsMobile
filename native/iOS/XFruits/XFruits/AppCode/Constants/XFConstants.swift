@@ -40,12 +40,8 @@ struct XFConstants {
     
     /// 事件消息key定义
     struct MessageKey {
-        
-        //网络请求失败
-        static let serverRequestFailure: String = "ServerRequestFailure"
-        
-        //轮播图点击事件
-        static let scrollImageViewClicked: String = "ScrollImageViewClicked"
+        // 请求更新果篮数据
+        static let NeedRefreshShopCartData: String = "_needRefreshShopCartData"
     }
     
     

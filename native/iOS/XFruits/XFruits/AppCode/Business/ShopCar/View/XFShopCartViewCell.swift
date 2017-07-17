@@ -21,7 +21,7 @@ class XFShopCartViewCell: UITableViewCell {
         didSet {
             if let item = dataSource {
                 radioBtn.isSelected = item.selected!
-                quantityLabel.text = "\(item.quantity ?? 0)"
+                quantityLabel.text = "\(item.quantity ?? 1)"
                 titleLabel.text = item.name
                 descLabel.text = item.desc ?? ""
                 priceLabel.text = String(format:"%.2f",item.salesPrice!)
@@ -135,6 +135,7 @@ class XFShopCartViewCell: UITableViewCell {
     @objc private func selectChanged(btn:UIButton) {
         if XFCartUtils.sharedInstance.selectItem(gid: dataSource!.id!, checked: !btn.isSelected) {
             btn.isSelected = !btn.isSelected
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: XFConstants.MessageKey.NeedRefreshShopCartData), object: nil)
         }
     }
     
@@ -154,6 +155,7 @@ class XFShopCartViewCell: UITableViewCell {
             }
             if XFCartUtils.sharedInstance.changeCount(gid: dataSource!.id!, count: quantity) {
                 quantityLabel.text = "\(quantity)"
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: XFConstants.MessageKey.NeedRefreshShopCartData), object: nil)
             }
         }
     }
