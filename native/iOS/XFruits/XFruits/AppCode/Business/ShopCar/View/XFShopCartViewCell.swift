@@ -141,14 +141,11 @@ class XFShopCartViewCell: UITableViewCell {
     
     @objc private func quantityChanged(btn:UIButton) {
         if var quantity:Int = Int(quantityLabel.text!) {
-            var priceChange: Float?
             switch btn.tag {
             case -1:
                 quantity -= 1
-                priceChange = -Float(dataSource!.salesPrice!)
             case 1:
                 quantity += 1
-                priceChange = Float(dataSource!.salesPrice!)
             default:
                 quantity = 0
                 break
@@ -158,7 +155,7 @@ class XFShopCartViewCell: UITableViewCell {
             }
             if XFCartUtils.sharedInstance.changeCount(gid: dataSource!.id!, count: quantity) {
                 quantityLabel.text = "\(quantity)"
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: XFConstants.MessageKey.NeedRefreshShopCartData), object: priceChange)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: XFConstants.MessageKey.NeedRefreshShopCartData), object: nil)
             }
         }
     }

@@ -23,7 +23,7 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadShopCartData(nil)
+        reloadShopCartData()
     }
     
     override func viewDidLoad() {
@@ -79,7 +79,7 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
             let checked = !cell.radioBtn.isSelected
             if XFCartUtils.sharedInstance.selectItem(gid: item.id, checked: checked) {
                 cell.radioBtn.isSelected = checked
-                reloadShopCartData(nil)
+                reloadShopCartData()
             }
         }
     }
@@ -87,7 +87,7 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if let item:XFCart = cartList[indexPath.row], editingStyle == .delete {
             if XFCartUtils.sharedInstance.deleteItem(gid: item.id) {
-                reloadShopCartData(nil)
+                reloadShopCartData()
             }
         }
     }
@@ -102,28 +102,20 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     
 
     // MARK: - Cart private func and variables
-    private func calculateTotalAmount(_ object: Notification?) {
+    private func calculateTotalAmount() {
         let selectedData: Array<XFCart> = XFCartUtils.sharedInstance.selectedList as! Array<XFCart>
         selectedItemCount = selectedData.count
-        if selectedItemCount == 0 {
-            selectedTotalAmount = 0
-        } else {
-            // 控制数量变化
-            if let obj = object, let price: Float = obj.object as? Float {
-                selectedTotalAmount += price
-            } else {
-                for cart: XFCart in selectedData {
-                    if let count = cart.quantity, let price = cart.salesPrice {
-                        selectedTotalAmount += Float(Double(count) * price)
-                    }
-                }
+        selectedTotalAmount = 0
+        for cart: XFCart in selectedData {
+            if let count = cart.quantity, let price = cart.salesPrice {
+                selectedTotalAmount += Float(Double(count) * price)
             }
         }
         actionBar.update(total: selectedItemCount, amount: selectedTotalAmount)
     }
     
     
-    @objc private func reloadShopCartData(_ object: Notification?) {
+    @objc private func reloadShopCartData() {
         cartList = XFCartUtils.sharedInstance.getAll()
         if cartList.count > 0 {
             shopCartViewCount = 0
@@ -131,7 +123,7 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
             cartListView.alpha = 1
             actionBar.alpha = 1
             cartListView.reloadData()
-            calculateTotalAmount(object)
+            calculateTotalAmount()
         } else {
             shopCartViewCount += 1
             cartEmptyView.alpha = 1
