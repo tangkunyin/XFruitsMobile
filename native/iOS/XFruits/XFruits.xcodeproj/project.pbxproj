@@ -81,6 +81,8 @@
 		86CB2FF01EAB495A009972A8 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE91EAB495A009972A8 /* MBProgressHUD.framework */; };
 		86CB2FF21EAB495A009972A8 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FEB1EAB495A009972A8 /* SnapKit.framework */; };
 		86CB2FF31EAB495A009972A8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FEC1EAB495A009972A8 /* SwiftyJSON.framework */; };
+		86D18BA51F1E5731007643C0 /* XFCheckoutGoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D18BA41F1E5731007643C0 /* XFCheckoutGoodsCell.swift */; };
+		86D18BA71F1E5843007643C0 /* XFCheckoutActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D18BA61F1E5843007643C0 /* XFCheckoutActionBar.swift */; };
 		86E695201ED6AA35004864A6 /* XFCartUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E6951F1ED6AA35004864A6 /* XFCartUtils.swift */; };
 		86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF731EDAB0BB000A489F /* XFDetailHeaderView.swift */; };
 		86E8DF761EDAB0C9000A489F /* XFDetailCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF751EDAB0C9000A489F /* XFDetailCommentView.swift */; };
@@ -171,6 +173,8 @@
 		86CB2FE91EAB495A009972A8 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		86CB2FEB1EAB495A009972A8 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		86CB2FEC1EAB495A009972A8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		86D18BA41F1E5731007643C0 /* XFCheckoutGoodsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCheckoutGoodsCell.swift; sourceTree = "<group>"; };
+		86D18BA61F1E5843007643C0 /* XFCheckoutActionBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCheckoutActionBar.swift; sourceTree = "<group>"; };
 		86E6951F1ED6AA35004864A6 /* XFCartUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCartUtils.swift; sourceTree = "<group>"; };
 		86E8DF731EDAB0BB000A489F /* XFDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailHeaderView.swift; sourceTree = "<group>"; };
 		86E8DF751EDAB0C9000A489F /* XFDetailCommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailCommentView.swift; sourceTree = "<group>"; };
@@ -457,6 +461,8 @@
 				8690FEDE1ED178900051A16D /* XFShopCartViewCell.swift */,
 				8690FEE01ED178AF0051A16D /* XFShopCartActionBar.swift */,
 				865235C51F1AFD5A005897C3 /* XFShopCartEmptyView.swift */,
+				86D18BA41F1E5731007643C0 /* XFCheckoutGoodsCell.swift */,
+				86D18BA61F1E5843007643C0 /* XFCheckoutActionBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -640,6 +646,7 @@
 				86E8DF811EDC0EAB000A489F /* XFCommentItemView.swift in Sources */,
 				862672D91EFE44220062B52B /* XFUserRegistViewController.swift in Sources */,
 				86A45C721ED1209F00772D13 /* XFCommonUtils.swift in Sources */,
+				86D18BA71F1E5843007643C0 /* XFCheckoutActionBar.swift in Sources */,
 				862672F91EFE499D0062B52B /* XFNavigationController.swift in Sources */,
 				862672D11EFE432C0062B52B /* XFIndexViewController.swift in Sources */,
 				862AF70D1F09271F00409CCB /* XFUserGlobal.swift in Sources */,
@@ -674,6 +681,7 @@
 				860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */,
 				86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */,
 				16200CF01F1B169C0008C039 /* XFAddress.swift in Sources */,
+				86D18BA51F1E5731007643C0 /* XFCheckoutGoodsCell.swift in Sources */,
 				865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */,
 				8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */,
 				165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */,

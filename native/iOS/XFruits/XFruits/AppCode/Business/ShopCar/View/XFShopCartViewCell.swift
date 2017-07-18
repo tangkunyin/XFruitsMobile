@@ -14,17 +14,14 @@ import MBProgressHUD
 
 class XFShopCartViewCell: UITableViewCell {
     
-//    var onSelectChanged: ((String, Bool)->Void)?
-//    var onQuantityChanged: ((String, Int)->Void)?
-    
     var dataSource:XFCart? {
         didSet {
             if let item = dataSource {
                 radioBtn.isSelected = item.selected!
                 quantityLabel.text = "\(item.quantity ?? 1)"
                 titleLabel.text = item.name
-                descLabel.text = item.desc ?? ""
-                priceLabel.text = String(format:"%.2f",item.salesPrice!)
+                descLabel.text = "规格：\(item.desc ?? "其他")"
+                priceLabel.text = String(format:"¥ %.2f",item.salesPrice!)
                 thumbnail.kf.setImage(with: URL.init(string: item.cover!),
                                       placeholder: UIImage.imageWithNamed("sampleGoodsInCategoryCell"),
                                       options: [.transition(.fade(1))])
@@ -66,7 +63,7 @@ class XFShopCartViewCell: UITableViewCell {
     }()
     
     lazy var thumbnail:UIImageView = {
-        let imageView = UIImageView.init(image: UIImage.imageWithNamed("sampleGoodsInCategoryCell"))
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         return imageView
@@ -80,7 +77,6 @@ class XFShopCartViewCell: UITableViewCell {
         title.numberOfLines = 1
         title.adjustsFontSizeToFitWidth = true
         title.lineBreakMode = .byTruncatingTail
-        title.text = "拾个鲜果开心圣诞果6个装"
         return title
     }()
     
@@ -92,7 +88,6 @@ class XFShopCartViewCell: UITableViewCell {
         title.numberOfLines = 2
         title.adjustsFontSizeToFitWidth = false
         title.lineBreakMode = .byTruncatingTail
-        title.text = "规格：6个 80mm"
         return title
     }()
     
@@ -104,7 +99,6 @@ class XFShopCartViewCell: UITableViewCell {
         title.numberOfLines = 2
         title.adjustsFontSizeToFitWidth = false
         title.lineBreakMode = .byTruncatingTail
-        title.text = "¥ 38"
         return title
     }()
     
@@ -161,7 +155,7 @@ class XFShopCartViewCell: UITableViewCell {
     }
     
     // MARK: - make constrains
-    fileprivate func customInit(){
+    func customInit(){
         
         addSubview(radioBtn)
         addSubview(thumbnail)

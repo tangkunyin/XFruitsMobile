@@ -12,7 +12,7 @@ import SnapKit
 
 class XFShopCartActionBar: UIView {
     
-    var onCartConfirmPress: (()->Void)?
+    var onConfirmBarPress: (()->Void)?
     
     lazy var countlabel:UILabel = {
         let label = UILabel()
@@ -38,7 +38,7 @@ class XFShopCartActionBar: UIView {
         btn.setTitle("下 单", for: .normal)
         btn.setTitleColor(grayColor(255), for: .normal)
         btn.titleLabel?.font = XFConstants.Font.mainMenuFont
-        btn.addTarget(self, action: #selector(onCartConfirmAction), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(onClickAction), for: .touchUpInside)
         return btn
     }()
 
@@ -57,7 +57,7 @@ class XFShopCartActionBar: UIView {
         customInit()
     }
     
-    fileprivate func customInit(){
+    func customInit(){
         backgroundColor = XFConstants.Color.commonBackground
         addSubview(countlabel)
         addSubview(pricelabel)
@@ -80,8 +80,8 @@ class XFShopCartActionBar: UIView {
         }
     }
     
-    @objc private func onCartConfirmAction() {
-        if let confirmPress = onCartConfirmPress {
+    @objc private func onClickAction() {
+        if let confirmPress = onConfirmBarPress {
             confirmPress()
         }
     }

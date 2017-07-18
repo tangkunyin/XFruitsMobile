@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import SnapKit
 
 fileprivate let XFCartCellReuseIdentifier:String = "XFShopCartCellReuseIdentifier"
 
@@ -46,7 +47,7 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
             return
         }
         let checkoutVC = XFCheckoutViewController()
-        checkoutVC.totalAmount = selectedTotalAmount
+        checkoutVC.totalGoodsAmount = selectedTotalAmount
         navigationController?.pushViewController(checkoutVC, animated: true)
     }
 
@@ -153,7 +154,7 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     private lazy var actionBar:XFShopCartActionBar = {
         let bar = XFShopCartActionBar()
         weak var weakSelf = self
-        bar.onCartConfirmPress = {
+        bar.onConfirmBarPress = {
             weakSelf?.checkoutShopCart()
         }
         return bar;
