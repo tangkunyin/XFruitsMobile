@@ -158,16 +158,16 @@ public class XFNetworking: NSObject {
  //////////////////////////////////////////////////////
         var headers: HTTPHeaders = [:]
         
-        if url.contains("login") || url.contains("regist") {
+        if (XFUserGlobal.shared.token == nil) {
             
         }
         else{
-            var header = XFUserGlobal.shared.token!
-
-            header = header.trimmingCharacters(in: .whitespacesAndNewlines)
+            var token = XFUserGlobal.shared.token!
+            
+            token = token.trimmingCharacters(in: .whitespacesAndNewlines)
             
             headers = [
-                "Authorization": "Bearer " + header
+                "Authorization": "Bearer " + token
             ]
         }
 /////////////////////////////////////////////////////////
