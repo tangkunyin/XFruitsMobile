@@ -75,7 +75,7 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController,UITableViewD
     }
     
     // 添加或编辑地址
-    func addOrModifyAddressEvent(sender:UIButton?) {
+    @objc func addOrModifyAddressEvent(sender:UIButton?) {
         dPrint("eyes")
         let addAddressVC = XFAddAddressViewController()
         let btn:UIButton = sender!

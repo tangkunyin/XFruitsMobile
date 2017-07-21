@@ -60,7 +60,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
         self.mobileTextField?.layer.borderWidth = 0.5
         self.mobileTextField?.layer.cornerRadius = 10
         self.mobileTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
-        self.mobileTextField?.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes: [NSForegroundColorAttributeName:XFConstants.Color.pinkishGrey,NSFontAttributeName:UIFont.systemFont(ofSize: 14)])
+        self.mobileTextField?.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes: [NSAttributedStringKey.foregroundColor:XFConstants.Color.pinkishGrey,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)])
         self.mobileTextField?.snp.makeConstraints({ (make) in
             
             make.top.equalTo((self.brandImageView?.snp.bottom)!).offset(20)
@@ -80,7 +80,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
         self.passwordTextField?.layer.cornerRadius = 10
         self.passwordTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
         
-        self.passwordTextField?.attributedPlaceholder = NSAttributedString(string: "请输入密码", attributes: [NSForegroundColorAttributeName:XFConstants.Color.pinkishGrey,NSFontAttributeName:UIFont.systemFont(ofSize: 14)])
+        self.passwordTextField?.attributedPlaceholder = NSAttributedString(string: "请输入密码", attributes: [NSAttributedStringKey.foregroundColor:XFConstants.Color.pinkishGrey,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)])
         self.passwordTextField?.snp.makeConstraints({ (make) in
             make.top.equalTo((self.mobileTextField?.snp.bottom)!).offset(20)
             make.left.equalTo(self.view).offset(20)
@@ -161,7 +161,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
         
     }
     
-    func securityEyeClick(sender:UIButton?) {
+    @objc func securityEyeClick(sender:UIButton?) {
         
         if (self.passwordTextField?.isSecureTextEntry)! {
             self.passwordTextField?.isSecureTextEntry  = false
@@ -173,7 +173,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
     }
     
     
-    func createAccount(sender:UIButton?) {
+    @objc func createAccount(sender:UIButton?) {
         dPrint("createAccount")
         let registVC = XFUserRegistViewController()
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -181,7 +181,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
         
     }
     
-    func xfruiltLogin(sender:UIButton?){
+    @objc func xfruiltLogin(sender:UIButton?){
         dPrint("login")
         
         weak var weakSelf = self

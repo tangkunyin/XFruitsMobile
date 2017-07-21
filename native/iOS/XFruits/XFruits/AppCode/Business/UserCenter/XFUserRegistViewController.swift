@@ -49,7 +49,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
         self.mobileTextField?.layer.borderWidth = 0.5
         self.mobileTextField?.layer.cornerRadius = 10
         self.mobileTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
-        self.mobileTextField?.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes: [NSForegroundColorAttributeName:colorWithRGB(204, g: 204, b: 204),NSFontAttributeName:UIFont.systemFont(ofSize: 14)])
+        self.mobileTextField?.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes: [NSAttributedStringKey.foregroundColor:colorWithRGB(204, g: 204, b: 204),NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)])
         self.mobileTextField?.snp.makeConstraints({ (make) in
             
             make.top.equalTo((self.brandImageView?.snp.bottom)!).offset(15)
@@ -67,7 +67,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
         self.validateTextField?.layer.cornerRadius = 10
         self.validateTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
         
-        self.validateTextField?.attributedPlaceholder = NSAttributedString(string: "图片验证码", attributes: [NSForegroundColorAttributeName:colorWithRGB(204, g: 204, b: 204),NSFontAttributeName:UIFont.systemFont(ofSize: 14)])
+        self.validateTextField?.attributedPlaceholder = NSAttributedString(string: "图片验证码", attributes: [NSAttributedStringKey.foregroundColor:colorWithRGB(204, g: 204, b: 204),NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)])
         
         self.validateTextField?.snp.makeConstraints({ (make) in
             
@@ -207,7 +207,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
     
     
     // 返回登录页面
-    func backToLoginVC(sender:UIButton?) {
+    @objc func backToLoginVC(sender:UIButton?) {
         dPrint("eyes")
         self.navigationController?.popViewController(animated: true)
         
@@ -215,7 +215,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
     
     
     // 点击下一步触发的事件
-    func nextStepToSecondRegistPageVC(sender:UIButton?) {
+    @objc func nextStepToSecondRegistPageVC(sender:UIButton?) {
         
         guard let phone:String = self.mobileTextField.text , phone != "" else {
             MBProgressHUD.showError("手机号不能为空")

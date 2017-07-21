@@ -266,12 +266,12 @@ class CityChooseView: UIView,  UIPickerViewDelegate , UIPickerViewDataSource {
     
 
     //取消按钮
-    func cancleBtnClick()  {
+    @objc func cancleBtnClick()  {
         self.hidePickerView()
     }
     
     //确定按钮
-    func sureBtnClick()  {
+    @objc func sureBtnClick()  {
         self.hidePickerView()
         
         if self.myClosure != nil {

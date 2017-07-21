@@ -24,10 +24,10 @@ class XFCategoryHeadSizer: UIView {
     convenience init(textColor:UIColor?, selectTextColor:UIColor?) {
         self.init()
         
-        let normalAttributes = [NSForegroundColorAttributeName:textColor ?? XFConstants.Color.darkGray,
-                                NSFontAttributeName:pfnFontWithSize(14)]
-        let selectAttributes = [NSForegroundColorAttributeName:selectTextColor ?? colorWithRGB(255, g: 102, b: 102),
-                                NSFontAttributeName:pfnFontWithSize(14)]
+        let normalAttributes = [NSAttributedStringKey.foregroundColor:textColor ?? XFConstants.Color.darkGray,
+                                NSAttributedStringKey.font:pfnFontWithSize(14)]
+        let selectAttributes = [NSAttributedStringKey.foregroundColor:selectTextColor ?? colorWithRGB(255, g: 102, b: 102),
+                                NSAttributedStringKey.font:pfnFontWithSize(14)]
         
         sizer.setTitleTextAttributes(normalAttributes, for: .normal)
         sizer.setTitleTextAttributes(selectAttributes, for: .selected)

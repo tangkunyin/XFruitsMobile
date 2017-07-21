@@ -116,9 +116,9 @@ class XFCommentItemView: UIView {
         paragraphStyle.firstLineHeadIndent = 0
         paragraphStyle.lineSpacing = 5
         paragraphStyle.lineBreakMode = .byTruncatingTail
-        let attributes = [NSFontAttributeName:XFConstants.Font.mainMenuFont,
-                          NSForegroundColorAttributeName:XFConstants.Color.darkGray,
-                          NSParagraphStyleAttributeName:paragraphStyle];
+        let attributes = [NSAttributedStringKey.font:XFConstants.Font.mainMenuFont,
+                          NSAttributedStringKey.foregroundColor:XFConstants.Color.darkGray,
+                          NSAttributedStringKey.paragraphStyle:paragraphStyle];
         let attributeText = NSAttributedString.init(string: defaultText, attributes: attributes)
         return attributeText
     }

@@ -48,7 +48,7 @@ class XFAddAddressViewController: XFBaseSubViewController    {
     }
     
     // 导航栏右侧按钮-保存-触发的事件
-    func saveAddress(sender:UIButton?) {
+    @objc func saveAddress(sender:UIButton?) {
         dPrint("save")
         
         weak var weakSelf = self

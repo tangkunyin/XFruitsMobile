@@ -11,18 +11,18 @@ import UIKit
 class XFNavigationController: UINavigationController {
     
     private static let initAppearance: Void = {
-        let barAttr = [NSForegroundColorAttributeName:XFConstants.Color.white,
-                       NSFontAttributeName:XFConstants.Font.titleFont];
         
         let bar = UINavigationBar.appearance()
-        
         bar.isTranslucent = false
         bar.tintColor = UIColor.white
         bar.barTintColor = XFConstants.Color.salmon
-        bar.titleTextAttributes = barAttr;
-        
+        bar.titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue:XFConstants.Color.white,
+                                   NSAttributedStringKey.font.rawValue:XFConstants.Font.titleFont]
+    
         let barButtonItem = UIBarButtonItem.appearance()
-        barButtonItem.setTitleTextAttributes(barAttr, for: UIControlState.normal)
+        barButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:XFConstants.Color.white,
+                                              NSAttributedStringKey.font:XFConstants.Font.titleFont],
+                                             for: UIControlState.normal)
     }()
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
