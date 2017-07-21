@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import MBProgressHUD
 
+
 class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
     
     var prodId:String?
@@ -34,10 +35,17 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         return serviceRequest
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        automaticallyAdjustsScrollViewInsets = false
+        
+        // 处理版本差异
+        if #available(iOS 11.0, *) {
+            contentView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // 此设置仅对iOS11以前版本有效
+            automaticallyAdjustsScrollViewInsets = true
+        }
+        
         self.clearNavigationBar = true
         // 设置详情页专属返回按钮
         self.backButtonImages = [XFBackButtonImages.normal: "detail_BackHighlight",
@@ -64,7 +72,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         navBarBackgroundView.alpha = alpha
     }
     
-    // MARK: - private and lazy variables    
+    // MARK: - private and lazy variables
     private lazy var contentView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.bounces = false
