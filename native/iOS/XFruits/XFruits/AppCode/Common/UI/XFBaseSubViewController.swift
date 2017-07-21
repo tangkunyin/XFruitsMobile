@@ -71,9 +71,10 @@ class XFBaseSubViewController: XFBaseViewController {
     
     @objc func backToParentController() {
         if let navController = self.navigationController {
-            if NSObject.responds(to: #selector(navController.popViewController(animated:))) {
+            if navController.responds(to: #selector(navController.popViewController(animated:))) {
                 navController.popViewController(animated: true)
-            } else if NSObject.responds(to: #selector(navController.dismiss(animated:completion:))) {
+            }
+            if navController.responds(to: #selector(navController.dismiss(animated:completion:))) {
                 weak var weakSelf = self
                 navController.dismiss(animated: true, completion: {
                     if let completion = weakSelf?.dismissCompletion {
@@ -84,3 +85,4 @@ class XFBaseSubViewController: XFBaseViewController {
         }
     }
 }
+
