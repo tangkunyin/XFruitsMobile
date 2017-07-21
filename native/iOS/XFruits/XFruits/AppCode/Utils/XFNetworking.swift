@@ -153,27 +153,13 @@ public class XFNetworking: NSObject {
             return
         }
         
-        
-        
- //////////////////////////////////////////////////////
-        var headers: HTTPHeaders = [:]
-        
-        if (XFUserGlobal.shared.token == nil) {
-            
-        }
-        else{
-            var token = XFUserGlobal.shared.token!
-            
+        var headers: HTTPHeaders?
+        if var token = XFUserGlobal.shared.token {
             token = token.trimmingCharacters(in: .whitespacesAndNewlines)
-            
-            headers = [
-                "Authorization": "Bearer " + token
-            ]
+            headers = ["Authorization": "Bearer \(token)"]
         }
-/////////////////////////////////////////////////////////
         
-        print(headers)
-        Alamofire.request(url, method: method, parameters: params, encoding: paramsEncoding,headers:headers)
+        Alamofire.request(url, method: method, parameters: params, encoding: paramsEncoding,headers: headers)
             .responseSwiftyJSON { (response) in
                 switch response.result {
                 case .success(let value):

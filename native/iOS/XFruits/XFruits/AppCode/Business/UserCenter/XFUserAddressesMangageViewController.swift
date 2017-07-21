@@ -63,7 +63,6 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController,UITableViewD
         weak var weakSelf = self
 
         request.getUserAllAddress(token: XFUserGlobal.shared.token!, { (data) in
-             print(data)
             if let addresses = data as? Array<XFAddress>{
                 if (weakSelf?.addressInfoArray.count)! > 0 {
                     weakSelf?.addressInfoArray.removeAll()
