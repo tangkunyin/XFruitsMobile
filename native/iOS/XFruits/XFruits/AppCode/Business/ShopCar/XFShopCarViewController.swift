@@ -46,6 +46,10 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
             MBProgressHUD.showError("请至少选择一项下单")
             return
         }
+        guard XFUserGlobal.shared.isLogin else {
+            MBProgressHUD.showError("请在隔壁登录后再下单")
+            return
+        }
         let checkoutVC = XFCheckoutViewController()
         checkoutVC.totalGoodsAmount = selectedTotalAmount
         navigationController?.pushViewController(checkoutVC, animated: true)
