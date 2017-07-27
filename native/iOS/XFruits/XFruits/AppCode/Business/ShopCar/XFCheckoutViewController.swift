@@ -19,6 +19,10 @@ class XFCheckoutViewController: XFBaseViewController,UITableViewDelegate,UITable
     /// 商品总价，不含运费、邮费、优惠等
     var totalGoodsAmount: Float?
     
+    lazy var request:XFCommonService = {
+        let serviceRequest = XFCommonService()
+        return serviceRequest
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +40,14 @@ class XFCheckoutViewController: XFBaseViewController,UITableViewDelegate,UITable
             make.height.equalTo(40)
         }
         
+        updateDataSource()
+    }
+    
+    private func updateDataSource()  {
         checkoutBar.update(amount: totalGoodsAmount!)
+        request.orderConfirm { (data) in
+            
+        }
     }
     
     // MARK: - Cart Tableview delegates

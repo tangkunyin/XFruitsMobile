@@ -296,7 +296,6 @@
 			isa = PBXGroup;
 			children = (
 				86C055451EBC40DC0087E135 /* Model */,
-				86C055461EBC40DC0087E135 /* View */,
 				862672D01EFE432C0062B52B /* XFIndexViewController.swift */,
 			);
 			path = HomePage;
@@ -510,13 +509,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		86C055461EBC40DC0087E135 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		86CB2FE51EAB4959009972A8 /* Frameworks */ = {

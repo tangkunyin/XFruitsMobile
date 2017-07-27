@@ -391,11 +391,11 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
 //        let cell = collectionView.cellForItem(at: indexPath)
         let row = indexPath.row
-        self.selectCategoryLabel?.textColor =
-        var label:UILabel = self.viewWithTag(10000 + row) as! UILabel
-        label.backgroundColor  = UIColor.black
-        label.textColor = UIColor.white
-        self.selectCategoryLabel = label as! UILabel
+//        self.selectCategoryLabel?.textColor =
+//        var label:UILabel = self.viewWithTag(10000 + row) as! UILabel
+//        label.backgroundColor  = UIColor.black
+//        label.textColor = UIColor.white
+//        self.selectCategoryLabel = label as! UILabel
         
         
         
