@@ -1,11 +1,35 @@
-#XFruitsMobile
+# XFruitsMobile For iOS
 
-### 拾个鲜果移动端源码
+### 拾个鲜果移动端Native源码(仅iOS平台)
 
-#### native
+### 使用
 
-该文件夹下为Native端代码，暂时仅有iOS版本。
+```
+git clone https://git.coding.net/shuoit/XFruitsMobile.git
 
-#### rn
+cd XFruits/
 
-该文件夹下为React Naitve端代码
+```
+
+### 此过程比较耗时，建议耐心等待
+
+```
+carthage bootstrap
+```
+    
+### 当需要增加或更新项目中第三方库的最新的编译版本时，请执行如下命令：
+
+    carthage update Box
+
+### 或者
+
+    carthage update Box1 Box2
+
+### 如果Carthage提示需要更新，执行
+    brew upgrade carthage
+
+### 如果有多个Xcode，请选择合适的Swift版本
+
+    sudo xcode-select -switch /Applications/Xcode-beta.app
+
+    swift --version
