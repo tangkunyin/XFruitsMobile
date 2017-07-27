@@ -1,0 +1,13 @@
+# pure swift libs
+github "SnapKit/SnapKit" ~> 3.2.0
+github "Alamofire/Alamofire" ~> 4.4
+github "onevcat/Kingfisher" ~> 3.6.2
+github "onevcat/APNGKit" ~> 0.6
+github "SwiftyJSON/SwiftyJSON" ~> 3.1.4
+github "stephencelis/SQLite.swift" ~> 0.11.3
+github "SwiftyJSON/Alamofire-SwiftyJSON" "master"
+github "alibaba/HandyJSON" ~> 1.7.1
+
+# import obj-c or not pure swift libs
+github "jdg/MBProgressHUD" ~> 1.0.0
+github "V5KF/V5KFClientSDK-iOS" ~> 1.3.0
