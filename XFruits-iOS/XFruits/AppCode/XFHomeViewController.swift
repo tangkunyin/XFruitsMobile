@@ -8,32 +8,37 @@
 
 import UIKit
 
+
 class XFHomeViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.addAllChildViewControllers()
+        addChildViewControllers()
     }
     
     
-    private func addAllChildViewControllers() {
-        //首页
-        let indexVC = XFIndexViewController()
-        self.addChildViewController(indexVC, title: "首页", image: "home", selectedImage: "home-hilight")
+    
+    private func addChildViewControllers() {
+    
+        /// 根据用户级别开放首页
+        if XFUserGlobal.shared.isLogin && XFUserGlobal.shared.currentUser?.vip == 10 {
+            //首页
+            let indexVC = XFIndexViewController()
+            addChildViewController(indexVC, title: "首页", image: "home", selectedImage: "home-hilight")
+        }
         
         //分类
         let categoryVC = XFCategoryViewController()
-        self.addChildViewController(categoryVC, title: "所有", image: "category", selectedImage: "category-hilight")
+        addChildViewController(categoryVC, title: "所有", image: "category", selectedImage: "category-hilight")
         
         //购物车
         let cartVC = XFShopCarViewController()
-        self.addChildViewController(cartVC, title: "果篮", image: "shopcart", selectedImage: "shopcart-hilight")
+        addChildViewController(cartVC, title: "果篮", image: "shopcart", selectedImage: "shopcart-hilight")
         
         //用户中心
         let userVC = XFUserCenterViewController()
-        self.addChildViewController(userVC, title: "我的", image: "userCenter", selectedImage: "userCenter-hilight")
-        
+        addChildViewController(userVC, title: "我的", image: "userCenter", selectedImage: "userCenter-hilight")
     }
     
     
