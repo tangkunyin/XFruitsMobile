@@ -10,7 +10,7 @@ import UIKit
 
 /// 新增或编辑地址
 class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UITextViewDelegate{
-    
+    var selectCategoryLabel:UILabel? // 被选中的 label
     // 声明闭包
     //    typealias inputClosureType = (String)-> Void
     
@@ -348,12 +348,6 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         
     }
     
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-        
-    }
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  25
     }
@@ -364,7 +358,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         if cell.contentView.subviews.last != nil {
             cell.contentView.subviews.last?.removeFromSuperview()
         }
-        
+        let row = indexPath.row
         let label = UILabel.init()
         label.text = categoryArray[indexPath.row]
         label.font = sysFontWithSize(10)
@@ -374,9 +368,9 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         label.layer.masksToBounds = true
         label.textAlignment = .center
         label.textColor = XFConstants.Color.salmon
-        
         label.layer.borderColor = XFConstants.Color.salmon.cgColor
         label.layer.borderWidth = 0.5
+        label.tag = 10000 + row
         cell.contentView.addSubview(label)
         return cell;
     }
@@ -392,6 +386,30 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         let cate  = categoryArray[row]
         return CGSize(width:20 + widthForLabel(text: cate as NSString, font: 10),height:22)
     }
+    
+    // 点击某项的事件
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+//        let cell = collectionView.cellForItem(at: indexPath)
+        let row = indexPath.row
+        self.selectCategoryLabel?.textColor =
+        var label:UILabel = self.viewWithTag(10000 + row) as! UILabel
+        label.backgroundColor  = UIColor.black
+        label.textColor = UIColor.white
+        self.selectCategoryLabel = label as! UILabel
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 }
