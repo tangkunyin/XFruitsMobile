@@ -12,7 +12,7 @@ import SnapKit
 
 fileprivate let XFCartCellReuseIdentifier:String = "XFShopCartCellReuseIdentifier"
 
-class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableViewDataSource {
+class XFShopCarViewController: XFBaseViewController {
     
     var cartList:Array<XFCart?> = []
     
@@ -54,57 +54,6 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
         checkoutVC.totalGoodsAmount = selectedTotalAmount
         navigationController?.pushViewController(checkoutVC, animated: true)
     }
-
-    
-    // MARK: - Cart Tableview delegates
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cartList.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: XFCartCellReuseIdentifier, for: indexPath) as! XFShopCartViewCell
-        if let item:XFCart = cartList[indexPath.row] {
-            cell.dataSource = item
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        if let item:XFCart = cartList[indexPath.row] {
-            let cell:XFShopCartViewCell = tableView.cellForRow(at: indexPath) as! XFShopCartViewCell
-            let checked = !cell.radioBtn.isSelected
-            if XFCartUtils.sharedInstance.selectItem(gid: item.id, checked: checked) {
-                cell.radioBtn.isSelected = checked
-                reloadShopCartData()
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if let item:XFCart = cartList[indexPath.row], editingStyle == .delete {
-            if XFCartUtils.sharedInstance.deleteItem(gid: item.id) {
-                reloadShopCartData()
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "删除"
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .delete
-    }
-    
 
     // MARK: - Cart private func and variables
     private func calculateTotalAmount() {
@@ -182,3 +131,74 @@ class XFShopCarViewController: XFBaseViewController,UITableViewDelegate,UITableV
     }
 }
 
+extension XFShopCarViewController: UITableViewDelegate,UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cartList.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: XFCartCellReuseIdentifier, for: indexPath) as! XFShopCartViewCell
+        if let item:XFCart = cartList[indexPath.row] {
+            cell.dataSource = item
+        }
+        // 注册3D Touch
+        if self.traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+            self.registerForPreviewing(with: self, sourceView: cell)
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let item:XFCart = cartList[indexPath.row] {
+            let cell:XFShopCartViewCell = tableView.cellForRow(at: indexPath) as! XFShopCartViewCell
+            let checked = !cell.radioBtn.isSelected
+            if XFCartUtils.sharedInstance.selectItem(gid: item.id, checked: checked) {
+                cell.radioBtn.isSelected = checked
+                reloadShopCartData()
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if let item:XFCart = cartList[indexPath.row], editingStyle == .delete {
+            if XFCartUtils.sharedInstance.deleteItem(gid: item.id) {
+                reloadShopCartData()
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除"
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+}
+
+extension XFShopCarViewController: UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        if let indexPath: IndexPath = self.cartListView.indexPath(for: (previewingContext.sourceView as! XFShopCartViewCell))
+            ,let item:XFCart = self.cartList[indexPath.row] {
+            let detailVC = XFDetailViewController()
+            detailVC.prodId = item.id
+            return detailVC
+        }
+        return nil
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
+    }
+}

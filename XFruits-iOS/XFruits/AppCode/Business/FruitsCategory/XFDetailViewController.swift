@@ -69,7 +69,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         let maxAlphaOffset:CGFloat = 220
         let offset:CGFloat = scrollView.contentOffset.y
         let alpha:CGFloat = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset)
-        navBarBackgroundView.alpha = alpha
+        navBarBackgroundView?.alpha = alpha
     }
     
     // MARK: - private and lazy variables
