@@ -21,6 +21,10 @@ class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("contact-service"),
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(onMessageItemClick))
       
         XFAvailableAddressUtils.shared.cacheAddressAvailable()
         
@@ -55,8 +59,11 @@ class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UI
         }
     }
     
-    
-    
+    @objc private func onMessageItemClick(){
+        let chatVC = createChatViewController(withUser: nil, goodsInfo: nil)
+        chatVC.delegate = self
+        navigationController?.pushViewController(chatVC, animated: true)
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4;
@@ -170,6 +177,44 @@ class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UI
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 6
+    }
+    
+}
+
+extension XFUserCenterViewController: V5ChatViewDelegate {
+    /// 客户端连接成功
+    func onClientViewConnect() {
+        dPrint("客户端连接成功")
+    }
+    
+    /// 会话即将关闭
+    func clientViewDidDisappear() {
+        dPrint("客户即将离开聊天")
+    }
+    
+    /// 用户将要发送消息
+    func userWillSend(_ message: V5Message) -> V5Message {
+        // 此处可进行拦截，将客户的会话记录到我方数据库
+        dPrint("用户说：\(message.getDefaultContent())")
+        return message
+    }
+    
+    /// - 用户在会话中收到消息
+    func clientDidReceive(_ message: V5Message) {
+        // 我们的客服说了啥
+        dPrint("客服说：\(message.getDefaultContent())")
+    }
+    
+    /// - 客户服务状态改变(可在此相应改变对话页标题)
+    func clientViewController(_ chatVC: V5ChatViewController, servingStatusChange status: KV5ClientServingStatus) {
+        switch status {
+        case .ServingStatus_queue,.ServingStatus_robot:
+            chatVC.title = "正在排队等人工..."
+        case .ServingStatus_worker:
+            chatVC.title = "\(V5ClientAgent.shareClient().config?.workerName ?? "小果拾")为您服务"
+        case .ServingStatus_inTrust:
+            chatVC.title = "云客服服务中"
+        }
     }
     
 }

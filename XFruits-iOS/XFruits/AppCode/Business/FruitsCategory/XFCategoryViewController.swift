@@ -74,28 +74,18 @@ class XFCategoryViewController: XFBaseViewController {
     }
     
     func setNavigationBarItem() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("more-list"),
-                                                                style: .plain,
-                                                                target: self,
-                                                                action: #selector(onAllItemClick))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("contact-service"),
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("more-list"),
                                                                  style: .plain,
                                                                  target: self,
-                                                                 action: #selector(onMessageItemClick))
+                                                                 action: #selector(onAllItemClick))
     }
     
     @objc private func onAllItemClick(){
         if let slideMenuController = self.slideMenuController() {
-            if !slideMenuController.isLeftOpen() {
-                slideMenuController.openLeft()
+            if !slideMenuController.isRightOpen() {
+                slideMenuController.openRight()
             }
         }
-    }
-    
-    @objc private func onMessageItemClick(){
-        let chatVC = createChatViewController(withUser: nil, goodsInfo: nil)
-        chatVC.delegate = self
-        navigationController?.pushViewController(chatVC, animated: true)
     }
     
 }
@@ -131,62 +121,7 @@ extension XFCategoryViewController: UICollectionViewDataSource,UICollectionViewD
     }
 }
 
-extension XFCategoryViewController: V5ChatViewDelegate {
-    /// 客户端连接成功
-    func onClientViewConnect() {
-        dPrint("客户端连接成功")
-    }
-    
-    /// 会话即将关闭
-    func clientViewDidDisappear() {
-        dPrint("客户即将离开聊天")
-    }
-    
-    /// 用户将要发送消息
-    func userWillSend(_ message: V5Message) -> V5Message {
-        // 此处可进行拦截，将客户的会话记录到我方数据库
-        dPrint("用户说：\(message.getDefaultContent())")
-        return message
-    }
-    
-    /// - 用户在会话中收到消息
-    func clientDidReceive(_ message: V5Message) {
-        // 我们的客服说了啥
-        dPrint("客服说：\(message.getDefaultContent())")
-    }
-    
-    /// - 客户服务状态改变(可在此相应改变对话页标题)
-    func clientViewController(_ chatVC: V5ChatViewController, servingStatusChange status: KV5ClientServingStatus) {
-        switch status {
-        case .ServingStatus_queue,.ServingStatus_robot:
-            chatVC.title = "正在排队等人工..."
-        case .ServingStatus_worker:
-            chatVC.title = "\(V5ClientAgent.shareClient().config?.workerName ?? "小果拾")为您服务"
-        case .ServingStatus_inTrust:
-            chatVC.title = "云客服服务中"
-        }
-    }
-    
-}
-
 extension XFCategoryViewController : SlideMenuControllerDelegate {
-    
-    func leftWillOpen() {
-        print("SlideMenuControllerDelegate: leftWillOpen")
-    }
-    
-    func leftDidOpen() {
-        print("SlideMenuControllerDelegate: leftDidOpen")
-    }
-    
-    func leftWillClose() {
-        print("SlideMenuControllerDelegate: leftWillClose")
-    }
-    
-    func leftDidClose() {
-        print("SlideMenuControllerDelegate: leftDidClose")
-    }
-    
     func rightWillOpen() {
         print("SlideMenuControllerDelegate: rightWillOpen")
     }
