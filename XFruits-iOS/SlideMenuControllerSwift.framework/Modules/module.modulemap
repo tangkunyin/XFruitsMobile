@@ -1,0 +1,11 @@
+framework module SlideMenuControllerSwift {
+  umbrella header "SlideMenuControllerSwift.h"
+
+  export *
+  module * { export * }
+}
+
+module SlideMenuControllerSwift.Swift {
+    header "SlideMenuControllerSwift-Swift.h"
+    requires objc
+}
