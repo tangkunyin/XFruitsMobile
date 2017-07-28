@@ -2,27 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIApplicationShortcutItems</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>com.10apple.xfruits.express</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>最新物流</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>com.10apple.xfruits.business</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>联系客服</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>鲜果分享</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>com.10apple.xfruits.shareapp</string>
-		</dict>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>

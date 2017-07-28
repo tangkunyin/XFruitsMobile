@@ -32,7 +32,7 @@ class XFAllCategoryListViewController: XFBaseSubViewController,UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "所有分类"
+        title = "所有"
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in

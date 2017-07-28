@@ -21,8 +21,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    fileprivate func creatShortcutItem(){
+        let expressIcon:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "express-shortIcon")
+        let express:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.Express,
+                                                                          localizedTitle: "最新物流",
+                                                                          localizedSubtitle: nil,
+                                                                          icon: expressIcon,
+                                                                          userInfo: nil)
         
+        let contactIcon:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "contact-short-icon")
+        let contact:UIApplicationShortcutItem = UIApplicationShortcutItem.init(type: XFConstants.ShortCut.Contact,
+                                                                               localizedTitle: "联系客服",
+                                                                               localizedSubtitle: nil,
+                                                                               icon: contactIcon,
+                                                                               userInfo: nil)
+        
+        let shareIcon:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "share-shortIcon")
+        let share:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.Share,
+                                                                        localizedTitle: "鲜果分享",
+                                                                        localizedSubtitle: nil,
+                                                                        icon: shareIcon,
+                                                                        userInfo: nil)
+        UIApplication.shared.shortcutItems = [express, contact, share]
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
@@ -31,10 +54,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-        
         initExternalSDK()
+        creatShortcutItem()
         
-        
+        if let options = launchOptions {
+            let item = (options as NSDictionary).value(forKey: UIApplicationLaunchOptionsKey.shortcutItem.rawValue)
+            
+            let test:UIViewController = XFAllCategoryListViewController()
+            
+            if item != nil, item is UIApplicationShortcutItem {
+                let shortCutItem = item as! UIApplicationShortcutItem
+                switch shortCutItem.type {
+                case XFConstants.ShortCut.Express:
+                    window?.rootViewController?.present(test, animated: true, completion: nil)
+                    break
+                case XFConstants.ShortCut.Contact:
+                    window?.rootViewController?.present(test, animated: true, completion: nil)
+                    break
+                case XFConstants.ShortCut.Share:
+                    window?.rootViewController?.present(test, animated: true, completion: nil)
+                    break
+                default:break
+                }
+            }
+            return false
+        }
         return true
     }
 

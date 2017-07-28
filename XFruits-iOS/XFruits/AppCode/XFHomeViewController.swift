@@ -30,7 +30,7 @@ class XFHomeViewController: UITabBarController {
         
         //分类
         let categoryVC = XFCategoryViewController()
-        addChildViewController(categoryVC, title: "所有", image: "category", selectedImage: "category-hilight")
+        addChildViewController(categoryVC, title: "分类", image: "category", selectedImage: "category-hilight")
         
         //购物车
         let cartVC = XFShopCarViewController()

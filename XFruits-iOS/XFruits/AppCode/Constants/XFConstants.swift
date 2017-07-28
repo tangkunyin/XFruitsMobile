@@ -45,6 +45,13 @@ struct XFConstants {
     }
     
     
+    /// APP 3D Touch 快捷键Type
+    struct ShortCut {
+        static let Express = "xfruits.shortCut.express"
+        static let Contact = "xfruits.shortCut.contact"
+        static let Share = "xfruits.shortCut.share"
+    }
+    
     /// 通用UI尺寸
     struct UI {
         
