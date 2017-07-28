@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import MBProgressHUD
 import SnapKit
-
+import MBProgressHUD
+import SlideMenuControllerSwift
 
 fileprivate let XFCellViewReuseIdentifier:String = "XFCategoryCellReuseIdentifier"
 
-class XFCategoryViewController: XFBaseViewController,V5ChatViewDelegate,
-UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
-    
+class XFCategoryViewController: XFBaseViewController {
     
     lazy var headSizer:XFCategoryHeadSizer = {
         let sizer = XFCategoryHeadSizer(textColor: nil, selectTextColor: nil)
@@ -45,19 +43,10 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("more-list"),
-                                                                 style: .plain,
-                                                                 target: self,
-                                                                 action: #selector(onAllItemClick))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("contact-service"),
-                                                                 style: .plain,
-                                                                 target: self,
-                                                                 action: #selector(onMessageItemClick))
-        
+        setNavigationBarItem()
         
         view.addSubview(headSizer)
         view.addSubview(cateListView)
-        
         makeViewConstrains()
         
         weak var weakSelf = self
@@ -84,9 +73,23 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
         }
     }
     
+    func setNavigationBarItem() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("more-list"),
+                                                                style: .plain,
+                                                                target: self,
+                                                                action: #selector(onAllItemClick))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("contact-service"),
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(onMessageItemClick))
+    }
+    
     @objc private func onAllItemClick(){
-        let allVC = XFAllCategoryListViewController()
-        navigationController?.pushViewController(allVC, animated: true)
+        if let slideMenuController = self.slideMenuController() {
+            if !slideMenuController.isLeftOpen() {
+                slideMenuController.openLeft()
+            }
+        }
     }
     
     @objc private func onMessageItemClick(){
@@ -95,7 +98,10 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
         navigationController?.pushViewController(chatVC, animated: true)
     }
     
-    // MARK: - Category Item Delegates
+}
+
+extension XFCategoryViewController: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
     }
@@ -121,12 +127,11 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
         let detail = XFDetailViewController()
         let item:ProductItem = dataSource[indexPath.row]
         detail.prodId = item.id
-        navigationController?.pushViewController(detail, animated: true)
+        self.navigationController?.pushViewController(detail, animated: true)
     }
-    
-    
-    
-    // MARK: - Category Item Delegates
+}
+
+extension XFCategoryViewController: V5ChatViewDelegate {
     /// 客户端连接成功
     func onClientViewConnect() {
         dPrint("客户端连接成功")
@@ -161,5 +166,40 @@ UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlow
             chatVC.title = "云客服服务中"
         }
     }
+    
 }
 
+extension XFCategoryViewController : SlideMenuControllerDelegate {
+    
+    func leftWillOpen() {
+        print("SlideMenuControllerDelegate: leftWillOpen")
+    }
+    
+    func leftDidOpen() {
+        print("SlideMenuControllerDelegate: leftDidOpen")
+    }
+    
+    func leftWillClose() {
+        print("SlideMenuControllerDelegate: leftWillClose")
+    }
+    
+    func leftDidClose() {
+        print("SlideMenuControllerDelegate: leftDidClose")
+    }
+    
+    func rightWillOpen() {
+        print("SlideMenuControllerDelegate: rightWillOpen")
+    }
+    
+    func rightDidOpen() {
+        print("SlideMenuControllerDelegate: rightDidOpen")
+    }
+    
+    func rightWillClose() {
+        print("SlideMenuControllerDelegate: rightWillClose")
+    }
+    
+    func rightDidClose() {
+        print("SlideMenuControllerDelegate: rightDidClose")
+    }
+}

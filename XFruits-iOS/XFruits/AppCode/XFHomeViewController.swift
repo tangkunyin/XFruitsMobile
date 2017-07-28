@@ -8,44 +8,61 @@
 
 import UIKit
 
-
 class XFHomeViewController: UITabBarController {
+    
+    //首页
+    var indexVC: XFBaseViewController {
+        get {
+            return XFIndexViewController()
+        }
+    }
+    
+    //分类
+    var categoryVC: XFBaseViewController {
+        get {
+            return XFCategoryViewController()
+        }
+    }
+    
+    //购物车
+    var cartVC: XFBaseViewController {
+        get {
+            return XFShopCarViewController()
+        }
+    }
+    
+    //用户中心
+    var userVC: XFBaseViewController {
+        get {
+            return XFUserCenterViewController()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addChildViewControllers()
     }
     
-    
-    
     private func addChildViewControllers() {
-    
         /// 根据用户级别开放首页
         if XFUserGlobal.shared.isLogin && XFUserGlobal.shared.currentUser?.vip == 10 {
-            //首页
-            let indexVC = XFIndexViewController()
             addChildViewController(indexVC, title: "首页", image: "home", selectedImage: "home-hilight")
         }
         
-        //分类
-        let categoryVC = XFCategoryViewController()
         addChildViewController(categoryVC, title: "分类", image: "category", selectedImage: "category-hilight")
         
-        //购物车
-        let cartVC = XFShopCarViewController()
         addChildViewController(cartVC, title: "果篮", image: "shopcart", selectedImage: "shopcart-hilight")
         
-        //用户中心
-        let userVC = XFUserCenterViewController()
         addChildViewController(userVC, title: "我的", image: "userCenter", selectedImage: "userCenter-hilight")
     }
     
-    
-    private func addChildViewController(_ childController:UIViewController,
-                                        title:String,
-                                        image:String,
-                                        selectedImage:String) {
+}
+
+extension XFHomeViewController {
+    fileprivate func addChildViewController(_ childController:UIViewController,
+                                            title:String,
+                                            image:String,
+                                            selectedImage:String) {
         
         childController.tabBarItem = UITabBarItem.init(title: title,
                                                        image: UIImage.imageWithNamed(image),
@@ -65,7 +82,5 @@ class XFHomeViewController: UITabBarController {
         
         self.addChildViewController(nav)
     }
-    
-    
 }
 
