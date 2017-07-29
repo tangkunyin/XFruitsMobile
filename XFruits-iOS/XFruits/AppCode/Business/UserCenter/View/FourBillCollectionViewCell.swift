@@ -10,8 +10,6 @@ import UIKit
 
 class FourBillCollectionViewCell: UICollectionViewCell {
     
-     var badgeBtn:UIButton?
-    
     lazy var typeBtn:UIButton = {
         let typeBtn = UIButton()
 //        typeBtn.setImage(UIImage(named:"apple"), for: .normal)
@@ -27,21 +25,19 @@ class FourBillCollectionViewCell: UICollectionViewCell {
     }()
     
     required init?(coder aDecoder: NSCoder) {
-          super.init(coder: aDecoder)
+        super.init(coder: aDecoder)
+        setUpUI();
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpUI();
-
     }
     
-    func  setUpUI() {
+    private func setUpUI() {
       
-        
         addSubview(typeBtn)
         addSubview(typeDescLabel)
 
-        
         typeBtn.snp.makeConstraints({ (make) in
             make.edges.equalTo(self).inset(UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0))
         })

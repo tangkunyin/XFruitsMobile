@@ -53,7 +53,6 @@ class XFUserCenterViewController: XFBaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
-        tableView.tableFooterView = UIView()
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
         tableView.register(XFUCenterCommonCell.self, forCellReuseIdentifier: UC_CellIdentifier)
@@ -73,8 +72,11 @@ class XFUserCenterViewController: XFBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         XFAvailableAddressUtils.shared.cacheAddressAvailable()
-        
-//        automaticallyAdjustsScrollViewInsets = false
+        if #available(iOS 11.0, *) {
+            centerTable.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = true
+        }
         view.addSubview(centerTable)
         centerTable.snp.makeConstraints({ (make) in
             make.center.size.equalTo(view)
@@ -139,7 +141,7 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
                 cell.imageView?.image = UIImage.imageWithNamed("mybill")
                 return cell
             } else {
-                let cell = MyBillTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "billCell")
+                let cell = MyBillTableViewCell(style: .default, reuseIdentifier: "billCell")
                 return cell
             }
         } else{

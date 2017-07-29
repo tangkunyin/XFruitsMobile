@@ -123,18 +123,18 @@ extension XFCategoryViewController: UICollectionViewDataSource,UICollectionViewD
 
 extension XFCategoryViewController : SlideMenuControllerDelegate {
     func rightWillOpen() {
-        print("SlideMenuControllerDelegate: rightWillOpen")
+        dPrint("SlideMenuControllerDelegate: rightWillOpen")
     }
     
     func rightDidOpen() {
-        print("SlideMenuControllerDelegate: rightDidOpen")
+        dPrint("SlideMenuControllerDelegate: rightDidOpen")
     }
     
     func rightWillClose() {
-        print("SlideMenuControllerDelegate: rightWillClose")
+        dPrint("SlideMenuControllerDelegate: rightWillClose")
     }
     
     func rightDidClose() {
-        print("SlideMenuControllerDelegate: rightDidClose")
+        dPrint("SlideMenuControllerDelegate: rightDidClose")
     }
 }
