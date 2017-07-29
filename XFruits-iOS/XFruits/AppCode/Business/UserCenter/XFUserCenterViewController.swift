@@ -9,46 +9,76 @@
 import UIKit
 import SwiftyJSON
 
-fileprivate let userCenterCellIdentifier = "XFUserCenterCellIdentifier"
+fileprivate let UC_CellIdentifier = "XFUserCenterUC_CellIdentifier"
+
+class XFUCenterCommonCell: UITableViewCell {
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        customInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        customInit()
+    }
+    private func customInit() {
+        textLabel?.font = XFConstants.Font.pfn14
+        textLabel?.textColor = XFConstants.Color.greyishBrown
+        accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+    }
+}
 
 class XFUserCenterViewController: XFBaseViewController {
     
-    var secondGroupTitleArray: NSArray?
-    var secondGroupIconArray: NSArray?
-    var thirdGroupTitleArray: NSArray?
-    var thirdGourpIconArray: NSArray?
-
+    lazy var girdGroupInfo: Array<Array<Dictionary<String, String>>> = {
+        return [
+            [
+                ["title":"地址管理", "icon":"myLocation"],
+                ["title":"卡券中心", "icon":"myDiscountCoupon"]
+            ],
+            [
+                ["title":"企业通道", "icon":"aboutme"],
+                ["title":"在线客服", "icon":"myService"]
+            ],
+            [
+                ["title":"吐槽建议", "icon":"myAdvice"],
+                ["title":"设置", "icon":"myRedPacket"]
+            ],
+        ]
+    }()
+    
     lazy var centerTable: UITableView = {
-        let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
+        let tableView = UITableView(frame: CGRect.zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
         tableView.tableFooterView = UIView()
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: userCenterCellIdentifier)
+        tableView.register(XFUCenterCommonCell.self, forCellReuseIdentifier: UC_CellIdentifier)
         return tableView
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationBar?.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationBar?.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.addSubview(centerTable)
-        
         XFAvailableAddressUtils.shared.cacheAddressAvailable()
         
-   
+//        automaticallyAdjustsScrollViewInsets = false
+        view.addSubview(centerTable)
         centerTable.snp.makeConstraints({ (make) in
             make.center.size.equalTo(view)
         })
-        
-        secondGroupTitleArray  =  ["我的积分","我的优惠券","我的红包","地址管理"]
-        secondGroupIconArray = ["myScore","myDiscountCoupon","myRedPacket","myLocation"]
-
-        thirdGroupTitleArray = ["联系客服","吐槽&建议","关于我们"]
-        thirdGourpIconArray = ["myService","myAdvice","aboutme"]
-        
-        
-        
     }
     
     @objc private func onMessageItemClick(){
@@ -56,7 +86,6 @@ class XFUserCenterViewController: XFBaseViewController {
         chatVC.delegate = self
         navigationController?.pushViewController(chatVC, animated: true)
     }
-    
     
     
     fileprivate func checkLoginStatus() {
@@ -70,117 +99,67 @@ class XFUserCenterViewController: XFBaseViewController {
 }
 
 extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 6
+        return 15
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4;
+        return 5;
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if section == 0 {
             return 1
         }
-        else if section == 1 {
-            return 2
-        }
-        else if section == 2{
-            return 4
-        }
-        return 3
+        return 2
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        let section = indexPath.section
-        let row = indexPath.row
-        if section == 0{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
             return 105
-        }
-        else if (section == 1 && row == 1) {
+        } else if (indexPath.section == 1 && indexPath.row == 1) {
             return 90
+        } else {
+            return 42
         }
-        return 42
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let section = indexPath.section
         let row = indexPath.row
-        
-        
-        
         if section == 0 {
-            let identifier = "mainCell"
-            let cell = UserCenterAvatarCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
-            
+            let cell = UserCenterAvatarCell(style: .default, reuseIdentifier: "userMainCell")
             return cell
-        }
-            
-        else if section == 1 {
+        } else if section == 1 {
             if row == 0 {
-                let identifier = "commonCell"
-                let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
+                let cell = tableView.dequeueReusableCell(withIdentifier: UC_CellIdentifier, for: indexPath)
                 cell.textLabel?.text = "我的订单"
-                cell.textLabel?.textColor = colorWithRGB(83, g: 83, b: 83)
                 cell.imageView?.image = UIImage.imageWithNamed("mybill")
-                
-                cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
-                cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-                
+                return cell
+            } else {
+                let cell = MyBillTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "billCell")
                 return cell
             }
-                
-                
-            else {
-                let identifier = "billCell"
-                let cell = MyBillTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
-                
-                return cell
-                
-            }
-        }
-        else if section == 2 {
-            let identifier = "commonCell"
-            let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
-            cell.textLabel?.text = secondGroupTitleArray![row] as? String
-            
-            cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
-            cell.textLabel?.textColor = colorWithRGB(83, g: 83, b: 83)
-            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-            cell.imageView?.image = UIImage.imageWithNamed((secondGroupIconArray![row] as? String)!)
+        } else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: UC_CellIdentifier, for: indexPath)
+            let source = girdGroupInfo[section-2][row]
+            cell.textLabel?.text = source["title"]
+            cell.imageView?.image = UIImage.imageWithNamed(source["icon"]!)
             return cell
         }
-            
-        else {
-            let identifier = "commonCell"
-            let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
-            cell.textLabel?.text = thirdGroupTitleArray![row] as? String
-            cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
-            cell.textLabel?.textColor = colorWithRGB(83, g: 83, b: 83)
-            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-            cell.imageView?.image = UIImage.imageWithNamed((thirdGourpIconArray![row] as? String)!)
-            return cell
-        }
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         tableView.deselectRow(at: indexPath, animated: true)
         let section = indexPath.section
         let row = indexPath.row
-        
         if section == 2 && row == 3  {
             let addressManageVC = XFUserAddressesMangageViewController()
             self.navigationController?.navigationBar.tintColor = UIColor.white
             self.navigationController?.show(addressManageVC, sender: self)
         }
-        
     }
 }
 

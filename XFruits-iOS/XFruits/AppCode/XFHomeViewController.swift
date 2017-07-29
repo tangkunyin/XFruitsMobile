@@ -69,9 +69,9 @@ extension XFHomeViewController {
                                                        selectedImage: UIImage.imageWithNamed(selectedImage))
         
         let normalAttr = [NSAttributedStringKey.foregroundColor:XFConstants.Color.greyishBrown,
-                          NSAttributedStringKey.font:XFConstants.Font.bottomMenuFont]
+                          NSAttributedStringKey.font:XFConstants.Font.pfn10]
         let hilighAttr = [NSAttributedStringKey.foregroundColor:XFConstants.Color.salmon,
-                          NSAttributedStringKey.font:XFConstants.Font.bottomMenuFont]
+                          NSAttributedStringKey.font:XFConstants.Font.pfn10]
         
         childController.tabBarItem.setTitleTextAttributes(normalAttr, for: UIControlState.normal)
         childController.tabBarItem.setTitleTextAttributes(hilighAttr, for: UIControlState.selected)

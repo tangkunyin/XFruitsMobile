@@ -14,7 +14,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     lazy var userNameLabel:UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
-        label.font  = XFConstants.Font.mainMenuFont
+        label.font  = XFConstants.Font.pfn14
         label.numberOfLines = 0
         label.textAlignment = NSTextAlignment.left
         return label
@@ -24,8 +24,8 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     lazy var mobileLabel:UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
-        label.font  =  XFConstants.Font.mainMenuFont
-        label.textAlignment = NSTextAlignment.left
+        label.font  =  XFConstants.Font.pfn14
+        label.textAlignment = NSTextAlignment.right
         return label
     }()
     
@@ -33,7 +33,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     lazy var addressLabel:UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
-        label.font  = XFConstants.Font.mainBodyFont
+        label.font  = XFConstants.Font.pfn12
         label.textAlignment = NSTextAlignment.left
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = false
@@ -45,7 +45,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         let btn = UIButton.init(type: .custom)
         btn.setTitle("自己家", for: .normal)
         btn.setTitleColor(colorWithRGB(255, g: 105, b: 105), for:.normal)
-        btn.titleLabel?.font = XFConstants.Font.bottomMenuFont
+        btn.titleLabel?.font = XFConstants.Font.pfn10
         btn.layer.borderColor = colorWithRGB(255, g: 105, b: 105).cgColor
         btn.layer.borderWidth = 1
         btn.layer.masksToBounds = true

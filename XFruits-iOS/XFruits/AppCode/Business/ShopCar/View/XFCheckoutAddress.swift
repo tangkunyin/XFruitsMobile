@@ -21,7 +21,7 @@ class XFCheckoutAddress: UIView {
     
     lazy var noDataTip: UILabel = {
         let label = UILabel()
-        label.font = XFConstants.Font.titleFont
+        label.font = XFConstants.Font.pfn18
         label.textColor = XFConstants.Color.salmon
         label.textAlignment = .center
         label.text = "请选择一个有效地址，谢谢"

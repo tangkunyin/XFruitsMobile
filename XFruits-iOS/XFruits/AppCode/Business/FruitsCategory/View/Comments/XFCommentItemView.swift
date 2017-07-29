@@ -34,7 +34,7 @@ class XFCommentItemView: UIView {
     
     lazy var userName: UILabel = {
         let label = UILabel();
-        label.font = XFConstants.Font.mainMenuFont
+        label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .left
         label.text = "小果拾"
@@ -43,7 +43,7 @@ class XFCommentItemView: UIView {
     
     lazy var commentDate: UILabel = {
         let label = UILabel();
-        label.font = XFConstants.Font.mainMenuFont
+        label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .right
         label.text = "2017-04-01 05:36"
@@ -116,7 +116,7 @@ class XFCommentItemView: UIView {
         paragraphStyle.firstLineHeadIndent = 0
         paragraphStyle.lineSpacing = 5
         paragraphStyle.lineBreakMode = .byTruncatingTail
-        let attributes = [NSAttributedStringKey.font:XFConstants.Font.mainMenuFont,
+        let attributes = [NSAttributedStringKey.font:XFConstants.Font.pfn14,
                           NSAttributedStringKey.foregroundColor:XFConstants.Color.darkGray,
                           NSAttributedStringKey.paragraphStyle:paragraphStyle];
         let attributeText = NSAttributedString.init(string: defaultText, attributes: attributes)

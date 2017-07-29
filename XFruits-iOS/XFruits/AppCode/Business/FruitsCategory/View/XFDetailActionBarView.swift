@@ -38,7 +38,7 @@ class XFDetailActionBarView: UIView {
         let btn = UIButton.init(type: .custom)
         btn.setTitle("放进果篮", for: .normal)
         btn.setTitleColor(XFConstants.Color.darkGray, for: .normal)
-        btn.titleLabel?.font = XFConstants.Font.mainMenuFont
+        btn.titleLabel?.font = XFConstants.Font.pfn14
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
         btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
         btn.tag = 2
@@ -50,7 +50,7 @@ class XFDetailActionBarView: UIView {
         let btn = UIButton.init(type: .custom)
         btn.backgroundColor = XFConstants.Color.salmon
         btn.setTitle("立即购买", for: .normal)
-        btn.titleLabel?.font = XFConstants.Font.mainMenuFont
+        btn.titleLabel?.font = XFConstants.Font.pfn14
         btn.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
         btn.layer.borderColor = XFConstants.Color.darkGray.cgColor
         btn.tag = 3

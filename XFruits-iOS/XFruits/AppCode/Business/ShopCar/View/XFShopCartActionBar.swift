@@ -18,7 +18,7 @@ class XFShopCartActionBar: UIView {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .left
-        label.font = XFConstants.Font.mainMenuFont
+        label.font = XFConstants.Font.pfn14
         label.text = "全部(0)"
         return label
     }()
@@ -27,7 +27,7 @@ class XFShopCartActionBar: UIView {
         let label = UILabel()
         label.textColor = XFConstants.Color.salmon
         label.textAlignment = .center
-        label.font = XFConstants.Font.mainMenuFont
+        label.font = XFConstants.Font.pfn14
         label.text = "¥ 00.00"
         return label
     }()
@@ -37,7 +37,7 @@ class XFShopCartActionBar: UIView {
         btn.backgroundColor = XFConstants.Color.salmon
         btn.setTitle("下 单", for: .normal)
         btn.setTitleColor(grayColor(255), for: .normal)
-        btn.titleLabel?.font = XFConstants.Font.mainMenuFont
+        btn.titleLabel?.font = XFConstants.Font.pfn14
         btn.addTarget(self, action: #selector(onClickAction), for: .touchUpInside)
         return btn
     }()

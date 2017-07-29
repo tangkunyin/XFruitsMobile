@@ -38,7 +38,7 @@ class XFDetailHeaderView: UIView {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel();
-        label.font = XFConstants.Font.titleFont
+        label.font = XFConstants.Font.pfn18
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .center
         label.text = "拾个鲜果圣诞果一箱6个"
@@ -47,7 +47,7 @@ class XFDetailHeaderView: UIView {
     
     lazy var priceLabel: UILabel = {
         let label = UILabel();
-        label.font = XFConstants.Font.mainMenuFont
+        label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.salmon
         label.textAlignment = .center
         label.text = "¥ 39.00"
@@ -56,7 +56,7 @@ class XFDetailHeaderView: UIView {
     
     lazy var specificationDescLabel: UILabel = {
         let label = UILabel();
-        label.font = XFConstants.Font.mainMenuFont
+        label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .left
         label.text = "规格： 一箱6个、直径85mm"
@@ -65,7 +65,7 @@ class XFDetailHeaderView: UIView {
     
     lazy var serviceTitleLabel: UILabel = {
         let label = UILabel();
-        label.font = XFConstants.Font.mainMenuFont
+        label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .left
         label.text = "服务："
@@ -196,7 +196,7 @@ class XFDetailHeaderView: UIView {
         let btn = UIButton.buttonWithTitle(title,
                                            image: imageName,
                                            textColor: XFConstants.Color.darkGray,
-                                           textFont: XFConstants.Font.mainBodyFont,
+                                           textFont: XFConstants.Font.pfn12,
                                            directionType: .left,
                                            chAlignment: .left,
                                            cvAlignment: .center,

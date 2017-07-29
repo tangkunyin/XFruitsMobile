@@ -97,10 +97,11 @@ struct XFConstants {
     
     /// 通用字体
     struct Font {
-        static let mainBodyFont: UIFont = pfnFontWithSize(12)
-        static let mainMenuFont: UIFont = pfnFontWithSize(14)
-        static let titleFont: UIFont = pfnFontWithSize(18)
-        static let bottomMenuFont: UIFont = pfnFontWithSize(10)
+        static let pfn10: UIFont = pfnFontWithSize(10)
+        static let pfn12: UIFont = pfnFontWithSize(12)
+        static let pfn14: UIFont = pfnFontWithSize(14)
+        static let pfn16: UIFont = pfnFontWithSize(16)
+        static let pfn18: UIFont = pfnFontWithSize(18)
     }
     
 }

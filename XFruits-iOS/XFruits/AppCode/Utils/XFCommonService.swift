@@ -165,7 +165,7 @@ public final class XFCommonService: XFNetworking {
     func orderConfirm(_ completion:@escaping XFResponse) {
         self.doGet(withUrl: url("/order/confirm")) { (success, respData) in
             if success {
-                dPrint(respData)
+                
             }
         }
     }

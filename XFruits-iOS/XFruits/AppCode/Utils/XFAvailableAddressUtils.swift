@@ -70,28 +70,15 @@ class XFAvailableAddressUtils {
         }
     }
     
-    
     func cacheAddressAvailable()  {
         // 把地址的json文件下载下来
         DispatchQueue.global().async {
-            // if为寻找本地json地址文件
-            if  let add:XFAvailableAddressDict = XFAvailableAddressUtils.shared.getCachedAddress() {
-                let addressList:Array = add.content!
-                for item in addressList {
-                    let address: XFAvailableAddressSingle  = item
-                    dPrint( address.province!)
-                }
-            }else{  // 没找到
-                XFCommonService().allAvailableAddress(page: 1, size: 10 ) { (data) in
+            let cachedData: XFAvailableAddressDict? = XFAvailableAddressUtils.shared.getCachedAddress()
+            // 没找到就去服务器拉
+            if  cachedData == nil {
+                XFCommonService().allAvailableAddress(page: 1, size: 4000 ) { (data) in
                     if let addresses = data  as? XFAvailableAddressDict{
                         XFAvailableAddressUtils.shared.cacheAddress(addresses)
-                        let add:XFAvailableAddressDict = XFAvailableAddressUtils.shared.getCachedAddress()!
-                        let addressList:Array = add.content!
-                        for item in addressList {
-                            let address: XFAvailableAddressSingle  = item
-                            dPrint(address)
-                        }
-                        
                     }
                 }
             }

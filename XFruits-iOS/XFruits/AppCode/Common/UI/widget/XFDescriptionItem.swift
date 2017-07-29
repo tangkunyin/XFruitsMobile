@@ -15,7 +15,7 @@ class XFDescriptionItem: UITableViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
-        label.font = XFConstants.Font.mainMenuFont
+        label.font = XFConstants.Font.pfn14
         label.textAlignment = .left
         return label
     }()
@@ -23,7 +23,7 @@ class XFDescriptionItem: UITableViewCell {
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
-        label.font = XFConstants.Font.mainMenuFont
+        label.font = XFConstants.Font.pfn14
         label.textAlignment = .right
         return label
     }()

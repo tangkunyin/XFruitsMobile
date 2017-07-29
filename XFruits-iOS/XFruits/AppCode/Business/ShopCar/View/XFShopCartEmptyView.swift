@@ -44,7 +44,7 @@ class XFShopCartEmptyView: UIView {
     
     lazy var tipLabel: UILabel = {
         let label = UILabel()
-        label.font = XFConstants.Font.mainMenuFont
+        label.font = XFConstants.Font.pfn14
         label.adjustsFontSizeToFitWidth = false
         label.textAlignment = .center
         return label

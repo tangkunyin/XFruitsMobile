@@ -36,7 +36,7 @@ class XFDetailCommentView: UIView {
         label.adjustsFontSizeToFitWidth = false
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 10
-        let attributes = [NSAttributedStringKey.font:XFConstants.Font.mainMenuFont,
+        let attributes = [NSAttributedStringKey.font:XFConstants.Font.pfn14,
                           NSAttributedStringKey.foregroundColor:XFConstants.Color.darkGray,
                           NSAttributedStringKey.paragraphStyle:paragraphStyle];
         let attributeText = NSAttributedString.init(string: "评论", attributes: attributes)
@@ -48,7 +48,7 @@ class XFDetailCommentView: UIView {
         let btn = UIButton.init(type: .custom)
         btn.setTitle("查看全部 >", for: .normal)
         btn.setTitleColor(XFConstants.Color.darkGray, for: .normal)
-        btn.titleLabel?.font = XFConstants.Font.mainMenuFont
+        btn.titleLabel?.font = XFConstants.Font.pfn14
         btn.contentHorizontalAlignment = .right
         btn.backgroundColor = UIColor.white
         btn.contentEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 10)
