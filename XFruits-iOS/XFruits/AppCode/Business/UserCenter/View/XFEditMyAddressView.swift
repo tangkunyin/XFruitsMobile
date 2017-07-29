@@ -14,7 +14,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     // 声明闭包
     //    typealias inputClosureType = (String)-> Void
     
-    let categoryArray = ["老家","丈母娘niang家","前女友家","前男友家","路人家~","A家"]  // ,"+","-"
+    let categoryArray = ["公司","家","学校","前男友家","路人家~","A家"]  // ,"+","-"
     
     lazy var leftTipReceiveLabel: UILabel = {
         
@@ -96,6 +96,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     
     
     @objc private func chooseAddress(_ btn:UIButton){
+        hideKeyboard()
         let cityView = CityChooseView.init(frame: self.bounds)
         weak var weakSelf = self
         cityView.myClosure = { (provinceStr: String, cityStr: String , areaStr: String) -> Void in
@@ -105,6 +106,11 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         }
         self.addSubview(cityView)
         
+    }
+    private func hideKeyboard(){
+        receiveInput.resignFirstResponder()
+        mobileInput.resignFirstResponder()
+        addressDescTextView.resignFirstResponder()
     }
     
     
@@ -130,6 +136,10 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         addressDescTextView.text = address.address
         if  addressDescTextView.text.characters.count > 0 {
             placeHolderLabel.text = ""
+        }
+        if(address.isDefault == "1"){
+            useAsDefaultAddressBtn.setImage(UIImage.imageWithNamed("check_box_select"), for: .normal)
+            useAsDefaultAddressBtn.isSelected = true
         }
     }
     

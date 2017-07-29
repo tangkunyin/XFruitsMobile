@@ -25,7 +25,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
         label.font  =  XFConstants.Font.mainMenuFont
-        label.textAlignment = NSTextAlignment.right
+        label.textAlignment = NSTextAlignment.left
         return label
     }()
     
@@ -91,28 +91,38 @@ class XFAddressesManageTableViewCell: UITableViewCell {
             make.size.equalTo(CGSize(width: 30, height: 30))
         })
         userNameLabel.snp.makeConstraints({ (make) in
-            make.height.equalTo(20)
+//            make.size.equalTo(CGSize(width: 60, height: 20))
             make.left.top.equalTo(self).offset(10)
-            make.right.equalTo(mobileLabel.snp.left)
+            make.width.lessThanOrEqualTo(60)
+            make.height.equalTo(20)
+
+
+//            make.right.equalTo(mobileLabel.snp.left)
         })
-        mobileLabel.snp.makeConstraints({ (make) in
-            make.size.equalTo(CGSize(width: 110, height: 20))
-            make.top.equalTo(userNameLabel.snp.top)
-            make.left.equalTo(userNameLabel.snp.right)
-            make.right.equalTo(editAddressBtn.snp.left).offset(-5)
-        })
+        
+        
         addressCategoryBtn.snp.makeConstraints({ (make) in
-            make.top.equalTo(userNameLabel.snp.bottom).offset(5)
+            make.top.equalTo(userNameLabel.snp.bottom).offset(10)
             make.left.equalTo(userNameLabel.snp.left)
             make.width.lessThanOrEqualTo(120)
             make.height.equalTo(20)
         })
+        
+        mobileLabel.snp.makeConstraints({ (make) in
+            //            make.size.equalTo(CGSize(width: 110, height: 20))
+            make.top.equalTo(userNameLabel.snp.top)
+            make.left.equalTo(userNameLabel.snp.right)
+            make.right.equalTo(editAddressBtn.snp.left).offset(-5)
+        })
+        
         addressLabel.snp.makeConstraints({ (make) in
-            make.top.equalTo(mobileLabel.snp.bottom).offset(4)
-            make.left.equalTo(addressCategoryBtn.snp.right).offset(10)
+            make.top.equalTo(addressCategoryBtn.snp.top)
+            make.left.equalTo(mobileLabel.snp.left)
             make.right.equalTo(editAddressBtn.snp.left).offset(-5)
             make.bottom.equalTo(self).offset(-5)
         })
+        
+       
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

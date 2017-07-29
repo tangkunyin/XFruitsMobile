@@ -82,7 +82,7 @@ class XFAvailableAddressUtils {
                     dPrint( address.province!)
                 }
             }else{  // 没找到
-                XFCommonService().allAvailableAddress(page: 1, size: 4000 ) { (data) in
+                XFCommonService().allAvailableAddress(page: 1, size: 10 ) { (data) in
                     if let addresses = data  as? XFAvailableAddressDict{
                         XFAvailableAddressUtils.shared.cacheAddress(addresses)
                         let add:XFAvailableAddressDict = XFAvailableAddressUtils.shared.getCachedAddress()!
