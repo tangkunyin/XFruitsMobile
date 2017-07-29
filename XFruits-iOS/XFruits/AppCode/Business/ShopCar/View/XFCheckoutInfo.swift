@@ -38,7 +38,8 @@ class XFCheckoutInfo: UITableView, UITableViewDelegate, UITableViewDataSource {
         showsVerticalScrollIndicator = false
         delegate = self
         dataSource = self
-        separatorStyle = .none
+        separatorColor = XFConstants.Color.separatorLine
+        separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         register(XFDescriptionItem.self, forCellReuseIdentifier: cellIdentifier)
     }
     

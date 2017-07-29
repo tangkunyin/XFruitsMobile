@@ -18,7 +18,8 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .none
+        tableView.separatorColor = XFConstants.Color.separatorLine
+        tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.tableFooterView = UIView()
         tableView.register(XFAddressesManageTableViewCell.self, forCellReuseIdentifier: addressCellIdentifier)
         return tableView

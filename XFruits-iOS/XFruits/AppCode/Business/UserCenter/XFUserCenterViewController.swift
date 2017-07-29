@@ -9,48 +9,57 @@
 import UIKit
 import SwiftyJSON
 
+fileprivate let userCenterCellIdentifier = "XFUserCenterCellIdentifier"
 
-class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UITableViewDelegate {
+class XFUserCenterViewController: XFBaseViewController {
+    
     var secondGroupTitleArray: NSArray?
     var secondGroupIconArray: NSArray?
-    
     var thirdGroupTitleArray: NSArray?
     var thirdGourpIconArray: NSArray?
 
+    lazy var centerTable: UITableView = {
+        let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+        tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        tableView.separatorColor = XFConstants.Color.separatorLine
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: userCenterCellIdentifier)
+        return tableView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("contact-service"),
-                                                                 style: .plain,
-                                                                 target: self,
-                                                                 action: #selector(onMessageItemClick))
-      
+        view.addSubview(centerTable)
+        
         XFAvailableAddressUtils.shared.cacheAddressAvailable()
         
-       
-        
-        let centerTable: UITableView! = {
-            let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-            return tableView
-        }()
-        self.view.addSubview(centerTable)
-        
+   
         centerTable.snp.makeConstraints({ (make) in
-            make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+            make.center.size.equalTo(view)
         })
         
         secondGroupTitleArray  =  ["我的积分","我的优惠券","我的红包","地址管理"]
         secondGroupIconArray = ["myScore","myDiscountCoupon","myRedPacket","myLocation"]
-        
-        
+
         thirdGroupTitleArray = ["联系客服","吐槽&建议","关于我们"]
         thirdGourpIconArray = ["myService","myAdvice","aboutme"]
         
         
+        
+    }
+    
+    @objc private func onMessageItemClick(){
+        let chatVC = createChatViewController(withUser: nil, goodsInfo: nil)
+        chatVC.delegate = self
+        navigationController?.pushViewController(chatVC, animated: true)
+    }
+    
+    
+    
+    fileprivate func checkLoginStatus() {
         if XFUserGlobal.shared.isLogin == false {
             // 进入登录页面
             let login = XFUserLoginViewController()
@@ -58,11 +67,15 @@ class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UI
             present(nav, animated: true, completion: nil)
         }
     }
+}
+
+extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
     
-    @objc private func onMessageItemClick(){
-        let chatVC = createChatViewController(withUser: nil, goodsInfo: nil)
-        chatVC.delegate = self
-        navigationController?.pushViewController(chatVC, animated: true)
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 6
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -169,16 +182,6 @@ class XFUserCenterViewController: XFBaseViewController ,UITableViewDataSource,UI
         }
         
     }
-    
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 6
-    }
-    
 }
 
 extension XFUserCenterViewController: V5ChatViewDelegate {

@@ -94,6 +94,8 @@ class XFShopCarViewController: XFBaseViewController {
         listView.dataSource = self
         listView.backgroundColor = UIColor.white
         listView.tableFooterView = UIView()
+        listView.separatorColor = XFConstants.Color.separatorLine
+        listView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         listView.showsVerticalScrollIndicator = false
         listView.register(XFShopCartViewCell.self, forCellReuseIdentifier: XFCartCellReuseIdentifier)
         return listView

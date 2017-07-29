@@ -39,7 +39,8 @@ class XFAllCategoryListViewController: XFBaseSubViewController,UITableViewDelega
         listView.delegate = self
         listView.dataSource = self
         listView.bounces = false
-        listView.separatorStyle = .none
+        listView.separatorColor = XFConstants.Color.separatorLine
+        listView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         listView.backgroundColor = UIColor.white
         listView.register(UITableViewCell.self, forCellReuseIdentifier: "allCategoryListViewCell")
         listView.tableFooterView = UIView()

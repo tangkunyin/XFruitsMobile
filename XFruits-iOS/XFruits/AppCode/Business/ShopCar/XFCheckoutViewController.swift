@@ -88,7 +88,8 @@ class XFCheckoutViewController: XFBaseViewController {
         listView.allowsSelection = false
         listView.showsVerticalScrollIndicator = false
         listView.backgroundColor = UIColor.white
-        listView.separatorStyle = .none
+        listView.separatorColor = XFConstants.Color.separatorLine
+        listView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         listView.tableFooterView = UIView()
         listView.register(XFCheckoutGoodsCell.self, forCellReuseIdentifier: XFCheckoutCellReuseIdentifier)
         return listView

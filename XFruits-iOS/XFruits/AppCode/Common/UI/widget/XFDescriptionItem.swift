@@ -28,12 +28,7 @@ class XFDescriptionItem: UITableViewCell {
         return label
     }()
     
-    lazy var separatorLine: UIView = {
-        let lineView = UIView()
-        lineView.backgroundColor = XFConstants.Color.separatorLine
-        return lineView
-    }()
-    
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         customInit()
@@ -45,7 +40,6 @@ class XFDescriptionItem: UITableViewCell {
     private func customInit(){
         addSubview(titleLabel)
         addSubview(descriptionLabel)
-        addSubview(separatorLine)
         titleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(self).offset(10)
             make.centerY.equalTo(self)
@@ -55,10 +49,6 @@ class XFDescriptionItem: UITableViewCell {
             make.right.equalTo(self).offset(-10)
             make.centerY.equalTo(self)
             make.left.equalTo(titleLabel.snp.right)
-        }
-        separatorLine.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(self)
-            make.height.equalTo(0.5)
         }
     }
 

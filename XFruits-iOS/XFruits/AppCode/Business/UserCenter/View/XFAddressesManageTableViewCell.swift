@@ -61,13 +61,6 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         return btn
     }()
     
-    // cell分割线
-    lazy var separatorLine: UIView = {
-        let line = UIView();
-        line.backgroundColor = XFConstants.Color.separatorLine
-        return line
-    }()
-    
     required init?(coder aDecoder:NSCoder) {
         super.init(coder: aDecoder)
         setUpUI();
@@ -87,7 +80,6 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     
     func  setUpUI() {
         addSubview(editAddressBtn)
-        addSubview(separatorLine)
         addSubview(userNameLabel)
         addSubview(mobileLabel)
         addSubview(addressCategoryBtn)
@@ -98,10 +90,6 @@ class XFAddressesManageTableViewCell: UITableViewCell {
             make.right.equalTo(self).offset(-10)
             make.size.equalTo(CGSize(width: 30, height: 30))
         })
-        separatorLine.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(self)
-            make.height.equalTo(0.5)
-        }
         userNameLabel.snp.makeConstraints({ (make) in
             make.height.equalTo(20)
             make.left.top.equalTo(self).offset(10)
@@ -123,7 +111,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
             make.top.equalTo(mobileLabel.snp.bottom).offset(4)
             make.left.equalTo(addressCategoryBtn.snp.right).offset(10)
             make.right.equalTo(editAddressBtn.snp.left).offset(-5)
-            make.bottom.equalTo(separatorLine.snp.top).offset(-5)
+            make.bottom.equalTo(self).offset(-5)
         })
     }
     
