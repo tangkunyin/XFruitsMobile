@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftyJSON
+import MBProgressHUD
 
 fileprivate let UC_CellIdentifier = "XFUserCenterUC_CellIdentifier"
 
@@ -38,7 +38,7 @@ class XFUserCenterViewController: XFBaseViewController {
                 ["title":"卡券中心", "icon":"myDiscountCoupon"]
             ],
             [
-                ["title":"企业通道", "icon":"aboutme"],
+                ["title":"私人定制", "icon":"aboutme"],
                 ["title":"在线客服", "icon":"myService"]
             ],
             [
@@ -55,6 +55,8 @@ class XFUserCenterViewController: XFBaseViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
+        tableView.sectionFooterHeight = 15
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
         tableView.register(XFUCenterCommonCell.self, forCellReuseIdentifier: UC_CellIdentifier)
         return tableView
     }()
@@ -75,35 +77,76 @@ class XFUserCenterViewController: XFBaseViewController {
         if #available(iOS 11.0, *) {
             centerTable.contentInsetAdjustmentBehavior = .never
         } else {
-            automaticallyAdjustsScrollViewInsets = true
+            automaticallyAdjustsScrollViewInsets = false
         }
         view.addSubview(centerTable)
         centerTable.snp.makeConstraints({ (make) in
-            make.center.size.equalTo(view)
+            make.edges.equalTo(view).inset(UIEdgeInsetsMake(0, 0, 0, 0))
         })
     }
     
     @objc private func onMessageItemClick(){
-        let chatVC = createChatViewController(withUser: nil, goodsInfo: nil)
-        chatVC.delegate = self
-        navigationController?.pushViewController(chatVC, animated: true)
+        
     }
     
-    
-    fileprivate func checkLoginStatus() {
-        if XFUserGlobal.shared.isLogin == false {
-            // 进入登录页面
-            let login = XFUserLoginViewController()
-            let nav = UINavigationController.init(rootViewController: login)
-            present(nav, animated: true, completion: nil)
+    private func handleEntrySelect(indexPath: IndexPath) {
+        let section = indexPath.section
+        let row = indexPath.row
+        dPrint("\(section) --- \(row)")
+        if section < 3 {
+            if XFUserGlobal.shared.isLogin {
+                if section == 0 && row == 0 {
+                    //TODO 用户信息
+                    MBProgressHUD.showError("还在开发中，别急好吧...")
+                } else if section == 1 && row == 0 {
+                    //TODO 订单列表
+                    MBProgressHUD.showError("还在开发中，别急好吧...")
+                } else if section == 1 && row == 1 {
+                    //TODO 特定类型订单
+                    MBProgressHUD.showError("还在开发中，别急好吧...")
+                } else if section == 2 && row == 0 {
+                    // 地址
+                    let addressManageVC = XFUserAddressesMangageViewController()
+                    navigationController?.pushViewController(addressManageVC, animated: true)
+                } else if section == 2 && row == 1 {
+                    //TODO 卡劵、优惠券、收藏、积分
+                    MBProgressHUD.showError("还在开发中，别急好吧...")
+                }
+            } else {
+                // 进入登录页面
+                let login = XFUserLoginViewController()
+                let nav = UINavigationController.init(rootViewController: login)
+                present(nav, animated: true, completion: nil)
+            }
+        }
+        // 无需登录的入口
+        if section == 3 && row == 0 {
+            //TODO 企业通道、私人定制
+            MBProgressHUD.showError("还在开发中，别急好吧...")
+        } else if section == 3 && row == 1 {
+            // 客服
+            let chatVC = createChatViewController(withUser: nil, goodsInfo: nil)
+            chatVC.delegate = self
+            navigationController?.pushViewController(chatVC, animated: true)
+        } else if section == 4 && row == 0 {
+            //TODO 吐槽建议
+            MBProgressHUD.showError("还在开发中，别急好吧...")
+        } else if section == 4 && row == 1 {
+            //TODO 设置
+            MBProgressHUD.showError("还在开发中，别急好吧...")
         }
     }
+    
 }
 
 extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 15
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -126,7 +169,6 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
             return 42
         }
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let section = indexPath.section
@@ -155,13 +197,7 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         tableView.deselectRow(at: indexPath, animated: true)
-        let section = indexPath.section
-        let row = indexPath.row
-        if section == 2 && row == 3  {
-            let addressManageVC = XFUserAddressesMangageViewController()
-            self.navigationController?.navigationBar.tintColor = UIColor.white
-            self.navigationController?.show(addressManageVC, sender: self)
-        }
+        handleEntrySelect(indexPath: indexPath)
     }
 }
 
