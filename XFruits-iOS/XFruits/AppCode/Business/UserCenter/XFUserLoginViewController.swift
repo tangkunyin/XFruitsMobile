@@ -59,6 +59,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
         self.mobileTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
         self.mobileTextField?.layer.borderWidth = 0.5
         self.mobileTextField?.layer.cornerRadius = 10
+        self.mobileTextField?.keyboardType = .numberPad
         self.mobileTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
         self.mobileTextField?.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes: [NSAttributedStringKey.foregroundColor:XFConstants.Color.pinkishGrey,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)])
         self.mobileTextField?.snp.makeConstraints({ (make) in
@@ -186,13 +187,18 @@ class XFUserLoginViewController: XFBaseSubViewController {
         
         weak var weakSelf = self
         
-        guard let phone = mobileTextField?.text else {
+        guard let phone = mobileTextField?.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             MBProgressHUD.showError("手机号不能为空")
             return
         }
         
         guard let password = passwordTextField?.text else {
             MBProgressHUD.showError("密码不能为空")
+            return
+        }
+        
+        guard  isPhoneNumber(phoneNumber: phone) == true else{
+            MBProgressHUD.showError("请输入合法的手机号")
             return
         }
         
@@ -209,9 +215,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
                 
             }
             // 试试用工具类缓存会不会更优雅！！！ ===========
-            
-            
-            
+    
             dPrint("登录成功")
             weakSelf!.dismiss(animated: true, completion: nil)
         }

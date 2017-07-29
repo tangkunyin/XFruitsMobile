@@ -14,7 +14,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     // 声明闭包
     //    typealias inputClosureType = (String)-> Void
     
-    let categoryArray = ["老婆家","丈母娘家","前女友家","前男友家","路人家~","A家","老婆婆1家","丈母娘3家","前女友6家","前男友家","路人甲家~","家","老婆婆家","丈母娘家","家","前3男友家","路人甲家~","家","老婆婆家","丈母娘家","前女友家","前男友家","路人甲家~","家","老婆婆家","丈母娘家","前3女友家","前男友家","路人3甲家~","家","老婆婆家","丈母娘家","前女友家","前男友家","路人甲家~","家","老婆婆家","丈母娘家","前女友家","前男友家","路人4甲家~","家","老婆婆家","丈母娘家","前女友家","前男友家","路人甲家~"]
+    let categoryArray = ["老家","丈母娘niang家","前女友家","前男友家","路人家~","A家"]  // ,"+","-"
     
     lazy var leftTipReceiveLabel: UILabel = {
         
@@ -53,9 +53,10 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     
     lazy var mobileInput :UITextField = {
         // 联系电话输入框
-        let mobileInput = UITextField.init()
+        let mobileInput:UITextField = UITextField.init()
         mobileInput.text = "18658054127"
         mobileInput.textColor  = XFConstants.Color.darkGray
+        mobileInput.keyboardType = .numberPad
         mobileInput.font = sysFontWithSize(16)
         return mobileInput
     }()
@@ -106,6 +107,20 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         
     }
     
+    
+    @objc private func checkboxSelect(_ btn:UIButton){
+       
+        if (!btn.isSelected){
+            btn.setImage(UIImage.imageWithNamed("check_box_select"), for: .normal)
+            btn.isSelected = true
+        }
+        else{
+            btn.setImage(UIImage.imageWithNamed("checkbox-empty"), for: .normal)
+            btn.isSelected = false
+        }
+    }
+    
+    
     func setMyAddress(address:XFAddress)  {
         receiveInput.text = address.recipient
         mobileInput.text = address.cellPhone
@@ -115,9 +130,6 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         addressDescTextView.text = address.address
         if  addressDescTextView.text.characters.count > 0 {
             placeHolderLabel.text = ""
-        }
-        else{
-            
         }
     }
     
@@ -134,19 +146,29 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     
     lazy var categoryCollectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        //        layout.itemSize = CGSize(width:60,height:60)
         //每个Item之间最小的间距
         layout.minimumInteritemSpacing = 5
         //每行之间最小的间距
         layout.minimumLineSpacing = 5
-        //        layout.sectionInset  = UIEdgeInsetsMake(10, 20, 10, 20)
-        //        layout.itemSize = CGSize(width: 10, height: 20)
+        
         let categoryCollectionView = UICollectionView(frame:CGRect.zero,collectionViewLayout:layout)
         categoryCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         categoryCollectionView.dataSource = self;
         categoryCollectionView.delegate = self;
         categoryCollectionView.backgroundColor = UIColor.white
         return categoryCollectionView
+    }()
+    
+    lazy var useAsDefaultAddressBtn:UIButton = {
+        let useAsDefaultAddressBtn = UIButton.init()
+        useAsDefaultAddressBtn.backgroundColor = UIColor.clear
+        useAsDefaultAddressBtn.setTitle("默认地址", for: .normal)
+        useAsDefaultAddressBtn.setImage(UIImage.imageWithNamed("checkbox-empty"), for: .normal)
+        useAsDefaultAddressBtn.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
+        useAsDefaultAddressBtn.addTarget(self, action: #selector(checkboxSelect(_:)), for: .touchUpInside)
+        useAsDefaultAddressBtn.isSelected = false
+        
+        return useAsDefaultAddressBtn
     }()
     
     lazy var placeHolderLabel : UILabel  = {
@@ -187,7 +209,6 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             make.top.equalTo(self.snp.top).offset(12)
             make.left.equalTo(leftTipReceiveLabel.snp.right).offset(13)
             make.right.equalTo(self).offset(-13)
-            //            make.width.equalTo(70)
             make.height.equalTo(19)
         })
         
@@ -196,7 +217,6 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             make.top.equalTo(self.snp.top).offset(12)
             make.left.equalTo(leftTipReceiveLabel.snp.right).offset(13)
             make.right.equalTo(self.snp.right).offset(-13)
-            //            make.bottom.equalTo(self.snp.bottom).offset(-12)
             make.height.equalTo(19)
         })
         
@@ -211,7 +231,6 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             make.height.equalTo(0.4)
             make.left.right.equalTo(self)
         }
-        
         
         
         // 联系电话
@@ -230,7 +249,6 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             make.top.equalTo(line1.snp.bottom).offset(12)
             make.left.equalTo(leftMobileLabel.snp.right).offset(13)
             make.right.equalTo(self.snp.right).offset(-13)
-            //            make.bottom.equalTo(self.snp.bottom).offset(-12)
             make.height.equalTo(19)
         })
         
@@ -330,12 +348,18 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             make.top.equalTo(line4.snp.bottom).offset(5)
             make.left.equalTo(self.snp.left).offset(5)
             make.right.equalTo(self.snp.right).offset(-5)
-            
-            make.height.equalTo(150)
+//            make.bottom.equalTo(self.snp.bottom).offset(-100)
+            make.height.equalTo(55)
         })
+        // 默认地址按钮
         
-        
-        
+        self.addSubview(useAsDefaultAddressBtn)
+        useAsDefaultAddressBtn.snp.makeConstraints( { (make) in
+            make.top.equalTo(categoryCollectionView.snp.bottom).offset(5)
+            make.left.equalTo(self.snp.left).offset(5)
+            make.right.equalTo(self.snp.right).offset(-5)
+            make.height.equalTo(40)
+        })
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -349,7 +373,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  25
+        return  categoryArray.count
     }
     
     
@@ -389,23 +413,21 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     
     // 点击某项的事件
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-//        let cell = collectionView.cellForItem(at: indexPath)
         let row = indexPath.row
-//        self.selectCategoryLabel?.textColor =
-//        var label:UILabel = self.viewWithTag(10000 + row) as! UILabel
-//        label.backgroundColor  = UIColor.black
-//        label.textColor = UIColor.white
-//        self.selectCategoryLabel = label as! UILabel
+        print(row)
+        let cate  = categoryArray[row]
+        print(cate)
+      
+        self.selectCategoryLabel?.textColor = XFConstants.Color.salmon
+        self.selectCategoryLabel?.backgroundColor = UIColor.white
         
-        
-        
+        let label:UILabel = self.viewWithTag(10000 + row) as! UILabel
+        label.backgroundColor  = XFConstants.Color.salmon
+        label.textColor = UIColor.white
+        self.selectCategoryLabel = label
         
         
     }
-    
-    
-    
-    
     
     
     

@@ -26,6 +26,21 @@ func currentTimestamp() ->Int {
     return timeStamp
 }
 
+
+func isPhoneNumber(phoneNumber:String) -> Bool {
+    if phoneNumber.characters.count == 0 {
+        return false
+    }
+    let mobile = "^(13[0-9]|15[0-9]|18[0-9]|17[0-9]|147)\\d{8}$"
+    let regexMobile = NSPredicate(format: "SELF MATCHES %@",mobile)
+    if regexMobile.evaluate(with: phoneNumber) == true {
+        return true
+    }else
+    {
+        return false
+    }
+}
+
 func stringDateByTimestamp(timeStamp:Int, formatter:String? = "yyyy-MM-dd HH:mm:ss") -> String {
     let dformatter = DateFormatter()
     dformatter.dateFormat = formatter

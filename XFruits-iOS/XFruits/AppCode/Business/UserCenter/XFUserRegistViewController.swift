@@ -48,6 +48,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
         self.mobileTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
         self.mobileTextField?.layer.borderWidth = 0.5
         self.mobileTextField?.layer.cornerRadius = 10
+        self.mobileTextField.keyboardType = .numberPad
         self.mobileTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
         self.mobileTextField?.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes: [NSAttributedStringKey.foregroundColor:colorWithRGB(204, g: 204, b: 204),NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)])
         self.mobileTextField?.snp.makeConstraints({ (make) in
@@ -217,7 +218,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
     // 点击下一步触发的事件
     @objc func nextStepToSecondRegistPageVC(sender:UIButton?) {
         
-        guard let phone:String = self.mobileTextField.text , phone != "" else {
+        guard let phone:String = self.mobileTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) , phone != "" else {
             MBProgressHUD.showError("手机号不能为空")
             return
         }
@@ -226,6 +227,12 @@ class XFUserRegistViewController: XFBaseSubViewController {
             MBProgressHUD.showError("图片验证码不能为空")
             return
         }
+        
+        guard  isPhoneNumber(phoneNumber: phone) == true else{
+            MBProgressHUD.showError("请输入合法的手机号")
+            return
+        }
+        
         
         let para:[String:String]  = ["uniqueCode":self.uniqueCodeString! as String,"code":code ,"phone":phone]
         

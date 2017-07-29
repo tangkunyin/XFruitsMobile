@@ -53,21 +53,40 @@ class XFAddAddressViewController: XFBaseSubViewController    {
         
         weak var weakSelf = self
         
+        guard let recipient = editAddressView.receiveInput.text?.trimmingCharacters(in: .whitespacesAndNewlines), recipient != ""  else {
+            MBProgressHUD.showError("收货人不能为空")
+            return
+        }
+        
+        
+        
+        guard let cellPhone = editAddressView.mobileInput.text?.trimmingCharacters(in: .whitespacesAndNewlines) , cellPhone != "" else {
+            MBProgressHUD.showError("手机号码不能为空")
+            return
+        }
+        
+        guard  isPhoneNumber(phoneNumber: cellPhone) == true else{
+            MBProgressHUD.showError("请输入合法的手机号")
+            return
+        }
+        let  city:String = (editAddressView.addressChooseLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
+        print(city)
+        guard  city.count >  0 else{
+            MBProgressHUD.showError("省市县不能为空")
+            return
+        }
+        
         guard let addressDesc = editAddressView.addressDescTextView.text ,addressDesc != "" else {
             MBProgressHUD.showError("详细地址不能为空")
             return
         }
         
-        guard let cellPhone = editAddressView.mobileInput.text , cellPhone != "" else {
-            MBProgressHUD.showError("手机号码不能为空")
+        guard let category = self.editAddressView.selectCategoryLabel?.text ,category != "" else {
+            MBProgressHUD.showError("请选择分类")
             return
         }
         
-        guard let recipient = editAddressView.receiveInput.text ,recipient != "" else {
-            MBProgressHUD.showError("收货人不能为空")
-            return
-        }
-        
+        let isDefault = self.editAddressView.useAsDefaultAddressBtn.isSelected == true ? "1" : "0"
         
         if editStyle == 0 {
             
@@ -75,8 +94,8 @@ class XFAddAddressViewController: XFBaseSubViewController    {
                                                 "address":addressDesc,
                                                 "recipient":recipient,
                                                 "cellPhone":cellPhone,
-                                                "isDefault":"1",
-                                                "label":"老婆婆家"]
+                                                "isDefault":isDefault,
+                                                "label":category]
             
             XFCommonService().addAddress(params: addressDict) { (data) in
                 dPrint(data)
@@ -93,8 +112,8 @@ class XFAddAddressViewController: XFBaseSubViewController    {
             addressModify.address  = addressDesc
             addressModify.recipient = recipient
             addressModify.cellPhone = cellPhone
-            addressModify.isDefault = "1"
-            addressModify.label = "自己家"
+            addressModify.isDefault = isDefault
+            addressModify.label = category
             let addressId:String = String(addressSigleEdit!.id)
             
             
@@ -113,13 +132,11 @@ class XFAddAddressViewController: XFBaseSubViewController    {
             }
             
         }
-        
-        
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     
 }
