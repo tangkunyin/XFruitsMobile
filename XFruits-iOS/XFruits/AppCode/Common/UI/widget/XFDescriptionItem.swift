@@ -58,7 +58,7 @@ class XFDescriptionItem: UITableViewCell {
         }
         separatorLine.snp.makeConstraints { (make) in
             make.left.right.bottom.equalTo(self)
-            make.height.equalTo(1)
+            make.height.equalTo(0.5)
         }
     }
 

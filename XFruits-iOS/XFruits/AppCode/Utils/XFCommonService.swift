@@ -106,9 +106,8 @@ public final class XFCommonService: XFNetworking {
     }
 
 
-    func getUserAllAddress(token:String, _ completion:@escaping XFResponse) {
+    func getUserAllAddress(_ completion:@escaping XFResponse) {
         self.doGet(withUrl: url("/user/address")) { (success, respData) in
-
             if success, respData is Array<Any>, let list = respData as? Array<Any> {
                 completion([XFAddress].deserialize(from: JSON(list).rawString()) ?? [])
             }

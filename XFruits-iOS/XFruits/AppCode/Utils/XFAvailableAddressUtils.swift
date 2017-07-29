@@ -21,10 +21,7 @@ class XFAvailableAddressUtils {
             addressDict = addr
         }
     }
-    
- 
-    
-    
+
     
     /// 用户信息缓存文件地址
     private lazy var availableAddressPath:String? = {
@@ -74,40 +71,25 @@ class XFAvailableAddressUtils {
     }
     
     
-    func cacheAddressAvailable()    {
+    func cacheAddressAvailable()  {
         // 把地址的json文件下载下来
         DispatchQueue.global().async {
-            
             // if为寻找本地json地址文件
             if  let add:XFAvailableAddressDict = XFAvailableAddressUtils.shared.getCachedAddress() {
-                //            print(add)
                 let addressList:Array = add.content!
-                
                 for item in addressList {
                     let address: XFAvailableAddressSingle  = item
-                    print( address.province!)
-                    
+                    dPrint( address.province!)
                 }
-                
-            }
-                
-            else{  // 没找到
-                
+            }else{  // 没找到
                 XFCommonService().allAvailableAddress(page: 1, size: 4000 ) { (data) in
-                    
                     if let addresses = data  as? XFAvailableAddressDict{
-                        
                         XFAvailableAddressUtils.shared.cacheAddress(addresses)
-                        
                         let add:XFAvailableAddressDict = XFAvailableAddressUtils.shared.getCachedAddress()!
-                        
                         let addressList:Array = add.content!
-                        
-                        
                         for item in addressList {
                             let address: XFAvailableAddressSingle  = item
-                            print( address.province!)
-                            
+                            dPrint(address)
                         }
                         
                     }
@@ -115,7 +97,5 @@ class XFAvailableAddressUtils {
             }
         }
     }
-    
-    
     
 }
