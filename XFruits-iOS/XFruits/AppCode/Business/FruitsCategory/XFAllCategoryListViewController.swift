@@ -27,10 +27,19 @@ class XFAllCategoryListViewController: XFBaseSubViewController,UITableViewDelega
         }
     }
     
-    lazy var tableView:UITableView = {
-        let listView = UITableView.init(frame: CGRect.zero, style: .plain)
+    lazy var promotionView: UIImageView = {
+        let imageView = UIImageView(image: UIImage.imageWithNamed("xfruits-farmer-4"))
+        imageView.isUserInteractionEnabled = false
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    lazy var tableView: UITableView = {
+        let listView = UITableView(frame: CGRect.zero, style: .plain)
         listView.delegate = self
         listView.dataSource = self
+        listView.bounces = false
+        listView.separatorStyle = .none
         listView.backgroundColor = UIColor.white
         listView.register(UITableViewCell.self, forCellReuseIdentifier: "allCategoryListViewCell")
         listView.tableFooterView = UIView()
@@ -40,13 +49,16 @@ class XFAllCategoryListViewController: XFBaseSubViewController,UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "所有"
-        
-        dPrint(productTypes)
-        
+        view.addSubview(promotionView)
         view.addSubview(tableView)
+        promotionView.snp.makeConstraints { (make) in
+            make.left.top.equalTo(view).offset(30)
+            make.right.equalTo(view).offset(-30)
+            make.height.equalTo(100)
+        }
         tableView.snp.makeConstraints { (make) in
-            make.center.size.equalTo(view)
+            make.top.equalTo(promotionView.snp.bottom).offset(20)
+            make.left.right.bottom.equalTo(view)
         }
     }
     
@@ -56,7 +68,7 @@ class XFAllCategoryListViewController: XFBaseSubViewController,UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return 44
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,12 +81,13 @@ class XFAllCategoryListViewController: XFBaseSubViewController,UITableViewDelega
         cell.contentView.addSubview(imageView)
         cell.contentView.addSubview(label)
         imageView.snp.makeConstraints({ (make) in
-            make.size.equalTo(CGSize.init(width: 55, height: 55))
-            make.left.top.equalTo(10)
+            make.size.equalTo(CGSize.init(width: 35, height: 35))
+            make.left.equalTo(cell.contentView).offset(10)
+            make.centerY.equalTo(cell.contentView)
         })
         label.snp.makeConstraints({ (make) in
             make.size.centerY.equalTo(imageView)
-            make.left.equalTo(imageView.snp.right).offset(20)
+            make.left.equalTo(imageView.snp.right).offset(10)
         })
         return cell
     }

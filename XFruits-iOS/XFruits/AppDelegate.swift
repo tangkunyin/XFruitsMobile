@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let rootVC = XFHomeViewController()
         
-        SlideMenuOptions.rightViewWidth = 200
+        SlideMenuOptions.rightViewWidth = 168
         SlideMenuOptions.contentViewOpacity = 0.75
         let slideRootVC = SlideMenuController(mainViewController: rootVC,
                                               rightMenuViewController:allCateListVC)
