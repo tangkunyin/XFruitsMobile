@@ -92,25 +92,33 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
                 let chatVC = createChatViewController(withUser: XFUserGlobal.shared.currentUser, goodsInfo: weakSelf?._detailData)
                 weakSelf?.navigationController?.pushViewController(chatVC, animated: true)
             case 1:
-                MBProgressHUD.showSuccess("已成功加入收藏！")
+                MBProgressHUD.showSuccess("已成功加入收藏")
             case 2:
-                weakSelf?.addToShopCart()
+                weakSelf?.addToShopCart(checkoutNow: false)
             case 3:
-                MBProgressHUD.showSuccess("将带您结账")
+                weakSelf?.addToShopCart(checkoutNow: true)
             default:break
             }
         }
         return view
     }()
     
-    private func addToShopCart() {
+    private func addToShopCart(checkoutNow: Bool) {
         if let detailData: ProductDetail = _detailData {
             let item: ProductItem = detailData.convertToProductItem()
             let result = XFCartUtils.sharedInstance.addItem(item: item)
             if result {
-                MBProgressHUD.showSuccess("成功添加到果篮")
+                if checkoutNow
+                    && XFCartUtils.sharedInstance.selectItem(gid: item.id, checked: true)
+                        && XFCartUtils.sharedInstance.getAll().count > 0 {
+                    let checkoutVC = XFCheckoutViewController()
+                    checkoutVC.totalGoodsAmount = item.primePrice
+                    navigationController?.pushViewController(checkoutVC, animated: true)
+                } else {
+                    MBProgressHUD.showSuccess("成功添加到果篮")
+                }
             } else {
-                MBProgressHUD.showError("添加到果篮失败，请稍后尝试~")
+                MBProgressHUD.showError("操作失败，请稍后尝试~")
             }
         }
     }

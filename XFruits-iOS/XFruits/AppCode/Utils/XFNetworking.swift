@@ -157,7 +157,6 @@ public class XFNetworking: NSObject {
         if var token = XFUserGlobal.shared.token {
             token = token.trimmingCharacters(in: .whitespacesAndNewlines)
             headers = ["Authorization": "Bearer \(token)"]
-            dPrint(headers!)
         }
         
         Alamofire.request(url, method: method, parameters: params, encoding: paramsEncoding,headers: headers)
