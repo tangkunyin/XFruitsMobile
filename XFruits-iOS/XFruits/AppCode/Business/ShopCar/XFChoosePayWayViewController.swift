@@ -10,7 +10,7 @@ import UIKit
 
 class XFChoosePayWayViewController: XFBaseSubViewController,UITableViewDataSource,UITableViewDelegate{
 
-    var orderId: String = ""
+    var payInfo: XFOrderCommit?
     
     lazy var addressesTable: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
@@ -27,6 +27,7 @@ class XFChoosePayWayViewController: XFBaseSubViewController,UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        dPrint(payInfo)
         
         self.view.addSubview(addressesTable)
         addressesTable.tableFooterView = UIView()
@@ -36,9 +37,9 @@ class XFChoosePayWayViewController: XFBaseSubViewController,UITableViewDataSourc
         
     }
 
-    override func backToParentController() {
-        navigationController?.popToRootViewController(animated: true)
-    }
+//    override func backToParentController() {
+//        navigationController?.popToRootViewController(animated: true)
+//    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2;

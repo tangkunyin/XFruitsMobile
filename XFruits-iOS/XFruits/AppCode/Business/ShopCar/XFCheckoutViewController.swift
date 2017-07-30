@@ -74,12 +74,13 @@ class XFCheckoutViewController: XFBaseViewController {
         let params:[String : Any] = ["productBuyList":buyList, "addressId":address.id, "couponIds":[]]
         request.orderCommit(params: params) { (data) in
             let result: XFOrderCommit = data as! XFOrderCommit
-            if let orderId = result.orderId, let expiration = result.orderExpiration, expiration > 0 {
+            if let orderId = result.orderId,
+                let expiration = result.orderExpiration, orderId.characters.count > 0 ,expiration > 0 {
                 // 重置果篮已选择的商品
                 if XFCartUtils.sharedInstance.clearSelected(carts: selectedData) {
                     MBProgressHUD.showMessage("订单提交成功，请在\(expiration)分钟内完成支付", completion: {
                         let payCenter = XFChoosePayWayViewController()
-                        payCenter.orderId = orderId
+                        payCenter.payInfo = result
                         weakSelf?.navigationController?.pushViewController(payCenter, animated: true)
                     })
                 }
