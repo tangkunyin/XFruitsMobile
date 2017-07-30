@@ -30,8 +30,8 @@ class XFCheckoutActionBar: XFShopCartActionBar {
         }
     }
 
-    func update(amount: Float)  {
-        pricelabel.text = String(format:"实付： ¥ %.2f",amount)
+    func updateActualAmount(totalAmount amount: Float, expressFee: Float? = 0.00) {
+        pricelabel.text = String(format:"实付： ¥ %.2f", amount + expressFee!)
     }
     
 }

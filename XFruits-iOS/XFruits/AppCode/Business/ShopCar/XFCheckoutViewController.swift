@@ -15,20 +15,70 @@ fileprivate let XFCheckoutCellReuseIdentifier:String = "XFCheckoutCellReuseIdent
 
 class XFCheckoutViewController: XFBaseViewController {
 
-    
     /// 商品总价，不含运费、邮费、优惠等
     var totalGoodsAmount: Float?
+    
+    var confirmCoupon: Array<XFCouponItem>?
+    
+    var confirmAddress: XFAddress? {
+        didSet {
+            if let address = confirmAddress, let totalPrice = totalGoodsAmount {
+                checkoutAddress.dataSource = address
+                // 更新优惠券及下单实付金额
+                var couponPrice: Float?
+                if let couponArr = confirmCoupon, couponArr.count > 0 {
+                    couponPrice = couponArr[0].number
+                }
+                checkoutAddress.textLabel?.text = nil
+                checkoutBar.updateActualAmount(totalAmount: totalPrice, expressFee: address.expressFee)
+                checkoutInfo.updateCheckout(InfoArr: [totalGoodsAmount, address.expressFee, couponPrice])
+            }
+        }
+    }
     
     lazy var request:XFCommonService = {
         let serviceRequest = XFCommonService()
         return serviceRequest
     }()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "确认订单"
+        
+        makeConstrains()
+        updateDataSource()
+    }
     
+    private func updateDataSource()  {
+        weak var weakSelf = self
+        request.orderConfirm { (data) in
+            if data is XFOrderConfirm {
+                let confirm = data as! XFOrderConfirm
+                weakSelf?.confirmCoupon = confirm.couponList
+                weakSelf?.confirmAddress = confirm.address
+            }
+        }
+    }
+    
+    func submitOrder() {
+        guard let address = confirmAddress else {
+            MBProgressHUD.showError("请务必选择一个有效的收货地址")
+            return
+        }
+        
+        
+    }
+    
+    @objc private func onAddressChange() {
+        let addressList = XFUserAddressesMangageViewController()
+        weak var weakSelf = self
+        addressList.onSelectedAddress = {(address) in
+            weakSelf?.confirmAddress = address
+        }
+        navigationController?.pushViewController(addressList, animated: true)
+    }
+
+    private func makeConstrains() {
         view.addSubview(contentView)
         view.addSubview(checkoutBar)
         contentView.snp.makeConstraints { (make) in
@@ -50,29 +100,16 @@ class XFCheckoutViewController: XFBaseViewController {
         checkoutAddress.snp.makeConstraints { (make) in
             make.height.equalTo(66)
             make.width.equalTo(contentView)
-            make.top.equalTo(checkoutGoodsListView.snp.bottom).offset(5)
+            make.top.equalTo(checkoutGoodsListView.snp.bottom).offset(6)
         }
         checkoutInfo.snp.makeConstraints { (make) in
             make.height.equalTo(120)
             make.width.equalTo(contentView)
-            make.top.equalTo(checkoutAddress.snp.bottom).offset(5)
-            make.bottom.equalTo(contentView).offset(-5)
-        }
-        
-        updateDataSource()
-    }
-    
-    private func updateDataSource()  {
-        checkoutBar.update(amount: totalGoodsAmount!)
-        request.orderConfirm { (data) in
-            
+            make.top.equalTo(checkoutAddress.snp.bottom).offset(6)
+            make.bottom.equalTo(contentView).offset(-6)
         }
     }
     
-    func submitOrder() {
-        dPrint("submit order...")
-    }
-
     private lazy var contentView: UIScrollView = {
         let content = UIScrollView()
         content.showsVerticalScrollIndicator = false
@@ -97,11 +134,13 @@ class XFCheckoutViewController: XFBaseViewController {
     
     private lazy var checkoutAddress: XFCheckoutAddress = {
         let addressView = XFCheckoutAddress()
+        addressView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onAddressChange)))
         return addressView
     }()
     
     private lazy var checkoutInfo: XFCheckoutInfo = {
         let infoList = XFCheckoutInfo()
+        infoList.InfoArr = [totalGoodsAmount, nil, nil]
         return infoList
     }()
     
@@ -111,6 +150,7 @@ class XFCheckoutViewController: XFBaseViewController {
         bar.onConfirmBarPress = {
             weakSelf?.submitOrder()
         }
+        bar.updateActualAmount(totalAmount: totalGoodsAmount!)
         return bar;
     }()
 }

@@ -79,6 +79,8 @@
 		86ADDCD91F2B64CF00881CFA /* XFCheckoutAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCD81F2B64CF00881CFA /* XFCheckoutAddress.swift */; };
 		86ADDCDB1F2B656700881CFA /* XFCheckoutInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCDA1F2B656700881CFA /* XFCheckoutInfo.swift */; };
 		86ADDCDD1F2B7C5C00881CFA /* XFDescriptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCDC1F2B7C5C00881CFA /* XFDescriptionItem.swift */; };
+		86ADDCDF1F2DD7C100881CFA /* XFOrderConfirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCDE1F2DD7C100881CFA /* XFOrderConfirm.swift */; };
+		86ADDCE11F2DD88500881CFA /* XFCouponItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCE01F2DD88500881CFA /* XFCouponItem.swift */; };
 		86BB9A871F1D2B1E00B46EBC /* XFCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BB9A861F1D2B1E00B46EBC /* XFCheckoutViewController.swift */; };
 		86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE61EAB495A009972A8 /* Alamofire.framework */; };
 		86CB2FEE1EAB495A009972A8 /* APNGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE71EAB495A009972A8 /* APNGKit.framework */; };
@@ -184,6 +186,8 @@
 		86ADDCD81F2B64CF00881CFA /* XFCheckoutAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCheckoutAddress.swift; sourceTree = "<group>"; };
 		86ADDCDA1F2B656700881CFA /* XFCheckoutInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCheckoutInfo.swift; sourceTree = "<group>"; };
 		86ADDCDC1F2B7C5C00881CFA /* XFDescriptionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFDescriptionItem.swift; sourceTree = "<group>"; };
+		86ADDCDE1F2DD7C100881CFA /* XFOrderConfirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrderConfirm.swift; sourceTree = "<group>"; };
+		86ADDCE01F2DD88500881CFA /* XFCouponItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCouponItem.swift; sourceTree = "<group>"; };
 		86BB9A861F1D2B1E00B46EBC /* XFCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCheckoutViewController.swift; sourceTree = "<group>"; };
 		86CB2FE61EAB495A009972A8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		86CB2FE71EAB495A009972A8 /* APNGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APNGKit.framework; path = Carthage/Build/iOS/APNGKit.framework; sourceTree = "<group>"; };
@@ -359,6 +363,7 @@
 				862672EA1EFE480B0062B52B /* XFProduct.swift */,
 				862672FA1EFE4F3A0062B52B /* XFVerifyImage.swift */,
 				862AF70A1F0926A700409CCB /* XFComment.swift */,
+				86ADDCE01F2DD88500881CFA /* XFCouponItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -499,6 +504,7 @@
 		8690FED81ED1768E0051A16D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				86ADDCDE1F2DD7C100881CFA /* XFOrderConfirm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -683,6 +689,7 @@
 			files = (
 				862672DD1EFE46420062B52B /* XFUserRegistSecondPageViewController.swift in Sources */,
 				8690FEE11ED178AF0051A16D /* XFShopCartActionBar.swift in Sources */,
+				86ADDCDF1F2DD7C100881CFA /* XFOrderConfirm.swift in Sources */,
 				862672F11EFE48A20062B52B /* XFHomeViewController.swift in Sources */,
 				86E8DF7E1EDBCC90000A489F /* XFButtonExtension.swift in Sources */,
 				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
@@ -726,6 +733,7 @@
 				165608D71EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift in Sources */,
 				862672D71EFE43FC0062B52B /* XFUserLoginViewController.swift in Sources */,
 				862672DB1EFE44490062B52B /* XFUserCenterViewController.swift in Sources */,
+				86ADDCE11F2DD88500881CFA /* XFCouponItem.swift in Sources */,
 				865235C61F1AFD5A005897C3 /* XFShopCartEmptyView.swift in Sources */,
 				862672CF1EFE42EF0062B52B /* XFDetailViewController.swift in Sources */,
 				86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */,

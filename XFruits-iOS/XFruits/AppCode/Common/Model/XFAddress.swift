@@ -27,19 +27,15 @@ struct XFAddress: HandyJSON {
     
     var label:String?
     
-    var expressFee:String?
-    
-    
+    var expressFee:Float?
+
 }
 
 
-struct XFAvailableAddressDict:  HandyJSON{
-    
+struct XFAvailableAddressDict:  HandyJSON {
     var page:Int?
     var size:Int?
     var content:Array<XFAvailableAddressSingle>?
-    
-     
 }
 
 

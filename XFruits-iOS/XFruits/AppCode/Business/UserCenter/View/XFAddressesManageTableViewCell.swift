@@ -79,6 +79,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     }
     
     func  setUpUI() {
+        
         addSubview(editAddressBtn)
         addSubview(userNameLabel)
         addSubview(mobileLabel)

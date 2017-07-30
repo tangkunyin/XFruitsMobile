@@ -12,7 +12,9 @@ fileprivate let addressCellIdentifier = "XFAddressCellIdentifier"
 
 class XFUserAddressesMangageViewController: XFBaseSubViewController {
     
-    var addressInfoArray:Array<XFAddress?> = []
+    var addressInfoArray: Array<XFAddress?> = []
+    
+    var onSelectedAddress: ((XFAddress) -> Void)?
     
     lazy var addressesTable: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
@@ -141,6 +143,9 @@ extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        if let onSelected = onSelectedAddress, let address: XFAddress = addressInfoArray[indexPath.row] {
+            onSelected(address)
+            self.backToParentController()
+        }
     }
 }

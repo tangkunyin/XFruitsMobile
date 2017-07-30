@@ -11,63 +11,37 @@ import SnapKit
 
 
 /// 结算页地址信息
-class XFCheckoutAddress: UIView {
+class XFCheckoutAddress: XFAddressesManageTableViewCell {
 
-    var dataSource:Any? {
+    var dataSource: XFAddress? {
         didSet {
-            
+            if let address = dataSource {
+                setMyAddress(address: address)
+                if let view = self.viewWithTag(-111) {
+                    view.removeFromSuperview()
+                }
+            }
         }
     }
     
-    lazy var noDataTip: UILabel = {
-        let label = UILabel()
-        label.font = XFConstants.Font.pfn18
-        label.textColor = XFConstants.Color.salmon
-        label.textAlignment = .center
-        label.text = "请选择一个有效地址，谢谢"
-        return label
+    lazy var noDataTip: UITableViewCell = {
+        let cell = UITableViewCell()
+        cell.tag = -111
+        cell.backgroundColor = UIColor.white
+        cell.textLabel?.font = XFConstants.Font.pfn14
+        cell.textLabel?.textColor = XFConstants.Color.salmon
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        cell.textLabel?.text = "请选择一个有效地址，谢谢"
+        return cell
     }()
-    
-    lazy var rightArrow: UIImageView = {
-        let arrow = UIImageView(image: UIImage.imageWithNamed("right_arrow"))
-        arrow.isUserInteractionEnabled = false
-        return arrow
-    }()
-    
-    
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        customInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        customInit()
-    }
-    
-    private func customInit(){
-    
-        addSubview(noDataTip)
-        addSubview(rightArrow)
-        backgroundColor = UIColor.white
-        addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(addressManage)))
-     
-        noDataTip.snp.makeConstraints { (make) in
-            make.left.top.bottom.equalTo(self)
-        }
-        rightArrow.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self)
-            make.size.equalTo(CGSize(width: 12, height: 20))
-            make.left.equalTo(noDataTip.snp.right).offset(10)
-            make.right.equalTo(self).offset(-10)
-        }
-    }
-    
-    @objc private func addressManage(){
-        dPrint("卧槽，你干啥呢")
         
+    override func setUpUI() {
+        super.setUpUI()
+        backgroundColor = UIColor.white
+        addSubview(noDataTip)
+        noDataTip.snp.makeConstraints { (make) in
+            make.center.size.equalTo(self)
+        }
     }
-
+    
 }

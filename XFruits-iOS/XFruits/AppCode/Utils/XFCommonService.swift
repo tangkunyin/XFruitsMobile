@@ -162,10 +162,13 @@ public final class XFCommonService: XFNetworking {
     }
 
 
+    /// 确认订单
+    ///
+    /// - Parameter completion: XFOrderConfirm
     func orderConfirm(_ completion:@escaping XFResponse) {
         self.doGet(withUrl: url("/order/confirm")) { (success, respData) in
-            if success {
-                
+            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
+                completion(XFOrderConfirm.deserialize(from: dict) ?? XFOrderConfirm())
             }
         }
     }
