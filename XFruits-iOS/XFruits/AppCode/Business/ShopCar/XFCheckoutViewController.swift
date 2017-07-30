@@ -61,14 +61,18 @@ class XFCheckoutViewController: XFBaseViewController {
     }
     
     func submitOrder() {
-        guard let address = confirmAddress else {
-            MBProgressHUD.showError("请务必选择一个有效的收货地址")
-            return
-        }
         var buyList:Array<Dictionary<String,Any>> = []
         let selectedData: Array<XFCart> = XFCartUtils.sharedInstance.selectedList as! Array<XFCart>
         for item: XFCart in selectedData {
             buyList.append(["productId":item.id! ,"count":item.quantity!])
+        }
+        guard let address = confirmAddress else {
+            MBProgressHUD.showError("请务必选择一个有效的收货地址")
+            return
+        }
+        guard buyList.count > 0 else {
+            MBProgressHUD.showError("商品信息为空，请核对后操作")
+            return
         }
         weak var weakSelf = self
         let params:[String : Any] = ["productBuyList":buyList, "addressId":address.id, "couponIds":[]]
