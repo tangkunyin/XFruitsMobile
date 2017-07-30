@@ -65,10 +65,29 @@ class XFCheckoutViewController: XFBaseViewController {
             MBProgressHUD.showError("请务必选择一个有效的收货地址")
             return
         }
-        
-        
+        var buyList:Array<Dictionary<String,Any>> = []
+        let selectedData: Array<XFCart> = XFCartUtils.sharedInstance.selectedList as! Array<XFCart>
+        for item: XFCart in selectedData {
+            buyList.append(["productId":item.id! ,"count":item.quantity!])
+        }
+        weak var weakSelf = self
+        let params:[String : Any] = ["productBuyList":buyList, "addressId":address.id, "couponIds":[]]
+        request.orderCommit(params: params) { (data) in
+            let result: XFOrderCommit = data as! XFOrderCommit
+            if let orderId = result.orderId, let expiration = result.orderExpiration, expiration > 0 {
+                // 重置果篮已选择的商品
+                if XFCartUtils.sharedInstance.clearSelected(carts: selectedData) {
+                    MBProgressHUD.showMessage("订单提交成功，请在\(expiration)分钟内完成支付", completion: {
+                        let payCenter = XFChoosePayWayViewController()
+                        payCenter.orderId = orderId
+                        weakSelf?.navigationController?.pushViewController(payCenter, animated: true)
+                    })
+                }
+            }
+        }
     }
     
+
     @objc private func onAddressChange() {
         let addressList = XFUserAddressesMangageViewController()
         weak var weakSelf = self

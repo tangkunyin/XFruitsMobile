@@ -8,31 +8,37 @@
 
 import UIKit
 
-class XFChoosePayWayViewController: XFBaseViewController ,UITableViewDataSource,UITableViewDelegate{
+class XFChoosePayWayViewController: XFBaseSubViewController,UITableViewDataSource,UITableViewDelegate{
 
+    var orderId: String = ""
+    
+    lazy var addressesTable: UITableView = {
+        let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.tableFooterView = UIView()
+        tableView.separatorColor = XFConstants.Color.separatorLine
+        tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        tableView.register(XFPayWayBillContentTableViewCell.self, forCellReuseIdentifier: "XFPayWayBillContentTableViewCell")
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let addressesTable: UITableView! = {
-            let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.register(XFPayWayBillContentTableViewCell.self, forCellReuseIdentifier: "XFPayWayBillContentTableViewCell")
-            return tableView
-        }()
+        
         self.view.addSubview(addressesTable)
         addressesTable.tableFooterView = UIView()
         addressesTable.snp.makeConstraints({ (make) in
             make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         })
-        // Do any additional setup after loading the view.
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func backToParentController() {
+        navigationController?.popToRootViewController(animated: true)
     }
-    
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2;
