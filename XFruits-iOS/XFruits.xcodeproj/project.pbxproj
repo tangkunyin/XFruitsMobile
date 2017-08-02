@@ -298,7 +298,6 @@
 		864430791E9A277B00D41BCC /* FruitsCategory */ = {
 			isa = PBXGroup;
 			children = (
-				8690FED61ED176730051A16D /* Model */,
 				8690FED71ED176730051A16D /* View */,
 				8690FEE21ED179560051A16D /* XFAllCategoryListViewController.swift */,
 				862672CC1EFE42B50062B52B /* XFCategoryViewController.swift */,
@@ -310,7 +309,6 @@
 		8644307A1E9A277B00D41BCC /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				86C055451EBC40DC0087E135 /* Model */,
 				862672D01EFE432C0062B52B /* XFIndexViewController.swift */,
 			);
 			path = HomePage;
@@ -480,13 +478,6 @@
 			path = widget;
 			sourceTree = "<group>";
 		};
-		8690FED61ED176730051A16D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		8690FED71ED176730051A16D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,13 +515,6 @@
 				86ADDCDA1F2B656700881CFA /* XFCheckoutInfo.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		86C055451EBC40DC0087E135 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		86CB2FE51EAB4959009972A8 /* Frameworks */ = {
