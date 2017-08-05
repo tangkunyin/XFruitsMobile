@@ -14,7 +14,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     lazy var userNameLabel:UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
-        label.font  = XFConstants.Font.pfn14
+//        label.font  = XFConstants.Font.mainMenuFont
         label.numberOfLines = 0
         label.textAlignment = NSTextAlignment.left
         return label
@@ -24,8 +24,8 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     lazy var mobileLabel:UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
-        label.font  =  XFConstants.Font.pfn14
-        label.textAlignment = NSTextAlignment.right
+//        label.font  =  XFConstants.Font.mainMenuFont
+        label.textAlignment = NSTextAlignment.left
         return label
     }()
     
@@ -33,7 +33,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     lazy var addressLabel:UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
-        label.font  = XFConstants.Font.pfn12
+//        label.font  = XFConstants.Font.mainBodyFont
         label.textAlignment = NSTextAlignment.left
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = false
@@ -45,7 +45,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         let btn = UIButton.init(type: .custom)
         btn.setTitle("自己家", for: .normal)
         btn.setTitleColor(colorWithRGB(255, g: 105, b: 105), for:.normal)
-        btn.titleLabel?.font = XFConstants.Font.pfn10
+//        btn.titleLabel?.font = XFConstants.Font.bottomMenuFont
         btn.layer.borderColor = colorWithRGB(255, g: 105, b: 105).cgColor
         btn.layer.borderWidth = 1
         btn.layer.masksToBounds = true
@@ -74,12 +74,12 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     func setMyAddress(address:XFAddress)  {
         userNameLabel.text = address.recipient
         mobileLabel.text = address.cellPhone
-        addressLabel.text = address.districtCode
+        addressLabel.text = address.districtName
+        
         addressCategoryBtn.setTitle(address.label, for: .normal)
     }
     
     func  setUpUI() {
-        
         addSubview(editAddressBtn)
         addSubview(userNameLabel)
         addSubview(mobileLabel)
@@ -92,13 +92,9 @@ class XFAddressesManageTableViewCell: UITableViewCell {
             make.size.equalTo(CGSize(width: 30, height: 30))
         })
         userNameLabel.snp.makeConstraints({ (make) in
-//            make.size.equalTo(CGSize(width: 60, height: 20))
             make.left.top.equalTo(self).offset(10)
-            make.width.lessThanOrEqualTo(60)
+            make.width.lessThanOrEqualTo(100)
             make.height.equalTo(20)
-
-
-//            make.right.equalTo(mobileLabel.snp.left)
         })
         
         
@@ -122,13 +118,10 @@ class XFAddressesManageTableViewCell: UITableViewCell {
             make.right.equalTo(editAddressBtn.snp.left).offset(-5)
             make.bottom.equalTo(self).offset(-5)
         })
-        
-       
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }
 

@@ -146,16 +146,12 @@ public final class XFCommonService: XFNetworking {
     }
 
 
-    // 请求三级联动的地址   http://api.10fruits.net/address/district?page=1&&size=4000
+    // 请求三级联动的地址   http://api.10fruits.net/address/district
     
-    func allAvailableAddress(page:Int,size:Int ,  _ completion:@escaping XFResponse) {
-        self.doGet(withUrl: url("/address/district?page=\(page)&size=\(size)")) { (success, respData) in
-            
-//            if success, respData is NSDictionary, let list:NSArray = respData["content"] {
-//                 completion([XFAvailableAddress].deserialize(from: JSON(list).rawString()) ?? [])
-//            }
-            if success, respData is NSDictionary, let dict = respData as? NSDictionary{
-               completion(XFAvailableAddressDict.deserialize(from: dict) ?? XFAvailableAddressDict())
+    func allAvailableAddress( _ completion:@escaping XFResponse) {
+        self.doGet(withUrl: url("/address/district")) { (success, respData) in
+            if success  {
+                completion(respData as! Bool)
             }
         }
 

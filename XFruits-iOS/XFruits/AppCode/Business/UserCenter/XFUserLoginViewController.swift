@@ -11,9 +11,6 @@ import MBProgressHUD
 
 class XFUserLoginViewController: XFBaseSubViewController {
     var backgroudImageView:UIImageView? // 背景图
-    var brandImageView:UIImageView? // 品牌logo
-    
-    var mobileTextField:UITextField?  // 手机号
     var passwordTextField:UITextField? // 密码
     
     var pwdSecurityBtn:UIButton?  //密码眼睛
@@ -21,6 +18,27 @@ class XFUserLoginViewController: XFBaseSubViewController {
     var loginBtn:UIButton?  //登录按钮
     var forgetPwdBtn:UIButton? // 忘记密码
     var registAccount:UIButton? // 注册用户
+    
+    // 品牌logo
+    lazy var brandImageView:UIImageView = {
+        let brandImageView = UIImageView.init(image: UIImage.imageWithNamed("logo"))
+        return brandImageView
+    }()
+    
+    
+    lazy var mobileTextField:UITextField = {
+        // 手机号
+        let mobileTextField = UITextField()
+        mobileTextField.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
+         mobileTextField.layer.borderWidth = 0.5
+         mobileTextField.layer.cornerRadius = 10
+        mobileTextField.keyboardType = .numberPad
+         mobileTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
+         mobileTextField.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes: [NSAttributedStringKey.foregroundColor:XFConstants.Color.pinkishGrey,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)])
+        return mobileTextField
+    }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +55,12 @@ class XFUserLoginViewController: XFBaseSubViewController {
         //            // 屏幕大小
         //            make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         //        })
-        
-        // 品牌logo
-        self.brandImageView = UIImageView.init(image: UIImage.imageWithNamed("logo"))
-        self.view.addSubview(self.brandImageView!)
-        
-        self.brandImageView?.snp.makeConstraints({ (make) in
+     
+        view.addSubview(brandImageView)
+
+        view.addSubview(self.mobileTextField)
+
+        brandImageView.snp.makeConstraints({ (make) in
             // 距离顶部110,宽92，高100，居中
             make.top.equalTo(self.view).offset(110)
             make.width.equalTo(92)
@@ -51,20 +69,10 @@ class XFUserLoginViewController: XFBaseSubViewController {
             
         })
         
-        
-        // 手机号
-        self.mobileTextField = UITextField()
-        self.view.addSubview(self.mobileTextField!)
-        
-        self.mobileTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
-        self.mobileTextField?.layer.borderWidth = 0.5
-        self.mobileTextField?.layer.cornerRadius = 10
-        self.mobileTextField?.keyboardType = .numberPad
-        self.mobileTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
-        self.mobileTextField?.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes: [NSAttributedStringKey.foregroundColor:XFConstants.Color.pinkishGrey,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)])
-        self.mobileTextField?.snp.makeConstraints({ (make) in
+       
+        mobileTextField.snp.makeConstraints({ (make) in
             
-            make.top.equalTo((self.brandImageView?.snp.bottom)!).offset(20)
+            make.top.equalTo(self.brandImageView.snp.bottom).offset(20)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
             make.height.equalTo(40)
@@ -83,7 +91,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
         
         self.passwordTextField?.attributedPlaceholder = NSAttributedString(string: "请输入密码", attributes: [NSAttributedStringKey.foregroundColor:XFConstants.Color.pinkishGrey,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)])
         self.passwordTextField?.snp.makeConstraints({ (make) in
-            make.top.equalTo((self.mobileTextField?.snp.bottom)!).offset(20)
+            make.top.equalTo(self.mobileTextField.snp.bottom).offset(20)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
             make.height.equalTo(40)
@@ -91,7 +99,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
         
         
         // test
-        self.mobileTextField?.text = "18658054127"
+        self.mobileTextField.text = "18658054127"
         self.passwordTextField?.text = "123456"
         
         self.pwdSecurityBtn = UIButton.init(frame:CGRect.init(x: 0, y:0, width: 22, height:22))
@@ -187,7 +195,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
         
         weak var weakSelf = self
         
-        guard let phone = mobileTextField?.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
+        guard let phone = mobileTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             MBProgressHUD.showError("手机号不能为空")
             return
         }
@@ -224,7 +232,5 @@ class XFUserLoginViewController: XFBaseSubViewController {
     @objc private func cancelLogin(){
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
 }
 

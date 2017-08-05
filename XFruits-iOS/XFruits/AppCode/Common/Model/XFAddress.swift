@@ -17,8 +17,8 @@ struct XFAddress: HandyJSON {
     
     var recipient:String?
     
-    var districtCode:String?
-    
+    var districtCode:NSNumber?
+    var districtName:String?
     var address:String?
     
     var cellPhone:String?
@@ -31,17 +31,32 @@ struct XFAddress: HandyJSON {
 
 }
 
+struct XFAddressJson: HandyJSON{
+    var district:Array<XFAddressDistrict>?
+    var md5:String?
+}
+struct XFAddressDistrict: HandyJSON{
+    var name:String?
+    var code:Int?
+    var expressFee:Int?
 
-struct XFAvailableAddressDict:  HandyJSON {
-    var page:Int?
-    var size:Int?
-    var content:Array<XFAvailableAddressSingle>?
+    var district:Array<XFFirstDistrict>?
+//    var md5:String?
 }
 
 
-struct XFAvailableAddressSingle: HandyJSON {
+struct XFFirstDistrict:  HandyJSON {
+    var name:String?
+    
+    var subDistrict:Array<XFSubDistrict>?
+}
+
+
+struct XFSubDistrict: HandyJSON {
+    var name:String?
     var code:Int?
-    var city:String?
-    var county:String?
-    var province:String?
+    var expressFee:Int?
+    
+    
+    
 }

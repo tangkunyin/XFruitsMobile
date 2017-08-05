@@ -8,10 +8,12 @@
 
 import UIKit
 import MBProgressHUD
-
+import SwiftyJSON
 fileprivate let UC_CellIdentifier = "XFUserCenterUC_CellIdentifier"
 
 class XFUCenterCommonCell: UITableViewCell {
+    
+   
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,6 +32,37 @@ class XFUCenterCommonCell: UITableViewCell {
 }
 
 class XFUserCenterViewController: XFBaseViewController {
+    fileprivate lazy var dataSource: NSDictionary = {
+        let dataSource: NSDictionary = NSDictionary()
+        return dataSource
+    }()
+    
+    func test1() {
+        let path:String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+//        return "\(path)/XFruits_currentUser.info"
+//        let path1:NSString = "\(path)/city.json" as NSString
+       
+        
+
+        
+        
+        print(self.dataSource)
+//        let url = NSURL.fileURL(withPath: path)
+//        do{
+//             let data:NSData = NSData.init(contentsOfFile: url)
+//            let json:Any = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+//
+//        }
+//
+//
+        
+        
+        //        let data = NSData.init(contentsOfFile: path) //NSDictionary.init(contentsOfFile: path!)!
+//        let str:String = NSString.init(contentsOfFile: path, encoding: UTF8)
+////        let district:NSArray = dict["district"] as! NSArray
+//        print(str)
+        
+    }
     
     lazy var girdGroupInfo: Array<Array<Dictionary<String, String>>> = {
         return [
@@ -70,9 +103,13 @@ class XFUserCenterViewController: XFBaseViewController {
         super.viewWillDisappear(animated)
         navigationBar?.isHidden = false
     }
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        test1()
+        
+        
         XFAvailableAddressUtils.shared.cacheAddressAvailable()
         if #available(iOS 11.0, *) {
             centerTable.contentInsetAdjustmentBehavior = .never
@@ -106,8 +143,18 @@ class XFUserCenterViewController: XFBaseViewController {
                     MBProgressHUD.showError("还在开发中，别急好吧...")
                 } else if section == 2 && row == 0 {
                     // 地址
-                    let addressManageVC = XFUserAddressesMangageViewController()
-                    navigationController?.pushViewController(addressManageVC, animated: true)
+                    if XFUserGlobal.shared.isLogin {
+                        let addressManageVC = XFUserAddressesMangageViewController()
+                        navigationController?.pushViewController(addressManageVC, animated: true)
+                        
+                    }
+                    else{
+                        // 进入登录页面
+                        let login = XFUserLoginViewController()
+                        let nav = UINavigationController.init(rootViewController: login)
+                        present(nav, animated: true, completion: nil)
+                    }
+                   
                 } else if section == 2 && row == 1 {
                     //TODO 卡劵、优惠券、收藏、积分
                     MBProgressHUD.showError("还在开发中，别急好吧...")

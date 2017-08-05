@@ -1,1679 +1,2212 @@
-{
-    
-    "content": [{
-                "code": 110000,
-                "city": "",
-                "county": "",
-                "province": "北京市"
-                }, {
-                "code": 110100,
-                "city": "北京市",
-                "county": "",
-                "province": "北京市"
-                }, {
-                "code": 110101,
-                "city": "北京市",
-                "county": "东城区",
-                "province": "北京市"
-                }, {
-                "code": 110102,
-                "city": "北京市",
-                "county": "西城区",
-                "province": "北京市"
-                }, {
-                "code": 110105,
-                "city": "北京市",
-                "county": "朝阳区",
-                "province": "北京市"
-                }, {
-                "code": 110106,
-                "city": "北京市",
-                "county": "丰台区",
-                "province": "北京市"
-                }, {
-                "code": 110107,
-                "city": "北京市",
-                "county": "石景山区",
-                "province": "北京市"
-                }, {
-                "code": 110108,
-                "city": "北京市",
-                "county": "海淀区",
-                "province": "北京市"
-                }, {
-                "code": 110109,
-                "city": "北京市",
-                "county": "门头沟区",
-                "province": "北京市"
-                }, {
-                "code": 110111,
-                "city": "北京市",
-                "county": "房山区",
-                "province": "北京市"
-                }, {
-                "code": 110112,
-                "city": "北京市",
-                "county": "通州区",
-                "province": "北京市"
-                }, {
-                "code": 110113,
-                "city": "北京市",
-                "county": "顺义区",
-                "province": "北京市"
-                }, {
-                "code": 110114,
-                "city": "北京市",
-                "county": "昌平区",
-                "province": "北京市"
-                }, {
-                "code": 110115,
-                "city": "北京市",
-                "county": "大兴区",
-                "province": "北京市"
-                }, {
-                "code": 110116,
-                "city": "北京市",
-                "county": "怀柔区",
-                "province": "北京市"
-                }, {
-                "code": 110117,
-                "city": "北京市",
-                "county": "平谷区",
-                "province": "北京市"
-                }, {
-                "code": 110128,
-                "city": "北京市",
-                "county": "密云县",
-                "province": "北京市"
-                }, {
-                "code": 110129,
-                "city": "北京市",
-                "county": "延庆县",
-                "province": "北京市"
-                }, {
-                "code": 120000,
-                "city": "",
-                "county": "",
-                "province": "天津市"
-                }, {
-                "code": 120100,
-                "city": "天津市",
-                "county": "",
-                "province": "天津市"
-                }, {
-                "code": 120101,
-                "city": "天津市",
-                "county": "和平区",
-                "province": "天津市"
-                }, {
-                "code": 120102,
-                "city": "天津市",
-                "county": "河东区",
-                "province": "天津市"
-                }, {
-                "code": 120103,
-                "city": "天津市",
-                "county": "河西区",
-                "province": "天津市"
-                }, {
-                "code": 120104,
-                "city": "天津市",
-                "county": "南开区",
-                "province": "天津市"
-                }, {
-                "code": 120105,
-                "city": "天津市",
-                "county": "河北区",
-                "province": "天津市"
-                }, {
-                "code": 120106,
-                "city": "天津市",
-                "county": "红桥区",
-                "province": "天津市"
-                }, {
-                "code": 120110,
-                "city": "天津市",
-                "county": "东丽区",
-                "province": "天津市"
-                }, {
-                "code": 120111,
-                "city": "天津市",
-                "county": "西青区",
-                "province": "天津市"
-                }, {
-                "code": 120112,
-                "city": "天津市",
-                "county": "津南区",
-                "province": "天津市"
-                }, {
-                "code": 120113,
-                "city": "天津市",
-                "county": "北辰区",
-                "province": "天津市"
-                }, {
-                "code": 120114,
-                "city": "天津市",
-                "county": "武清区",
-                "province": "天津市"
-                }, {
-                "code": 120115,
-                "city": "天津市",
-                "county": "宝坻区",
-                "province": "天津市"
-                }, {
-                "code": 120116,
-                "city": "天津市",
-                "county": "滨海新区",
-                "province": "天津市"
-                }, {
-                "code": 120121,
-                "city": "天津市",
-                "county": "宁河县",
-                "province": "天津市"
-                }, {
-                "code": 120123,
-                "city": "天津市",
-                "county": "静海县",
-                "province": "天津市"
-                }, {
-                "code": 120125,
-                "city": "天津市",
-                "county": "蓟县",
-                "province": "天津市"
-                }, {
-                "code": 130000,
-                "city": "",
-                "county": "",
-                "province": "河北省"
-                }, {
-                "code": 130100,
-                "city": "石家庄市",
-                "county": "",
-                "province": "河北省"
-                }, {
-                "code": 130102,
-                "city": "石家庄市",
-                "county": "长安区",
-                "province": "河北省"
-                }, {
-                "code": 130103,
-                "city": "石家庄市",
-                "county": "桥东区",
-                "province": "河北省"
-                }, {
-                "code": 130104,
-                "city": "石家庄市",
-                "county": "桥西区",
-                "province": "河北省"
-                }, {
-                "code": 130105,
-                "city": "石家庄市",
-                "county": "新华区",
-                "province": "河北省"
-                }, {
-                "code": 130107,
-                "city": "石家庄市",
-                "county": "井陉矿区",
-                "province": "河北省"
-                }, {
-                "code": 130108,
-                "city": "石家庄市",
-                "county": "裕华区",
-                "province": "河北省"
-                }, {
-                "code": 130121,
-                "city": "石家庄市",
-                "county": "井陉县",
-                "province": "河北省"
-                }, {
-                "code": 130123,
-                "city": "石家庄市",
-                "county": "正定县",
-                "province": "河北省"
-                }, {
-                "code": 130124,
-                "city": "石家庄市",
-                "county": "栾城县",
-                "province": "河北省"
-                }, {
-                "code": 130125,
-                "city": "石家庄市",
-                "county": "行唐县",
-                "province": "河北省"
-                }, {
-                "code": 130126,
-                "city": "石家庄市",
-                "county": "灵寿县",
-                "province": "河北省"
-                }, {
-                "code": 130127,
-                "city": "石家庄市",
-                "county": "高邑县",
-                "province": "河北省"
-                }, {
-                "code": 130128,
-                "city": "石家庄市",
-                "county": "深泽县",
-                "province": "河北省"
-                }, {
-                "code": 130129,
-                "city": "石家庄市",
-                "county": "赞皇县",
-                "province": "河北省"
-                }, {
-                "code": 130130,
-                "city": "石家庄市",
-                "county": "无极县",
-                "province": "河北省"
-                }, {
-                "code": 130131,
-                "city": "石家庄市",
-                "county": "平山县",
-                "province": "河北省"
-                }, {
-                "code": 130132,
-                "city": "石家庄市",
-                "county": "元氏县",
-                "province": "河北省"
-                }, {
-                "code": 130133,
-                "city": "石家庄市",
-                "county": "赵县",
-                "province": "河北省"
-                }, {
-                "code": 130181,
-                "city": "石家庄市",
-                "county": "辛集市",
-                "province": "河北省"
-                }, {
-                "code": 130182,
-                "city": "石家庄市",
-                "county": "藁城市",
-                "province": "河北省"
-                }, {
-                "code": 130183,
-                "city": "石家庄市",
-                "county": "晋州市",
-                "province": "河北省"
-                }, {
-                "code": 130184,
-                "city": "石家庄市",
-                "county": "新乐市",
-                "province": "河北省"
-                }, {
-                "code": 130185,
-                "city": "石家庄市",
-                "county": "鹿泉市",
-                "province": "河北省"
-                }, {
-                "code": 130200,
-                "city": "唐山市",
-                "county": "",
-                "province": "河北省"
-                }, {
-                "code": 130202,
-                "city": "唐山市",
-                "county": "路南区",
-                "province": "河北省"
-                }, {
-                "code": 130203,
-                "city": "唐山市",
-                "county": "路北区",
-                "province": "河北省"
-                }, {
-                "code": 130204,
-                "city": "唐山市",
-                "county": "古冶区",
-                "province": "河北省"
-                }, {
-                "code": 130205,
-                "city": "唐山市",
-                "county": "开平区",
-                "province": "河北省"
-                }, {
-                "code": 130207,
-                "city": "唐山市",
-                "county": "丰南区",
-                "province": "河北省"
-                }, {
-                "code": 130208,
-                "city": "唐山市",
-                "county": "丰润区",
-                "province": "河北省"
-                }, {
-                "code": 130223,
-                "city": "唐山市",
-                "county": "滦县",
-                "province": "河北省"
-                }, {
-                "code": 130224,
-                "city": "唐山市",
-                "county": "滦南县",
-                "province": "河北省"
-                }, {
-                "code": 130225,
-                "city": "唐山市",
-                "county": "乐亭县",
-                "province": "河北省"
-                }, {
-                "code": 130227,
-                "city": "唐山市",
-                "county": "迁西县",
-                "province": "河北省"
-                }, {
-                "code": 130229,
-                "city": "唐山市",
-                "county": "玉田县",
-                "province": "河北省"
-                }, {
-                "code": 130230,
-                "city": "唐山市",
-                "county": "曹妃甸区",
-                "province": "河北省"
-                }, {
-                "code": 130281,
-                "city": "唐山市",
-                "county": "遵化市",
-                "province": "河北省"
-                }, {
-                "code": 130283,
-                "city": "唐山市",
-                "county": "迁安市",
-                "province": "河北省"
-                }, {
-                "code": 130300,
-                "city": "秦皇岛市",
-                "county": "",
-                "province": "河北省"
-                }, {
-                "code": 130302,
-                "city": "秦皇岛市",
-                "county": "海港区",
-                "province": "河北省"
-                }, {
-                "code": 130303,
-                "city": "秦皇岛市",
-                "county": "山海关区",
-                "province": "河北省"
-                }, {
-                "code": 130304,
-                "city": "秦皇岛市",
-                "county": "北戴河区",
-                "province": "河北省"
-                }, {
-                "code": 130321,
-                "city": "秦皇岛市",
-                "county": "青龙满族自治县",
-                "province": "河北省"
-                }, {
-                "code": 130322,
-                "city": "秦皇岛市",
-                "county": "昌黎县",
-                "province": "河北省"
-                }, {
-                "code": 130323,
-                "city": "秦皇岛市",
-                "county": "抚宁县",
-                "province": "河北省"
-                }, {
-                "code": 130324,
-                "city": "秦皇岛市",
-                "county": "卢龙县",
-                "province": "河北省"
-                }, {
-                "code": 130400,
-                "city": "邯郸市",
-                "county": "",
-                "province": "河北省"
-                }, {
-                "code": 130402,
-                "city": "邯郸市",
-                "county": "邯山区",
-                "province": "河北省"
-                }, {
-                "code": 130403,
-                "city": "邯郸市",
-                "county": "丛台区",
-                "province": "河北省"
-                }, {
-                "code": 130404,
-                "city": "邯郸市",
-                "county": "复兴区",
-                "province": "河北省"
-                }, {
-                "code": 130406,
-                "city": "邯郸市",
-                "county": "峰峰矿区",
-                "province": "河北省"
-                }, {
-                "code": 130421,
-                "city": "邯郸市",
-                "county": "邯郸县",
-                "province": "河北省"
-                }, {
-                "code": 130423,
-                "city": "邯郸市",
-                "county": "临漳县",
-                "province": "河北省"
-                }, {
-                "code": 130424,
-                "city": "邯郸市",
-                "county": "成安县",
-                "province": "河北省"
-                }, {
-                "code": 130425,
-                "city": "邯郸市",
-                "county": "大名县",
-                "province": "河北省"
-                }, {
-                "code": 130426,
-                "city": "邯郸市",
-                "county": "涉县",
-                "province": "河北省"
-                }, {
-                "code": 130427,
-                "city": "邯郸市",
-                "county": "磁县",
-                "province": "河北省"
-                }, {
-                "code": 130428,
-                "city": "邯郸市",
-                "county": "肥乡县",
-                "province": "河北省"
-                }, {
-                "code": 130429,
-                "city": "邯郸市",
-                "county": "永年县",
-                "province": "河北省"
-                }, {
-                "code": 130430,
-                "city": "邯郸市",
-                "county": "邱县",
-                "province": "河北省"
-                }, {
-                "code": 130431,
-                "city": "邯郸市",
-                "county": "鸡泽县",
-                "province": "河北省"
-                }, {
-                "code": 130432,
-                "city": "邯郸市",
-                "county": "广平县",
-                "province": "河北省"
-                }, {
-                "code": 130433,
-                "city": "邯郸市",
-                "county": "馆陶县",
-                "province": "河北省"
-                }, {
-                "code": 130434,
-                "city": "邯郸市",
-                "county": "魏县",
-                "province": "河北省"
-                }, {
-                "code": 130435,
-                "city": "邯郸市",
-                "county": "曲周县",
-                "province": "河北省"
-                }, {
-                "code": 130481,
-                "city": "邯郸市",
-                "county": "武安市",
-                "province": "河北省"
-                }, {
-                "code": 130500,
-                "city": "邢台市",
-                "county": "",
-                "province": "河北省"
-                }, {
-                "code": 130502,
-                "city": "邢台市",
-                "county": "桥东区",
-                "province": "河北省"
-                }, {
-                "code": 130503,
-                "city": "邢台市",
-                "county": "桥西区",
-                "province": "河北省"
-                }, {
-                "code": 130521,
-                "city": "邢台市",
-                "county": "邢台县",
-                "province": "河北省"
-                }, {
-                "code": 130522,
-                "city": "邢台市",
-                "county": "临城县",
-                "province": "河北省"
-                }, {
-                "code": 130523,
-                "city": "邢台市",
-                "county": "内丘县",
-                "province": "河北省"
-                }, {
-                "code": 130524,
-                "city": "邢台市",
-                "county": "柏乡县",
-                "province": "河北省"
-                }, {
-                "code": 130525,
-                "city": "邢台市",
-                "county": "隆尧县",
-                "province": "河北省"
-                }, {
-                "code": 130526,
-                "city": "邢台市",
-                "county": "任县",
-                "province": "河北省"
-                }, {
-                "code": 130527,
-                "city": "邢台市",
-                "county": "南和县",
-                "province": "河北省"
-                }, {
-                "code": 130528,
-                "city": "邢台市",
-                "county": "宁晋县",
-                "province": "河北省"
-                }, {
-                "code": 130529,
-                "city": "邢台市",
-                "county": "巨鹿县",
-                "province": "河北省"
-                }, {
-                "code": 130530,
-                "city": "邢台市",
-                "county": "新河县",
-                "province": "河北省"
-                }, {
-                "code": 130531,
-                "city": "邢台市",
-                "county": "广宗县",
-                "province": "河北省"
-                }, {
-                "code": 130532,
-                "city": "邢台市",
-                "county": "平乡县",
-                "province": "河北省"
-                }, {
-                "code": 130533,
-                "city": "邢台市",
-                "county": "威县",
-                "province": "河北省"
-                }, {
-                "code": 130534,
-                "city": "邢台市",
-                "county": "清河县",
-                "province": "河北省"
-                }, {
-                "code": 130535,
-                "city": "邢台市",
-                "county": "临西县",
-                "province": "河北省"
-                }, {
-                "code": 130581,
-                "city": "邢台市",
-                "county": "南宫市",
-                "province": "河北省"
-                }, {
-                "code": 130582,
-                "city": "邢台市",
-                "county": "沙河市",
-                "province": "河北省"
-                }, {
-                "code": 130600,
-                "city": "保定市",
-                "county": "",
-                "province": "河北省"
-                }, {
-                "code": 130602,
-                "city": "保定市",
-                "county": "新市区",
-                "province": "河北省"
-                }, {
-                "code": 130603,
-                "city": "保定市",
-                "county": "北市区",
-                "province": "河北省"
-                }, {
-                "code": 130604,
-                "city": "保定市",
-                "county": "南市区",
-                "province": "河北省"
-                }, {
-                "code": 130621,
-                "city": "保定市",
-                "county": "满城县",
-                "province": "河北省"
-                }, {
-                "code": 130622,
-                "city": "保定市",
-                "county": "清苑县",
-                "province": "河北省"
-                }, {
-                "code": 130623,
-                "city": "保定市",
-                "county": "涞水县",
-                "province": "河北省"
-                }, {
-                "code": 130624,
-                "city": "保定市",
-                "county": "阜平县",
-                "province": "河北省"
-                }, {
-                "code": 130625,
-                "city": "保定市",
-                "county": "徐水县",
-                "province": "河北省"
-                }, {
-                "code": 130626,
-                "city": "保定市",
-                "county": "定兴县",
-                "province": "河北省"
-                }, {
-                "code": 130627,
-                "city": "保定市",
-                "county": "唐县",
-                "province": "河北省"
-                }, {
-                "code": 130628,
-                "city": "保定市",
-                "county": "高阳县",
-                "province": "河北省"
-                }, {
-                "code": 130629,
-                "city": "保定市",
-                "county": "容城县",
-                "province": "河北省"
-                }, {
-                "code": 130630,
-                "city": "保定市",
-                "county": "涞源县",
-                "province": "河北省"
-                }, {
-                "code": 130631,
-                "city": "保定市",
-                "county": "望都县",
-                "province": "河北省"
-                }, {
-                "code": 130632,
-                "city": "保定市",
-                "county": "安新县",
-                "province": "河北省"
-                }, {
-                "code": 130633,
-                "city": "保定市",
-                "county": "易县",
-                "province": "河北省"
-                }, {
-                "code": 130634,
-                "city": "保定市",
-                "county": "曲阳县",
-                "province": "河北省"
-                }, {
-                "code": 130635,
-                "city": "保定市",
-                "county": "蠡县",
-                "province": "河北省"
-                }, {
-                "code": 130636,
-                "city": "保定市",
-                "county": "顺平县",
-                "province": "河北省"
-                }, {
-                "code": 130637,
-                "city": "保定市",
-                "county": "博野县",
-                "province": "河北省"
-                }, {
-                "code": 130638,
-                "city": "保定市",
-                "county": "雄县",
-                "province": "河北省"
-                }, {
-                "code": 130681,
-                "city": "保定市",
-                "county": "涿州市",
-                "province": "河北省"
-                }, {
-                "code": 130682,
-                "city": "保定市",
-                "county": "定州市",
-                "province": "河北省"
-                }, {
-                "code": 130683,
-                "city": "保定市",
-                "county": "安国市",
-                "province": "河北省"
-                }, {
-                "code": 130684,
-                "city": "保定市",
-                "county": "高碑店市",
-                "province": "河北省"
-                }, {
-                "code": 130700,
-                "city": "张家口市",
-                "county": "",
-                "province": "河北省"
-                }, {
-                "code": 130702,
-                "city": "张家口市",
-                "county": "桥东区",
-                "province": "河北省"
-                }, {
-                "code": 130703,
-                "city": "张家口市",
-                "county": "桥西区",
-                "province": "河北省"
-                }, {
-                "code": 130705,
-                "city": "张家口市",
-                "county": "宣化区",
-                "province": "河北省"
-                }, {
-                "code": 130706,
-                "city": "张家口市",
-                "county": "下花园区",
-                "province": "河北省"
-                }, {
-                "code": 130721,
-                "city": "张家口市",
-                "county": "宣化县",
-                "province": "河北省"
-                }, {
-                "code": 130722,
-                "city": "张家口市",
-                "county": "张北县",
-                "province": "河北省"
-                }, {
-                "code": 130723,
-                "city": "张家口市",
-                "county": "康保县",
-                "province": "河北省"
-                }, {
-                "code": 130724,
-                "city": "张家口市",
-                "county": "沽源县",
-                "province": "河北省"
-                }, {
-                "code": 130725,
-                "city": "张家口市",
-                "county": "尚义县",
-                "province": "河北省"
-                }, {
-                "code": 130726,
-                "city": "张家口市",
-                "county": "蔚县",
-                "province": "河北省"
-                }, {
-                "code": 130727,
-                "city": "张家口市",
-                "county": "阳原县",
-                "province": "河北省"
-                }, {
-                "code": 130728,
-                "city": "张家口市",
-                "county": "怀安县",
-                "province": "河北省"
-                }, {
-                "code": 130729,
-                "city": "张家口市",
-                "county": "万全县",
-                "province": "河北省"
-                }, {
-                "code": 130730,
-                "city": "张家口市",
-                "county": "怀来县",
-                "province": "河北省"
-                }, {
-                "code": 130731,
-                "city": "张家口市",
-                "county": "涿鹿县",
-                "province": "河北省"
-                }, {
-                "code": 130732,
-                "city": "张家口市",
-                "county": "赤城县",
-                "province": "河北省"
-                }, {
-                "code": 130733,
-                "city": "张家口市",
-                "county": "崇礼县",
-                "province": "河北省"
-                }, {
-                "code": 130800,
-                "city": "承德市",
-                "county": "",
-                "province": "河北省"
-                }, {
-                "code": 130802,
-                "city": "承德市",
-                "county": "双桥区",
-                "province": "河北省"
-                }, {
-                "code": 130803,
-                "city": "承德市",
-                "county": "双滦区",
-                "province": "河北省"
-                }, {
-                "code": 130804,
-                "city": "承德市",
-                "county": "鹰手营子矿区",
-                "province": "河北省"
-                }, {
-                "code": 130821,
-                "city": "承德市",
-                "county": "承德县",
-                "province": "河北省"
-                }, {
-                "code": 130822,
-                "city": "承德市",
-                "county": "兴隆县",
-                "province": "河北省"
-                }, {
-                "code": 130823,
-                "city": "承德市",
-                "county": "平泉县",
-                "province": "河北省"
-                }, {
-                "code": 130824,
-                "city": "承德市",
-                "county": "滦平县",
-                "province": "河北省"
-                }, {
-                "code": 130825,
-                "city": "承德市",
-                "county": "隆化县",
-                "province": "河北省"
-                }, {
-                "code": 130826,
-                "city": "承德市",
-                "county": "丰宁满族自治县",
-                "province": "河北省"
-                }, {
-                "code": 130827,
-                "city": "承德市",
-                "county": "宽城满族自治县",
-                "province": "河北省"
-                }, {
-                "code": 130828,
-                "city": "承德市",
-                "county": "围场满族蒙古族自治县",
-                "province": "河北省"
-                }, {
-                "code": 130900,
-                "city": "沧州市",
-                "county": "",
-                "province": "河北省"
-                }, {
-                "code": 130902,
-                "city": "沧州市",
-                "county": "新华区",
-                "province": "河北省"
-                }, {
-                "code": 130903,
-                "city": "沧州市",
-                "county": "运河区",
-                "province": "河北省"
-                }, {
-                "code": 130921,
-                "city": "沧州市",
-                "county": "沧县",
-                "province": "河北省"
-                }, {
-                "code": 130922,
-                "city": "沧州市",
-                "county": "青县",
-                "province": "河北省"
-                }, {
-                "code": 130923,
-                "city": "沧州市",
-                "county": "东光县",
-                "province": "河北省"
-                }, {
-                "code": 130924,
-                "city": "沧州市",
-                "county": "海兴县",
-                "province": "河北省"
-                }, {
-                "code": 130925,
-                "city": "沧州市",
-                "county": "盐山县",
-                "province": "河北省"
-                }, {
-                "code": 130926,
-                "city": "沧州市",
-                "county": "肃宁县",
-                "province": "河北省"
-                }, {
-                "code": 130927,
-                "city": "沧州市",
-                "county": "南皮县",
-                "province": "河北省"
-                }, {
-                "code": 130928,
-                "city": "沧州市",
-                "county": "吴桥县",
-                "province": "河北省"
-                }, {
-                "code": 130929,
-                "city": "沧州市",
-                "county": "献县",
-                "province": "河北省"
-                }, {
-                "code": 130930,
-                "city": "沧州市",
-                "county": "孟村回族自治县",
-                "province": "河北省"
-                }, {
-                "code": 130981,
-                "city": "沧州市",
-                "county": "泊头市",
-                "province": "河北省"
-                }, {
-                "code": 130982,
-                "city": "沧州市",
-                "county": "任丘市",
-                "province": "河北省"
-                }, {
-                "code": 130983,
-                "city": "沧州市",
-                "county": "黄骅市",
-                "province": "河北省"
-                }, {
-                "code": 130984,
-                "city": "沧州市",
-                "county": "河间市",
-                "province": "河北省"
-                }, {
-                "code": 131000,
-                "city": "廊坊市",
-                "county": "",
-                "province": "河北省"
-                }, {
-                "code": 131002,
-                "city": "廊坊市",
-                "county": "安次区",
-                "province": "河北省"
-                }, {
-                "code": 131003,
-                "city": "廊坊市",
-                "county": "广阳区",
-                "province": "河北省"
-                }, {
-                "code": 131022,
-                "city": "廊坊市",
-                "county": "固安县",
-                "province": "河北省"
-                }, {
-                "code": 131023,
-                "city": "廊坊市",
-                "county": "永清县",
-                "province": "河北省"
-                }, {
-                "code": 131024,
-                "city": "廊坊市",
-                "county": "香河县",
-                "province": "河北省"
-                }, {
-                "code": 131025,
-                "city": "廊坊市",
-                "county": "大城县",
-                "province": "河北省"
-                }, {
-                "code": 131026,
-                "city": "廊坊市",
-                "county": "文安县",
-                "province": "河北省"
-                }, {
-                "code": 131028,
-                "city": "廊坊市",
-                "county": "大厂回族自治县",
-                "province": "河北省"
-                }, {
-                "code": 131081,
-                "city": "廊坊市",
-                "county": "霸州市",
-                "province": "河北省"
-                }, {
-                "code": 131082,
-                "city": "廊坊市",
-                "county": "三河市",
-                "province": "河北省"
-                }, {
-                "code": 131100,
-                "city": "衡水市",
-                "county": "",
-                "province": "河北省"
-                }, {
-                "code": 131102,
-                "city": "衡水市",
-                "county": "桃城区",
-                "province": "河北省"
-                }, {
-                "code": 131121,
-                "city": "衡水市",
-                "county": "枣强县",
-                "province": "河北省"
-                }, {
-                "code": 131122,
-                "city": "衡水市",
-                "county": "武邑县",
-                "province": "河北省"
-                }, {
-                "code": 131123,
-                "city": "衡水市",
-                "county": "武强县",
-                "province": "河北省"
-                }, {
-                "code": 131124,
-                "city": "衡水市",
-                "county": "饶阳县",
-                "province": "河北省"
-                }, {
-                "code": 131125,
-                "city": "衡水市",
-                "county": "安平县",
-                "province": "河北省"
-                }, {
-                "code": 131126,
-                "city": "衡水市",
-                "county": "故城县",
-                "province": "河北省"
-                }, {
-                "code": 131127,
-                "city": "衡水市",
-                "county": "景县",
-                "province": "河北省"
-                }, {
-                "code": 131128,
-                "city": "衡水市",
-                "county": "阜城县",
-                "province": "河北省"
-                }, {
-                "code": 131181,
-                "city": "衡水市",
-                "county": "冀州市",
-                "province": "河北省"
-                }, {
-                "code": 131182,
-                "city": "衡水市",
-                "county": "深州市",
-                "province": "河北省"
-                }, {
-                "code": 140000,
-                "city": "",
-                "county": "",
-                "province": "山西省"
-                }, {
-                "code": 140100,
-                "city": "太原市",
-                "county": "",
-                "province": "山西省"
-                }, {
-                "code": 140105,
-                "city": "太原市",
-                "county": "小店区",
-                "province": "山西省"
-                }, {
-                "code": 140106,
-                "city": "太原市",
-                "county": "迎泽区",
-                "province": "山西省"
-                }, {
-                "code": 140107,
-                "city": "太原市",
-                "county": "杏花岭区",
-                "province": "山西省"
-                }, {
-                "code": 140108,
-                "city": "太原市",
-                "county": "尖草坪区",
-                "province": "山西省"
-                }, {
-                "code": 140109,
-                "city": "太原市",
-                "county": "万柏林区",
-                "province": "山西省"
-                }, {
-                "code": 140110,
-                "city": "太原市",
-                "county": "晋源区",
-                "province": "山西省"
-                }, {
-                "code": 140121,
-                "city": "太原市",
-                "county": "清徐县",
-                "province": "山西省"
-                }, {
-                "code": 140122,
-                "city": "太原市",
-                "county": "阳曲县",
-                "province": "山西省"
-                }, {
-                "code": 140123,
-                "city": "太原市",
-                "county": "娄烦县",
-                "province": "山西省"
-                }, {
-                "code": 140181,
-                "city": "太原市",
-                "county": "古交市",
-                "province": "山西省"
-                }, {
-                "code": 140200,
-                "city": "大同市",
-                "county": "",
-                "province": "山西省"
-                }, {
-                "code": 140202,
-                "city": "大同市",
-                "county": "城区",
-                "province": "山西省"
-                }, {
-                "code": 140203,
-                "city": "大同市",
-                "county": "矿区",
-                "province": "山西省"
-                }, {
-                "code": 140211,
-                "city": "大同市",
-                "county": "南郊区",
-                "province": "山西省"
-                }, {
-                "code": 140212,
-                "city": "大同市",
-                "county": "新荣区",
-                "province": "山西省"
-                }, {
-                "code": 140221,
-                "city": "大同市",
-                "county": "阳高县",
-                "province": "山西省"
-                }, {
-                "code": 140222,
-                "city": "大同市",
-                "county": "天镇县",
-                "province": "山西省"
-                }, {
-                "code": 140223,
-                "city": "大同市",
-                "county": "广灵县",
-                "province": "山西省"
-                }, {
-                "code": 140224,
-                "city": "大同市",
-                "county": "灵丘县",
-                "province": "山西省"
-                }, {
-                "code": 140225,
-                "city": "大同市",
-                "county": "浑源县",
-                "province": "山西省"
-                }, {
-                "code": 140226,
-                "city": "大同市",
-                "county": "左云县",
-                "province": "山西省"
-                }, {
-                "code": 140227,
-                "city": "大同市",
-                "county": "大同县",
-                "province": "山西省"
-                }, {
-                "code": 140300,
-                "city": "阳泉市",
-                "county": "",
-                "province": "山西省"
-                }, {
-                "code": 140302,
-                "city": "阳泉市",
-                "county": "城区",
-                "province": "山西省"
-                }, {
-                "code": 140303,
-                "city": "阳泉市",
-                "county": "矿区",
-                "province": "山西省"
-                }, {
-                "code": 140311,
-                "city": "阳泉市",
-                "county": "郊区",
-                "province": "山西省"
-                }, {
-                "code": 140321,
-                "city": "阳泉市",
-                "county": "平定县",
-                "province": "山西省"
-                }, {
-                "code": 140322,
-                "city": "阳泉市",
-                "county": "盂县",
-                "province": "山西省"
-                }, {
-                "code": 140400,
-                "city": "长治市",
-                "county": "",
-                "province": "山西省"
-                }, {
-                "code": 140402,
-                "city": "长治市",
-                "county": "城区",
-                "province": "山西省"
-                }, {
-                "code": 140411,
-                "city": "长治市",
-                "county": "郊区",
-                "province": "山西省"
-                }, {
-                "code": 140421,
-                "city": "长治市",
-                "county": "长治县",
-                "province": "山西省"
-                }, {
-                "code": 140423,
-                "city": "长治市",
-                "county": "襄垣县",
-                "province": "山西省"
-                }, {
-                "code": 140424,
-                "city": "长治市",
-                "county": "屯留县",
-                "province": "山西省"
-                }, {
-                "code": 140425,
-                "city": "长治市",
-                "county": "平顺县",
-                "province": "山西省"
-                }, {
-                "code": 140426,
-                "city": "长治市",
-                "county": "黎城县",
-                "province": "山西省"
-                }, {
-                "code": 140427,
-                "city": "长治市",
-                "county": "壶关县",
-                "province": "山西省"
-                }, {
-                "code": 140428,
-                "city": "长治市",
-                "county": "长子县",
-                "province": "山西省"
-                }, {
-                "code": 140429,
-                "city": "长治市",
-                "county": "武乡县",
-                "province": "山西省"
-                }, {
-                "code": 140430,
-                "city": "长治市",
-                "county": "沁县",
-                "province": "山西省"
-                }, {
-                "code": 140431,
-                "city": "长治市",
-                "county": "沁源县",
-                "province": "山西省"
-                }, {
-                "code": 140481,
-                "city": "长治市",
-                "county": "潞城市",
-                "province": "山西省"
-                }, {
-                "code": 140500,
-                "city": "晋城市",
-                "county": "",
-                "province": "山西省"
-                }, {
-                "code": 140502,
-                "city": "晋城市",
-                "county": "城区",
-                "province": "山西省"
-                }, {
-                "code": 140521,
-                "city": "晋城市",
-                "county": "沁水县",
-                "province": "山西省"
-                }, {
-                "code": 140522,
-                "city": "晋城市",
-                "county": "阳城县",
-                "province": "山西省"
-                }, {
-                "code": 140524,
-                "city": "晋城市",
-                "county": "陵川县",
-                "province": "山西省"
-                }, {
-                "code": 140525,
-                "city": "晋城市",
-                "county": "泽州县",
-                "province": "山西省"
-                }, {
-                "code": 140581,
-                "city": "晋城市",
-                "county": "高平市",
-                "province": "山西省"
-                }, {
-                "code": 140600,
-                "city": "朔州市",
-                "county": "",
-                "province": "山西省"
-                }, {
-                "code": 140602,
-                "city": "朔州市",
-                "county": "朔城区",
-                "province": "山西省"
-                }, {
-                "code": 140603,
-                "city": "朔州市",
-                "county": "平鲁区",
-                "province": "山西省"
-                }, {
-                "code": 140621,
-                "city": "朔州市",
-                "county": "山阴县",
-                "province": "山西省"
-                }, {
-                "code": 140622,
-                "city": "朔州市",
-                "county": "应县",
-                "province": "山西省"
-                }, {
-                "code": 140623,
-                "city": "朔州市",
-                "county": "右玉县",
-                "province": "山西省"
-                }, {
-                "code": 140624,
-                "city": "朔州市",
-                "county": "怀仁县",
-                "province": "山西省"
-                }, {
-                "code": 140700,
-                "city": "晋中市",
-                "county": "",
-                "province": "山西省"
-                }, {
-                "code": 140702,
-                "city": "晋中市",
-                "county": "榆次区",
-                "province": "山西省"
-                }, {
-                "code": 140721,
-                "city": "晋中市",
-                "county": "榆社县",
-                "province": "山西省"
-                }, {
-                "code": 140722,
-                "city": "晋中市",
-                "county": "左权县",
-                "province": "山西省"
-                }, {
-                "code": 140723,
-                "city": "晋中市",
-                "county": "和顺县",
-                "province": "山西省"
-                }, {
-                "code": 140724,
-                "city": "晋中市",
-                "county": "昔阳县",
-                "province": "山西省"
-                }, {
-                "code": 140725,
-                "city": "晋中市",
-                "county": "寿阳县",
-                "province": "山西省"
-                }, {
-                "code": 140726,
-                "city": "晋中市",
-                "county": "太谷县",
-                "province": "山西省"
-                }, {
-                "code": 140727,
-                "city": "晋中市",
-                "county": "祁县",
-                "province": "山西省"
-                }, {
-                "code": 140728,
-                "city": "晋中市",
-                "county": "平遥县",
-                "province": "山西省"
-                }, {
-                "code": 140729,
-                "city": "晋中市",
-                "county": "灵石县",
-                "province": "山西省"
-                }, {
-                "code": 140781,
-                "city": "晋中市",
-                "county": "介休市",
-                "province": "山西省"
-                }, {
-                "code": 140800,
-                "city": "运城市",
-                "county": "",
-                "province": "山西省"
-                }, {
-                "code": 140802,
-                "city": "运城市",
-                "county": "盐湖区",
-                "province": "山西省"
-                }, {
-                "code": 140821,
-                "city": "运城市",
-                "county": "临猗县",
-                "province": "山西省"
-                }, {
-                "code": 140822,
-                "city": "运城市",
-                "county": "万荣县",
-                "province": "山西省"
-                }, {
-                "code": 140823,
-                "city": "运城市",
-                "county": "闻喜县",
-                "province": "山西省"
-                }, {
-                "code": 140824,
-                "city": "运城市",
-                "county": "稷山县",
-                "province": "山西省"
-                }, {
-                "code": 140825,
-                "city": "运城市",
-                "county": "新绛县",
-                "province": "山西省"
-                }, {
-                "code": 140826,
-                "city": "运城市",
-                "county": "绛县",
-                "province": "山西省"
-                }, {
-                "code": 140827,
-                "city": "运城市",
-                "county": "垣曲县",
-                "province": "山西省"
-                }, {
-                "code": 140828,
-                "city": "运城市",
-                "county": "夏县",
-                "province": "山西省"
-                }, {
-                "code": 140829,
-                "city": "运城市",
-                "county": "平陆县",
-                "province": "山西省"
-                }, {
-                "code": 140830,
-                "city": "运城市",
-                "county": "芮城县",
-                "province": "山西省"
-                }, {
-                "code": 140881,
-                "city": "运城市",
-                "county": "永济市",
-                "province": "山西省"
-                }, {
-                "code": 140882,
-                "city": "运城市",
-                "county": "河津市",
-                "province": "山西省"
-                }, {
-                "code": 140900,
-                "city": "忻州市",
-                "county": "",
-                "province": "山西省"
-                }, {
-                "code": 140902,
-                "city": "忻州市",
-                "county": "忻府区",
-                "province": "山西省"
-                }, {
-                "code": 140921,
-                "city": "忻州市",
-                "county": "定襄县",
-                "province": "山西省"
-                }, {
-                "code": 140922,
-                "city": "忻州市",
-                "county": "五台县",
-                "province": "山西省"
-                }, {
-                "code": 140923,
-                "city": "忻州市",
-                "county": "代县",
-                "province": "山西省"
-                }, {
-                "code": 140924,
-                "city": "忻州市",
-                "county": "繁峙县",
-                "province": "山西省"
-                }, {
-                "code": 140925,
-                "city": "忻州市",
-                "county": "宁武县",
-                "province": "山西省"
-                }, {
-                "code": 140926,
-                "city": "忻州市",
-                "county": "静乐县",
-                "province": "山西省"
-                }, {
-                "code": 140927,
-                "city": "忻州市",
-                "county": "神池县",
-                "province": "山西省"
-                }, {
-                "code": 140928,
-                "city": "忻州市",
-                "county": "五寨县",
-                "province": "山西省"
-                }, {
-                "code": 140929,
-                "city": "忻州市",
-                "county": "岢岚县",
-                "province": "山西省"
-                }, {
-                "code": 140930,
-                "city": "忻州市",
-                "county": "河曲县",
-                "province": "山西省"
-                }, {
-                "code": 140931,
-                "city": "忻州市",
-                "county": "保德县",
-                "province": "山西省"
-                }, {
-                "code": 140932,
-                "city": "忻州市",
-                "county": "偏关县",
-                "province": "山西省"
-                }, {
-                "code": 140981,
-                "city": "忻州市",
-                "county": "原平市",
-                "province": "山西省"
-                }, {
-                "code": 141000,
-                "city": "临汾市",
-                "county": "",
-                "province": "山西省"
-                }, {
-                "code": 141002,
-                "city": "临汾市",
-                "county": "尧都区",
-                "province": "山西省"
-                }, {
-                "code": 141021,
-                "city": "临汾市",
-                "county": "曲沃县",
-                "province": "山西省"
-                }, {
-                "code": 141022,
-                "city": "临汾市",
-                "county": "翼城县",
-                "province": "山西省"
-                }, {
-                "code": 141023,
-                "city": "临汾市",
-                "county": "襄汾县",
-                "province": "山西省"
-                }, {
-                "code": 141024,
-                "city": "临汾市",
-                "county": "洪洞县",
-                "province": "山西省"
-                }, {
-                "code": 141025,
-                "city": "临汾市",
-                "county": "古县",
-                "province": "山西省"
-                }, {
-                "code": 141026,
-                "city": "临汾市",
-                "county": "安泽县",
-                "province": "山西省"
-                }, {
-                "code": 141027,
-                "city": "临汾市",
-                "county": "浮山县",
-                "province": "山西省"
-                }, {
-                "code": 141028,
-                "city": "临汾市",
-                "county": "吉县",
-                "province": "山西省"
-                }, {
-                "code": 141029,
-                "city": "临汾市",
-                "county": "乡宁县",
-                "province": "山西省"
-                }, {
-                "code": 141030,
-                "city": "临汾市",
-                "county": "大宁县",
-                "province": "山西省"
-                }, {
-                "code": 141031,
-                "city": "临汾市",
-                "county": "隰县",
-                "province": "山西省"
-                }, {
-                "code": 141032,
-                "city": "临汾市",
-                "county": "永和县",
-                "province": "山西省"
-                }, {
-                "code": 141033,
-                "city": "临汾市",
-                "county": "蒲县",
-                "province": "山西省"
-                }, {
-                "code": 141034,
-                "city": "临汾市",
-                "county": "汾西县",
-                "province": "山西省"
-                }] 
-}
+  [
+                 {
+                 "name": "北京市",
+                 "code": 110000,
+                 "expressFee": 10,
+                 "subDistrict": [
+                                 {
+                                 "name": "北京市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "东城区",
+                                                 "code": 110101,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "西城区",
+                                                 "code": 110102,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "朝阳区",
+                                                 "code": 110105,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "丰台区",
+                                                 "code": 110106,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "石景山区",
+                                                 "code": 110107,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "海淀区",
+                                                 "code": 110108,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "门头沟区",
+                                                 "code": 110109,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "房山区",
+                                                 "code": 110111,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "通州区",
+                                                 "code": 110112,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "顺义区",
+                                                 "code": 110113,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "昌平区",
+                                                 "code": 110114,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "大兴区",
+                                                 "code": 110115,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "怀柔区",
+                                                 "code": 110116,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "平谷区",
+                                                 "code": 110117,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "密云县",
+                                                 "code": 110128,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "延庆县",
+                                                 "code": 110129,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 }
+                                 ]
+                 },
+                 {
+                 "name": "山西省",
+                 "code": 140000,
+                 "expressFee": 10,
+                 "subDistrict": [
+                                 {
+                                 "name": "运城市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "盐湖区",
+                                                 "code": 140802,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "临猗县",
+                                                 "code": 140821,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "万荣县",
+                                                 "code": 140822,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "闻喜县",
+                                                 "code": 140823,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "稷山县",
+                                                 "code": 140824,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "新绛县",
+                                                 "code": 140825,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "绛县",
+                                                 "code": 140826,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "垣曲县",
+                                                 "code": 140827,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "夏县",
+                                                 "code": 140828,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "平陆县",
+                                                 "code": 140829,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "芮城县",
+                                                 "code": 140830,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "永济市",
+                                                 "code": 140881,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "河津市",
+                                                 "code": 140882,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "太原市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "小店区",
+                                                 "code": 140105,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "迎泽区",
+                                                 "code": 140106,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "杏花岭区",
+                                                 "code": 140107,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "尖草坪区",
+                                                 "code": 140108,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "万柏林区",
+                                                 "code": 140109,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "晋源区",
+                                                 "code": 140110,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "清徐县",
+                                                 "code": 140121,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "阳曲县",
+                                                 "code": 140122,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "娄烦县",
+                                                 "code": 140123,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "古交市",
+                                                 "code": 140181,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "大同市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "城区",
+                                                 "code": 140202,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "矿区",
+                                                 "code": 140203,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "南郊区",
+                                                 "code": 140211,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "新荣区",
+                                                 "code": 140212,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "阳高县",
+                                                 "code": 140221,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "天镇县",
+                                                 "code": 140222,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "广灵县",
+                                                 "code": 140223,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "灵丘县",
+                                                 "code": 140224,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "浑源县",
+                                                 "code": 140225,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "左云县",
+                                                 "code": 140226,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "大同县",
+                                                 "code": 140227,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "晋城市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "城区",
+                                                 "code": 140502,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "沁水县",
+                                                 "code": 140521,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "阳城县",
+                                                 "code": 140522,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "陵川县",
+                                                 "code": 140524,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "泽州县",
+                                                 "code": 140525,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "高平市",
+                                                 "code": 140581,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "朔州市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "朔城区",
+                                                 "code": 140602,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "平鲁区",
+                                                 "code": 140603,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "山阴县",
+                                                 "code": 140621,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "应县",
+                                                 "code": 140622,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "右玉县",
+                                                 "code": 140623,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "怀仁县",
+                                                 "code": 140624,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "长治市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "城区",
+                                                 "code": 140402,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "郊区",
+                                                 "code": 140411,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "长治县",
+                                                 "code": 140421,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "襄垣县",
+                                                 "code": 140423,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "屯留县",
+                                                 "code": 140424,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "平顺县",
+                                                 "code": 140425,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "黎城县",
+                                                 "code": 140426,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "壶关县",
+                                                 "code": 140427,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "长子县",
+                                                 "code": 140428,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "武乡县",
+                                                 "code": 140429,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "沁县",
+                                                 "code": 140430,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "沁源县",
+                                                 "code": 140431,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "潞城市",
+                                                 "code": 140481,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "晋中市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "榆次区",
+                                                 "code": 140702,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "榆社县",
+                                                 "code": 140721,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "左权县",
+                                                 "code": 140722,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "和顺县",
+                                                 "code": 140723,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "昔阳县",
+                                                 "code": 140724,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "寿阳县",
+                                                 "code": 140725,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "太谷县",
+                                                 "code": 140726,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "祁县",
+                                                 "code": 140727,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "平遥县",
+                                                 "code": 140728,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "灵石县",
+                                                 "code": 140729,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "介休市",
+                                                 "code": 140781,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "忻州市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "忻府区",
+                                                 "code": 140902,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "定襄县",
+                                                 "code": 140921,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "五台县",
+                                                 "code": 140922,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "代县",
+                                                 "code": 140923,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "繁峙县",
+                                                 "code": 140924,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "宁武县",
+                                                 "code": 140925,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "静乐县",
+                                                 "code": 140926,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "神池县",
+                                                 "code": 140927,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "五寨县",
+                                                 "code": 140928,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "岢岚县",
+                                                 "code": 140929,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "河曲县",
+                                                 "code": 140930,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "保德县",
+                                                 "code": 140931,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "偏关县",
+                                                 "code": 140932,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "原平市",
+                                                 "code": 140981,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "临汾市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "尧都区",
+                                                 "code": 141002,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "曲沃县",
+                                                 "code": 141021,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "翼城县",
+                                                 "code": 141022,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "襄汾县",
+                                                 "code": 141023,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "洪洞县",
+                                                 "code": 141024,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "古县",
+                                                 "code": 141025,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "安泽县",
+                                                 "code": 141026,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "浮山县",
+                                                 "code": 141027,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "吉县",
+                                                 "code": 141028,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "乡宁县",
+                                                 "code": 141029,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "大宁县",
+                                                 "code": 141030,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "隰县",
+                                                 "code": 141031,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "永和县",
+                                                 "code": 141032,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "蒲县",
+                                                 "code": 141033,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "汾西县",
+                                                 "code": 141034,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "侯马市",
+                                                 "code": 141081,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "霍州市",
+                                                 "code": 141082,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "阳泉市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "城区",
+                                                 "code": 140302,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "矿区",
+                                                 "code": 140303,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "郊区",
+                                                 "code": 140311,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "平定县",
+                                                 "code": 140321,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "盂县",
+                                                 "code": 140322,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "吕梁市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "离石区",
+                                                 "code": 141102,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "文水县",
+                                                 "code": 141121,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "交城县",
+                                                 "code": 141122,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "兴县",
+                                                 "code": 141123,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "临县",
+                                                 "code": 141124,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "柳林县",
+                                                 "code": 141125,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "石楼县",
+                                                 "code": 141126,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "岚县",
+                                                 "code": 141127,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "方山县",
+                                                 "code": 141128,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "中阳县",
+                                                 "code": 141129,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "交口县",
+                                                 "code": 141130,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "孝义市",
+                                                 "code": 141181,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "汾阳市",
+                                                 "code": 141182,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 }
+                                 ]
+                 },
+                 {
+                 "name": "内蒙古自治区",
+                 "code": 150000,
+                 "expressFee": 10,
+                 "subDistrict": [
+                                 {
+                                 "name": "呼伦贝尔市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "海拉尔区",
+                                                 "code": 150702,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "阿荣旗",
+                                                 "code": 150721,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "莫力达瓦达斡尔族自治旗",
+                                                 "code": 150722,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "鄂伦春自治旗",
+                                                 "code": 150723,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "鄂温克族自治旗",
+                                                 "code": 150724,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "陈巴尔虎旗",
+                                                 "code": 150725,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "新巴尔虎左旗",
+                                                 "code": 150726,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "新巴尔虎右旗",
+                                                 "code": 150727,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "满洲里市",
+                                                 "code": 150781,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "牙克石市",
+                                                 "code": 150782,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "扎兰屯市",
+                                                 "code": 150783,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "额尔古纳市",
+                                                 "code": 150784,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "根河市",
+                                                 "code": 150785,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "包头市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "东河区",
+                                                 "code": 150202,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "昆都仑区",
+                                                 "code": 150203,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "青山区",
+                                                 "code": 150204,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "石拐区",
+                                                 "code": 150205,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "白云鄂博矿区",
+                                                 "code": 150206,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "九原区",
+                                                 "code": 150207,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "土默特右旗",
+                                                 "code": 150221,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "固阳县",
+                                                 "code": 150222,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "达尔罕茂明安联合旗",
+                                                 "code": 150223,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "通辽市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "科尔沁区",
+                                                 "code": 150502,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "科尔沁左翼中旗",
+                                                 "code": 150521,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "科尔沁左翼后旗",
+                                                 "code": 150522,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "开鲁县",
+                                                 "code": 150523,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "库伦旗",
+                                                 "code": 150524,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "奈曼旗",
+                                                 "code": 150525,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "扎鲁特旗",
+                                                 "code": 150526,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "霍林郭勒市",
+                                                 "code": 150581,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "呼和浩特市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "新城区",
+                                                 "code": 150102,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "回民区",
+                                                 "code": 150103,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "玉泉区",
+                                                 "code": 150104,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "赛罕区",
+                                                 "code": 150105,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "土默特左旗",
+                                                 "code": 150121,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "托克托县",
+                                                 "code": 150122,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "和林格尔县",
+                                                 "code": 150123,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "清水河县",
+                                                 "code": 150124,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "武川县",
+                                                 "code": 150125,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "乌海市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "海勃湾区",
+                                                 "code": 150302,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "海南区",
+                                                 "code": 150303,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "乌达区",
+                                                 "code": 150304,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "锡林郭勒盟",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "二连浩特市",
+                                                 "code": 152501,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "锡林浩特市",
+                                                 "code": 152502,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "阿巴嘎旗",
+                                                 "code": 152522,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "苏尼特左旗",
+                                                 "code": 152523,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "苏尼特右旗",
+                                                 "code": 152524,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "东乌珠穆沁旗",
+                                                 "code": 152525,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "西乌珠穆沁旗",
+                                                 "code": 152526,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "太仆寺旗",
+                                                 "code": 152527,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "镶黄旗",
+                                                 "code": 152528,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "正镶白旗",
+                                                 "code": 152529,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "正蓝旗",
+                                                 "code": 152530,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "多伦县",
+                                                 "code": 152531,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "兴安盟",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "乌兰浩特市",
+                                                 "code": 152201,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "阿尔山市",
+                                                 "code": 152202,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "科尔沁右翼前旗",
+                                                 "code": 152221,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "科尔沁右翼中旗",
+                                                 "code": 152222,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "扎赉特旗",
+                                                 "code": 152223,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "突泉县",
+                                                 "code": 152224,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "赤峰市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "红山区",
+                                                 "code": 150402,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "元宝山区",
+                                                 "code": 150403,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "松山区",
+                                                 "code": 150404,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "阿鲁科尔沁旗",
+                                                 "code": 150421,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "巴林左旗",
+                                                 "code": 150422,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "巴林右旗",
+                                                 "code": 150423,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "林西县",
+                                                 "code": 150424,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "克什克腾旗",
+                                                 "code": 150425,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "翁牛特旗",
+                                                 "code": 150426,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "喀喇沁旗",
+                                                 "code": 150428,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "宁城县",
+                                                 "code": 150429,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "敖汉旗",
+                                                 "code": 150430,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "鄂尔多斯市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "东胜区",
+                                                 "code": 150602,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "达拉特旗",
+                                                 "code": 150621,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "准格尔旗",
+                                                 "code": 150622,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "鄂托克前旗",
+                                                 "code": 150623,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "鄂托克旗",
+                                                 "code": 150624,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "杭锦旗",
+                                                 "code": 150625,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "乌审旗",
+                                                 "code": 150626,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "伊金霍洛旗",
+                                                 "code": 150627,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "乌兰察布市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "集宁区",
+                                                 "code": 150902,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "卓资县",
+                                                 "code": 150921,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "化德县",
+                                                 "code": 150922,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "商都县",
+                                                 "code": 150923,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "兴和县",
+                                                 "code": 150924,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "凉城县",
+                                                 "code": 150925,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "察哈尔右翼前旗",
+                                                 "code": 150926,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "察哈尔右翼中旗",
+                                                 "code": 150927,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "察哈尔右翼后旗",
+                                                 "code": 150928,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "四子王旗",
+                                                 "code": 150929,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "丰镇市",
+                                                 "code": 150981,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "阿拉善盟",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "阿拉善左旗",
+                                                 "code": 152921,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "阿拉善右旗",
+                                                 "code": 152922,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "额济纳旗",
+                                                 "code": 152923,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "巴彦淖尔市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "临河区",
+                                                 "code": 150802,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "五原县",
+                                                 "code": 150821,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "磴口县",
+                                                 "code": 150822,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "乌拉特前旗",
+                                                 "code": 150823,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "乌拉特中旗",
+                                                 "code": 150824,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "乌拉特后旗",
+                                                 "code": 150825,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "杭锦后旗",
+                                                 "code": 150826,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 }
+                                 ]
+                 },
+                 {
+                 "name": "上海市",
+                 "code": 310000,
+                 "expressFee": 10,
+                 "subDistrict": [
+                                 {
+                                 "name": "上海市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "黄浦区",
+                                                 "code": 310101,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "徐汇区",
+                                                 "code": 310104,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "长宁区",
+                                                 "code": 310105,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "静安区",
+                                                 "code": 310106,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "普陀区",
+                                                 "code": 310107,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "闸北区",
+                                                 "code": 310108,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "虹口区",
+                                                 "code": 310109,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "杨浦区",
+                                                 "code": 310110,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "闵行区",
+                                                 "code": 310112,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "宝山区",
+                                                 "code": 310113,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "嘉定区",
+                                                 "code": 310114,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "浦东新区",
+                                                 "code": 310115,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "金山区",
+                                                 "code": 310116,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "松江区",
+                                                 "code": 310117,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "青浦区",
+                                                 "code": 310118,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "奉贤区",
+                                                 "code": 310120,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "崇明县",
+                                                 "code": 310130,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 }
+                                 ]
+                 },
+                 {
+                 "name": "山东省",
+                 "code": 370000,
+                 "expressFee": 10,
+                 "subDistrict": [
+                                 {
+                                 "name": "滨州市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "滨城区",
+                                                 "code": 371602,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "惠民县",
+                                                 "code": 371621,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "阳信县",
+                                                 "code": 371622,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "无棣县",
+                                                 "code": 371623,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "沾化县",
+                                                 "code": 371624,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "博兴县",
+                                                 "code": 371625,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "邹平县",
+                                                 "code": 371626,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "烟台市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "芝罘区",
+                                                 "code": 370602,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "福山区",
+                                                 "code": 370611,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "牟平区",
+                                                 "code": 370612,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "莱山区",
+                                                 "code": 370613,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "长岛县",
+                                                 "code": 370634,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "龙口市",
+                                                 "code": 370681,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "莱阳市",
+                                                 "code": 370682,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "莱州市",
+                                                 "code": 370683,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "蓬莱市",
+                                                 "code": 370684,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "招远市",
+                                                 "code": 370685,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "栖霞市",
+                                                 "code": 370686,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "海阳市",
+                                                 "code": 370687,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "临沂市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "兰山区",
+                                                 "code": 371302,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "罗庄区",
+                                                 "code": 371311,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "河东区",
+                                                 "code": 371312,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "沂南县",
+                                                 "code": 371321,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "郯城县",
+                                                 "code": 371322,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "沂水县",
+                                                 "code": 371323,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "苍山县",
+                                                 "code": 371324,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "费县",
+                                                 "code": 371325,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "平邑县",
+                                                 "code": 371326,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "莒南县",
+                                                 "code": 371327,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "蒙阴县",
+                                                 "code": 371328,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "临沭县",
+                                                 "code": 371329,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "德州市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "德城区",
+                                                 "code": 371402,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "陵县",
+                                                 "code": 371421,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "宁津县",
+                                                 "code": 371422,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "庆云县",
+                                                 "code": 371423,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "临邑县",
+                                                 "code": 371424,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "齐河县",
+                                                 "code": 371425,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "平原县",
+                                                 "code": 371426,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "夏津县",
+                                                 "code": 371427,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "武城县",
+                                                 "code": 371428,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "乐陵市",
+                                                 "code": 371481,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "禹城市",
+                                                 "code": 371482,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "菏泽市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "牡丹区",
+                                                 "code": 371702,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "曹县",
+                                                 "code": 371721,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "单县",
+                                                 "code": 371722,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "成武县",
+                                                 "code": 371723,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "巨野县",
+                                                 "code": 371724,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "郓城县",
+                                                 "code": 371725,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "鄄城县",
+                                                 "code": 371726,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "定陶县",
+                                                 "code": 371727,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "东明县",
+                                                 "code": 371728,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "潍坊市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "潍城区",
+                                                 "code": 370702,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "寒亭区",
+                                                 "code": 370703,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "坊子区",
+                                                 "code": 370704,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "奎文区",
+                                                 "code": 370705,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "临朐县",
+                                                 "code": 370724,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "昌乐县",
+                                                 "code": 370725,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "青州市",
+                                                 "code": 370781,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "诸城市",
+                                                 "code": 370782,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "寿光市",
+                                                 "code": 370783,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "安丘市",
+                                                 "code": 370784,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "高密市",
+                                                 "code": 370785,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "昌邑市",
+                                                 "code": 370786,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "莱芜市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "莱城区",
+                                                 "code": 371202,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "钢城区",
+                                                 "code": 371203,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "淄博市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "淄川区",
+                                                 "code": 370302,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "张店区",
+                                                 "code": 370303,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "博山区",
+                                                 "code": 370304,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "临淄区",
+                                                 "code": 370305,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "周村区",
+                                                 "code": 370306,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "桓台县",
+                                                 "code": 370321,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "高青县",
+                                                 "code": 370322,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "沂源县",
+                                                 "code": 370323,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "济宁市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "市中区",
+                                                 "code": 370802,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "任城区",
+                                                 "code": 370811,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "微山县",
+                                                 "code": 370826,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "鱼台县",
+                                                 "code": 370827,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "金乡县",
+                                                 "code": 370828,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "嘉祥县",
+                                                 "code": 370829,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "汶上县",
+                                                 "code": 370830,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "泗水县",
+                                                 "code": 370831,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "梁山县",
+                                                 "code": 370832,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "曲阜市",
+                                                 "code": 370881,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "兖州市",
+                                                 "code": 370882,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "邹城市",
+                                                 "code": 370883,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "东营市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "东营区",
+                                                 "code": 370502,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "河口区",
+                                                 "code": 370503,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "垦利县",
+                                                 "code": 370521,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "利津县",
+                                                 "code": 370522,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "广饶县",
+                                                 "code": 370523,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "日照市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "东港区",
+                                                 "code": 371102,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "岚山区",
+                                                 "code": 371103,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "五莲县",
+                                                 "code": 371121,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "莒县",
+                                                 "code": 371122,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "泰安市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "泰山区",
+                                                 "code": 370902,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "岱岳区",
+                                                 "code": 370911,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "宁阳县",
+                                                 "code": 370921,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "东平县",
+                                                 "code": 370923,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "新泰市",
+                                                 "code": 370982,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "肥城市",
+                                                 "code": 370983,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "枣庄市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "市中区",
+                                                 "code": 370402,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "薛城区",
+                                                 "code": 370403,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "峄城区",
+                                                 "code": 370404,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "台儿庄区",
+                                                 "code": 370405,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "山亭区",
+                                                 "code": 370406,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "滕州市",
+                                                 "code": 370481,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "聊城市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "东昌府区",
+                                                 "code": 371502,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "阳谷县",
+                                                 "code": 371521,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "莘县",
+                                                 "code": 371522,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "茌平县",
+                                                 "code": 371523,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "东阿县",
+                                                 "code": 371524,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "冠县",
+                                                 "code": 371525,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "高唐县",
+                                                 "code": 371526,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "临清市",
+                                                 "code": 371581,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "威海市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "环翠区",
+                                                 "code": 371002,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "文登市",
+                                                 "code": 371081,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "荣成市",
+                                                 "code": 371082,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "乳山市",
+                                                 "code": 371083,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "青岛市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "市南区",
+                                                 "code": 370202,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "市北区",
+                                                 "code": 370203,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "四方区",
+                                                 "code": 370205,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "黄岛区",
+                                                 "code": 370211,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "崂山区",
+                                                 "code": 370212,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "李沧区",
+                                                 "code": 370213,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "城阳区",
+                                                 "code": 370214,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "胶州市",
+                                                 "code": 370281,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "即墨市",
+                                                 "code": 370282,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "平度市",
+                                                 "code": 370283,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "胶南市",
+                                                 "code": 370284,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "莱西市",
+                                                 "code": 370285,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 },
+                                 {
+                                 "name": "济南市",
+                                 "subDistrict": [
+                                                 {
+                                                 "name": "历下区",
+                                                 "code": 370102,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "市中区",
+                                                 "code": 370103,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "槐荫区",
+                                                 "code": 370104,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "天桥区",
+                                                 "code": 370105,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "历城区",
+                                                 "code": 370112,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "长清区",
+                                                 "code": 370113,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "平阴县",
+                                                 "code": 370124,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "济阳县",
+                                                 "code": 370125,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "商河县",
+                                                 "code": 370126,
+                                                 "expressFee": 10
+                                                 },
+                                                 {
+                                                 "name": "章丘市",
+                                                 "code": 370181,
+                                                 "expressFee": 10
+                                                 }
+                                                 ]
+                                 }
+                                 ]
+                 }
+                 ]

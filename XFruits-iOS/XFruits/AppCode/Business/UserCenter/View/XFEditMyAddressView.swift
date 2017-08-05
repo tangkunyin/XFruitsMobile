@@ -11,10 +11,12 @@ import UIKit
 /// 新增或编辑地址
 class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UITextViewDelegate{
     var selectCategoryLabel:UILabel? // 被选中的 label
+    var addressCodeToSave:NSNumber = 0 // 选中的 citycode
+    
     // 声明闭包
     //    typealias inputClosureType = (String)-> Void
     
-    let categoryArray = ["公司","家","学校","前男友家","路人家~","A家"]  // ,"+","-"
+    let categoryArray = ["公司","家","学校","前男友家","路人家~","A家","+","-"]  // ,"+","-"
     
     lazy var leftTipReceiveLabel: UILabel = {
         
@@ -76,7 +78,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     
     lazy var addressChooseLabel:UILabel = {
         let addressChooseLabel  = UILabel.init()
-        addressChooseLabel.text = "内蒙古兴安盟扎赉特旗"
+//        addressChooseLabel.text = "内蒙古兴安盟扎赉特旗"
         
         addressChooseLabel.textColor  = XFConstants.Color.darkGray
         addressChooseLabel.font = sysFontWithSize(16)
@@ -97,10 +99,17 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     
     @objc private func chooseAddress(_ btn:UIButton){
         hideKeyboard()
-        let cityView = CityChooseView.init(frame: self.bounds)
+ 
+        let cityView = XFCityChooseView.init(frame: self.bounds)
         weak var weakSelf = self
-        cityView.myClosure = { (provinceStr: String, cityStr: String , areaStr: String) -> Void in
-            
+        
+        if(weakSelf?.addressChooseLabel.text != nil ){
+            cityView.loadDefaultArea(defaultArea: (weakSelf?.addressChooseLabel.text)!)
+
+        }
+        cityView.myClosure = { (provinceStr: String, cityStr: String , areaStr: String, addressCodeToSave: NSNumber) -> Void in
+            print(addressCodeToSave)
+            weakSelf?.addressCodeToSave = addressCodeToSave
             weakSelf?.addressChooseLabel.text = provinceStr + " " + cityStr + " " + areaStr
             
         }
@@ -125,24 +134,6 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             btn.isSelected = false
         }
     }
-    
-    
-    func setMyAddress(address:XFAddress)  {
-        receiveInput.text = address.recipient
-        mobileInput.text = address.cellPhone
-        addressChooseLabel.text = address.districtCode
-        
-        addressBtn.setTitle(address.label, for: .normal)
-        addressDescTextView.text = address.address
-        if  addressDescTextView.text.characters.count > 0 {
-            placeHolderLabel.text = ""
-        }
-        if(address.isDefault == "1"){
-            useAsDefaultAddressBtn.setImage(UIImage.imageWithNamed("check_box_select"), for: .normal)
-            useAsDefaultAddressBtn.isSelected = true
-        }
-    }
-    
     
     lazy var addressDescTextView:UITextView = {
         let descAddress = UITextView()
@@ -372,6 +363,25 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         })
     }
     
+    
+    func setMyAddress(address:XFAddress)  {
+        receiveInput.text = address.recipient
+        mobileInput.text = address.cellPhone
+        
+        addressBtn.setTitle(address.label, for: .normal)
+        addressDescTextView.text = address.address
+        if  addressDescTextView.text.characters.count > 0 {
+            placeHolderLabel.text = ""
+        }
+        if(address.isDefault == "1"){
+            useAsDefaultAddressBtn.setImage(UIImage.imageWithNamed("check_box_select"), for: .normal)
+            useAsDefaultAddressBtn.isSelected = true
+        }
+        let cityView = XFCityChooseView.init(frame: self.bounds)
+        
+        addressChooseLabel.text = cityView.loadDefaultAreaWithCityCode(cityCode: address.districtCode! )
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
         if textView.text == nil || textView.text.isEmpty {
             placeHolderLabel.text = "详细地址（具体到门牌号）"
@@ -425,23 +435,23 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         let row = indexPath.row
         print(row)
-        let cate  = categoryArray[row]
-        print(cate)
-      
-        self.selectCategoryLabel?.textColor = XFConstants.Color.salmon
-        self.selectCategoryLabel?.backgroundColor = UIColor.white
-        
-        let label:UILabel = self.viewWithTag(10000 + row) as! UILabel
-        label.backgroundColor  = XFConstants.Color.salmon
-        label.textColor = UIColor.white
-        self.selectCategoryLabel = label
-        
+        if row == categoryArray.count - 1 || row == categoryArray.count - 2 {
+//            var alertController = UIAlertController.init(title: "提示", message: "请输入", preferredStyle: .actionSheet)
+            
+        }
+        else{
+            let cate  = categoryArray[row]
+            print(cate)
+            
+            self.selectCategoryLabel?.textColor = XFConstants.Color.salmon
+            self.selectCategoryLabel?.backgroundColor = UIColor.white
+            
+            let label:UILabel = self.viewWithTag(10000 + row) as! UILabel
+            label.backgroundColor  = XFConstants.Color.salmon
+            label.textColor = UIColor.white
+            self.selectCategoryLabel = label
+        }
+       
         
     }
-    
-    
-    
-    
-    
-    
 }

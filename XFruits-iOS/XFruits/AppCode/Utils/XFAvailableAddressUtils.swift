@@ -8,34 +8,34 @@
 
 import Foundation
 import HandyJSON
-
+import Alamofire
+import SwiftyJSON
 class XFAvailableAddressUtils {
     
     /// 当前登录用户
-    var addressDict:XFAvailableAddressDict?
+    var addressDict:NSDictionary?
     
     static let shared = XFAvailableAddressUtils()
     private init(){
-        let cachedAddr:XFAvailableAddressDict? = getCachedAddress()
-        if let addr = cachedAddr {
-            addressDict = addr
-        }
+//        let cachedAddr:NSDictionary? = getCachedAddress()
+        
     }
 
     
     /// 用户信息缓存文件地址
     private lazy var availableAddressPath:String? = {
-        let path:String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-        return "\(path)/XFAvailableAddressDict.info"
+        var path:String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        path = "\(path)/XFAddress.info"
+        return path
     }()
     
-    
+
     
     /// 归档用户模型到本地缓存
-    func cacheAddress(_ addess:XFAvailableAddressDict) {
-        let userInfo:NSDictionary = addess.toJSON()! as NSDictionary
+    func cacheAddress(_ addess:NSDictionary) {
+       
         if let filePath = availableAddressPath {
-            let success:Bool = NSKeyedArchiver.archiveRootObject(userInfo, toFile: filePath)
+            let success:Bool = NSKeyedArchiver.archiveRootObject(addess, toFile: filePath)
             dPrint("地址缓存：\(success ? "成功" : "失败")")
         }
     }
@@ -44,13 +44,11 @@ class XFAvailableAddressUtils {
     /// 从缓存中取得地址
     ///
     /// - Returns: 缓存中的地址
-    func getCachedAddress() -> XFAvailableAddressDict? {
-        if let filePath = availableAddressPath {
-            let userInfo = NSKeyedUnarchiver.unarchiveObject(withFile: filePath)
-            if userInfo is NSDictionary, let info:NSDictionary = userInfo as? NSDictionary {
-                let address = XFAvailableAddressDict.deserialize(from: info)
-                return address
-            }
+    func getCachedAddress() -> NSDictionary? {
+        let path:String = availableAddressPath!
+        if(FileManager.default.fileExists(atPath: path)){
+            let addressInfo:NSDictionary  =   NSKeyedUnarchiver.unarchiveObject(withFile: path) as! NSDictionary
+            return addressInfo
         }
         return nil
     }
@@ -71,16 +69,31 @@ class XFAvailableAddressUtils {
     }
     
     func cacheAddressAvailable()  {
-        // 把地址的json文件下载下来
-        DispatchQueue.global().async {
-            let cachedData: XFAvailableAddressDict? = XFAvailableAddressUtils.shared.getCachedAddress()
-            // 没找到就去服务器拉
-            if  cachedData == nil {
-                XFCommonService().allAvailableAddress(page: 1, size: 4000 ) { (data) in
-                    if let addresses = data  as? XFAvailableAddressDict{
-                        XFAvailableAddressUtils.shared.cacheAddress(addresses)
-                    }
+        // 把地址的json文件下载下来  http://api.10fruits.net/address/district
+        
+        Alamofire.request("http://api.10fruits.net/address/district").validate().responseJSON { response in
+
+            let responseJSON = response.result.value as? [String: AnyObject]
+ 
+            let newMd5:String = responseJSON!["md5"] as! String
+ 
+            let path:String = self.availableAddressPath!
+ 
+            if(FileManager.default.fileExists(atPath: path)){
+                let addressInfo:NSDictionary  = self.getCachedAddress()! // NSKeyedUnarchiver.unarchiveObject(withFile: path) as! NSDictionary
+                let cacheMd5:String = addressInfo["md5"] as! String
+                // 判断 md5是否一致，如果一致就不存新的数据
+                if (cacheMd5 == newMd5){  // 一致
+                    
                 }
+                else{  // 不一致
+                    self.cacheAddress(responseJSON! as NSDictionary)
+
+                }
+            }
+            else{
+                FileManager.default.createFile(atPath: path, contents: nil, attributes: nil)
+                self.cacheAddress(responseJSON! as NSDictionary)
             }
         }
     }
