@@ -436,7 +436,11 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         let row = indexPath.row
         print(row)
         if row == categoryArray.count - 1 || row == categoryArray.count - 2 {
-//            var alertController = UIAlertController.init(title: "提示", message: "请输入", preferredStyle: .actionSheet)
+            let alert = XFAlert()
+            self.addSubview(alert)
+            alert.snp.makeConstraints({ (make) in
+                make.left.top.bottom.right.equalTo(self)
+            })
             
         }
         else{

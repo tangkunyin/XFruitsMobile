@@ -12,6 +12,7 @@
 		16200CF31F1B179A0008C039 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = 16200CF21F1B179A0008C039 /* city.json */; };
 		16200CF51F1B7F200008C039 /* XFAvailableAddressUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */; };
 		1641E76C1F35F9D10093DADF /* XFCityChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */; };
+		1641E76E1F3609EC0093DADF /* XFAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1641E76D1F3609EC0093DADF /* XFAlert.swift */; };
 		165608D71EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D41EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift */; };
 		165608D81EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D51EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift */; };
 		165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */; };
@@ -108,6 +109,7 @@
 		16200CF21F1B179A0008C039 /* city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.json; sourceTree = "<group>"; };
 		16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAvailableAddressUtils.swift; sourceTree = "<group>"; };
 		1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCityChooseView.swift; sourceTree = "<group>"; };
+		1641E76D1F3609EC0093DADF /* XFAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAlert.swift; sourceTree = "<group>"; };
 		165608D41EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFPayWayBillContentTableViewCell.swift; sourceTree = "<group>"; };
 		165608D51EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFPayWayBillInfoTableViewCell.swift; sourceTree = "<group>"; };
 		165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFTPayModeableViewCell.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				86EC80F51EC86C34009AB47D /* UserCenterAvatarCell.swift */,
 				16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */,
 				862672D41EFE43D20062B52B /* XFAddressesManageTableViewCell.swift */,
+				1641E76D1F3609EC0093DADF /* XFAlert.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -732,6 +735,7 @@
 				165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */,
 				865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */,
 				86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */,
+				1641E76E1F3609EC0093DADF /* XFAlert.swift in Sources */,
 				868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */,
 				86ADDCD51F2AEBCE00881CFA /* XFDataGlobal.swift in Sources */,
 				86BB9A871F1D2B1E00B46EBC /* XFCheckoutViewController.swift in Sources */,
