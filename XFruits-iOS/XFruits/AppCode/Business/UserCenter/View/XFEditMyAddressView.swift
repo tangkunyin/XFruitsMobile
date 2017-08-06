@@ -10,13 +10,14 @@ import UIKit
 
 /// 新增或编辑地址
 class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UITextViewDelegate{
-    var selectCategoryLabel:UILabel? // 被选中的 label
+   
+    var selectCategoryBtn:UIButton? // 被选中的 button
     var addressCodeToSave:NSNumber = 0 // 选中的 citycode
-    
+    var defaultLabel : String? // 编辑类别时默认选中的字符串
     // 声明闭包
     //    typealias inputClosureType = (String)-> Void
     
-    let categoryArray = ["公司","家","学校","前男友家","路人家~","A家","+","-"]  // ,"+","-"
+    let categoryArray = ["家","公司","学校"]  // ,"前男友家","路人家~","A家","+","-"
     
     lazy var leftTipReceiveLabel: UILabel = {
         
@@ -97,6 +98,9 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     }()
     
     
+  
+    
+    
     @objc private func chooseAddress(_ btn:UIButton){
         hideKeyboard()
  
@@ -148,9 +152,9 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     lazy var categoryCollectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         //每个Item之间最小的间距
-        layout.minimumInteritemSpacing = 5
+        layout.minimumInteritemSpacing = 10
         //每行之间最小的间距
-        layout.minimumLineSpacing = 5
+        layout.minimumLineSpacing = 10
         
         let categoryCollectionView = UICollectionView(frame:CGRect.zero,collectionViewLayout:layout)
         categoryCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -346,17 +350,16 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         // 地址分类
         self.addSubview(categoryCollectionView)
         categoryCollectionView.snp.makeConstraints({ (make) in
-            make.top.equalTo(line4.snp.bottom).offset(5)
-            make.left.equalTo(self.snp.left).offset(5)
+            make.top.equalTo(line4.snp.bottom).offset(15)
+            make.left.equalTo(self.snp.left).offset(10)
             make.right.equalTo(self.snp.right).offset(-5)
-//            make.bottom.equalTo(self.snp.bottom).offset(-100)
-            make.height.equalTo(55)
+            make.height.equalTo(30)
         })
         // 默认地址按钮
         
         self.addSubview(useAsDefaultAddressBtn)
         useAsDefaultAddressBtn.snp.makeConstraints( { (make) in
-            make.top.equalTo(categoryCollectionView.snp.bottom).offset(5)
+            make.top.equalTo(categoryCollectionView.snp.bottom).offset(0)
             make.left.equalTo(self.snp.left).offset(5)
             make.right.equalTo(self.snp.right).offset(-5)
             make.height.equalTo(40)
@@ -379,7 +382,13 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         }
         let cityView = XFCityChooseView.init(frame: self.bounds)
         
+        addressCodeToSave = address.districtCode!
         addressChooseLabel.text = cityView.loadDefaultAreaWithCityCode(cityCode: address.districtCode! )
+        // 判断默认选中哪个
+        
+        defaultLabel = address.label
+        
+        
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -403,19 +412,31 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             cell.contentView.subviews.last?.removeFromSuperview()
         }
         let row = indexPath.row
-        let label = UILabel.init()
-        label.text = categoryArray[indexPath.row]
-        label.font = sysFontWithSize(10)
         
-        label.frame =  CGRect(x:0, y:20, width: 20 + widthForLabel(text: label.text! as NSString, font: 10), height:22)
-        label.layer.cornerRadius = 10.0
-        label.layer.masksToBounds = true
-        label.textAlignment = .center
-        label.textColor = XFConstants.Color.salmon
-        label.layer.borderColor = XFConstants.Color.salmon.cgColor
-        label.layer.borderWidth = 0.5
-        label.tag = 10000 + row
-        cell.contentView.addSubview(label)
+        let btn  = UIButton.init(type: .custom)
+        btn.setTitle(categoryArray[row], for: .normal)
+        btn.frame =  CGRect(x:0, y:0, width: 20 + widthForLabel(text: categoryArray[row] as NSString, font: 14), height:25)
+        btn.titleLabel?.font = XFConstants.Font.pfn14
+
+        if defaultLabel == categoryArray[row] {
+            btn.setTitleColor(UIColor.white, for: .normal)
+            btn.backgroundColor = XFConstants.Color.salmon
+            self.selectCategoryBtn = btn
+        }
+        else{
+            btn.setTitleColor(XFConstants.Color.salmon, for: .normal)
+            btn.backgroundColor = UIColor.white
+        }
+        btn.tag = 10000 + row
+        cell.contentView.addSubview(btn)
+        
+        btn.isUserInteractionEnabled  = false
+        cell.layer.borderColor = XFConstants.Color.salmon.cgColor
+        cell.layer.borderWidth = 0.5
+        cell.layer.cornerRadius = 10
+        cell.layer.masksToBounds = true
+        
+ 
         return cell;
     }
     
@@ -428,34 +449,25 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize  {
         let row = indexPath.row
         let cate  = categoryArray[row]
-        return CGSize(width:20 + widthForLabel(text: cate as NSString, font: 10),height:22)
+        return CGSize(width:20 + widthForLabel(text: cate as NSString, font: 14),height:25)
     }
     
     // 点击某项的事件
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         let row = indexPath.row
         print(row)
-        if row == categoryArray.count - 1 || row == categoryArray.count - 2 {
-            let alert = XFAlert()
-            self.addSubview(alert)
-            alert.snp.makeConstraints({ (make) in
-                make.left.top.bottom.right.equalTo(self)
-            })
-            
-        }
-        else{
-            let cate  = categoryArray[row]
-            print(cate)
-            
-            self.selectCategoryLabel?.textColor = XFConstants.Color.salmon
-            self.selectCategoryLabel?.backgroundColor = UIColor.white
-            
-            let label:UILabel = self.viewWithTag(10000 + row) as! UILabel
-            label.backgroundColor  = XFConstants.Color.salmon
-            label.textColor = UIColor.white
-            self.selectCategoryLabel = label
-        }
-       
+ 
+        let cate  = categoryArray[row]
+        print(cate)
+        
+        self.selectCategoryBtn?.setTitleColor(XFConstants.Color.salmon, for: .normal)
+        self.selectCategoryBtn?.backgroundColor = UIColor.white
+        
+        let btn:UIButton = self.viewWithTag(10000 + row) as! UIButton
+        btn.backgroundColor = XFConstants.Color.salmon
+        btn.setTitleColor(UIColor.white, for: .normal)
+        self.selectCategoryBtn = btn
+ 
         
     }
 }

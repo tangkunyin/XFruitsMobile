@@ -120,7 +120,6 @@ class XFAlert: UIView {
             make.top.equalTo(cateTextField.snp.bottom).offset(20)
            make.right.equalTo(alertView.snp.right).offset(-15)
             make.width.equalTo(cancelBtn.snp.width)
-   
             make.height.equalTo(40)
         })
         

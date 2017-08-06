@@ -20,19 +20,23 @@ class XFAddAddressViewController: XFBaseSubViewController    {
         return editAddressView
     }()
     
+    lazy var saveBtn :UIButton = {
+        let saveBtn  = UIButton.init()
+        saveBtn.backgroundColor = XFConstants.Color.salmon
+        saveBtn.layer.cornerRadius = 10
+        saveBtn.layer.masksToBounds = true
+        saveBtn.setTitle("保存", for: .normal)
+        saveBtn.addTarget(self, action: #selector(saveAddress(sender:)), for: .touchUpInside)
+        return saveBtn
+    }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        if editStyle == 0 {
-            self.title = "新增地址"
-        }
-            
-        else if editStyle == 1 {
-            self.title = "编辑地址"
-            editAddressView.setMyAddress(address: addressSigleEdit!)
-        }
+       
         
         
         self.view.addSubview(editAddressView)
@@ -40,9 +44,23 @@ class XFAddAddressViewController: XFBaseSubViewController    {
         editAddressView.snp.makeConstraints({ (make) in
             make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         })
+        self.view.addSubview(saveBtn)
+        saveBtn.snp.makeConstraints({ (make) in
+            make.bottom.equalTo(self.view.snp.bottom).offset(-10)
+            make.centerX.equalTo(self.view)
+            make.width.equalTo(150)
+            make.height.equalTo(35)
+        })
         
-        // 导航栏右侧保存按钮
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "保存", style: .plain, target: self, action: #selector(saveAddress(sender:)))
+        
+        if editStyle == 0 {
+            self.title = "新增地址"
+        }
+        else if editStyle == 1 {
+            self.title = "编辑地址"
+            editAddressView.setMyAddress(address: addressSigleEdit!)
+        }
+       
         
     }
     
@@ -66,19 +84,13 @@ class XFAddAddressViewController: XFBaseSubViewController    {
             MBProgressHUD.showError("请输入合法的手机号")
             return
         }
-//        let  city:String = (editAddressView.addressChooseLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
-//        print(city)
-//        guard  city.count >  0 else{
-//            MBProgressHUD.showError("省市县不能为空")
-//            return
-//        }
-        
+ 
         guard let addressDesc = editAddressView.addressDescTextView.text ,addressDesc != "" else {
             MBProgressHUD.showError("详细地址不能为空")
             return
         }
         
-        guard let category = self.editAddressView.selectCategoryLabel?.text ,category != "" else {
+        guard let category = self.editAddressView.selectCategoryBtn?.titleLabel?.text ,category != "" else {
             MBProgressHUD.showError("请选择分类")
             return
         }
