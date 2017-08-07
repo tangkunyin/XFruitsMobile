@@ -17,7 +17,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     // 声明闭包
     //    typealias inputClosureType = (String)-> Void
     
-    let categoryArray = ["家","公司","学校"]  // ,"前男友家","路人家~","A家","+","-"
+    let categoryArray = ["家","公司","学校"]  
     
     lazy var leftTipReceiveLabel: UILabel = {
         
@@ -79,8 +79,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     
     lazy var addressChooseLabel:UILabel = {
         let addressChooseLabel  = UILabel.init()
-//        addressChooseLabel.text = "内蒙古兴安盟扎赉特旗"
-        
+ 
         addressChooseLabel.textColor  = XFConstants.Color.darkGray
         addressChooseLabel.font = sysFontWithSize(16)
         return addressChooseLabel
@@ -92,15 +91,13 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     lazy var addressBtn : UIButton = {
         let addressBtn = UIButton.init()
         addressBtn.backgroundColor = UIColor.clear
+        addressBtn.titleLabel?.text = ""
+        addressBtn.setTitle("", for: .normal)
         addressBtn.addTarget(self, action: #selector(chooseAddress(_:)), for: .touchUpInside)
-        
         return addressBtn
     }()
     
-    
   
-    
-    
     @objc private func chooseAddress(_ btn:UIButton){
         hideKeyboard()
  
@@ -371,7 +368,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         receiveInput.text = address.recipient
         mobileInput.text = address.cellPhone
         
-        addressBtn.setTitle(address.label, for: .normal)
+     
         addressDescTextView.text = address.address
         if  addressDescTextView.text.characters.count > 0 {
             placeHolderLabel.text = ""

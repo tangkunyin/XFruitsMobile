@@ -27,6 +27,35 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         return tableView
     }()
     
+    lazy var emptyBgView:UIView = {
+        let  emptyBgView = UIView()
+        emptyBgView.backgroundColor = UIColor.white
+        return emptyBgView
+    }()
+    
+    lazy var emptyAddressTipLabel:UILabel = {
+       let emptyAddressTipLabel = UILabel()
+        emptyAddressTipLabel.text = "快去添加地址吧~"
+        emptyAddressTipLabel.textAlignment = .center
+        emptyAddressTipLabel.textColor = XFConstants.Color.greyishBrown
+        return emptyAddressTipLabel
+    }()
+    
+    lazy var emptyAddressImageView:UIImageView = {
+        let  emptyAddressImageView = UIImageView.init(image: UIImage.imageWithNamed("emptyAddress"))
+        return emptyAddressImageView
+    }()
+    
+    
+    lazy var addAddressBtn:UIButton = {
+       let addAddressBtn = UIButton.init()
+        addAddressBtn.setTitle("+ 添加地址", for: .normal)
+        addAddressBtn.backgroundColor = XFConstants.Color.salmon
+        addAddressBtn.setTitleColor(UIColor.white, for: .normal)
+        addAddressBtn.addTarget(self, action: #selector(addOrModifyAddressEvent(sender:)), for:.touchUpInside)
+        return addAddressBtn
+    }()
+    
     lazy var request:XFCommonService = {
         let serviceRequest = XFCommonService()
         return serviceRequest
@@ -36,17 +65,46 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         super.viewDidLoad()
         
         self.title = "地址管理"
+        
+        self.view.addSubview(emptyBgView)
+        
+        emptyBgView.addSubview(emptyAddressTipLabel)
+   
+      
+        emptyBgView.snp.makeConstraints({ (make) in
+            make.center.size.equalTo(view)
+        })
+        
+       
+        emptyAddressTipLabel.snp.makeConstraints({ (make) in
+            make.left.equalTo(emptyBgView.snp.left)
+            make.right.equalTo(emptyBgView.snp.right)
+            make.center.equalTo(self.view)
+            make.height.equalTo(30)
+ 
+        })
+ 
+        emptyBgView.addSubview(emptyAddressImageView)
+        emptyAddressImageView.snp.makeConstraints({ (make) in
+            make.bottom.equalTo(emptyAddressTipLabel.snp.top).offset(-5)
+ 
+            make.centerX.equalTo(self.view)
+            make.width.height.equalTo(100)
+        })
+   
         self.view.addSubview(addressesTable)
         addressesTable.snp.makeConstraints({ (make) in
             make.center.size.equalTo(view)
         })
+    
+        self.view.addSubview(addAddressBtn)
         
-        // 导航栏右侧添加地址按钮
-        let addAddressBtn  = UIButton.init(type:.custom)
-        addAddressBtn.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-        addAddressBtn.setImage(UIImage.imageWithNamed("add"), for: .normal)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: addAddressBtn)
-        addAddressBtn.addTarget(self, action: #selector(addOrModifyAddressEvent(sender:)), for:.touchUpInside)
+        addAddressBtn.snp.makeConstraints({ (make) in
+            make.bottom.equalTo(self.view.snp.bottom).offset(-10)
+            make.centerX.equalTo(self.view)
+            make.width.equalTo(150)
+            make.height.equalTo(35)
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,11 +118,19 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         weak var weakSelf = self
         request.getUserAllAddress { (data) in
             if let addresses = data as? Array<XFAddress>{
-                if (weakSelf?.addressInfoArray.count)! > 0 {
+                
+                if (addresses.count > 0) {
                     weakSelf?.addressInfoArray.removeAll()
+                    weakSelf?.addressInfoArray = addresses
+                    weakSelf?.addressesTable.reloadData()
+                  
+                     weakSelf?.addressesTable.isHidden  = false
                 }
-                weakSelf?.addressInfoArray = addresses
-                weakSelf?.addressesTable.reloadData()
+                else{
+                    // 没有地址，把 tableview 隐藏
+                    weakSelf?.addressesTable.isHidden = true
+                }
+             
             }
         }
     }

@@ -34,11 +34,7 @@ class XFAddAddressViewController: XFBaseSubViewController    {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-       
-        
-        
+    
         self.view.addSubview(editAddressView)
         
         editAddressView.snp.makeConstraints({ (make) in
