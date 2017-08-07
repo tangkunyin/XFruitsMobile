@@ -12,16 +12,13 @@ import MBProgressHUD
 class XFAddAddressViewController: XFBaseSubViewController    {
     
     var editStyle: Int?  // 0 为增加模式，1为编辑模式。2为查看模式
-    var leftTipArray:NSArray? // 左侧提示
-    var addressSigleEdit:XFAddress?  // 从上个界面传过来，需要编辑的地址
+    
+    var addressSigleEdit:XFAddress?  // 从上个界面传过来，编辑模式时候，需要编辑的地址
     
     lazy var editAddressView:XFEditMyAddressView = {
         let editAddressView = XFEditMyAddressView.init(frame: CGRect.zero)
         return editAddressView
     }()
-    
-   
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +38,6 @@ class XFAddAddressViewController: XFBaseSubViewController    {
             self.title = "编辑地址"
             editAddressView.setMyAddress(address: addressSigleEdit!)
         }
-       
-        
     }
     
     // 导航栏右侧按钮-保存-触发的事件

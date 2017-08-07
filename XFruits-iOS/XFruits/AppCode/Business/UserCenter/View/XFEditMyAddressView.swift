@@ -127,7 +127,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     lazy var saveBtn :UIButton = {
         let saveBtn  = UIButton.init()
         saveBtn.backgroundColor = XFConstants.Color.salmon
-        saveBtn.layer.cornerRadius = 10
+        saveBtn.layer.cornerRadius = 5
         saveBtn.layer.masksToBounds = true
         saveBtn.setTitle("保存", for: .normal)
 //        saveBtn.addTarget(self, action: #selector(saveAddress(sender:)), for: .touchUpInside)
@@ -493,5 +493,9 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         self.selectCategoryBtn = btn
  
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.hideKeyboard()
     }
 }

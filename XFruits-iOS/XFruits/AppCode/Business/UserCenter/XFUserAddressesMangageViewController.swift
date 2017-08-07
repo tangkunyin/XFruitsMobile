@@ -50,6 +50,8 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
     lazy var addAddressBtn:UIButton = {
        let addAddressBtn = UIButton.init()
         addAddressBtn.setTitle("+ 添加地址", for: .normal)
+        addAddressBtn.layer.cornerRadius = 5
+        addAddressBtn.layer.masksToBounds = true
         addAddressBtn.backgroundColor = XFConstants.Color.salmon
         addAddressBtn.setTitleColor(UIColor.white, for: .normal)
         addAddressBtn.addTarget(self, action: #selector(addOrModifyAddressEvent(sender:)), for:.touchUpInside)
@@ -67,15 +69,13 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         self.title = "地址管理"
         
         self.view.addSubview(emptyBgView)
-        
         emptyBgView.addSubview(emptyAddressTipLabel)
-   
-      
+        
         emptyBgView.snp.makeConstraints({ (make) in
             make.center.size.equalTo(view)
         })
         
-       
+        // 为空时候的中间提示的 label
         emptyAddressTipLabel.snp.makeConstraints({ (make) in
             make.left.equalTo(emptyBgView.snp.left)
             make.right.equalTo(emptyBgView.snp.right)
@@ -94,7 +94,8 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
    
         self.view.addSubview(addressesTable)
         addressesTable.snp.makeConstraints({ (make) in
-            make.center.size.equalTo(view)
+            make.left.right.top.equalTo(self.view)
+            make.bottom.equalTo(self.view).offset(-50)
         })
     
         self.view.addSubview(addAddressBtn)
@@ -122,8 +123,17 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
                 if (addresses.count > 0) {
                     weakSelf?.addressInfoArray.removeAll()
                     weakSelf?.addressInfoArray = addresses
+                    // 小小排序。把默认地址放在第一
+                    for(index,value) in (weakSelf?.addressInfoArray.enumerated())!{
+                        let addressObject:XFAddress = value!
+                        if(addressObject.isDefault == "1"){
+                            weakSelf?.addressInfoArray.remove(at: index)
+                            weakSelf?.addressInfoArray.insert(addressObject, at: 0)
+                            break
+                        }
+                    }
+                    
                     weakSelf?.addressesTable.reloadData()
-                  
                      weakSelf?.addressesTable.isHidden  = false
                 }
                 else{
@@ -169,7 +179,13 @@ extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: addressCellIdentifier, for: indexPath) as! XFAddressesManageTableViewCell
-        if let address : XFAddress = addressInfoArray[indexPath.row] {
+        let row = indexPath.row
+        
+        if(row == 0){
+            cell.backgroundColor = colorWithRGB(217, g: 217, b: 217)
+        }
+        
+        if let address : XFAddress = addressInfoArray[row] {
             cell.setMyAddress(address: address)
             cell.editAddressBtn.addTarget(self, action: #selector(addOrModifyAddressEvent(sender:)), for:.touchUpInside)
             cell.editAddressBtn.tag = 100 + indexPath.row
@@ -194,6 +210,7 @@ extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
         let row = indexPath.row
         weak var weakSelf = self
+       
         if editingStyle == .delete{
             if let address : XFAddress = addressInfoArray[row] {
                 let addressId = address.id!
@@ -201,6 +218,9 @@ extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableVie
                     if data as! Bool { // 删除成功。
                         weakSelf?.addressInfoArray.remove(at: row)
                         tableView.deleteRows(at: [indexPath], with: .fade)
+                        if(weakSelf?.addressInfoArray.count == 0){
+                            weakSelf?.addressesTable.isHidden = true
+                        }
                     }
                 }
             }

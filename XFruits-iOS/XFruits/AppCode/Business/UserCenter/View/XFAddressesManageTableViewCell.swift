@@ -43,14 +43,14 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     // 地址类别
     lazy var addressCategoryBtn:UIButton = {
         let btn = UIButton.init(type: .custom)
-        btn.setTitle("自己家", for: .normal)
+//        btn.setTitle("自己家", for: .normal)
+        btn.titleLabel?.font = XFConstants.Font.pfn14
         btn.setTitleColor(colorWithRGB(255, g: 105, b: 105), for:.normal)
-//        btn.titleLabel?.font = XFConstants.Font.bottomMenuFont
         btn.layer.borderColor = colorWithRGB(255, g: 105, b: 105).cgColor
         btn.layer.borderWidth = 1
         btn.layer.masksToBounds = true
         btn.contentEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
-        btn.layer.cornerRadius = 10
+        btn.layer.cornerRadius = 5
         return btn
     }()
     
@@ -93,7 +93,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         })
         userNameLabel.snp.makeConstraints({ (make) in
             make.left.top.equalTo(self).offset(10)
-            make.width.lessThanOrEqualTo(100)
+            make.width.equalTo(50)
             make.height.equalTo(20)
         })
         
@@ -101,14 +101,15 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         addressCategoryBtn.snp.makeConstraints({ (make) in
             make.top.equalTo(userNameLabel.snp.bottom).offset(10)
             make.left.equalTo(userNameLabel.snp.left)
-            make.width.lessThanOrEqualTo(120)
+            make.width.lessThanOrEqualTo(50)
             make.height.equalTo(20)
         })
         
         mobileLabel.snp.makeConstraints({ (make) in
             //            make.size.equalTo(CGSize(width: 110, height: 20))
+           
             make.top.equalTo(userNameLabel.snp.top)
-            make.left.equalTo(userNameLabel.snp.right)
+            make.left.equalTo(userNameLabel.snp.right).offset(10)
             make.right.equalTo(editAddressBtn.snp.left).offset(-5)
         })
         
