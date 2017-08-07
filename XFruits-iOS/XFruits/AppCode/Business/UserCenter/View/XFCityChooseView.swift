@@ -223,6 +223,7 @@ class XFCityChooseView: UIView,  UIPickerViewDelegate , UIPickerViewDataSource {
         let dict = self.areaArray[0] as! NSDictionary
 
         self.areaStr = dict["name"] as? String
+        addressCodeSelectTemp  = dict["code"] as! NSNumber
     }
     
     //根据市获取区
@@ -345,12 +346,16 @@ class XFCityChooseView: UIView,  UIPickerViewDelegate , UIPickerViewDataSource {
     //取消按钮
     @objc func cancleBtnClick()  {
         self.hidePickerView()
+        if self.myClosure != nil {
+            self.myClosure!("", "", "", 0)
+        }
     }
     
     //确定按钮
     @objc func sureBtnClick()  {
         self.hidePickerView()
         addressCodeToSave = addressCodeSelectTemp
+        
         print(addressCodeToSave)
         if self.myClosure != nil {
             self.myClosure!(self.provinceStr!, self.cityStr!, self.areaStr!, self.addressCodeToSave)

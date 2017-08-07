@@ -100,7 +100,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
   
     @objc private func chooseAddress(_ btn:UIButton){
         hideKeyboard()
- 
+        self.saveBtn.isHidden = true
         let cityView = XFCityChooseView.init(frame: self.bounds)
         weak var weakSelf = self
         
@@ -110,13 +110,31 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         }
         cityView.myClosure = { (provinceStr: String, cityStr: String , areaStr: String, addressCodeToSave: NSNumber) -> Void in
             print(addressCodeToSave)
-            weakSelf?.addressCodeToSave = addressCodeToSave
-            weakSelf?.addressChooseLabel.text = provinceStr + " " + cityStr + " " + areaStr
+            if addressCodeToSave == 0 {  // 说明点击 的是左侧取消按钮
+                
+            }
+            else{ // 点击的是右侧确定按钮
+                weakSelf?.addressCodeToSave = addressCodeToSave
+                weakSelf?.addressChooseLabel.text = provinceStr + " " + cityStr + " " + areaStr
+            }
+           self.saveBtn.isHidden =  false
             
         }
         self.addSubview(cityView)
         
     }
+    
+    lazy var saveBtn :UIButton = {
+        let saveBtn  = UIButton.init()
+        saveBtn.backgroundColor = XFConstants.Color.salmon
+        saveBtn.layer.cornerRadius = 10
+        saveBtn.layer.masksToBounds = true
+        saveBtn.setTitle("保存", for: .normal)
+//        saveBtn.addTarget(self, action: #selector(saveAddress(sender:)), for: .touchUpInside)
+        return saveBtn
+    }()
+    
+    
     private func hideKeyboard(){
         receiveInput.resignFirstResponder()
         mobileInput.resignFirstResponder()
@@ -361,6 +379,15 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             make.right.equalTo(self.snp.right).offset(-5)
             make.height.equalTo(40)
         })
+        
+        self.addSubview(saveBtn)
+        saveBtn.snp.makeConstraints({ (make) in
+            make.bottom.equalTo(self.snp.bottom).offset(-10)
+            make.centerX.equalTo(self)
+            make.width.equalTo(150)
+            make.height.equalTo(35)
+        })
+        
     }
     
     

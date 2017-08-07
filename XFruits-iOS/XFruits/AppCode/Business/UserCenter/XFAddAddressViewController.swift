@@ -20,16 +20,7 @@ class XFAddAddressViewController: XFBaseSubViewController    {
         return editAddressView
     }()
     
-    lazy var saveBtn :UIButton = {
-        let saveBtn  = UIButton.init()
-        saveBtn.backgroundColor = XFConstants.Color.salmon
-        saveBtn.layer.cornerRadius = 10
-        saveBtn.layer.masksToBounds = true
-        saveBtn.setTitle("保存", for: .normal)
-        saveBtn.addTarget(self, action: #selector(saveAddress(sender:)), for: .touchUpInside)
-        return saveBtn
-    }()
-    
+   
     
     
     override func viewDidLoad() {
@@ -40,14 +31,8 @@ class XFAddAddressViewController: XFBaseSubViewController    {
         editAddressView.snp.makeConstraints({ (make) in
             make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         })
-        self.view.addSubview(saveBtn)
-        saveBtn.snp.makeConstraints({ (make) in
-            make.bottom.equalTo(self.view.snp.bottom).offset(-10)
-            make.centerX.equalTo(self.view)
-            make.width.equalTo(150)
-            make.height.equalTo(35)
-        })
-        
+       
+         editAddressView.saveBtn.addTarget(self, action: #selector(saveAddress(sender:)), for: .touchUpInside)
         
         if editStyle == 0 {
             self.title = "新增地址"
