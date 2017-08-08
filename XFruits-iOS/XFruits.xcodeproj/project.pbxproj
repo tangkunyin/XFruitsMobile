@@ -18,6 +18,7 @@
 		165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */; };
 		165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */; };
 		16582DC31EE4F8D400A58846 /* XFEditMyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */; };
+		169C39C01F3962880064BD79 /* XFWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169C39BF1F3962880064BD79 /* XFWebViewController.swift */; };
 		16DCE3C31EDA68960047F559 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16DCE3C21EDA68960047F559 /* city.plist */; };
 		860A43011EE415FF00798678 /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
 		860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A43021EE415FF00798678 /* HandyJSON.framework */; };
@@ -115,6 +116,7 @@
 		165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFTPayModeableViewCell.swift; sourceTree = "<group>"; };
 		165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFChoosePayWayViewController.swift; sourceTree = "<group>"; };
 		16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEditMyAddressView.swift; sourceTree = "<group>"; };
+		169C39BF1F3962880064BD79 /* XFWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFWebViewController.swift; sourceTree = "<group>"; };
 		16DCE3C21EDA68960047F559 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		860A43021EE415FF00798678 /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HandyJSON.framework; path = Carthage/Build/iOS/HandyJSON.framework; sourceTree = "<group>"; };
 		860A43041EE4178000798678 /* XFBaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFBaseResponse.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				862672DC1EFE46420062B52B /* XFUserRegistSecondPageViewController.swift */,
 				862672DE1EFE468B0062B52B /* XFUserAddressesMangageViewController.swift */,
 				862672E01EFE46AE0062B52B /* XFAddAddressViewController.swift */,
+				169C39BF1F3962880064BD79 /* XFWebViewController.swift */,
 			);
 			path = UserCenter;
 			sourceTree = "<group>";
@@ -699,6 +702,7 @@
 				8630B31D1EF7BC86002F5B5C /* XFSQLiteDataSource.swift in Sources */,
 				862672D31EFE43680062B52B /* XFShopCarViewController.swift in Sources */,
 				8690FEDF1ED178900051A16D /* XFShopCartViewCell.swift in Sources */,
+				169C39C01F3962880064BD79 /* XFWebViewController.swift in Sources */,
 				862672F51EFE49550062B52B /* XFBaseViewController.swift in Sources */,
 				862AF70B1F0926A700409CCB /* XFComment.swift in Sources */,
 				862672ED1EFE48420062B52B /* XFNetworking.swift in Sources */,

@@ -158,6 +158,8 @@ class XFUserCenterViewController: XFBaseViewController {
                 } else if section == 2 && row == 1 {
                     //TODO 卡劵、优惠券、收藏、积分
                     MBProgressHUD.showError("还在开发中，别急好吧...")
+                    let webView = XFWebViewController()
+                    self.navigationController?.pushViewController(webView, animated: true)
                 }
             } else {
                 // 进入登录页面
