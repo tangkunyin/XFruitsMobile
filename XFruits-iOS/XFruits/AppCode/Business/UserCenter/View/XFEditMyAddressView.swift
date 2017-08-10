@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 /// 新增或编辑地址
 class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UITextViewDelegate{
@@ -16,7 +17,8 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     var defaultLabel : String? // 编辑类别时默认选中的字符串
     // 声明闭包
     //    typealias inputClosureType = (String)-> Void
-    
+    var actionHandler: ((XFAddress) -> Void)?
+
     let categoryArray = ["家","公司","学校"]  
     
     lazy var leftTipReceiveLabel: UILabel = {
@@ -85,8 +87,6 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         return addressChooseLabel
     }()
     
-    
-    
     // 收货地址透明按钮
     lazy var addressBtn : UIButton = {
         let addressBtn = UIButton.init()
@@ -98,61 +98,16 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     }()
     
   
-    @objc private func chooseAddress(_ btn:UIButton){
-        hideKeyboard()
-        self.saveBtn.isHidden = true
-        let cityView = XFCityChooseView.init(frame: self.bounds)
-        weak var weakSelf = self
-        
-        if(weakSelf?.addressChooseLabel.text != nil ){
-            cityView.loadDefaultArea(defaultArea: (weakSelf?.addressChooseLabel.text)!)
-
-        }
-        cityView.myClosure = { (provinceStr: String, cityStr: String , areaStr: String, addressCodeToSave: NSNumber) -> Void in
-            print(addressCodeToSave)
-            if addressCodeToSave == 0 {  // 说明点击 的是左侧取消按钮
-                
-            }
-            else{ // 点击的是右侧确定按钮
-                weakSelf?.addressCodeToSave = addressCodeToSave
-                weakSelf?.addressChooseLabel.text = provinceStr + " " + cityStr + " " + areaStr
-            }
-           self.saveBtn.isHidden =  false
-            
-        }
-        self.addSubview(cityView)
-        
-    }
-    
+   
     lazy var saveBtn :UIButton = {
         let saveBtn  = UIButton.init()
         saveBtn.backgroundColor = XFConstants.Color.salmon
         saveBtn.layer.cornerRadius = 5
         saveBtn.layer.masksToBounds = true
         saveBtn.setTitle("保存", for: .normal)
-//        saveBtn.addTarget(self, action: #selector(saveAddress(sender:)), for: .touchUpInside)
+       saveBtn.addTarget(self, action: #selector(saveAddress(sender:)), for: .touchUpInside)
         return saveBtn
     }()
-    
-    
-    private func hideKeyboard(){
-        receiveInput.resignFirstResponder()
-        mobileInput.resignFirstResponder()
-        addressDescTextView.resignFirstResponder()
-    }
-    
-    
-    @objc private func checkboxSelect(_ btn:UIButton){
-       
-        if (!btn.isSelected){
-            btn.setImage(UIImage.imageWithNamed("check_box_select"), for: .normal)
-            btn.isSelected = true
-        }
-        else{
-            btn.setImage(UIImage.imageWithNamed("checkbox-empty"), for: .normal)
-            btn.isSelected = false
-        }
-    }
     
     lazy var addressDescTextView:UITextView = {
         let descAddress = UITextView()
@@ -199,17 +154,6 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         return placeHolderLabel
     }()
     
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        customInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        customInit()
-    }
     
     private func customInit(){
         
@@ -390,7 +334,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         
     }
     
-    
+    // 编辑模式，设置地址值
     func setMyAddress(address:XFAddress)  {
         receiveInput.text = address.recipient
         mobileInput.text = address.cellPhone
@@ -413,6 +357,104 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         defaultLabel = address.label
         
         
+    }
+    
+    
+    
+    @objc private func chooseAddress(_ btn:UIButton){
+        hideKeyboard()
+        self.saveBtn.isHidden = true
+        let cityView = XFCityChooseView.init(frame: self.bounds)
+        weak var weakSelf = self
+        
+        if(weakSelf?.addressChooseLabel.text != nil ){
+            cityView.loadDefaultArea(defaultArea: (weakSelf?.addressChooseLabel.text)!)
+            
+        }
+        cityView.myClosure = { (provinceStr: String, cityStr: String , areaStr: String, addressCodeToSave: NSNumber) -> Void in
+            print(addressCodeToSave)
+            if addressCodeToSave == 0 {  // 说明点击 的是左侧取消按钮
+                
+            }
+            else{ // 点击的是右侧确定按钮
+                weakSelf?.addressCodeToSave = addressCodeToSave
+                weakSelf?.addressChooseLabel.text = provinceStr + " " + cityStr + " " + areaStr
+            }
+            self.saveBtn.isHidden =  false
+            
+        }
+        self.addSubview(cityView)
+        
+    }
+    
+    
+    @objc func saveAddress(sender:UIButton?) {
+        
+        weak var weakSelf = self
+        
+        guard let recipient = receiveInput.text?.trimmingCharacters(in: .whitespacesAndNewlines), recipient != ""  else {
+            MBProgressHUD.showError("收货人不能为空")
+            return
+        }
+        
+        guard let cellPhone = mobileInput.text?.trimmingCharacters(in: .whitespacesAndNewlines) , cellPhone != "" else {
+            MBProgressHUD.showError("手机号码不能为空")
+            return
+        }
+        
+        guard  isPhoneNumber(phoneNumber: cellPhone) == true else{
+            MBProgressHUD.showError("请输入合法的手机号")
+            return
+        }
+        
+        guard let addressDesc =  addressDescTextView.text ,addressDesc != "" else {
+            MBProgressHUD.showError("详细地址不能为空")
+            return
+        }
+        
+        guard let category =  selectCategoryBtn?.titleLabel?.text ,category != "" else {
+            MBProgressHUD.showError("请选择分类")
+            return
+        }
+        
+        let cityCode =  addressCodeToSave
+        guard cityCode != 0 else {
+            MBProgressHUD.showError("请选择省市区")
+            return
+        }
+        
+        let isDefault = useAsDefaultAddressBtn.isSelected == true ? "1" : "0"
+        
+        var addressModify = XFAddress()
+        
+        addressModify.districtCode  = cityCode
+        addressModify.address  = addressDesc
+        addressModify.recipient = recipient
+        addressModify.cellPhone = cellPhone
+        addressModify.isDefault = isDefault
+        addressModify.label = category
+        
+        if let action = actionHandler {
+            action(addressModify)  // 传值给添加或修改地址界面
+        }
+        
+    }
+    @objc private func checkboxSelect(_ btn:UIButton){
+        
+        if (!btn.isSelected){
+            btn.setImage(UIImage.imageWithNamed("check_box_select"), for: .normal)
+            btn.isSelected = true
+        }
+        else{
+            btn.setImage(UIImage.imageWithNamed("checkbox-empty"), for: .normal)
+            btn.isSelected = false
+        }
+    }
+    
+    private func hideKeyboard(){
+        receiveInput.resignFirstResponder()
+        mobileInput.resignFirstResponder()
+        addressDescTextView.resignFirstResponder()
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -479,10 +521,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     // 点击某项的事件
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         let row = indexPath.row
-        print(row)
- 
-        let cate  = categoryArray[row]
-        print(cate)
+//        let cate  = categoryArray[row]
         
         self.selectCategoryBtn?.setTitleColor(XFConstants.Color.salmon, for: .normal)
         self.selectCategoryBtn?.backgroundColor = UIColor.white
@@ -491,11 +530,20 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         btn.backgroundColor = XFConstants.Color.salmon
         btn.setTitleColor(UIColor.white, for: .normal)
         self.selectCategoryBtn = btn
- 
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.hideKeyboard()
+    }
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        customInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        customInit()
     }
 }

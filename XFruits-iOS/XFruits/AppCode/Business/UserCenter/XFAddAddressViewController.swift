@@ -9,28 +9,35 @@
 import UIKit
 import MBProgressHUD
 
+
 class XFAddAddressViewController: XFBaseSubViewController    {
     
     var editStyle: Int?  // 0 为增加模式，1为编辑模式。2为查看模式
     
     var addressSigleEdit:XFAddress?  // 从上个界面传过来，编辑模式时候，需要编辑的地址
     
+    // 编辑视图
     lazy var editAddressView:XFEditMyAddressView = {
         let editAddressView = XFEditMyAddressView.init(frame: CGRect.zero)
+        
         return editAddressView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        weak var weakSelf = self
+
         self.view.addSubview(editAddressView)
-        
+        editAddressView.actionHandler = { (address) in
+//            print(address)
+            weakSelf?.saveAddress(address: address)
+        }
+
         editAddressView.snp.makeConstraints({ (make) in
             make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         })
-       
-         editAddressView.saveBtn.addTarget(self, action: #selector(saveAddress(sender:)), for: .touchUpInside)
-        
+  
         if editStyle == 0 {
             self.title = "新增地址"
         }
@@ -41,53 +48,20 @@ class XFAddAddressViewController: XFBaseSubViewController    {
     }
     
     // 导航栏右侧按钮-保存-触发的事件
-    @objc func saveAddress(sender:UIButton?) {
-        dPrint("save")
-        
+    
+     func saveAddress(address :XFAddress) {
+       
         weak var weakSelf = self
         
-        guard let recipient = editAddressView.receiveInput.text?.trimmingCharacters(in: .whitespacesAndNewlines), recipient != ""  else {
-            MBProgressHUD.showError("收货人不能为空")
-            return
-        }
-    
-        guard let cellPhone = editAddressView.mobileInput.text?.trimmingCharacters(in: .whitespacesAndNewlines) , cellPhone != "" else {
-            MBProgressHUD.showError("手机号码不能为空")
-            return
-        }
-        
-        guard  isPhoneNumber(phoneNumber: cellPhone) == true else{
-            MBProgressHUD.showError("请输入合法的手机号")
-            return
-        }
- 
-        guard let addressDesc = editAddressView.addressDescTextView.text ,addressDesc != "" else {
-            MBProgressHUD.showError("详细地址不能为空")
-            return
-        }
-        
-        guard let category = self.editAddressView.selectCategoryBtn?.titleLabel?.text ,category != "" else {
-            MBProgressHUD.showError("请选择分类")
-            return
-        }
- 
-        let cityCode = self.editAddressView.addressCodeToSave
-        guard cityCode != 0 else {
-            MBProgressHUD.showError("请选择省市区")
-            return
-        }
-        
-        let isDefault = self.editAddressView.useAsDefaultAddressBtn.isSelected == true ? "1" : "0"
+        var addressDict:[String:String]  = ["code":address.districtCode!.stringValue,
+                                            "address":address.address!,
+                                            "recipient":address.recipient!,
+                                            "cellPhone":address.cellPhone!,
+                                            "isDefault":address.isDefault!,
+                                            "label":address.label!]
         
         if editStyle == 0 {  // 添加地址
-            
-            let addressDict:[String:String]  = ["code":cityCode.stringValue,
-                                                "address":addressDesc,
-                                                "recipient":recipient,
-                                                "cellPhone":cellPhone,
-                                                "isDefault":isDefault,
-                                                "label":category]
-            
+         
             XFCommonService().addAddress(params: addressDict) { (data) in
                 dPrint(data)
                 weakSelf!.navigationController?.popViewController(animated: true)
@@ -96,26 +70,9 @@ class XFAddAddressViewController: XFBaseSubViewController    {
         }
         else if editStyle == 1 {  // 修改地址
             
-            var addressModify = XFAddress()
-            
-            addressModify.id =  addressSigleEdit?.id
-            addressModify.districtCode  = cityCode
-            addressModify.address  = addressDesc
-            addressModify.recipient = recipient
-            addressModify.cellPhone = cellPhone
-            addressModify.isDefault = isDefault
-            addressModify.label = category
             let addressId:String = String(addressSigleEdit!.id)
-            
-            
-            let addressDict:[String:String]  = ["id":addressId,
-                                                "address":addressModify.address!,
-                                                "recipient":addressModify.recipient!,
-                                                "cellPhone": addressModify.cellPhone! ,
-                                                "isDefault":addressModify.isDefault!,
-                                                "label":addressModify.label!,
-                                                "code":(addressModify.districtCode?.stringValue)!]
-            print(addressDict)
+           
+            addressDict["id"] = addressId  // 编辑模式要多传一个地址id
             
             XFCommonService().modifyAddress(params: addressDict){ (data) in
                 dPrint(data)
@@ -128,6 +85,4 @@ class XFAddAddressViewController: XFBaseSubViewController    {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
 }
