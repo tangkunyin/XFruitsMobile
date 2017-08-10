@@ -18,6 +18,7 @@
 		165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */; };
 		165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */; };
 		16582DC31EE4F8D400A58846 /* XFEditMyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */; };
+		16941B691F3C04A40066A911 /* XFEmptyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16941B681F3C04A40066A911 /* XFEmptyAddressView.swift */; };
 		169C39C01F3962880064BD79 /* XFWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169C39BF1F3962880064BD79 /* XFWebViewController.swift */; };
 		16DCE3C31EDA68960047F559 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16DCE3C21EDA68960047F559 /* city.plist */; };
 		860A43011EE415FF00798678 /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
@@ -116,6 +117,7 @@
 		165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFTPayModeableViewCell.swift; sourceTree = "<group>"; };
 		165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFChoosePayWayViewController.swift; sourceTree = "<group>"; };
 		16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEditMyAddressView.swift; sourceTree = "<group>"; };
+		16941B681F3C04A40066A911 /* XFEmptyAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFEmptyAddressView.swift; sourceTree = "<group>"; };
 		169C39BF1F3962880064BD79 /* XFWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFWebViewController.swift; sourceTree = "<group>"; };
 		16DCE3C21EDA68960047F559 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		860A43021EE415FF00798678 /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HandyJSON.framework; path = Carthage/Build/iOS/HandyJSON.framework; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 				16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */,
 				862672D41EFE43D20062B52B /* XFAddressesManageTableViewCell.swift */,
 				1641E76D1F3609EC0093DADF /* XFAlert.swift */,
+				16941B681F3C04A40066A911 /* XFEmptyAddressView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */,
 				1641E76E1F3609EC0093DADF /* XFAlert.swift in Sources */,
 				868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */,
+				16941B691F3C04A40066A911 /* XFEmptyAddressView.swift in Sources */,
 				86ADDCD51F2AEBCE00881CFA /* XFDataGlobal.swift in Sources */,
 				86BB9A871F1D2B1E00B46EBC /* XFCheckoutViewController.swift in Sources */,
 				862672FB1EFE4F3A0062B52B /* XFVerifyImage.swift in Sources */,

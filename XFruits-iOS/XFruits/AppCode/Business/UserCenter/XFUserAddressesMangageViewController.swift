@@ -16,6 +16,7 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
     
     var onSelectedAddress: ((XFAddress) -> Void)?
     
+    // 地址列表
     lazy var addressesTable: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
         tableView.delegate = self
@@ -26,27 +27,8 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         tableView.register(XFAddressesManageTableViewCell.self, forCellReuseIdentifier: addressCellIdentifier)
         return tableView
     }()
-    
-    lazy var emptyBgView:UIView = {
-        let  emptyBgView = UIView()
-        emptyBgView.backgroundColor = UIColor.white
-        return emptyBgView
-    }()
-    
-    lazy var emptyAddressTipLabel:UILabel = {
-       let emptyAddressTipLabel = UILabel()
-        emptyAddressTipLabel.text = "快去添加地址吧~"
-        emptyAddressTipLabel.textAlignment = .center
-        emptyAddressTipLabel.textColor = XFConstants.Color.greyishBrown
-        return emptyAddressTipLabel
-    }()
-    
-    lazy var emptyAddressImageView:UIImageView = {
-        let  emptyAddressImageView = UIImageView.init(image: UIImage.imageWithNamed("emptyAddress"))
-        return emptyAddressImageView
-    }()
-    
-    
+  
+    // 添加地址按钮
     lazy var addAddressBtn:UIButton = {
        let addAddressBtn = UIButton.init()
         addAddressBtn.setTitle("+ 添加地址", for: .normal)
@@ -65,41 +47,25 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "地址管理"
         
-        self.view.addSubview(emptyBgView)
-        emptyBgView.addSubview(emptyAddressTipLabel)
-        
-        emptyBgView.snp.makeConstraints({ (make) in
-            make.center.size.equalTo(view)
-        })
-        
-        // 为空时候的中间提示的 label
-        emptyAddressTipLabel.snp.makeConstraints({ (make) in
-            make.left.equalTo(emptyBgView.snp.left)
-            make.right.equalTo(emptyBgView.snp.right)
-            make.center.equalTo(self.view)
-            make.height.equalTo(30)
- 
-        })
- 
-        emptyBgView.addSubview(emptyAddressImageView)
-        emptyAddressImageView.snp.makeConstraints({ (make) in
-            make.bottom.equalTo(emptyAddressTipLabel.snp.top).offset(-5)
- 
-            make.centerX.equalTo(self.view)
-            make.width.height.equalTo(100)
+        // 空白地址视图
+        let emptyAddressView = XFEmptyAddressView()
+        self.view.addSubview(emptyAddressView)
+        emptyAddressView.snp.makeConstraints({ (make) in
+            make.left.right.top.bottom.equalTo(self.view)
+           
         })
    
+        // 地址列表视图
         self.view.addSubview(addressesTable)
         addressesTable.snp.makeConstraints({ (make) in
             make.left.right.top.equalTo(self.view)
             make.bottom.equalTo(self.view).offset(-50)
         })
     
+        // 底部添加地址按钮
         self.view.addSubview(addAddressBtn)
-        
         addAddressBtn.snp.makeConstraints({ (make) in
             make.bottom.equalTo(self.view.snp.bottom).offset(-10)
             make.centerX.equalTo(self.view)
@@ -111,7 +77,6 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         getUserAllAddress()
-        
     }
     
     // 获取用户所有地址
@@ -134,7 +99,7 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
                     }
                     
                     weakSelf?.addressesTable.reloadData()
-                     weakSelf?.addressesTable.isHidden  = false
+                    weakSelf?.addressesTable.isHidden  = false  // 有地址的时候，tableview 不能隐藏
                 }
                 else{
                     // 没有地址，把 tableview 隐藏
@@ -160,10 +125,8 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
             addAddressVC.editStyle = 0
         }
 
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-       
-        self.navigationController?.show(addAddressVC, sender: self)
- 
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.show(addAddressVC, sender: self)
     }
 }
 
@@ -220,6 +183,9 @@ extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableVie
                         tableView.deleteRows(at: [indexPath], with: .fade)
                         if(weakSelf?.addressInfoArray.count == 0){
                             weakSelf?.addressesTable.isHidden = true
+                        }
+                        else{
+                            weakSelf?.addressesTable.isHidden = false
                         }
                     }
                 }
