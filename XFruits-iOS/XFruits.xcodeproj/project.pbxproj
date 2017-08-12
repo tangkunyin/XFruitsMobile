@@ -13,8 +13,6 @@
 		16200CF51F1B7F200008C039 /* XFAvailableAddressUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */; };
 		1641E76C1F35F9D10093DADF /* XFCityChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */; };
 		1641E76E1F3609EC0093DADF /* XFAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1641E76D1F3609EC0093DADF /* XFAlert.swift */; };
-		165608D71EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D41EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift */; };
-		165608D81EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D51EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift */; };
 		165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */; };
 		165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */; };
 		16582DC31EE4F8D400A58846 /* XFEditMyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */; };
@@ -24,6 +22,7 @@
 		860A43011EE415FF00798678 /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
 		860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A43021EE415FF00798678 /* HandyJSON.framework */; };
 		860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A43041EE4178000798678 /* XFBaseResponse.swift */; };
+		8618BA2C1F3F963300AC9436 /* XFPayTimerCountDownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618BA2B1F3F963300AC9436 /* XFPayTimerCountDownViewCell.swift */; };
 		862672CD1EFE42B50062B52B /* XFCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672CC1EFE42B50062B52B /* XFCategoryViewController.swift */; };
 		862672CF1EFE42EF0062B52B /* XFDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672CE1EFE42EF0062B52B /* XFDetailViewController.swift */; };
 		862672D11EFE432C0062B52B /* XFIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672D01EFE432C0062B52B /* XFIndexViewController.swift */; };
@@ -112,8 +111,6 @@
 		16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAvailableAddressUtils.swift; sourceTree = "<group>"; };
 		1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCityChooseView.swift; sourceTree = "<group>"; };
 		1641E76D1F3609EC0093DADF /* XFAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAlert.swift; sourceTree = "<group>"; };
-		165608D41EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFPayWayBillContentTableViewCell.swift; sourceTree = "<group>"; };
-		165608D51EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFPayWayBillInfoTableViewCell.swift; sourceTree = "<group>"; };
 		165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFTPayModeableViewCell.swift; sourceTree = "<group>"; };
 		165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFChoosePayWayViewController.swift; sourceTree = "<group>"; };
 		16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEditMyAddressView.swift; sourceTree = "<group>"; };
@@ -122,6 +119,7 @@
 		16DCE3C21EDA68960047F559 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		860A43021EE415FF00798678 /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HandyJSON.framework; path = Carthage/Build/iOS/HandyJSON.framework; sourceTree = "<group>"; };
 		860A43041EE4178000798678 /* XFBaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFBaseResponse.swift; sourceTree = "<group>"; };
+		8618BA2B1F3F963300AC9436 /* XFPayTimerCountDownViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFPayTimerCountDownViewCell.swift; sourceTree = "<group>"; };
 		862672CC1EFE42B50062B52B /* XFCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCategoryViewController.swift; sourceTree = "<group>"; };
 		862672CE1EFE42EF0062B52B /* XFDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailViewController.swift; sourceTree = "<group>"; };
 		862672D01EFE432C0062B52B /* XFIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFIndexViewController.swift; sourceTree = "<group>"; };
@@ -510,8 +508,6 @@
 		8690FED91ED1768E0051A16D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				165608D41EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift */,
-				165608D51EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift */,
 				165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */,
 				8690FEDE1ED178900051A16D /* XFShopCartViewCell.swift */,
 				8690FEE01ED178AF0051A16D /* XFShopCartActionBar.swift */,
@@ -520,6 +516,7 @@
 				86D18BA61F1E5843007643C0 /* XFCheckoutActionBar.swift */,
 				86ADDCD81F2B64CF00881CFA /* XFCheckoutAddress.swift */,
 				86ADDCDA1F2B656700881CFA /* XFCheckoutInfo.swift */,
+				8618BA2B1F3F963300AC9436 /* XFPayTimerCountDownViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -717,14 +714,12 @@
 				862672D51EFE43D20062B52B /* XFAddressesManageTableViewCell.swift in Sources */,
 				8690FEDB1ED177B80051A16D /* XFCategoryHeadSizer.swift in Sources */,
 				862672E71EFE47AE0062B52B /* XFUser.swift in Sources */,
-				165608D81EDACA6000D325D4 /* XFPayWayBillInfoTableViewCell.swift in Sources */,
 				862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */,
 				862672EB1EFE480B0062B52B /* XFProduct.swift in Sources */,
 				86E8DF781EDAB0D6000A489F /* XFDetailDescriptionView.swift in Sources */,
 				16582DC31EE4F8D400A58846 /* XFEditMyAddressView.swift in Sources */,
 				165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */,
 				86E8DF761EDAB0C9000A489F /* XFDetailCommentView.swift in Sources */,
-				165608D71EDACA6000D325D4 /* XFPayWayBillContentTableViewCell.swift in Sources */,
 				862672D71EFE43FC0062B52B /* XFUserLoginViewController.swift in Sources */,
 				862672DB1EFE44490062B52B /* XFUserCenterViewController.swift in Sources */,
 				86ADDCE11F2DD88500881CFA /* XFCouponItem.swift in Sources */,
@@ -733,6 +728,7 @@
 				86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */,
 				860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */,
 				86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */,
+				8618BA2C1F3F963300AC9436 /* XFPayTimerCountDownViewCell.swift in Sources */,
 				16200CF01F1B169C0008C039 /* XFAddress.swift in Sources */,
 				86D18BA51F1E5731007643C0 /* XFCheckoutGoodsCell.swift in Sources */,
 				865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */,

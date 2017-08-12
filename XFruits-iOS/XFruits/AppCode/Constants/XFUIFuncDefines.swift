@@ -76,3 +76,8 @@ func createSeperateLine() ->UIView {
     line.backgroundColor = XFConstants.Color.pinkishGrey
     return line
 }
+
+func xfAttributes(_ fontSize: CGFloat = 14, fontColor: UIColor? = XFConstants.Color.darkGray) -> Dictionary<NSAttributedStringKey, Any> {
+    let attr = [NSAttributedStringKey.font:pfnFontWithSize(fontSize), NSAttributedStringKey.foregroundColor:fontColor]
+    return attr as Any as! Dictionary<NSAttributedStringKey, Any>
+}

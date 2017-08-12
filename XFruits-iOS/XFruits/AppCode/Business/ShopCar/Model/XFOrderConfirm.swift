@@ -9,21 +9,24 @@
 import HandyJSON
 
 /// 确认订单模型
-struct XFOrderConfirm: HandyJSON {
+class XFOrderConfirm: HandyJSON {
     var address: XFAddress?
     var couponList: Array<XFCouponItem>?
+    required init() {}
 }
 
 
 /// 订单提交返回模型
-struct XFPayChannel: HandyJSON {
+class XFPayChannel: HandyJSON {
     var name: String?
     var channel: Int?
     var defaultChannel: Bool?
+    required init() {}
 }
-struct XFOrderCommit: HandyJSON {
+class XFOrderCommit: HandyJSON {
     var cashFee: String?
     var orderId: String?
     var orderExpiration: Int?
-    var payChannels: Array<XFPayChannel>?
+    var payChannels: Array<XFPayChannel?> = []
+    required init() {}
 }

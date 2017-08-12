@@ -84,6 +84,7 @@ class XFCheckoutViewController: XFBaseViewController {
                 if XFCartUtils.sharedInstance.clearSelected(carts: selectedData) {
                     MBProgressHUD.showMessage("订单提交成功，请在\(expiration)分钟内完成支付", completion: {
                         let payCenter = XFChoosePayWayViewController()
+                        payCenter.title = "请选择付款方式"
                         payCenter.payInfo = result
                         weakSelf?.navigationController?.pushViewController(payCenter, animated: true)
                     })

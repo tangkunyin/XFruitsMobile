@@ -164,12 +164,13 @@ public class XFNetworking: NSObject {
                 switch response.result {
                 case .success(let value):
                     if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: value.rawString()) {
-                        guard let code = obj.code, let msg = obj.msg else {
-                            dPrint(obj.msg ?? "异常数据返回，请稍后再试~")
-                            MBProgressHUD.showError("异常数据返回，请稍后再试~")
-                            completion(false, nil)
+                        guard let code = obj.code, let msg = obj.msg, let timestamp = obj.systemTime else {
+                            dPrint(obj)
+                            completion(false, "数据状态异常，请稍后再试~")
                             return
                         }
+                        //更新服务器时间
+                        XFDataGlobal.shared.serverTime = timestamp
                         switch code {
                         case XFHttpStatus.success.rawValue,
                              XFHttpStatus.notModify.rawValue,

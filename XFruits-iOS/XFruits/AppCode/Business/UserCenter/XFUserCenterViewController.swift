@@ -61,7 +61,7 @@ class XFUserCenterViewController: XFBaseViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
-        tableView.sectionFooterHeight = 15
+        tableView.sectionFooterHeight = 10
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
         tableView.register(XFUCenterCommonCell.self, forCellReuseIdentifier: UC_CellIdentifier)
         return tableView
@@ -160,11 +160,7 @@ class XFUserCenterViewController: XFBaseViewController {
 }
 
 extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 15
-    }
-    
+        
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }

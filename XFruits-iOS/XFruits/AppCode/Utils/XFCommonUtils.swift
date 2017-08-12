@@ -19,7 +19,7 @@ func dPrint(_ item: Any) {
 }
 
 /// 当前时间的时间戳
-func currentTimestamp() ->Int {
+func localTimestamp() ->Int {
     let now = Date()
     let timeInterval:TimeInterval = now.timeIntervalSince1970
     let timeStamp = Int(timeInterval)
@@ -74,7 +74,7 @@ func createChatViewController(withUser user:XFUser?, goodsInfo:ProductDetail?) -
             config.nickname = "iOS端未登录的匿名用户"
             config.gender = 0
             //未登录的匿名用户使用时间戳作为唯一标示符
-            config.openId = "iOS_RandomUser_\(currentTimestamp())"
+            config.openId = "iOS_RandomUser_\(localTimestamp())"
         }
         if let goodsInfo = goodsInfo {
             config.userInfo = JSON(goodsInfo).dictionaryValue

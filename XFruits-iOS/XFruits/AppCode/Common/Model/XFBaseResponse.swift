@@ -14,6 +14,8 @@ struct XFBaseResponse: HandyJSON {
     
     var msg:String?
     
+    var systemTime:Int?
+    
     var data:Any?
         
 }

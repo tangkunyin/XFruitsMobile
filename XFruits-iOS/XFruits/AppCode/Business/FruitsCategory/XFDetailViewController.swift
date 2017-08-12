@@ -30,6 +30,10 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         }
     }
     
+    deinit {
+        dPrint("XFDetailViewController deinit...")
+    }
+    
     lazy var request:XFCommonService = {
         let serviceRequest = XFCommonService()
         return serviceRequest

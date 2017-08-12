@@ -42,20 +42,47 @@ class XFShopCarViewController: XFBaseViewController {
     }
     
     fileprivate func checkoutShopCart() {
-        guard selectedItemCount > 0 else {
-            MBProgressHUD.showError("请至少选择一项下单")
-            return
-        }
-        guard XFUserGlobal.shared.isLogin else {
-            // 进入登录页面
-            let login = XFUserLoginViewController()
-            let nav = UINavigationController.init(rootViewController: login)
-            present(nav, animated: true, completion: nil)
-            return
-        }
-        let checkoutVC = XFCheckoutViewController()
-        checkoutVC.totalGoodsAmount = selectedTotalAmount
-        navigationController?.pushViewController(checkoutVC, animated: true)
+        
+        let payCenter = XFChoosePayWayViewController()
+        payCenter.title = "请选择付款方式"
+
+        let channel1 = XFPayChannel()
+        channel1.name = "支付宝支付"
+        channel1.channel = 1
+        channel1.defaultChannel = false
+        let channel2 = XFPayChannel()
+        channel2.name = "微信支付"
+        channel2.channel = 2
+        channel2.defaultChannel = false
+
+        let payData = XFOrderCommit()
+        payData.orderId = "XF20173347384950"
+        payData.orderExpiration = 1502576570000
+        payData.cashFee = "0.1"
+        payData.payChannels = [channel1, channel2]
+
+        payCenter.payInfo = payData
+
+        navigationController?.pushViewController(payCenter, animated: true)
+        
+//        guard selectedItemCount > 0 else {
+//            MBProgressHUD.showError("请至少选择一项下单")
+//            return
+//        }
+////        guard selectedTotalAmount > 0 else {
+////            MBProgressHUD.showError("结算总价有误，请检查")
+////            return
+////        }
+//        guard XFUserGlobal.shared.isLogin else {
+//            // 进入登录页面
+//            let login = XFUserLoginViewController()
+//            let nav = UINavigationController.init(rootViewController: login)
+//            present(nav, animated: true, completion: nil)
+//            return
+//        }
+//        let checkoutVC = XFCheckoutViewController()
+//        checkoutVC.totalGoodsAmount = selectedTotalAmount
+//        navigationController?.pushViewController(checkoutVC, animated: true)
     }
 
     // MARK: - Cart private func and variables
