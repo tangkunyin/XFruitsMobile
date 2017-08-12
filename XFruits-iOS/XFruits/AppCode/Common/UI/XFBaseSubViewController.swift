@@ -20,10 +20,7 @@ struct XFBackButtonImages {
 
 class XFBaseSubViewController: XFBaseViewController {
     
-    
-    /// Modal消失后执行回调
-    var dismissCompletion: (()->Void)?
-    
+    var backToRoot: Bool = false
     
     /// 改变返回按钮ICON，直接设置值
     var backButtonImages: Dictionary<String, String> {
@@ -72,15 +69,11 @@ class XFBaseSubViewController: XFBaseViewController {
     @objc func backToParentController() {
         if let navController = self.navigationController {
             if navController.responds(to: #selector(navController.popViewController(animated:))) {
-                navController.popViewController(animated: true)
-            }
-            if navController.responds(to: #selector(navController.dismiss(animated:completion:))) {
-                weak var weakSelf = self
-                navController.dismiss(animated: true, completion: {
-                    if let completion = weakSelf?.dismissCompletion {
-                        completion()
-                    }
-                })
+                if backToRoot {
+                    navController.popToRootViewController(animated: true)
+                } else {
+                    navController.popViewController(animated: true)
+                }
             }
         }
     }
