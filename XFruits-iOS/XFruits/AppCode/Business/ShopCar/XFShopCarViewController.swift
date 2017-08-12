@@ -47,7 +47,10 @@ class XFShopCarViewController: XFBaseViewController {
             return
         }
         guard XFUserGlobal.shared.isLogin else {
-            MBProgressHUD.showError("请在隔壁登录后再下单")
+            // 进入登录页面
+            let login = XFUserLoginViewController()
+            let nav = UINavigationController.init(rootViewController: login)
+            present(nav, animated: true, completion: nil)
             return
         }
         let checkoutVC = XFCheckoutViewController()

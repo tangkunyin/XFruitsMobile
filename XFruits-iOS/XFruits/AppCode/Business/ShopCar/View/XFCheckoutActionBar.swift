@@ -31,7 +31,11 @@ class XFCheckoutActionBar: XFShopCartActionBar {
     }
 
     func updateActualAmount(totalAmount amount: Float, expressFee: Float? = 0.00) {
-        pricelabel.text = String(format:"实付： ¥ %.2f", amount + expressFee!)
+        if let expFree = expressFee {
+            pricelabel.text = String(format:"实付： ¥ %.2f", amount + expFree)
+        } else {
+            pricelabel.text = String(format:"实付： ¥ %.2f", amount)
+        }
     }
     
 }
