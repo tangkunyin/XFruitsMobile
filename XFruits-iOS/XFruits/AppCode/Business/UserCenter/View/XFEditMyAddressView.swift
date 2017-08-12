@@ -390,8 +390,6 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
     
     @objc func saveAddress(sender:UIButton?) {
         
-        weak var weakSelf = self
-        
         guard let recipient = receiveInput.text?.trimmingCharacters(in: .whitespacesAndNewlines), recipient != ""  else {
             MBProgressHUD.showError("收货人不能为空")
             return

@@ -45,11 +45,11 @@ class XFHomeViewController: UITabBarController {
     
     private func addChildViewControllers() {
         /// 根据用户级别开放首页
-        if XFUserGlobal.shared.isLogin && XFUserGlobal.shared.currentUser?.vip == 10 {
+//        if XFUserGlobal.shared.isLogin && XFUserGlobal.shared.currentUser?.vip == 10 {
             addChildViewController(indexVC, title: "首页", image: "home", selectedImage: "home-hilight")
-        }
+//        }
         
-        addChildViewController(categoryVC, title: "分类", image: "category", selectedImage: "category-hilight")
+        addChildViewController(categoryVC, title: "所有", image: "category", selectedImage: "category-hilight")
         
         addChildViewController(cartVC, title: "果篮", image: "shopcart", selectedImage: "shopcart-hilight")
         

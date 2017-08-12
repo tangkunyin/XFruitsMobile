@@ -36,34 +36,7 @@ class XFUserCenterViewController: XFBaseViewController {
         let dataSource: NSDictionary = NSDictionary()
         return dataSource
     }()
-    
-    func test1() {
-        let path:String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
-//        return "\(path)/XFruits_currentUser.info"
-//        let path1:NSString = "\(path)/city.json" as NSString
-       
         
-
-        
-        
-        print(self.dataSource)
-//        let url = NSURL.fileURL(withPath: path)
-//        do{
-//             let data:NSData = NSData.init(contentsOfFile: url)
-//            let json:Any = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-//
-//        }
-//
-//
-        
-        
-        //        let data = NSData.init(contentsOfFile: path) //NSDictionary.init(contentsOfFile: path!)!
-//        let str:String = NSString.init(contentsOfFile: path, encoding: UTF8)
-////        let district:NSArray = dict["district"] as! NSArray
-//        print(str)
-        
-    }
-    
     lazy var girdGroupInfo: Array<Array<Dictionary<String, String>>> = {
         return [
             [
@@ -107,8 +80,6 @@ class XFUserCenterViewController: XFBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        test1()
-        
         
         XFAvailableAddressUtils.shared.cacheAddressAvailable()
         if #available(iOS 11.0, *) {

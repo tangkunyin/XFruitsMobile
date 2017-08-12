@@ -26,9 +26,7 @@ class XFChoosePayWayViewController: XFBaseSubViewController,UITableViewDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        dPrint(payInfo)
-        
+    
         self.view.addSubview(addressesTable)
         addressesTable.tableFooterView = UIView()
         addressesTable.snp.makeConstraints({ (make) in
