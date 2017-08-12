@@ -47,7 +47,8 @@ class XFViewPager: UIView,UIScrollViewDelegate {
             let singleView:UIImageView = imagePagerView(urlString: source.first!, placeHolder: placeHolder, index: 0)
             self.container.addSubview(singleView)
             singleView.snp.makeConstraints({ (make) in
-                make.edges.equalTo(self.container).inset(UIEdgeInsets.zero)
+//                make.edges.equalTo(self.container).inset(UIEdgeInsets.zero)
+                make.center.size.equalTo(self.container)
             })
         } else if source.count > 1 {
             // render views
