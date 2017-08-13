@@ -94,14 +94,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
-extension AppDelegate {
+extension AppDelegate: WXApiDelegate {
     
-    /// 初始化客服SDK
     func initExternalSDK(){
+        
+        /// 初始化客服SDK
         V5ClientAgent.initWithSiteId(XFConstants.SDK.V5KF.siteId,
                                      appId: XFConstants.SDK.V5KF.appId) { (status, desc) in
             dPrint("[V5 Init result] status:\(status) desc:\(desc ?? "desc none")")
         }
+        
+        // 注册微信
+        WXApi.registerApp(XFConstants.SDK.Wechat.appId)
     }
     
     /// 拉取全局唯一数据
@@ -139,5 +143,22 @@ extension AppDelegate {
                                                                         userInfo: nil)
         UIApplication.shared.shortcutItems = [express, contact, share]
     }
+    
+    
+    /// - Returns: 处理第三方应用跳转
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let scheme = url.scheme, scheme == XFConstants.SDK.Wechat.appId {
+            return WXApi.handleOpen(url, delegate: self)
+        }
+        if let host = url.host, host == "safepay" {
+            AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (result) in
+                if let result = result {
+                    dPrint(result)
+                }
+            })
+        }
+        return true
+    }
+    
     
 }

@@ -9,6 +9,7 @@
 import UIKit
 import MBProgressHUD
 
+
 fileprivate let payCellIdentifier = "XFPayCellIdentifier"
 
 class XFChoosePayWayViewController: XFBaseSubViewController {
@@ -53,6 +54,8 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     
         self.view.addSubview(payInfoTable)
         self.view.addSubview(submitPayBtn)
@@ -75,7 +78,7 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
         
         MBProgressHUD.showSuccess("这是何等的666")
     }
-
+    
 }
 
 extension XFChoosePayWayViewController: UITableViewDataSource ,UITableViewDelegate {

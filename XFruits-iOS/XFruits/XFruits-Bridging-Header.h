@@ -13,6 +13,13 @@
 
 #import "V5ClientAgent.h"
 
+// wechat sdk
+#import "WXApi.h"
+#import "WechatAuthSDK.h"
+
+// alipay sdk
+#import <AlipaySDK/AlipaySDK.h>
+
 
 #endif /* XFruits_Bridging_Header_h */
 
