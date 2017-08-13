@@ -11,9 +11,8 @@ import Foundation
 import HandyJSON
 
 class ProductType: HandyJSON {
-    var id:String = "1001"
+    var id:String = ""
     var name:String = ""
-    var fruit:String = ""
     var image:String = ""
     required init() {}
 }
@@ -21,16 +20,14 @@ class ProductType: HandyJSON {
 class ProductItem: HandyJSON {
     var id:String?
     var name:String = ""
-    var fruit:String = ""
     var cover:String = ""
     var specification:String = ""
     var primePrice:Float = 0
-    var salesPrice:Float = 0
-    
     required init() {}
 }
 
 class CategoryList: HandyJSON {
+    var page:Int?
     var size:Int?
     var totalPages:Int?
     var totalElements:Int?
@@ -45,15 +42,13 @@ class ProductDetailService: HandyJSON {
 }
 
 class ProductDetail: HandyJSON {
-    var id:String = "1001"
+    var id:String = ""
     var name:String = ""
-    var fruit:String = ""
-    var cover:Array<String> = [""]
     var specification:String = ""
     var primePrice:Float = 0
-    var salesPrice:Float = 0
-    var description:Array<String> = [""]
     var priority:Int = 0
+    var cover:Array<String> = [""]
+    var description:Array<String> = [""]
     var service:Array<ProductDetailService>?
     var commentList:Array<XFComment>?
     
@@ -63,11 +58,9 @@ class ProductDetail: HandyJSON {
         let item = ProductItem()
         item.id = self.id
         item.name = self.name
-        item.fruit = self.fruit
         item.cover = self.cover.first!
         item.specification = self.specification
         item.primePrice = self.primePrice
-        item.salesPrice = self.salesPrice
         return item
     }
 }

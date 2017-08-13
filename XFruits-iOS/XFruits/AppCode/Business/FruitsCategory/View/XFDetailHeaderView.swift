@@ -16,7 +16,7 @@ class XFDetailHeaderView: UIView {
         didSet {
             detailViewPager.dataSource = dataSource!.cover
             titleLabel.text = dataSource!.name
-            priceLabel.text = String(format:"%.2f",dataSource!.salesPrice)
+            priceLabel.text = String(format:"%.2f",dataSource!.primePrice)
             specificationDescLabel.text = dataSource!.specification
         }
     }

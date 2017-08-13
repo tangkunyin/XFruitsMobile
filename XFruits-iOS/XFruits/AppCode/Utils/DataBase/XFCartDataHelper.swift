@@ -17,7 +17,6 @@ typealias XFCart = (
     desc:String?,
     cover:String?,
     primePrice:Double?,
-    salesPrice:Double?,
     quantity:Int64?,
     selected:Bool?,
     status:Int64?
@@ -36,7 +35,6 @@ class XFCartDataHelper: DataHelperProtocol {
     static let desc = Expression<String>("desc")
     static let cover = Expression<String>("cover")
     static let primePrice = Expression<Double>("primePrice")
-    static let salesPrice = Expression<Double>("salesPrice")
     static let quantity = Expression<Int64>("quantity")
     static let selected = Expression<Bool>("selected")
     static let status = Expression<Int64>("status")//默认状态是0，1表示已删除（不是真删除数据）
@@ -53,7 +51,6 @@ class XFCartDataHelper: DataHelperProtocol {
                 t.column(desc)
                 t.column(cover)
                 t.column(primePrice)
-                t.column(salesPrice)
                 t.column(quantity, defaultValue:1)
                 t.column(selected, defaultValue:false)
                 t.column(status, defaultValue:0)
@@ -71,14 +68,12 @@ class XFCartDataHelper: DataHelperProtocol {
             let gname = item.name,
             let gdesc = item.desc,
             let gcover = item.cover,
-            let gprimePrice = item.primePrice,
-            let gsalesPrice = item.salesPrice {
+            let gprimePrice = item.primePrice {
             let insert = table.insert(id <- gid,
                                       name <- gname,
                                       desc <- gdesc,
                                       cover <- gcover,
                                       primePrice <- gprimePrice,
-                                      salesPrice <- gsalesPrice,
                                       quantity <- 1)
             do {
                 let rowId = try DB.run(insert)
@@ -138,7 +133,6 @@ class XFCartDataHelper: DataHelperProtocol {
                               desc:item[desc],
                               cover:item[cover],
                               primePrice:item[primePrice],
-                              salesPrice:item[salesPrice],
                               quantity:item[quantity],
                               selected:item[selected],
                               status:item[status])
@@ -163,7 +157,6 @@ class XFCartDataHelper: DataHelperProtocol {
                                        desc:item[desc],
                                        cover:item[cover],
                                        primePrice:item[primePrice],
-                                       salesPrice:item[salesPrice],
                                        quantity:item[quantity],
                                        selected:item[selected],
                                        status:item[status]))

@@ -82,12 +82,10 @@ class XFCheckoutViewController: XFBaseViewController {
                 let expiration = result.orderExpiration, orderId.characters.count > 0 ,expiration > 0 {
                 // 重置果篮已选择的商品
                 if XFCartUtils.sharedInstance.clearSelected(carts: selectedData) {
-                    MBProgressHUD.showMessage("订单提交成功，请在\(expiration)分钟内完成支付", completion: {
-                        let payCenter = XFChoosePayWayViewController()
-                        payCenter.title = "请选择付款方式"
-                        payCenter.payInfo = result
-                        weakSelf?.navigationController?.pushViewController(payCenter, animated: true)
-                    })
+                    let payCenter = XFChoosePayWayViewController()
+                    payCenter.title = "请选择付款方式"
+                    payCenter.payInfo = result
+                    weakSelf?.navigationController?.pushViewController(payCenter, animated: true)
                 }
             }
         }

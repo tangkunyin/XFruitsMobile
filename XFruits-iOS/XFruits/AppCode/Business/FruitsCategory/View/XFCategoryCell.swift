@@ -23,7 +23,7 @@ class XFCategoryCell: UICollectionViewCell {
         didSet {
             if let item = dataSource {
                 titleLabel.text = item.name
-                priceLabel.text = String(format:"%.2f",item.salesPrice)
+                priceLabel.text = String(format:"%.2f",item.primePrice)
                 thumbnail.kf.setImage(with: URL.init(string: item.cover),
                                       placeholder: UIImage.imageWithNamed("sampleGoodsInCategoryCell"),
                                       options: [.transition(.fade(1))])

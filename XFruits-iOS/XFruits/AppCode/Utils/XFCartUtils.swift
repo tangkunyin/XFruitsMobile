@@ -53,7 +53,6 @@ class XFCartUtils {
                                    desc: item.specification,
                                    cover: item.cover,
                                    primePrice: Double(item.primePrice),
-                                   salesPrice: Double(item.salesPrice),
                                    quantity: Int64(1),
                                    selected: false,
                                    status: 0)
@@ -101,7 +100,6 @@ class XFCartUtils {
                                    desc: nil,
                                    cover: nil,
                                    primePrice: nil,
-                                   salesPrice: nil,
                                    quantity: nil,
                                    selected: checked,
                                    status: nil)
@@ -121,7 +119,6 @@ class XFCartUtils {
                                    desc: nil,
                                    cover: nil,
                                    primePrice: nil,
-                                   salesPrice: nil,
                                    quantity: Int64(count),
                                    selected: nil,
                                    status: nil)

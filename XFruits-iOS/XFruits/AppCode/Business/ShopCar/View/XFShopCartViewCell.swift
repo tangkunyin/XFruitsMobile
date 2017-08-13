@@ -21,7 +21,7 @@ class XFShopCartViewCell: UITableViewCell {
                 quantityLabel.text = "\(item.quantity ?? 1)"
                 titleLabel.text = item.name
                 descLabel.text = "规格：\(item.desc ?? "其他")"
-                priceLabel.text = String(format:"¥ %.2f",item.salesPrice!)
+                priceLabel.text = String(format:"¥ %.2f",item.primePrice!)
                 thumbnail.kf.setImage(with: URL.init(string: item.cover!),
                                       placeholder: UIImage.imageWithNamed("sampleGoodsInCategoryCell"),
                                       options: [.transition(.fade(1))])
