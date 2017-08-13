@@ -38,10 +38,14 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         btn.layer.cornerRadius = 15
         btn.layer.masksToBounds =  true
-        btn.addTarget(self, action: #selector(payWithType(_:)), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(payWithType), for: .touchUpInside)
         return btn
     }()
     
+    lazy var request:XFCommonService = {
+        let serviceRequest = XFCommonService()
+        return serviceRequest
+    }()
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -55,8 +59,6 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-    
         self.view.addSubview(payInfoTable)
         self.view.addSubview(submitPayBtn)
         
@@ -73,10 +75,25 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
 
     }
 
-    
-    @objc private func payWithType(_ type:Int = 0){
-        
-        MBProgressHUD.showSuccess("这是何等的666")
+
+    /// https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.dXCllL&treeId=204&articleId=105295&docType=1
+    /// https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5
+    @objc private func payWithType(){
+        var channelId: Int?
+        for (_ , item) in (payInfo?.payChannels.enumerated())! {
+            if let payChannel: XFPayChannel = item, payChannel.defaultChannel == true  {
+                channelId = payChannel.channel
+                break
+            }
+        }
+        if let cid = channelId, let payInfo = payInfo, let orderId = payInfo.orderId {
+            let payChannel = cid == 1 ? 200 : 100
+            weak var weakSelf = self
+            let params:[String : Any] = ["payChannel": payChannel, "orderId": orderId]
+            request.orderPayCommit(params: params) { (data) in
+                dPrint(data)
+            }
+        }
     }
     
 }

@@ -175,5 +175,13 @@ public final class XFCommonService: XFNetworking {
             }
         }
     }
+    
+    func orderPayCommit(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
+        self.doPost(withUrl: url("/order/commit"), params: params){ (success, respData) in
+            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
+                dPrint(dict)
+            }
+        }
+    }
 
 }
