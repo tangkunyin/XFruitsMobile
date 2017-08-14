@@ -91,7 +91,6 @@ class XFCheckoutViewController: XFBaseViewController {
         }
     }
     
-
     @objc private func onAddressChange() {
         let addressList = XFUserAddressesMangageViewController()
         weak var weakSelf = self

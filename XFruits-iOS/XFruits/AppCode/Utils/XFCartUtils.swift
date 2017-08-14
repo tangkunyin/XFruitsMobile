@@ -132,14 +132,13 @@ class XFCartUtils {
     
     /// 完成下单后清除已选择的商品
     func clearSelected(carts: Array<XFCart>) -> Bool {
-//        var flag = false
-//        for item: XFCart in carts {
-//            if let gid = item.id {
-//                flag = deleteItem(gid: gid)
-//            }
-//        }
-//        return flag
-        return true
+        var flag = false
+        for item: XFCart in carts {
+            if let gid = item.id {
+                flag = deleteItem(gid: gid)
+            }
+        }
+        return flag
     }
     
 }

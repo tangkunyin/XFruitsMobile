@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		16200CF01F1B169C0008C039 /* XFAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CEE1F1B169C0008C039 /* XFAddress.swift */; };
-		16200CF11F1B169C0008C039 /* XFHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CEF1F1B169C0008C039 /* XFHeaders.swift */; };
 		16200CF31F1B179A0008C039 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = 16200CF21F1B179A0008C039 /* city.json */; };
 		16200CF51F1B7F200008C039 /* XFAvailableAddressUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */; };
 		1641E76C1F35F9D10093DADF /* XFCityChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */; };
@@ -69,6 +68,8 @@
 		8690FEE31ED179560051A16D /* XFAllCategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEE21ED179560051A16D /* XFAllCategoryListViewController.swift */; };
 		8690FF301ED538E90051A16D /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2C1ED538E90051A16D /* AlamofireSwiftyJSON.framework */; };
 		8690FF321ED538E90051A16D /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2E1ED538E90051A16D /* SQLite.framework */; };
+		8692FCD41F41EDBC00CD3F72 /* XFPayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692FCD31F41EDBC00CD3F72 /* XFPayResponse.swift */; };
+		8692FCD61F42029A00CD3F72 /* XFPayResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692FCD51F42029A00CD3F72 /* XFPayResultViewController.swift */; };
 		86A45C561ED1106D00772D13 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C551ED1106D00772D13 /* libsqlite3.tbd */; };
 		86A45C581ED1108500772D13 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C571ED1108500772D13 /* libicucore.tbd */; };
 		86A45C5A1ED1109100772D13 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C591ED1109100772D13 /* libstdc++.tbd */; };
@@ -112,7 +113,6 @@
 
 /* Begin PBXFileReference section */
 		16200CEE1F1B169C0008C039 /* XFAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAddress.swift; sourceTree = "<group>"; };
-		16200CEF1F1B169C0008C039 /* XFHeaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFHeaders.swift; sourceTree = "<group>"; };
 		16200CF21F1B179A0008C039 /* city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.json; sourceTree = "<group>"; };
 		16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAvailableAddressUtils.swift; sourceTree = "<group>"; };
 		1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCityChooseView.swift; sourceTree = "<group>"; };
@@ -180,6 +180,8 @@
 		8690FF2C1ED538E90051A16D /* AlamofireSwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireSwiftyJSON.framework; path = Carthage/Build/iOS/AlamofireSwiftyJSON.framework; sourceTree = "<group>"; };
 		8690FF2E1ED538E90051A16D /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		8690FF2F1ED538E90051A16D /* V5Client.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = V5Client.framework; path = Carthage/Build/iOS/V5Client.framework; sourceTree = "<group>"; };
+		8692FCD31F41EDBC00CD3F72 /* XFPayResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFPayResponse.swift; sourceTree = "<group>"; };
+		8692FCD51F42029A00CD3F72 /* XFPayResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFPayResultViewController.swift; sourceTree = "<group>"; };
 		86A45C2E1ECFD81D00772D13 /* XFruits-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XFruits-Bridging-Header.h"; sourceTree = "<group>"; };
 		86A45C551ED1106D00772D13 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		86A45C571ED1108500772D13 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
@@ -363,6 +365,7 @@
 				165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */,
 				862672D21EFE43680062B52B /* XFShopCarViewController.swift */,
 				86BB9A861F1D2B1E00B46EBC /* XFCheckoutViewController.swift */,
+				8692FCD51F42029A00CD3F72 /* XFPayResultViewController.swift */,
 			);
 			path = ShopCar;
 			sourceTree = "<group>";
@@ -397,13 +400,13 @@
 			isa = PBXGroup;
 			children = (
 				16200CEE1F1B169C0008C039 /* XFAddress.swift */,
-				16200CEF1F1B169C0008C039 /* XFHeaders.swift */,
 				860A43041EE4178000798678 /* XFBaseResponse.swift */,
 				862672E61EFE47AE0062B52B /* XFUser.swift */,
 				862672EA1EFE480B0062B52B /* XFProduct.swift */,
 				862672FA1EFE4F3A0062B52B /* XFVerifyImage.swift */,
 				862AF70A1F0926A700409CCB /* XFComment.swift */,
 				86ADDCE01F2DD88500881CFA /* XFCouponItem.swift */,
+				8692FCD31F41EDBC00CD3F72 /* XFPayResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -628,8 +631,9 @@
 				TargetAttributes = {
 					865F4F421E9A173E0059502C = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 5Z3RQE949K;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -707,7 +711,6 @@
 				86E8DF7A1EDAB0EC000A489F /* XFDetailActionBarView.swift in Sources */,
 				862672E11EFE46AE0062B52B /* XFAddAddressViewController.swift in Sources */,
 				8690FEDD1ED178120051A16D /* XFCategoryCell.swift in Sources */,
-				16200CF11F1B169C0008C039 /* XFHeaders.swift in Sources */,
 				8690FEE31ED179560051A16D /* XFAllCategoryListViewController.swift in Sources */,
 				86E8DF811EDC0EAB000A489F /* XFCommentItemView.swift in Sources */,
 				86ADDCD91F2B64CF00881CFA /* XFCheckoutAddress.swift in Sources */,
@@ -741,6 +744,7 @@
 				86E8DF761EDAB0C9000A489F /* XFDetailCommentView.swift in Sources */,
 				862672D71EFE43FC0062B52B /* XFUserLoginViewController.swift in Sources */,
 				862672DB1EFE44490062B52B /* XFUserCenterViewController.swift in Sources */,
+				8692FCD61F42029A00CD3F72 /* XFPayResultViewController.swift in Sources */,
 				86ADDCE11F2DD88500881CFA /* XFCouponItem.swift in Sources */,
 				865235C61F1AFD5A005897C3 /* XFShopCartEmptyView.swift in Sources */,
 				862672CF1EFE42EF0062B52B /* XFDetailViewController.swift in Sources */,
@@ -757,6 +761,7 @@
 				165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */,
 				865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */,
 				86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */,
+				8692FCD41F41EDBC00CD3F72 /* XFPayResponse.swift in Sources */,
 				1641E76E1F3609EC0093DADF /* XFAlert.swift in Sources */,
 				868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */,
 				16941B691F3C04A40066A911 /* XFEmptyAddressView.swift in Sources */,
@@ -884,8 +889,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5Z3RQE949K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -905,7 +911,7 @@
 					"-all_load",
 				);
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xapple.mall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xiaomi.mihome.admin.xxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Carthage/Build/iOS/V5Client.framework/**";
@@ -921,8 +927,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5Z3RQE949K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -941,7 +948,7 @@
 					"-Objc",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xapple.mall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xiaomi.mihome.admin.xxx;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Carthage/Build/iOS/V5Client.framework/**";

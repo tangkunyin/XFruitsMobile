@@ -9,10 +9,17 @@
 import Foundation
 import HandyJSON
 
+struct UserRank: HandyJSON {
+    var userId:Int?
+    var rank:Int?
+    var exp:Int?
+}
 
 /// 用户模型
 struct XFUser: HandyJSON {
 
+    var id:Int?
+    
     // 用户名称
     var username:String?
     
@@ -25,10 +32,10 @@ struct XFUser: HandyJSON {
     //用户头像URL
     var avatar:String?
     
-    //用户等级
-    var vip:Int?
-    
     // token，等同于用户唯一标识，30天过期不是固定的
     var token:String?
+    
+    var rank:UserRank?
+    
 }
 

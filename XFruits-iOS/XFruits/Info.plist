@@ -30,6 +30,16 @@
 				<string>wx67d6ad5dd456fb36</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>alibaba</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>XFruits</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

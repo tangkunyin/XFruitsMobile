@@ -68,7 +68,6 @@ func createChatViewController(withUser user:XFUser?, goodsInfo:ProductDetail?) -
             config.nickname = user.username
             config.gender = user.sex ?? 0
             config.avatar = user.avatar
-            config.vip = user.vip ?? 0
             config.openId = user.token
         } else {
             config.nickname = "iOS端未登录的匿名用户"

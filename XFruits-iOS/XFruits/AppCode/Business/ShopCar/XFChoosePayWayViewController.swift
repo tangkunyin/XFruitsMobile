@@ -75,6 +75,17 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
 
     }
 
+    override func backToParentController() {
+        weak var weakSelf = self
+        let alertController = UIAlertController.init(title: "提 示", message: "您确定要放弃支付？", preferredStyle: .alert)
+        let cancelAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
+        let okAction = UIAlertAction.init(title: "确定", style: .`default`) { (data) in
+            weakSelf?.navigationController?.popToRootViewController(animated: true)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
 
     /// https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.dXCllL&treeId=204&articleId=105295&docType=1
     /// https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5
@@ -91,12 +102,13 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
             weak var weakSelf = self
             let params:[String : Any] = ["payChannel": payChannel, "orderId": orderId]
             request.orderPayCommit(params: params) { (data) in
-                switch payChannel {
+                switch cid {
                 case 1:
                     weakSelf?.orderPayWithAliPay(data as! String)
                 case 2:
                     weakSelf?.orderPayWithWeixin(data as! String)
-                default:break
+                default:
+                    dPrint("pay channel: \(cid), 特么不支持的支付方式，别点了....")
                 }
             }
         }
@@ -107,14 +119,56 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
 
 // MARK: - Payment
 extension XFChoosePayWayViewController {
-    private func orderPayWithAliPay(_ data: String){
-        
-        
+    private func orderPayWithAliPay(_ data: String) {
+        weak var weakSelf = self
+        AlipaySDK.defaultService().payOrder(data, fromScheme: "XFruits") { (respData) in
+            if respData != nil,
+                let dict = respData as NSDictionary?,
+                let response: XFAlipayResponse = XFAlipayResponse.deserialize(from: dict) {
+                
+                //MARK: TODO parse empty...
+                dPrint(dict)
+                dPrint(response)
+                
+                if response.resultStatus == 8000 || response.resultStatus == 9000 {
+                    if let payResponse: XFAlipayTradeResponse = response.result?.alipay_trade_app_pay_response,
+                        payResponse.app_id == XFConstants.SDK.Alipay.appId, Int(payResponse.code) == 10000 {
+                        weakSelf?.payInfo?.cashFee = payResponse.total_amount
+                        weakSelf?.handleThePaymentResult(flag: true, payType: 1)
+                        return
+                    }
+                }
+                var errorMsg = ""
+                switch response.resultStatus {
+                case 5000:
+                    errorMsg = response.memo.characters.count != 0 ? response.memo : "重复请求"
+                case 6001:
+                    errorMsg = response.memo.characters.count != 0 ? response.memo : "用户中途取消"
+                case 6002:
+                    errorMsg = response.memo.characters.count != 0 ? response.memo : "网络连接出错"
+                default:
+                    errorMsg = response.memo.characters.count != 0 ? response.memo : "其它支付错误:\(response.resultStatus)"
+                }
+                weakSelf?.handleThePaymentResult(flag: false, payType: 1, errorMsg: errorMsg)
+            }
+        }
     }
     
     private func orderPayWithWeixin(_ data: String){
-        
-        
+        MBProgressHUD.showError("劳资还不支持微信，点支付宝吧~")
+    }
+    
+    private func handleThePaymentResult(flag: Bool, payType: Int, errorMsg: String = "") {
+        weak var weakSelf = self
+        let payResultVC = XFPayResultViewController()
+        payResultVC.isSuccess = flag
+        payResultVC.payType = payType
+        payResultVC.errorMsg = errorMsg
+        payResultVC.totalAmount = payInfo?.cashFee ?? "0.00"
+        payResultVC.onPageClosed = {
+            weakSelf?.navigationController?.popToRootViewController(animated: true)
+        }
+        present(payResultVC, animated: true, completion: nil)
     }
 }
 
