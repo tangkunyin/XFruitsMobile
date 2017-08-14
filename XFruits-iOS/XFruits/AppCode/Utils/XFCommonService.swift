@@ -177,9 +177,9 @@ public final class XFCommonService: XFNetworking {
     }
     
     func orderPayCommit(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
-        self.doPost(withUrl: url("/order/commit"), params: params){ (success, respData) in
-            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
-                dPrint(dict)
+        self.doPost(withUrl: url("/order/payChannel"), params: params){ (success, respData) in
+            if success, respData is String, let dict = respData as? String {
+                completion(dict);
             }
         }
     }

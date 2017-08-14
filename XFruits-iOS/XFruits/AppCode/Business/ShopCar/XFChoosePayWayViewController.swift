@@ -80,7 +80,7 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
     /// https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5
     @objc private func payWithType(){
         var channelId: Int?
-        for (_ , item) in (payInfo?.payChannels.enumerated())! {
+        for item in (payInfo?.payChannels)! {
             if let payChannel: XFPayChannel = item, payChannel.defaultChannel == true  {
                 channelId = payChannel.channel
                 break
@@ -91,13 +91,35 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
             weak var weakSelf = self
             let params:[String : Any] = ["payChannel": payChannel, "orderId": orderId]
             request.orderPayCommit(params: params) { (data) in
-                dPrint(data)
+                switch payChannel {
+                case 1:
+                    weakSelf?.orderPayWithAliPay(data as! String)
+                case 2:
+                    weakSelf?.orderPayWithWeixin(data as! String)
+                default:break
+                }
             }
         }
     }
     
 }
 
+
+// MARK: - Payment
+extension XFChoosePayWayViewController {
+    private func orderPayWithAliPay(_ data: String){
+        
+        
+    }
+    
+    private func orderPayWithWeixin(_ data: String){
+        
+        
+    }
+}
+
+
+// MARK: - UITabelViewDelegates
 extension XFChoosePayWayViewController: UITableViewDataSource ,UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
