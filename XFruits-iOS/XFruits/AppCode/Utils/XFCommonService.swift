@@ -8,45 +8,12 @@
 
 import Foundation
 import Alamofire
-import MBProgressHUD
 import HandyJSON
 import SwiftyJSON
 
-public typealias XFResponse = ((_ data: Any)->Void)
-
-public typealias XFParams = Dictionary<String,Any>
-
-
-struct ApiServer {
-    /// 服务器连接超时时间
-    static let timeout:Double = 45.0
-
-    /// API服务器正式地址
-    static let test:String = "http://test.10fruits.net"
-
-    /// API服务器正式地址
-    static let onLine:String = "http://api.10fruits.net"
-}
-
 
 /// 具体业务请求
-public final class XFCommonService: XFNetworking {
-
-    func url(_ uri:String, params:XFParams? = nil) -> String {
-        if let params = params, !params.isEmpty {
-            var url:String = ApiServer.onLine + uri + "?"
-            for (index, obj) in params.enumerated() {
-                if index == 0 {
-                    url.append("\(obj.key)=\(obj.value)")
-                } else {
-                    url.append("&\(obj.key)=\(obj.value)")
-                }
-            }
-            return url
-        } else {
-            return ApiServer.onLine + uri
-        }
-    }
+final class XFCommonService: XFNetworking {
 
     func getVerifyImage(_ completion:@escaping XFResponse) {
         self.doGet(withUrl: url("/auth/captcha")) { (success, respData) in
@@ -115,7 +82,6 @@ public final class XFCommonService: XFNetworking {
     }
 
 
-
     func addAddress(params:XFParams, _ completion:@escaping XFResponse) {
 
         self.doPost(withUrl: url("/address/add"), params: params) { (success, respData) in
@@ -156,32 +122,5 @@ public final class XFCommonService: XFNetworking {
         }
 
     }
-
-
-    /// 确认订单
-    func orderConfirm(_ completion:@escaping XFResponse) {
-        self.doGet(withUrl: url("/order/confirm")) { (success, respData) in
-            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
-                completion(XFOrderConfirm.deserialize(from: dict) ?? XFOrderConfirm())
-            }
-        }
-    }
     
-    /// 提交订单
-    func orderCommit(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
-        self.doPost(withUrl: url("/order/commit"), params: params, encoding: JSONEncoding.default){ (success, respData) in
-            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
-                completion(XFOrderCommit.deserialize(from: dict) ?? XFOrderCommit())
-            }
-        }
-    }
-    
-    func orderPayCommit(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
-        self.doPost(withUrl: url("/order/payChannel"), params: params){ (success, respData) in
-            if success, respData is String, let dict = respData as? String {
-                completion(dict);
-            }
-        }
-    }
-
 }

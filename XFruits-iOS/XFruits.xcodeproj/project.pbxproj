@@ -60,6 +60,7 @@
 		865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AA5BF1EABA14C00E94312 /* XFUIFuncDefines.swift */; };
 		865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865F4F461E9A173E0059502C /* AppDelegate.swift */; };
 		865F4F4E1E9A173E0059502C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 865F4F4D1E9A173E0059502C /* Assets.xcassets */; };
+		8660D99F1F447AF800D98C18 /* XFOrderSerivice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8660D99E1F447AF800D98C18 /* XFOrderSerivice.swift */; };
 		868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868613251EACCCE400A44338 /* XFImageExtension.swift */; };
 		8690FEDB1ED177B80051A16D /* XFCategoryHeadSizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEDA1ED177B80051A16D /* XFCategoryHeadSizer.swift */; };
 		8690FEDD1ED178120051A16D /* XFCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEDC1ED178120051A16D /* XFCategoryCell.swift */; };
@@ -171,6 +172,7 @@
 		865F4F461E9A173E0059502C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		865F4F4D1E9A173E0059502C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		865F4F521E9A173E0059502C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8660D99E1F447AF800D98C18 /* XFOrderSerivice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrderSerivice.swift; sourceTree = "<group>"; };
 		868613251EACCCE400A44338 /* XFImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFImageExtension.swift; sourceTree = "<group>"; };
 		8690FEDA1ED177B80051A16D /* XFCategoryHeadSizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCategoryHeadSizer.swift; sourceTree = "<group>"; };
 		8690FEDC1ED178120051A16D /* XFCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCategoryCell.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 		8644307D1E9A277B00D41BCC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8660D99D1F447A5E00D98C18 /* NetService */,
 				868613241EACCC6C00A44338 /* Category */,
 				8644307E1E9A277B00D41BCC /* Model */,
 				8644307F1E9A277B00D41BCC /* UI */,
@@ -471,6 +474,14 @@
 				864430741E9A23CD00D41BCC /* AppSystem */,
 			);
 			path = XFruits;
+			sourceTree = "<group>";
+		};
+		8660D99D1F447A5E00D98C18 /* NetService */ = {
+			isa = PBXGroup;
+			children = (
+				8660D99E1F447AF800D98C18 /* XFOrderSerivice.swift */,
+			);
+			path = NetService;
 			sourceTree = "<group>";
 		};
 		8666D5381F2326600094FE33 /* ThirdLibs */ = {
@@ -760,6 +771,7 @@
 				86ADDCDD1F2B7C5C00881CFA /* XFDescriptionItem.swift in Sources */,
 				165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */,
 				865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */,
+				8660D99F1F447AF800D98C18 /* XFOrderSerivice.swift in Sources */,
 				86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */,
 				8692FCD41F41EDBC00CD3F72 /* XFPayResponse.swift in Sources */,
 				1641E76E1F3609EC0093DADF /* XFAlert.swift in Sources */,

@@ -36,8 +36,8 @@ class XFCheckoutViewController: XFBaseViewController {
         }
     }
     
-    lazy var request:XFCommonService = {
-        let serviceRequest = XFCommonService()
+    lazy var request: XFOrderSerivice = {
+        let serviceRequest = XFOrderSerivice()
         return serviceRequest
     }()
     

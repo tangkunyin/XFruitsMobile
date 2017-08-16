@@ -13,6 +13,11 @@ import AlamofireSwiftyJSON
 import SwiftyJSON
 import HandyJSON
 
+public typealias XFResponse = ((_ data: Any)->Void)
+
+public typealias XFParams = Dictionary<String,Any>
+
+
 public typealias XFNetCompletion = ((_ success: Bool, _ respData: Any?)->Void)
 
 // 网络状态
@@ -83,6 +88,16 @@ public enum XFHttpStatus:Int, HandyJSONEnum {
     }
 }
 
+public struct ApiServer {
+    /// 服务器连接超时时间
+    static let timeout:Double = 45.0
+    
+    /// API服务器正式地址
+    static let test:String = "http://test.10fruits.net"
+    
+    /// API服务器正式地址
+    static let onLine:String = "http://api.10fruits.net"
+}
 
 /// 网络状态监听
 public final class XFNetworkStatus: NSObject {
@@ -126,6 +141,22 @@ public final class XFNetworkStatus: NSObject {
 
 
 public class XFNetworking: NSObject {
+    
+    public func url(_ uri:String, params:XFParams? = nil) -> String {
+        if let params = params, !params.isEmpty {
+            var url:String = ApiServer.onLine + uri + "?"
+            for (index, obj) in params.enumerated() {
+                if index == 0 {
+                    url.append("\(obj.key)=\(obj.value)")
+                } else {
+                    url.append("&\(obj.key)=\(obj.value)")
+                }
+            }
+            return url
+        } else {
+            return ApiServer.onLine + uri
+        }
+    }
     
     public func doGet(withUrl url:String,
                       encoding:ParameterEncoding = URLEncoding.default,
