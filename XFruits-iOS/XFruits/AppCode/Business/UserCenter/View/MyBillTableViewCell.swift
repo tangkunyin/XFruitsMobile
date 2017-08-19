@@ -13,12 +13,15 @@ fileprivate let BillCellWidth = XFConstants.UI.deviceWidth / 5
 
 class MyBillTableViewCell: UITableViewCell {
 
+    /// 回调把 status 返回
+    var onClicked: ((String)->Void)?
+    
     lazy var tipSourceInfo: Array<Dictionary<String, String>> = {
         return [
-            ["title":"待付款","icon":"myWallet"],
-            ["title":"待发货","icon":"waitSend"],
-            ["title":"待收货","icon":"waitReceive"],
-            ["title":"待评价","icon":"waitComment"]
+            ["title":"待付款","icon":"myWallet","status":"100"],
+            ["title":"待发货","icon":"waitSend","status":"200"],
+            ["title":"待收货","icon":"waitReceive","status":"500"],
+            ["title":"待评价","icon":"waitComment","status":"600"]
         ]
     }()
     
@@ -49,9 +52,9 @@ class MyBillTableViewCell: UITableViewCell {
     }
     
     private func setUpUI() {
-        addSubview(collectionView)
+        contentView.addSubview(collectionView)
         collectionView.snp.makeConstraints({ (make) in
-            make.edges.equalTo(self).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+            make.edges.equalTo(contentView).inset(UIEdgeInsets.zero)
         })
     }
 }
@@ -65,7 +68,7 @@ extension MyBillTableViewCell: UICollectionViewDelegate,UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BillCellIdentifier, for: indexPath) as! FourBillCollectionViewCell;
         let source = tipSourceInfo[indexPath.row]
         cell.typeDescLabel.text = source["title"]
-        cell.typeBtn.setImage(UIImage.imageWithNamed(source["icon"]!), for: .normal)
+        cell.typeIcon.image = UIImage.imageWithNamed(source["icon"]!)
         return cell;
     }
     
@@ -75,5 +78,12 @@ extension MyBillTableViewCell: UICollectionViewDelegate,UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, 20, 0, 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let completion = onClicked {
+            let item:Dictionary<String, String> = tipSourceInfo[indexPath.row]
+            completion(item["status"]!)
+        }
     }
 }

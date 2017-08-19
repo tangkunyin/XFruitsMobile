@@ -97,6 +97,12 @@ class XFUserCenterViewController: XFBaseViewController {
         
     }
     
+    private func jumpToOrder(_ status: String? = nil){
+        let orderList = XFOrderListViewController()
+        orderList.orderStatus = status
+        navigationController?.pushViewController(orderList, animated: true)
+    }
+    
     private func handleEntrySelect(indexPath: IndexPath) {
         let section = indexPath.section
         let row = indexPath.row
@@ -104,31 +110,20 @@ class XFUserCenterViewController: XFBaseViewController {
         if section < 3 {
             if XFUserGlobal.shared.isLogin {
                 if section == 0 && row == 0 {
-                    //TODO 用户信息
-                    MBProgressHUD.showError("还在开发中，别急好吧...")
+                    // 用户信息
+                    navigationController?.pushViewController(XFUserInfoViewController(), animated: true)
                 } else if section == 1 && row == 0 {
-                    //TODO 订单列表
-                    MBProgressHUD.showError("还在开发中，别急好吧...")
+                    // 订单列表
+                    jumpToOrder()
                 } else if section == 1 && row == 1 {
-                    //TODO 特定类型订单
-                    MBProgressHUD.showError("还在开发中，别急好吧...")
+                    // 特定类型订单
+                    return
                 } else if section == 2 && row == 0 {
                     // 地址
-                    if XFUserGlobal.shared.isLogin {
-                        let addressManageVC = XFUserAddressesMangageViewController()
-                        navigationController?.pushViewController(addressManageVC, animated: true)
-                        
-                    }
-                    else{
-                        // 进入登录页面
-                        let login = XFUserLoginViewController()
-                        let nav = UINavigationController.init(rootViewController: login)
-                        present(nav, animated: true, completion: nil)
-                    }
-                   
+                    let addressManageVC = XFUserAddressesMangageViewController()
+                    navigationController?.pushViewController(addressManageVC, animated: true)
                 } else if section == 2 && row == 1 {
                     //TODO 卡劵、优惠券、收藏、积分
-                    MBProgressHUD.showError("还在开发中，别急好吧...")
                     let webView = XFWebViewController()
                     self.navigationController?.pushViewController(webView, animated: true)
                 }
@@ -152,8 +147,8 @@ class XFUserCenterViewController: XFBaseViewController {
             //TODO 吐槽建议
             MBProgressHUD.showError("还在开发中，别急好吧...")
         } else if section == 4 && row == 1 {
-            //TODO 设置
-            MBProgressHUD.showError("还在开发中，别急好吧...")
+            // 设置
+            navigationController?.pushViewController(XFSettingsViewController(), animated: true)
         }
     }
     
@@ -200,6 +195,10 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
                 return cell
             } else {
                 let cell = MyBillTableViewCell(style: .default, reuseIdentifier: "billCell")
+                weak var weakSelf = self
+                cell.onClicked = {(status) in
+                    weakSelf?.jumpToOrder(status)
+                }
                 return cell
             }
         } else{

@@ -10,18 +10,18 @@ import UIKit
 
 class FourBillCollectionViewCell: UICollectionViewCell {
     
-    lazy var typeBtn:UIButton = {
-        let typeBtn = UIButton()
-//        typeBtn.setImage(UIImage(named:"apple"), for: .normal)
-        return typeBtn
+    lazy var typeIcon:UIImageView = {
+        let icon = UIImageView()
+        icon.isUserInteractionEnabled = false
+        return icon
     }()
     
     lazy var typeDescLabel:UILabel = {
-        let typeDescLabel = UILabel()
-        typeDescLabel.textColor = colorWithRGB(83, g: 83, b: 83)
-        typeDescLabel.font  = UIFont.systemFont(ofSize: 10)
-        typeDescLabel.textAlignment = NSTextAlignment.center
-        return typeDescLabel
+        let label = UILabel()
+        label.textColor = colorWithRGB(83, g: 83, b: 83)
+        label.font  = XFConstants.Font.pfn12
+        label.textAlignment = .center
+        return label
     }()
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,19 +34,17 @@ class FourBillCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUpUI() {
-      
-        addSubview(typeBtn)
+        addSubview(typeIcon)
         addSubview(typeDescLabel)
-
-        typeBtn.snp.makeConstraints({ (make) in
-            make.edges.equalTo(self).inset(UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0))
+        typeIcon.snp.makeConstraints({ (make) in
+            make.size.equalTo(CGSize.init(width: 26, height: 26))
+            make.centerX.equalTo(self)
         })
-        
         typeDescLabel.snp.makeConstraints({ (make) in
             make.bottom.equalTo(snp.bottom).offset(0)
             make.left.equalTo(snp.left).offset(0)
             make.right.equalTo(snp.right).offset(0)
-            make.top.equalTo(typeBtn.snp.bottom).offset(0)
+            make.top.equalTo(typeIcon.snp.bottom).offset(10)
         })
     }
 }
