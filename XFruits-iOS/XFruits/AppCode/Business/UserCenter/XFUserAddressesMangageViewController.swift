@@ -40,8 +40,8 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         return addAddressBtn
     }()
     
-    lazy var request:XFCommonService = {
-        let serviceRequest = XFCommonService()
+    lazy var request: XFAddressService = {
+        let serviceRequest = XFAddressService()
         return serviceRequest
     }()
     

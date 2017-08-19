@@ -62,7 +62,7 @@ class XFAddAddressViewController: XFBaseSubViewController    {
         
         if editStyle == 0 {  // 添加地址
          
-            XFCommonService().addAddress(params: addressDict) { (data) in
+            XFAddressService().addAddress(params: addressDict) { (data) in
                 dPrint(data)
                 weakSelf!.navigationController?.popViewController(animated: true)
             }
@@ -74,7 +74,7 @@ class XFAddAddressViewController: XFBaseSubViewController    {
            
             addressDict["id"] = addressId  // 编辑模式要多传一个地址id
             
-            XFCommonService().modifyAddress(params: addressDict){ (data) in
+            XFAddressService().modifyAddress(params: addressDict){ (data) in
                 dPrint(data)
                 weakSelf!.navigationController?.popViewController(animated: true)
             }

@@ -68,32 +68,22 @@ class XFAvailableAddressUtils {
         }
     }
     
-    func cacheAddressAvailable()  {
-        // 把地址的json文件下载下来  http://api.10fruits.net/address/district
-        
-        Alamofire.request("http://api.10fruits.net/address/district").validate().responseJSON { response in
-
-            let responseJSON = response.result.value as? [String: AnyObject]
- 
-            let newMd5:String = responseJSON!["md5"] as! String
- 
-            let path:String = self.availableAddressPath!
- 
+    func cacheAddressAvailable() {
+        weak var weakSelf = self
+        XFAddressService().getDistrictData { (result) in
+            let responseJSON: NSDictionary = result as! NSDictionary
+            let newMd5:String = responseJSON["md5"] as! String
+            let path:String = (weakSelf?.availableAddressPath)!
             if(FileManager.default.fileExists(atPath: path)){
-                let addressInfo:NSDictionary  = self.getCachedAddress()! // NSKeyedUnarchiver.unarchiveObject(withFile: path) as! NSDictionary
+                let addressInfo:NSDictionary  = (weakSelf?.getCachedAddress())!
                 let cacheMd5:String = addressInfo["md5"] as! String
                 // 判断 md5是否一致，如果一致就不存新的数据
-                if (cacheMd5 == newMd5){  // 一致
-                    
+                if (cacheMd5 != newMd5){  // 不一致
+                    weakSelf?.cacheAddress(responseJSON)
                 }
-                else{  // 不一致
-                    self.cacheAddress(responseJSON! as NSDictionary)
-
-                }
-            }
-            else{
+            } else{
                 FileManager.default.createFile(atPath: path, contents: nil, attributes: nil)
-                self.cacheAddress(responseJSON! as NSDictionary)
+                weakSelf?.cacheAddress(responseJSON)
             }
         }
     }

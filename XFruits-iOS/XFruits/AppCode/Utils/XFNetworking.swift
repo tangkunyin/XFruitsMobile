@@ -17,7 +17,6 @@ public typealias XFResponse = ((_ data: Any)->Void)
 
 public typealias XFParams = Dictionary<String,Any>
 
-
 public typealias XFNetCompletion = ((_ success: Bool, _ respData: Any?)->Void)
 
 // 网络状态
@@ -168,14 +167,28 @@ public class XFNetworking: NSObject {
                        params:Dictionary<String,Any>,
                        encoding:ParameterEncoding = URLEncoding.default,
                        completion:@escaping XFNetCompletion) {
-        
         self.doRequest(withUrl: url, method: .post, params: params, paramsEncoding: encoding, completion: completion)
+    }
+    
+    
+    public func commonRequest(withUrl url:String,
+                              params:Dictionary<String,Any>? = nil,
+                              method:Alamofire.HTTPMethod = .get,
+                              encoding:ParameterEncoding = URLEncoding.default,
+                              completion:@escaping XFNetCompletion) {
+        self.doRequest(withUrl: url,
+                       method: method,
+                       params: params,
+                       paramsEncoding: encoding,
+                       needSerialize: false,
+                       completion: completion)
     }
     
     public func doRequest(withUrl url:String,
                           method:Alamofire.HTTPMethod,
                           params:Dictionary<String,Any>?,
                           paramsEncoding:ParameterEncoding,
+                          needSerialize:Bool = true,
                           completion:@escaping XFNetCompletion) {
         
         guard XFNetworkStatus.shareInstance.canReachable() else {
@@ -194,23 +207,27 @@ public class XFNetworking: NSObject {
             .responseSwiftyJSON { (response) in
                 switch response.result {
                 case .success(let value):
-                    if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: value.rawString()) {
-                        guard let code = obj.code, let msg = obj.msg, let timestamp = obj.systemTime else {
-                            dPrint(obj)
-                            completion(false, "数据状态异常，请稍后再试~")
-                            return
+                    if needSerialize {
+                        if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: value.rawString()) {
+                            guard let code = obj.code, let msg = obj.msg, let timestamp = obj.systemTime else {
+                                dPrint(obj)
+                                completion(false, "数据状态异常，请稍后再试~")
+                                return
+                            }
+                            //更新服务器时间
+                            XFDataGlobal.shared.serverTime = timestamp
+                            switch code {
+                            case XFHttpStatus.success.rawValue,
+                                 XFHttpStatus.notModify.rawValue,
+                                 XFHttpStatus.returnTrue.rawValue:
+                                completion(true, obj.data)
+                            default:
+                                MBProgressHUD.showError(msg)
+                                completion(false, msg)
+                            }
                         }
-                        //更新服务器时间
-                        XFDataGlobal.shared.serverTime = timestamp
-                        switch code {
-                        case XFHttpStatus.success.rawValue,
-                             XFHttpStatus.notModify.rawValue,
-                             XFHttpStatus.returnTrue.rawValue:
-                            completion(true, obj.data)
-                        default:
-                            MBProgressHUD.showError(msg)
-                            completion(false, msg)
-                        }
+                    } else {
+                        completion(true, value.rawValue)
                     }
                 case .failure(let error):
                     dPrint(error)
