@@ -39,4 +39,31 @@ final class XFOrderSerivice: XFNetworking {
         }
     }
     
+    /// 获取订单列表
+    func getOrderList(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
+        self.doGet(withUrl: url("/order/query", params: params)) { (success, respData) in
+            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
+                completion(XFOrder.deserialize(from: dict) ?? XFOrder())
+            }
+        }
+    }
+    
+    /// 获取订单详情
+    func getOrderDetail(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
+        self.doGet(withUrl: url("/order/detail", params: params)) { (success, respData) in
+            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
+                completion(XFOrderDetail.deserialize(from: dict) ?? XFOrderDetail())
+            }
+        }
+    }
+    
+    /// 获取物流信息
+    func getExpressDetail(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
+        self.doGet(withUrl: url("/express/trackInfo", params: params)) { (success, respData) in
+            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
+                completion(XFExpress.deserialize(from: dict) ?? XFExpress())
+            }
+        }
+    }
+    
 }

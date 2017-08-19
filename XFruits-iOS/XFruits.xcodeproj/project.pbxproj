@@ -111,6 +111,9 @@
 		86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */; };
 		86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */; };
 		86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F51EC86C34009AB47D /* UserCenterAvatarCell.swift */; };
+		86FFA4121F487A5600FCC809 /* XFOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4111F487A5600FCC809 /* XFOrder.swift */; };
+		86FFA4141F487DF800FCC809 /* XFExpress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4131F487DF800FCC809 /* XFExpress.swift */; };
+		86FFA4161F487F4100FCC809 /* XFNewsInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -227,6 +230,9 @@
 		86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourBillCollectionViewCell.swift; sourceTree = "<group>"; };
 		86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBillTableViewCell.swift; sourceTree = "<group>"; };
 		86EC80F51EC86C34009AB47D /* UserCenterAvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterAvatarCell.swift; sourceTree = "<group>"; };
+		86FFA4111F487A5600FCC809 /* XFOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrder.swift; sourceTree = "<group>"; };
+		86FFA4131F487DF800FCC809 /* XFExpress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFExpress.swift; sourceTree = "<group>"; };
+		86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFNewsInfoService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +418,8 @@
 				862AF70A1F0926A700409CCB /* XFComment.swift */,
 				86ADDCE01F2DD88500881CFA /* XFCouponItem.swift */,
 				8692FCD31F41EDBC00CD3F72 /* XFPayResponse.swift */,
+				86FFA4111F487A5600FCC809 /* XFOrder.swift */,
+				86FFA4131F487DF800FCC809 /* XFExpress.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -483,6 +491,7 @@
 			children = (
 				8660D99E1F447AF800D98C18 /* XFOrderSerivice.swift */,
 				862848521F483DD400CA52B6 /* XFAddressService.swift */,
+				86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */,
 			);
 			path = NetService;
 			sourceTree = "<group>";
@@ -714,6 +723,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86FFA4121F487A5600FCC809 /* XFOrder.swift in Sources */,
 				1641E76C1F35F9D10093DADF /* XFCityChooseView.swift in Sources */,
 				862672DD1EFE46420062B52B /* XFUserRegistSecondPageViewController.swift in Sources */,
 				8690FEE11ED178AF0051A16D /* XFShopCartActionBar.swift in Sources */,
@@ -771,9 +781,11 @@
 				86D18BA51F1E5731007643C0 /* XFCheckoutGoodsCell.swift in Sources */,
 				865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */,
 				86ADDCD71F2B466C00881CFA /* XFSearchBar.swift in Sources */,
+				86FFA4141F487DF800FCC809 /* XFExpress.swift in Sources */,
 				8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */,
 				86ADDCDD1F2B7C5C00881CFA /* XFDescriptionItem.swift in Sources */,
 				165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */,
+				86FFA4161F487F4100FCC809 /* XFNewsInfoService.swift in Sources */,
 				865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */,
 				8660D99F1F447AF800D98C18 /* XFOrderSerivice.swift in Sources */,
 				86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */,
