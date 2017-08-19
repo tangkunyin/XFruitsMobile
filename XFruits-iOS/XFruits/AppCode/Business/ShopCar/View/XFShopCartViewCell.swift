@@ -23,8 +23,8 @@ class XFShopCartViewCell: UITableViewCell {
                 descLabel.text = "规格：\(item.desc ?? "其他")"
                 priceLabel.text = String(format:"¥ %.2f",item.primePrice!)
                 thumbnail.kf.setImage(with: URL.init(string: item.cover!),
-                                      placeholder: UIImage.imageWithNamed("sampleGoodsInCategoryCell"),
-                                      options: [.transition(.fade(1))])
+                                      placeholder: UIImage.imageWithNamed("Loading-transprent"),
+                                      options: [.transition(.fade(0.8))])
             }
         }
     }

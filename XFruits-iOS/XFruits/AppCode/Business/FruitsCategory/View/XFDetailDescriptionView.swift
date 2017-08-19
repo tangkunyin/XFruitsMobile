@@ -105,7 +105,7 @@ class XFDetailDescriptionView: UIView {
             })
             weak var weakSelf = self
             imageView.kf.setImage(with: URL.init(string: item),
-                                  placeholder: UIImage.imageWithNamed("default-detailIntroduce"),
+                                  placeholder: UIImage.imageWithNamed("Loading-transprent"),
                                   options: [.transition(.fade(1))],
                                   progressBlock: nil,
                                   completionHandler: { (image, error, type, url) in

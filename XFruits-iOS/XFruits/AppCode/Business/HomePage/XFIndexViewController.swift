@@ -14,7 +14,7 @@ import MBProgressHUD
 class XFIndexViewController: XFBaseViewController {
     
     lazy var pagerView:XFViewPager = {
-        let pagerView = XFViewPager(source: [""], placeHolder: "default-scroll-banner")
+        let pagerView = XFViewPager(source: [""], placeHolder: "Loading-white")
             pagerView.pagerDidClicked = {(index:Int) -> Void in
                 dPrint("\(index) 号被点击")
                 MBProgressHUD.showError("链接没有准备好呢，小果拾表示骚瑞~")
