@@ -16,7 +16,6 @@
 		165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */; };
 		16582DC31EE4F8D400A58846 /* XFEditMyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */; };
 		16941B691F3C04A40066A911 /* XFEmptyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16941B681F3C04A40066A911 /* XFEmptyAddressView.swift */; };
-		169C39C01F3962880064BD79 /* XFWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169C39BF1F3962880064BD79 /* XFWebViewController.swift */; };
 		16DCE3C31EDA68960047F559 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16DCE3C21EDA68960047F559 /* city.plist */; };
 		860A43011EE415FF00798678 /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
 		860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A43021EE415FF00798678 /* HandyJSON.framework */; };
@@ -114,6 +113,8 @@
 		86FFA4121F487A5600FCC809 /* XFOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4111F487A5600FCC809 /* XFOrder.swift */; };
 		86FFA4141F487DF800FCC809 /* XFExpress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4131F487DF800FCC809 /* XFExpress.swift */; };
 		86FFA4161F487F4100FCC809 /* XFNewsInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */; };
+		86FFA4181F48853300FCC809 /* XFIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4171F48853300FCC809 /* XFIndex.swift */; };
+		86FFA41B1F488DEA00FCC809 /* XFWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA41A1F488D5200FCC809 /* XFWebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,7 +127,6 @@
 		165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFChoosePayWayViewController.swift; sourceTree = "<group>"; };
 		16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEditMyAddressView.swift; sourceTree = "<group>"; };
 		16941B681F3C04A40066A911 /* XFEmptyAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFEmptyAddressView.swift; sourceTree = "<group>"; };
-		169C39BF1F3962880064BD79 /* XFWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFWebViewController.swift; sourceTree = "<group>"; };
 		16DCE3C21EDA68960047F559 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		860A43021EE415FF00798678 /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HandyJSON.framework; path = Carthage/Build/iOS/HandyJSON.framework; sourceTree = "<group>"; };
 		860A43041EE4178000798678 /* XFBaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFBaseResponse.swift; sourceTree = "<group>"; };
@@ -233,6 +233,8 @@
 		86FFA4111F487A5600FCC809 /* XFOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrder.swift; sourceTree = "<group>"; };
 		86FFA4131F487DF800FCC809 /* XFExpress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFExpress.swift; sourceTree = "<group>"; };
 		86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFNewsInfoService.swift; sourceTree = "<group>"; };
+		86FFA4171F48853300FCC809 /* XFIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFIndex.swift; sourceTree = "<group>"; };
+		86FFA41A1F488D5200FCC809 /* XFWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFWebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,7 +393,6 @@
 				862672DC1EFE46420062B52B /* XFUserRegistSecondPageViewController.swift */,
 				862672DE1EFE468B0062B52B /* XFUserAddressesMangageViewController.swift */,
 				862672E01EFE46AE0062B52B /* XFAddAddressViewController.swift */,
-				169C39BF1F3962880064BD79 /* XFWebViewController.swift */,
 			);
 			path = UserCenter;
 			sourceTree = "<group>";
@@ -420,6 +421,7 @@
 				8692FCD31F41EDBC00CD3F72 /* XFPayResponse.swift */,
 				86FFA4111F487A5600FCC809 /* XFOrder.swift */,
 				86FFA4131F487DF800FCC809 /* XFExpress.swift */,
+				86FFA4171F48853300FCC809 /* XFIndex.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -428,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				868613271EACDC0D00A44338 /* widget */,
+				86FFA41A1F488D5200FCC809 /* XFWebViewController.swift */,
 				862672F41EFE49550062B52B /* XFBaseViewController.swift */,
 				862672F61EFE497D0062B52B /* XFBaseSubViewController.swift */,
 				862672F81EFE499D0062B52B /* XFNavigationController.swift */,
@@ -723,6 +726,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86FFA41B1F488DEA00FCC809 /* XFWebViewController.swift in Sources */,
 				86FFA4121F487A5600FCC809 /* XFOrder.swift in Sources */,
 				1641E76C1F35F9D10093DADF /* XFCityChooseView.swift in Sources */,
 				862672DD1EFE46420062B52B /* XFUserRegistSecondPageViewController.swift in Sources */,
@@ -748,7 +752,6 @@
 				8630B31D1EF7BC86002F5B5C /* XFSQLiteDataSource.swift in Sources */,
 				862672D31EFE43680062B52B /* XFShopCarViewController.swift in Sources */,
 				8690FEDF1ED178900051A16D /* XFShopCartViewCell.swift in Sources */,
-				169C39C01F3962880064BD79 /* XFWebViewController.swift in Sources */,
 				862672F51EFE49550062B52B /* XFBaseViewController.swift in Sources */,
 				862AF70B1F0926A700409CCB /* XFComment.swift in Sources */,
 				862672ED1EFE48420062B52B /* XFNetworking.swift in Sources */,
@@ -790,6 +793,7 @@
 				8660D99F1F447AF800D98C18 /* XFOrderSerivice.swift in Sources */,
 				86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */,
 				8692FCD41F41EDBC00CD3F72 /* XFPayResponse.swift in Sources */,
+				86FFA4181F48853300FCC809 /* XFIndex.swift in Sources */,
 				1641E76E1F3609EC0093DADF /* XFAlert.swift in Sources */,
 				868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */,
 				16941B691F3C04A40066A911 /* XFEmptyAddressView.swift in Sources */,

@@ -13,16 +13,20 @@ import MBProgressHUD
 
 class XFIndexViewController: XFBaseViewController {
     
-    lazy var pagerView:XFViewPager = {
-        let pagerView = XFViewPager(source: [""], placeHolder: "Loading-white")
-            pagerView.pagerDidClicked = {(index:Int) -> Void in
-                dPrint("\(index) 号被点击")
-                MBProgressHUD.showError("链接没有准备好呢，小果拾表示骚瑞~")
+    private var loopImages: Array<XFIndexLoopImage>? {
+        didSet {
+            if let images = loopImages {
+                var imageUrls: Array<String> = []
+                for item in images {
+                    imageUrls.append(item.cover)
+                }
+                if imageUrls.count > 0 {
+                    pagerView.dataSource = imageUrls
+                }
             }
-        return pagerView
-    }()
+        }
+    }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,7 +45,11 @@ class XFIndexViewController: XFBaseViewController {
             make.height.equalTo(floor(XFConstants.UI.deviceWidth/(1920/1080)))
             
         })
-        
+     
+        weak var weakSelf = self
+        request.getLoopImages { (result) in
+            weakSelf?.loopImages = result as? Array
+        }
     }
     
     @objc private func onScanItemClick(){
@@ -51,6 +59,22 @@ class XFIndexViewController: XFBaseViewController {
         }
         
     }
+    
+    
+    
+    
+    private lazy var request: XFNewsInfoService = {
+        return XFNewsInfoService()
+    }()
+    
+    private lazy var pagerView:XFViewPager = {
+        let pagerView = XFViewPager(source: [""], placeHolder: "Loading-white")
+        pagerView.pagerDidClicked = {(index:Int) -> Void in
+            dPrint("\(index) 号被点击")
+            MBProgressHUD.showError("链接没有准备好呢，小果拾表示骚瑞~")
+        }
+        return pagerView
+    }()
 
 }
 
