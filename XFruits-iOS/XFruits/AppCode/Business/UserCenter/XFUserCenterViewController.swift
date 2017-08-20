@@ -9,11 +9,10 @@
 import UIKit
 import MBProgressHUD
 import SwiftyJSON
+
 fileprivate let UC_CellIdentifier = "XFUserCenterUC_CellIdentifier"
 
 class XFUCenterCommonCell: UITableViewCell {
-    
-   
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -97,9 +96,10 @@ class XFUserCenterViewController: XFBaseViewController {
         
     }
     
-    private func jumpToOrder(_ status: String? = nil){
+    private func jumpToOrder(_ status: String? = nil, title: String){
         let orderList = XFOrderListViewController()
         orderList.orderStatus = status
+        orderList.title = "\(title)订单"
         navigationController?.pushViewController(orderList, animated: true)
     }
     
@@ -114,7 +114,7 @@ class XFUserCenterViewController: XFBaseViewController {
                     navigationController?.pushViewController(XFUserInfoViewController(), animated: true)
                 } else if section == 1 && row == 0 {
                     // 订单列表
-                    jumpToOrder()
+                    jumpToOrder(title: "全部")
                 } else if section == 1 && row == 1 {
                     // 特定类型订单
                     return
@@ -196,8 +196,8 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
             } else {
                 let cell = MyBillTableViewCell(style: .default, reuseIdentifier: "billCell")
                 weak var weakSelf = self
-                cell.onClicked = {(status) in
-                    weakSelf?.jumpToOrder(status)
+                cell.onClicked = {(status,title) in
+                    weakSelf?.jumpToOrder(status, title: title)
                 }
                 return cell
             }

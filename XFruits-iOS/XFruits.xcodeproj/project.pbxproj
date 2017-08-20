@@ -120,6 +120,7 @@
 		86FFA42C1F48991800FCC809 /* XFExpressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA42B1F48991800FCC809 /* XFExpressViewController.swift */; };
 		86FFA42E1F48995700FCC809 /* XFSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA42D1F48995700FCC809 /* XFSettingsViewController.swift */; };
 		86FFA4301F48999800FCC809 /* XFUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA42F1F48999800FCC809 /* XFUserInfoViewController.swift */; };
+		86FFA4321F494A4A00FCC809 /* XFOrderListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4311F494A4A00FCC809 /* XFOrderListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -245,6 +246,7 @@
 		86FFA42B1F48991800FCC809 /* XFExpressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFExpressViewController.swift; sourceTree = "<group>"; };
 		86FFA42D1F48995700FCC809 /* XFSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFSettingsViewController.swift; sourceTree = "<group>"; };
 		86FFA42F1F48999800FCC809 /* XFUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserInfoViewController.swift; sourceTree = "<group>"; };
+		86FFA4311F494A4A00FCC809 /* XFOrderListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrderListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -625,6 +627,7 @@
 				862672D41EFE43D20062B52B /* XFAddressesManageTableViewCell.swift */,
 				1641E76D1F3609EC0093DADF /* XFAlert.swift */,
 				16941B681F3C04A40066A911 /* XFEmptyAddressView.swift */,
+				86FFA4311F494A4A00FCC809 /* XFOrderListItem.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				86E8DF811EDC0EAB000A489F /* XFCommentItemView.swift in Sources */,
 				86ADDCD91F2B64CF00881CFA /* XFCheckoutAddress.swift in Sources */,
 				86ADDCDB1F2B656700881CFA /* XFCheckoutInfo.swift in Sources */,
+				86FFA4321F494A4A00FCC809 /* XFOrderListItem.swift in Sources */,
 				86A45C721ED1209F00772D13 /* XFCommonUtils.swift in Sources */,
 				86D18BA71F1E5843007643C0 /* XFCheckoutActionBar.swift in Sources */,
 				862672F91EFE499D0062B52B /* XFNavigationController.swift in Sources */,

@@ -14,7 +14,7 @@ fileprivate let BillCellWidth = XFConstants.UI.deviceWidth / 5
 class MyBillTableViewCell: UITableViewCell {
 
     /// 回调把 status 返回
-    var onClicked: ((String)->Void)?
+    var onClicked: ((String,String)->Void)?
     
     lazy var tipSourceInfo: Array<Dictionary<String, String>> = {
         return [
@@ -83,7 +83,7 @@ extension MyBillTableViewCell: UICollectionViewDelegate,UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let completion = onClicked {
             let item:Dictionary<String, String> = tipSourceInfo[indexPath.row]
-            completion(item["status"]!)
+            completion(item["status"]!,item["title"]!)
         }
     }
 }
