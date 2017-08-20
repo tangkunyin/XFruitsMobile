@@ -13,8 +13,8 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     // 用户名
     lazy var userNameLabel:UILabel = {
         let label = UILabel()
+        label.font  = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
-//        label.font  = XFConstants.Font.mainMenuFont
         label.numberOfLines = 0
         label.textAlignment = NSTextAlignment.left
         return label
@@ -23,8 +23,8 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     // 手机号
     lazy var mobileLabel:UILabel = {
         let label = UILabel()
+        label.font  =  XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
-//        label.font  =  XFConstants.Font.mainMenuFont
         label.textAlignment = NSTextAlignment.left
         return label
     }()
@@ -32,19 +32,16 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     // 地址详情
     lazy var addressLabel:UILabel = {
         let label = UILabel()
-        label.textColor = XFConstants.Color.darkGray
-//        label.font  = XFConstants.Font.mainBodyFont
+        label.font  = XFConstants.Font.pfn12
         label.textAlignment = NSTextAlignment.left
         label.numberOfLines = 0
-        label.adjustsFontSizeToFitWidth = false
         return label
     }()
     
     // 地址类别
     lazy var addressCategoryBtn:UIButton = {
         let btn = UIButton.init(type: .custom)
-//        btn.setTitle("自己家", for: .normal)
-        btn.titleLabel?.font = XFConstants.Font.pfn14
+        btn.titleLabel?.font = XFConstants.Font.pfn12
         btn.setTitleColor(colorWithRGB(255, g: 105, b: 105), for:.normal)
         btn.layer.borderColor = colorWithRGB(255, g: 105, b: 105).cgColor
         btn.layer.borderWidth = 1
@@ -71,12 +68,12 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         setUpUI();
     }
     
-    func setMyAddress(address:XFAddress)  {
-        userNameLabel.text = address.recipient
-        mobileLabel.text = address.cellPhone
-        addressLabel.text = address.districtName
-        
-        addressCategoryBtn.setTitle(address.label, for: .normal)
+    func setMyAddress(data:XFAddress)  {
+        addressLabel.textColor = data.isDefault == 1 ? XFConstants.Color.salmon : XFConstants.Color.darkGray
+        userNameLabel.text = data.recipient
+        mobileLabel.text = data.cellPhone
+        addressLabel.text = "\(data.districtName)\(data.address)"
+        addressCategoryBtn.setTitle(data.label, for: .normal)
     }
     
     func  setUpUI() {
@@ -97,7 +94,6 @@ class XFAddressesManageTableViewCell: UITableViewCell {
             make.height.equalTo(20)
         })
         
-        
         addressCategoryBtn.snp.makeConstraints({ (make) in
             make.top.equalTo(userNameLabel.snp.bottom).offset(10)
             make.left.equalTo(userNameLabel.snp.left)
@@ -106,23 +102,19 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         })
         
         mobileLabel.snp.makeConstraints({ (make) in
-            //            make.size.equalTo(CGSize(width: 110, height: 20))
-           
             make.top.equalTo(userNameLabel.snp.top)
+            make.height.equalTo(20)
             make.left.equalTo(userNameLabel.snp.right).offset(10)
             make.right.equalTo(editAddressBtn.snp.left).offset(-5)
         })
         
         addressLabel.snp.makeConstraints({ (make) in
-            make.top.equalTo(addressCategoryBtn.snp.top)
+            make.top.equalTo(mobileLabel.snp.bottom).offset(2)
             make.left.equalTo(mobileLabel.snp.left)
             make.right.equalTo(editAddressBtn.snp.left).offset(-5)
-            make.bottom.equalTo(self).offset(-5)
+            make.bottom.equalTo(self).offset(-2)
         })
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+
 }
 

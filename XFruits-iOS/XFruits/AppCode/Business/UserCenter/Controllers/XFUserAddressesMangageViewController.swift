@@ -91,7 +91,7 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
                     // 小小排序。把默认地址放在第一
                     for(index,value) in (weakSelf?.addressInfoArray.enumerated())!{
                         let addressObject:XFAddress = value!
-                        if(addressObject.isDefault == "1"){
+                        if(addressObject.isDefault == 1){
                             weakSelf?.addressInfoArray.remove(at: index)
                             weakSelf?.addressInfoArray.insert(addressObject, at: 0)
                             break
@@ -142,18 +142,13 @@ extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: addressCellIdentifier, for: indexPath) as! XFAddressesManageTableViewCell
+        cell.selectionStyle = .none
         let row = indexPath.row
-        
-        if(row == 0){
-            cell.backgroundColor = colorWithRGB(217, g: 217, b: 217)
-        }
-        
         if let address : XFAddress = addressInfoArray[row] {
-            cell.setMyAddress(address: address)
+            cell.setMyAddress(data: address)
             cell.editAddressBtn.addTarget(self, action: #selector(addOrModifyAddressEvent(sender:)), for:.touchUpInside)
             cell.editAddressBtn.tag = 100 + indexPath.row
         }
-        
         return cell
     }
     
@@ -173,7 +168,6 @@ extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
         let row = indexPath.row
         weak var weakSelf = self
-       
         if editingStyle == .delete{
             if let address : XFAddress = addressInfoArray[row] {
                 let addressId = address.id!
@@ -194,7 +188,6 @@ extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        tableView.deselectRow(at: indexPath, animated: true)
         if let onSelected = onSelectedAddress, let address: XFAddress = addressInfoArray[indexPath.row] {
             onSelected(address)
             self.backToParentController()

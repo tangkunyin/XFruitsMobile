@@ -121,6 +121,9 @@
 		86FFA42E1F48995700FCC809 /* XFSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA42D1F48995700FCC809 /* XFSettingsViewController.swift */; };
 		86FFA4301F48999800FCC809 /* XFUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA42F1F48999800FCC809 /* XFUserInfoViewController.swift */; };
 		86FFA4321F494A4A00FCC809 /* XFOrderListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4311F494A4A00FCC809 /* XFOrderListItem.swift */; };
+		86FFA4341F49C3BF00FCC809 /* XFOrderDetailAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4331F49C3BF00FCC809 /* XFOrderDetailAddressCell.swift */; };
+		86FFA4361F49C67500FCC809 /* XFOrderDetailGoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4351F49C67500FCC809 /* XFOrderDetailGoodsCell.swift */; };
+		86FFA4381F49CAB200FCC809 /* XFOrderDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4371F49CAB200FCC809 /* XFOrderDetailHeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -247,6 +250,9 @@
 		86FFA42D1F48995700FCC809 /* XFSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFSettingsViewController.swift; sourceTree = "<group>"; };
 		86FFA42F1F48999800FCC809 /* XFUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserInfoViewController.swift; sourceTree = "<group>"; };
 		86FFA4311F494A4A00FCC809 /* XFOrderListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrderListItem.swift; sourceTree = "<group>"; };
+		86FFA4331F49C3BF00FCC809 /* XFOrderDetailAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrderDetailAddressCell.swift; sourceTree = "<group>"; };
+		86FFA4351F49C67500FCC809 /* XFOrderDetailGoodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrderDetailGoodsCell.swift; sourceTree = "<group>"; };
+		86FFA4371F49CAB200FCC809 /* XFOrderDetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrderDetailHeaderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -628,6 +634,9 @@
 				1641E76D1F3609EC0093DADF /* XFAlert.swift */,
 				16941B681F3C04A40066A911 /* XFEmptyAddressView.swift */,
 				86FFA4311F494A4A00FCC809 /* XFOrderListItem.swift */,
+				86FFA4331F49C3BF00FCC809 /* XFOrderDetailAddressCell.swift */,
+				86FFA4351F49C67500FCC809 /* XFOrderDetailGoodsCell.swift */,
+				86FFA4371F49CAB200FCC809 /* XFOrderDetailHeaderCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -768,6 +777,7 @@
 				862672F71EFE497D0062B52B /* XFBaseSubViewController.swift in Sources */,
 				86FFA42A1F4898FA00FCC809 /* XFOrderDetailViewController.swift in Sources */,
 				86FFA42C1F48991800FCC809 /* XFExpressViewController.swift in Sources */,
+				86FFA4381F49CAB200FCC809 /* XFOrderDetailHeaderCell.swift in Sources */,
 				86E8DF7A1EDAB0EC000A489F /* XFDetailActionBarView.swift in Sources */,
 				8690FEDD1ED178120051A16D /* XFCategoryCell.swift in Sources */,
 				8690FEE31ED179560051A16D /* XFAllCategoryListViewController.swift in Sources */,
@@ -827,11 +837,13 @@
 				8692FCD41F41EDBC00CD3F72 /* XFPayResponse.swift in Sources */,
 				86FFA4181F48853300FCC809 /* XFIndex.swift in Sources */,
 				1641E76E1F3609EC0093DADF /* XFAlert.swift in Sources */,
+				86FFA4361F49C67500FCC809 /* XFOrderDetailGoodsCell.swift in Sources */,
 				868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */,
 				16941B691F3C04A40066A911 /* XFEmptyAddressView.swift in Sources */,
 				86ADDCD51F2AEBCE00881CFA /* XFDataGlobal.swift in Sources */,
 				86BB9A871F1D2B1E00B46EBC /* XFCheckoutViewController.swift in Sources */,
 				862672FB1EFE4F3A0062B52B /* XFVerifyImage.swift in Sources */,
+				86FFA4341F49C3BF00FCC809 /* XFOrderDetailAddressCell.swift in Sources */,
 				862672F31EFE492D0062B52B /* XFViewPager.swift in Sources */,
 				86FFA42E1F48995700FCC809 /* XFSettingsViewController.swift in Sources */,
 				16200CF51F1B7F200008C039 /* XFAvailableAddressUtils.swift in Sources */,

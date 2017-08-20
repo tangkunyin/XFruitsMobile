@@ -10,10 +10,20 @@ import UIKit
 
 class XFExpressViewController: XFBaseSubViewController {
 
+    var orderId: String?
+    
+    fileprivate var expressData: XFExpress?
+    
+    fileprivate lazy var request: XFOrderSerivice = {
+        return XFOrderSerivice()
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "快递信息"
     
+        
+        
     }
 
     

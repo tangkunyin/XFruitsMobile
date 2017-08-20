@@ -15,9 +15,9 @@ class XFOrderListViewController: XFBaseSubViewController {
 
     var orderStatus: String?
     
-    var orderData: Array<XFOrderContent>?
+    fileprivate var orderData: Array<XFOrderContent>?
     
-    lazy var request: XFOrderSerivice = {
+    fileprivate lazy var request: XFOrderSerivice = {
         return XFOrderSerivice()
     }()
     
@@ -58,6 +58,17 @@ class XFOrderListViewController: XFBaseSubViewController {
             }
         }
     }
+    
+    private func barClickHandler(_ type: Int, _ orderData: XFOrderContent){
+        if type == 0 {
+            //TODO. 去支付  暂时跳物流
+            
+            let expressVC = XFExpressViewController()
+            expressVC.orderId = orderData.orderId
+            
+            navigationController?.pushViewController(expressVC, animated: true)
+        }
+    }
 }
 
 extension XFOrderListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -70,7 +81,7 @@ extension XFOrderListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return 136
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,6 +89,10 @@ extension XFOrderListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.selectionStyle = .none
         if let orderData = orderData {
             cell.dataSource = orderData[indexPath.row]
+            weak var weakSelf = self
+            cell.onBarBtnClick = {(type, data) in
+                weakSelf?.barClickHandler(type, data)
+            }
         }
         return cell
     }

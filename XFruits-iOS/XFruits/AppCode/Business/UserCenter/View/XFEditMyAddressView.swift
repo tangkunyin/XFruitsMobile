@@ -339,12 +339,11 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
         receiveInput.text = address.recipient
         mobileInput.text = address.cellPhone
         
-     
         addressDescTextView.text = address.address
         if  addressDescTextView.text.characters.count > 0 {
             placeHolderLabel.text = ""
         }
-        if(address.isDefault == "1"){
+        if(address.isDefault == 1){
             useAsDefaultAddressBtn.setImage(UIImage.imageWithNamed("check_box_select"), for: .normal)
             useAsDefaultAddressBtn.isSelected = true
         }
@@ -421,7 +420,7 @@ class XFEditMyAddressView: UIView, UICollectionViewDelegate,UICollectionViewData
             return
         }
         
-        let isDefault = useAsDefaultAddressBtn.isSelected == true ? "1" : "0"
+        let isDefault = useAsDefaultAddressBtn.isSelected == true ? 1 : 0
         
         var addressModify = XFAddress()
         

@@ -22,7 +22,7 @@ struct XFOrderDetailProduct: HandyJSON {
     var name: String = ""
     var description: String = ""
     var cover: String = ""
-    var specification: String = ""
+    var specification: String?
     var type: Int = 0
     var primePrice: Float = 0
     var service: String = ""
@@ -30,7 +30,7 @@ struct XFOrderDetailProduct: HandyJSON {
     var sellStatus: Int?
     var platform: Int?
     var unit: String = ""
-    var quantity: Int = 0
+    var quantity: Int?
     var delete: Bool = false
     var createAt: Int = 0
     var updateAt: Int = 0

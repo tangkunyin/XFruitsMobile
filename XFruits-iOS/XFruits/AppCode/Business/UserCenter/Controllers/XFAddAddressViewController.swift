@@ -50,20 +50,15 @@ class XFAddAddressViewController: XFBaseSubViewController    {
     // 导航栏右侧按钮-保存-触发的事件
     
      func saveAddress(address :XFAddress) {
-       
         weak var weakSelf = self
-        
-        var addressDict:[String:String]  = ["code":address.districtCode!.stringValue,
-                                            "address":address.address!,
-                                            "recipient":address.recipient!,
-                                            "cellPhone":address.cellPhone!,
-                                            "isDefault":address.isDefault!,
-                                            "label":address.label!]
-        
+        var addressDict:[String:Any]  = ["code":address.districtCode!.stringValue,
+                                        "address":address.address,
+                                        "recipient":address.recipient,
+                                        "cellPhone":address.cellPhone,
+                                        "isDefault":address.isDefault,
+                                        "label":address.label ?? ""]
         if editStyle == 0 {  // 添加地址
-         
             XFAddressService().addAddress(params: addressDict) { (data) in
-                dPrint(data)
                 weakSelf!.navigationController?.popViewController(animated: true)
             }
             

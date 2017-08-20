@@ -16,7 +16,7 @@ class XFCheckoutAddress: XFAddressesManageTableViewCell {
     var dataSource: XFAddress? {
         didSet {
             if let address = dataSource {
-                setMyAddress(address: address)
+                setMyAddress(data: address)
                 if let view = self.viewWithTag(-111) {
                     view.removeFromSuperview()
                 }
