@@ -10,40 +10,45 @@ import UIKit
 import WebKit
 import MBProgressHUD
 
-class XFWebViewController: XFBaseSubViewController,WKUIDelegate ,WKNavigationDelegate   {
+class XFWebViewController: XFBaseSubViewController {
     
-    var urlString:String = ""
+    private var urlString: String?
     
-    
-    lazy var webview:WKWebView = {
-        let webview = WKWebView.init()
-        let url:NSURL   = NSURL.init(string: "http://www.jianshu.com")!
-        let request = NSURLRequest.init(url: url as URL)
-        webview.uiDelegate = self
-        MBProgressHUD.showMessage("正在加载……") {
-            
-        }
-        webview.load(request as URLRequest)
-        
+    lazy var webview: WKWebView = {
+        let webview = WKWebView()
         return webview
     }()
     
+    convenience init(withUrl url: String) {
+        self.init()
+        urlString = url
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
         self.view.addSubview(webview)
         webview.snp.makeConstraints({ (make) in
             make.center.size.equalTo(self.view)
         })
+        
+        if let url = urlString {
+            let url:NSURL   = NSURL.init(string: url)!
+            let request = NSURLRequest.init(url: url as URL)
+            webview.uiDelegate = self
+            webview.load(request as URLRequest)
+        }
     }
+    
+
+}
+
+extension XFWebViewController: WKUIDelegate,WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-       MBProgressHUD.showSuccess("")
+        
     }
-    
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error){
-         MBProgressHUD.showError("网络不给力啊~")
+        MBProgressHUD.showError("网络不给力啊~")
     }
-
 }

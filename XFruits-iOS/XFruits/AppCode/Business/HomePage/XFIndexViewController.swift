@@ -10,6 +10,10 @@ import UIKit
 import SnapKit
 import MBProgressHUD
 
+fileprivate let cellIdentifier = "XFIndexArticleCellIdentifier"
+
+// 约定好宽高比
+fileprivate let loopImageComponentHeight = floor(XFConstants.UI.deviceWidth/(1920/1080))
 
 class XFIndexViewController: XFBaseViewController {
     
@@ -30,38 +34,29 @@ class XFIndexViewController: XFBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("scan-icon"),
-                                                                style: .plain,
-                                                                target: self,
-                                                                action: #selector(onScanItemClick))
-        
     
-        self.view.addSubview(pagerView)
-        pagerView.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.view).offset(0)
-            make.width.equalTo(self.view)
-            // TODO: 提前约定好宽高比
-            make.height.equalTo(floor(XFConstants.UI.deviceWidth/(1920/1080)))
-            
-        })
+//        self.view.addSubview(pagerView)
+//        pagerView.snp.makeConstraints({ (make) in
+//            make.top.equalTo(self.view).offset(0)
+//            make.width.equalTo(self.view)
+//            make.height.equalTo(loopImageComponentHeight)
+//        })
+        
+        view.addSubview(articleListView)
+        articleListView.snp.makeConstraints { (make) in
+            make.center.size.equalTo(view)
+        }
      
+        loadData()
+    }
+    
+    private func loadData(){
         weak var weakSelf = self
         request.getLoopImages { (result) in
             weakSelf?.loopImages = result as? Array
         }
     }
-    
-    @objc private func onScanItemClick(){
-        
-        MBProgressHUD.showMessage("小果拾表示这个功能还没想好怎么做...") {
-            dPrint("扫描：小果拾表示这个功能还没想好怎么做...")
-        }
-        
-    }
-    
-    
-    
+
     
     private lazy var request: XFNewsInfoService = {
         return XFNewsInfoService()
@@ -75,6 +70,53 @@ class XFIndexViewController: XFBaseViewController {
         }
         return pagerView
     }()
+    
+    lazy var articleListView: UITableView = {
+        let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        tableView.separatorColor = XFConstants.Color.separatorLine
+        tableView.register(XFIndexArticleViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        return tableView
+    }()
 
+}
+
+extension XFIndexViewController: UITableViewDataSource,UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 160
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! XFIndexArticleViewCell
+        cell.backgroundColor = XFConstants.Color.brightBlue
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return loopImageComponentHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return pagerView
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+        
+        
+        
+    }
+    
 }
 

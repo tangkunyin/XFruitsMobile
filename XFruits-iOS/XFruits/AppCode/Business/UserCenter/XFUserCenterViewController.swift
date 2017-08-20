@@ -31,6 +31,7 @@ class XFUCenterCommonCell: UITableViewCell {
 }
 
 class XFUserCenterViewController: XFBaseViewController {
+    
     fileprivate lazy var dataSource: NSDictionary = {
         let dataSource: NSDictionary = NSDictionary()
         return dataSource
@@ -124,7 +125,8 @@ class XFUserCenterViewController: XFBaseViewController {
                     navigationController?.pushViewController(addressManageVC, animated: true)
                 } else if section == 2 && row == 1 {
                     //TODO 卡劵、优惠券、收藏、积分
-                    let webView = XFWebViewController()
+                    let webView = XFWebViewController.init(withUrl: "http://www.10fruits.cn/")
+                    webView.title = "卡劵中心"
                     self.navigationController?.pushViewController(webView, animated: true)
                 }
             } else {
@@ -144,8 +146,10 @@ class XFUserCenterViewController: XFBaseViewController {
             chatVC.delegate = self
             navigationController?.pushViewController(chatVC, animated: true)
         } else if section == 4 && row == 0 {
-            //TODO 吐槽建议
-            MBProgressHUD.showError("还在开发中，别急好吧...")
+            // 吐槽建议
+            let webView = XFWebViewController.init(withUrl: "https://www.10fruits.cn/suggest/suggest.html")
+            webView.title = "吐槽建议"
+            self.navigationController?.pushViewController(webView, animated: true)
         } else if section == 4 && row == 1 {
             // 设置
             navigationController?.pushViewController(XFSettingsViewController(), animated: true)
