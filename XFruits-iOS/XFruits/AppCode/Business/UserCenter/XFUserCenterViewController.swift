@@ -70,6 +70,7 @@ class XFUserCenterViewController: XFBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationBar?.isHidden = true
+        centerTable.reloadSections(IndexSet(integer: 0), with: .none)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -190,6 +191,7 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
         let row = indexPath.row
         if section == 0 {
             let cell = UserCenterAvatarCell(style: .default, reuseIdentifier: "userMainCell")
+            cell.user = XFUserGlobal.shared.currentUser
             return cell
         } else if section == 1 {
             if row == 0 {

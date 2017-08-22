@@ -10,28 +10,28 @@ import UIKit
 
 class UserCenterAvatarCell: UITableViewCell {
   
-    required init?(coder aDecoder:NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    
-    override init(style:UITableViewCellStyle, reuseIdentifier:String?) {
-       
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setUpUI();
+    var user: XFUser? {
+        didSet{
+            if let user = user {
+                userNameLabel.text = user.username
+                identityDescriptionLabel.text = "帅帅的荣耀会员"
+            }
+        }
     }
     
     lazy var avatarBtn:UIButton = {
         let avatarBtn = UIButton()
         avatarBtn.setImage(UIImage(named:"avatar"), for: .normal)
+        avatarBtn.layer.cornerRadius = 35
+        avatarBtn.layer.masksToBounds = true
         return avatarBtn
     }()
     
     lazy var userNameLabel:UILabel = {
         let  userNameLabel = UILabel()
-        userNameLabel.text = XFUserGlobal.shared.currentUser?.username //"zhaojian"
+        userNameLabel.text = "那个，请先登录"
         userNameLabel.textColor = colorWithRGB(83, g: 83, b: 83)
-        userNameLabel.font  = UIFont.systemFont(ofSize: 18)
+        userNameLabel.font  = XFConstants.Font.pfn16
         return userNameLabel
     }()
     
@@ -43,62 +43,50 @@ class UserCenterAvatarCell: UITableViewCell {
     
     lazy var  identityDescriptionLabel:UILabel = {
         let identityDescriptionLabel = UILabel.init()
-        identityDescriptionLabel.text = "荣耀黄铜v"
+        identityDescriptionLabel.text = "拾个小鲜肉"
         identityDescriptionLabel.textColor = colorWithRGB(83, g: 83, b: 83)
-        identityDescriptionLabel.font  = UIFont.systemFont(ofSize: 12)
+        identityDescriptionLabel.font  = XFConstants.Font.pfn12
         return identityDescriptionLabel
     }()
     
-    func  setUpUI() {
-        accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+    required init?(coder aDecoder:NSCoder) {
+        super.init(coder: aDecoder)
+        setUpUI();
+    }
+    
+    override init(style:UITableViewCellStyle, reuseIdentifier:String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setUpUI();
+    }
+    
+    private func setUpUI(){
         
+        accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        addSubview(userNameLabel)
+        addSubview(identityLevelImageView)
+        addSubview(identityDescriptionLabel)
         addSubview(avatarBtn)
+        
         avatarBtn.snp.makeConstraints({ (make) in
-//            make.top.equalTo(snp.top).offset(10)
             make.left.equalTo(snp.left).offset(10)
             make.width.height.equalTo(70)
-           
             make.centerY.equalTo(self)
         })
-        avatarBtn.layer.cornerRadius = 35
-        avatarBtn.layer.masksToBounds = true
-
-        addSubview(userNameLabel)
-        
-        userNameLabel.snp.makeConstraints({ (make) in
-            make.centerY.equalTo(self).offset(-10)
-            make.left.equalTo(avatarBtn.snp.right).offset(15)
- 
-        })
-        
     
-        addSubview(identityLevelImageView)
+        userNameLabel.snp.makeConstraints({ (make) in
+            make.centerY.equalTo(self).offset(-8)
+            make.left.equalTo(avatarBtn.snp.right).offset(15)
+        })
         
         identityLevelImageView.snp.makeConstraints({ (make) in
-            make.top.equalTo(userNameLabel.snp.bottom).offset(15)
-            make.left.equalTo(avatarBtn.snp.right).offset(15)
+            make.top.equalTo(userNameLabel.snp.bottom).offset(8)
+            make.left.equalTo(userNameLabel).offset(0)
         })
         
-      
-        addSubview(identityDescriptionLabel)
-        
         identityDescriptionLabel.snp.makeConstraints({ (make) in
-            make.top.equalTo(userNameLabel.snp.bottom).offset(15)
+            make.centerY.equalTo(identityLevelImageView)
             make.left.equalTo(identityLevelImageView.snp.right).offset(5)
         })
     }
     
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
