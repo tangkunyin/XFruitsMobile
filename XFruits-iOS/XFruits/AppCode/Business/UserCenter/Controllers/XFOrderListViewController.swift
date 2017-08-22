@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import MBProgressHUD
 
 fileprivate let cellIdentifier = "XFOrderListCellIdentifier"
 
@@ -35,12 +36,7 @@ class XFOrderListViewController: XFBaseSubViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.addSubview(orderListView)
-        orderListView.snp.makeConstraints { (make) in
-            make.center.size.equalTo(view)
-        }
-        
+        renderLoaddingView()
         loadOrderData()
     }
 
@@ -52,21 +48,47 @@ class XFOrderListViewController: XFBaseSubViewController {
         }
         request.getOrderList(params: params) { (respData) in
             if let order = respData as? XFOrder,
-                let orderList = order.content {
-                weakSelf?.orderData = orderList
-                weakSelf?.orderListView.reloadData()
+                let orderList = order.content, orderList.count > 0 {
+                weakSelf?.renderOrderListView(data: orderList)
+            } else {
+                weakSelf?.renderNullDataView()
             }
         }
     }
     
+    private func renderOrderListView(data: Array<XFOrderContent>){
+        self.orderData = data
+        view.addSubview(orderListView)
+        orderListView.snp.makeConstraints { (make) in
+            make.center.size.equalTo(view)
+        }
+    }
+    
+    private func orderPay(){
+        
+    }
+    
+    private func queryExpressWith(orderId: String){
+        let expressVC = XFExpressViewController()
+        expressVC.orderId = orderId
+        navigationController?.pushViewController(expressVC, animated: true)
+    }
+    
     private func barClickHandler(_ type: Int, _ orderData: XFOrderContent){
-        if type == 0 {
+        switch type {
+        case 0:
             //TODO. 去支付  暂时跳物流
-            
-            let expressVC = XFExpressViewController()
-            expressVC.orderId = orderData.orderId
-            
-            navigationController?.pushViewController(expressVC, animated: true)
+            orderPay()
+        case 1:
+            queryExpressWith(orderId: orderData.orderId)
+        case 2:
+            //TODO. 确认收货
+            MBProgressHUD.showSuccess("收货成功，感谢支持")
+        case 3:
+            //TODO. 订单评价
+            MBProgressHUD.showSuccess("已收到帅帅你的好评咯~")
+        default:
+            break
         }
     }
 }

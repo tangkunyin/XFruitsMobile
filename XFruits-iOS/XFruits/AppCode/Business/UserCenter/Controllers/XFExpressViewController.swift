@@ -10,7 +10,7 @@ import UIKit
 
 class XFExpressViewController: XFBaseSubViewController {
 
-    var orderId: String?
+    var orderId: String = ""
     
     fileprivate var expressData: XFExpress?
     
@@ -22,7 +22,9 @@ class XFExpressViewController: XFBaseSubViewController {
         super.viewDidLoad()
         title = "快递信息"
     
-        
+        request.getExpressDetail(params: ["orderId":orderId]) { (data) in
+            dPrint(data)
+        }
         
     }
 

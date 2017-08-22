@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SnapKit
+import MBProgressHUD
 
 class XFBaseViewController: UIViewController {
     
@@ -32,6 +34,7 @@ class XFBaseViewController: UIViewController {
         return nil
     }()
     
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if let navBar = self.navigationBar,
@@ -64,4 +67,65 @@ class XFBaseViewController: UIViewController {
         
     }
     
+    func loaddingWithMsg(_ msg: String? = "玩儿命加载中...") {
+        MBProgressHUD.loaddingWithMessage(msg)
+    }
+    
+    func stopLoadding() {
+        MBProgressHUD.stopLoadding()
+    }
+    
+    func renderLoaddingView(){
+        nullDataView.removeFromSuperview()
+        nullDataTip.removeFromSuperview()
+        view.addSubview(loaddingView)
+        loaddingView.snp.makeConstraints { (make) in
+            make.center.equalTo(view)
+            make.size.equalTo(CGSize.init(width: 180, height: 101))
+        }
+    }
+    
+    func renderNullDataView(){
+        loaddingView.removeFromSuperview()
+        view.addSubview(nullDataView)
+        view.addSubview(nullDataTip)
+        nullDataView.snp.makeConstraints { (make) in
+            make.centerX.equalTo(view)
+            make.top.equalTo(135)
+            make.size.equalTo(CGSize.init(width: 100, height: 100))
+        }
+        nullDataTip.snp.makeConstraints { (make) in
+            make.top.equalTo(nullDataView.snp.bottom).offset(10)
+            make.centerX.equalTo(nullDataView)
+            make.size.equalTo(CGSize.init(width: 250, height: 44))
+        }
+    }
+ 
+    
+    
+    /// 私有公共组件
+    private lazy var loaddingView: UIImageView = {
+        let imageView = UIImageView.init(image: UIImage.imageWithNamed("Loading-transprent"))
+        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private lazy var nullDataView: UIImageView = {
+        let imageView = UIImageView.init(image: UIImage.imageWithNamed("order_empty"))
+        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private lazy var nullDataTip: UILabel = {
+        let label = UILabel()
+        label.font = XFConstants.Font.pfn14
+        label.textAlignment = .center
+        label.textColor = XFConstants.Color.darkGray
+        label.text = "然，并没有发现任何数据..."
+        return label
+    }()
 }
