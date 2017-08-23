@@ -34,7 +34,7 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
     lazy var submitPayBtn: UIButton = {
         let btn = UIButton()
         btn.setTitle("确认支付", for: .normal)
-        btn.backgroundColor = colorWithRGB(0, g: 201, b: 1)
+        btn.backgroundColor = XFConstants.Color.green
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         btn.layer.cornerRadius = 15
         btn.layer.masksToBounds =  true
@@ -155,7 +155,7 @@ extension XFChoosePayWayViewController {
     }
     
     private func orderPayWithWeixin(_ data: String){
-        MBProgressHUD.showError("劳资还不支持微信，点支付宝吧~")
+        MBProgressHUD.showError("暂还不支持微信，点支付宝吧~")
     }
     
     private func handleThePaymentResult(flag: Bool, payType: Int, errorMsg: String = "") {
@@ -184,7 +184,10 @@ extension XFChoosePayWayViewController: UITableViewDataSource ,UITableViewDelega
         if section == 0 {
             return 3
         }
-        return 2
+        guard let payInfo = payInfo else {
+            return 0
+        }
+        return payInfo.payChannels.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -211,12 +214,14 @@ extension XFChoosePayWayViewController: UITableViewDataSource ,UITableViewDelega
         if section == 0  {
             if row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: payCellIdentifier) as! XFPayTimerCountDownViewCell
-                cell.selectionStyle = .none
-                cell.endTime = payInfo.orderExpiration!
                 weak var weakSelf = self
                 cell.onTimerEnd = {
+                    dPrint("支付已过期")
                     weakSelf?.submitPayBtn.isEnabled = false
+                    weakSelf?.submitPayBtn.backgroundColor = XFConstants.Color.coolGrey
                 }
+                cell.selectionStyle = .none
+                cell.endTime = payInfo.orderExpiration!
                 return cell
             } else {
                 let cell = UITableViewCell(style: .default, reuseIdentifier: nil)

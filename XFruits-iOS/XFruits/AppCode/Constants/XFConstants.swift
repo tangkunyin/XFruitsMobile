@@ -81,6 +81,7 @@ struct XFConstants {
     struct Color {
         /// 通用颜色
         static let white:UIColor = colorWithRGB(255, g: 255, b: 255)            //纯白
+        static let green:UIColor = colorWithRGB(0, g: 201, b: 1)                //绿色
         static let darkGray:UIColor = colorWithRGB(102, g: 102, b: 102)         //深灰(通用字体)
         static let commonBackground:UIColor = colorWithRGB(248, g: 248, b: 248) //灰白色
         static let separatorLine:UIColor = colorWithRGB(232, g: 232, b: 232)    //分割线颜色
@@ -100,7 +101,6 @@ struct XFConstants {
         static let silver:UIColor = colorWithRGB(199,g: 199,b: 205)//银色
         static let greyishBrown:UIColor = colorWithRGB(83,g: 83,b: 83)//浅黑色
         static let salmon:UIColor = colorWithRGB(255,g: 102,b: 102)//苹果红
-        static let green:UIColor = colorWithRGB(0,g: 201,b: 1)//柔绿
         static let pinkishGrey:UIColor = colorWithRGB(204, g: 204, b: 204)//分割线灰色
     }
     

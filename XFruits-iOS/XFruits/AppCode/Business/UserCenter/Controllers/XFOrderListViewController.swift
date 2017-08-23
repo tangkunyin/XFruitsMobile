@@ -67,8 +67,20 @@ class XFOrderListViewController: XFBaseSubViewController {
     }
     
     //TODO. 订单内继续完成支付
-    private func orderPay(){
+    private func orderPayWith(order: XFOrderContent){
+        let payInfo = XFOrderCommit()
+        payInfo.orderId = order.orderId
+        payInfo.cashFee = "\(order.cashFee)"
+        payInfo.orderExpiration = order.orderExpiration
+        let payChannel = XFPayChannel()
+        payChannel.name = "支付宝"
+        payChannel.channel = 1
+        payChannel.defaultChannel = true
+        payInfo.payChannels = [payChannel]
         
+        let payCenter = XFChoosePayWayViewController()
+        payCenter.payInfo = payInfo
+        navigationController?.pushViewController(payCenter, animated: true)
     }
     
     // 确认收货
@@ -90,7 +102,7 @@ class XFOrderListViewController: XFBaseSubViewController {
     private func barClickHandler(_ type: Int, _ orderData: XFOrderContent){
         switch type {
         case 0:
-            orderPay()
+            orderPayWith(order: orderData)
         case 1:
             queryExpressWith(orderId: orderData.orderId)
         case 2:

@@ -56,6 +56,8 @@ class XFPayTimerCountDownViewCell: UITableViewCell {
             remainTimeLabel.text = "\(ten(minute)) : \(ten(second))"
         } else {
             invalidateTimer()
+            waitPayTip.text = "订单已失效，无法为您继续支付..."
+            waitPayTip.textColor = XFConstants.Color.reddishPink
             if let onEnd = onTimerEnd {
                 onEnd()
             }
