@@ -20,6 +20,7 @@ class XFUserLoginViewController: XFBaseViewController {
      // 手机号
     lazy var mobileTextField:UITextField = {
         let textField = UITextField()
+        textField.delegate = self
         textField.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
         textField.layer.borderWidth = 0.5
         textField.layer.cornerRadius = 10
@@ -33,6 +34,7 @@ class XFUserLoginViewController: XFBaseViewController {
     
     lazy var passwordTextField:UITextField = {
         let textField = UITextField()
+        textField.delegate = self
         textField.isSecureTextEntry  = true
         textField.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
         textField.layer.borderWidth = 0.5
@@ -41,6 +43,7 @@ class XFUserLoginViewController: XFBaseViewController {
         let attr = [NSAttributedStringKey.foregroundColor:XFConstants.Color.pinkishGrey,
                     NSAttributedStringKey.font:XFConstants.Font.pfn14]
         textField.attributedPlaceholder = NSAttributedString(string: "请输入密码", attributes: attr)
+        textField.returnKeyType = .done
         return textField;
     }()
     
@@ -80,6 +83,7 @@ class XFUserLoginViewController: XFBaseViewController {
         btn.backgroundColor = UIColor.white
         btn.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        btn.addTarget(self, action: #selector(forgetPassword), for:.touchUpInside)
         return btn
     }()
     
@@ -98,10 +102,6 @@ class XFUserLoginViewController: XFBaseViewController {
         super.viewDidLoad()
         self.title = "登录"
         
-        // test
-        self.mobileTextField.text = "18658054127"
-        self.passwordTextField.text = "123456"
-       
         self.view.addSubview(self.brandImageView)
         self.view.addSubview(self.mobileTextField)
         self.view.addSubview(self.passwordTextField)
@@ -158,6 +158,8 @@ class XFUserLoginViewController: XFBaseViewController {
             make.width.equalTo(75)
             make.height.equalTo(20)
         })
+        
+        view.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(disMissKeyboard)))
     }
     
     @objc func securityEyeClick() {
@@ -185,7 +187,6 @@ class XFUserLoginViewController: XFBaseViewController {
         }
         let loginData = ["phone":phone,"password":password]
         XFCommonService().login(params: loginData) { (data) in
-            dPrint(data)
             let data = data as! XFUser
             XFUserGlobal.shared.signIn(user: data)
             if XFUserGlobal.shared.isLogin {
@@ -198,6 +199,22 @@ class XFUserLoginViewController: XFBaseViewController {
     
     @objc private func cancelLogin(){
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func forgetPassword(){
+        MBProgressHUD.showSuccess("请取消登录后，联系客服处理")
+    }
+    
+    @objc private func disMissKeyboard(){
+        mobileTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+}
+
+extension XFUserLoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        disMissKeyboard()
+        return true
     }
 }
 

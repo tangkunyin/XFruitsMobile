@@ -29,7 +29,6 @@ class XFCheckoutViewController: XFBaseViewController {
                 if let couponArr = confirmCoupon, couponArr.count > 0 {
                     couponPrice = couponArr[0].number
                 }
-                checkoutAddress.textLabel?.text = nil
                 checkoutBar.updateActualAmount(totalAmount: totalPrice, expressFee: address.expressFee)
                 checkoutInfo.updateCheckout(InfoArr: [totalGoodsAmount, address.expressFee, couponPrice])
             }

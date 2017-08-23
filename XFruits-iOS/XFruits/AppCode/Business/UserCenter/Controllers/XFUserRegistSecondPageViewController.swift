@@ -26,7 +26,8 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        view.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(disMissKeyboard)))
 
         // 品牌logo
         self.brandImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
@@ -43,6 +44,7 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         
         // 短信验证码
         self.messageCodeTextField = UITextField()
+        self.messageCodeTextField?.delegate = self
         self.view.addSubview(self.messageCodeTextField!)
         
         self.messageCodeTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
@@ -63,8 +65,10 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         
         // 密码
         self.passwordTextField = UITextField()
+        self.passwordTextField?.delegate = self
         self.view.addSubview(self.passwordTextField!)
         
+        self.passwordTextField?.returnKeyType = .done
         self.passwordTextField?.isSecureTextEntry  = true
         self.passwordTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
         self.passwordTextField?.layer.borderWidth = 0.5
@@ -152,15 +156,9 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
     
     @objc func gotoPrivacyVC(sender:UIButton?) {
         dPrint("eyes")
-        //        self.navigationController?.popViewController(animated: true)
-        
     }
     
-    //
     @objc func gotoRegister(sender:UIButton?) {
-        //        if let phone = self.para["phone"],let password = passwordTextField?.text,let code = messageCodeTextField?.text {
-        //
-        //        }
         
         guard let phone:String = para?["phone"] as? String else {
             MBProgressHUD.showError("手机号不能为空")
@@ -176,31 +174,29 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         }
         
         let registPara:[String:String] = ["phone":phone,"password":password,"phoneCaptcha":phoneCaptcha]
-        dPrint(registPara)
-        
         weak var weakSelf = self
         XFCommonService().register(params: registPara) { (data) in
-            dPrint(data)
-            dPrint("注册成功")
-            weakSelf!.dismiss(animated: true, completion: nil)
+            let data = data as! XFUser
+            XFUserGlobal.shared.signIn(user: data)
+            if XFUserGlobal.shared.isLogin {
+                MBProgressHUD.showMessage("恭喜您，注册成功", completion: {
+                    weakSelf!.dismiss(animated: true, completion: nil)
+                })
+            }
         }
-        
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @objc private func disMissKeyboard(){
+        messageCodeTextField?.resignFirstResponder()
+        passwordTextField?.resignFirstResponder()
     }
+
+}
+
+extension XFUserRegistSecondPageViewController: UITextFieldDelegate {
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        disMissKeyboard()
+        return true
+    }
 }

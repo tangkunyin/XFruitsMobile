@@ -16,9 +16,10 @@ class XFCheckoutAddress: XFAddressesManageTableViewCell {
     var dataSource: XFAddress? {
         didSet {
             if let address = dataSource {
-                setMyAddress(data: address)
-                if let view = self.viewWithTag(-111) {
+                if let view = self.viewWithTag(99) {
                     view.removeFromSuperview()
+                    super.setUpUI()
+                    setMyAddress(data: address)
                 }
             }
         }
@@ -26,19 +27,18 @@ class XFCheckoutAddress: XFAddressesManageTableViewCell {
     
     lazy var noDataTip: UITableViewCell = {
         let cell = UITableViewCell()
-        cell.tag = -111
+        cell.tag = 99
         cell.backgroundColor = UIColor.white
         cell.textLabel?.font = XFConstants.Font.pfn14
         cell.textLabel?.textColor = XFConstants.Color.salmon
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-        cell.textLabel?.text = "请选择一个有效地址，谢谢"
+        cell.textLabel?.text = "请选择一个有效地址"
         return cell
     }()
         
     override func setUpUI() {
-        super.setUpUI()
         backgroundColor = UIColor.white
-        addSubview(noDataTip)
+        self.addSubview(noDataTip)
         noDataTip.snp.makeConstraints { (make) in
             make.center.size.equalTo(self)
         }

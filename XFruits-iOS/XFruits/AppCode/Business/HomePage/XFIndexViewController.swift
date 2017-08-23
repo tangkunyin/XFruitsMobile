@@ -34,14 +34,6 @@ class XFIndexViewController: XFBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
-//        self.view.addSubview(pagerView)
-//        pagerView.snp.makeConstraints({ (make) in
-//            make.top.equalTo(self.view).offset(0)
-//            make.width.equalTo(self.view)
-//            make.height.equalTo(loopImageComponentHeight)
-//        })
-        
         view.addSubview(articleListView)
         articleListView.snp.makeConstraints { (make) in
             make.center.size.equalTo(view)
@@ -54,6 +46,9 @@ class XFIndexViewController: XFBaseViewController {
         weak var weakSelf = self
         request.getLoopImages { (result) in
             weakSelf?.loopImages = result as? Array
+        }
+        request.getNewsList(params: ["page":1,"size":"10"]) { (respData) in
+            dPrint(respData)
         }
     }
 

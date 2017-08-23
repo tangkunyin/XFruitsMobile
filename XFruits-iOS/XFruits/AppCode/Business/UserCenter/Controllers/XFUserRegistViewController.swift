@@ -27,6 +27,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(disMissKeyboard)))
         
         self.title = "注册"
         // 品牌logo
@@ -44,6 +45,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
         
         // 手机号
         self.mobileTextField = UITextField()
+        self.mobileTextField.delegate = self
         self.view.addSubview(self.mobileTextField!)
         self.mobileTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
         self.mobileTextField?.layer.borderWidth = 0.5
@@ -62,21 +64,20 @@ class XFUserRegistViewController: XFBaseSubViewController {
         
         // 图片验证码
         self.validateTextField = UITextField()
+        self.validateTextField.delegate = self
         self.view.addSubview(self.validateTextField!)
         self.validateTextField?.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
         self.validateTextField?.layer.borderWidth = 0.5
         self.validateTextField?.layer.cornerRadius = 10
         self.validateTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
-        
+        self.validateTextField.returnKeyType = .done
         self.validateTextField?.attributedPlaceholder = NSAttributedString(string: "图片验证码", attributes: [NSAttributedStringKey.foregroundColor:colorWithRGB(204, g: 204, b: 204),NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)])
         
         self.validateTextField?.snp.makeConstraints({ (make) in
-            
             make.top.equalTo((self.mobileTextField?.snp.bottom)!).offset(22)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-XFConstants.UI.deviceWidth/2)
             make.height.equalTo(40)
-            
         })
         
         // 验证码图片
@@ -250,5 +251,16 @@ class XFUserRegistViewController: XFBaseSubViewController {
             }
         }
     }
+    
+    @objc private func disMissKeyboard(){
+        mobileTextField.resignFirstResponder()
+        validateTextField.resignFirstResponder()
+    }
 }
 
+extension XFUserRegistViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        disMissKeyboard()
+        return true
+    }
+}

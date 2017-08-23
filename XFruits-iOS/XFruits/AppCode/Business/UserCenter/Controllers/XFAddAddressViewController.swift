@@ -18,30 +18,25 @@ class XFAddAddressViewController: XFBaseSubViewController    {
     
     // 编辑视图
     lazy var editAddressView:XFEditMyAddressView = {
-        let editAddressView = XFEditMyAddressView.init(frame: CGRect.zero)
-        
-        return editAddressView
+        let view = XFEditMyAddressView()
+        return view
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        view.addSubview(editAddressView)
         weak var weakSelf = self
-
-        self.view.addSubview(editAddressView)
         editAddressView.actionHandler = { (address) in
-//            print(address)
             weakSelf?.saveAddress(address: address)
         }
-
         editAddressView.snp.makeConstraints({ (make) in
-            make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+            make.edges.equalTo(view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         })
   
         if editStyle == 0 {
             self.title = "新增地址"
-        }
-        else if editStyle == 1 {
+        } else if editStyle == 1 {
             self.title = "编辑地址"
             editAddressView.setMyAddress(address: addressSigleEdit!)
         }
@@ -59,25 +54,15 @@ class XFAddAddressViewController: XFBaseSubViewController    {
                                         "label":address.label ?? ""]
         if editStyle == 0 {  // 添加地址
             XFAddressService().addAddress(params: addressDict) { (data) in
-                weakSelf!.navigationController?.popViewController(animated: true)
+                weakSelf!.backToParentController()
             }
-            
-        }
-        else if editStyle == 1 {  // 修改地址
-            
+        } else if editStyle == 1 {  // 修改地址
             let addressId:String = String(addressSigleEdit!.id)
-           
             addressDict["id"] = addressId  // 编辑模式要多传一个地址id
-            
             XFAddressService().modifyAddress(params: addressDict){ (data) in
-                dPrint(data)
-                weakSelf!.navigationController?.popViewController(animated: true)
+                weakSelf!.backToParentController()
             }
-            
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }
