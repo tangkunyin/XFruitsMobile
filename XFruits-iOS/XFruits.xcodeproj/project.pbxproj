@@ -27,6 +27,7 @@
 		8618BA401F402B9800AC9436 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8618BA321F40274300AC9436 /* libWeChatSDK.a */; };
 		8618BA421F4035D700AC9436 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8618BA3F1F4029F000AC9436 /* AlipaySDK.framework */; };
 		8618BA441F40366E00AC9436 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8618BA431F40366800AC9436 /* CoreMotion.framework */; };
+		8624CC3C1F4DE5D90008C8D3 /* XFAboutCompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624CC3B1F4DE5D90008C8D3 /* XFAboutCompanyViewController.swift */; };
 		862672CD1EFE42B50062B52B /* XFCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672CC1EFE42B50062B52B /* XFCategoryViewController.swift */; };
 		862672CF1EFE42EF0062B52B /* XFDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672CE1EFE42EF0062B52B /* XFDetailViewController.swift */; };
 		862672D11EFE432C0062B52B /* XFIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672D01EFE432C0062B52B /* XFIndexViewController.swift */; };
@@ -152,6 +153,7 @@
 		8618BA3E1F4029F000AC9436 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		8618BA3F1F4029F000AC9436 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		8618BA431F40366800AC9436 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		8624CC3B1F4DE5D90008C8D3 /* XFAboutCompanyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAboutCompanyViewController.swift; sourceTree = "<group>"; };
 		862672CC1EFE42B50062B52B /* XFCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCategoryViewController.swift; sourceTree = "<group>"; };
 		862672CE1EFE42EF0062B52B /* XFDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailViewController.swift; sourceTree = "<group>"; };
 		862672D01EFE432C0062B52B /* XFIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFIndexViewController.swift; sourceTree = "<group>"; };
@@ -657,6 +659,7 @@
 				86FFA42B1F48991800FCC809 /* XFExpressViewController.swift */,
 				86FFA42D1F48995700FCC809 /* XFSettingsViewController.swift */,
 				86FFA42F1F48999800FCC809 /* XFUserInfoViewController.swift */,
+				8624CC3B1F4DE5D90008C8D3 /* XFAboutCompanyViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -816,6 +819,7 @@
 				862672F51EFE49550062B52B /* XFBaseViewController.swift in Sources */,
 				862AF70B1F0926A700409CCB /* XFComment.swift in Sources */,
 				862672ED1EFE48420062B52B /* XFNetworking.swift in Sources */,
+				8624CC3C1F4DE5D90008C8D3 /* XFAboutCompanyViewController.swift in Sources */,
 				862672EF1EFE487B0062B52B /* XFCommonService.swift in Sources */,
 				862672E51EFE47010062B52B /* XFMBProgressHUD.swift in Sources */,
 				86E695201ED6AA35004864A6 /* XFCartUtils.swift in Sources */,
