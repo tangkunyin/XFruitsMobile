@@ -66,4 +66,12 @@ final class XFOrderSerivice: XFNetworking {
         }
     }
     
+    /// 确认收货
+    func confirmOrder(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
+        self.doPost(withUrl: url("/order/confirmOrder"), params: params){ (success, respData) in
+            if success {
+                completion(respData as Any)
+            }
+        }
+    }
 }

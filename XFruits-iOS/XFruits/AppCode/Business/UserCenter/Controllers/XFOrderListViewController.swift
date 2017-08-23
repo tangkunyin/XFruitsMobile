@@ -52,6 +52,7 @@ class XFOrderListViewController: XFBaseSubViewController {
                 let orderList = order.content, orderList.count > 0 {
                 weakSelf?.renderOrderListView(data: orderList)
             } else {
+                weakSelf?.orderListView.removeFromSuperview()
                 weakSelf?.renderNullDataView()
             }
         }
@@ -65,8 +66,19 @@ class XFOrderListViewController: XFBaseSubViewController {
         }
     }
     
+    //TODO. 订单内继续完成支付
     private func orderPay(){
         
+    }
+    
+    // 确认收货
+    private func orderConfirmWith(orderId: String){
+        weak var weakSelf = self
+        request.confirmOrder(params: ["orderId":orderId]) { (data) in
+            MBProgressHUD.showMessage("收货成功，感谢支持", completion: {
+                weakSelf?.loadOrderData()
+            })
+        }
     }
     
     private func queryExpressWith(orderId: String){
@@ -78,16 +90,14 @@ class XFOrderListViewController: XFBaseSubViewController {
     private func barClickHandler(_ type: Int, _ orderData: XFOrderContent){
         switch type {
         case 0:
-            //TODO. 去支付  暂时跳物流
             orderPay()
         case 1:
             queryExpressWith(orderId: orderData.orderId)
         case 2:
-            //TODO. 确认收货
-            MBProgressHUD.showSuccess("收货成功，感谢支持")
+            orderConfirmWith(orderId: orderData.orderId)
         case 3:
             //TODO. 订单评价
-            MBProgressHUD.showSuccess("已收到帅帅你的好评咯~")
+            MBProgressHUD.showSuccess("已收到帅帅的你滴好评咯~")
         default:
             break
         }
