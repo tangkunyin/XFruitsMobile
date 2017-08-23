@@ -36,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SlideMenuOptions.rightViewWidth = 168
         SlideMenuOptions.contentViewOpacity = 0.75
+        SlideMenuOptions.tapGesturesEnabled = true
+        SlideMenuOptions.panGesturesEnabled = false
         let slideRootVC = SlideMenuController(mainViewController: rootVC,
                                               rightMenuViewController:allCateListVC)
         slideRootVC.automaticallyAdjustsScrollViewInsets = true
