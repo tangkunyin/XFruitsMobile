@@ -31,6 +31,12 @@ class XFIndexViewController: XFBaseViewController {
         }
     }
     
+    private var dataSource: Array<XFNewsContent> = [] {
+        didSet {
+            articleListView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,7 +54,10 @@ class XFIndexViewController: XFBaseViewController {
             weakSelf?.loopImages = result as? Array
         }
         request.getNewsList(params: ["page":1,"size":"10"]) { (respData) in
-            dPrint(respData)
+            if let newsInfo = respData as? XFNewsInfo,
+                let content = newsInfo.content, content.count > 0 {
+                weakSelf?.dataSource = content
+            }
         }
     }
 
@@ -61,7 +70,6 @@ class XFIndexViewController: XFBaseViewController {
         let pagerView = XFViewPager(source: [""], placeHolder: "Loading-white")
         pagerView.pagerDidClicked = {(index:Int) -> Void in
             dPrint("\(index) 号被点击")
-            MBProgressHUD.showError("链接没有准备好呢，小果拾表示骚瑞~")
         }
         return pagerView
     }()
@@ -73,6 +81,8 @@ class XFIndexViewController: XFBaseViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 360
         tableView.register(XFIndexArticleViewCell.self, forCellReuseIdentifier: cellIdentifier)
         return tableView
     }()
@@ -82,16 +92,13 @@ class XFIndexViewController: XFBaseViewController {
 extension XFIndexViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! XFIndexArticleViewCell
-        
+        cell.selectionStyle = .none
+        cell.dataSource = dataSource[indexPath.row]
         return cell
     }
     
@@ -107,8 +114,6 @@ extension XFIndexViewController: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        
-        
         
         
     }
