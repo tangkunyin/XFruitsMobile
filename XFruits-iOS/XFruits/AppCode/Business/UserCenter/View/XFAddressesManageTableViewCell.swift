@@ -35,6 +35,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         label.font  = XFConstants.Font.pfn12
         label.textAlignment = NSTextAlignment.left
         label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
     
@@ -77,27 +78,16 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     }
     
     func  setUpUI() {
-        addSubview(editAddressBtn)
-        addSubview(userNameLabel)
-        addSubview(mobileLabel)
-        addSubview(addressCategoryBtn)
-        addSubview(addressLabel)
         
-        editAddressBtn.snp.makeConstraints({ (make) in
-            make.centerY.equalTo(self)
-            make.right.equalTo(self).offset(-10)
-            make.size.equalTo(CGSize(width: 30, height: 30))
-        })
+        contentView.addSubview(userNameLabel)
+        contentView.addSubview(mobileLabel)
+        contentView.addSubview(editAddressBtn)
+        contentView.addSubview(addressCategoryBtn)
+        contentView.addSubview(addressLabel)
+        
         userNameLabel.snp.makeConstraints({ (make) in
-            make.left.top.equalTo(self).offset(10)
+            make.left.top.equalTo(contentView).offset(8)
             make.width.equalTo(50)
-            make.height.equalTo(20)
-        })
-        
-        addressCategoryBtn.snp.makeConstraints({ (make) in
-            make.top.equalTo(userNameLabel.snp.bottom).offset(10)
-            make.left.equalTo(userNameLabel.snp.left)
-            make.width.lessThanOrEqualTo(50)
             make.height.equalTo(20)
         })
         
@@ -108,12 +98,26 @@ class XFAddressesManageTableViewCell: UITableViewCell {
             make.right.equalTo(editAddressBtn.snp.left).offset(-5)
         })
         
+        editAddressBtn.snp.makeConstraints({ (make) in
+            make.centerY.equalTo(contentView)
+            make.right.equalTo(contentView).offset(-10)
+            make.size.equalTo(CGSize(width: 30, height: 30))
+        })
+        
+        addressCategoryBtn.snp.makeConstraints({ (make) in
+            make.top.equalTo(userNameLabel.snp.bottom).offset(3)
+            make.left.equalTo(userNameLabel.snp.left)
+            make.width.lessThanOrEqualTo(50)
+            make.height.equalTo(20)
+        })
+        
         addressLabel.snp.makeConstraints({ (make) in
-            make.top.equalTo(mobileLabel.snp.bottom).offset(2)
+            make.top.equalTo(mobileLabel.snp.bottom).offset(5)
             make.left.equalTo(mobileLabel.snp.left)
             make.right.equalTo(editAddressBtn.snp.left).offset(-5)
-            make.bottom.equalTo(self).offset(-2)
+            make.bottom.equalTo(contentView).offset(-8)
         })
+
     }
 
 }

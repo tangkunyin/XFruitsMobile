@@ -27,9 +27,10 @@ class XFOrderListViewController: XFBaseSubViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
+        tableView.tableFooterView = UIView()
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
-        tableView.tableFooterView = UIView()
+        tableView.rowHeight = 136
         tableView.register(XFOrderListItem.self, forCellReuseIdentifier: cellIdentifier)
         return tableView
     }()
@@ -102,12 +103,8 @@ extension XFOrderListViewController: UITableViewDelegate, UITableViewDataSource 
         return 0
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 136
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! XFOrderListItem
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! XFOrderListItem
         cell.selectionStyle = .none
         if let orderData = orderData {
             cell.dataSource = orderData[indexPath.row]

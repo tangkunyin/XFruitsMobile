@@ -99,6 +99,7 @@ class XFShopCarViewController: XFBaseViewController {
         let listView = UITableView.init(frame: CGRect.zero, style: .plain)
         listView.delegate = self
         listView.dataSource = self
+        listView.rowHeight = 110
         listView.backgroundColor = UIColor.white
         listView.tableFooterView = UIView()
         listView.separatorColor = XFConstants.Color.separatorLine
@@ -142,16 +143,8 @@ class XFShopCarViewController: XFBaseViewController {
 
 extension XFShopCarViewController: UITableViewDelegate,UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cartList.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

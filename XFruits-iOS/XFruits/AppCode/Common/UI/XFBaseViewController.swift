@@ -81,7 +81,7 @@ class XFBaseViewController: UIViewController {
         view.addSubview(loaddingView)
         loaddingView.snp.makeConstraints { (make) in
             make.center.equalTo(view)
-            make.size.equalTo(CGSize.init(width: 180, height: 101))
+            make.size.equalTo(CGSize.init(width: 240, height: 135))
         }
     }
     

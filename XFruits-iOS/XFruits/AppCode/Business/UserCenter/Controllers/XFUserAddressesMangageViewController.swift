@@ -24,6 +24,8 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         tableView.separatorColor = XFConstants.Color.separatorLine
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.tableFooterView = UIView()
+        tableView.estimatedRowHeight = 66
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.register(XFAddressesManageTableViewCell.self, forCellReuseIdentifier: addressCellIdentifier)
         return tableView
     }()
@@ -135,11 +137,7 @@ extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return addressInfoArray.count
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 66
-    }
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: addressCellIdentifier, for: indexPath) as! XFAddressesManageTableViewCell
         cell.selectionStyle = .none

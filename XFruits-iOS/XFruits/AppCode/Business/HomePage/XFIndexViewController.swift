@@ -96,7 +96,7 @@ extension XFIndexViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! XFIndexArticleViewCell
-        cell.backgroundColor = XFConstants.Color.brightBlue
+        
         return cell
     }
     
