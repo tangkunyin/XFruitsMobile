@@ -60,6 +60,8 @@ final class XFCommonService: XFNetworking {
         self.doGet(withUrl: url("/product/list", params: params)) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(CategoryList.deserialize(from: dict) ?? CategoryList())
+            } else {
+                completion(false)
             }
         }
     }

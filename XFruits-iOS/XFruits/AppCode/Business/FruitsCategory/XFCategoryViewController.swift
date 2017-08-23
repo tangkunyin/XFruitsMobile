@@ -55,6 +55,8 @@ class XFCategoryViewController: XFBaseViewController {
             if let cateList = data as? CategoryList, let dataSource = cateList.content {
                 weakSelf?.dataSource = dataSource
                 weakSelf?.cateListView.reloadData()
+            } else {
+                weakSelf?.renderNullDataView()
             }
         }
         
