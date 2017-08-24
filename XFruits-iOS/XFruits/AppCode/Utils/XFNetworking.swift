@@ -92,10 +92,10 @@ public struct ApiServer {
     static let timeout:Double = 45.0
     
     /// API服务器正式地址
-    static let test:String = "http://test.10fruits.net"
+    static let test:String = "https://test.10fruits.net"
     
     /// API服务器正式地址
-    static let onLine:String = "http://api.10fruits.net"
+    static let onLine:String = "https://api.10fruits.net"
 }
 
 /// 网络状态监听
