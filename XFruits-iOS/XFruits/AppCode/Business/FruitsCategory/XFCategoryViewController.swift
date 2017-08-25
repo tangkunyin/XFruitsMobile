@@ -50,7 +50,7 @@ class XFCategoryViewController: XFBaseViewController {
         makeViewConstrains()
         
         weak var weakSelf = self
-        let params:XFParams = ["type":1000,"sort":101,"sequence":1,"page":1,"size":6]
+        let params:XFParams = ["type":1000,"sort":101,"sequence":1,"page":1,"size":XFConstants.pageRows]
         XFCommonService().getAllProducts(params: params) { (data) in
             if let cateList = data as? CategoryList, let dataSource = cateList.content {
                 weakSelf?.dataSource = dataSource

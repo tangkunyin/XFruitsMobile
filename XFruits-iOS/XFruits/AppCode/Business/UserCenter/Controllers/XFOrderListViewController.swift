@@ -43,7 +43,7 @@ class XFOrderListViewController: XFBaseSubViewController {
 
     private func loadOrderData() {
         weak var weakSelf = self
-        var params: Dictionary<String, Any> = ["page":1,"size":10]
+        var params: Dictionary<String, Any> = ["page":1,"size":XFConstants.pageRows]
         if let status = orderStatus {
             params.updateValue(status, forKey: "status")
         }

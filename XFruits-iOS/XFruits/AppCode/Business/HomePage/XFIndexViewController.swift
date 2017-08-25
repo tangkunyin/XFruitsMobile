@@ -53,7 +53,7 @@ class XFIndexViewController: XFBaseViewController {
         request.getLoopImages { (result) in
             weakSelf?.loopImages = result as? Array
         }
-        request.getNewsList(params: ["page":1,"size":"10"]) { (respData) in
+        request.getNewsList(params: ["page":1,"size":XFConstants.pageRows]) { (respData) in
             if let newsInfo = respData as? XFNewsInfo,
                 let content = newsInfo.content, content.count > 0 {
                 weakSelf?.dataSource = content

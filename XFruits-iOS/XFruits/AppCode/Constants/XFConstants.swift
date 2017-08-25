@@ -28,7 +28,7 @@ struct XFConstants {
     static let md5Key:String = "88888888"
     
     /// 分页每页的条数
-    static let pageRows:Int = 10
+    static let pageRows:Int = 20
     
     static let storeUrl: String = "https://itunes.apple.com/us/app/xfruits/id1273052310?l=zh&ls=1&mt=8"
     

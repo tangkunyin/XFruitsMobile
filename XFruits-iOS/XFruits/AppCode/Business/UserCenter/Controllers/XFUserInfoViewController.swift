@@ -13,11 +13,13 @@ import SnapKit
 class XFUserInfoViewController: XFBaseSubViewController {
 
     lazy var loginOutBtn: UIButton = {
-        let btn = UIButton()
-        btn.backgroundColor = XFConstants.Color.salmon
+        let btn = UIButton.init(type: .custom)
         btn.setTitle("退出登录", for: .normal)
-        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.titleLabel?.font = XFConstants.Font.pfn16
+        btn.setTitleColor(XFConstants.Color.salmon, for: .normal)
         btn.layer.cornerRadius = 5
+        btn.layer.borderWidth = 1
+        btn.layer.borderColor = XFConstants.Color.salmon.cgColor
         btn.addTarget(self, action: #selector(onLoginOut), for: .touchUpInside)
         return btn
     }()
