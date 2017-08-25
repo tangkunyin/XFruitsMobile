@@ -95,7 +95,7 @@ public struct ApiServer {
     static let test:String = "https://test.10fruits.net"
     
     /// API服务器正式地址
-    static let onLine:String = "https://api.10fruits.net"
+    static let onLine:String = "https://www.10fruits.net"
 }
 
 /// 网络状态监听
@@ -140,6 +140,19 @@ public final class XFNetworkStatus: NSObject {
 
 
 public class XFNetworking: NSObject {
+    
+//    let manager: Alamofire.SessionManager = {
+//        let serverTrustPolicies: [String: ServerTrustPolicy] = [
+//            "10fruits.net": .disableEvaluation
+//        ]
+//        let configuration = URLSessionConfiguration.default
+//        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
+//
+//        return Alamofire.SessionManager(
+//            configuration: configuration,
+//            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+//        )
+//    }()
     
     public func url(_ uri:String, params:XFParams? = nil) -> String {
         if let params = params, !params.isEmpty {
