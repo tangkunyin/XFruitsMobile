@@ -57,6 +57,7 @@
 		865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865F4F461E9A173E0059502C /* AppDelegate.swift */; };
 		865F4F4E1E9A173E0059502C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 865F4F4D1E9A173E0059502C /* Assets.xcassets */; };
 		8660D99F1F447AF800D98C18 /* XFOrderSerivice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8660D99E1F447AF800D98C18 /* XFOrderSerivice.swift */; };
+		86658BC31F5088EF00817B2C /* XFAppGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86658BC21F5088EF00817B2C /* XFAppGuideViewController.swift */; };
 		868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868613251EACCCE400A44338 /* XFImageExtension.swift */; };
 		8690FEDB1ED177B80051A16D /* XFCategoryHeadSizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEDA1ED177B80051A16D /* XFCategoryHeadSizer.swift */; };
 		8690FEDD1ED178120051A16D /* XFCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEDC1ED178120051A16D /* XFCategoryCell.swift */; };
@@ -185,6 +186,7 @@
 		865F4F4D1E9A173E0059502C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		865F4F521E9A173E0059502C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8660D99E1F447AF800D98C18 /* XFOrderSerivice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrderSerivice.swift; sourceTree = "<group>"; };
+		86658BC21F5088EF00817B2C /* XFAppGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAppGuideViewController.swift; sourceTree = "<group>"; };
 		868613251EACCCE400A44338 /* XFImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFImageExtension.swift; sourceTree = "<group>"; };
 		8690FEDA1ED177B80051A16D /* XFCategoryHeadSizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCategoryHeadSizer.swift; sourceTree = "<group>"; };
 		8690FEDC1ED178120051A16D /* XFCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCategoryCell.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				862672F41EFE49550062B52B /* XFBaseViewController.swift */,
 				862672F61EFE497D0062B52B /* XFBaseSubViewController.swift */,
 				862672F81EFE499D0062B52B /* XFNavigationController.swift */,
+				86658BC21F5088EF00817B2C /* XFAppGuideViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				862672E71EFE47AE0062B52B /* XFUser.swift in Sources */,
 				862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */,
 				862672EB1EFE480B0062B52B /* XFProduct.swift in Sources */,
+				86658BC31F5088EF00817B2C /* XFAppGuideViewController.swift in Sources */,
 				86E8DF781EDAB0D6000A489F /* XFDetailDescriptionView.swift in Sources */,
 				16582DC31EE4F8D400A58846 /* XFEditMyAddressView.swift in Sources */,
 				165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */,

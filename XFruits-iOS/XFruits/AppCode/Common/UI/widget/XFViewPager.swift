@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import SnapKit
 
-class XFViewPager: UIView,UIScrollViewDelegate {
+class XFViewPager: UIView, UIScrollViewDelegate {
     
     private var placeHolder:String?
     

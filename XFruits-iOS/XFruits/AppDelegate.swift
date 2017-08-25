@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         slideRootVC.automaticallyAdjustsScrollViewInsets = true
         
         window?.rootViewController = slideRootVC
+        
         window?.makeKeyAndVisible()
         
         if let options = launchOptions {
@@ -52,9 +53,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     window?.rootViewController?.present(XFAboutCompanyViewController(), animated: true, completion: nil)
                     break
                 case XFConstants.ShortCut.Personal:
-//                    window?.rootViewController?.present(, animated: true, completion: nil)
+                    window?.rootViewController?.present(XFUserCenterViewController(), animated: true, completion: nil)
                     break
-                default:break
+                case XFConstants.ShortCut.AboutUs:
+                    window?.rootViewController?.present(XFAppGuideViewController(), animated: true, completion: nil)
+                default:
+                    break
                 }
             }
             return false

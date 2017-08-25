@@ -21,4 +21,18 @@ class XFDataGlobal {
     }()
     
     
+    /// 是否是第一次进入app，如果是，本地缓存标记
+    ///
+    /// - Returns: Bool
+    func isTheFirstOpenApp() -> Bool {
+        let userDefauls: UserDefaults = UserDefaults.standard
+        if userDefauls.string(forKey: "isTheFirstOpenXFruitsApp") != nil {
+            return false
+        }
+        userDefauls.set("false", forKey: "isTheFirstOpenXFruitsApp")
+        userDefauls.synchronize()
+        return true
+    }
+    
+    
 }

@@ -40,11 +40,21 @@ class XFIndexViewController: XFBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if XFDataGlobal.shared.isTheFirstOpenApp() {
+            weak var weakSelf = self
+            present(XFAppGuideViewController(), animated: false) {
+                weakSelf?.renderHomeIndexView()
+            }
+        } else {
+            renderHomeIndexView()
+        }
+    }
+    
+    private func renderHomeIndexView() {
         view.addSubview(articleListView)
         articleListView.snp.makeConstraints { (make) in
             make.center.size.equalTo(view)
         }
-     
         loadData()
     }
     
@@ -60,7 +70,6 @@ class XFIndexViewController: XFBaseViewController {
             }
         }
     }
-
     
     private lazy var request: XFNewsInfoService = {
         return XFNewsInfoService()
