@@ -15,8 +15,42 @@ fileprivate let XFCellViewReuseIdentifier:String = "XFCategoryCellReuseIdentifie
 
 class XFCategoryViewController: XFBaseViewController {
     
+    var dataSource:[ProductItem] = []
+    
+    var dataType: Int = 1000 {
+        didSet {
+            loadCategories()
+        }
+    }
+    
+    var dataSort: Int = 101 {
+        didSet {
+            loadCategories()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if V5ClientAgent.shareClient().isConnected {
+            V5ClientAgent.shareClient().stopClient()
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        setNavigationBarItem()
+        makeViewConstrains()
+        //加载数据
+        loadCategories()
+    }
+    
     lazy var headSizer:XFCategoryHeadSizer = {
         let sizer = XFCategoryHeadSizer(textColor: nil, selectTextColor: nil)
+        weak var weakSelf = self
+        sizer.onSizerChanged = { (sort) in
+            weakSelf?.dataSort = sort
+        }
         return sizer;
     }()
     
@@ -32,50 +66,23 @@ class XFCategoryViewController: XFBaseViewController {
         return listView
     }()
     
-    var dataSource:[ProductItem] = []
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if V5ClientAgent.shareClient().isConnected {
-            V5ClientAgent.shareClient().stopClient()
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setNavigationBarItem()
-        
+    fileprivate func makeViewConstrains(){
         view.addSubview(headSizer)
         view.addSubview(cateListView)
-        makeViewConstrains()
-        
-        weak var weakSelf = self
-        let params:XFParams = ["type":1000,"sort":101,"sequence":1,"page":1,"size":XFConstants.pageRows]
-        XFCommonService().getAllProducts(params: params) { (data) in
-            if let cateList = data as? CategoryList, let dataSource = cateList.content {
-                weakSelf?.dataSource = dataSource
-                weakSelf?.cateListView.reloadData()
-            } else {
-                weakSelf?.renderNullDataView()
-            }
-        }
-        
-    }
-    
-    fileprivate func makeViewConstrains(){
         headSizer.snp.makeConstraints { (make) in
             make.top.equalTo(0)
             make.height.equalTo(30)
-            make.left.right.equalTo(self.view)
+            make.left.right.equalTo(view)
         }
         cateListView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.headSizer.snp.bottom).offset(5)
-            make.left.right.equalTo(self.view)
-            make.bottom.equalTo(self.view).offset(0)
+            make.top.equalTo(headSizer.snp.bottom).offset(5)
+            make.left.right.equalTo(view)
+            make.bottom.equalTo(view).offset(0)
         }
     }
     
     func setNavigationBarItem() {
+        self.slideMenuController()?.delegate = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("more-list"),
                                                                  style: .plain,
                                                                  target: self,
@@ -90,6 +97,30 @@ class XFCategoryViewController: XFBaseViewController {
         }
     }
     
+    fileprivate func loadCategories() {
+        // 统一加载图
+        cateListView.alpha = 0
+        renderLoaddingView()
+        
+        weak var weakSelf = self
+        let params:XFParams = ["type":dataType,"sort":dataSort,"sequence":1,"page":1,"size":XFConstants.pageRows]
+        XFCommonService().getAllProducts(params: params) { (data) in
+            weakSelf?.removeLoadingView()
+            if let cateList = data as? CategoryList, let dataSource = cateList.content {
+                weakSelf?.removeNullDataView()
+                weakSelf?.renderCateListView(data: dataSource)
+            } else {
+                weakSelf?.cateListView.alpha = 0
+                weakSelf?.renderNullDataView()
+            }
+        }
+    }
+    
+    private func renderCateListView(data: Array<ProductItem>){
+        self.dataSource = data
+        self.cateListView.alpha = 1
+        self.cateListView.reloadData()
+    }
 }
 
 extension XFCategoryViewController: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
@@ -123,20 +154,11 @@ extension XFCategoryViewController: UICollectionViewDataSource,UICollectionViewD
     }
 }
 
-extension XFCategoryViewController : SlideMenuControllerDelegate {
-    func rightWillOpen() {
-        dPrint("SlideMenuControllerDelegate: rightWillOpen")
-    }
-    
-    func rightDidOpen() {
-        dPrint("SlideMenuControllerDelegate: rightDidOpen")
-    }
-    
-    func rightWillClose() {
-        dPrint("SlideMenuControllerDelegate: rightWillClose")
-    }
+extension XFCategoryViewController: SlideMenuControllerDelegate {
     
     func rightDidClose() {
-        dPrint("SlideMenuControllerDelegate: rightDidClose")
+        if let catetoryVC = self.slideMenuController()?.rightViewController as? XFAllCategoryListViewController {
+            self.dataType = catetoryVC.selectedTypeId
+        }
     }
 }

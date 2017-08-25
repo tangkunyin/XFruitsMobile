@@ -10,8 +10,11 @@ import UIKit
 import SnapKit
 
 class XFCategoryHeadSizer: UIView {
+    
+    var onSizerChanged: ((Int)->Void)?
 
     lazy var sizer:UISegmentedControl = {
+        /// 排序类型 101综合 102销量 103新品 104价格, 默认传101
         let segmente = UISegmentedControl(items: ["综合","销量","新品","价格"])
         segmente.selectedSegmentIndex = 0
         segmente.apportionsSegmentWidthsByContent = true
@@ -20,7 +23,6 @@ class XFCategoryHeadSizer: UIView {
         return segmente
     }()
     
-
     convenience init(textColor:UIColor?, selectTextColor:UIColor?) {
         self.init()
         
@@ -41,8 +43,22 @@ class XFCategoryHeadSizer: UIView {
     }
     
     @objc private func sizerChangedAction(_ segment:UISegmentedControl){
-        let status:Int = segment.selectedSegmentIndex + 1;
-        dPrint("\(status)")
+        var sort: Int = 101;
+        switch segment.selectedSegmentIndex {
+        case 0:
+            sort = 101
+        case 1:
+            sort = 102
+        case 2:
+            sort = 103
+        case 3:
+            sort = 104
+        default:
+            break
+        }
+        if let completion = onSizerChanged {
+            completion(sort)
+        }
     }
 
 }

@@ -76,8 +76,7 @@ class XFBaseViewController: UIViewController {
     }
     
     func renderLoaddingView(){
-        nullDataView.removeFromSuperview()
-        nullDataTip.removeFromSuperview()
+        removeNullDataView()
         view.addSubview(loaddingView)
         loaddingView.snp.makeConstraints { (make) in
             make.center.equalTo(view)
@@ -86,7 +85,7 @@ class XFBaseViewController: UIViewController {
     }
     
     func renderNullDataView(){
-        loaddingView.removeFromSuperview()
+        removeLoadingView()
         view.addSubview(nullDataView)
         view.addSubview(nullDataTip)
         nullDataView.snp.makeConstraints { (make) in
@@ -101,6 +100,16 @@ class XFBaseViewController: UIViewController {
         }
     }
  
+    func removeLoadingView() {
+        MBProgressHUD.stopLoadding()
+        loaddingView.removeFromSuperview()
+    }
+    
+    func removeNullDataView() {
+        MBProgressHUD.stopLoadding()
+        nullDataView.removeFromSuperview()
+        nullDataTip.removeFromSuperview()
+    }
     
     
     /// 私有公共组件

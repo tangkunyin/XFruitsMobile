@@ -11,9 +11,11 @@ import SnapKit
 import Kingfisher
 
 
-class XFAllCategoryListViewController: XFBaseSubViewController,UITableViewDelegate,UITableViewDataSource {
+class XFAllCategoryListViewController: XFBaseSubViewController {
 
     private var productTypes :Array<ProductType> = []
+    
+    var selectedTypeId: Int = 1000
     
     var dataSource:Array<ProductType>? {
         get {
@@ -63,7 +65,9 @@ class XFAllCategoryListViewController: XFBaseSubViewController,UITableViewDelega
         }
     }
     
-    
+}
+
+extension XFAllCategoryListViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productTypes.count
     }
@@ -94,14 +98,8 @@ class XFAllCategoryListViewController: XFBaseSubViewController,UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-     
         let type: ProductType = productTypes[indexPath.row]
-        
-        dPrint(type.id)
-        
+        self.selectedTypeId = type.id
+        self.slideMenuController()?.closeRight()
     }
-    
-
-
 }

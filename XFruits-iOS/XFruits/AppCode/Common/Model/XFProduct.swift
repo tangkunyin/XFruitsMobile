@@ -11,7 +11,7 @@ import Foundation
 import HandyJSON
 
 class ProductType: HandyJSON {
-    var id:String = ""
+    var id:Int = 1000
     var name:String = ""
     var image:String = ""
     required init() {}

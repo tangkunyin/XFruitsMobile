@@ -14,11 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    lazy var request:XFCommonService = {
-        let serviceRequest = XFCommonService()
-        return serviceRequest
-    }()
-    
     lazy var allCateListVC: XFAllCategoryListViewController = {
         return XFAllCategoryListViewController()
     }()
@@ -41,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let slideRootVC = SlideMenuController(mainViewController: rootVC,
                                               rightMenuViewController:allCateListVC)
         slideRootVC.automaticallyAdjustsScrollViewInsets = true
-        slideRootVC.delegate = rootVC.categoryVC as? SlideMenuControllerDelegate
         
         window?.rootViewController = slideRootVC
         window?.makeKeyAndVisible()
@@ -110,9 +104,8 @@ extension AppDelegate: WXApiDelegate {
     /// 拉取全局唯一数据
     func fetchAdditionData() {
         weak var weakSelf = self
-        
         // 拉取所有分类数据
-        request.getAllCategoryies { (types) in
+        XFCommonService().getAllCategoryies { (types) in
             if let productTypes = types as? Array<ProductType> {
                 weakSelf?.allCateListVC.dataSource = productTypes
             }
