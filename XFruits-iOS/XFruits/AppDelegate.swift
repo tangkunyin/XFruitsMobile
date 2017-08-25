@@ -48,20 +48,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let options = launchOptions {
             let item = (options as NSDictionary).value(forKey: UIApplicationLaunchOptionsKey.shortcutItem.rawValue)
-            
-            let test:UIViewController = XFAllCategoryListViewController()
-            
             if item != nil, item is UIApplicationShortcutItem {
                 let shortCutItem = item as! UIApplicationShortcutItem
                 switch shortCutItem.type {
+                case XFConstants.ShortCut.Order:
+                    window?.rootViewController?.present(XFOrderListViewController(), animated: true, completion: nil)
+                    break
                 case XFConstants.ShortCut.Express:
-                    window?.rootViewController?.present(test, animated: true, completion: nil)
+                    window?.rootViewController?.present(XFAboutCompanyViewController(), animated: true, completion: nil)
                     break
-                case XFConstants.ShortCut.Contact:
-                    window?.rootViewController?.present(test, animated: true, completion: nil)
-                    break
-                case XFConstants.ShortCut.Share:
-                    window?.rootViewController?.present(test, animated: true, completion: nil)
+                case XFConstants.ShortCut.Personal:
+//                    window?.rootViewController?.present(, animated: true, completion: nil)
                     break
                 default:break
                 }
@@ -123,27 +120,31 @@ extension AppDelegate: WXApiDelegate {
     }
     
     fileprivate func creatShortcutItem(){
-        let expressIcon:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "express-shortIcon")
+        let icon1:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "Express_3D_Icon")
+        let icon2:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "OrderList_3D_Icon")
+        let icon3:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "PersonalOrdering_3D_Icon")
+        let icon4:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "AboutUS_3D_icon")
         let express:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.Express,
                                                                           localizedTitle: "最新物流",
                                                                           localizedSubtitle: nil,
-                                                                          icon: expressIcon,
+                                                                          icon: icon1,
                                                                           userInfo: nil)
-        
-        let contactIcon:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "contact-short-icon")
-        let contact:UIApplicationShortcutItem = UIApplicationShortcutItem.init(type: XFConstants.ShortCut.Contact,
-                                                                               localizedTitle: "联系客服",
-                                                                               localizedSubtitle: nil,
-                                                                               icon: contactIcon,
-                                                                               userInfo: nil)
-        
-        let shareIcon:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "share-shortIcon")
-        let share:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.Share,
-                                                                        localizedTitle: "鲜果分享",
-                                                                        localizedSubtitle: nil,
-                                                                        icon: shareIcon,
-                                                                        userInfo: nil)
-        UIApplication.shared.shortcutItems = [express, contact, share]
+        let orderList:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.Order,
+                                                                            localizedTitle: "我的订单",
+                                                                            localizedSubtitle: nil,
+                                                                            icon: icon2,
+                                                                            userInfo: nil)
+        let personalOrdering:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.Personal,
+                                                                                   localizedTitle: "私人定制",
+                                                                                   localizedSubtitle: nil,
+                                                                                   icon: icon3,
+                                                                                   userInfo: nil)
+        let aboutXFruits:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.AboutUs,
+                                                                                   localizedTitle: "关于我们",
+                                                                                   localizedSubtitle: nil,
+                                                                                   icon: icon4,
+                                                                                   userInfo: nil)
+        UIApplication.shared.shortcutItems = [express, orderList, personalOrdering, aboutXFruits]
     }
     
     
