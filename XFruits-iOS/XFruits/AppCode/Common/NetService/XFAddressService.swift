@@ -48,8 +48,6 @@ class XFAddressService: XFNetworking {
         }
     }
     
-    
-    // 把地址的json文件下载下来  http://api.10fruits.net/address/district
     func getDistrictData(_ completion:@escaping XFResponse) {
         self.commonRequest(withUrl: url("/address/district")) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {

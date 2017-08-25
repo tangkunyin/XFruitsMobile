@@ -11,6 +11,10 @@ import MBProgressHUD
 
 /// 新增或编辑地址
 class XFEditMyAddressView: UIView {
+    
+    deinit {
+        dPrint("XFEditMyAddressView....")
+    }
    
     var selectCategoryBtn:UIButton? // 被选中的 button
     var addressCodeToSave:NSNumber = 0 // 选中的 citycode
@@ -19,7 +23,7 @@ class XFEditMyAddressView: UIView {
     // 声明闭包
     var actionHandler: ((XFAddress) -> Void)?
 
-    let categoryArray = ["家","公司","学校"]  
+    let defaultCategoryData = ["家","公司","学校"]
     
     lazy var leftTipReceiveLabel: UILabel = {
         let leftTipReceiveLabel = UILabel.init()
@@ -66,7 +70,7 @@ class XFEditMyAddressView: UIView {
         let leftAddressLabel = UILabel.init()
         leftAddressLabel.text = "收货地址"
         leftAddressLabel.textColor = XFConstants.Color.darkGray
-        leftAddressLabel.font  = XFConstants.Font.pfn14
+        leftAddressLabel.font  = XFConstants.Font.pfn16
         leftAddressLabel.textAlignment = NSTextAlignment.left
         return leftAddressLabel
     }()
@@ -75,6 +79,7 @@ class XFEditMyAddressView: UIView {
         let addressChooseLabel  = UILabel.init()
         addressChooseLabel.textColor  = XFConstants.Color.darkGray
         addressChooseLabel.font = XFConstants.Font.pfn14
+        addressChooseLabel.text = "点击选择收货地址"
         return addressChooseLabel
     }()
     
@@ -83,29 +88,30 @@ class XFEditMyAddressView: UIView {
         let addressBtn = UIButton.init()
         addressBtn.titleLabel?.font = XFConstants.Font.pfn14
         addressBtn.setTitleColor(XFConstants.Color.purpleyGrey, for: .normal)
-        addressBtn.setTitle("点击选择收货地址", for: .normal)
         addressBtn.addTarget(self, action: #selector(chooseAddress(_:)), for: .touchUpInside)
         return addressBtn
     }()
     
     lazy var saveBtn :UIButton = {
-        let saveBtn  = UIButton()
-        saveBtn.backgroundColor = XFConstants.Color.salmon
-        saveBtn.layer.cornerRadius = 5
-        saveBtn.layer.masksToBounds = true
+        let saveBtn = UIButton.init(type: .custom)
         saveBtn.setTitle("保 存", for: .normal)
-       saveBtn.addTarget(self, action: #selector(saveAddress(sender:)), for: .touchUpInside)
+        saveBtn.setTitleColor(XFConstants.Color.salmon, for: .normal)
+        saveBtn.titleLabel?.font = XFConstants.Font.pfn16
+        saveBtn.layer.cornerRadius = 5
+        saveBtn.layer.borderWidth = 1
+        saveBtn.layer.borderColor = XFConstants.Color.salmon.cgColor
+        saveBtn.layer.masksToBounds = true
+        saveBtn.addTarget(self, action: #selector(saveAddress(sender:)), for: .touchUpInside)
         return saveBtn
     }()
     
     lazy var addressDescTextView:UITextView = {
         let descAddress = UITextView()
         descAddress.delegate = self
-        
-        descAddress.font = sysFontWithSize(16)
+        descAddress.font = XFConstants.Font.pfn16
         descAddress.isScrollEnabled = false
+        descAddress.returnKeyType = .done
         return descAddress
-        
     }()
     
     lazy var categoryCollectionView:UICollectionView = {
@@ -142,7 +148,7 @@ class XFEditMyAddressView: UIView {
         let placeHolderLabel = UILabel()
         placeHolderLabel.textColor = XFConstants.Color.darkGray
         placeHolderLabel.text = "详细地址（具体到门牌号）"
-        placeHolderLabel.font = sysFontWithSize(14)
+        placeHolderLabel.font = XFConstants.Font.pfn14
         return placeHolderLabel
     }()
     
@@ -154,7 +160,6 @@ class XFEditMyAddressView: UIView {
         leftTipReceiveLabel.snp.makeConstraints({ (make) in
             make.top.equalTo(self.snp.top).offset(12)
             make.left.equalTo(self.snp.left).offset(13)
-            
             make.width.equalTo(70)
             make.height.equalTo(19)
         })
@@ -183,7 +188,6 @@ class XFEditMyAddressView: UIView {
         
         line1.snp.makeConstraints { (make) in
             make.top.equalTo(leftTipReceiveLabel.snp.bottom).offset(10)
-            
             make.height.equalTo(0.4)
             make.left.right.equalTo(self)
         }
@@ -214,7 +218,6 @@ class XFEditMyAddressView: UIView {
         self.addSubview(line2)
         line2.snp.makeConstraints { (make) in
             make.top.equalTo(leftMobileLabel.snp.bottom).offset(10)
-            
             make.height.equalTo(0.4)
             make.left.right.equalTo(self)
         }
@@ -225,7 +228,6 @@ class XFEditMyAddressView: UIView {
         leftAddressLabel.snp.makeConstraints({ (make) in
             make.top.equalTo(line2.snp.bottom).offset(12)
             make.left.equalTo(self.snp.left).offset(13)
-            
             make.width.equalTo(70)
             make.height.equalTo(19)
         })
@@ -237,7 +239,6 @@ class XFEditMyAddressView: UIView {
             make.top.equalTo(line2.snp.bottom).offset(12)
             make.left.equalTo(leftMobileLabel.snp.right).offset(13)
             make.right.equalTo(self.snp.right).offset(-13)
-            //            make.bottom.equalTo(self.snp.bottom).offset(-12)
             make.height.equalTo(19)
         })
         
@@ -259,19 +260,16 @@ class XFEditMyAddressView: UIView {
         self.addSubview(line3)
         line3.snp.makeConstraints { (make) in
             make.top.equalTo(leftAddressLabel.snp.bottom).offset(10)
-            
             make.height.equalTo(0.5)
             make.left.right.equalTo(self)
         }
         
         // 详细地址输入框
         self.addSubview(addressDescTextView)
-        
         addressDescTextView.snp.makeConstraints({ (make) in
             make.top.equalTo(line3.snp.bottom).offset(12)
             make.left.equalTo(self.snp.left).offset(13)
             make.right.equalTo(self.snp.right).offset(13)
-            
             make.height.equalTo(100)
         })
         
@@ -281,9 +279,7 @@ class XFEditMyAddressView: UIView {
             make.top.equalTo(addressDescTextView.snp.top).offset(10)
             make.left.equalTo(self.snp.left).offset(15)
             make.right.equalTo(self.snp.right).offset(15)
-            
             make.height.equalTo(14)
-            
         })
         
         
@@ -293,7 +289,6 @@ class XFEditMyAddressView: UIView {
         self.addSubview(line4)
         line4.snp.makeConstraints { (make) in
             make.top.equalTo(addressDescTextView.snp.bottom).offset(10)
-            
             make.height.equalTo(0.5)
             make.left.right.equalTo(self)
         }
@@ -318,12 +313,10 @@ class XFEditMyAddressView: UIView {
         
         self.addSubview(saveBtn)
         saveBtn.snp.makeConstraints({ (make) in
-            make.bottom.equalTo(self.snp.bottom).offset(-10)
-            make.centerX.equalTo(self)
-            make.width.equalTo(150)
-            make.height.equalTo(35)
+            make.height.equalTo(40)
+            make.left.equalTo(self).offset(15)
+            make.right.bottom.equalTo(self).offset(-10)
         })
-        
     }
     
     // 编辑模式，设置地址值
@@ -462,12 +455,20 @@ extension XFEditMyAddressView: UITextViewDelegate {
             placeHolderLabel.text = ""
         }
     }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
 }
 
 extension XFEditMyAddressView: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return  categoryArray.count
+        return  defaultCategoryData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -478,11 +479,11 @@ extension XFEditMyAddressView: UICollectionViewDelegate,UICollectionViewDataSour
         let row = indexPath.row
         
         let btn  = UIButton.init(type: .custom)
-        btn.setTitle(categoryArray[row], for: .normal)
-        btn.frame =  CGRect(x:0, y:0, width: 20 + widthForLabel(text: categoryArray[row] as NSString, font: 14), height:25)
+        btn.setTitle(defaultCategoryData[row], for: .normal)
+        btn.frame =  CGRect(x:0, y:0, width: 20 + widthForLabel(text: defaultCategoryData[row] as NSString, font: 14), height:25)
         btn.titleLabel?.font = XFConstants.Font.pfn14
         
-        if defaultLabel == categoryArray[row] {
+        if defaultLabel == defaultCategoryData[row] {
             btn.setTitleColor(UIColor.white, for: .normal)
             btn.backgroundColor = XFConstants.Color.salmon
             self.selectCategoryBtn = btn
@@ -504,7 +505,7 @@ extension XFEditMyAddressView: UICollectionViewDelegate,UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize  {
         let row = indexPath.row
-        let cate  = categoryArray[row]
+        let cate  = defaultCategoryData[row]
         return CGSize(width:20 + widthForLabel(text: cate as NSString, font: 14),height:25)
     }
     

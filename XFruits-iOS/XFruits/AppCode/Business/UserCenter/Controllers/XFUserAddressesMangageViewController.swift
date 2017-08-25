@@ -33,11 +33,13 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
     // 添加地址按钮
     lazy var addAddressBtn:UIButton = {
        let addAddressBtn = UIButton.init()
-        addAddressBtn.setTitle("+ 添加地址", for: .normal)
+        addAddressBtn.setTitle("添 加", for: .normal)
+        addAddressBtn.setTitleColor(XFConstants.Color.salmon, for: .normal)
+        addAddressBtn.titleLabel?.font = XFConstants.Font.pfn14
         addAddressBtn.layer.cornerRadius = 5
+        addAddressBtn.layer.borderWidth = 1
+        addAddressBtn.layer.borderColor = XFConstants.Color.salmon.cgColor
         addAddressBtn.layer.masksToBounds = true
-        addAddressBtn.backgroundColor = XFConstants.Color.salmon
-        addAddressBtn.setTitleColor(UIColor.white, for: .normal)
         addAddressBtn.addTarget(self, action: #selector(addOrModifyAddressEvent(sender:)), for:.touchUpInside)
         return addAddressBtn
     }()
@@ -55,24 +57,22 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         let emptyAddressView = XFEmptyAddressView()
         self.view.addSubview(emptyAddressView)
         emptyAddressView.snp.makeConstraints({ (make) in
-            make.left.right.top.bottom.equalTo(self.view)
-           
+            make.left.right.top.bottom.equalTo(view)
         })
    
         // 地址列表视图
         self.view.addSubview(addressesTable)
         addressesTable.snp.makeConstraints({ (make) in
-            make.left.right.top.equalTo(self.view)
-            make.bottom.equalTo(self.view).offset(-50)
+            make.left.right.top.equalTo(view)
+            make.bottom.equalTo(view).offset(-50)
         })
     
         // 底部添加地址按钮
         self.view.addSubview(addAddressBtn)
         addAddressBtn.snp.makeConstraints({ (make) in
-            make.bottom.equalTo(self.view.snp.bottom).offset(-10)
-            make.centerX.equalTo(self.view)
-            make.width.equalTo(150)
-            make.height.equalTo(35)
+            make.height.equalTo(40)
+            make.left.equalTo(view).offset(15)
+            make.right.bottom.equalTo(view).offset(-10)
         })
     }
     
