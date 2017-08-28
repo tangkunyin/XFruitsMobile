@@ -81,8 +81,7 @@ extension XFSettingsViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let key = settingsDataSource[indexPath.section][indexPath.row]["key"]
         if "点个赞" == key {
-            let appStoreEvaluate = XFWebViewController(withUrl: XFConstants.storeUrl)
-            navigationController?.pushViewController(appStoreEvaluate, animated: true)
+            UIApplication.shared.openURL(URL(string:XFConstants.storeUrl)!)
         } else if "关于我们" == key {
             let aboutus = XFAboutCompanyViewController()
             navigationController?.pushViewController(aboutus, animated: true)

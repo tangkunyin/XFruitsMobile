@@ -40,8 +40,8 @@ class XFUserCenterViewController: XFBaseViewController {
     lazy var girdGroupInfo: Array<Array<Dictionary<String, String>>> = {
         return [
             [
-                ["title":"地址管理", "icon":"myLocation"],
-                ["title":"卡券中心", "icon":"myDiscountCoupon"]
+                ["title":"地址管理", "icon":"myLocation"]
+//                ["title":"卡券中心", "icon":"myDiscountCoupon"]
             ],
             [
                 ["title":"私人定制", "icon":"aboutme"],
@@ -94,15 +94,18 @@ class XFUserCenterViewController: XFBaseViewController {
         })
     }
     
-    @objc private func onMessageItemClick(){
-        
-    }
-    
     private func jumpToOrder(_ status: String? = nil, title: String){
-        let orderList = XFOrderListViewController()
-        orderList.orderStatus = status
-        orderList.title = "\(title)订单"
-        navigationController?.pushViewController(orderList, animated: true)
+        if XFUserGlobal.shared.isLogin {
+            let orderList = XFOrderListViewController()
+            orderList.orderStatus = status
+            orderList.title = "\(title)订单"
+            navigationController?.pushViewController(orderList, animated: true)
+        } else {
+            weak var weakSelf = self
+            MBProgressHUD.showMessage("请您登陆后再查看\(title)订单", completion: {
+                weakSelf?.handleEntrySelect(indexPath: IndexPath(row: 2, section: 1))
+            })
+        }
     }
     
     private func handleEntrySelect(indexPath: IndexPath) {
@@ -139,8 +142,10 @@ class XFUserCenterViewController: XFBaseViewController {
         }
         // 无需登录的入口
         if section == 3 && row == 0 {
-            //TODO 企业通道、私人定制
-            MBProgressHUD.showError("还在开发中，别急好吧...")
+            //企业通道、私人定制
+            let webView = XFWebViewController.init(withUrl: "https://www.10fruits.cn/customization/personal.html")
+            webView.title = "私人定制"
+            navigationController?.pushViewController(webView, animated: true)
         } else if section == 3 && row == 1 {
             // 客服
             let chatVC = createChatViewController(withUser: nil, goodsInfo: nil)
@@ -150,7 +155,7 @@ class XFUserCenterViewController: XFBaseViewController {
             // 吐槽建议
             let webView = XFWebViewController.init(withUrl: "https://www.10fruits.cn/suggest/suggest.html")
             webView.title = "吐槽建议"
-            self.navigationController?.pushViewController(webView, animated: true)
+            navigationController?.pushViewController(webView, animated: true)
         } else if section == 4 && row == 1 {
             // 设置
             navigationController?.pushViewController(XFSettingsViewController(), animated: true)
@@ -172,8 +177,11 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if section == 0 {
             return 1
+        } else if section == 1 {
+            return 2
+        } else {
+            return girdGroupInfo[section-2].count
         }
-        return 2
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

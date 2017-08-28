@@ -57,7 +57,7 @@ struct XFConstants {
     struct ShortCut {
         static let Express = "xfruits.shortCut.express"
         static let Order = "xfruits.shortCut.contact"
-        static let Personal = "xfruits.shortCut.share"
+        static let Personal = "xfruits.shortCut.personal"
         static let AboutUs = "xfruits.shortCut.aboutus"
     }
     

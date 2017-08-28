@@ -41,29 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-        if let options = launchOptions {
-            let item = (options as NSDictionary).value(forKey: UIApplicationLaunchOptionsKey.shortcutItem.rawValue)
-            if item != nil, item is UIApplicationShortcutItem {
-                let shortCutItem = item as! UIApplicationShortcutItem
-                switch shortCutItem.type {
-                case XFConstants.ShortCut.Order:
-                    window?.rootViewController?.present(XFOrderListViewController(), animated: true, completion: nil)
-                    break
-                case XFConstants.ShortCut.Express:
-                    window?.rootViewController?.present(XFAboutCompanyViewController(), animated: true, completion: nil)
-                    break
-                case XFConstants.ShortCut.Personal:
-                    window?.rootViewController?.present(XFUserCenterViewController(), animated: true, completion: nil)
-                    break
-                case XFConstants.ShortCut.AboutUs:
-                    window?.rootViewController?.present(XFAppGuideViewController(), animated: true, completion: nil)
-                default:
-                    break
-                }
-            }
-            return false
-        }
-        return true
+        return handleShortCutAction(withOptions: launchOptions)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -87,6 +65,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         
         
+    }
+    
+    private func handleShortCutAction(withOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) ->Bool {
+        if let options = launchOptions {
+            let item = (options as NSDictionary).value(forKey: UIApplicationLaunchOptionsKey.shortcutItem.rawValue)
+            if item != nil, item is UIApplicationShortcutItem {
+                let shortCutItem = item as! UIApplicationShortcutItem
+                switch shortCutItem.type {
+                case XFConstants.ShortCut.Order:
+                    navigateTo(controller: XFOrderListViewController(), loginCheck: true)
+                    break
+                case XFConstants.ShortCut.Express:
+                    navigateTo(controller: XFAboutCompanyViewController(), loginCheck: true)
+                    break
+                case XFConstants.ShortCut.Personal:
+                    navigateTo(controller: XFWebViewController(withUrl: "https://www.10fruits.cn/customization/personal.html"),
+                               loginCheck: false)
+                    break
+                case XFConstants.ShortCut.AboutUs:
+                    window?.rootViewController?.present(XFAppGuideViewController(), animated: true, completion: nil)
+                default:
+                    break
+                }
+            }
+        }
+        return true
+    }
+    
+    private func navigateTo(controller: UIViewController, loginCheck:Bool) {
+        if loginCheck && !XFUserGlobal.shared.isLogin {
+            let realController = UINavigationController.init(rootViewController: XFUserLoginViewController())
+            window?.rootViewController?.present(realController, animated: false, completion: nil)
+        } else {
+            let realController = XFNavigationController.init(rootViewController: controller)
+            window?.rootViewController?.navigationController?.pushViewController(realController, animated: false)
+        }
     }
     
 }
