@@ -35,8 +35,8 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
        let addAddressBtn = UIButton.init()
         addAddressBtn.setTitle("添 加", for: .normal)
         addAddressBtn.setTitleColor(XFConstants.Color.salmon, for: .normal)
-        addAddressBtn.titleLabel?.font = XFConstants.Font.pfn14
-        addAddressBtn.layer.cornerRadius = 5
+        addAddressBtn.titleLabel?.font = XFConstants.Font.pfn16
+        addAddressBtn.layer.cornerRadius = 6
         addAddressBtn.layer.borderWidth = 1
         addAddressBtn.layer.borderColor = XFConstants.Color.salmon.cgColor
         addAddressBtn.layer.masksToBounds = true
@@ -70,9 +70,9 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         // 底部添加地址按钮
         self.view.addSubview(addAddressBtn)
         addAddressBtn.snp.makeConstraints({ (make) in
-            make.height.equalTo(40)
-            make.left.equalTo(view).offset(15)
-            make.right.bottom.equalTo(view).offset(-10)
+            make.height.equalTo(45)
+            make.left.equalTo(view).offset(20)
+            make.right.bottom.equalTo(view).offset(-20)
         })
     }
     

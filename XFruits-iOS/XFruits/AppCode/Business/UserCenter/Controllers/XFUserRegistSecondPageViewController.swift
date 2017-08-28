@@ -18,10 +18,6 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
     var pwdSecurityBtn:UIButton?  //密码眼睛
     var registBtn:UIButton?  //注册按钮
     var sendCodeAgainBtn:UIButton?  // 重新发验证码按钮
-    
-    var userProtocalBtn:UIButton? // 用户协议
-    var privacyBtn:UIButton? // 隐私政策
-    
     var para:NSDictionary? // 上个界面传过来的
     
     override func viewDidLoad() {
@@ -30,17 +26,15 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         view.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(disMissKeyboard)))
 
         // 品牌logo
-        self.brandImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
+        self.brandImageView = UIImageView.init(image: UIImage.imageWithNamed("logo"))
         self.view.addSubview(self.brandImageView!)
-        
         self.brandImageView?.snp.makeConstraints({ (make) in
-            // 距离顶部110,宽92，高100，居中
-            make.top.equalTo(self.view).offset(110)
+            make.top.equalTo(self.view).offset(80)
             make.width.equalTo(92)
             make.height.equalTo(100)
             make.centerX.equalTo(self.view)
-            
         })
+        
         
         // 短信验证码
         self.messageCodeTextField = UITextField()
@@ -114,48 +108,7 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
             //            make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
         })
-        
-        // 用户协议
-        self.userProtocalBtn = UIButton.init(type: .custom)
-        self.userProtocalBtn?.setTitle("用户协议", for: .normal)
-        self.view.addSubview(self.userProtocalBtn!)
-        self.userProtocalBtn?.backgroundColor = UIColor.white
-        
-        self.userProtocalBtn?.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
-        self.userProtocalBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        
-        
-        self.userProtocalBtn?.snp.makeConstraints({ (make) in
-            make.bottom.equalTo(self.view).offset(-20)
-            make.right.equalTo(-XFConstants.UI.deviceWidth/2)
-            make.width.equalTo(100)
-            make.height.equalTo(20)
-        })
-        self.userProtocalBtn?.addTarget(self, action: #selector(gotoPrivacyVC(sender:)), for:.touchUpInside)
-        
-        // 隐私政策
-        self.privacyBtn = UIButton.init(type: .custom)
-        self.privacyBtn?.setTitle("隐私政策", for: .normal)
-        self.view.addSubview(self.privacyBtn!)
-        self.privacyBtn?.backgroundColor = UIColor.white
-        //        self.forgetPwdBtn?.titleLabel?.textColor = colorWithRGB(153, g: 153, b: 153)
-        self.privacyBtn?.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
-        self.privacyBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        
-        
-        self.privacyBtn?.snp.makeConstraints({ (make) in
-            make.bottom.equalTo(self.view).offset(-20)
-            make.left.equalTo(XFConstants.UI.deviceWidth/2)
-            make.width.equalTo(100)
-            make.height.equalTo(20)
-        })
-        self.privacyBtn?.addTarget(self, action: #selector(gotoPrivacyVC(sender:)), for:.touchUpInside)
-        
-    }
     
-    
-    @objc func gotoPrivacyVC(sender:UIButton?) {
-        dPrint("eyes")
     }
     
     @objc func gotoRegister(sender:UIButton?) {

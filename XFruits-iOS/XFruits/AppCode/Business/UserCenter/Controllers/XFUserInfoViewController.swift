@@ -17,7 +17,7 @@ class XFUserInfoViewController: XFBaseSubViewController {
         btn.setTitle("退出登录", for: .normal)
         btn.titleLabel?.font = XFConstants.Font.pfn16
         btn.setTitleColor(XFConstants.Color.salmon, for: .normal)
-        btn.layer.cornerRadius = 5
+        btn.layer.cornerRadius = 6
         btn.layer.borderWidth = 1
         btn.layer.borderColor = XFConstants.Color.salmon.cgColor
         btn.addTarget(self, action: #selector(onLoginOut), for: .touchUpInside)
@@ -30,9 +30,9 @@ class XFUserInfoViewController: XFBaseSubViewController {
     
         view.addSubview(loginOutBtn)
         loginOutBtn.snp.makeConstraints { (make) in
-            make.left.equalTo(view).offset(10)
-            make.right.bottom.equalTo(view).offset(-10)
-            make.height.equalTo(35)
+            make.left.equalTo(view).offset(20)
+            make.right.bottom.equalTo(view).offset(-20)
+            make.height.equalTo(45)
         }
     }
 

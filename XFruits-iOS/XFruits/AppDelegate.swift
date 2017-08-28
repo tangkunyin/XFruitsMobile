@@ -167,7 +167,7 @@ extension AppDelegate: WXApiDelegate {
                         for subResult in resultArr {
                             if subResult.characters.count > 10 && subResult.hasPrefix("auth_code=") {
                                 let index = subResult.index(subResult.startIndex, offsetBy: 10)
-                                authCode = subResult.substring(from: index)
+                                authCode = "\(subResult[..<index])"
                                 break
                             }
                         }

@@ -19,7 +19,6 @@ class XFUserRegistViewController: XFBaseSubViewController {
     var nextStepBtn:UIButton?  //下一步按钮
     var backToLoginBtn:UIButton? // 已有帐号去登录
     var userProtocalBtn:UIButton? // 用户协议
-    var privacyBtn:UIButton? // 隐私政策
     
     var captchaImgString:NSString?  // 图片验证码
     var uniqueCodeString:NSString?  //唯一吗
@@ -35,12 +34,10 @@ class XFUserRegistViewController: XFBaseSubViewController {
         self.view.addSubview(self.brandImageView!)
         
         self.brandImageView?.snp.makeConstraints({ (make) in
-            // 距离顶部110,宽92，高100，居中
-            make.top.equalTo(self.view).offset(110)
+            make.top.equalTo(self.view).offset(80)
             make.width.equalTo(92)
             make.height.equalTo(100)
             make.centerX.equalTo(self.view)
-            
         })
         
         // 手机号
@@ -115,7 +112,6 @@ class XFUserRegistViewController: XFBaseSubViewController {
         self.backToLoginBtn?.setTitle("已有帐号？去登录", for: .normal)
         self.view.addSubview(self.backToLoginBtn!)
         self.backToLoginBtn?.backgroundColor = UIColor.white
-        //        self.forgetPwdBtn?.titleLabel?.textColor = colorWithRGB(153, g: 153, b: 153)
         self.backToLoginBtn?.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         self.backToLoginBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         
@@ -128,48 +124,31 @@ class XFUserRegistViewController: XFBaseSubViewController {
         })
         self.backToLoginBtn?.addTarget(self, action: #selector(backToLoginVC(sender:)), for:.touchUpInside)
         
-        
-        
-        
+
         // 用户协议
         self.userProtocalBtn = UIButton.init(type: .custom)
-        self.userProtocalBtn?.setTitle("用户协议", for: .normal)
+        self.userProtocalBtn?.setTitle("用户协议及隐私政策", for: .normal)
         self.view.addSubview(self.userProtocalBtn!)
         self.userProtocalBtn?.backgroundColor = UIColor.white
         self.userProtocalBtn?.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         self.userProtocalBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        
-        
         self.userProtocalBtn?.snp.makeConstraints({ (make) in
-            make.bottom.equalTo(self.view).offset(-20)
-            make.right.equalTo(-XFConstants.UI.deviceWidth/2)
-            make.width.equalTo(100)
-            make.height.equalTo(20)
+            make.bottom.equalTo(view).offset(-30)
+            make.size.equalTo(CGSize.init(width: 200, height: 20))
+            make.centerX.equalTo(view)
         })
-        self.userProtocalBtn?.addTarget(self, action: #selector(backToLoginVC(sender:)), for:.touchUpInside)
-        
-        // 隐私政策
-        self.privacyBtn = UIButton.init(type: .custom)
-        self.privacyBtn?.setTitle("隐私政策", for: .normal)
-        self.view.addSubview(self.privacyBtn!)
-        self.privacyBtn?.backgroundColor = UIColor.white
-        self.privacyBtn?.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
-        self.privacyBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        
-        
-        self.privacyBtn?.snp.makeConstraints({ (make) in
-            make.bottom.equalTo(self.view).offset(-20)
-            make.left.equalTo(XFConstants.UI.deviceWidth/2)
-            make.width.equalTo(100)
-            make.height.equalTo(20)
-        })
-        self.privacyBtn?.addTarget(self, action: #selector(backToLoginVC(sender:)), for:.touchUpInside)
+        self.userProtocalBtn?.addTarget(self, action: #selector(userProtocol), for:.touchUpInside)
         
         // 获取图片验证码
         getImageVertifyCode()
         
     }
     
+    @objc private func userProtocol(){
+        let webVC = XFWebViewController.init(withUrl: "https://www.10fruits.cn/privacy.html")
+        webVC.title = "用户隐私政策"
+        navigationController?.pushViewController(webVC, animated: true)
+    }
     
     // 获取图片验证码
     func getImageVertifyCode(){
@@ -234,17 +213,11 @@ class XFUserRegistViewController: XFBaseSubViewController {
             return
         }
         
-        
-        let para:[String:String]  = ["uniqueCode":self.uniqueCodeString! as String,"code":code ,"phone":phone]
-        
-        //        dPrint(para)
-        
         weak var weakSelf = self
-        
+        let para:[String:String]  = ["uniqueCode":self.uniqueCodeString! as String,"code":code ,"phone":phone]
         XFCommonService().vertifyImageCodeAndSendMessageCode(params: para) { (data) in
             dPrint(data)
             if data as! Bool {
-                dPrint("返回成功，跳转到注册下一步页面")
                 let secondRegistVC = XFUserRegistSecondPageViewController()
                 secondRegistVC.para  = para as NSDictionary
                 weakSelf?.show(secondRegistVC, sender: weakSelf)

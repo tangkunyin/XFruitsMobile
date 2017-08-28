@@ -97,7 +97,7 @@ class XFEditMyAddressView: UIView {
         saveBtn.setTitle("保 存", for: .normal)
         saveBtn.setTitleColor(XFConstants.Color.salmon, for: .normal)
         saveBtn.titleLabel?.font = XFConstants.Font.pfn16
-        saveBtn.layer.cornerRadius = 5
+        saveBtn.layer.cornerRadius = 6
         saveBtn.layer.borderWidth = 1
         saveBtn.layer.borderColor = XFConstants.Color.salmon.cgColor
         saveBtn.layer.masksToBounds = true
@@ -313,9 +313,9 @@ class XFEditMyAddressView: UIView {
         
         self.addSubview(saveBtn)
         saveBtn.snp.makeConstraints({ (make) in
-            make.height.equalTo(40)
-            make.left.equalTo(self).offset(15)
-            make.right.bottom.equalTo(self).offset(-10)
+            make.height.equalTo(45)
+            make.left.equalTo(self).offset(20)
+            make.right.bottom.equalTo(self).offset(-20)
         })
     }
     

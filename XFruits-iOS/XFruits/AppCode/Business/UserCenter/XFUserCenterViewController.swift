@@ -49,7 +49,7 @@ class XFUserCenterViewController: XFBaseViewController {
             ],
             [
                 ["title":"吐槽建议", "icon":"myAdvice"],
-                ["title":"设置", "icon":"myRedPacket"]
+                ["title":"设置", "icon":"app-settings"]
             ],
         ]
     }()

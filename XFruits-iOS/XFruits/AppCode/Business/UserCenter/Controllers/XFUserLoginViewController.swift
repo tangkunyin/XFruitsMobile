@@ -79,11 +79,11 @@ class XFUserLoginViewController: XFBaseViewController {
     
     lazy var forgetPwdBtn:UIButton = {
         let btn = UIButton.init(type: .custom)
-        btn.setTitle("忘记密码", for: .normal)
+//        btn.setTitle("忘记密码", for: .normal)
         btn.backgroundColor = UIColor.white
         btn.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        btn.addTarget(self, action: #selector(forgetPassword), for:.touchUpInside)
+//        btn.addTarget(self, action: #selector(forgetPassword), for:.touchUpInside)
         return btn
     }()
     
