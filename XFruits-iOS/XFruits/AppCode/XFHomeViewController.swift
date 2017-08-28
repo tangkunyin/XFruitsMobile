@@ -44,13 +44,13 @@ class XFHomeViewController: UITabBarController {
     }
     
     private func addChildViewControllers() {
-        addChildViewController(indexVC, title: "首页", image: "home", selectedImage: "home-hilight")
+        addChildViewController(indexVC, title: "首页", image: "home-normal", selectedImage: "home-highlight")
 
-        addChildViewController(categoryVC, title: "所有", image: "category", selectedImage: "category-hilight")
+        addChildViewController(categoryVC, title: "所有", image: "all-normal", selectedImage: "all-highlight")
         
-        addChildViewController(cartVC, title: "果篮", image: "shopcart", selectedImage: "shopcart-hilight")
+        addChildViewController(cartVC, title: "果篮", image: "shopCart-normal", selectedImage: "shopCart-highlight")
         
-        addChildViewController(userVC, title: "我的", image: "userCenter", selectedImage: "userCenter-hilight")
+        addChildViewController(userVC, title: "我的", image: "mine-normal", selectedImage: "mine-hightlight")
     }
     
 }
@@ -68,7 +68,7 @@ extension XFHomeViewController {
         let normalAttr = [NSAttributedStringKey.foregroundColor:XFConstants.Color.greyishBrown,
                           NSAttributedStringKey.font:XFConstants.Font.pfn10]
         let hilighAttr = [NSAttributedStringKey.foregroundColor:XFConstants.Color.salmon,
-                          NSAttributedStringKey.font:XFConstants.Font.pfn10]
+                          NSAttributedStringKey.font:XFConstants.Font.pfn12]
         
         childController.tabBarItem.setTitleTextAttributes(normalAttr, for: UIControlState.normal)
         childController.tabBarItem.setTitleTextAttributes(hilighAttr, for: UIControlState.selected)

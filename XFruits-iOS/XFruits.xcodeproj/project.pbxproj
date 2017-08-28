@@ -1032,7 +1032,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 426U84EDEE;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1055,8 +1055,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.xfru.mall.ios.mobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b8461cf7-cff0-4856-b7c2-850a3e3803f8";
-				PROVISIONING_PROFILE_SPECIFIER = "XFruits Dev";
+				PROVISIONING_PROFILE = "a0c3b3ab-5d77-4541-bd68-3194334d79f5";
+				PROVISIONING_PROFILE_SPECIFIER = "XFruits Dis";
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Carthage/Build/iOS/V5Client.framework/**";
 				SWIFT_OBJC_BRIDGING_HEADER = "XFruits/XFruits-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

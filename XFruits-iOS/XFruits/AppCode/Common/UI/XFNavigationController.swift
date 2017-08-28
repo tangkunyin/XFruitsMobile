@@ -13,7 +13,6 @@ class XFNavigationController: UINavigationController {
     private static let initAppearance: Void = {
         
         let bar = UINavigationBar.appearance()
-        bar.isTranslucent = false
         bar.tintColor = UIColor.white
         bar.barTintColor = XFConstants.Color.salmon
         bar.titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue):XFConstants.Color.white,
