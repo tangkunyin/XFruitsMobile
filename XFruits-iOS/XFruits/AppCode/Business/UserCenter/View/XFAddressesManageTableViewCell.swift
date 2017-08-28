@@ -25,7 +25,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font  =  XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
-        label.textAlignment = NSTextAlignment.left
+        label.textAlignment = NSTextAlignment.right
         return label
     }()
     
@@ -87,14 +87,13 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         
         userNameLabel.snp.makeConstraints({ (make) in
             make.left.top.equalTo(contentView).offset(8)
-            make.width.equalTo(50)
             make.height.equalTo(20)
+            make.right.equalTo(mobileLabel.snp.left).offset(5)
         })
         
         mobileLabel.snp.makeConstraints({ (make) in
+            make.size.equalTo(CGSize.init(width: 110, height: 20))
             make.top.equalTo(userNameLabel.snp.top)
-            make.height.equalTo(20)
-            make.left.equalTo(userNameLabel.snp.right).offset(10)
             make.right.equalTo(editAddressBtn.snp.left).offset(-5)
         })
         
@@ -107,13 +106,12 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         addressCategoryBtn.snp.makeConstraints({ (make) in
             make.top.equalTo(userNameLabel.snp.bottom).offset(3)
             make.left.equalTo(userNameLabel.snp.left)
-            make.width.lessThanOrEqualTo(50)
-            make.height.equalTo(20)
+            make.size.equalTo(CGSize(width: 40, height: 20))
         })
         
         addressLabel.snp.makeConstraints({ (make) in
-            make.top.equalTo(mobileLabel.snp.bottom).offset(5)
-            make.left.equalTo(mobileLabel.snp.left)
+            make.top.equalTo(userNameLabel.snp.bottom).offset(5)
+            make.left.equalTo(addressCategoryBtn.snp.right).offset(5)
             make.right.equalTo(editAddressBtn.snp.left).offset(-5)
             make.bottom.equalTo(contentView).offset(-8)
         })

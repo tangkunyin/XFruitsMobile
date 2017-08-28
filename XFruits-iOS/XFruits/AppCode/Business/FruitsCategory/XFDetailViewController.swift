@@ -101,7 +101,8 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
                 weakSelf?.addToShopCart(checkoutNow: false)
             case 3:
                 weakSelf?.addToShopCart(checkoutNow: true)
-            default:break
+            default:
+                break
             }
         }
         return view
@@ -112,18 +113,27 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
             let item: ProductItem = detailData.convertToProductItem()
             let result = XFCartUtils.sharedInstance.addItem(item: item)
             if result {
-                if checkoutNow
-                    && XFCartUtils.sharedInstance.selectItem(gid: item.id, checked: true)
-                        && XFCartUtils.sharedInstance.getAll().count > 0 {
-                    let checkoutVC = XFCheckoutViewController()
-                    checkoutVC.totalGoodsAmount = item.primePrice
-                    navigationController?.pushViewController(checkoutVC, animated: true)
+                if checkoutNow {
+                    goToCheckout(item: item)
                 } else {
                     MBProgressHUD.showSuccess("成功添加到果篮")
                 }
             } else {
                 MBProgressHUD.showError("操作失败，请稍后尝试~")
             }
+        }
+    }
+    
+    private func goToCheckout(item: ProductItem) {
+        if XFUserGlobal.shared.isLogin {
+            if XFCartUtils.sharedInstance.selectItem(gid: item.id, checked: true)
+                && XFCartUtils.sharedInstance.getAll().count > 0 {
+                let checkoutVC = XFCheckoutViewController()
+                checkoutVC.totalGoodsAmount = item.primePrice
+                navigationController?.pushViewController(checkoutVC, animated: true)
+            }
+        } else {
+            MBProgressHUD.showError("请先登录后再购买")
         }
     }
     

@@ -66,7 +66,7 @@ class XFCheckoutViewController: XFBaseViewController {
             buyList.append(["productId":item.id! ,"count":item.quantity!])
         }
         guard let address = confirmAddress else {
-            MBProgressHUD.showError("请务必选择一个有效的收货地址")
+            MBProgressHUD.showError("您必须选择一个有效的收货地址")
             return
         }
         guard buyList.count > 0 else {
