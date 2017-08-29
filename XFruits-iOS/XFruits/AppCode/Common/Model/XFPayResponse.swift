@@ -31,6 +31,6 @@ struct XFAlipayResultData: HandyJSON {
 // 支付宝支返回的数据模型
 struct XFAlipayResponse: HandyJSON {
     var memo: String = ""
-    var result: XFAlipayResultData?
+    var result: String?
     var resultStatus: Int = 0
 }

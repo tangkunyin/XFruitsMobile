@@ -122,34 +122,30 @@ extension XFChoosePayWayViewController {
     private func orderPayWithAliPay(_ data: String) {
         weak var weakSelf = self
         AlipaySDK.defaultService().payOrder(data, fromScheme: "XFruits") { (respData) in
-            if respData != nil,
-                let dict = respData as NSDictionary?,
+            if let dict = respData as NSDictionary?,
                 let response: XFAlipayResponse = XFAlipayResponse.deserialize(from: dict) {
-                
-                //MARK: TODO parse empty...
-                dPrint(dict)
-                dPrint(response)
-                
                 if response.resultStatus == 8000 || response.resultStatus == 9000 {
-                    if let payResponse: XFAlipayTradeResponse = response.result?.alipay_trade_app_pay_response,
+                    if let jsonStrResult = response.result,
+                        let result: XFAlipayResultData = XFAlipayResultData.deserialize(from: jsonStrResult),
+                        let payResponse: XFAlipayTradeResponse = result.alipay_trade_app_pay_response,
                         payResponse.app_id == XFConstants.SDK.Alipay.appId, Int(payResponse.code) == 10000 {
                         weakSelf?.payInfo?.cashFee = payResponse.total_amount
                         weakSelf?.handleThePaymentResult(flag: true, payType: 1)
-                        return
                     }
+                } else {
+                    var errorMsg = ""
+                    switch response.resultStatus {
+                    case 5000:
+                        errorMsg = response.memo.characters.count != 0 ? response.memo : "重复请求"
+                    case 6001:
+                        errorMsg = response.memo.characters.count != 0 ? response.memo : "用户中途取消"
+                    case 6002:
+                        errorMsg = response.memo.characters.count != 0 ? response.memo : "网络连接出错"
+                    default:
+                        errorMsg = response.memo.characters.count != 0 ? response.memo : "其它支付错误:\(response.resultStatus)"
+                    }
+                    weakSelf?.handleThePaymentResult(flag: false, payType: 1, errorMsg: errorMsg)
                 }
-                var errorMsg = ""
-                switch response.resultStatus {
-                case 5000:
-                    errorMsg = response.memo.characters.count != 0 ? response.memo : "重复请求"
-                case 6001:
-                    errorMsg = response.memo.characters.count != 0 ? response.memo : "用户中途取消"
-                case 6002:
-                    errorMsg = response.memo.characters.count != 0 ? response.memo : "网络连接出错"
-                default:
-                    errorMsg = response.memo.characters.count != 0 ? response.memo : "其它支付错误:\(response.resultStatus)"
-                }
-                weakSelf?.handleThePaymentResult(flag: false, payType: 1, errorMsg: errorMsg)
             }
         }
     }
