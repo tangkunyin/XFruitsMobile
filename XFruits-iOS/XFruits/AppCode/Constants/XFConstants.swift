@@ -16,7 +16,7 @@ struct XFConstants {
     
     
     /// 开发模式
-    static let isDevelopModel:Bool = true
+    static let isDevelopModel:Bool = false
     
     /// 详情页商品评论数控制，默认最多展示三条
     static let detailCommentsLimit:Int = 3
