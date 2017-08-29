@@ -133,7 +133,7 @@ extension AppDelegate: WXApiDelegate {
     fileprivate func creatShortcutItem(){
         let icon1:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "Express_3D_Icon")
         let icon2:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "OrderList_3D_Icon")
-        let icon3:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "PersonalOrdering_3D_Icon")
+//        let icon3:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "PersonalOrdering_3D_Icon")
         let icon4:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "AboutUS_3D_icon")
         let express:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.Express,
                                                                           localizedTitle: "最新物流",
@@ -145,17 +145,17 @@ extension AppDelegate: WXApiDelegate {
                                                                             localizedSubtitle: nil,
                                                                             icon: icon2,
                                                                             userInfo: nil)
-        let personalOrdering:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.Personal,
-                                                                                   localizedTitle: "私人定制",
-                                                                                   localizedSubtitle: nil,
-                                                                                   icon: icon3,
-                                                                                   userInfo: nil)
+//        let personalOrdering:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.Personal,
+//                                                                                   localizedTitle: "私人定制",
+//                                                                                   localizedSubtitle: nil,
+//                                                                                   icon: icon3,
+//                                                                                   userInfo: nil)
         let aboutXFruits:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.AboutUs,
                                                                                    localizedTitle: "关于我们",
                                                                                    localizedSubtitle: nil,
                                                                                    icon: icon4,
                                                                                    userInfo: nil)
-        UIApplication.shared.shortcutItems = [express, orderList, personalOrdering, aboutXFruits]
+        UIApplication.shared.shortcutItems = [express, orderList, /*personalOrdering,*/ aboutXFruits]
     }
     
     

@@ -44,7 +44,7 @@ class XFUserCenterViewController: XFBaseViewController {
 //                ["title":"卡券中心", "icon":"myDiscountCoupon"]
             ],
             [
-                ["title":"私人定制", "icon":"aboutme"],
+//                ["title":"私人定制", "icon":"aboutme"],
                 ["title":"在线客服", "icon":"myService"]
             ],
             [
@@ -143,10 +143,10 @@ class XFUserCenterViewController: XFBaseViewController {
         // 无需登录的入口
         if section == 3 && row == 0 {
             //企业通道、私人定制
-            let webView = XFWebViewController.init(withUrl: "https://www.10fruits.cn/customization/personal.html")
-            webView.title = "私人定制"
-            navigationController?.pushViewController(webView, animated: true)
-        } else if section == 3 && row == 1 {
+//            let webView = XFWebViewController.init(withUrl: "https://www.10fruits.cn/customization/personal.html")
+//            webView.title = "私人定制"
+//            navigationController?.pushViewController(webView, animated: true)
+//        } else if section == 3 && row == 1 {
             // 客服
             let chatVC = createChatViewController(withUser: nil, goodsInfo: nil)
             chatVC.delegate = self
@@ -257,12 +257,13 @@ extension XFUserCenterViewController: V5ChatViewDelegate {
     /// - 客户服务状态改变(可在此相应改变对话页标题)
     func clientViewController(_ chatVC: V5ChatViewController, servingStatusChange status: KV5ClientServingStatus) {
         switch status {
-        case .ServingStatus_queue,.ServingStatus_robot:
-            chatVC.title = "正在排队等人工..."
+        case .ServingStatus_queue,
+             .ServingStatus_robot,
+             .ServingStatus_inTrust:
+            chatVC.title = "云客服服务中"
         case .ServingStatus_worker:
             chatVC.title = "\(V5ClientAgent.shareClient().config?.workerName ?? "小果拾")为您服务"
-        case .ServingStatus_inTrust:
-            chatVC.title = "云客服服务中"
+        
         }
     }
     
