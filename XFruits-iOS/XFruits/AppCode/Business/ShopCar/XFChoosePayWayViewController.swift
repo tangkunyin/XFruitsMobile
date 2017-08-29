@@ -155,7 +155,7 @@ extension XFChoosePayWayViewController {
     }
     
     private func orderPayWithWeixin(_ data: String){
-        MBProgressHUD.showError("暂还不支持微信，点支付宝吧~")
+        MBProgressHUD.showError("微信暂不支持，请选择支付宝吧~")
     }
     
     private func handleThePaymentResult(flag: Bool, payType: Int, errorMsg: String = "") {
@@ -216,7 +216,6 @@ extension XFChoosePayWayViewController: UITableViewDataSource ,UITableViewDelega
                 let cell = tableView.dequeueReusableCell(withIdentifier: payCellIdentifier) as! XFPayTimerCountDownViewCell
                 weak var weakSelf = self
                 cell.onTimerEnd = {
-                    dPrint("支付已过期")
                     weakSelf?.submitPayBtn.isEnabled = false
                     weakSelf?.submitPayBtn.backgroundColor = XFConstants.Color.coolGrey
                 }

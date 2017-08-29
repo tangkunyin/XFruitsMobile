@@ -35,8 +35,23 @@ class XFNavigationController: UINavigationController {
         super.viewDidLoad()
         XFNavigationController.initAppearance
         
-        
+        let target = interactivePopGestureRecognizer?.delegate
+        let pan: UIPanGestureRecognizer = UIPanGestureRecognizer(target: target,
+                                                                 action: Selector(("handleNavigationTransition:")))
+        pan.delegate = self
+        self.view.addGestureRecognizer(pan)
+        self.interactivePopGestureRecognizer?.isEnabled = false
     }
     
 }
 
+extension XFNavigationController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if self.viewControllers.count == 1 {
+            return false
+        }
+        return true
+    }
+    
+}

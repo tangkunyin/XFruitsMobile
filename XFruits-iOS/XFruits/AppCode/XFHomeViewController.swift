@@ -77,6 +77,8 @@ extension XFHomeViewController {
         
         let nav = XFNavigationController.init(rootViewController: childController)
         
+        
+        
         self.addChildViewController(nav)
     }
 }
