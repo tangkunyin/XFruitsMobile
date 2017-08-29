@@ -71,14 +71,53 @@ class XFIndexViewController: XFBaseViewController {
         }
     }
     
+    // 统一跳网页
+    private func jumpToWebview(url: String, title: String = "拾个鲜果"){
+        let webView = XFWebViewController.init(withUrl: url)
+        webView.title = title
+        navigationController?.pushViewController(webView, animated: true)
+    }
+    
+    // 跳详情页
+    private func jumpToProductDetail(pId: String){
+        let detail = XFDetailViewController()
+        detail.prodId = pId
+        navigationController?.pushViewController(detail, animated: true)
+    }
+    
+    private func handlePagerClick(withIndex index: Int) {
+        switch index {
+        case XFIndexConentType.html.rawValue,
+             XFIndexConentType.advertising.rawValue:
+            jumpToWebview(url: loopImages![index].data)
+        case XFIndexConentType.product.rawValue:
+            jumpToProductDetail(pId: loopImages![index].data)
+        default:
+            break
+        }
+    }
+    
+    private func handleItemClick(withData data: XFNewsContent) {
+        switch data.type {
+        case XFIndexConentType.html.rawValue,
+             XFIndexConentType.advertising.rawValue:
+            jumpToWebview(url: data.data)
+        case XFIndexConentType.product.rawValue:
+            jumpToProductDetail(pId: data.data)
+        default:
+            break
+        }
+    }
+    
     private lazy var request: XFNewsInfoService = {
         return XFNewsInfoService()
     }()
     
     private lazy var pagerView:XFViewPager = {
         let pagerView = XFViewPager(source: [""], placeHolder: "Loading-white")
+        weak var weakSelf = self
         pagerView.pagerDidClicked = {(index:Int) -> Void in
-            dPrint("\(index) 号被点击")
+            weakSelf?.handlePagerClick(withIndex: index)
         }
         return pagerView
     }()
@@ -122,9 +161,8 @@ extension XFIndexViewController: UITableViewDataSource,UITableViewDelegate {
         return nil
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        handleItemClick(withData: dataSource[indexPath.row])
     }
     
 }

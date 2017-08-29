@@ -30,7 +30,7 @@ public enum XFNetStateCode {
 
 
 // HTTP返回码
-public enum XFHttpStatus:Int, HandyJSONEnum {
+public enum XFHttpStatus: Int {
     //通用状态码
     case success = 200
     case notModify = 304
