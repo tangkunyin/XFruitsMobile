@@ -82,7 +82,6 @@ class XFUserCenterViewController: XFBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        XFAvailableAddressUtils.shared.cacheAddressAvailable()
         if #available(iOS 11.0, *) {
             centerTable.setValue(2, forKey: "contentInsetAdjustmentBehavior")
         } else {

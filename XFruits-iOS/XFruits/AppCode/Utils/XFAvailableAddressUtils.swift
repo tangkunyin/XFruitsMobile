@@ -10,6 +10,8 @@ import Foundation
 import HandyJSON
 import Alamofire
 import SwiftyJSON
+
+
 class XFAvailableAddressUtils {
     
     /// 当前登录用户
@@ -47,7 +49,7 @@ class XFAvailableAddressUtils {
     func getCachedAddress() -> NSDictionary? {
         let path:String = availableAddressPath!
         if(FileManager.default.fileExists(atPath: path)){
-            let addressInfo:NSDictionary  =   NSKeyedUnarchiver.unarchiveObject(withFile: path) as! NSDictionary
+            let addressInfo:NSDictionary  =  NSKeyedUnarchiver.unarchiveObject(withFile: path) as! NSDictionary
             return addressInfo
         }
         return nil
@@ -71,19 +73,20 @@ class XFAvailableAddressUtils {
     func cacheAddressAvailable() {
         weak var weakSelf = self
         XFAddressService().getDistrictData { (result) in
-            let responseJSON: NSDictionary = result as! NSDictionary
-            let newMd5:String = responseJSON["md5"] as! String
-            let path:String = (weakSelf?.availableAddressPath)!
-            if(FileManager.default.fileExists(atPath: path)){
-                let addressInfo:NSDictionary  = (weakSelf?.getCachedAddress())!
-                let cacheMd5:String = addressInfo["md5"] as! String
-                // 判断 md5是否一致，如果一致就不存新的数据
-                if (cacheMd5 != newMd5){  // 不一致
+            if let responseJSON = result as? NSDictionary {
+                let newMd5:String = responseJSON["md5"] as! String
+                let path:String = (weakSelf?.availableAddressPath)!
+                if(FileManager.default.fileExists(atPath: path)){
+                    let addressInfo:NSDictionary  = (weakSelf?.getCachedAddress())!
+                    let cacheMd5:String = addressInfo["md5"] as! String
+                    // 判断 md5是否一致，如果一致就不存新的数据
+                    if (cacheMd5 != newMd5){  // 不一致
+                        weakSelf?.cacheAddress(responseJSON)
+                    }
+                } else{
+                    FileManager.default.createFile(atPath: path, contents: nil, attributes: nil)
                     weakSelf?.cacheAddress(responseJSON)
                 }
-            } else{
-                FileManager.default.createFile(atPath: path, contents: nil, attributes: nil)
-                weakSelf?.cacheAddress(responseJSON)
             }
         }
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 let XF_PICKERHEIGHT: CGFloat = 216
 let XF_BGHEIGHT: CGFloat = 256
@@ -112,30 +113,29 @@ class XFCityChooseView: UIView,  UIPickerViewDelegate , UIPickerViewDataSource {
         }
     }
     
-    func loadDefaultAreaWithCityCode(cityCode:NSNumber) -> String{  // 按照 citycode 找省市区
+    func loadDefaultAreaWithCityCode(cityCode:NSNumber) -> String {  // 按照 citycode 找省市区
         addressCodeSelectTemp = cityCode
-        
-        let addressInfo:NSDictionary = XFAvailableAddressUtils.shared.getCachedAddress()!
-        let districtArr = addressInfo.object(forKey: "district") as! NSArray
-        
-        for dic  in districtArr {  // 第一个 district 数组
-    
-            let dict:NSDictionary = dic as! NSDictionary
-            
-            let firstDistrictArr = dict["subDistrict"] as! NSArray
-            for fistDisctTemp in firstDistrictArr {
+        if let addressInfo:NSDictionary = XFAvailableAddressUtils.shared.getCachedAddress() {
+            let districtArr = addressInfo.object(forKey: "district") as! NSArray
+            for dic  in districtArr {  // 第一个 district 数组
                 
-                let fistDisct:NSDictionary = fistDisctTemp as! NSDictionary
-                let subDistrictArr = fistDisct["subDistrict"] as! NSArray
+                let dict:NSDictionary = dic as! NSDictionary
                 
-                for subDisctTemp in subDistrictArr {
-                    let subDisct:NSDictionary = subDisctTemp as! NSDictionary
-
-                    if (subDisct["code"] as! NSNumber == cityCode){
-                        var provinceName:String  = dict["name"] as! String
-                        provinceName =  "\(provinceName) \(fistDisct["name"] as! String)"
-                        provinceName =  "\(provinceName) \(subDisct["name"] as! String)"
-                       return provinceName
+                let firstDistrictArr = dict["subDistrict"] as! NSArray
+                for fistDisctTemp in firstDistrictArr {
+                    
+                    let fistDisct:NSDictionary = fistDisctTemp as! NSDictionary
+                    let subDistrictArr = fistDisct["subDistrict"] as! NSArray
+                    
+                    for subDisctTemp in subDistrictArr {
+                        let subDisct:NSDictionary = subDisctTemp as! NSDictionary
+                        
+                        if (subDisct["code"] as! NSNumber == cityCode){
+                            var provinceName:String  = dict["name"] as! String
+                            provinceName =  "\(provinceName) \(fistDisct["name"] as! String)"
+                            provinceName =  "\(provinceName) \(subDisct["name"] as! String)"
+                            return provinceName
+                        }
                     }
                 }
             }
@@ -205,56 +205,58 @@ class XFCityChooseView: UIView,  UIPickerViewDelegate , UIPickerViewDataSource {
     
     // 第一次加载省市区的 array
     func loadDatas() -> Void {
-        let addressInfo:NSDictionary = XFAvailableAddressUtils.shared.getCachedAddress()!
-        let tempProvince = NSMutableArray()
-        
-        let districtArr = addressInfo.object(forKey: "district") as! NSArray
-        for dic  in districtArr {
-            let dict:NSDictionary = dic as! NSDictionary
-            let a:String  = dict["name"] as! String
-            tempProvince.add(a)
+        if let addressInfo: NSDictionary = XFAvailableAddressUtils.shared.getCachedAddress() {
+            let tempProvince = NSMutableArray()
+            let districtArr = addressInfo.object(forKey: "district") as! NSArray
+            for dic  in districtArr {
+                let dict:NSDictionary = dic as! NSDictionary
+                let a:String  = dict["name"] as! String
+                tempProvince.add(a)
+            }
+            self.provinceArray = tempProvince.copy() as! NSArray
+            self.cityArray = self.getCityNameFromProvince(row: 0)
+            self.areaArray = self.getAreaNameFromCity(row: 0)
+            
+            self.provinceStr = self.provinceArray[0] as? String
+            self.cityStr = self.cityArray[0] as? String
+            let dict = self.areaArray[0] as! NSDictionary
+            
+            self.areaStr = dict["name"] as? String
+            addressCodeSelectTemp  = dict["code"] as! NSNumber
+        } else {
+            MBProgressHUD.showError("地区数据加载错误")
         }
-        self.provinceArray = tempProvince.copy() as! NSArray
-        self.cityArray = self.getCityNameFromProvince(row: 0)
-        self.areaArray = self.getAreaNameFromCity(row: 0)
-
-        self.provinceStr = self.provinceArray[0] as? String
-        self.cityStr = self.cityArray[0] as? String
-        let dict = self.areaArray[0] as! NSDictionary
-
-        self.areaStr = dict["name"] as? String
-        addressCodeSelectTemp  = dict["code"] as! NSNumber
     }
     
     //根据市获取区
     func getAreaNameFromCity(row: NSInteger) -> NSArray {
-        let addressInfo:NSDictionary = XFAvailableAddressUtils.shared.getCachedAddress()!
-        let districtArr = addressInfo.object(forKey: "district") as! NSArray
-        let districtDict = districtArr[self.selectRow] as! NSDictionary
-        let firtDictrictArr = districtDict["subDistrict"] as! NSArray
-        let subDistrictDict =  firtDictrictArr[row] as! NSDictionary
-        let subDistrictArr = subDistrictDict["subDistrict"] as! NSArray
-        return subDistrictArr
+        if let addressInfo: NSDictionary = XFAvailableAddressUtils.shared.getCachedAddress() {
+            let districtArr = addressInfo.object(forKey: "district") as! NSArray
+            let districtDict = districtArr[self.selectRow] as! NSDictionary
+            let firtDictrictArr = districtDict["subDistrict"] as! NSArray
+            let subDistrictDict =  firtDictrictArr[row] as! NSDictionary
+            let subDistrictArr = subDistrictDict["subDistrict"] as! NSArray
+            return subDistrictArr
+        }
+        return []
     }
     
     //根据省名称获取市
     func getCityNameFromProvince(row: NSInteger) -> NSArray {
-        
-        let cityArray = NSMutableArray()
-
-        let addressInfo:NSDictionary = XFAvailableAddressUtils.shared.getCachedAddress()!
-        
-        let districtArr = addressInfo.object(forKey: "district") as! NSArray
-        
-        let dict:NSDictionary = districtArr[row] as! NSDictionary
-        let firstDistrict = dict["subDistrict"] as! NSArray
-        
-        for dic  in firstDistrict{
-            let firstDic:NSDictionary = dic as! NSDictionary
-            let a  = firstDic["name"] as! String
-            cityArray.add(a)
+        if let addressInfo: NSDictionary = XFAvailableAddressUtils.shared.getCachedAddress() {
+            let cityArray = NSMutableArray()
+            let districtArr = addressInfo.object(forKey: "district") as! NSArray
+            let dict:NSDictionary = districtArr[row] as! NSDictionary
+            let firstDistrict = dict["subDistrict"] as! NSArray
+            
+            for dic  in firstDistrict{
+                let firstDic:NSDictionary = dic as! NSDictionary
+                let a  = firstDic["name"] as! String
+                cityArray.add(a)
+            }
+            return cityArray
         }
-        return cityArray
+        return []
     }
     
     
@@ -298,20 +300,15 @@ class XFCityChooseView: UIView,  UIPickerViewDelegate , UIPickerViewDataSource {
             self.selectRow = row
             self.cityArray = self.getCityNameFromProvince(row: row)
             self.areaArray = self.getAreaNameFromCity(row: 0)
-            
             self.pickerView.reloadComponent(1)
             self.pickerView.selectRow(0, inComponent: 1, animated: true)
             self.pickerView.reloadComponent(2)
             self.pickerView.selectRow(0, inComponent: 2, animated: true)
-            
             self.provinceStr = self.provinceArray[row] as? String
             self.cityStr = self.cityArray[0] as? String
             let dict = self.areaArray[0] as! NSDictionary
-        
             self.areaStr = dict["name"] as? String
-            
             addressCodeSelectTemp = dict["code"] as! NSNumber
-            
         case 1: //选择市
             self.areaArray = self.getAreaNameFromCity(row: row)
             self.pickerView.reloadComponent(2)
@@ -329,7 +326,6 @@ class XFCityChooseView: UIView,  UIPickerViewDelegate , UIPickerViewDataSource {
             self.areaStr = dict["name"] as? String
             addressCodeSelectTemp = dict["code"] as! NSNumber
             break
-            
         }
     }
     

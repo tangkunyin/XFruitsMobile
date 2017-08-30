@@ -121,6 +121,10 @@ extension AppDelegate: WXApiDelegate {
     
     /// 拉取全局唯一数据
     func fetchAdditionData() {
+        
+        // 拉取地址数据
+        XFAvailableAddressUtils.shared.cacheAddressAvailable()
+        
         weak var weakSelf = self
         // 拉取所有分类数据
         XFCommonService().getAllCategoryies { (types) in

@@ -220,9 +220,8 @@ public class XFNetworking: NSObject {
             .validate().responseJSON { (response) in
                 switch response.result {
                 case .success(let value):
-                    let json = JSON(value)
                     if needSerialize {
-                        if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: json.rawString()) {
+                        if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: JSON(value).rawString()) {
                             guard let code = obj.code, let msg = obj.msg, let timestamp = obj.systemTime else {
                                 dPrint(obj)
                                 completion(false, "数据状态异常，请稍后再试~")
@@ -241,7 +240,7 @@ public class XFNetworking: NSObject {
                             }
                         }
                     } else {
-                        completion(true, json)
+                        completion(true, value)
                     }
                 case .failure(let error):
                     dPrint(error)

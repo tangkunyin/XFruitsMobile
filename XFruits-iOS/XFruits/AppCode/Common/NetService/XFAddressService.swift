@@ -50,8 +50,8 @@ class XFAddressService: XFNetworking {
     
     func getDistrictData(_ completion:@escaping XFResponse) {
         self.commonRequest(withUrl: url("/address/district")) { (success, respData) in
-            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
-                completion(dict)
+            if success, let respData = respData {
+                completion(respData)
             }
         }
     }

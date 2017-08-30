@@ -53,6 +53,11 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         super.viewDidLoad()
         self.title = "地址管理"
         
+        // 第一次没拉到，继续拉数据
+        if XFAvailableAddressUtils.shared.getCachedAddress() == nil {
+            XFAvailableAddressUtils.shared.cacheAddressAvailable()
+        }
+        
         // 空白地址视图
         let emptyAddressView = XFEmptyAddressView()
         self.view.addSubview(emptyAddressView)
