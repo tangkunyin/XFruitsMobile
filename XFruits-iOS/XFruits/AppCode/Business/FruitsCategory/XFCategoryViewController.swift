@@ -54,7 +54,7 @@ class XFCategoryViewController: XFBaseViewController {
         return sizer;
     }()
     
-    lazy var cateListView:UICollectionView = {
+    lazy var cateListView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let listView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
@@ -89,7 +89,7 @@ class XFCategoryViewController: XFBaseViewController {
                                                                  action: #selector(onAllItemClick))
     }
     
-    @objc private func onAllItemClick(){
+    @objc fileprivate func onAllItemClick(){
         if let slideMenuController = self.slideMenuController() {
             if !slideMenuController.isRightOpen() {
                 slideMenuController.openRight()
@@ -116,7 +116,7 @@ class XFCategoryViewController: XFBaseViewController {
         }
     }
     
-    private func renderCateListView(data: Array<ProductItem>){
+    fileprivate func renderCateListView(data: Array<ProductItem>){
         self.dataSource = data
         self.cateListView.alpha = 1
         self.cateListView.reloadData()

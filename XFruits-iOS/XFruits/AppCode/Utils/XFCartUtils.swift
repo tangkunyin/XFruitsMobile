@@ -14,7 +14,7 @@ class XFCartUtils {
     
     static let sharedInstance = XFCartUtils()
     
-    private init(){
+    fileprivate init(){
         XFSQLiteDataSource.sharedInstance.createTables()
     }
     

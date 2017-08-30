@@ -51,7 +51,7 @@ class MyBillTableViewCell: UITableViewCell {
         self.setUpUI();
     }
     
-    private func setUpUI() {
+    fileprivate func setUpUI() {
         contentView.addSubview(collectionView)
         collectionView.snp.makeConstraints({ (make) in
             make.edges.equalTo(contentView).inset(UIEdgeInsets.zero)

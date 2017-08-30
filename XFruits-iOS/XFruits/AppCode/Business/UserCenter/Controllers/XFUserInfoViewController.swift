@@ -37,7 +37,7 @@ class XFUserInfoViewController: XFBaseSubViewController {
     }
 
     
-    @objc private func onLoginOut(){
+    @objc fileprivate func onLoginOut(){
         XFUserGlobal.shared.signOff()
         backToParentController()
     }

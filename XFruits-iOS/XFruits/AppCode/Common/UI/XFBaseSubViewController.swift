@@ -62,7 +62,12 @@ class XFBaseSubViewController: XFBaseViewController {
         // 统一返回按钮样式
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: backBtn)
         
-        
+        // 添加左划返回手势
+        let backSwipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self,
+                                                                           action: #selector(backToParentController))
+        backSwipe.delegate = self
+        backSwipe.direction = .right
+        self.view.addGestureRecognizer(backSwipe)
     }
     
     
@@ -77,5 +82,13 @@ class XFBaseSubViewController: XFBaseViewController {
             }
         }
     }
+}
+
+extension XFBaseSubViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
 }
 

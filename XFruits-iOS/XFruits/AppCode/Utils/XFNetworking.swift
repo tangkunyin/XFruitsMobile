@@ -107,9 +107,9 @@ public final class XFNetworkStatus: NSObject {
     
     public var currentStatus: XFNetStateCode = .unKnown
     
-    private var reachability:NetworkReachabilityManager = NetworkReachabilityManager(host: "www.qq.com")!
+    var reachability:NetworkReachabilityManager = NetworkReachabilityManager(host: "www.qq.com")!
     
-    private override init() {
+    fileprivate override init() {
         super.init()
         weak var weakSelf = self
         reachability.listener = { status in

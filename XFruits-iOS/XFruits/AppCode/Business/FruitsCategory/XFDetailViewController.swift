@@ -44,10 +44,10 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         
         // 处理版本差异
         if #available(iOS 11.0, *) {
-            contentView.contentInsetAdjustmentBehavior = .never
+            contentView.setValue(2, forKey: "contentInsetAdjustmentBehavior")
         } else {
             // 此设置仅对iOS11以前版本有效
-            automaticallyAdjustsScrollViewInsets = true
+            automaticallyAdjustsScrollViewInsets = false
         }
         
         self.clearNavigationBar = true
@@ -76,8 +76,8 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         navBarBackgroundView?.alpha = alpha
     }
     
-    // MARK: - private and lazy variables
-    private lazy var contentView: UIScrollView = {
+    // MARK: - fileprivate and lazy variables
+    fileprivate lazy var contentView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.bounces = false
         scrollView.delegate = self
@@ -87,7 +87,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         return scrollView
     }()
     
-    private lazy var actionBarView: XFDetailActionBarView = {
+    fileprivate lazy var actionBarView: XFDetailActionBarView = {
         let view = XFDetailActionBarView()
         weak var weakSelf = self
         view.actionHandler = {(type:Int) -> Void in
@@ -108,7 +108,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         return view
     }()
     
-    private func addToShopCart(checkoutNow: Bool) {
+    fileprivate func addToShopCart(checkoutNow: Bool) {
         if let detailData: ProductDetail = _detailData {
             let item: ProductItem = detailData.convertToProductItem()
             let result = XFCartUtils.sharedInstance.addItem(item: item)
@@ -124,7 +124,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         }
     }
     
-    private func goToCheckout(item: ProductItem) {
+    fileprivate func goToCheckout(item: ProductItem) {
         if XFUserGlobal.shared.isLogin {
             if XFCartUtils.sharedInstance.selectItem(gid: item.id, checked: true)
                 && XFCartUtils.sharedInstance.getAll().count > 0 {
@@ -138,24 +138,24 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
     }
     
     /// 轮播及商品信息
-    private lazy var headerView: XFDetailHeaderView = {
+    fileprivate lazy var headerView: XFDetailHeaderView = {
         let view = XFDetailHeaderView()
         return view
     }()
     
     /// 评论
-    private lazy var commentView: XFDetailCommentView = {
+    fileprivate lazy var commentView: XFDetailCommentView = {
         let view = XFDetailCommentView()
         return view
     }()
     
     /// 详情图展
-    private lazy var descriptionView: XFDetailDescriptionView = {
+    fileprivate lazy var descriptionView: XFDetailDescriptionView = {
         let view = XFDetailDescriptionView()
         return view
     }()
     
-    private func makeMainViewConstrains(){
+    fileprivate func makeMainViewConstrains(){
         view.addSubview(contentView)
         view.addSubview(actionBarView)
         contentView.snp.makeConstraints { (make) in
@@ -168,7 +168,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         }
     }
     
-    private func updateSubViewContraints(hasComments:Bool) {
+    fileprivate func updateSubViewContraints(hasComments:Bool) {
         contentView.addSubview(headerView)
         contentView.addSubview(descriptionView)
         headerView.snp.makeConstraints { (make) in

@@ -60,7 +60,7 @@ class XFShopCartEmptyView: UIView {
         customInit()
     }
     
-    private func customInit(){
+    fileprivate func customInit(){
         addSubview(tipImageView)
         addSubview(tipLabel)
         tipImageView.snp.makeConstraints { (make) in

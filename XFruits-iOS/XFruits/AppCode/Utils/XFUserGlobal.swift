@@ -12,7 +12,7 @@ import HandyJSON
 class XFUserGlobal {
 
     static let shared = XFUserGlobal()
-    private init(){
+    fileprivate init(){
         let cachedUser:XFUser? = getCachedUser()
         if let user = cachedUser {
             isLogin = true
@@ -40,7 +40,7 @@ class XFUserGlobal {
     
     
     /// 用户信息缓存文件地址
-    private lazy var userCacheFilePath:String? = {
+    fileprivate lazy var userCacheFilePath:String? = {
         let path:String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         return "\(path)/XFruits_currentUser.info"
     }()
@@ -65,7 +65,7 @@ class XFUserGlobal {
     
     
     /// 归档用户模型到本地缓存
-    private func cacheUser(_ user:XFUser) {
+    fileprivate func cacheUser(_ user:XFUser) {
         let userInfo:NSDictionary = user.toJSON()! as NSDictionary
         if let filePath = userCacheFilePath {
             let success:Bool = NSKeyedArchiver.archiveRootObject(userInfo, toFile: filePath)
@@ -77,7 +77,7 @@ class XFUserGlobal {
     /// 从缓存中取得用户
     ///
     /// - Returns: 缓存中的用户
-    private func getCachedUser() -> XFUser? {
+    fileprivate func getCachedUser() -> XFUser? {
         if let filePath = userCacheFilePath {
             let userInfo = NSKeyedUnarchiver.unarchiveObject(withFile: filePath)
             if userInfo is NSDictionary, let info:NSDictionary = userInfo as? NSDictionary {
@@ -90,7 +90,7 @@ class XFUserGlobal {
     
     
     /// 清楚用户缓存信息
-    private func clearCachedUser() {
+    fileprivate func clearCachedUser() {
         do {
             let fileManager = FileManager.default
             if let filePath = userCacheFilePath {

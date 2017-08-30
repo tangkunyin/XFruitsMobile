@@ -33,7 +33,7 @@ class FourBillCollectionViewCell: UICollectionViewCell {
         setUpUI();
     }
     
-    private func setUpUI() {
+    fileprivate func setUpUI() {
         addSubview(typeIcon)
         addSubview(typeDescLabel)
         typeIcon.snp.makeConstraints({ (make) in

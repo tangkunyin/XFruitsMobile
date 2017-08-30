@@ -14,13 +14,13 @@ class XFOrderDetailViewController: XFBaseSubViewController {
 
     var orderId: String?
     
-    fileprivate var detailData: XFOrderDetail?
+    var detailData: XFOrderDetail?
     
     fileprivate lazy var request: XFOrderSerivice = {
         return XFOrderSerivice()
     }()
     
-    private lazy var detailListView: UITableView = {
+    fileprivate lazy var detailListView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
@@ -44,7 +44,7 @@ class XFOrderDetailViewController: XFBaseSubViewController {
         loadOrderDetail()
     }
     
-    private func loadOrderDetail() {
+    fileprivate func loadOrderDetail() {
         if let id = orderId {
             weak var weakSelf = self
             request.getOrderDetail(params: ["orderId":id], { (respData) in

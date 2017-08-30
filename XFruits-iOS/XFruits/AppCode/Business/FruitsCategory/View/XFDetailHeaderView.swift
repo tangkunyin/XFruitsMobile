@@ -125,7 +125,7 @@ class XFDetailHeaderView: UIView {
         return view
     }()
     
-    private func customInit(){
+    fileprivate func customInit(){
         backgroundColor = UIColor.white
         
         let specificationDescLabelTopLine:UIView = createSeperateLine()

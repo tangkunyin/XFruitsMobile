@@ -24,7 +24,7 @@ class XFIndexArticleViewCell: UITableViewCell {
         }
     }
     
-    private lazy var titleLabel: UILabel = {
+    fileprivate lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
         label.font = XFConstants.Font.pfn16
@@ -32,14 +32,14 @@ class XFIndexArticleViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var coverImage: UIImageView = {
+    fileprivate lazy var coverImage: UIImageView = {
         let cover = UIImageView()
         cover.contentMode = .scaleAspectFill
         cover.layer.masksToBounds = true
         return cover
     }()
     
-    private lazy var detailLabel: UILabel = {
+    fileprivate lazy var detailLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.coolGrey
         label.font = XFConstants.Font.pfn14
@@ -50,7 +50,7 @@ class XFIndexArticleViewCell: UITableViewCell {
     }()
     
     
-    private func customInit(){
+    fileprivate func customInit(){
         contentView.addSubview(titleLabel)
         contentView.addSubview(coverImage)
         contentView.addSubview(detailLabel)

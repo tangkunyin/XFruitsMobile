@@ -49,7 +49,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
         self.mobileTextField?.layer.cornerRadius = 10
         self.mobileTextField.keyboardType = .numberPad
         self.mobileTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
-        self.mobileTextField?.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes: [NSAttributedStringKey.foregroundColor:colorWithRGB(204, g: 204, b: 204),NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)])
+        self.mobileTextField?.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes: [NSForegroundColorAttributeName:colorWithRGB(204, g: 204, b: 204),NSFontAttributeName:UIFont.systemFont(ofSize: 14)])
         self.mobileTextField?.snp.makeConstraints({ (make) in
             
             make.top.equalTo((self.brandImageView?.snp.bottom)!).offset(15)
@@ -68,7 +68,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
         self.validateTextField?.layer.cornerRadius = 10
         self.validateTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
         self.validateTextField.returnKeyType = .done
-        self.validateTextField?.attributedPlaceholder = NSAttributedString(string: "图片验证码", attributes: [NSAttributedStringKey.foregroundColor:colorWithRGB(204, g: 204, b: 204),NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)])
+        self.validateTextField?.attributedPlaceholder = NSAttributedString(string: "图片验证码", attributes: [NSForegroundColorAttributeName:colorWithRGB(204, g: 204, b: 204),NSFontAttributeName:UIFont.systemFont(ofSize: 14)])
         
         self.validateTextField?.snp.makeConstraints({ (make) in
             make.top.equalTo((self.mobileTextField?.snp.bottom)!).offset(22)
@@ -144,7 +144,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
         
     }
     
-    @objc private func userProtocol(){
+    @objc fileprivate func userProtocol(){
         let webVC = XFWebViewController.init(withUrl: "https://www.10fruits.cn/privacy.html")
         webVC.title = "用户隐私政策"
         navigationController?.pushViewController(webVC, animated: true)
@@ -225,7 +225,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
         }
     }
     
-    @objc private func disMissKeyboard(){
+    @objc fileprivate func disMissKeyboard(){
         mobileTextField.resignFirstResponder()
         validateTextField.resignFirstResponder()
     }

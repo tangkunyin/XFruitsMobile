@@ -14,7 +14,7 @@ fileprivate let cellIdentifier = "XFSettingsCellIdentifier"
 /// 设置中心，版本号，关于我们
 class XFSettingsViewController: XFBaseSubViewController {
 
-    private lazy var settingsDataSource: Array<Array<Dictionary<String, String>>> = {
+    fileprivate lazy var settingsDataSource: Array<Array<Dictionary<String, String>>> = {
         return [
             [
                 ["key":"版本号","value":"1.0.0"],
@@ -27,7 +27,7 @@ class XFSettingsViewController: XFBaseSubViewController {
     }()
     
     
-    private lazy var settingListView: UITableView = {
+    fileprivate lazy var settingListView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self

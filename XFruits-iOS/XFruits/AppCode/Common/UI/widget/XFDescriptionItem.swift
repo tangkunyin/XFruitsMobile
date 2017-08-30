@@ -37,7 +37,7 @@ class XFDescriptionItem: UITableViewCell {
         super.init(coder: aDecoder)
         customInit()
     }
-    private func customInit(){
+    fileprivate func customInit(){
         addSubview(titleLabel)
         addSubview(descriptionLabel)
         titleLabel.snp.makeConstraints { (make) in

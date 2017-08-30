@@ -16,14 +16,14 @@ class XFAvailableAddressUtils {
     var addressDict:NSDictionary?
     
     static let shared = XFAvailableAddressUtils()
-    private init(){
+    fileprivate init(){
 //        let cachedAddr:NSDictionary? = getCachedAddress()
         
     }
 
     
     /// 用户信息缓存文件地址
-    private lazy var availableAddressPath:String? = {
+    fileprivate lazy var availableAddressPath:String? = {
         var path:String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         path = "\(path)/XFAddress.info"
         return path
@@ -55,7 +55,7 @@ class XFAvailableAddressUtils {
     
     
     /// 清楚缓存地址信息
-    private func clearCachedUser() {
+    fileprivate func clearCachedUser() {
         do {
             let fileManager = FileManager.default
             if let filePath = availableAddressPath {

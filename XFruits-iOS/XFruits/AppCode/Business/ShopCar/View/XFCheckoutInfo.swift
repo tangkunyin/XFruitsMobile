@@ -32,7 +32,7 @@ class XFCheckoutInfo: UITableView, UITableViewDelegate, UITableViewDataSource {
         customInit()
     }
     
-    private func customInit(){
+    fileprivate func customInit(){
         tableFooterView = UIView()
         bounces = false
         allowsSelection = false

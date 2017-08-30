@@ -23,7 +23,7 @@ class XFUCenterCommonCell: UITableViewCell {
         super.init(coder: aDecoder)
         customInit()
     }
-    private func customInit() {
+    fileprivate func customInit() {
         textLabel?.font = XFConstants.Font.pfn14
         textLabel?.textColor = XFConstants.Color.greyishBrown
         accessoryType = UITableViewCellAccessoryType.disclosureIndicator
@@ -84,7 +84,7 @@ class XFUserCenterViewController: XFBaseViewController {
         
         XFAvailableAddressUtils.shared.cacheAddressAvailable()
         if #available(iOS 11.0, *) {
-            centerTable.contentInsetAdjustmentBehavior = .never
+            centerTable.setValue(2, forKey: "contentInsetAdjustmentBehavior")
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
@@ -94,7 +94,7 @@ class XFUserCenterViewController: XFBaseViewController {
         })
     }
     
-    private func jumpToOrder(_ status: String? = nil, title: String){
+    fileprivate func jumpToOrder(_ status: String? = nil, title: String){
         if XFUserGlobal.shared.isLogin {
             let orderList = XFOrderListViewController()
             orderList.orderStatus = status
@@ -108,7 +108,7 @@ class XFUserCenterViewController: XFBaseViewController {
         }
     }
     
-    private func handleEntrySelect(indexPath: IndexPath) {
+    fileprivate func handleEntrySelect(indexPath: IndexPath) {
         let section = indexPath.section
         let row = indexPath.row
         dPrint("\(section) --- \(row)")

@@ -153,7 +153,7 @@ class XFEditMyAddressView: UIView {
     }()
     
     
-    private func customInit(){
+    fileprivate func customInit(){
         
         // 收货人
         addSubview(leftTipReceiveLabel)
@@ -340,7 +340,7 @@ class XFEditMyAddressView: UIView {
         defaultLabel = address.label
     }
     
-    @objc private func chooseAddress(_ btn:UIButton){
+    @objc fileprivate func chooseAddress(_ btn:UIButton){
         hideKeyboard()
         self.saveBtn.isHidden = true
         let cityView = XFCityChooseView.init(frame: self.bounds)
@@ -409,7 +409,7 @@ class XFEditMyAddressView: UIView {
         }
         
     }
-    @objc private func checkboxSelect(_ btn:UIButton){
+    @objc fileprivate func checkboxSelect(_ btn:UIButton){
         
         if (!btn.isSelected){
             btn.setImage(UIImage.imageWithNamed("check_box_select"), for: .normal)
@@ -421,14 +421,14 @@ class XFEditMyAddressView: UIView {
         }
     }
     
-    private func hideKeyboard(){
+    fileprivate func hideKeyboard(){
         receiveInput.resignFirstResponder()
         mobileInput.resignFirstResponder()
         addressDescTextView.resignFirstResponder()
     }
     
     func widthForLabel(text:NSString ,font :CGFloat) -> CGFloat {
-        let size = text.size(withAttributes:[NSAttributedStringKey.font:sysFontWithSize(font)])
+        let size = text.size(attributes:[NSFontAttributeName:sysFontWithSize(font)])
         return size.width
     }
     

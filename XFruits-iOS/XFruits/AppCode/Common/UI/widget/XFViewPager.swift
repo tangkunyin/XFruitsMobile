@@ -12,7 +12,7 @@ import SnapKit
 
 class XFViewPager: UIView, UIScrollViewDelegate {
     
-    private var placeHolder:String?
+    var placeHolder:String?
     
     public var pagerDidClicked: ((Int) -> Void)?
     
@@ -42,7 +42,7 @@ class XFViewPager: UIView, UIScrollViewDelegate {
         renderPager(source: source)
     }
     
-    private func renderPager(source:Array<String>){
+    fileprivate func renderPager(source:Array<String>){
         if source.count == 1 {
             let singleView:UIImageView = imagePagerView(urlString: source.first!, placeHolder: placeHolder, index: 0)
             self.container.addSubview(singleView)
@@ -78,7 +78,7 @@ class XFViewPager: UIView, UIScrollViewDelegate {
         }
     }
     
-    private lazy var pageControl:UIPageControl = {
+    fileprivate lazy var pageControl:UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.pageIndicatorTintColor = XFConstants.Color.paleGrey
         pageControl.currentPageIndicatorTintColor = XFConstants.Color.salmon
@@ -86,7 +86,7 @@ class XFViewPager: UIView, UIScrollViewDelegate {
         return pageControl
     }()
     
-    private lazy var container:UIScrollView = {
+    fileprivate lazy var container:UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.delegate = self
         scrollView.bounces = false
@@ -102,8 +102,8 @@ class XFViewPager: UIView, UIScrollViewDelegate {
         self.pageControl.currentPage = Int(page);
     }
     
-    // MARK: - private funcs
-    private func imagePagerView(urlString:String,placeHolder:String?,index:Int) -> UIImageView {
+    // MARK: - fileprivate funcs
+    fileprivate func imagePagerView(urlString:String,placeHolder:String?,index:Int) -> UIImageView {
         
         var placeHolderImage:UIImage? = nil
         if let placeHolder = placeHolder {
@@ -125,7 +125,7 @@ class XFViewPager: UIView, UIScrollViewDelegate {
         return pageView
     }
     
-    @objc private func pagerClicked(_ tap:UITapGestureRecognizer) {
+    @objc fileprivate func pagerClicked(_ tap:UITapGestureRecognizer) {
         if let pagerView = tap.view, let pagerClicked = self.pagerDidClicked {
             pagerClicked(pagerView.tag)
         }

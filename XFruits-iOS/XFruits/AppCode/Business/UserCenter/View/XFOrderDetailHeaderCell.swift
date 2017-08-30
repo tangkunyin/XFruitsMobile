@@ -22,7 +22,7 @@ class XFOrderDetailHeaderCell: UITableViewCell {
         }
     }
     
-    private func setUpUI(){
+    fileprivate func setUpUI(){
         selectionStyle = .none
         contentView.addSubview(orderNumLabel)
         contentView.addSubview(createTimeLabel)
@@ -66,7 +66,7 @@ class XFOrderDetailHeaderCell: UITableViewCell {
         setUpUI();
     }
     
-    private lazy var orderNumLabel: UILabel = {
+    fileprivate lazy var orderNumLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
         label.font = XFConstants.Font.pfn12
@@ -74,7 +74,7 @@ class XFOrderDetailHeaderCell: UITableViewCell {
         return label
     }()
     
-    private lazy var createTimeLabel: UILabel = {
+    fileprivate lazy var createTimeLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
         label.font = XFConstants.Font.pfn12
@@ -82,7 +82,7 @@ class XFOrderDetailHeaderCell: UITableViewCell {
         return label
     }()
     
-    private lazy var payWayLabel: UILabel = {
+    fileprivate lazy var payWayLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
         label.font = XFConstants.Font.pfn12
@@ -90,7 +90,7 @@ class XFOrderDetailHeaderCell: UITableViewCell {
         return label
     }()
     
-    private lazy var orderAmoutLabel: UILabel = {
+    fileprivate lazy var orderAmoutLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
         label.font = XFConstants.Font.pfn12

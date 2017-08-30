@@ -26,8 +26,8 @@ class XFUserLoginViewController: XFBaseViewController {
         textField.layer.cornerRadius = 10
         textField.keyboardType = .numberPad
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
-        let attr = [NSAttributedStringKey.foregroundColor:XFConstants.Color.pinkishGrey,
-                    NSAttributedStringKey.font:XFConstants.Font.pfn14]
+        let attr = [NSForegroundColorAttributeName:XFConstants.Color.pinkishGrey,
+                    NSFontAttributeName:XFConstants.Font.pfn14]
         textField.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes:attr)
         return textField
     }()
@@ -40,8 +40,8 @@ class XFUserLoginViewController: XFBaseViewController {
         textField.layer.borderWidth = 0.5
         textField.layer.cornerRadius = 10
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
-        let attr = [NSAttributedStringKey.foregroundColor:XFConstants.Color.pinkishGrey,
-                    NSAttributedStringKey.font:XFConstants.Font.pfn14]
+        let attr = [NSForegroundColorAttributeName:XFConstants.Color.pinkishGrey,
+                    NSFontAttributeName:XFConstants.Font.pfn14]
         textField.attributedPlaceholder = NSAttributedString(string: "请输入密码", attributes: attr)
         textField.returnKeyType = .done
         return textField;
@@ -197,15 +197,15 @@ class XFUserLoginViewController: XFBaseViewController {
         }
     }
     
-    @objc private func cancelLogin(){
+    @objc fileprivate func cancelLogin(){
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc private func forgetPassword(){
+    @objc fileprivate func forgetPassword(){
         MBProgressHUD.showSuccess("请取消登录后，联系客服处理")
     }
     
-    @objc private func disMissKeyboard(){
+    @objc fileprivate func disMissKeyboard(){
         mobileTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
     }

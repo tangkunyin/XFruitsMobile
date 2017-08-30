@@ -126,14 +126,14 @@ class XFShopCartViewCell: UITableViewCell {
     }
     
     
-    @objc private func selectChanged(btn:UIButton) {
+    @objc fileprivate func selectChanged(btn:UIButton) {
         if XFCartUtils.sharedInstance.selectItem(gid: dataSource!.id!, checked: !btn.isSelected) {
             btn.isSelected = !btn.isSelected
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: XFConstants.MessageKey.NeedRefreshShopCartData), object: nil)
         }
     }
     
-    @objc private func quantityChanged(btn:UIButton) {
+    @objc fileprivate func quantityChanged(btn:UIButton) {
         if var quantity:Int = Int(quantityLabel.text!) {
             switch btn.tag {
             case -1:

@@ -48,7 +48,7 @@ class XFCheckoutViewController: XFBaseViewController {
         updateDataSource()
     }
     
-    private func updateDataSource()  {
+    fileprivate func updateDataSource()  {
         weak var weakSelf = self
         request.orderConfirm { (data) in
             if data is XFOrderConfirm {
@@ -90,7 +90,7 @@ class XFCheckoutViewController: XFBaseViewController {
         }
     }
     
-    @objc private func onAddressChange() {
+    @objc fileprivate func onAddressChange() {
         let addressList = XFUserAddressesMangageViewController()
         weak var weakSelf = self
         addressList.onSelectedAddress = {(address) in
@@ -99,7 +99,7 @@ class XFCheckoutViewController: XFBaseViewController {
         navigationController?.pushViewController(addressList, animated: true)
     }
 
-    private func makeConstrains() {
+    fileprivate func makeConstrains() {
         view.addSubview(contentView)
         view.addSubview(checkoutBar)
         contentView.snp.makeConstraints { (make) in
@@ -131,7 +131,7 @@ class XFCheckoutViewController: XFBaseViewController {
         }
     }
     
-    private lazy var contentView: UIScrollView = {
+    fileprivate lazy var contentView: UIScrollView = {
         let content = UIScrollView()
         content.showsVerticalScrollIndicator = false
         content.bounces = false
@@ -139,7 +139,7 @@ class XFCheckoutViewController: XFBaseViewController {
         return content
     }()
     
-    private lazy var checkoutGoodsListView:UITableView = {
+    fileprivate lazy var checkoutGoodsListView:UITableView = {
         let listView = UITableView.init(frame: CGRect.zero, style: .plain)
         listView.delegate = self
         listView.dataSource = self
@@ -153,25 +153,25 @@ class XFCheckoutViewController: XFBaseViewController {
         return listView
     }()
     
-    private lazy var checkoutAddress: XFCheckoutAddress = {
+    fileprivate lazy var checkoutAddress: XFCheckoutAddress = {
         let addressView = XFCheckoutAddress()
         addressView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onAddressChange)))
         return addressView
     }()
     
-    private lazy var checkoutInfo: XFCheckoutInfo = {
+    fileprivate lazy var checkoutInfo: XFCheckoutInfo = {
         let infoList = XFCheckoutInfo()
-        infoList.InfoArr = [totalGoodsAmount, nil, nil]
+        infoList.InfoArr = [self.totalGoodsAmount, nil, nil]
         return infoList
     }()
     
-    private lazy var checkoutBar:XFCheckoutActionBar = {
+    fileprivate lazy var checkoutBar:XFCheckoutActionBar = {
         let bar = XFCheckoutActionBar()
         weak var weakSelf = self
         bar.onConfirmBarPress = {
             weakSelf?.submitOrder()
         }
-        bar.updateActualAmount(totalAmount: totalGoodsAmount!)
+        bar.updateActualAmount(totalAmount: self.totalGoodsAmount!)
         return bar;
     }()
 }

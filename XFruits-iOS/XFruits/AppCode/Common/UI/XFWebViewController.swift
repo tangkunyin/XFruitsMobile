@@ -14,7 +14,7 @@ fileprivate let webViewLoadProgressKey = "estimatedProgress"
 
 class XFWebViewController: XFBaseSubViewController {
     
-    private var urlString: String?
+    var urlString: String?
     
     lazy var webview: WKWebView = {
         let web = WKWebView()

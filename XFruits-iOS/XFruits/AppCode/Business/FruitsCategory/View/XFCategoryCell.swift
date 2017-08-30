@@ -17,7 +17,7 @@ public let XFCategoryCellWidth = (XFConstants.UI.deviceWidth - 30) / 2
 
 class XFCategoryCell: UICollectionViewCell {
  
-    private var imgViewHeightConstraint: Constraint?
+    var imgViewHeightConstraint: Constraint?
     
     var dataSource:ProductItem? {
         didSet {
@@ -63,7 +63,7 @@ class XFCategoryCell: UICollectionViewCell {
     
     lazy var cartBtn:UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage.imageWithNamed("shopcart-hilight"), for: .normal)
+        btn.setImage(UIImage.imageWithNamed("shopCart-icon"), for: .normal)
         btn.addTarget(self, action: #selector(addToCartFromCategoryItem), for: .touchUpInside)
         return btn
     }()
@@ -96,7 +96,7 @@ class XFCategoryCell: UICollectionViewCell {
     }
     
   
-    private func makeCellConstrains(){
+    fileprivate func makeCellConstrains(){
         thumbnail.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self)
             make.bottom.equalTo(self.titleLabel.snp.top)
@@ -124,7 +124,7 @@ class XFCategoryCell: UICollectionViewCell {
         }
     }
     
-    @objc private func addToCartFromCategoryItem(){
+    @objc fileprivate func addToCartFromCategoryItem(){
         if let item: ProductItem = dataSource {
             let result = XFCartUtils.sharedInstance.addItem(item: item)
             if result {

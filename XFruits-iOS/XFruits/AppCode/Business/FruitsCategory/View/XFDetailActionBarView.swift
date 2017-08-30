@@ -69,13 +69,13 @@ class XFDetailActionBarView: UIView {
         customInit()
     }
     
-    @objc private func actionHandler(btn:UIButton) {
+    @objc fileprivate func actionHandler(btn:UIButton) {
         if let action = actionHandler {
             action(btn.tag)
         }
     }
     
-    private func customInit(){
+    fileprivate func customInit(){
         
         addSubview(link2ChatBtn)
         addSubview(add2CollectionBtn)

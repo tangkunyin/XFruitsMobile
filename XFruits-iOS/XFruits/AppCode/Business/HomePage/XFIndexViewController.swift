@@ -17,7 +17,7 @@ fileprivate let loopImageComponentHeight = floor(XFConstants.UI.deviceWidth/(192
 
 class XFIndexViewController: XFBaseViewController {
     
-    private var loopImages: Array<XFIndexLoopImage>? {
+    var loopImages: Array<XFIndexLoopImage>? {
         didSet {
             if let images = loopImages {
                 var imageUrls: Array<String> = []
@@ -31,7 +31,7 @@ class XFIndexViewController: XFBaseViewController {
         }
     }
     
-    private var dataSource: Array<XFNewsContent> = [] {
+    var dataSource: Array<XFNewsContent> = [] {
         didSet {
             articleListView.reloadData()
         }
@@ -50,7 +50,7 @@ class XFIndexViewController: XFBaseViewController {
         }
     }
     
-    private func renderHomeIndexView() {
+    fileprivate func renderHomeIndexView() {
         view.addSubview(articleListView)
         articleListView.snp.makeConstraints { (make) in
             make.center.size.equalTo(view)
@@ -58,7 +58,7 @@ class XFIndexViewController: XFBaseViewController {
         loadData()
     }
     
-    private func loadData(){
+    fileprivate func loadData(){
         weak var weakSelf = self
         request.getLoopImages { (result) in
             weakSelf?.loopImages = result as? Array
@@ -72,20 +72,20 @@ class XFIndexViewController: XFBaseViewController {
     }
     
     // 统一跳网页
-    private func jumpToWebview(url: String, title: String = "拾个鲜果"){
+    fileprivate func jumpToWebview(url: String, title: String = "拾个鲜果"){
         let webView = XFWebViewController.init(withUrl: url)
         webView.title = title
         navigationController?.pushViewController(webView, animated: true)
     }
     
     // 跳详情页
-    private func jumpToProductDetail(pId: String){
+    fileprivate func jumpToProductDetail(pId: String){
         let detail = XFDetailViewController()
         detail.prodId = pId
         navigationController?.pushViewController(detail, animated: true)
     }
     
-    private func handlePagerClick(withIndex index: Int) {
+    fileprivate func handlePagerClick(withIndex index: Int) {
         switch index {
         case XFIndexConentType.html.rawValue,
              XFIndexConentType.advertising.rawValue:
@@ -97,7 +97,7 @@ class XFIndexViewController: XFBaseViewController {
         }
     }
     
-    private func handleItemClick(withData data: XFNewsContent) {
+    fileprivate func handleItemClick(withData data: XFNewsContent) {
         switch data.type {
         case XFIndexConentType.html.rawValue,
              XFIndexConentType.advertising.rawValue:
@@ -109,11 +109,11 @@ class XFIndexViewController: XFBaseViewController {
         }
     }
     
-    private lazy var request: XFNewsInfoService = {
+    fileprivate lazy var request: XFNewsInfoService = {
         return XFNewsInfoService()
     }()
     
-    private lazy var pagerView:XFViewPager = {
+    fileprivate lazy var pagerView:XFViewPager = {
         let pagerView = XFViewPager(source: [""], placeHolder: "Loading-white")
         weak var weakSelf = self
         pagerView.pagerDidClicked = {(index:Int) -> Void in
@@ -122,22 +122,22 @@ class XFIndexViewController: XFBaseViewController {
         return pagerView
     }()
     
-    lazy var articleListView: UITableView = {
-        let tableView = UITableView(frame: CGRect.zero, style: .grouped)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.showsVerticalScrollIndicator = false
-        tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        tableView.separatorColor = XFConstants.Color.separatorLine
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 360
-        tableView.register(XFIndexArticleViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        return tableView
+    fileprivate lazy var articleListView: UITableView = {
+        let listView = UITableView.init(frame: CGRect.zero, style: .grouped)
+        listView.delegate = self
+        listView.dataSource = self
+        listView.showsVerticalScrollIndicator = false
+        listView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        listView.separatorColor = XFConstants.Color.separatorLine
+        listView.rowHeight = UITableViewAutomaticDimension
+        listView.estimatedRowHeight = 360
+        listView.register(XFIndexArticleViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        return listView
     }()
 
 }
 
-extension XFIndexViewController: UITableViewDataSource,UITableViewDelegate {
+extension XFIndexViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return dataSource.count

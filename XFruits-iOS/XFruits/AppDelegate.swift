@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    private func handleShortCutAction(withOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) ->Bool {
+    fileprivate func handleShortCutAction(withOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) ->Bool {
         if let options = launchOptions {
             let item = (options as NSDictionary).value(forKey: UIApplicationLaunchOptionsKey.shortcutItem.rawValue)
             if item != nil, item is UIApplicationShortcutItem {
@@ -93,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    private func navigateTo(controller: UIViewController, loginCheck:Bool) {
+    fileprivate func navigateTo(controller: UIViewController, loginCheck:Bool) {
         if loginCheck && !XFUserGlobal.shared.isLogin {
             let realController = UINavigationController.init(rootViewController: XFUserLoginViewController())
             window?.rootViewController?.present(realController, animated: false, completion: nil)
@@ -181,7 +181,7 @@ extension AppDelegate: WXApiDelegate {
                         for subResult in resultArr {
                             if subResult.characters.count > 10 && subResult.hasPrefix("auth_code=") {
                                 let index = subResult.index(subResult.startIndex, offsetBy: 10)
-                                authCode = "\(subResult[..<index])"
+                                authCode = subResult.substring(from: index)
                                 break
                             }
                         }

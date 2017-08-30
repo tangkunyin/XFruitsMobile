@@ -9,7 +9,7 @@
 import Foundation
 import HandyJSON
 
-struct XFNewsContent: HandyJSON {
+class XFNewsContent: HandyJSON {
     var id: Int = 0
     var type: Int = 0
     var title: String = ""
@@ -17,18 +17,22 @@ struct XFNewsContent: HandyJSON {
     var cover: String = ""
     var data: String = ""
     var sort: Int = 0
+    
+    required init() {}
 }
 
-struct XFNewsInfo: HandyJSON {
+class XFNewsInfo: HandyJSON {
     var page: Int = 0
     var size: Int = 0
     var totalElements: Int = 0
     var totalPages: Int = 0
     var content: Array<XFNewsContent>?
+    
+    required init() {}
 }
 
 
-struct XFIndexLoopImage: HandyJSON {
+class XFIndexLoopImage: HandyJSON {
     var id: Int = 0
     var position: Int = 0
     var type: Int = 0
@@ -37,4 +41,6 @@ struct XFIndexLoopImage: HandyJSON {
     var cover: String = ""
     var data: String = ""
     var sort: Int = 0
+    
+    required init() {}
 }

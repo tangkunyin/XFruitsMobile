@@ -11,9 +11,9 @@ import MBProgressHUD
 
 class XFAppGuideViewController: UIViewController {
 
-    private let guideImageSource: Array<String> = ["guide_bg1", "guide_bg2", "guide_bg3"]
+    fileprivate let guideImageSource: Array<String> = ["guide_bg1", "guide_bg2", "guide_bg3"]
     
-    private lazy var guideBackgroundView: UIScrollView = {
+    fileprivate lazy var guideBackgroundView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.delegate = self
         scrollView.bounces = false
@@ -23,7 +23,7 @@ class XFAppGuideViewController: UIViewController {
         return scrollView
     }()
     
-    private lazy var guidePageControl:UIPageControl = {
+    fileprivate lazy var guidePageControl:UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.pageIndicatorTintColor = XFConstants.Color.paleGrey
         pageControl.currentPageIndicatorTintColor = XFConstants.Color.salmon
@@ -31,7 +31,7 @@ class XFAppGuideViewController: UIViewController {
         return pageControl
     }()
     
-    private lazy var closeGuideBtn: UIButton = {
+    fileprivate lazy var closeGuideBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle("开启艺术生活", for: .normal)
         btn.setTitleColor(UIColor.white, for: .normal)
@@ -48,7 +48,7 @@ class XFAppGuideViewController: UIViewController {
         renderGuidePagerView()
     }
     
-    @objc private func closeGuideClick() {
+    @objc fileprivate func closeGuideClick() {
         weak var weakSelf = self
         UIView.animate(withDuration: 0.65, animations: {
             weakSelf?.view.transform = CGAffineTransform(scaleX: 1.8, y: 1.8);
@@ -59,7 +59,7 @@ class XFAppGuideViewController: UIViewController {
         }
     }
 
-    private func renderGuidePagerView() {
+    fileprivate func renderGuidePagerView() {
         view.addSubview(guideBackgroundView)
         guideBackgroundView.snp.makeConstraints { (make) in
             make.edges.equalTo(view).inset(UIEdgeInsets.zero)

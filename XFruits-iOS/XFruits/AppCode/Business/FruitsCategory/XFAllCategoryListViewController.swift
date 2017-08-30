@@ -13,7 +13,7 @@ import Kingfisher
 
 class XFAllCategoryListViewController: XFBaseSubViewController {
 
-    private var productTypes :Array<ProductType> = []
+    var productTypes :Array<ProductType> = []
     
     var selectedTypeId: Int = 1000
     

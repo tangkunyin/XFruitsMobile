@@ -38,9 +38,9 @@ class XFDetailDescriptionView: UIView {
         label.adjustsFontSizeToFitWidth = false
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 10
-        let attributes = [NSAttributedStringKey.font:XFConstants.Font.pfn14,
-                          NSAttributedStringKey.foregroundColor:XFConstants.Color.darkGray,
-                          NSAttributedStringKey.paragraphStyle:paragraphStyle];
+        let attributes = [NSFontAttributeName:XFConstants.Font.pfn14,
+                          NSForegroundColorAttributeName:XFConstants.Color.darkGray,
+                          NSParagraphStyleAttributeName:paragraphStyle];
         let attributeText = NSAttributedString.init(string: "商品详情", attributes: attributes)
         label.attributedText = attributeText
         return label
@@ -54,7 +54,7 @@ class XFDetailDescriptionView: UIView {
         return scrollView
     }()
     
-    private func customInit(){
+    fileprivate func customInit(){
         backgroundColor = UIColor.white
     
         let line:UIView = createSeperateLine()
@@ -81,7 +81,7 @@ class XFDetailDescriptionView: UIView {
 
     }
     
-    private func renderDescriptionsView(descSource: Array<String>) {
+    fileprivate func renderDescriptionsView(descSource: Array<String>) {
         for (index, item) in descSource.enumerated() {
             let imageView = UIImageView()
             imageView.contentMode = .scaleAspectFill

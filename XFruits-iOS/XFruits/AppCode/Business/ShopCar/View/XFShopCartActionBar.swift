@@ -80,7 +80,7 @@ class XFShopCartActionBar: UIView {
         }
     }
     
-    @objc private func onClickAction() {
+    @objc fileprivate func onClickAction() {
         if let confirmPress = onConfirmBarPress {
             confirmPress()
         }

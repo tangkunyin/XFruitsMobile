@@ -59,7 +59,7 @@ class UserCenterAvatarCell: UITableViewCell {
         setUpUI();
     }
     
-    private func setUpUI(){
+    fileprivate func setUpUI(){
         
         accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         addSubview(userNameLabel)

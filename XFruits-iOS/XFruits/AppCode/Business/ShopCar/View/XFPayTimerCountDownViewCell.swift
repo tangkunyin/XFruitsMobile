@@ -68,7 +68,7 @@ class XFPayTimerCountDownViewCell: UITableViewCell {
         diffTime -= 1
     }
     
-    private func customInit(){
+    fileprivate func customInit(){
         setUpUI()
         countDownTimer = Timer.scheduledTimer(timeInterval: 1.0,
                                               target: self,
@@ -87,7 +87,7 @@ class XFPayTimerCountDownViewCell: UITableViewCell {
         customInit();
     }
     
-    private lazy var waitPayTip:UILabel = {
+    fileprivate lazy var waitPayTip:UILabel = {
         let waitPayTip = UILabel()
         waitPayTip.text = "已下单，您需要继续完成支付！"
         waitPayTip.textColor = colorWithRGB(102, g: 102, b: 102)
@@ -96,7 +96,7 @@ class XFPayTimerCountDownViewCell: UITableViewCell {
         return waitPayTip
     }()
     
-    private lazy var remainTimeLabel:UILabel = {
+    fileprivate lazy var remainTimeLabel:UILabel = {
         let remainTimeLabel = UILabel()
         remainTimeLabel.text = "00 : 00"
         remainTimeLabel.textColor = colorWithRGB(102, g: 102, b: 102)
@@ -105,7 +105,7 @@ class XFPayTimerCountDownViewCell: UITableViewCell {
         return remainTimeLabel
     }()
     
-    private func setUpUI() {
+    fileprivate func setUpUI() {
         addSubview(waitPayTip)
         addSubview(remainTimeLabel)
         waitPayTip.snp.makeConstraints({ (make) in

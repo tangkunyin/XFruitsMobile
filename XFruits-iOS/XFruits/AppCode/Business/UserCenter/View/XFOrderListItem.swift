@@ -108,7 +108,7 @@ class XFOrderListItem: UITableViewCell {
         return view
     }()
     
-    private func customInit(){
+    fileprivate func customInit(){
         initGoodsContainer()
         contentView.addSubview(titleContainer)
         contentView.addSubview(orderGoodsContainer)
@@ -142,7 +142,7 @@ class XFOrderListItem: UITableViewCell {
         }
     }
     
-    private func initGoodsContainer(){
+    fileprivate func initGoodsContainer(){
         orderGoodsContainer.addSubview(goodsCoverContainer)
         orderGoodsContainer.addSubview(quantityContainer)
         goodsCoverContainer.snp.makeConstraints { (make) in
@@ -158,7 +158,7 @@ class XFOrderListItem: UITableViewCell {
     }
     
     // MARK: - 细节渲染
-    private func renderGoodsCover(_ covers:Array<String>){
+    fileprivate func renderGoodsCover(_ covers:Array<String>){
         for (index, item) in covers.enumerated() {
             let cover:UIImageView = UIImageView()
             cover.kf.setImage(with: URL.init(string: item),
@@ -174,7 +174,7 @@ class XFOrderListItem: UITableViewCell {
         }
     }
     
-    private func renderPayActionBar(){
+    fileprivate func renderPayActionBar(){
         let payBtn = createActionBtn(title: "去支付",
                                      titleColor: UIColor.white,
                                      borderColor: XFConstants.Color.salmon,
@@ -187,7 +187,7 @@ class XFOrderListItem: UITableViewCell {
         }
     }
     
-    private func renderDeliveredActionBar(){
+    fileprivate func renderDeliveredActionBar(){
         let expressQueryBtn = createActionBtn(title: "查询物流",
                                               titleColor: XFConstants.Color.darkGray,
                                               borderColor: XFConstants.Color.darkGray,
@@ -211,7 +211,7 @@ class XFOrderListItem: UITableViewCell {
         }
     }
     
-    private func renderEvaluateActionBar(){
+    fileprivate func renderEvaluateActionBar(){
         let commentBtn = createActionBtn(title: "去评价",
                                          titleColor: UIColor.white,
                                          borderColor: XFConstants.Color.salmon,
@@ -224,7 +224,7 @@ class XFOrderListItem: UITableViewCell {
         }
     }
     
-    private func createActionBtn(title:String,
+    fileprivate func createActionBtn(title:String,
                                  titleColor:UIColor,
                                  borderColor:UIColor,
                                  backgroundColor:UIColor,
@@ -242,7 +242,7 @@ class XFOrderListItem: UITableViewCell {
         return btn
     }
     
-    @objc private func onBarButtonClicked(_ btn: UIButton) {
+    @objc fileprivate func onBarButtonClicked(_ btn: UIButton) {
         if let completion = onBarBtnClick, let data = dataSource {
             completion(btn.tag, data)
         }

@@ -66,7 +66,7 @@ class XFAlert: UIView {
         sureBtn.frame = CGRect.init()
         sureBtn.backgroundColor = UIColor.orange
         sureBtn.setTitle("确定", for: .normal)
-        cancelBtn.addTarget(self, action: #selector(sureEvent), for: .touchUpInside)
+        self.cancelBtn.addTarget(self, action: #selector(sureEvent), for: .touchUpInside)
 
         return sureBtn
     }()

@@ -16,13 +16,13 @@ class XFOrderListViewController: XFBaseSubViewController {
 
     var orderStatus: String?
     
-    fileprivate var orderData: Array<XFOrderContent>?
+    var orderData: Array<XFOrderContent>?
     
     fileprivate lazy var request: XFOrderSerivice = {
         return XFOrderSerivice()
     }()
     
-    private lazy var orderListView: UITableView = {
+    fileprivate lazy var orderListView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
@@ -41,7 +41,7 @@ class XFOrderListViewController: XFBaseSubViewController {
         loadOrderData()
     }
 
-    private func loadOrderData() {
+    fileprivate func loadOrderData() {
         weak var weakSelf = self
         var params: Dictionary<String, Any> = ["page":1,"size":XFConstants.pageRows]
         if let status = orderStatus {
@@ -58,7 +58,7 @@ class XFOrderListViewController: XFBaseSubViewController {
         }
     }
     
-    private func renderOrderListView(data: Array<XFOrderContent>){
+    fileprivate func renderOrderListView(data: Array<XFOrderContent>){
         self.orderData = data
         view.addSubview(orderListView)
         orderListView.snp.makeConstraints { (make) in
@@ -67,7 +67,7 @@ class XFOrderListViewController: XFBaseSubViewController {
     }
     
     //TODO. 订单内继续完成支付
-    private func orderPayWith(order: XFOrderContent){
+    fileprivate func orderPayWith(order: XFOrderContent){
         let payInfo = XFOrderCommit()
         payInfo.orderId = order.orderId
         payInfo.cashFee = "\(order.cashFee)"
@@ -84,7 +84,7 @@ class XFOrderListViewController: XFBaseSubViewController {
     }
     
     // 确认收货
-    private func orderConfirmWith(orderId: String){
+    fileprivate func orderConfirmWith(orderId: String){
         weak var weakSelf = self
         request.confirmOrder(params: ["orderId":orderId]) { (data) in
             MBProgressHUD.showMessage("收货成功，感谢支持", completion: {
@@ -93,13 +93,13 @@ class XFOrderListViewController: XFBaseSubViewController {
         }
     }
     
-    private func queryExpressWith(orderId: String){
+    fileprivate func queryExpressWith(orderId: String){
         let expressVC = XFExpressViewController()
         expressVC.orderId = orderId
         navigationController?.pushViewController(expressVC, animated: true)
     }
     
-    private func barClickHandler(_ type: Int, _ orderData: XFOrderContent){
+    fileprivate func barClickHandler(_ type: Int, _ orderData: XFOrderContent){
         switch type {
         case 0:
             orderPayWith(order: orderData)

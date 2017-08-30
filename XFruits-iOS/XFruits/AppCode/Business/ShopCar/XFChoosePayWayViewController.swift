@@ -89,7 +89,7 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
 
     /// https://doc.open.alipay.com/docs/doc.htm?spm=a219a.7629140.0.0.dXCllL&treeId=204&articleId=105295&docType=1
     /// https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5
-    @objc private func payWithType(){
+    @objc fileprivate func payWithType(){
         var channelId: Int?
         for item in (payInfo?.payChannels)! {
             if let payChannel: XFPayChannel = item, payChannel.defaultChannel == true  {
@@ -119,7 +119,7 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
 
 // MARK: - Payment
 extension XFChoosePayWayViewController {
-    private func orderPayWithAliPay(_ data: String) {
+    fileprivate func orderPayWithAliPay(_ data: String) {
         weak var weakSelf = self
         AlipaySDK.defaultService().payOrder(data, fromScheme: "XFruits") { (respData) in
             if let dict = respData as NSDictionary?,
@@ -150,11 +150,11 @@ extension XFChoosePayWayViewController {
         }
     }
     
-    private func orderPayWithWeixin(_ data: String){
+    fileprivate func orderPayWithWeixin(_ data: String){
         MBProgressHUD.showError("微信暂不支持，请选择支付宝吧~")
     }
     
-    private func handleThePaymentResult(flag: Bool, payType: Int, errorMsg: String = "") {
+    fileprivate func handleThePaymentResult(flag: Bool, payType: Int, errorMsg: String = "") {
         weak var weakSelf = self
         let payResultVC = XFPayResultViewController()
         payResultVC.isSuccess = flag

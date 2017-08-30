@@ -113,7 +113,7 @@ class XFBaseViewController: UIViewController {
     
     
     /// 私有公共组件
-    private lazy var loaddingView: UIImageView = {
+    fileprivate lazy var loaddingView: UIImageView = {
         let imageView = UIImageView.init(image: UIImage.imageWithNamed("Loading-transprent"))
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
@@ -121,7 +121,7 @@ class XFBaseViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var nullDataView: UIImageView = {
+    fileprivate lazy var nullDataView: UIImageView = {
         let imageView = UIImageView.init(image: UIImage.imageWithNamed("order_empty"))
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
@@ -129,7 +129,7 @@ class XFBaseViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var nullDataTip: UILabel = {
+    fileprivate lazy var nullDataTip: UILabel = {
         let label = UILabel()
         label.font = XFConstants.Font.pfn14
         label.textAlignment = .center

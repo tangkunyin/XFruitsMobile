@@ -35,7 +35,7 @@ class XFSQLiteDataSource {
     
     let Db:Connection?
 
-    private init(){
+    fileprivate init(){
         let path:String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         do {
             let dbFilePath = "\(path)/XFruits.sqlite3"

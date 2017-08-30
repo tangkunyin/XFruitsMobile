@@ -46,7 +46,7 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         self.messageCodeTextField?.layer.cornerRadius = 10
         self.messageCodeTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
         
-        self.messageCodeTextField?.attributedPlaceholder = NSAttributedString(string: "请输入短信验证码，5分钟有效", attributes: [NSAttributedStringKey.foregroundColor:colorWithRGB(204, g: 204, b: 204),NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)])
+        self.messageCodeTextField?.attributedPlaceholder = NSAttributedString(string: "请输入短信验证码，5分钟有效", attributes: [NSForegroundColorAttributeName:colorWithRGB(204, g: 204, b: 204),NSFontAttributeName:UIFont.systemFont(ofSize: 14)])
         self.messageCodeTextField?.snp.makeConstraints({ (make) in
             
             make.top.equalTo((self.brandImageView?.snp.bottom)!).offset(30)
@@ -70,7 +70,7 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         self.passwordTextField?.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
         
         
-        self.passwordTextField?.attributedPlaceholder = NSAttributedString(string: "请输入密码", attributes: [NSAttributedStringKey.foregroundColor:colorWithRGB(204, g: 204, b: 204),NSAttributedStringKey.font:UIFont.systemFont(ofSize: 14)]) //NSAttributedString(string:"请输入密码",attributes:[NSForegroundColorAttributeName: UIColor.blackColor])
+        self.passwordTextField?.attributedPlaceholder = NSAttributedString(string: "请输入密码", attributes: [NSForegroundColorAttributeName:colorWithRGB(204, g: 204, b: 204),NSFontAttributeName:UIFont.systemFont(ofSize: 14)]) //NSAttributedString(string:"请输入密码",attributes:[NSForegroundColorAttributeName: UIColor.blackColor])
         self.passwordTextField?.snp.makeConstraints({ (make) in
             make.top.equalTo((self.messageCodeTextField?.snp.bottom)!).offset(20)
             make.left.equalTo(self.view).offset(20)
@@ -139,7 +139,7 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         }
     }
     
-    @objc private func disMissKeyboard(){
+    @objc func disMissKeyboard(){
         messageCodeTextField?.resignFirstResponder()
         passwordTextField?.resignFirstResponder()
     }

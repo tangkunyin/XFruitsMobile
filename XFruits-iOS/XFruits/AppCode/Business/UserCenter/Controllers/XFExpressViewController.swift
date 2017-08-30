@@ -21,30 +21,31 @@ class XFExpressViewController: XFBaseSubViewController {
 
     var orderId: String = ""
     
-    fileprivate var expressData: XFExpress?
+    var expressData: XFExpress?
     
     fileprivate lazy var request: XFOrderSerivice = {
         return XFOrderSerivice()
     }()
     
-    private lazy var expressInfoHeader: UIView = {
+    fileprivate lazy var expressInfoHeader: UIView = {
         let header = UIView()
         header.backgroundColor = UIColor.white
-        header.addSubview(expressName)
-        header.addSubview(deliveryNum)
-        header.addSubview(deliveryNumCopyBtn)
-        expressName.snp.makeConstraints({ (make) in
+        header.addSubview(self.expressName)
+        header.addSubview(self.deliveryNum)
+        header.addSubview(self.deliveryNumCopyBtn)
+        weak var weakSelf = self
+        self.expressName.snp.makeConstraints({ (make) in
             make.top.equalTo(header).offset(5)
             make.left.equalTo(header).offset(10)
             make.height.equalTo(25)
-            make.right.equalTo(deliveryNumCopyBtn.snp.left).offset(-10)
+            make.right.equalTo((weakSelf?.deliveryNumCopyBtn.snp.left)!).offset(-10)
         })
-        deliveryNum.snp.makeConstraints({ (make) in
-            make.left.right.height.equalTo(expressName)
-            make.top.equalTo(expressName.snp.bottom).offset(5)
+        self.deliveryNum.snp.makeConstraints({ (make) in
+            make.left.right.height.equalTo((weakSelf?.expressName)!)
+            make.top.equalTo((weakSelf?.expressName.snp.bottom)!).offset(5)
             make.bottom.equalTo(header).offset(-5)
         })
-        deliveryNumCopyBtn.snp.makeConstraints({ (make) in
+        self.deliveryNumCopyBtn.snp.makeConstraints({ (make) in
             make.centerY.equalTo(header)
             make.size.equalTo(CGSize(width: 70, height: 30))
             make.right.equalTo(header).offset(-10)
@@ -52,21 +53,21 @@ class XFExpressViewController: XFBaseSubViewController {
         return header
     }()
     
-    private lazy var expressName: UILabel = {
+    fileprivate lazy var expressName: UILabel = {
         let label = UILabel()
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         return label
     }()
     
-    private lazy var deliveryNum: UILabel = {
+    fileprivate lazy var deliveryNum: UILabel = {
         let label = UILabel()
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         return label
     }()
     
-    private lazy var deliveryNumCopyBtn: UIButton = {
+    fileprivate lazy var deliveryNumCopyBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle("复制单号", for: .normal)
         btn.setTitleColor(XFConstants.Color.darkGray, for: .normal)
@@ -79,7 +80,7 @@ class XFExpressViewController: XFBaseSubViewController {
     }()
     
     
-    private lazy var expressListView: UITableView = {
+    fileprivate lazy var expressListView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
@@ -100,7 +101,7 @@ class XFExpressViewController: XFBaseSubViewController {
         loadExpressData()
     }
     
-    private func loadExpressData() {
+    fileprivate func loadExpressData() {
         weak var weakSelf = self
         request.getExpressDetail(params: ["orderId":orderId]) { (respData) in
             if let express = respData as? XFExpress,
@@ -113,7 +114,7 @@ class XFExpressViewController: XFBaseSubViewController {
         }
     }
     
-    private func renderExpressListView(){
+    fileprivate func renderExpressListView(){
         expressName.text = "物流信息：\(expressData?.expressName ?? "未知")"
         deliveryNum.text = "快递单号：\(expressData?.trackingNum ?? "未知")"
         view.addSubview(expressListView)
@@ -122,7 +123,7 @@ class XFExpressViewController: XFBaseSubViewController {
         }
     }
 
-    @objc private func copyDeliveryNum(){
+    @objc fileprivate func copyDeliveryNum(){
         if let express = expressData, express.trackingNum.characters.count > 0 {
             UIPasteboard.general.string = express.trackingNum
             MBProgressHUD.showSuccess("复制成功")

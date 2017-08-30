@@ -20,7 +20,7 @@ class XFSearchBar: UISearchBar {
         customInit()
     }
     
-    private func customInit(){
+    fileprivate func customInit(){
         
         
     }

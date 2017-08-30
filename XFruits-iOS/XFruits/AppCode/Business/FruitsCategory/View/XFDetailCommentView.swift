@@ -36,9 +36,9 @@ class XFDetailCommentView: UIView {
         label.adjustsFontSizeToFitWidth = false
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 10
-        let attributes = [NSAttributedStringKey.font:XFConstants.Font.pfn14,
-                          NSAttributedStringKey.foregroundColor:XFConstants.Color.darkGray,
-                          NSAttributedStringKey.paragraphStyle:paragraphStyle];
+        let attributes = [NSFontAttributeName:XFConstants.Font.pfn14,
+                          NSForegroundColorAttributeName:XFConstants.Color.darkGray,
+                          NSParagraphStyleAttributeName:paragraphStyle];
         let attributeText = NSAttributedString.init(string: "评论", attributes: attributes)
         label.attributedText = attributeText
         return label
@@ -61,7 +61,7 @@ class XFDetailCommentView: UIView {
         return container
     }()
     
-    private func customInit(){
+    fileprivate func customInit(){
         addSubview(titleLabel)
         addSubview(showAllBtn)
         addSubview(commentContainer)
@@ -84,7 +84,7 @@ class XFDetailCommentView: UIView {
         }
     }
     
-    private func addCommentList(comments: Array<XFComment>){
+    fileprivate func addCommentList(comments: Array<XFComment>){
         for (index, comment) in comments.enumerated() {
             if index < XFConstants.detailCommentsLimit - 1 {
                 let commentItem = XFCommentItemView()
@@ -106,7 +106,7 @@ class XFDetailCommentView: UIView {
         
     }
     
-    @objc private func showAllCommentClick() {
+    @objc fileprivate func showAllCommentClick() {
         MBProgressHUD.showError("暂无更多评论，敬请期待...")
     }
 

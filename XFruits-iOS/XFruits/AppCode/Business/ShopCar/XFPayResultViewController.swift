@@ -60,7 +60,7 @@ class XFPayResultViewController: XFBaseViewController {
     }
 
     
-    @objc private func onPageCloseClick() {
+    @objc fileprivate func onPageCloseClick() {
         weak var weakSelf = self
         dismiss(animated: false) {
             if let action = weakSelf?.onPageClosed {
@@ -69,7 +69,7 @@ class XFPayResultViewController: XFBaseViewController {
         }
     }
     
-    private func makeConstrains() {
+    fileprivate func makeConstrains() {
         view.addSubview(payResultSign)
         view.addSubview(payResultTip)
         view.addSubview(payDescription)
@@ -122,19 +122,19 @@ class XFPayResultViewController: XFBaseViewController {
         }
     }
     
-    private lazy var payResultSign: UIImageView = {
+    fileprivate lazy var payResultSign: UIImageView = {
         let imageView = UIImageView()
         return imageView
     }()
     
-    private lazy var payResultTip: UILabel = {
+    fileprivate lazy var payResultTip: UILabel = {
         let label = UILabel()
         label.font = XFConstants.Font.pfn16
         label.textAlignment = .center
         return label
     }()
     
-    private lazy var payDescription: UILabel = {
+    fileprivate lazy var payDescription: UILabel = {
         let label = UILabel()
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.greyishBrown
@@ -145,7 +145,7 @@ class XFPayResultViewController: XFBaseViewController {
         return label
     }()
     
-    private lazy var payAmountText: UILabel = {
+    fileprivate lazy var payAmountText: UILabel = {
         let label = UILabel()
         label.font = pfbFontWithSize(48)
         label.textColor = XFConstants.Color.darkGray
@@ -153,11 +153,11 @@ class XFPayResultViewController: XFBaseViewController {
         return label
     }()
     
-    private lazy var separatorLine: UIView = {
+    fileprivate lazy var separatorLine: UIView = {
         return createSeperateLine()
     }()
     
-    private lazy var payWayTitle: UILabel = {
+    fileprivate lazy var payWayTitle: UILabel = {
         let label = UILabel()
         label.font = XFConstants.Font.pfn16
         label.textColor = XFConstants.Color.darkGray
@@ -166,7 +166,7 @@ class XFPayResultViewController: XFBaseViewController {
         return label
     }()
     
-    private lazy var payWayContent: UILabel = {
+    fileprivate lazy var payWayContent: UILabel = {
         let label = UILabel()
         label.font = XFConstants.Font.pfn16
         label.textColor = XFConstants.Color.darkGray
@@ -174,7 +174,7 @@ class XFPayResultViewController: XFBaseViewController {
         return label
     }()
     
-    private lazy var dismissBtn: UIButton = {
+    fileprivate lazy var dismissBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setImage(UIImage.imageWithNamed("dialog_close"), for: .normal)
         btn.addTarget(self, action: #selector(onPageCloseClick), for: .touchUpInside)

@@ -69,7 +69,7 @@ class XFCommentItemView: UIView {
         customInit()
     }
     
-    private func customInit(){
+    fileprivate func customInit(){
         
         backgroundColor = UIColor.white
         layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
@@ -107,7 +107,7 @@ class XFCommentItemView: UIView {
         
     }
     
-    private func renderCommentAttriText(text:String?) -> NSAttributedString {
+    fileprivate func renderCommentAttriText(text:String?) -> NSAttributedString {
         var defaultText = "你是我滴小丫小苹果，怎么买你都不嫌多..."
         if let text = text {
             defaultText = text
@@ -116,9 +116,9 @@ class XFCommentItemView: UIView {
         paragraphStyle.firstLineHeadIndent = 0
         paragraphStyle.lineSpacing = 5
         paragraphStyle.lineBreakMode = .byTruncatingTail
-        let attributes = [NSAttributedStringKey.font:XFConstants.Font.pfn14,
-                          NSAttributedStringKey.foregroundColor:XFConstants.Color.darkGray,
-                          NSAttributedStringKey.paragraphStyle:paragraphStyle];
+        let attributes = [NSFontAttributeName:XFConstants.Font.pfn14,
+                          NSForegroundColorAttributeName:XFConstants.Color.darkGray,
+                          NSParagraphStyleAttributeName:paragraphStyle];
         let attributeText = NSAttributedString.init(string: defaultText, attributes: attributes)
         return attributeText
     }

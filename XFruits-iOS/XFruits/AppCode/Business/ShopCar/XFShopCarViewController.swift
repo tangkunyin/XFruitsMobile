@@ -62,8 +62,8 @@ class XFShopCarViewController: XFBaseViewController {
         navigationController?.pushViewController(checkoutVC, animated: true)
     }
 
-    // MARK: - Cart private func and variables
-    private func calculateTotalAmount() {
+    // MARK: - Cart fileprivate func and variables
+    fileprivate func calculateTotalAmount() {
         let selectedData: Array<XFCart> = XFCartUtils.sharedInstance.selectedList as! Array<XFCart>
         selectedItemCount = selectedData.count
         selectedTotalAmount = 0
@@ -76,7 +76,7 @@ class XFShopCarViewController: XFBaseViewController {
     }
     
     
-    @objc private func reloadShopCartData() {
+    @objc fileprivate func reloadShopCartData() {
         cartList = XFCartUtils.sharedInstance.getAll()
         if cartList.count > 0 {
             shopCartViewCount = 0
@@ -95,7 +95,7 @@ class XFShopCarViewController: XFBaseViewController {
     }
     
     
-    private lazy var cartListView:UITableView = {
+    fileprivate lazy var cartListView:UITableView = {
         let listView = UITableView.init(frame: CGRect.zero, style: .plain)
         listView.delegate = self
         listView.dataSource = self
@@ -109,12 +109,12 @@ class XFShopCarViewController: XFBaseViewController {
         return listView
     }()
     
-    private lazy var cartEmptyView: XFShopCartEmptyView = {
+    fileprivate lazy var cartEmptyView: XFShopCartEmptyView = {
         let emptyView = XFShopCartEmptyView()
         return emptyView
     }()
     
-    private lazy var actionBar:XFShopCartActionBar = {
+    fileprivate lazy var actionBar:XFShopCartActionBar = {
         let bar = XFShopCartActionBar()
         weak var weakSelf = self
         bar.onConfirmBarPress = {
@@ -123,7 +123,7 @@ class XFShopCarViewController: XFBaseViewController {
         return bar;
     }()
     
-    private func makeContentViewConstrains(){
+    fileprivate func makeContentViewConstrains(){
         cartEmptyView.snp.makeConstraints { (make) in
             make.left.right.top.bottom.equalTo(self.view)
         }
