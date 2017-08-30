@@ -18,7 +18,7 @@ class XFSettingsViewController: XFBaseSubViewController {
         return [
             [
                 ["key":"版本号","value":"1.0.0"],
-                ["key":"点个赞","value":XFConstants.storeUrl],
+//                ["key":"点个赞","value":XFConstants.storeUrl],
             ],
             [
                 ["key":"关于我们","value":""],
