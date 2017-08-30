@@ -64,7 +64,6 @@
 		8690FEDF1ED178900051A16D /* XFShopCartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEDE1ED178900051A16D /* XFShopCartViewCell.swift */; };
 		8690FEE11ED178AF0051A16D /* XFShopCartActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEE01ED178AF0051A16D /* XFShopCartActionBar.swift */; };
 		8690FEE31ED179560051A16D /* XFAllCategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEE21ED179560051A16D /* XFAllCategoryListViewController.swift */; };
-		8690FF301ED538E90051A16D /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2C1ED538E90051A16D /* AlamofireSwiftyJSON.framework */; };
 		8690FF321ED538E90051A16D /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2E1ED538E90051A16D /* SQLite.framework */; };
 		8692FCD41F41EDBC00CD3F72 /* XFPayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692FCD31F41EDBC00CD3F72 /* XFPayResponse.swift */; };
 		8692FCD61F42029A00CD3F72 /* XFPayResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692FCD51F42029A00CD3F72 /* XFPayResultViewController.swift */; };
@@ -193,7 +192,6 @@
 		8690FEDE1ED178900051A16D /* XFShopCartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFShopCartViewCell.swift; sourceTree = "<group>"; };
 		8690FEE01ED178AF0051A16D /* XFShopCartActionBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFShopCartActionBar.swift; sourceTree = "<group>"; };
 		8690FEE21ED179560051A16D /* XFAllCategoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAllCategoryListViewController.swift; sourceTree = "<group>"; };
-		8690FF2C1ED538E90051A16D /* AlamofireSwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireSwiftyJSON.framework; path = Carthage/Build/iOS/AlamofireSwiftyJSON.framework; sourceTree = "<group>"; };
 		8690FF2E1ED538E90051A16D /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		8690FF2F1ED538E90051A16D /* V5Client.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = V5Client.framework; path = Carthage/Build/iOS/V5Client.framework; sourceTree = "<group>"; };
 		8692FCD31F41EDBC00CD3F72 /* XFPayResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFPayResponse.swift; sourceTree = "<group>"; };
@@ -275,7 +273,6 @@
 				8618BA381F4027B000AC9436 /* SystemConfiguration.framework in Frameworks */,
 				860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */,
 				860A43011EE415FF00798678 /* V5Client.framework in Frameworks */,
-				8690FF301ED538E90051A16D /* AlamofireSwiftyJSON.framework in Frameworks */,
 				8690FF321ED538E90051A16D /* SQLite.framework in Frameworks */,
 				86A45C6A1ED1186A00772D13 /* PhotosUI.framework in Frameworks */,
 				86A45C681ED1186100772D13 /* Photos.framework in Frameworks */,
@@ -597,7 +594,6 @@
 				8618BA371F4027AA00AC9436 /* SystemConfiguration.framework */,
 				86ADDCD31F2AC8E200881CFA /* SlideMenuControllerSwift.framework */,
 				860A43021EE415FF00798678 /* HandyJSON.framework */,
-				8690FF2C1ED538E90051A16D /* AlamofireSwiftyJSON.framework */,
 				8690FF2E1ED538E90051A16D /* SQLite.framework */,
 				8690FF2F1ED538E90051A16D /* V5Client.framework */,
 				86A45C6B1ED1187D00772D13 /* libz.tbd */,
@@ -767,7 +763,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AlamofireSwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SQLite.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/V5Client.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/HandyJSON.framework",
@@ -1010,6 +1005,7 @@
 					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/WeChatSDK1.7.9",
 					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/AlipaySDK15.4.1",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
 					"-Objc",
 					"-all_load",
@@ -1049,6 +1045,7 @@
 					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/WeChatSDK1.7.9",
 					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/AlipaySDK15.4.1",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
 					"-Objc",
 					"-all_load",

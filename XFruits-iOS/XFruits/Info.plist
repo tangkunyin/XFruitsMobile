@@ -63,13 +63,6 @@
 				<key>NSIncludesSubdomains</key>
 				<true/>
 			</dict>
-			<key>toutiao.com</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
 			<key>v5kf.com</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
