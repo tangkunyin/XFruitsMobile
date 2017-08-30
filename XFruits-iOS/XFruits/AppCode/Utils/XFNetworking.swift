@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import Alamofire
-import MBProgressHUD
-import AlamofireSwiftyJSON
-import SwiftyJSON
 import HandyJSON
+import Alamofire
+import SwiftyJSON
+import MBProgressHUD
+
 
 public typealias XFResponse = ((_ data: Any)->Void)
 
@@ -217,11 +217,12 @@ public class XFNetworking: NSObject {
         }
         
         Alamofire.request(url, method: method, parameters: params, encoding: paramsEncoding,headers: headers)
-            .responseSwiftyJSON { (response) in
+            .validate().responseJSON { (response) in
                 switch response.result {
                 case .success(let value):
+                    let json = JSON(value)
                     if needSerialize {
-                        if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: value.rawString()) {
+                        if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: json.rawString()) {
                             guard let code = obj.code, let msg = obj.msg, let timestamp = obj.systemTime else {
                                 dPrint(obj)
                                 completion(false, "数据状态异常，请稍后再试~")
@@ -240,7 +241,7 @@ public class XFNetworking: NSObject {
                             }
                         }
                     } else {
-                        completion(true, value.rawValue)
+                        completion(true, json)
                     }
                 case .failure(let error):
                     dPrint(error)
