@@ -86,7 +86,8 @@ class XFIndexViewController: XFBaseViewController {
     }
     
     fileprivate func handlePagerClick(withIndex index: Int) {
-        switch index {
+        let pager: XFIndexLoopImage = loopImages![index]
+        switch pager.type {
         case XFIndexConentType.html.rawValue,
              XFIndexConentType.advertising.rawValue:
             jumpToWebview(url: loopImages![index].data)
