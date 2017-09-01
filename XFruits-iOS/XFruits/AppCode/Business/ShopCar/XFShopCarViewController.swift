@@ -149,6 +149,7 @@ extension XFShopCarViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: XFCartCellReuseIdentifier, for: indexPath) as! XFShopCartViewCell
+        cell.selectionStyle = .none
         if let item:XFCart = cartList[indexPath.row] {
             cell.dataSource = item
         }
