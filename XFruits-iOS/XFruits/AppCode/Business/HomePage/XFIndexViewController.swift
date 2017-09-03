@@ -86,16 +86,19 @@ class XFIndexViewController: XFBaseViewController {
     }
     
     fileprivate func handlePagerClick(withIndex index: Int) {
-        let pager: XFIndexLoopImage = loopImages![index]
-        switch pager.type {
-        case XFIndexConentType.html.rawValue,
-             XFIndexConentType.advertising.rawValue:
-            jumpToWebview(url: loopImages![index].data)
-        case XFIndexConentType.product.rawValue:
-            jumpToProductDetail(pId: loopImages![index].data)
-        default:
-            break
+        if let loopImages = loopImages {
+            let pager: XFIndexLoopImage = loopImages[index]
+            switch pager.type {
+            case XFIndexConentType.html.rawValue,
+                 XFIndexConentType.advertising.rawValue:
+                jumpToWebview(url: loopImages[index].data)
+            case XFIndexConentType.product.rawValue:
+                jumpToProductDetail(pId: loopImages[index].data)
+            default:
+                break
+            }
         }
+        
     }
     
     fileprivate func handleItemClick(withData data: XFNewsContent) {
