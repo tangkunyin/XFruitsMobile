@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import MBProgressHUD
 
 /// 果篮专用工具类
 class XFCartUtils {

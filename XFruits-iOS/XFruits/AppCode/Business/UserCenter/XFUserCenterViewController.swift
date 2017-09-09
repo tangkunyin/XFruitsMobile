@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 import SwiftyJSON
 
 fileprivate let UC_CellIdentifier = "XFUserCenterUC_CellIdentifier"
@@ -101,7 +100,7 @@ class XFUserCenterViewController: XFBaseViewController {
             navigationController?.pushViewController(orderList, animated: true)
         } else {
             weak var weakSelf = self
-            MBProgressHUD.showMessage("请您登陆后再查看\(title)订单", completion: {
+            showMessage("请您登陆后再查看\(title)订单", completion: {
                 weakSelf?.handleEntrySelect(indexPath: IndexPath(row: 2, section: 1))
             })
         }

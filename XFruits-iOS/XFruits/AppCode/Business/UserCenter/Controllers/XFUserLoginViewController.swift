@@ -7,7 +7,6 @@
 // 登录
 
 import UIKit
-import MBProgressHUD
 
 class XFUserLoginViewController: XFBaseViewController {
     
@@ -174,15 +173,15 @@ class XFUserLoginViewController: XFBaseViewController {
     @objc func toLogin(){
         weak var weakSelf = self
         guard let phone = mobileTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
-            MBProgressHUD.showError("手机号不能为空")
+            showError("手机号不能为空")
             return
         }
         guard let password = passwordTextField.text else {
-            MBProgressHUD.showError("密码不能为空")
+            showError("密码不能为空")
             return
         }
         guard  isPhoneNumber(phoneNumber: phone) == true else{
-            MBProgressHUD.showError("请输入合法的手机号")
+            showError("请输入合法的手机号")
             return
         }
         let loginData = ["phone":phone,"password":password]
@@ -202,7 +201,7 @@ class XFUserLoginViewController: XFBaseViewController {
     }
     
     @objc fileprivate func forgetPassword(){
-        MBProgressHUD.showSuccess("请取消登录后，联系客服处理")
+        showSuccess("请取消登录后，联系客服处理")
     }
     
     @objc fileprivate func disMissKeyboard(){

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 
 class XFUserRegistViewController: XFBaseSubViewController {
     
@@ -199,17 +198,17 @@ class XFUserRegistViewController: XFBaseSubViewController {
     @objc func nextStepToSecondRegistPageVC(sender:UIButton?) {
         
         guard let phone:String = self.mobileTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) , phone != "" else {
-            MBProgressHUD.showError("手机号不能为空")
+            showError("手机号不能为空")
             return
         }
         
         guard let code:String = self.validateTextField.text , code != "" else {
-            MBProgressHUD.showError("图片验证码不能为空")
+            showError("图片验证码不能为空")
             return
         }
         
         guard  isPhoneNumber(phoneNumber: phone) == true else{
-            MBProgressHUD.showError("请输入合法的手机号")
+            showError("请输入合法的手机号")
             return
         }
         

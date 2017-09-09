@@ -8,8 +8,6 @@
 
 import UIKit
 import SnapKit
-import MBProgressHUD
-
 
 class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
     
@@ -96,7 +94,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
                 let chatVC = createChatViewController(withUser: XFUserGlobal.shared.currentUser, goodsInfo: weakSelf?._detailData)
                 weakSelf?.navigationController?.pushViewController(chatVC, animated: true)
             case 1:
-                MBProgressHUD.showSuccess("已成功加入收藏")
+                weakSelf?.showSuccess("已成功加入收藏")
             case 2:
                 weakSelf?.addToShopCart(checkoutNow: false)
             case 3:
@@ -116,10 +114,10 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
                 if checkoutNow {
                     goToCheckout(item: item)
                 } else {
-                    MBProgressHUD.showSuccess("成功添加到果篮")
+                    showSuccess("成功添加到果篮")
                 }
             } else {
-                MBProgressHUD.showError("操作失败，请稍后尝试~")
+                showError("操作失败，请稍后尝试~")
             }
         }
     }
@@ -133,7 +131,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
                 navigationController?.pushViewController(checkoutVC, animated: true)
             }
         } else {
-            MBProgressHUD.showError("请先登录后再购买")
+            showError("请先登录后再购买")
         }
     }
     

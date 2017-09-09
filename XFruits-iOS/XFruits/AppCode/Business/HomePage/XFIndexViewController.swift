@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import MBProgressHUD
 
 fileprivate let cellIdentifier = "XFIndexArticleCellIdentifier"
 

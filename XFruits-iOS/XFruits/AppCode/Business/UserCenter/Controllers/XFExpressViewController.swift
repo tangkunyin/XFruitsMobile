@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 import SnapKit
 
 fileprivate let cellIdentifier = "XFOrderExpressInfoCellIdentifier"
@@ -126,7 +125,7 @@ class XFExpressViewController: XFBaseSubViewController {
     @objc fileprivate func copyDeliveryNum(){
         if let express = expressData, express.trackingNum.characters.count > 0 {
             UIPasteboard.general.string = express.trackingNum
-            MBProgressHUD.showSuccess("复制成功")
+            showSuccess("复制成功")
         }
     }
 }

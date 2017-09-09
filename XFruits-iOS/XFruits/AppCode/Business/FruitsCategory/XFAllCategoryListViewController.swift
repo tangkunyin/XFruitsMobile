@@ -15,7 +15,7 @@ class XFAllCategoryListViewController: XFBaseSubViewController {
 
     var productTypes :Array<ProductType> = []
     
-    var selectedTypeId: Int = 1000
+    var selectedTypeId: Int = 1001
     
     var dataSource:Array<ProductType>? {
         get {
@@ -41,10 +41,11 @@ class XFAllCategoryListViewController: XFBaseSubViewController {
         listView.delegate = self
         listView.dataSource = self
         listView.bounces = false
+        listView.rowHeight = 44
         listView.separatorColor = XFConstants.Color.separatorLine
         listView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         listView.backgroundColor = UIColor.white
-        listView.register(UITableViewCell.self, forCellReuseIdentifier: "allCategoryListViewCell")
+        listView.register(CategoryCellView.self, forCellReuseIdentifier: "allCategoryListViewCell")
         listView.tableFooterView = UIView()
         return listView
     }()
@@ -72,28 +73,11 @@ extension XFAllCategoryListViewController: UITableViewDelegate,UITableViewDataSo
         return productTypes.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "allCategoryListViewCell", for: indexPath)
-        let category:ProductType = productTypes[indexPath.row]
-        let imageView:UIImageView = UIImageView()
-        imageView.kf.setImage(with: URL.init(string: category.image))
-        let label:UILabel = UILabel()
-        label.text = category.name
-        cell.contentView.addSubview(imageView)
-        cell.contentView.addSubview(label)
-        imageView.snp.makeConstraints({ (make) in
-            make.size.equalTo(CGSize.init(width: 35, height: 35))
-            make.left.equalTo(cell.contentView).offset(10)
-            make.centerY.equalTo(cell.contentView)
-        })
-        label.snp.makeConstraints({ (make) in
-            make.size.centerY.equalTo(imageView)
-            make.left.equalTo(imageView.snp.right).offset(10)
-        })
+        let cell = tableView.dequeueReusableCell(withIdentifier: "allCategoryListViewCell") as! CategoryCellView
+        let type = productTypes[indexPath.row]
+        cell.isSelected = type.id == selectedTypeId
+        cell.dataSource = type
         return cell
     }
     
@@ -101,5 +85,67 @@ extension XFAllCategoryListViewController: UITableViewDelegate,UITableViewDataSo
         let type: ProductType = productTypes[indexPath.row]
         self.selectedTypeId = type.id
         self.slideMenuController()?.closeRight()
+        tableView.reloadData()
+    }
+}
+
+fileprivate class CategoryCellView: UITableViewCell {
+    
+    var dataSource: ProductType? {
+        didSet{
+            if let data = dataSource {
+                iconImageView.kf.setImage(with: URL(string: data.image))
+                categoryTitle.text = data.name
+                customAccessoryView.isHidden = !isSelected
+            }
+        }
+    }
+    
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage.imageWithNamed("logo"))
+        return imageView
+    }()
+    
+    private lazy var categoryTitle: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    private lazy var customAccessoryView: UIImageView = {
+        let imageView = UIImageView(image: UIImage.imageWithNamed("success_big"))
+        return imageView
+    }()
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        customInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder){
+        super.init(coder: aDecoder)
+        customInit()
+    }
+    
+    private func customInit(){
+        selectionStyle = .none
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(categoryTitle)
+        contentView.addSubview(customAccessoryView)
+        iconImageView.snp.makeConstraints({ (make) in
+            make.size.equalTo(CGSize(width: 35, height: 35))
+            make.centerY.equalTo(contentView)
+            make.left.equalTo(contentView).offset(10)
+            
+        })
+        categoryTitle.snp.makeConstraints({ (make) in
+            make.centerY.equalTo(contentView)
+            make.left.equalTo(iconImageView.snp.right).offset(10)
+            make.right.equalTo(customAccessoryView.snp.left).offset(-10)
+        })
+        customAccessoryView.snp.makeConstraints { (make) in
+            make.centerY.equalTo(contentView)
+            make.size.equalTo(CGSize(width: 18, height: 18))
+            make.right.equalTo(contentView).offset(-10)
+        }
     }
 }

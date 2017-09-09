@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import MBProgressHUD
 
 fileprivate let cellIdentifier = "XFOrderListCellIdentifier"
 
@@ -87,7 +86,7 @@ class XFOrderListViewController: XFBaseSubViewController {
     fileprivate func orderConfirmWith(orderId: String){
         weak var weakSelf = self
         request.confirmOrder(params: ["orderId":orderId]) { (data) in
-            MBProgressHUD.showMessage("收货成功，感谢支持", completion: {
+            weakSelf?.showMessage("收货成功，感谢支持", completion: {
                 weakSelf?.loadOrderData()
             })
         }
@@ -109,7 +108,7 @@ class XFOrderListViewController: XFBaseSubViewController {
             orderConfirmWith(orderId: orderData.orderId)
         case 3:
             //TODO. 订单评价
-            MBProgressHUD.showSuccess("已收到帅帅的你滴好评咯~")
+            showSuccess("已收到帅帅的你滴好评咯~")
         default:
             break
         }

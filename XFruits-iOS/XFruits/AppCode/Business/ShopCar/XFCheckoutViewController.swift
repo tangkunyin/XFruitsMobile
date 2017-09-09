@@ -8,12 +8,11 @@
 
 import UIKit
 import SnapKit
-import MBProgressHUD
 
 
 fileprivate let XFCheckoutCellReuseIdentifier:String = "XFCheckoutCellReuseIdentifier"
 
-class XFCheckoutViewController: XFBaseViewController {
+class XFCheckoutViewController: XFBaseSubViewController {
 
     /// 商品总价，不含运费、邮费、优惠等
     var totalGoodsAmount: Float?
@@ -66,11 +65,11 @@ class XFCheckoutViewController: XFBaseViewController {
             buyList.append(["productId":item.id! ,"count":item.quantity!])
         }
         guard let address = confirmAddress else {
-            MBProgressHUD.showError("您必须选择一个有效的收货地址")
+            showError("您必须选择一个有效的收货地址")
             return
         }
         guard buyList.count > 0 else {
-            MBProgressHUD.showError("商品信息为空，请核对后操作")
+            showError("商品信息为空，请核对后操作")
             return
         }
         weak var weakSelf = self

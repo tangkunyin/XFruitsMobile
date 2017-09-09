@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 
 class XFUserRegistSecondPageViewController: XFBaseSubViewController {
     
@@ -114,15 +113,15 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
     @objc func gotoRegister(sender:UIButton?) {
         
         guard let phone:String = para?["phone"] as? String else {
-            MBProgressHUD.showError("手机号不能为空")
+            showError("手机号不能为空")
             return
         }
         guard let phoneCaptcha = messageCodeTextField?.text else {
-            MBProgressHUD.showError("验证码不能为空")
+            showError("验证码不能为空")
             return
         }
         guard let password = passwordTextField?.text else {
-            MBProgressHUD.showError("密码不能为空")
+            showError("密码不能为空")
             return
         }
         
@@ -132,8 +131,8 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
             let data = data as! XFUser
             XFUserGlobal.shared.signIn(user: data)
             if XFUserGlobal.shared.isLogin {
-                MBProgressHUD.showMessage("恭喜您，注册成功", completion: {
-                    weakSelf!.dismiss(animated: true, completion: nil)
+                weakSelf?.showMessage("恭喜您，注册成功", completion: {
+                    weakSelf?.dismiss(animated: true, completion: nil)
                 })
             }
         }

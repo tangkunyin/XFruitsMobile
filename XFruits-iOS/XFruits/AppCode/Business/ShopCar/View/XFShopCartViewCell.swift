@@ -9,7 +9,6 @@
 import UIKit
 import SnapKit
 import Kingfisher
-import MBProgressHUD
 
 
 class XFShopCartViewCell: UITableViewCell {

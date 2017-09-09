@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
-
 
 class XFAddAddressViewController: XFBaseSubViewController    {
     

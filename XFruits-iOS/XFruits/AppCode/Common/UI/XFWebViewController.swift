@@ -8,7 +8,6 @@
 
 import UIKit
 import WebKit
-import MBProgressHUD
 
 fileprivate let webViewLoadProgressKey = "estimatedProgress"
 
@@ -57,7 +56,7 @@ class XFWebViewController: XFBaseSubViewController {
     
     fileprivate func handleError(){
         weak var weakSelf = self
-        MBProgressHUD.showMessage("页面加载错误，请稍后再试~", completion: {
+        showMessage("页面加载错误，请稍后再试~", completion: {
             weakSelf?.backToParentController()
         })
     }
@@ -68,8 +67,7 @@ class XFWebViewController: XFBaseSubViewController {
                                context: UnsafeMutableRawPointer?) {
         if let keyPath = keyPath, keyPath == webViewLoadProgressKey, let change = change {
             let progress = change[NSKeyValueChangeKey.newKey] as? Float
-//            MBProgressHUD.showProgress(progress ?? 0, message: "努力加载中...")
-            dPrint(progress ?? 0)
+            showProgress(progress ?? 0)
         }
     }
 }
@@ -77,7 +75,7 @@ class XFWebViewController: XFBaseSubViewController {
 extension XFWebViewController: WKUIDelegate,WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        loaddingWithMsg("努力加载中...")
+        loaddingWithMsg()
     }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {

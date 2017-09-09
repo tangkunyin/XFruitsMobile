@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 
 
 fileprivate let payCellIdentifier = "XFPayCellIdentifier"
@@ -151,7 +150,7 @@ extension XFChoosePayWayViewController {
     }
     
     fileprivate func orderPayWithWeixin(_ data: String){
-        MBProgressHUD.showError("微信暂不支持，请选择支付宝吧~")
+        showError("微信暂不支持，请选择支付宝吧~")
     }
     
     fileprivate func handleThePaymentResult(flag: Bool, payType: Int, errorMsg: String = "") {

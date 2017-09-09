@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import MBProgressHUD
 import SlideMenuControllerSwift
 
 fileprivate let XFCellViewReuseIdentifier:String = "XFCategoryCellReuseIdentifier"
@@ -17,9 +16,11 @@ class XFCategoryViewController: XFBaseViewController {
     
     var dataSource:[ProductItem] = []
     
-    var dataType: Int = 1000 {
+    var dataType: Int = 1001 {
         didSet {
-            loadCategories()
+            if dataType != oldValue{
+                loadCategories()
+            }
         }
     }
     
@@ -90,9 +91,13 @@ class XFCategoryViewController: XFBaseViewController {
     }
     
     @objc fileprivate func onAllItemClick(){
-        if let slideMenuController = self.slideMenuController() {
-            if !slideMenuController.isRightOpen() {
+        if let slideMenuController = self.slideMenuController(),
+            let catetoryVC = slideMenuController.rightViewController as? XFAllCategoryListViewController,
+            let dataSource = catetoryVC.dataSource {
+            if dataSource.count > 0 && !slideMenuController.isRightOpen() {
                 slideMenuController.openRight()
+            } else {
+                showError("数据加载失败，请稍后再试~")
             }
         }
     }
