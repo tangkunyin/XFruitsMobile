@@ -127,7 +127,7 @@ extension AppDelegate: WXApiDelegate {
         
         weak var weakSelf = self
         // 拉取所有分类数据
-        XFCommonService().getAllCategoryies { (types) in
+        XFCommonService.getAllCategoryies { (types) in
             if let productTypes = types as? Array<ProductType> {
                 weakSelf?.allCateListVC.dataSource = productTypes
             }

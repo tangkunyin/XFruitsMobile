@@ -41,11 +41,6 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
         return btn
     }()
     
-    lazy var request: XFOrderSerivice = {
-        let serviceRequest = XFOrderSerivice()
-        return serviceRequest
-    }()
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 必须手动释放Timer，否则会导致内存泄露
@@ -100,7 +95,7 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
             let payChannel = cid == 1 ? 200 : 100
             weak var weakSelf = self
             let params:[String : Any] = ["payChannel": payChannel, "orderId": orderId]
-            request.orderPayCommit(params: params) { (data) in
+            XFOrderSerivice.orderPayCommit(params: params) { (data) in
                 switch cid {
                 case 1:
                     weakSelf?.orderPayWithAliPay(data as! String)

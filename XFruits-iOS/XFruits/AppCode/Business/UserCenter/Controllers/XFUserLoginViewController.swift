@@ -167,7 +167,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
             return
         }
         let loginData = ["phone":phone,"password":password]
-        XFCommonService().login(params: loginData) { (data) in
+        XFCommonService.login(params: loginData) { (data) in
             let data = data as! XFUser
             XFUserGlobal.shared.signIn(user: data)
             if XFUserGlobal.shared.isLogin {

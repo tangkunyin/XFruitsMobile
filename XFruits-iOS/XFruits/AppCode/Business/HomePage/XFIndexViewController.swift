@@ -59,10 +59,10 @@ class XFIndexViewController: XFBaseViewController {
     
     fileprivate func loadData(){
         weak var weakSelf = self
-        request.getLoopImages { (result) in
+        XFNewsInfoService.getLoopImages { (result) in
             weakSelf?.loopImages = result as? Array
         }
-        request.getNewsList(params: ["page":1,"size":XFConstants.pageRows]) { (respData) in
+        XFNewsInfoService.getNewsList(params: ["page":1,"size":XFConstants.pageRows]) { (respData) in
             if let newsInfo = respData as? XFNewsInfo,
                 let content = newsInfo.content, content.count > 0 {
                 weakSelf?.dataSource = content
@@ -111,10 +111,6 @@ class XFIndexViewController: XFBaseViewController {
             break
         }
     }
-    
-    fileprivate lazy var request: XFNewsInfoService = {
-        return XFNewsInfoService()
-    }()
     
     fileprivate lazy var pagerView:XFViewPager = {
         let pagerView = XFViewPager(source: [""], placeHolder: "Loading-white")

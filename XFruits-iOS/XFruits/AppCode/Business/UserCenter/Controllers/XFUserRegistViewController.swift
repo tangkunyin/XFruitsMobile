@@ -152,7 +152,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
     func getImageVertifyCode(){
         // 获取验证码请求测试
         weak var weakSelf = self
-        XFCommonService().getVerifyImage { (data) in
+        XFCommonService.getVerifyImage { (data) in
             if let verifyImage = data as? XFVerifyImage,
                 let captchaImg = verifyImage.captchaImg,
                 let uniqueCode = verifyImage.uniqueCode {
@@ -188,7 +188,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
         
         weak var weakSelf = self
         let para:[String:String]  = ["uniqueCode": uniqueCodeString,"code": code ,"phone": phone]
-        XFCommonService().vertifyImageCodeAndSendMessageCode(params: para) { (data) in
+        XFCommonService.vertifyImageCodeAndSendMessageCode(params: para) { (data) in
             if data is Bool, data as! Bool {
                 let secondRegistVC = XFUserRegistSecondPageViewController()
                 secondRegistVC.para  = para as NSDictionary

@@ -15,8 +15,8 @@ import SwiftyJSON
 /// 具体业务请求
 final class XFCommonService: XFNetworking {
 
-    func getVerifyImage(_ completion:@escaping XFResponse) {
-        self.doGet(withUrl: url("/auth/captcha")) { (success, respData) in
+    class func getVerifyImage(_ completion:@escaping XFResponse) {
+        doGet(withUrl: url("/auth/captcha")) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(XFVerifyImage.deserialize(from: dict) ?? XFVerifyImage())
 
@@ -24,23 +24,23 @@ final class XFCommonService: XFNetworking {
         }
     }
 
-    func vertifyImageCodeAndSendMessageCode( params:XFParams,  _ completion:@escaping XFResponse) {
-        self.doPost(withUrl: url("/auth/captcha"), params: params){ (success, respData) in
+    class func vertifyImageCodeAndSendMessageCode( params:XFParams,  _ completion:@escaping XFResponse) {
+        doPost(withUrl: url("/auth/captcha"), params: params){ (success, respData) in
             if success  {
                 completion(respData ?? false)
             }
         }
     }
-    func register( params:XFParams,  _ completion:@escaping XFResponse) {
-        self.doPost(withUrl: url("/auth/register"), params: params, encoding: JSONEncoding.default){ (success, respData) in
+    class func register( params:XFParams,  _ completion:@escaping XFResponse) {
+        doPost(withUrl: url("/auth/register"), params: params, encoding: JSONEncoding.default){ (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(XFUser.deserialize(from: dict) ?? XFUser())
             }
         }
     }
 
-    func login( params:XFParams,  _ completion:@escaping XFResponse) {
-        self.doPost(withUrl: url("/auth/login"), params: params){ (success, respData) in
+    class func login( params:XFParams,  _ completion:@escaping XFResponse) {
+        doPost(withUrl: url("/auth/login"), params: params){ (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(XFUser.deserialize(from: dict) ?? XFUser())
             }
@@ -48,16 +48,16 @@ final class XFCommonService: XFNetworking {
     }
 
 
-    func getAllCategoryies(_ completion:@escaping XFResponse) {
-        self.doGet(withUrl: url("/product/type")) { (success, respData) in
+    class func getAllCategoryies(_ completion:@escaping XFResponse) {
+        doGet(withUrl: url("/product/type")) { (success, respData) in
             if success, respData is Array<Any>, let list = respData as? Array<Any> {
                 completion([ProductType].deserialize(from: JSON(list).rawString()) ?? [])
             }
         }
     }
 
-    func getAllProducts(params:XFParams, completion:@escaping XFResponse) {
-        self.doGet(withUrl: url("/product/list", params: params)) { (success, respData) in
+    class func getAllProducts(params:XFParams, completion:@escaping XFResponse) {
+        doGet(withUrl: url("/product/list", params: params)) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(CategoryList.deserialize(from: dict) ?? CategoryList())
             } else {
@@ -66,14 +66,12 @@ final class XFCommonService: XFNetworking {
         }
     }
 
-    func getProductDetail(pid:String, _ completion:@escaping XFResponse) {
-        self.doGet(withUrl: url("/product/detail?prodId=\(pid)")) { (success, respData) in
+    class func getProductDetail(pid:String, _ completion:@escaping XFResponse) {
+        doGet(withUrl: url("/product/detail?prodId=\(pid)")) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(ProductDetail.deserialize(from: dict) ?? ProductDetail())
             }
         }
     }
-
-
 
 }

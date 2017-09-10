@@ -34,11 +34,6 @@ class XFCheckoutViewController: XFBaseSubViewController {
         }
     }
     
-    lazy var request: XFOrderSerivice = {
-        let serviceRequest = XFOrderSerivice()
-        return serviceRequest
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "确认订单"
@@ -49,7 +44,7 @@ class XFCheckoutViewController: XFBaseSubViewController {
     
     fileprivate func updateDataSource()  {
         weak var weakSelf = self
-        request.orderConfirm { (data) in
+        XFOrderSerivice.orderConfirm { (data) in
             if data is XFOrderConfirm {
                 let confirm = data as! XFOrderConfirm
                 weakSelf?.confirmCoupon = confirm.couponList
@@ -74,7 +69,7 @@ class XFCheckoutViewController: XFBaseSubViewController {
         }
         weak var weakSelf = self
         let params:[String : Any] = ["productBuyList":buyList, "addressId":address.id, "couponIds":[]]
-        request.orderCommit(params: params) { (data) in
+        XFOrderSerivice.orderCommit(params: params) { (data) in
             let result: XFOrderCommit = data as! XFOrderCommit
             if let orderId = result.orderId,
                 let expiration = result.orderExpiration, orderId.characters.count > 0 ,expiration > 0 {

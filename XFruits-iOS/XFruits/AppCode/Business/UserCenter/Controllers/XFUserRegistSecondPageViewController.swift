@@ -127,7 +127,7 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         
         let registPara:[String:String] = ["phone":phone,"password":password,"phoneCaptcha":phoneCaptcha]
         weak var weakSelf = self
-        XFCommonService().register(params: registPara) { (data) in
+        XFCommonService.register(params: registPara) { (data) in
             let data = data as! XFUser
             XFUserGlobal.shared.signIn(user: data)
             if XFUserGlobal.shared.isLogin {

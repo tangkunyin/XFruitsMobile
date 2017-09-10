@@ -44,11 +44,6 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         return addAddressBtn
     }()
     
-    lazy var request: XFAddressService = {
-        let serviceRequest = XFAddressService()
-        return serviceRequest
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "地址管理"
@@ -89,7 +84,7 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
     // 获取用户所有地址
     func getUserAllAddress(){
         weak var weakSelf = self
-        request.getUserAllAddress { (data) in
+        XFAddressService.getUserAllAddress { (data) in
             if let addresses = data as? Array<XFAddress>{
                 
                 if (addresses.count > 0) {
@@ -174,7 +169,7 @@ extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableVie
         if editingStyle == .delete{
             if let address : XFAddress = addressInfoArray[row] {
                 let addressId = address.id!
-                request.deleteAddress(addressId: addressId,params:[:] ){ (data) in
+                XFAddressService.deleteAddress(addressId: addressId,params:[:] ){ (data) in
                     if data as! Bool { // 删除成功。
                         weakSelf?.addressInfoArray.remove(at: row)
                         tableView.deleteRows(at: [indexPath], with: .fade)

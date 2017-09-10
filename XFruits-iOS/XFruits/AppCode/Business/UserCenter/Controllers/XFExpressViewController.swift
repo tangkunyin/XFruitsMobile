@@ -22,10 +22,6 @@ class XFExpressViewController: XFBaseSubViewController {
     
     var expressData: XFExpress?
     
-    fileprivate lazy var request: XFOrderSerivice = {
-        return XFOrderSerivice()
-    }()
-    
     fileprivate lazy var expressInfoHeader: UIView = {
         let header = UIView()
         header.backgroundColor = UIColor.white
@@ -102,7 +98,7 @@ class XFExpressViewController: XFBaseSubViewController {
     
     fileprivate func loadExpressData() {
         weak var weakSelf = self
-        request.getExpressDetail(params: ["orderId":orderId]) { (respData) in
+        XFOrderSerivice.getExpressDetail(params: ["orderId":orderId]) { (respData) in
             if let express = respData as? XFExpress,
                 let traceInfo = express.trackingInfoList, traceInfo.count > 0 {
                 weakSelf?.expressData = express

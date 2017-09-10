@@ -17,10 +17,6 @@ class XFOrderListViewController: XFBaseSubViewController {
     
     var orderData: Array<XFOrderContent>?
     
-    fileprivate lazy var request: XFOrderSerivice = {
-        return XFOrderSerivice()
-    }()
-    
     fileprivate lazy var orderListView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.delegate = self
@@ -46,7 +42,7 @@ class XFOrderListViewController: XFBaseSubViewController {
         if let status = orderStatus {
             params.updateValue(status, forKey: "status")
         }
-        request.getOrderList(params: params) { (respData) in
+        XFOrderSerivice.getOrderList(params: params) { (respData) in
             if let order = respData as? XFOrder,
                 let orderList = order.content, orderList.count > 0 {
                 weakSelf?.renderOrderListView(data: orderList)
@@ -85,7 +81,7 @@ class XFOrderListViewController: XFBaseSubViewController {
     // 确认收货
     fileprivate func orderConfirmWith(orderId: String){
         weak var weakSelf = self
-        request.confirmOrder(params: ["orderId":orderId]) { (data) in
+        XFOrderSerivice.confirmOrder(params: ["orderId":orderId]) { (data) in
             weakSelf?.showMessage("收货成功，感谢支持", completion: {
                 weakSelf?.loadOrderData()
             })

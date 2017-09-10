@@ -107,7 +107,7 @@ public final class XFNetworkStatus: NSObject {
     
     public var currentStatus: XFNetStateCode = .unKnown
     
-    var reachability:NetworkReachabilityManager = NetworkReachabilityManager(host: "www.qq.com")!
+    var reachability:NetworkReachabilityManager = NetworkReachabilityManager(host: "www.aliyun.com")!
     
     fileprivate override init() {
         super.init()
@@ -141,7 +141,7 @@ public final class XFNetworkStatus: NSObject {
 
 public class XFNetworking: NSObject {
     
-    public func url(_ uri:String, params:XFParams? = nil) -> String {
+    public class func url(_ uri:String, params:XFParams? = nil) -> String {
         if let params = params, !params.isEmpty {
             var url:String = ApiServer.onLine + uri + "?"
             for (index, obj) in params.enumerated() {
@@ -157,39 +157,34 @@ public class XFNetworking: NSObject {
         }
     }
     
-    public func doGet(withUrl url:String,
-                      encoding:ParameterEncoding = URLEncoding.default,
-                      completion:@escaping XFNetCompletion) {
-        self.doRequest(withUrl: url, method: .get, params: nil, paramsEncoding: encoding, completion: completion)
+    public class func doGet(withUrl url:String,
+                            encoding:ParameterEncoding = URLEncoding.default,
+                            completion:@escaping XFNetCompletion) {
+        doRequest(withUrl: url, method: .get, params: nil, paramsEncoding: encoding, completion: completion)
     }
     
-    public func doPost(withUrl url:String,
-                       params:Dictionary<String,Any>,
-                       encoding:ParameterEncoding = URLEncoding.default,
-                       completion:@escaping XFNetCompletion) {
-        self.doRequest(withUrl: url, method: .post, params: params, paramsEncoding: encoding, completion: completion)
+    public class func doPost(withUrl url:String,
+                             params:Dictionary<String,Any>,
+                             encoding:ParameterEncoding = URLEncoding.default,
+                             completion:@escaping XFNetCompletion) {
+        doRequest(withUrl: url, method: .post, params: params, paramsEncoding: encoding, completion: completion)
     }
     
     
-    public func commonRequest(withUrl url:String,
-                              params:Dictionary<String,Any>? = nil,
-                              method:Alamofire.HTTPMethod = .get,
-                              encoding:ParameterEncoding = URLEncoding.default,
-                              completion:@escaping XFNetCompletion) {
-        self.doRequest(withUrl: url,
-                       method: method,
-                       params: params,
-                       paramsEncoding: encoding,
-                       needSerialize: false,
-                       completion: completion)
+    public class func commonRequest(withUrl url:String,
+                                    params:Dictionary<String,Any>? = nil,
+                                    method:Alamofire.HTTPMethod = .get,
+                                    encoding:ParameterEncoding = URLEncoding.default,
+                                    completion:@escaping XFNetCompletion) {
+        doRequest(withUrl: url, method: method, params: params, paramsEncoding: encoding, needSerialize: false, completion: completion)
     }
     
-    public func doRequest(withUrl url:String,
-                          method:Alamofire.HTTPMethod,
-                          params:Dictionary<String,Any>?,
-                          paramsEncoding:ParameterEncoding,
-                          needSerialize:Bool = true,
-                          completion:@escaping XFNetCompletion) {
+    public class func doRequest(withUrl url:String,
+                                method:Alamofire.HTTPMethod,
+                                params:Dictionary<String,Any>?,
+                                paramsEncoding:ParameterEncoding,
+                                needSerialize:Bool = true,
+                                completion:@escaping XFNetCompletion) {
         
         guard XFNetworkStatus.shareInstance.canReachable() else {
             MBProgressHUD.showError("网络不可用，请检查先~")
@@ -203,19 +198,18 @@ public class XFNetworking: NSObject {
             headers = ["Authorization": "Bearer \(token)"]
         }
         
-        weak var weakSelf = self
         Alamofire.request(url, method: method, parameters: params, encoding: paramsEncoding,headers: headers)
             .validate().responseJSON { (response) in
                 switch response.result {
                 case .success(let value):
-                    weakSelf?.handleSuccess(needSerialize, value: value, completion: completion)
+                    handleSuccess(needSerialize, value: value, completion: completion)
                 case .failure(let error):
-                    weakSelf?.handleFailure(error: error, completion: completion)
+                    handleFailure(error: error, completion: completion)
                 }
         }
     }
     
-    private func handleSuccess(_ needSerialize:Bool, value:Any, completion:@escaping XFNetCompletion) {
+    private class func handleSuccess(_ needSerialize:Bool, value:Any, completion:@escaping XFNetCompletion) {
         if needSerialize {
             if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: JSON(value).rawString()) {
                 guard let code = obj.code, let msg = obj.msg, let timestamp = obj.systemTime else {
@@ -240,7 +234,7 @@ public class XFNetworking: NSObject {
         }
     }
     
-    private func handleFailure(error:Error, completion:@escaping XFNetCompletion) {
+    private class func handleFailure(error:Error, completion:@escaping XFNetCompletion) {
         var msg: String? = error.localizedDescription
         if let error: AFError = error as? AFError,
             let code =  error.responseCode,

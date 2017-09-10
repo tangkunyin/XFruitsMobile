@@ -14,8 +14,8 @@ import SwiftyJSON
 final class XFOrderSerivice: XFNetworking {
 
     /// 确认订单
-    func orderConfirm(_ completion:@escaping XFResponse) {
-        self.doGet(withUrl: url("/order/confirm")) { (success, respData) in
+    class func orderConfirm(_ completion:@escaping XFResponse) {
+        doGet(withUrl: url("/order/confirm")) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(XFOrderConfirm.deserialize(from: dict) ?? XFOrderConfirm())
             }
@@ -23,16 +23,16 @@ final class XFOrderSerivice: XFNetworking {
     }
     
     /// 提交订单
-    func orderCommit(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
-        self.doPost(withUrl: url("/order/commit"), params: params, encoding: JSONEncoding.default){ (success, respData) in
+    class func orderCommit(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
+        doPost(withUrl: url("/order/commit"), params: params, encoding: JSONEncoding.default){ (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(XFOrderCommit.deserialize(from: dict) ?? XFOrderCommit())
             }
         }
     }
     
-    func orderPayCommit(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
-        self.doPost(withUrl: url("/order/payChannel"), params: params){ (success, respData) in
+    class func orderPayCommit(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
+        doPost(withUrl: url("/order/payChannel"), params: params){ (success, respData) in
             if success, respData is String, let dict = respData as? String {
                 completion(dict);
             }
@@ -40,8 +40,8 @@ final class XFOrderSerivice: XFNetworking {
     }
     
     /// 获取订单列表
-    func getOrderList(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
-        self.doGet(withUrl: url("/order/query", params: params)) { (success, respData) in
+    class func getOrderList(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
+        doGet(withUrl: url("/order/query", params: params)) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(XFOrder.deserialize(from: dict) ?? XFOrder())
             }
@@ -49,8 +49,8 @@ final class XFOrderSerivice: XFNetworking {
     }
     
     /// 获取订单详情
-    func getOrderDetail(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
-        self.doGet(withUrl: url("/order/detail", params: params)) { (success, respData) in
+    class func getOrderDetail(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
+        doGet(withUrl: url("/order/detail", params: params)) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(XFOrderDetail.deserialize(from: dict) ?? XFOrderDetail())
             }
@@ -58,8 +58,8 @@ final class XFOrderSerivice: XFNetworking {
     }
     
     /// 获取物流信息
-    func getExpressDetail(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
-        self.doGet(withUrl: url("/express/trackInfo", params: params)) { (success, respData) in
+    class func getExpressDetail(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
+        doGet(withUrl: url("/express/trackInfo", params: params)) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(XFExpress.deserialize(from: dict) ?? XFExpress())
             }
@@ -67,8 +67,8 @@ final class XFOrderSerivice: XFNetworking {
     }
     
     /// 确认收货
-    func confirmOrder(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
-        self.doPost(withUrl: url("/order/confirmOrder"), params: params){ (success, respData) in
+    class func confirmOrder(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
+        doPost(withUrl: url("/order/confirmOrder"), params: params){ (success, respData) in
             if success {
                 completion(respData as Any)
             }

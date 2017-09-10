@@ -32,11 +32,6 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         dPrint("XFDetailViewController deinit...")
     }
     
-    lazy var request:XFCommonService = {
-        let serviceRequest = XFCommonService()
-        return serviceRequest
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,7 +52,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         
         weak var weakSelf = self
         if let prodId = prodId {
-            request.getProductDetail(pid: prodId, { (data) in
+            XFCommonService.getProductDetail(pid: prodId, { (data) in
                 if let detailData = data as? ProductDetail {
                     weakSelf?._detailData = detailData
                 }
