@@ -27,7 +27,7 @@ final class XFCommonService: XFNetworking {
     func vertifyImageCodeAndSendMessageCode( params:XFParams,  _ completion:@escaping XFResponse) {
         self.doPost(withUrl: url("/auth/captcha"), params: params){ (success, respData) in
             if success  {
-                completion(respData as! Bool)
+                completion(respData ?? false)
             }
         }
     }

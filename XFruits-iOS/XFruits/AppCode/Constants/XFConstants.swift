@@ -50,6 +50,8 @@ struct XFConstants {
     struct MessageKey {
         // 请求更新果篮数据
         static let NeedRefreshShopCartData: String = "_needRefreshShopCartData"
+        // 接口未授权消息
+        static let XFServerUnAuthorization: String = "_serverUnAuthorization"
     }
     
     

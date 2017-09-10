@@ -10,7 +10,7 @@ import HandyJSON
 
 struct XFVerifyImage: HandyJSON {
     
-    var captchaImg:String = ""
-    var uniqueCode:String = ""
+    var captchaImg:String?
+    var uniqueCode:String?
     
 }

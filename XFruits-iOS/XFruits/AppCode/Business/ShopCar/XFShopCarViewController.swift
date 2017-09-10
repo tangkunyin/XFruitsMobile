@@ -51,9 +51,7 @@ class XFShopCarViewController: XFBaseViewController {
         }
         guard XFUserGlobal.shared.isLogin else {
             // 进入登录页面
-            let login = XFUserLoginViewController()
-            let nav = UINavigationController.init(rootViewController: login)
-            present(nav, animated: true, completion: nil)
+            navigationController?.pushViewController(XFUserLoginViewController(), animated: true)
             return
         }
         let checkoutVC = XFCheckoutViewController()

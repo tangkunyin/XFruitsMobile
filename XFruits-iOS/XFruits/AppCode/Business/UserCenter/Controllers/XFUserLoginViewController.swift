@@ -8,7 +8,7 @@
 
 import UIKit
 
-class XFUserLoginViewController: XFBaseViewController {
+class XFUserLoginViewController: XFBaseSubViewController {
     
     // 品牌logo
     lazy var brandImageView:UIImageView = {
@@ -64,25 +64,13 @@ class XFUserLoginViewController: XFBaseViewController {
         return btn
     }()
     
-    lazy var cancelBtn:UIButton = {
-        let btn = UIButton.init(type: .custom)
-        btn.setTitle("取 消", for: .normal)
-        btn.backgroundColor = XFConstants.Color.silver
-        btn.titleLabel?.textColor = UIColor.white
-        btn.layer.cornerRadius = 20
-        btn.layer.masksToBounds = true
-        btn.addTarget(self, action: #selector(cancelLogin), for:.touchUpInside)
-        return btn
-    }()
-    
-    
     lazy var forgetPwdBtn:UIButton = {
         let btn = UIButton.init(type: .custom)
-//        btn.setTitle("忘记密码", for: .normal)
+        btn.setTitle("忘记密码", for: .normal)
         btn.backgroundColor = UIColor.white
         btn.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-//        btn.addTarget(self, action: #selector(forgetPassword), for:.touchUpInside)
+        btn.addTarget(self, action: #selector(forgetPassword), for:.touchUpInside)
         return btn
     }()
     
@@ -105,7 +93,6 @@ class XFUserLoginViewController: XFBaseViewController {
         self.view.addSubview(self.mobileTextField)
         self.view.addSubview(self.passwordTextField)
         self.view.addSubview(self.pwdSecurityBtn)
-        self.view.addSubview(self.cancelBtn)
         self.view.addSubview(self.loginBtn)
         self.view.addSubview(self.forgetPwdBtn)
         self.view.addSubview(self.registAccount)
@@ -133,14 +120,9 @@ class XFUserLoginViewController: XFBaseViewController {
             make.right.equalTo(self.passwordTextField.snp.right).offset(-20)
             make.width.height.equalTo(22)
         })
-        cancelBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(self.passwordTextField.snp.bottom).offset(20)
-            make.left.equalTo(self.view).offset(20)
-            make.right.equalTo(self.view).offset(-20)
-            make.height.equalTo(40)
-        }
+        
         loginBtn.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.cancelBtn.snp.bottom).offset(10)
+            make.top.equalTo(self.passwordTextField.snp.bottom).offset(20)
             make.left.equalTo(self.view).offset(20)
             make.right.equalTo(self.view).offset(-20)
             make.height.equalTo(40)
@@ -192,12 +174,8 @@ class XFUserLoginViewController: XFBaseViewController {
                 dPrint("用户已登录")
                 dPrint("Token is: \(XFUserGlobal.shared.token!)")
             }
-            weakSelf!.dismiss(animated: true, completion: nil)
+            weakSelf?.backToParentController()
         }
-    }
-    
-    @objc fileprivate func cancelLogin(){
-        self.dismiss(animated: true, completion: nil)
     }
     
     @objc fileprivate func forgetPassword(){

@@ -20,8 +20,6 @@ struct XFBackButtonImages {
 
 class XFBaseSubViewController: XFBaseViewController {
     
-    var backToRoot: Bool = false
-    
     /// 改变返回按钮ICON，直接设置值
     var backButtonImages: Dictionary<String, String> {
         get {
@@ -68,19 +66,37 @@ class XFBaseSubViewController: XFBaseViewController {
         backSwipe.delegate = self
         backSwipe.direction = .right
         self.view.addGestureRecognizer(backSwipe)
+        
+        //监听接口返回的401
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handelUnAuthorization),
+                                               name: NSNotification.Name(rawValue: XFConstants.MessageKey.XFServerUnAuthorization),
+                                               object: nil)
     }
     
     
     @objc func backToParentController() {
         if let navController = self.navigationController {
             if navController.responds(to: #selector(navController.popViewController(animated:))) {
-                if backToRoot {
-                    navController.popToRootViewController(animated: true)
-                } else {
-                    navController.popViewController(animated: true)
-                }
+                navController.popViewController(animated: true)
             }
         }
+    }
+    
+    @objc func backToRootViewController() {
+        if let navController = self.navigationController {
+            if navController.responds(to: #selector(navController.popToRootViewController(animated:))) {
+                navController.popToRootViewController(animated: true)
+            }
+        }
+    }
+    
+    @objc private func handelUnAuthorization(_ notifacation: Notification? = nil) {
+        if let notifacation = notifacation, let msg = notifacation.object as? String {
+            showError(msg)
+        }
+        XFUserGlobal.shared.signOff()
+        backToRootViewController()
     }
 }
 

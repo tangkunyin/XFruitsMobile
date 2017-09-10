@@ -132,7 +132,7 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
             XFUserGlobal.shared.signIn(user: data)
             if XFUserGlobal.shared.isLogin {
                 weakSelf?.showMessage("恭喜您，注册成功", completion: {
-                    weakSelf?.dismiss(animated: true, completion: nil)
+                    weakSelf?.backToParentController()
                 })
             }
         }

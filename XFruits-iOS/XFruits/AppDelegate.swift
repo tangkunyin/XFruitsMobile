@@ -96,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func navigateTo(controller: UIViewController, loginCheck:Bool) {
         if loginCheck && !XFUserGlobal.shared.isLogin {
             let realController = UINavigationController.init(rootViewController: XFUserLoginViewController())
-            window?.rootViewController?.present(realController, animated: false, completion: nil)
+            window?.rootViewController?.navigationController?.pushViewController(realController, animated: false)
         } else {
             let realController = XFNavigationController.init(rootViewController: controller)
             window?.rootViewController?.navigationController?.pushViewController(realController, animated: false)

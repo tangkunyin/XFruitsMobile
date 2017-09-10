@@ -129,13 +129,11 @@ class XFUserCenterViewController: XFBaseViewController {
                     //TODO 卡劵、优惠券、收藏、积分
                     let webView = XFWebViewController.init(withUrl: "http://www.10fruits.cn/")
                     webView.title = "卡劵中心"
-                    self.navigationController?.pushViewController(webView, animated: true)
+                    navigationController?.pushViewController(webView, animated: true)
                 }
             } else {
                 // 进入登录页面
-                let login = XFUserLoginViewController()
-                let nav = UINavigationController.init(rootViewController: login)
-                present(nav, animated: true, completion: nil)
+                navigationController?.pushViewController(XFUserLoginViewController(), animated: true)
             }
         }
         // 无需登录的入口

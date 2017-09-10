@@ -19,8 +19,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
     var backToLoginBtn:UIButton? // 已有帐号去登录
     var userProtocalBtn:UIButton? // 用户协议
     
-    var captchaImgString:NSString?  // 图片验证码
-    var uniqueCodeString:NSString?  //唯一吗
+    var uniqueCodeString:String = ""  //唯一吗
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,45 +151,20 @@ class XFUserRegistViewController: XFBaseSubViewController {
     // 获取图片验证码
     func getImageVertifyCode(){
         // 获取验证码请求测试
+        weak var weakSelf = self
         XFCommonService().getVerifyImage { (data) in
-            dPrint((data as! XFVerifyImage).captchaImg)
-            self.captchaImgString = (data as! XFVerifyImage).captchaImg as NSString
-            self.uniqueCodeString =  (data as! XFVerifyImage).uniqueCode as NSString
-            
-            self.codeImageView?.image = self.base64StringToUIImage(base64String: self.captchaImgString! as String)
-            
-        }
-        
-    }
-    
-    // 传入base64的字符串，可以是没有经过修改的转换成的以data开头的，也可以是base64的内容字符串，然后转换成UIImage
-    func base64StringToUIImage(base64String:String)->UIImage? {
-        var str = base64String
-        
-        // 1、判断用户传过来的base64的字符串是否是以data开口的，如果是以data开头的，那么就获取字符串中的base代码，然后在转换，如果不是以data开头的，那么就直接转换
-        if str.hasPrefix("data:image") {
-            guard let newBase64String = str.components(separatedBy: ",").last else {
-                return nil
+            if let verifyImage = data as? XFVerifyImage,
+                let captchaImg = verifyImage.captchaImg,
+                let uniqueCode = verifyImage.uniqueCode {
+                weakSelf?.uniqueCodeString =  uniqueCode
+                weakSelf?.codeImageView?.image = UIImage.base64StringToUIImage(base64String: captchaImg)
             }
-            str = newBase64String
         }
-        // 2、将处理好的base64String代码转换成NSData
-        guard let imgNSData = NSData(base64Encoded: str, options: NSData.Base64DecodingOptions()) else {
-            return nil
-        }
-        // 3、将NSData的图片，转换成UIImage
-        guard let codeImage = UIImage(data: imgNSData as Data) else {
-            return nil
-        }
-        return codeImage
     }
-    
     
     // 返回登录页面
     @objc func backToLoginVC(sender:UIButton?) {
-        dPrint("eyes")
         self.navigationController?.popViewController(animated: true)
-        
     }
     
     
@@ -213,10 +187,9 @@ class XFUserRegistViewController: XFBaseSubViewController {
         }
         
         weak var weakSelf = self
-        let para:[String:String]  = ["uniqueCode":self.uniqueCodeString! as String,"code":code ,"phone":phone]
+        let para:[String:String]  = ["uniqueCode": uniqueCodeString,"code": code ,"phone": phone]
         XFCommonService().vertifyImageCodeAndSendMessageCode(params: para) { (data) in
-            dPrint(data)
-            if data as! Bool {
+            if data is Bool, data as! Bool {
                 let secondRegistVC = XFUserRegistSecondPageViewController()
                 secondRegistVC.para  = para as NSDictionary
                 weakSelf?.show(secondRegistVC, sender: weakSelf)

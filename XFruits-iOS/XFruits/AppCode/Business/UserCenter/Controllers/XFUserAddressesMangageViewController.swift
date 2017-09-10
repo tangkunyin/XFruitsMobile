@@ -133,7 +133,7 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         }
 
         navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.show(addAddressVC, sender: self)
+        navigationController?.pushViewController(addAddressVC, animated: true)
     }
 }
 
