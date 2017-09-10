@@ -52,7 +52,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         
         weak var weakSelf = self
         if let prodId = prodId {
-            XFCommonService.getProductDetail(pid: prodId, { (data) in
+            XFProductService.getProductDetail(pid: prodId, { (data) in
                 if let detailData = data as? ProductDetail {
                     weakSelf?._detailData = detailData
                 }

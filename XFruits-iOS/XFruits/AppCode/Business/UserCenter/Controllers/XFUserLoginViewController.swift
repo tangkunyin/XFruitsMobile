@@ -25,9 +25,8 @@ class XFUserLoginViewController: XFBaseSubViewController {
         textField.layer.cornerRadius = 10
         textField.keyboardType = .numberPad
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
-        let attr = [NSForegroundColorAttributeName:XFConstants.Color.pinkishGrey,
-                    NSFontAttributeName:XFConstants.Font.pfn14]
-        textField.attributedPlaceholder = NSAttributedString(string: "请输入手机号码", attributes:attr)
+        textField.attributedPlaceholder = NSAttributedString(string: "请输入手机号码",
+                                                             attributes:xfAttributes(fontColor: XFConstants.Color.pinkishGrey))
         return textField
     }()
     
@@ -35,14 +34,13 @@ class XFUserLoginViewController: XFBaseSubViewController {
         let textField = UITextField()
         textField.delegate = self
         textField.isSecureTextEntry  = true
+        textField.returnKeyType = .done
         textField.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
         textField.layer.borderWidth = 0.5
         textField.layer.cornerRadius = 10
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 2, 0);
-        let attr = [NSForegroundColorAttributeName:XFConstants.Color.pinkishGrey,
-                    NSFontAttributeName:XFConstants.Font.pfn14]
-        textField.attributedPlaceholder = NSAttributedString(string: "请输入密码", attributes: attr)
-        textField.returnKeyType = .done
+        textField.attributedPlaceholder = NSAttributedString(string: "请输入密码",
+                                                             attributes: xfAttributes(fontColor: XFConstants.Color.pinkishGrey))
         return textField;
     }()
     
@@ -66,21 +64,23 @@ class XFUserLoginViewController: XFBaseSubViewController {
     
     lazy var forgetPwdBtn:UIButton = {
         let btn = UIButton.init(type: .custom)
+        btn.tag = 0
         btn.setTitle("忘记密码", for: .normal)
         btn.backgroundColor = UIColor.white
         btn.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        btn.addTarget(self, action: #selector(forgetPassword), for:.touchUpInside)
+        btn.addTarget(self, action: #selector(accountHandler(_:)), for:.touchUpInside)
         return btn
     }()
     
     lazy var registAccount:UIButton = {
         let btn = UIButton.init(type: .custom)
+        btn.tag = 1
         btn.setTitle("注册帐号", for: .normal)
         btn.backgroundColor = UIColor.white
         btn.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        btn.addTarget(self, action: #selector(createAccount), for:.touchUpInside)
+        btn.addTarget(self, action: #selector(accountHandler(_:)), for:.touchUpInside)
         return btn
     }()
     
@@ -147,7 +147,8 @@ class XFUserLoginViewController: XFBaseSubViewController {
         self.passwordTextField.isSecureTextEntry = !self.passwordTextField.isSecureTextEntry
     }
     
-    @objc func createAccount() {
+    @objc func accountHandler(_ btn:UIButton) {
+        XFUserGlobal.shared.accountActionType = btn.tag
         let registVC = XFUserRegistViewController()
         navigationController?.pushViewController(registVC, animated: true)
     }
@@ -167,7 +168,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
             return
         }
         let loginData = ["phone":phone,"password":password]
-        XFCommonService.login(params: loginData) { (data) in
+        XFAuthService.login(params: loginData) { (data) in
             let data = data as! XFUser
             XFUserGlobal.shared.signIn(user: data)
             if XFUserGlobal.shared.isLogin {
@@ -176,10 +177,6 @@ class XFUserLoginViewController: XFBaseSubViewController {
             }
             weakSelf?.backToParentController()
         }
-    }
-    
-    @objc fileprivate func forgetPassword(){
-        showSuccess("请取消登录后，联系客服处理")
     }
     
     @objc fileprivate func disMissKeyboard(){

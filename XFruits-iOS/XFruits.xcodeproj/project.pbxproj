@@ -20,6 +20,8 @@
 		860A43011EE415FF00798678 /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
 		860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A43021EE415FF00798678 /* HandyJSON.framework */; };
 		860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A43041EE4178000798678 /* XFBaseResponse.swift */; };
+		8616F7ED1F654C03007A4669 /* XFAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616F7EC1F654C03007A4669 /* XFAuthService.swift */; };
+		8616F7EF1F654CB8007A4669 /* XFProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616F7EE1F654CB8007A4669 /* XFProductService.swift */; };
 		8618BA2C1F3F963300AC9436 /* XFPayTimerCountDownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618BA2B1F3F963300AC9436 /* XFPayTimerCountDownViewCell.swift */; };
 		8618BA381F4027B000AC9436 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8618BA371F4027AA00AC9436 /* SystemConfiguration.framework */; };
 		8618BA3B1F4027FA00AC9436 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8618BA3A1F4027ED00AC9436 /* CoreTelephony.framework */; };
@@ -38,7 +40,6 @@
 		862672E71EFE47AE0062B52B /* XFUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672E61EFE47AE0062B52B /* XFUser.swift */; };
 		862672EB1EFE480B0062B52B /* XFProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672EA1EFE480B0062B52B /* XFProduct.swift */; };
 		862672ED1EFE48420062B52B /* XFNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672EC1EFE48420062B52B /* XFNetworking.swift */; };
-		862672EF1EFE487B0062B52B /* XFCommonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672EE1EFE487B0062B52B /* XFCommonService.swift */; };
 		862672F11EFE48A20062B52B /* XFHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672F01EFE48A20062B52B /* XFHomeViewController.swift */; };
 		862672F31EFE492D0062B52B /* XFViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672F21EFE492D0062B52B /* XFViewPager.swift */; };
 		862672F51EFE49550062B52B /* XFBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672F41EFE49550062B52B /* XFBaseViewController.swift */; };
@@ -141,6 +142,8 @@
 		16DCE3C21EDA68960047F559 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		860A43021EE415FF00798678 /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HandyJSON.framework; path = Carthage/Build/iOS/HandyJSON.framework; sourceTree = "<group>"; };
 		860A43041EE4178000798678 /* XFBaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFBaseResponse.swift; sourceTree = "<group>"; };
+		8616F7EC1F654C03007A4669 /* XFAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAuthService.swift; sourceTree = "<group>"; };
+		8616F7EE1F654CB8007A4669 /* XFProductService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFProductService.swift; sourceTree = "<group>"; };
 		8618BA2B1F3F963300AC9436 /* XFPayTimerCountDownViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFPayTimerCountDownViewCell.swift; sourceTree = "<group>"; };
 		8618BA321F40274300AC9436 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		8618BA331F40274300AC9436 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
@@ -164,7 +167,6 @@
 		862672E61EFE47AE0062B52B /* XFUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFUser.swift; sourceTree = "<group>"; };
 		862672EA1EFE480B0062B52B /* XFProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFProduct.swift; sourceTree = "<group>"; };
 		862672EC1EFE48420062B52B /* XFNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFNetworking.swift; sourceTree = "<group>"; };
-		862672EE1EFE487B0062B52B /* XFCommonService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCommonService.swift; sourceTree = "<group>"; };
 		862672F01EFE48A20062B52B /* XFHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFHomeViewController.swift; sourceTree = "<group>"; };
 		862672F21EFE492D0062B52B /* XFViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFViewPager.swift; sourceTree = "<group>"; };
 		862672F41EFE49550062B52B /* XFBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFBaseViewController.swift; sourceTree = "<group>"; };
@@ -474,7 +476,6 @@
 				86A45C711ED1209F00772D13 /* XFCommonUtils.swift */,
 				86E6951F1ED6AA35004864A6 /* XFCartUtils.swift */,
 				862672EC1EFE48420062B52B /* XFNetworking.swift */,
-				862672EE1EFE487B0062B52B /* XFCommonService.swift */,
 				862AF70C1F09271E00409CCB /* XFUserGlobal.swift */,
 				16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */,
 				86ADDCD41F2AEBCE00881CFA /* XFDataGlobal.swift */,
@@ -514,6 +515,8 @@
 				8660D99E1F447AF800D98C18 /* XFOrderSerivice.swift */,
 				862848521F483DD400CA52B6 /* XFAddressService.swift */,
 				86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */,
+				8616F7EC1F654C03007A4669 /* XFAuthService.swift */,
+				8616F7EE1F654CB8007A4669 /* XFProductService.swift */,
 			);
 			path = NetService;
 			sourceTree = "<group>";
@@ -818,8 +821,9 @@
 				862AF70B1F0926A700409CCB /* XFComment.swift in Sources */,
 				862672ED1EFE48420062B52B /* XFNetworking.swift in Sources */,
 				8624CC3C1F4DE5D90008C8D3 /* XFAboutCompanyViewController.swift in Sources */,
-				862672EF1EFE487B0062B52B /* XFCommonService.swift in Sources */,
+				8616F7ED1F654C03007A4669 /* XFAuthService.swift in Sources */,
 				862672E51EFE47010062B52B /* XFMBProgressHUD.swift in Sources */,
+				8616F7EF1F654CB8007A4669 /* XFProductService.swift in Sources */,
 				86E695201ED6AA35004864A6 /* XFCartUtils.swift in Sources */,
 				86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */,
 				862672CD1EFE42B50062B52B /* XFCategoryViewController.swift in Sources */,

@@ -109,7 +109,7 @@ class XFCategoryViewController: XFBaseViewController {
         
         weak var weakSelf = self
         let params:XFParams = ["type":dataType,"sort":dataSort,"sequence":1,"page":1,"size":XFConstants.pageRows]
-        XFCommonService.getAllProducts(params: params) { (data) in
+        XFProductService.getAllProducts(params: params) { (data) in
             weakSelf?.removeLoadingView()
             if let cateList = data as? CategoryList, let dataSource = cateList.content {
                 weakSelf?.removeNullDataView()
