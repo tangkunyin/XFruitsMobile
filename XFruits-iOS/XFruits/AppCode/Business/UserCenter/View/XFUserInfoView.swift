@@ -30,30 +30,30 @@ class XFUserInfoView: UIView {
     }
     
     
-    lazy var backgroudScrollView:UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.backgroundColor = UIColor.white
-        return scrollView
-    }()
+//    lazy var self:UIScrollView = {
+//        let scrollView = UIScrollView()
+//        scrollView.backgroundColor = UIColor.white
+//        return scrollView
+//    }()
   
     lazy var avatarTipLabel:UILabel = {
        let  label = UILabel()
         label.text = "头像"
-        label.font = XFConstants.Font.pfn12
+        label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         return label
     }()
     
     lazy var avatarBtn:UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage.imageWithNamed(""), for: .normal)
+        btn.setImage(UIImage.imageWithNamed("apple"), for: .normal)
         return btn
     }()
     
     lazy var nicknameTipLabel:UILabel = {
         let  label = UILabel()
         label.text = "昵称"
-        label.font = XFConstants.Font.pfn12
+        label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         return label
     }()
@@ -61,15 +61,16 @@ class XFUserInfoView: UIView {
     lazy var nicknameLabel:UILabel = {
         let  label = UILabel()
         label.text = "zhaojian"
-        label.font = XFConstants.Font.pfn12
+        label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
+        label.textAlignment = .right
         return label
     }()
     
     lazy var changePwdTipLabel:UILabel = {
         let  label = UILabel()
         label.text = "修改密码"
-        label.font = XFConstants.Font.pfn12
+        label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         return label
     }()
@@ -78,7 +79,7 @@ class XFUserInfoView: UIView {
     lazy var mobileTipLabel:UILabel = {
         let  label = UILabel()
         label.text = "手机号码"
-        label.font = XFConstants.Font.pfn12
+        label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         return label
     }()
@@ -86,8 +87,9 @@ class XFUserInfoView: UIView {
     lazy var mobileLabel:UILabel = {
         let  label = UILabel()
         label.text = "18519191442"
-        label.font = XFConstants.Font.pfn12
+        label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
+        label.textAlignment = .right
         return label
     }()
     
@@ -95,7 +97,7 @@ class XFUserInfoView: UIView {
     lazy var signatureTipLabel:UILabel = {
         let  label = UILabel()
         label.text = "个性签名"
-        label.font = XFConstants.Font.pfn12
+        label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         return label
     }()
@@ -103,42 +105,167 @@ class XFUserInfoView: UIView {
     lazy var signatureLabel:UILabel = {
         let  label = UILabel()
         label.text = "骑马喝酒走天涯"
-        label.font = XFConstants.Font.pfn12
+        label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
+        label.textAlignment = .right
         return label
     }()
     
     func setUpUI()  {
-         let seperateLine1:UIView = createSeperateLine()
         
+        
+        
+      
+         let line1:UIView = createSeperateLine()
         self.addSubview(avatarTipLabel)
-        self.addSubview(avatarBtn)
-        self.addSubview(seperateLine1)
+
+        avatarTipLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(self.snp.top).offset(12)
+            make.left.equalTo(self.snp.left).offset(13)
+            make.height.equalTo(19)
+            make.width.equalTo(70)
+
+        })
         
-//        specificationDescLabelBottomLine.snp.makeConstraints { (make) in
-//            make.width.equalTo(self)
-//            make.height.equalTo(0.4)
-//            make.bottom.equalTo(self.serviceTitleLabel.snp.top)
-//        }
-        let seperateLine2:UIView = createSeperateLine()
+        self.addSubview(avatarBtn)
+
+        avatarBtn.snp.makeConstraints({ (make) in
+            make.top.equalTo(self.snp.top).offset(12)
+            
+            make.right.equalTo(self.snp.right).offset(-50)
+            make.width.height.equalTo(19)
+        
+        })
+        
+        self.addSubview(line1)
+        line1.snp.makeConstraints { (make) in
+            make.top.equalTo(avatarTipLabel.snp.bottom).offset(10)
+            make.height.equalTo(0.4)
+            make.left.right.equalTo(self)
+        }
+       
+        
+        
+       
+        
+        
+        
+        let line2:UIView = createSeperateLine()
 
         self.addSubview(nicknameTipLabel)
+        nicknameTipLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(line1.snp.bottom).offset(12)
+            make.left.equalTo(self.snp.left).offset(13)
+            
+            make.width.equalTo(70)
+            make.height.equalTo(19)
+        })
+        
+  
         self.addSubview(nicknameLabel)
-         self.addSubview(seperateLine2)
+        nicknameLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(line1.snp.bottom).offset(12)
+            make.left.equalTo(nicknameTipLabel.snp.right).offset(13)
+            make.right.equalTo(self.snp.right).offset(-13)
+            make.height.equalTo(19)
+        })
         
-        let seperateLine3:UIView = createSeperateLine()
+        
+        
+         self.addSubview(line2)
+        
+        line2.snp.makeConstraints { (make) in
+            make.top.equalTo(nicknameTipLabel.snp.bottom).offset(10)
+            make.height.equalTo(0.4)
+            make.left.right.equalTo(self)
+        }
+        
+        
+         
+         
+        
+        let line3:UIView = createSeperateLine()
+        
+        
         self.addSubview(changePwdTipLabel)
-         self.addSubview(seperateLine3)
+        changePwdTipLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(line2.snp.bottom).offset(12)
+            make.left.equalTo(self.snp.left).offset(13)
+            make.right.equalTo(self.snp.right).offset(-13)
+            make.width.equalTo(70)
+            make.height.equalTo(19)
+        })
         
-        let seperateLine4:UIView = createSeperateLine()
+        
+      
+         self.addSubview(line3)
+        line3.snp.makeConstraints { (make) in
+            make.top.equalTo(changePwdTipLabel.snp.bottom).offset(10)
+            make.height.equalTo(0.4)
+            make.left.right.equalTo(self)
+        }
+        
+        
+        
+      
+        
+        let line4:UIView = createSeperateLine()
         self.addSubview(mobileTipLabel)
-        self.addSubview(mobileLabel)
-         self.addSubview(seperateLine4)
+        mobileTipLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(line3.snp.bottom).offset(12)
+           make.left.equalTo(self.snp.left).offset(13)
+            make.width.equalTo(70)
+            make.height.equalTo(19)
+        })
         
-        let seperateLine5:UIView = createSeperateLine()
+        
+        
+        self.addSubview(mobileLabel)
+        
+         self.addSubview(line4)
+        line4.snp.makeConstraints { (make) in
+            make.top.equalTo(mobileTipLabel.snp.bottom).offset(10)
+            make.height.equalTo(0.4)
+            make.left.right.equalTo(self)
+        }
+        
+        mobileLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(line3.snp.bottom).offset(12)
+            make.left.equalTo(mobileTipLabel.snp.right).offset(13)
+            make.right.equalTo(self.snp.right).offset(-13)
+            make.height.equalTo(19)
+        })
+        
+        
+        
+        
+        
+        
+        
+        let line5:UIView = createSeperateLine()
+        
+        
+        
         self.addSubview(signatureTipLabel)
+        signatureTipLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(line4.snp.bottom).offset(12)
+            make.left.equalTo(self.snp.left).offset(13)
+            make.width.equalTo(70)
+            make.height.equalTo(19)
+        })
+        
+       
         self.addSubview(signatureLabel)
-         self.addSubview(seperateLine5)
+        signatureLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(line4.snp.bottom).offset(12)
+            make.left.equalTo(mobileTipLabel.snp.right).offset(13)
+            make.right.equalTo(self.snp.right).offset(-13)
+            make.height.equalTo(19)
+        })
+        
+//         self.addSubview(line5)
+ 
+ 
     }
 
 }

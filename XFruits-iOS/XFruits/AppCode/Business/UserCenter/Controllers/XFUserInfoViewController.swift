@@ -24,9 +24,22 @@ class XFUserInfoViewController: XFBaseSubViewController {
         return btn
     }()
     
+    lazy var userInfoView :XFUserInfoView = {
+       let view = XFUserInfoView()
+       
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "个人资料"
+        
+        
+        view.addSubview(userInfoView)
+        userInfoView.snp.makeConstraints({ (make) in
+            make.left.top.bottom.right.equalTo(view)
+            
+        })
     
         view.addSubview(loginOutBtn)
         loginOutBtn.snp.makeConstraints { (make) in
@@ -34,6 +47,10 @@ class XFUserInfoViewController: XFBaseSubViewController {
             make.right.bottom.equalTo(view).offset(-20)
             make.height.equalTo(45)
         }
+        
+        
+        
+        
     }
 
     
