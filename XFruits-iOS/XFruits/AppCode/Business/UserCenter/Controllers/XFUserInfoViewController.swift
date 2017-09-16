@@ -26,7 +26,21 @@ class XFUserInfoViewController: XFBaseSubViewController {
     
     lazy var userInfoView :XFUserInfoView = {
        let view = XFUserInfoView()
-       
+        weak var weakSelf = self
+
+        view.actionHandler = {(type:Int) -> Void in
+            let alertController = UIAlertController(title: "修改头像", message: nil, preferredStyle: .actionSheet)
+            let cameraAction = UIAlertAction(title: "相机", style: .default, handler: nil)
+            let albumAction = UIAlertAction(title: "相册", style: .default, handler: nil)
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            alertController.addAction(cameraAction)
+            alertController.addAction(albumAction)
+            alertController.addAction(cancelAction)
+
+            weakSelf?.present(alertController, animated: true, completion: nil)
+
+        }
+
         return view
     }()
     
@@ -38,7 +52,6 @@ class XFUserInfoViewController: XFBaseSubViewController {
         view.addSubview(userInfoView)
         userInfoView.snp.makeConstraints({ (make) in
             make.left.top.bottom.right.equalTo(view)
-            
         })
     
         view.addSubview(loginOutBtn)
@@ -47,9 +60,7 @@ class XFUserInfoViewController: XFBaseSubViewController {
             make.right.bottom.equalTo(view).offset(-20)
             make.height.equalTo(45)
         }
-        
-        
-        
+       
         
     }
 

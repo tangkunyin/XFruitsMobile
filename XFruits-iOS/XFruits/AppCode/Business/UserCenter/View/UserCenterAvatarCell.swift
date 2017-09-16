@@ -21,7 +21,7 @@ class UserCenterAvatarCell: UITableViewCell {
     
     lazy var avatarBtn:UIButton = {
         let avatarBtn = UIButton()
-        avatarBtn.setImage(UIImage(named:"avatar"), for: .normal)
+        avatarBtn.setImage(UIImage(named:"defaultAvatar"), for: .normal)
         avatarBtn.layer.cornerRadius = 35
         avatarBtn.layer.masksToBounds = true
         return avatarBtn
@@ -70,7 +70,7 @@ class UserCenterAvatarCell: UITableViewCell {
         avatarBtn.snp.makeConstraints({ (make) in
             make.left.equalTo(snp.left).offset(10)
             make.width.height.equalTo(70)
-            make.centerY.equalTo(self)
+            make.centerY.equalTo(self).offset(5)
         })
     
         userNameLabel.snp.makeConstraints({ (make) in

@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		16200CF01F1B169C0008C039 /* XFAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CEE1F1B169C0008C039 /* XFAddress.swift */; };
-		16200CF31F1B179A0008C039 /* city.json in Resources */ = {isa = PBXBuildFile; fileRef = 16200CF21F1B179A0008C039 /* city.json */; };
 		16200CF51F1B7F200008C039 /* XFAvailableAddressUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */; };
+		162B9A361F6AC957003C2FA1 /* V5Client.framework in Resources */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
 		1641E76C1F35F9D10093DADF /* XFCityChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */; };
 		1641E76E1F3609EC0093DADF /* XFAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1641E76D1F3609EC0093DADF /* XFAlert.swift */; };
 		165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */; };
@@ -17,7 +17,8 @@
 		16582DC31EE4F8D400A58846 /* XFEditMyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */; };
 		16941B691F3C04A40066A911 /* XFEmptyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16941B681F3C04A40066A911 /* XFEmptyAddressView.swift */; };
 		169FAF8F1F6A5BE800CB358C /* XFUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169FAF8E1F6A5BE800CB358C /* XFUserInfoView.swift */; };
-		16DCE3C31EDA68960047F559 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16DCE3C21EDA68960047F559 /* city.plist */; };
+		16C9FD9A1F6C1FEA00A138E6 /* UIAlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FD991F6C1FEA00A138E6 /* UIAlertExtension.swift */; };
+		16C9FD9C1F6C29A400A138E6 /* DVActionSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FD9B1F6C29A400A138E6 /* DVActionSheetVC.swift */; };
 		860A43011EE415FF00798678 /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
 		860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A43021EE415FF00798678 /* HandyJSON.framework */; };
 		860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A43041EE4178000798678 /* XFBaseResponse.swift */; };
@@ -130,9 +131,21 @@
 		86FFA43E1F49DD5100FCC809 /* XFIndexArticleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA43D1F49DD5100FCC809 /* XFIndexArticleViewCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		165D22491F6ACE0B00B760A3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		16200CEE1F1B169C0008C039 /* XFAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAddress.swift; sourceTree = "<group>"; };
-		16200CF21F1B179A0008C039 /* city.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.json; sourceTree = "<group>"; };
 		16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAvailableAddressUtils.swift; sourceTree = "<group>"; };
 		1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCityChooseView.swift; sourceTree = "<group>"; };
 		1641E76D1F3609EC0093DADF /* XFAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAlert.swift; sourceTree = "<group>"; };
@@ -141,7 +154,9 @@
 		16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEditMyAddressView.swift; sourceTree = "<group>"; };
 		16941B681F3C04A40066A911 /* XFEmptyAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFEmptyAddressView.swift; sourceTree = "<group>"; };
 		169FAF8E1F6A5BE800CB358C /* XFUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserInfoView.swift; sourceTree = "<group>"; };
-		16DCE3C21EDA68960047F559 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		16C9FD991F6C1FEA00A138E6 /* UIAlertExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertExtension.swift; sourceTree = "<group>"; };
+		16C9FD9B1F6C29A400A138E6 /* DVActionSheetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DVActionSheetVC.swift; sourceTree = "<group>"; };
+		16D8A0CB1F6AC229008ECA28 /* APNGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APNGKit.framework; path = Carthage/Build/iOS/APNGKit.framework; sourceTree = "<group>"; };
 		860A43021EE415FF00798678 /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HandyJSON.framework; path = Carthage/Build/iOS/HandyJSON.framework; sourceTree = "<group>"; };
 		860A43041EE4178000798678 /* XFBaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFBaseResponse.swift; sourceTree = "<group>"; };
 		8616F7EC1F654C03007A4669 /* XFAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAuthService.swift; sourceTree = "<group>"; };
@@ -304,8 +319,6 @@
 		16DCE3BD1EDA65C10047F559 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				16200CF21F1B179A0008C039 /* city.json */,
-				16DCE3C21EDA68960047F559 /* city.plist */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -613,6 +626,7 @@
 				86A45C591ED1109100772D13 /* libstdc++.tbd */,
 				86A45C571ED1108500772D13 /* libicucore.tbd */,
 				86A45C551ED1106D00772D13 /* libsqlite3.tbd */,
+				16D8A0CB1F6AC229008ECA28 /* APNGKit.framework */,
 				86CB2FE61EAB495A009972A8 /* Alamofire.framework */,
 				86CB2FE71EAB495A009972A8 /* APNGKit.framework */,
 				86CB2FE81EAB495A009972A8 /* Kingfisher.framework */,
@@ -647,6 +661,8 @@
 				86FFA4351F49C67500FCC809 /* XFOrderDetailGoodsCell.swift */,
 				86FFA4371F49CAB200FCC809 /* XFOrderDetailHeaderCell.swift */,
 				169FAF8E1F6A5BE800CB358C /* XFUserInfoView.swift */,
+				16C9FD991F6C1FEA00A138E6 /* UIAlertExtension.swift */,
+				16C9FD9B1F6C29A400A138E6 /* DVActionSheetVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -696,6 +712,7 @@
 				865F4F401E9A173E0059502C /* Frameworks */,
 				865F4F411E9A173E0059502C /* Resources */,
 				86CB2FF41EAB497D009972A8 /* ShellScript */,
+				165D22491F6ACE0B00B760A3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -748,8 +765,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16200CF31F1B179A0008C039 /* city.json in Resources */,
-				16DCE3C31EDA68960047F559 /* city.plist in Resources */,
+				162B9A361F6AC957003C2FA1 /* V5Client.framework in Resources */,
 				865F4F4E1E9A173E0059502C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -831,6 +847,7 @@
 				86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */,
 				862672CD1EFE42B50062B52B /* XFCategoryViewController.swift in Sources */,
 				862672D51EFE43D20062B52B /* XFAddressesManageTableViewCell.swift in Sources */,
+				16C9FD9C1F6C29A400A138E6 /* DVActionSheetVC.swift in Sources */,
 				8690FEDB1ED177B80051A16D /* XFCategoryHeadSizer.swift in Sources */,
 				862672E71EFE47AE0062B52B /* XFUser.swift in Sources */,
 				862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */,
@@ -855,6 +872,7 @@
 				16200CF01F1B169C0008C039 /* XFAddress.swift in Sources */,
 				86D18BA51F1E5731007643C0 /* XFCheckoutGoodsCell.swift in Sources */,
 				865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */,
+				16C9FD9A1F6C1FEA00A138E6 /* UIAlertExtension.swift in Sources */,
 				86ADDCD71F2B466C00881CFA /* XFSearchBar.swift in Sources */,
 				86FFA4141F487DF800FCC809 /* XFExpress.swift in Sources */,
 				8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */,
