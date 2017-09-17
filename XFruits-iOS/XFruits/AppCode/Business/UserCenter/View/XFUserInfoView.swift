@@ -18,6 +18,11 @@ import UIKit
  底部：退出
  
  */
+
+enum LABEL_TAG: Int {
+    case avatar = 100, nickname, changePwd, mobile, signature
+}
+
 class XFUserInfoView: UIView {
     
     var actionHandler: ((Int) -> Void)?
@@ -33,21 +38,14 @@ class XFUserInfoView: UIView {
         setUpUI();
     }
     
-
-    
-    @objc fileprivate func pagerClicked(_ tap:UITapGestureRecognizer) {
-        print("a")
-        //        if let pagerView = tap.view, let pagerClicked = self.pagerDidClicked {
-        //            pagerClicked(pagerView.tag)
-        //        }
-    }
-    
+   
     lazy var avatarTipLabel:UILabel = {
         let  label = UILabel()
         label.text = "头像"
         label.font = XFConstants.Font.pfn14
+        label.tag = LABEL_TAG.avatar.rawValue
         label.textColor = XFConstants.Color.darkGray
-        label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(pagerClicked(_:))))
+        label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(labelCellClicked(_:))))
         label.isUserInteractionEnabled = true
         return label
     }()
@@ -55,48 +53,28 @@ class XFUserInfoView: UIView {
     lazy var avatarBtn:UIButton = {
         let btn = UIButton()
         btn.setImage(UIImage.imageWithNamed("defaultAvatar"), for: .normal)
-        btn.addTarget(self, action: #selector(actionHandler(btn:)), for: .touchUpInside)
-        
+        btn.addTarget(self, action: #selector(avatarEvent(btn:)), for: .touchUpInside)
         return btn
     }()
     
-    @objc fileprivate func actionHandler(btn:UIButton) {
-        
-        
-        UIAlertController.alertSheet(title: "提示", message: "修改头像", buttons: ["相机","相册"], dismiss: { (btnIndex) in
-            print(btnIndex);
-            if (btnIndex == 0){
-                
-            }
-            else if (btnIndex == 1 ){
-                
-            }
-            
-        }) { 
-            print("b")
-        }
- 
-        //  相册，拍照，取消
-        if let action = actionHandler {
-            action(btn.tag)
-        }
-    }
     
     lazy var nicknameTipLabel:UILabel = {
         let  label = UILabel()
         label.text = "昵称"
+        label.tag = LABEL_TAG.nickname.rawValue
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
-         return label
+        return label
     }()
     
     lazy var nicknameLabel:UILabel = {
         let  label = UILabel()
         label.text = "赵健"
+        label.tag = LABEL_TAG.nickname.rawValue
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .right
-        label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(pagerClicked(_:))))
+        label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(labelCellClicked(_:))))
         label.isUserInteractionEnabled = true
         return label
     }()
@@ -104,11 +82,11 @@ class XFUserInfoView: UIView {
     lazy var changePwdTipLabel:UILabel = {
         let  label = UILabel()
         label.text = "修改密码"
+        label.tag = LABEL_TAG.changePwd.rawValue
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
-        label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(pagerClicked(_:))))
+        label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(labelCellClicked(_:))))
         label.isUserInteractionEnabled = true
-        
         return label
     }()
     
@@ -116,20 +94,21 @@ class XFUserInfoView: UIView {
     lazy var mobileTipLabel:UILabel = {
         let  label = UILabel()
         label.text = "手机号码"
+        label.tag = LABEL_TAG.mobile.rawValue
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
-        
-        
         return label
     }()
     
     lazy var mobileLabel:UILabel = {
         let  label = UILabel()
         label.text = "18519191442"
+        label.tag = LABEL_TAG.mobile.rawValue
+
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .right
-        label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(pagerClicked(_:))))
+        label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(labelCellClicked(_:))))
         label.isUserInteractionEnabled = true
         return label
     }()
@@ -140,8 +119,7 @@ class XFUserInfoView: UIView {
         label.text = "个性签名"
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
-        
-        
+        label.tag = LABEL_TAG.signature.rawValue
         return label
     }()
     
@@ -151,7 +129,9 @@ class XFUserInfoView: UIView {
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .right
-        label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(pagerClicked(_:))))
+        label.tag = LABEL_TAG.signature.rawValue
+
+        label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(labelCellClicked(_:))))
         label.isUserInteractionEnabled = true
         return label
     }()
@@ -167,16 +147,16 @@ class XFUserInfoView: UIView {
         
         self.addSubview(avatarTipLabel)
         avatarTipLabel.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.snp.top).offset(18)
+            make.top.equalTo(self.snp.top).offset(16)
             make.left.equalTo(self.snp.left).offset(13)
             make.right.equalTo(avatarBtn.snp.left).offset(-15)
-            make.height.equalTo(23)
+            make.height.equalTo(30)
         })
         
         let line1:UIView = createSeperateLine()
         self.addSubview(line1)
         line1.snp.makeConstraints { (make) in
-            make.top.equalTo(avatarBtn.snp.bottom).offset(12)
+            make.top.equalTo(avatarBtn.snp.bottom).offset(10)
             make.height.equalTo(0.4)
             make.left.right.equalTo(self)
         }
@@ -251,8 +231,6 @@ class XFUserInfoView: UIView {
             make.left.right.equalTo(self)
         }
         
-        
-    
         self.addSubview(signatureTipLabel)
         signatureTipLabel.snp.makeConstraints({ (make) in
             make.top.equalTo(line4.snp.bottom).offset(10)
@@ -268,8 +246,38 @@ class XFUserInfoView: UIView {
             make.right.equalTo(self.snp.right).offset(-13)
             make.height.equalTo(21)
         })
-         
-        
     }
     
+
+    @objc fileprivate func avatarEvent(btn:UIButton) {
+        // 头像放大
+    }
+    
+    @objc fileprivate func labelCellClicked(_ tap:UITapGestureRecognizer) {
+        print("a")
+        if let tapLabelView = tap.view  {
+            let tag:Int = tapLabelView.tag
+            if tag == LABEL_TAG.avatar.rawValue {
+                changeAvatarActionSheetShow(tag: tag)
+            }
+        }
+    }
+    
+    func changeAvatarActionSheetShow(tag:Int) {
+        weak var weakSelf = self
+
+        UIAlertController.alertSheet(title: "提示", message: "修改头像", buttons: ["相机","相册"], dismiss: { (btnIndex) in
+            print(btnIndex);
+            //  相册，拍照，取消
+            if let action = weakSelf?.actionHandler {
+                action(btnIndex)
+            }
+
+            
+        }) {
+            print("b")
+        }
+        
+       
+    }
 }

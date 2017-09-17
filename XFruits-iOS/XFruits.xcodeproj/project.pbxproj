@@ -19,6 +19,7 @@
 		169FAF8F1F6A5BE800CB358C /* XFUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169FAF8E1F6A5BE800CB358C /* XFUserInfoView.swift */; };
 		16C9FD9A1F6C1FEA00A138E6 /* UIAlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FD991F6C1FEA00A138E6 /* UIAlertExtension.swift */; };
 		16C9FD9C1F6C29A400A138E6 /* DVActionSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FD9B1F6C29A400A138E6 /* DVActionSheetVC.swift */; };
+		16C9FD9E1F6D513400A138E6 /* XFChangePwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FD9D1F6D513400A138E6 /* XFChangePwdViewController.swift */; };
 		860A43011EE415FF00798678 /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
 		860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A43021EE415FF00798678 /* HandyJSON.framework */; };
 		860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A43041EE4178000798678 /* XFBaseResponse.swift */; };
@@ -156,6 +157,7 @@
 		169FAF8E1F6A5BE800CB358C /* XFUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserInfoView.swift; sourceTree = "<group>"; };
 		16C9FD991F6C1FEA00A138E6 /* UIAlertExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertExtension.swift; sourceTree = "<group>"; };
 		16C9FD9B1F6C29A400A138E6 /* DVActionSheetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DVActionSheetVC.swift; sourceTree = "<group>"; };
+		16C9FD9D1F6D513400A138E6 /* XFChangePwdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFChangePwdViewController.swift; sourceTree = "<group>"; };
 		16D8A0CB1F6AC229008ECA28 /* APNGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APNGKit.framework; path = Carthage/Build/iOS/APNGKit.framework; sourceTree = "<group>"; };
 		860A43021EE415FF00798678 /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HandyJSON.framework; path = Carthage/Build/iOS/HandyJSON.framework; sourceTree = "<group>"; };
 		860A43041EE4178000798678 /* XFBaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFBaseResponse.swift; sourceTree = "<group>"; };
@@ -681,6 +683,7 @@
 				86FFA42D1F48995700FCC809 /* XFSettingsViewController.swift */,
 				86FFA42F1F48999800FCC809 /* XFUserInfoViewController.swift */,
 				8624CC3B1F4DE5D90008C8D3 /* XFAboutCompanyViewController.swift */,
+				16C9FD9D1F6D513400A138E6 /* XFChangePwdViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -893,6 +896,7 @@
 				86BB9A871F1D2B1E00B46EBC /* XFCheckoutViewController.swift in Sources */,
 				862672FB1EFE4F3A0062B52B /* XFVerifyImage.swift in Sources */,
 				86FFA4341F49C3BF00FCC809 /* XFOrderDetailAddressCell.swift in Sources */,
+				16C9FD9E1F6D513400A138E6 /* XFChangePwdViewController.swift in Sources */,
 				862672F31EFE492D0062B52B /* XFViewPager.swift in Sources */,
 				86FFA42E1F48995700FCC809 /* XFSettingsViewController.swift in Sources */,
 				16200CF51F1B7F200008C039 /* XFAvailableAddressUtils.swift in Sources */,

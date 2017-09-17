@@ -24,21 +24,34 @@ class XFUserInfoViewController: XFBaseSubViewController {
         return btn
     }()
     
+    func imagePickerController() -> UIImagePickerController {
+        let imagePickerController = UIImagePickerController.init()
+        imagePickerController.delegate   = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        return imagePickerController
+    }
+    
     lazy var userInfoView :XFUserInfoView = {
        let view = XFUserInfoView()
         weak var weakSelf = self
 
         view.actionHandler = {(type:Int) -> Void in
-            let alertController = UIAlertController(title: "修改头像", message: nil, preferredStyle: .actionSheet)
-            let cameraAction = UIAlertAction(title: "相机", style: .default, handler: nil)
-            let albumAction = UIAlertAction(title: "相册", style: .default, handler: nil)
-            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-            alertController.addAction(cameraAction)
-            alertController.addAction(albumAction)
-            alertController.addAction(cancelAction)
-
-            weakSelf?.present(alertController, animated: true, completion: nil)
-
+            print(type)
+            
+            if (UIImagePickerController.isSourceTypeAvailable(.camera)){
+                let imagePicker:UIImagePickerController = (weakSelf?.imagePickerController())!
+                imagePicker.allowsEditing = true
+                imagePicker.sourceType = .camera
+                weakSelf?.present(imagePicker, animated: true, completion: nil)
+            }
+            else{
+                UIAlertController.alertSheet(title: "提示", message: "没有打开相机权限", buttons: ["确定"], dismiss: { (btnIndex) in
+                    
+                }) {
+                    
+                }
+            }
+            
+            
         }
 
         return view
@@ -71,4 +84,14 @@ class XFUserInfoViewController: XFBaseSubViewController {
     }
     
 
+}
+
+extension XFUserInfoViewController : UIImagePickerControllerDelegate , UINavigationControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
+        print(info)
+    }
+    
+  
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
+    }
 }
