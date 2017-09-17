@@ -21,7 +21,7 @@ class UserCenterAvatarCell: UITableViewCell {
     
     lazy var avatarBtn:UIButton = {
         let avatarBtn = UIButton()
-        avatarBtn.setImage(UIImage(named:"defaultAvatar"), for: .normal)
+        avatarBtn.setImage(UIImage(named:"defaultAvatar2"), for: .normal)
         avatarBtn.layer.cornerRadius = 35
         avatarBtn.layer.masksToBounds = true
         return avatarBtn
