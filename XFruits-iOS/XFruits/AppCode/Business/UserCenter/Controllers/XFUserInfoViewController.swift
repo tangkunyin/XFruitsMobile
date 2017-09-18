@@ -57,11 +57,26 @@ class XFUserInfoViewController: XFBaseSubViewController {
             make.right.bottom.equalTo(view).offset(-20)
             make.height.equalTo(45)
         }
+        
+        // 测试获取用户信息
+        getUserInfo()
+        
     }
 
     @objc fileprivate func onLoginOut(){
         XFUserGlobal.shared.signOff()
         backToParentController()
+    }
+    
+    fileprivate func getUserInfo() {
+        XFUseInfoService.getUserInfo { (data) in
+           
+//             let data = data as! XFUser
+             print(data)
+//            XFUserGlobal.shared.signIn(user: data)
+//            let user = 
+            
+        }
     }
     
     fileprivate func updateUserInfo(params:XFParams) {

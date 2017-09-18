@@ -13,6 +13,15 @@ import SwiftyJSON
 
 final class XFUseInfoService: XFNetworking {
     
+    class func getUserInfo(_ completion:@escaping XFResponse) {
+        doGet(withUrl: url("/user/profile")) { (success, respData) in
+            if success, respData is NSDictionary, let dict = respData as? NSDictionary {
+                completion(XFUser.deserialize(from: dict) ?? XFUser())
+            }
+        }
+    }
+    
+    
     class func  updateUserInfo(params: Dictionary<String, Any>,_ completion:@escaping XFResponse) {
        // print(params)
         doPost(withUrl: url("/user/profile"), params: params, encoding: JSONEncoding.default){ (success, respData) in
