@@ -93,6 +93,13 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
         }
         if let cid = channelId, let payInfo = payInfo, let orderId = payInfo.orderId {
             let payChannel = cid == 1 ? 200 : 100
+            
+            // MARK: - 临时手动禁用微信支付
+            guard payChannel == 200 else {
+                orderPayWithWeixin("")
+                return
+            }
+            
             weak var weakSelf = self
             let params:[String : Any] = ["payChannel": payChannel, "orderId": orderId]
             XFOrderSerivice.orderPayCommit(params: params) { (data) in
@@ -145,7 +152,7 @@ extension XFChoosePayWayViewController {
     }
     
     fileprivate func orderPayWithWeixin(_ data: String){
-        showError("微信暂不支持，请选择支付宝吧~")
+        showError("微信支付升级中...委屈您先使用支付宝~")
     }
     
     fileprivate func handleThePaymentResult(flag: Bool, payType: Int, errorMsg: String = "") {

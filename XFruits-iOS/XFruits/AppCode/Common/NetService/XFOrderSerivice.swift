@@ -33,8 +33,8 @@ final class XFOrderSerivice: XFNetworking {
     
     class func orderPayCommit(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
         doPost(withUrl: url("/order/payChannel"), params: params){ (success, respData) in
-            if success, respData is String, let dict = respData as? String {
-                completion(dict);
+            if success, respData is String, let respData = respData as? String {
+                completion(respData)
             }
         }
     }
