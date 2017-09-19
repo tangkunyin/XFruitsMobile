@@ -114,7 +114,7 @@ extension MBProgressHUD {
                     UIView.animate(withDuration: 0.2, animations: {
                         mbHub.transform = CGAffineTransform(scaleX: 0.8, y: 0.8);
                     }, completion: { (finish) in
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8, execute: {
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.2, execute: {
                             mbHub.removeFromSuperview()
                             if let completion = completion {
                                 completion();
