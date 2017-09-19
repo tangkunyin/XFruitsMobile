@@ -23,6 +23,14 @@ final class XFAuthService: XFNetworking {
         }
     }
     
+    class func vertifyImageCode( params:XFParams,  _ completion:@escaping XFResponse) {
+        doPost(withUrl: url("/auth/captcha/verify"), params: params){ (success, respData) in
+            if success  {
+                completion(respData ?? false)
+            }
+        }
+    }
+    
     class func vertifyImageCodeAndSendMessageCode( params:XFParams,  _ completion:@escaping XFResponse) {
         doPost(withUrl: url("/auth/captcha"), params: params){ (success, respData) in
             if success  {

@@ -44,4 +44,20 @@ extension UIImage {
         return codeImage
     }
     
+    /*!
+     通过颜色来生成图片
+     
+     @discussion
+     */
+    public static func ImageFromColor(_ color: UIColor, frame: CGRect) -> UIImage? {
+        let rect = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context?.setFillColor(color.cgColor)
+        context?.fill(rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img
+    }
+    
 }

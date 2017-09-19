@@ -62,20 +62,9 @@ class XFUserLoginViewController: XFBaseSubViewController {
         return btn
     }()
     
-    lazy var forgetPwdBtn:UIButton = {
-        let btn = UIButton.init(type: .custom)
-        btn.tag = 0
-        btn.setTitle("忘记密码", for: .normal)
-        btn.backgroundColor = UIColor.white
-        btn.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        btn.addTarget(self, action: #selector(accountHandler(_:)), for:.touchUpInside)
-        return btn
-    }()
-    
     lazy var registAccount:UIButton = {
         let btn = UIButton.init(type: .custom)
-        btn.tag = 1
+        btn.tag = 0
         btn.setTitle("注册帐号", for: .normal)
         btn.backgroundColor = UIColor.white
         btn.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
@@ -84,6 +73,16 @@ class XFUserLoginViewController: XFBaseSubViewController {
         return btn
     }()
     
+    lazy var forgetPwdBtn:UIButton = {
+        let btn = UIButton.init(type: .custom)
+        btn.tag = 1
+        btn.setTitle("忘记密码", for: .normal)
+        btn.backgroundColor = UIColor.white
+        btn.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        btn.addTarget(self, action: #selector(accountHandler(_:)), for:.touchUpInside)
+        return btn
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

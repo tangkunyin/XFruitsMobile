@@ -303,21 +303,3 @@ class DVActionFooter: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-extension UIImage {
-    /*!
-     通过颜色来生成图片
-     
-     @discussion
-     */
-    static func ImageFromColor(_ color: UIColor, frame: CGRect) -> UIImage {
-        let rect = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
-        UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
-        context?.setFillColor(color.cgColor)
-        context?.fill(rect)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return img!
-    }
-}

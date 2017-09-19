@@ -29,9 +29,18 @@ class XFUserRegistViewController: XFBaseSubViewController {
         return UIImageView.init(image: UIImage.imageWithNamed("logo"))
     }()
     
+    // 验证码通过标识
+    lazy var passSignView:UIImageView = {
+        let imageView = UIImageView(image: UIImage.imageWithNamed("success_mark"))
+        imageView.isHidden = true
+        imageView.isUserInteractionEnabled = false
+        return imageView
+    }()
+    
     // 手机号
     lazy var mobileTextField:UITextField = {
         let textField = UITextField()
+        textField.tag = 0
         textField.delegate = self
         textField.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
         textField.layer.borderWidth = 0.5
@@ -46,6 +55,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
     // 图片验证码
     lazy var validateTextField:UITextField = {
         let textField = UITextField()
+        textField.tag = 1
         textField.delegate = self
         textField.layer.borderColor = XFConstants.Color.pinkishGrey.cgColor
         textField.layer.borderWidth = 0.5
@@ -59,15 +69,19 @@ class XFUserRegistViewController: XFBaseSubViewController {
     
     // 验证码图片
     lazy var codeImageView:UIImageView = {
-        return UIImageView.init()
+        let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getImageVertifyCode)))
+        return imageView
     }()
     
     
-    //下一步按钮
+    //获取验证码按钮
     lazy var nextStepBtn:UIButton = {
         let btn = UIButton.init(type: .custom)
-        btn.setTitle("下一步", for: .normal)
-        btn.backgroundColor = XFConstants.Color.salmon
+        btn.isEnabled = false
+        btn.setTitle("获取验证码", for: .normal)
+        btn.backgroundColor = XFConstants.Color.pinkishGrey
         btn.titleLabel?.textColor = UIColor.white
         btn.layer.cornerRadius = 15
         btn.layer.masksToBounds = true
@@ -125,6 +139,13 @@ class XFUserRegistViewController: XFBaseSubViewController {
             make.height.equalTo(40)
         })
         
+        view.addSubview(passSignView)
+        passSignView.snp.makeConstraints { (make) in
+            make.centerY.equalTo(validateTextField)
+            make.right.equalTo(validateTextField.snp.right).offset(-10)
+            make.width.height.equalTo(18)
+        }
+        
         // 验证码图片
         view.addSubview(codeImageView)
         codeImageView.snp.makeConstraints({ (make) in
@@ -169,7 +190,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
     }
     
     // 获取图片验证码
-    func getImageVertifyCode(){
+    @objc func getImageVertifyCode(){
         // 获取验证码请求测试
         weak var weakSelf = self
         XFAuthService.getVerifyImage { (data) in
@@ -191,23 +212,28 @@ class XFUserRegistViewController: XFBaseSubViewController {
     // 点击下一步触发的事件
     @objc func nextStepToSecondRegistPageVC(sender:UIButton?) {
         
-        guard let phone:String = self.mobileTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) , phone != "" else {
+        guard let phone:String = mobileTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) , phone != "" else {
             showError("手机号不能为空")
             return
         }
-        
-        guard let code:String = self.validateTextField.text , code != "" else {
-            showError("图片验证码不能为空")
-            return
-        }
-        
         guard  isPhoneNumber(phoneNumber: phone) == true else {
             showError("请输入合法的手机号")
             return
         }
+        guard let code:String = validateTextField.text , code != "" else {
+            showError("图片验证码不能为空")
+            return
+        }
+        guard !passSignView.isHidden else {
+            showError("验证码错误")
+            return
+        }
         
         weak var weakSelf = self
-        let para:[String:String]  = ["uniqueCode": uniqueCodeString,"code": code ,"phone": phone]
+        let para:[String:Any]  = ["uniqueCode": uniqueCodeString,
+                                  "code": code ,
+                                  "phone": phone,
+                                  "smsType": XFUserGlobal.shared.accountActionType]
         XFAuthService.vertifyImageCodeAndSendMessageCode(params: para) { (data) in
             if data is Bool, data as! Bool {
                 let secondRegistVC = XFUserRegistSecondPageViewController()
@@ -227,5 +253,25 @@ extension XFUserRegistViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         disMissKeyboard()
         return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == 1 {
+            if let code = textField.text, code.characters.count > 0 {
+                weak var weakSelf = self
+                let para:[String:Any]  = ["uniqueCode": uniqueCodeString, "code": code]
+                XFAuthService.vertifyImageCode(params: para) { (data) in
+                    if data is Bool, data as! Bool {
+                        weakSelf?.passSignView.isHidden = false
+                        weakSelf?.nextStepBtn.isEnabled = true
+                        weakSelf?.nextStepBtn.backgroundColor = XFConstants.Color.salmon
+                    } else {
+                        weakSelf?.showError("拾个农夫提醒：您认错验证码了~")
+                        weakSelf?.passSignView.isHidden = true
+                        weakSelf?.nextStepBtn.isEnabled = false
+                        weakSelf?.nextStepBtn.backgroundColor = XFConstants.Color.pinkishGrey
+                    }
+                }
+            }
+        }
     }
 }

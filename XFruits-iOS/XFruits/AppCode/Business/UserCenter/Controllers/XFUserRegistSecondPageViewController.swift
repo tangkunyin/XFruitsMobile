@@ -18,10 +18,10 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         
         switch XFUserGlobal.shared.accountActionType {
             case 0:
+                title = "确认注册"
+            case 1:
                 title = "重置密码"
                 actionBtn.setTitle("重置", for: .normal)
-            case 1:
-                title = "确认注册"
             default:
                 break;
         }
@@ -145,9 +145,9 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         let params:[String:String] = ["phone":phone,"password":password,"phoneCaptcha":phoneCaptcha]
         switch XFUserGlobal.shared.accountActionType {
         case 0:
-            doResetPassword(withParams: params)
-        case 1:
             doRegist(withParams: params)
+        case 1:
+            doResetPassword(withParams: params)
         default:
             break;
         }

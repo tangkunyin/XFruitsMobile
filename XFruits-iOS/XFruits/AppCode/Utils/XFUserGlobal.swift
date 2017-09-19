@@ -39,7 +39,7 @@ class XFUserGlobal {
     }
     
     
-    /// 账户事件类型。0：找回密码，1：创建账号
+    /// 账户事件类型。0注册，1找回密码
     var accountActionType:Int = 0
     
     
