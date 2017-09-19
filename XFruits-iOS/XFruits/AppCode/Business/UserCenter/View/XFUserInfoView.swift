@@ -20,7 +20,7 @@ import UIKit
  */
 
 enum LABEL_TAG: Int {
-    case avatar = 100,avatarExpand, nickname,sex, changePwd, mobile, signature
+    case avatar = 100,avatarExpand, nickname,sex,email, changePwd, mobile, signature
 }
 
 class XFUserInfoView: UIView {
@@ -111,16 +111,39 @@ class XFUserInfoView: UIView {
     }()
     
     
-    lazy var changePwdTipLabel:UILabel = {
+    lazy var emailTipLabel:UILabel = {
         let  label = UILabel()
-        label.text = "修改密码"
-        label.tag = LABEL_TAG.changePwd.rawValue
+        label.text = "邮箱"
+        label.tag = LABEL_TAG.email.rawValue
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
+        return label
+    }()
+    
+    lazy var emailLabel:UILabel = {
+        let  label = UILabel()
+        label.text = ""
+        label.tag = LABEL_TAG.email.rawValue
+        label.font = XFConstants.Font.pfn14
+        label.textColor = XFConstants.Color.darkGray
+        label.textAlignment = .right
         label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(labelCellClicked(_:))))
         label.isUserInteractionEnabled = true
         return label
     }()
+
+    
+    
+//    lazy var changePwdTipLabel:UILabel = {
+//        let  label = UILabel()
+//        label.text = "修改密码"
+//        label.tag = LABEL_TAG.changePwd.rawValue
+//        label.font = XFConstants.Font.pfn14
+//        label.textColor = XFConstants.Color.darkGray
+//        label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(labelCellClicked(_:))))
+//        label.isUserInteractionEnabled = true
+//        return label
+//    }()
     
     
     lazy var mobileTipLabel:UILabel = {
@@ -171,6 +194,17 @@ class XFUserInfoView: UIView {
     func setUpUI()  {
        
         self.addSubview(avatarImageView)
+        
+        let animation = CABasicAnimation.init(keyPath: "opacity")
+        animation.fromValue = NSNumber.init(value: 1)
+        animation.toValue = NSNumber.init(value: 0)
+        animation.autoreverses = true
+        animation.duration = 3.0
+        animation.repeatCount = MAXFLOAT
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = kCAFillModeForwards
+        avatarImageView.layer.add(animation, forKey: "aAlpha")
+        
         avatarImageView.layer.cornerRadius = 40/2
         avatarImageView.layer.masksToBounds = true
         avatarImageView.snp.makeConstraints({ (make) in
@@ -247,19 +281,26 @@ class XFUserInfoView: UIView {
             make.left.right.equalTo(self)
         }
         
-        self.addSubview(changePwdTipLabel)
-        changePwdTipLabel.snp.makeConstraints({ (make) in
+        self.addSubview(emailTipLabel)
+        emailTipLabel.snp.makeConstraints({ (make) in
             make.top.equalTo(line3.snp.bottom).offset(10)
             make.left.equalTo(self.snp.left).offset(13)
-            make.right.equalTo(self.snp.right).offset(-13)
+            
             make.width.equalTo(70)
+            make.height.equalTo(21)
+        })
+        self.addSubview(emailLabel)
+        emailLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(line3.snp.bottom).offset(10)
+            make.left.equalTo(nicknameTipLabel.snp.right).offset(13)
+            make.right.equalTo(self.snp.right).offset(-13)
             make.height.equalTo(21)
         })
         
         let line4:UIView = createSeperateLine()
         self.addSubview(line4)
         line4.snp.makeConstraints { (make) in
-            make.top.equalTo(changePwdTipLabel.snp.bottom).offset(10)
+            make.top.equalTo(emailTipLabel.snp.bottom).offset(10)
             make.height.equalTo(0.4)
             make.left.right.equalTo(self)
         }
@@ -308,6 +349,18 @@ class XFUserInfoView: UIView {
         })
     }
     
+    
+    func setUserInfo(data:XFUser)  {
+        // avatarImageView
+        
+        
+        nicknameLabel.text = data.username
+        sexLabel.text = data.sex == 1 ?"男":"女"
+        mobileLabel.text = data.cellPhone
+        emailLabel.text = data.email
+        
+    }
+    
 
     @objc fileprivate func avatarEvent(btn:UIButton) {
         // 头像放大
@@ -329,6 +382,11 @@ class XFUserInfoView: UIView {
                     action(LABEL_TAG.nickname.rawValue)
                 }
              
+            }
+            else if tag == LABEL_TAG.email.rawValue{
+                if let action = self.actionHandler {
+                    action(LABEL_TAG.email.rawValue)
+                }
             }
             else if tag == LABEL_TAG.sex.rawValue {
                 if let action = self.actionHandler {
