@@ -73,6 +73,7 @@
 		8690FF321ED538E90051A16D /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2E1ED538E90051A16D /* SQLite.framework */; };
 		8692FCD41F41EDBC00CD3F72 /* XFPayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692FCD31F41EDBC00CD3F72 /* XFPayResponse.swift */; };
 		8692FCD61F42029A00CD3F72 /* XFPayResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8692FCD51F42029A00CD3F72 /* XFPayResultViewController.swift */; };
+		869FBE9A1F70E5F50047A8B7 /* XFCouponListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869FBE991F70E5F50047A8B7 /* XFCouponListViewController.swift */; };
 		86A45C561ED1106D00772D13 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C551ED1106D00772D13 /* libsqlite3.tbd */; };
 		86A45C581ED1108500772D13 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C571ED1108500772D13 /* libicucore.tbd */; };
 		86A45C5A1ED1109100772D13 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C591ED1109100772D13 /* libstdc++.tbd */; };
@@ -221,6 +222,7 @@
 		8690FF2F1ED538E90051A16D /* V5Client.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = V5Client.framework; path = Carthage/Build/iOS/V5Client.framework; sourceTree = "<group>"; };
 		8692FCD31F41EDBC00CD3F72 /* XFPayResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFPayResponse.swift; sourceTree = "<group>"; };
 		8692FCD51F42029A00CD3F72 /* XFPayResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFPayResultViewController.swift; sourceTree = "<group>"; };
+		869FBE991F70E5F50047A8B7 /* XFCouponListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCouponListViewController.swift; sourceTree = "<group>"; };
 		86A45C2E1ECFD81D00772D13 /* XFruits-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XFruits-Bridging-Header.h"; sourceTree = "<group>"; };
 		86A45C551ED1106D00772D13 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		86A45C571ED1108500772D13 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
@@ -690,6 +692,7 @@
 				86FFA42F1F48999800FCC809 /* XFUserInfoViewController.swift */,
 				8624CC3B1F4DE5D90008C8D3 /* XFAboutCompanyViewController.swift */,
 				16C9FD9D1F6D513400A138E6 /* XFChangePwdViewController.swift */,
+				869FBE991F70E5F50047A8B7 /* XFCouponListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -839,6 +842,7 @@
 				86ADDCDB1F2B656700881CFA /* XFCheckoutInfo.swift in Sources */,
 				86FFA4321F494A4A00FCC809 /* XFOrderListItem.swift in Sources */,
 				86A45C721ED1209F00772D13 /* XFCommonUtils.swift in Sources */,
+				869FBE9A1F70E5F50047A8B7 /* XFCouponListViewController.swift in Sources */,
 				86D18BA71F1E5843007643C0 /* XFCheckoutActionBar.swift in Sources */,
 				862672F91EFE499D0062B52B /* XFNavigationController.swift in Sources */,
 				862672D11EFE432C0062B52B /* XFIndexViewController.swift in Sources */,

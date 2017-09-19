@@ -39,11 +39,11 @@ class XFUserCenterViewController: XFBaseViewController {
     lazy var girdGroupInfo: Array<Array<Dictionary<String, String>>> = {
         return [
             [
-                ["title":"地址管理", "icon":"myLocation"]
-//                ["title":"卡券中心", "icon":"myDiscountCoupon"]
+                ["title":"地址管理", "icon":"myLocation"],
+                ["title":"卡券中心", "icon":"myDiscountCoupon"]
             ],
             [
-//                ["title":"私人定制", "icon":"aboutme"],
+                ["title":"私人定制", "icon":"aboutme"],
                 ["title":"在线客服", "icon":"myService"]
             ],
             [
@@ -107,14 +107,14 @@ class XFUserCenterViewController: XFBaseViewController {
     }
     
     fileprivate func handleEntrySelect(indexPath: IndexPath) {
+        var subViewController: UIViewController?
         let section = indexPath.section
         let row = indexPath.row
-        dPrint("\(section) --- \(row)")
         if section < 3 {
             if XFUserGlobal.shared.isLogin {
                 if section == 0 && row == 0 {
                     // 用户信息
-                    navigationController?.pushViewController(XFUserInfoViewController(), animated: true)
+                    subViewController = XFUserInfoViewController()
                 } else if section == 1 && row == 0 {
                     // 订单列表
                     jumpToOrder(title: "全部")
@@ -123,38 +123,36 @@ class XFUserCenterViewController: XFBaseViewController {
                     return
                 } else if section == 2 && row == 0 {
                     // 地址
-                    let addressManageVC = XFUserAddressesMangageViewController()
-                    navigationController?.pushViewController(addressManageVC, animated: true)
+                    subViewController = XFUserAddressesMangageViewController()
                 } else if section == 2 && row == 1 {
                     //TODO 卡劵、优惠券、收藏、积分
-                    let webView = XFWebViewController.init(withUrl: "http://www.10fruits.cn/")
-                    webView.title = "卡劵中心"
-                    navigationController?.pushViewController(webView, animated: true)
+                    subViewController = XFCouponListViewController()
                 }
             } else {
                 // 进入登录页面
-                navigationController?.pushViewController(XFUserLoginViewController(), animated: true)
+                subViewController = XFUserLoginViewController()
             }
         }
         // 无需登录的入口
         if section == 3 && row == 0 {
             //企业通道、私人定制
-//            let webView = XFWebViewController.init(withUrl: "https://www.10fruits.cn/customization/personal.html")
-//            webView.title = "私人定制"
-//            navigationController?.pushViewController(webView, animated: true)
-//        } else if section == 3 && row == 1 {
+            subViewController = XFWebViewController(withUrl: "https://www.10fruits.cn/customization/personal.html")
+            subViewController?.title = "私人定制"
+        } else if section == 3 && row == 1 {
             // 客服
-            let chatVC = createChatViewController(withUser: nil, goodsInfo: nil)
-            chatVC.delegate = self
-            navigationController?.pushViewController(chatVC, animated: true)
+            let chatViewController = createChatViewController(withUser: nil, goodsInfo: nil)
+            chatViewController.delegate = self
+            subViewController = chatViewController
         } else if section == 4 && row == 0 {
             // 吐槽建议
-            let webView = XFWebViewController.init(withUrl: "https://www.10fruits.cn/suggest/suggest.html")
-            webView.title = "吐槽建议"
-            navigationController?.pushViewController(webView, animated: true)
+            subViewController = XFWebViewController(withUrl: "https://www.10fruits.cn/suggest/suggest.html")
+            subViewController?.title = "吐槽建议"
         } else if section == 4 && row == 1 {
             // 设置
-            navigationController?.pushViewController(XFSettingsViewController(), animated: true)
+            subViewController = XFSettingsViewController()
+        }
+        if let subViewController = subViewController {
+            navigationController?.pushViewController(subViewController, animated: true)
         }
     }
     
