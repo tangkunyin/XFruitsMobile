@@ -104,6 +104,7 @@
 		86CB2FF31EAB495A009972A8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FEC1EAB495A009972A8 /* SwiftyJSON.framework */; };
 		86D18BA51F1E5731007643C0 /* XFCheckoutGoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D18BA41F1E5731007643C0 /* XFCheckoutGoodsCell.swift */; };
 		86D18BA71F1E5843007643C0 /* XFCheckoutActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D18BA61F1E5843007643C0 /* XFCheckoutActionBar.swift */; };
+		86D432631F72BB900024F99D /* XFCouponService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D432621F72BB900024F99D /* XFCouponService.swift */; };
 		86E695201ED6AA35004864A6 /* XFCartUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E6951F1ED6AA35004864A6 /* XFCartUtils.swift */; };
 		86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF731EDAB0BB000A489F /* XFDetailHeaderView.swift */; };
 		86E8DF761EDAB0C9000A489F /* XFDetailCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8DF751EDAB0C9000A489F /* XFDetailCommentView.swift */; };
@@ -256,6 +257,7 @@
 		86CB2FEC1EAB495A009972A8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		86D18BA41F1E5731007643C0 /* XFCheckoutGoodsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCheckoutGoodsCell.swift; sourceTree = "<group>"; };
 		86D18BA61F1E5843007643C0 /* XFCheckoutActionBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCheckoutActionBar.swift; sourceTree = "<group>"; };
+		86D432621F72BB900024F99D /* XFCouponService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCouponService.swift; sourceTree = "<group>"; };
 		86E6951F1ED6AA35004864A6 /* XFCartUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCartUtils.swift; sourceTree = "<group>"; };
 		86E8DF731EDAB0BB000A489F /* XFDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailHeaderView.swift; sourceTree = "<group>"; };
 		86E8DF751EDAB0C9000A489F /* XFDetailCommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailCommentView.swift; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 				8616F7EC1F654C03007A4669 /* XFAuthService.swift */,
 				8616F7EE1F654CB8007A4669 /* XFProductService.swift */,
 				16C9FDA31F6E7EF700A138E6 /* XFUserInfoService.swift */,
+				86D432621F72BB900024F99D /* XFCouponService.swift */,
 			);
 			path = NetService;
 			sourceTree = "<group>";
@@ -815,6 +818,7 @@
 				86FFA4231F48986F00FCC809 /* XFUserAddressesMangageViewController.swift in Sources */,
 				86FFA4241F48986F00FCC809 /* XFUserLoginViewController.swift in Sources */,
 				86FFA4251F48986F00FCC809 /* XFUserRegistSecondPageViewController.swift in Sources */,
+				86D432631F72BB900024F99D /* XFCouponService.swift in Sources */,
 				86FFA4261F48986F00FCC809 /* XFUserRegistViewController.swift in Sources */,
 				86FFA41B1F488DEA00FCC809 /* XFWebViewController.swift in Sources */,
 				86FFA4121F487A5600FCC809 /* XFOrder.swift in Sources */,

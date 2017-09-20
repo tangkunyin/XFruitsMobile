@@ -10,6 +10,32 @@ import UIKit
 import SnapKit
 
 class XFCouponItemCellView: UITableViewCell {
+    
+    var dataSource: XFCouponItem? {
+        didSet{
+            if let couponData = dataSource {
+                switch couponData.couponType {
+                case 1001:
+                    priceLabel.text = String(format:"¥ %.2f",couponData.valueFee)
+                    typeLabel.text = "直减劵"
+                    titleLabel.text = "满\(couponData.conditionFee)元使用"
+                case 1002:
+                    priceLabel.text = "\(couponData.valueFee)折"
+                    typeLabel.text = "折扣劵"
+                    titleLabel.text = "满\(couponData.conditionFee)元可享受\(couponData.valueFee)折优惠"
+                case 1003:
+                    priceLabel.text = String(format:"¥ %.2f",couponData.valueFee)
+                    typeLabel.text = "邮费劵"
+                    titleLabel.text = "满\(couponData.conditionFee)元可享受包邮"
+                default:
+                    priceLabel.text = String(format:"¥ %.2f",couponData.valueFee)
+                    typeLabel.text = "其他劵"
+                    titleLabel.text = "满\(couponData.conditionFee)元使用"
+                }
+                dateLabel.text = "有效期: \(stringDateByTimestamp(timeStamp: couponData.expireAt/1000))"
+            }
+        }
+    }
 
     lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage.imageWithNamed("coupon_bg_coupon_overdue"))
@@ -22,7 +48,6 @@ class XFCouponItemCellView: UITableViewCell {
         label.font = XFConstants.Font.pfn12
         label.textColor = XFConstants.Color.salmon
         label.textAlignment = .left
-        label.text = "¥ 0.00"
         return label
     }()
     
@@ -31,7 +56,6 @@ class XFCouponItemCellView: UITableViewCell {
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.purpleyGrey
         label.textAlignment = .left
-        label.text = "包邮卷"
         return label
     }()
     
@@ -40,7 +64,6 @@ class XFCouponItemCellView: UITableViewCell {
         label.font = XFConstants.Font.pfn16
         label.textColor = XFConstants.Color.purpleyGrey
         label.textAlignment = .left
-        label.text = "满20使用"
         return label
     }()
     
@@ -49,7 +72,6 @@ class XFCouponItemCellView: UITableViewCell {
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.purpleyGrey
         label.textAlignment = .left
-        label.text = "有效期: 2017-09-12"
         return label
     }()
     

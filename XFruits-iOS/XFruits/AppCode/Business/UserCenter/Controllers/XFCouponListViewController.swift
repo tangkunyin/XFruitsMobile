@@ -12,6 +12,8 @@ import SnapKit
 
 class XFCouponListViewController: XFBaseSubViewController {
 
+    var couponList: Array<XFCouponItem> = []
+    
     lazy var couponInputView: UITextField = {
         let textField = UITextField()
         textField.tag = 1
@@ -55,6 +57,24 @@ class XFCouponListViewController: XFBaseSubViewController {
         super.viewDidLoad()
         title = "我的优惠券"
         
+        makeViewConstrains()
+        loadCouponList()
+    }
+    
+    func loadCouponList() {
+        weak var weakSelf = self
+        XFCouponService.getCouponList { (dataList) in
+            if let dataList = dataList as? Array<XFCouponItem>, dataList.count > 0{
+                weakSelf?.couponList = dataList
+                weakSelf?.couponListView.reloadData()
+            } else {
+                weakSelf?.showError("抱歉，暂无优惠券信息")
+            }
+        }
+    }
+    
+    
+    private func makeViewConstrains() {
         view.addSubview(couponInputView)
         view.addSubview(couponReceiveBtn)
         view.addSubview(couponListView)
@@ -75,12 +95,21 @@ class XFCouponListViewController: XFBaseSubViewController {
             make.top.equalTo(couponInputView.snp.bottom).offset(15)
             make.bottom.equalTo(view)
         }
-        
     }
 
     @objc private func onExchangeCoupon() {
+        weak var weakSelf = self
         if let couponCode = couponInputView.text, couponCode.characters.count > 0  {
-            
+            XFCouponService.bindCoupon(params: ["couponCode":couponCode], { (result) in
+                if result is Bool, result as! Bool {
+                    if result {
+                        weakSelf?.showSuccess("恭喜阁下，优惠券兑换成功~")
+                        weakSelf?.loadCouponList()
+                        return
+                    }
+                }
+                weakSelf?.showError("骚瑞啊，优惠券兑换失败 :) ")
+            })
         } else {
             showError("优惠券码不能为空喔~")
         }
@@ -89,21 +118,25 @@ class XFCouponListViewController: XFBaseSubViewController {
 
 extension XFCouponListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 10
+        return couponList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "_XFCouponItemCellView", for: indexPath) as! XFCouponItemCellView
-        
-        
-        
+        cell.dataSource = couponList[indexPath.row]
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        couponInputView.resignFirstResponder()
+    }
 }
 
 
 extension XFCouponListViewController: UITextFieldDelegate {
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
 }
