@@ -16,7 +16,6 @@ class XFUserInfoView: UIView {
     
     var actionHandler: ((Int) -> Void)?
     
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUpUI();
@@ -88,7 +87,7 @@ class XFUserInfoView: UIView {
     
     lazy var sexLabel:UILabel = {
         let  label = UILabel()
-        label.text = "男"
+        label.text = ""
         label.tag = LABEL_TAG.sex.rawValue
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
@@ -131,7 +130,7 @@ class XFUserInfoView: UIView {
     
     lazy var mobileLabel:UILabel = {
         let  label = UILabel()
-        label.text = "18519191442"
+        label.text = ""
         label.tag = LABEL_TAG.mobile.rawValue
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
