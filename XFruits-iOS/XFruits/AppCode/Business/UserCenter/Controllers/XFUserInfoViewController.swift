@@ -102,6 +102,7 @@ class XFUserInfoViewController: XFBaseSubViewController {
         weak var weakSelf = self
         
         if (type == 0){
+           
             if (UIImagePickerController.isSourceTypeAvailable(.camera)){
                 let imagePicker:UIImagePickerController = (self.imagePickerController())
                 imagePicker.allowsEditing = true
@@ -111,8 +112,10 @@ class XFUserInfoViewController: XFBaseSubViewController {
             else{
                 UIAlertController.alert(title: "提示", message: "该设备不支持相机")
             }
+ 
         }
         else if (type == 1){
+           
             if (UIImagePickerController.isSourceTypeAvailable(.photoLibrary)){
                 let imagePicker:UIImagePickerController = (self.imagePickerController())
                 imagePicker.allowsEditing = true
@@ -122,6 +125,7 @@ class XFUserInfoViewController: XFBaseSubViewController {
             else{
                 UIAlertController.alert(title: "提示", message: "该设备不支持相册")
             }
+ 
         }
         else if type == LABEL_TAG.nickname.rawValue{
             let alert = UIAlertController.init(title: "提示", message: "修改昵称", preferredStyle: .alert)
@@ -132,6 +136,11 @@ class XFUserInfoViewController: XFBaseSubViewController {
             let okAction = UIAlertAction(title: "好的", style: .default, handler: {
                 action in
                 let newNickname:String =  alert.textFields![0].text!
+                guard weakSelf?.isEmpty(str: newNickname) == true else{
+                    weakSelf?.showError("输入昵称不能为空")
+                    return
+                }
+                
                 let params:XFParams = ["username":newNickname]
                 weakSelf?.updateUserInfo(params: params)  // 发起更新用户信息请求
             })
@@ -160,6 +169,14 @@ class XFUserInfoViewController: XFBaseSubViewController {
             let okAction = UIAlertAction(title: "好的", style: .default, handler: {
                 action in
                 let email:String =  alert.textFields![0].text!
+                guard weakSelf?.isEmpty(str: email) == true else{
+                    weakSelf?.showError("输入邮箱不能为空")
+                    return
+                }
+                guard weakSelf?.isEmail(str: email) == true else{
+                    weakSelf?.showError("输入邮箱格式不对")
+                    return
+                }
                 let params:XFParams = ["email":email]
                 weakSelf?.updateUserInfo(params: params)  // 发起更新用户信息请求
             })
@@ -181,7 +198,30 @@ class XFUserInfoViewController: XFBaseSubViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    func isEmpty(str:String) -> Bool{
+        if str.characters.count < 1 {
+            return false
+        }
+        else{
+            return true
+
+        }
+    }
+    
+    func isEmail(str:String) -> Bool{
+        let predicateStr = "^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$"
+        let predicate =  NSPredicate(format: "SELF MATCHES %@" ,predicateStr)
+        if predicate.evaluate(with: str){
+            return true
+        }
+        else{
+            return false
+        }
+    }
 }
+
+
 
 extension XFUserInfoViewController : UIImagePickerControllerDelegate , UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){

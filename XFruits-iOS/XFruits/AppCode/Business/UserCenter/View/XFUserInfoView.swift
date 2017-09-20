@@ -340,13 +340,13 @@ class XFUserInfoView: UIView {
             make.height.equalTo(21)
         })
         
-        self.addSubview(signatureLabel)
-        signatureLabel.snp.makeConstraints({ (make) in
-            make.top.equalTo(line5.snp.bottom).offset(10)
-            make.left.equalTo(mobileTipLabel.snp.right).offset(13)
-            make.right.equalTo(self.snp.right).offset(-13)
-            make.height.equalTo(21)
-        })
+//        self.addSubview(signatureLabel)
+//        signatureLabel.snp.makeConstraints({ (make) in
+//            make.top.equalTo(line5.snp.bottom).offset(10)
+//            make.left.equalTo(mobileTipLabel.snp.right).offset(13)
+//            make.right.equalTo(self.snp.right).offset(-13)
+//            make.height.equalTo(21)
+//        })
     }
     
     
@@ -402,8 +402,9 @@ class XFUserInfoView: UIView {
     }
     
     func changeAvatarActionSheetShow(tag:Int) {
+        /*
         weak var weakSelf = self
-
+    
         UIAlertController.alertSheet(title: "提示", message: "修改头像", buttons: ["相机","相册"], dismiss: { (btnIndex) in
             print(btnIndex);
             //  相册，拍照
@@ -415,7 +416,7 @@ class XFUserInfoView: UIView {
         }) {
             print("b")
         }
-        
+        */
        
     }
 }
