@@ -38,9 +38,9 @@ class XFDetailDescriptionView: UIView {
         label.adjustsFontSizeToFitWidth = false
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 10
-        let attributes = [NSFontAttributeName:XFConstants.Font.pfn14,
-                          NSForegroundColorAttributeName:XFConstants.Color.darkGray,
-                          NSParagraphStyleAttributeName:paragraphStyle];
+        let attributes = [NSAttributedStringKey.font:XFConstants.Font.pfn14,
+                          NSAttributedStringKey.foregroundColor:XFConstants.Color.darkGray,
+                          NSAttributedStringKey.paragraphStyle:paragraphStyle];
         let attributeText = NSAttributedString.init(string: "商品详情", attributes: attributes)
         label.attributedText = attributeText
         return label

@@ -428,7 +428,7 @@ class XFEditMyAddressView: UIView {
     }
     
     func widthForLabel(text:NSString ,font :CGFloat) -> CGFloat {
-        let size = text.size(attributes:[NSFontAttributeName:sysFontWithSize(font)])
+        let size = text.size(withAttributes:[NSAttributedStringKey.font:sysFontWithSize(font)])
         return size.width
     }
     

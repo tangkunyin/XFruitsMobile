@@ -16,12 +16,12 @@ class XFNavigationController: UINavigationController {
         bar.tintColor = UIColor.white
         bar.isTranslucent = false
         bar.barTintColor = XFConstants.Color.salmon
-        bar.titleTextAttributes = [NSForegroundColorAttributeName:XFConstants.Color.white,
-                                   NSFontAttributeName:XFConstants.Font.pfn18]
+        bar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:XFConstants.Color.white,
+                                   NSAttributedStringKey.font:XFConstants.Font.pfn18]
     
         let barButtonItem = UIBarButtonItem.appearance()
-        barButtonItem.setTitleTextAttributes([NSForegroundColorAttributeName:XFConstants.Color.white,
-                                              NSFontAttributeName:XFConstants.Font.pfn18],
+        barButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:XFConstants.Color.white,
+                                              NSAttributedStringKey.font:XFConstants.Font.pfn18],
                                              for: UIControlState.normal)
     }()
     

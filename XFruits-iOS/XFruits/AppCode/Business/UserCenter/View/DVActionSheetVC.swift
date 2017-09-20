@@ -81,7 +81,7 @@ class DVActionSheetVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func hide() {
+    @objc func hide() {
         self.dismiss(animated: true, completion: nil)
     }
     

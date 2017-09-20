@@ -59,7 +59,7 @@ class XFCartUtils {
                 return try XFCartDataHelper.insert(item: paramCart)
             } else {
                 if obj?.status! == 0 {
-                    paramCart.quantity = (obj?.quantity)! + 1
+                    paramCart.quantity = Int64((obj?.quantity)!+1)
                 }
                 return try XFCartDataHelper.update(item: paramCart)
             }
