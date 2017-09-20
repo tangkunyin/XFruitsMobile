@@ -24,6 +24,10 @@ carthage bootstrap
 ### 或者
 
     carthage update Box1 Box2
+    
+### 重新编译
+
+    carthage build --platform iOS
 
 ### 如果Carthage提示需要更新，执行
     brew upgrade carthage
