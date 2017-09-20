@@ -8,17 +8,6 @@
 
 import UIKit
 
-/*
- 
- 第一行：头像（点击可以放大，点击本行，可以修改头像）
- 第二行：昵称   （点击可以修改昵称）
- 第三行：修改密码（点击可以修改密码）
- 第四行：手机号码
- 第五行：个性签名
- 底部：退出
- 
- */
-
 enum LABEL_TAG: Int {
     case avatar = 100,avatarExpand, nickname,sex,email, changePwd, mobile, signature
 }
@@ -38,7 +27,6 @@ class XFUserInfoView: UIView {
         setUpUI();
     }
     
-   
     lazy var avatarTipLabel:UILabel = {
         let  label = UILabel()
         label.text = "头像"
@@ -77,7 +65,7 @@ class XFUserInfoView: UIView {
     
     lazy var nicknameLabel:UILabel = {
         let  label = UILabel()
-        label.text = "赵健"
+        label.text = ""
         label.tag = LABEL_TAG.nickname.rawValue
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
@@ -131,21 +119,7 @@ class XFUserInfoView: UIView {
         label.isUserInteractionEnabled = true
         return label
     }()
-
-    
-    
-//    lazy var changePwdTipLabel:UILabel = {
-//        let  label = UILabel()
-//        label.text = "修改密码"
-//        label.tag = LABEL_TAG.changePwd.rawValue
-//        label.font = XFConstants.Font.pfn14
-//        label.textColor = XFConstants.Color.darkGray
-//        label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(labelCellClicked(_:))))
-//        label.isUserInteractionEnabled = true
-//        return label
-//    }()
-    
-    
+ 
     lazy var mobileTipLabel:UILabel = {
         let  label = UILabel()
         label.text = "手机号码"
@@ -159,7 +133,6 @@ class XFUserInfoView: UIView {
         let  label = UILabel()
         label.text = "18519191442"
         label.tag = LABEL_TAG.mobile.rawValue
-
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .right
@@ -167,7 +140,6 @@ class XFUserInfoView: UIView {
         label.isUserInteractionEnabled = true
         return label
     }()
-    
     
     lazy var signatureTipLabel:UILabel = {
         let  label = UILabel()
@@ -185,14 +157,12 @@ class XFUserInfoView: UIView {
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .right
         label.tag = LABEL_TAG.signature.rawValue
-
         label.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(labelCellClicked(_:))))
         label.isUserInteractionEnabled = true
         return label
     }()
     
     func setUpUI()  {
-       
         self.addSubview(avatarImageView)
         
         let animation = CABasicAnimation.init(keyPath: "opacity")
@@ -228,9 +198,7 @@ class XFUserInfoView: UIView {
             make.height.equalTo(0.4)
             make.left.right.equalTo(self)
         }
-        
-      
-        
+    
         self.addSubview(nicknameTipLabel)
         nicknameTipLabel.snp.makeConstraints({ (make) in
             make.top.equalTo(line1.snp.bottom).offset(10)
@@ -246,7 +214,6 @@ class XFUserInfoView: UIView {
             make.height.equalTo(21)
         })
         
-        
         let line2:UIView = createSeperateLine()
         self.addSubview(line2)
         line2.snp.makeConstraints { (make) in
@@ -255,14 +222,11 @@ class XFUserInfoView: UIView {
             make.left.right.equalTo(self)
         }
         
-        
         self.addSubview(sexTipLabel)
         sexTipLabel.snp.makeConstraints({ (make) in
             make.top.equalTo(line2.snp.bottom).offset(10)
             make.left.equalTo(self.snp.left).offset(13)
             make.width.equalTo(70)
-
-//            make.right.equalTo(self.snp.right).offset(-50)
             make.height.equalTo(21)
         })
         
@@ -273,6 +237,7 @@ class XFUserInfoView: UIView {
             make.right.equalTo(self.snp.right).offset(-13)
             make.height.equalTo(21)
         })
+        
         let line3:UIView = createSeperateLine()
         self.addSubview(line3)
         line3.snp.makeConstraints { (make) in
@@ -285,7 +250,6 @@ class XFUserInfoView: UIView {
         emailTipLabel.snp.makeConstraints({ (make) in
             make.top.equalTo(line3.snp.bottom).offset(10)
             make.left.equalTo(self.snp.left).offset(13)
-            
             make.width.equalTo(70)
             make.height.equalTo(21)
         })
@@ -304,8 +268,6 @@ class XFUserInfoView: UIView {
             make.height.equalTo(0.4)
             make.left.right.equalTo(self)
         }
-        
-      
         
         self.addSubview(mobileTipLabel)
         mobileTipLabel.snp.makeConstraints({ (make) in
@@ -332,13 +294,13 @@ class XFUserInfoView: UIView {
             make.left.right.equalTo(self)
         }
         
-        self.addSubview(signatureTipLabel)
-        signatureTipLabel.snp.makeConstraints({ (make) in
-            make.top.equalTo(line5.snp.bottom).offset(10)
-            make.left.equalTo(self.snp.left).offset(13)
-            make.width.equalTo(70)
-            make.height.equalTo(21)
-        })
+//        self.addSubview(signatureTipLabel)
+//        signatureTipLabel.snp.makeConstraints({ (make) in
+//            make.top.equalTo(line5.snp.bottom).offset(10)
+//            make.left.equalTo(self.snp.left).offset(13)
+//            make.width.equalTo(70)
+//            make.height.equalTo(21)
+//        })
         
 //        self.addSubview(signatureLabel)
 //        signatureLabel.snp.makeConstraints({ (make) in
@@ -351,23 +313,14 @@ class XFUserInfoView: UIView {
     
     
     func setUserInfo(data:XFUser)  {
-        // avatarImageView
-        
-        
+        // avatarImageView下次写
         nicknameLabel.text = data.username
         sexLabel.text = data.sex == 1 ?"男":"女"
         mobileLabel.text = data.cellPhone
         emailLabel.text = data.email
-        
-    }
-    
-
-    @objc fileprivate func avatarEvent(btn:UIButton) {
-        // 头像放大
     }
     
     @objc fileprivate func labelCellClicked(_ tap:UITapGestureRecognizer) {
-        print("a")
         if let tapLabelView = tap.view  {
             let tag:Int = tapLabelView.tag
             if tag == LABEL_TAG.avatar.rawValue {
@@ -381,7 +334,6 @@ class XFUserInfoView: UIView {
                 if let action = self.actionHandler {
                     action(LABEL_TAG.nickname.rawValue)
                 }
-             
             }
             else if tag == LABEL_TAG.email.rawValue{
                 if let action = self.actionHandler {
@@ -411,8 +363,6 @@ class XFUserInfoView: UIView {
             if let action = weakSelf?.actionHandler {
                 action(btnIndex)
             }
-
-            
         }) {
             print("b")
         }
