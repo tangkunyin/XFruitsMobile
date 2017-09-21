@@ -104,12 +104,11 @@ class XFCouponListViewController: XFBaseSubViewController {
             XFCouponService.bindCoupon(params: ["couponCode":couponCode], { (result) in
                 if result is Bool {
                     if let success: Bool = result as? Bool, success {
-                        weakSelf?.showSuccess("恭喜阁下，优惠券兑换成功~")
                         weakSelf?.loadCouponList()
-                        return
                     }
+                } else {
+                    weakSelf?.showError(result as! String)
                 }
-                weakSelf?.showError("骚瑞啊，优惠券兑换失败 :) ")
             })
         } else {
             showError("优惠券码不能为空喔~")

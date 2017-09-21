@@ -24,8 +24,12 @@ final class XFCouponService: XFNetworking {
     
     /// 兑换优惠券
     class func bindCoupon(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
-        doPost(withUrl: url("/coupon/bind"), params: params, encoding: JSONEncoding.default){ (success, respData) in
-            completion(success)
+        doPost(withUrl: url("/coupon/bind"), params: params){ (success, respData) in
+            if success {
+                completion(true)
+            } else {
+                completion(respData ?? "骚瑞啊，优惠券兑换失败 :) ")
+            }
         }
     }
     
