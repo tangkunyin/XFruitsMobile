@@ -56,7 +56,7 @@ class XFBaseViewController: UIViewController {
         label.font = XFConstants.Font.pfn14
         label.textAlignment = .center
         label.textColor = XFConstants.Color.darkGray
-        label.text = "然，并没有发现任何数据..."
+        label.text = "未发现任何数据，请稍后再试..."
         return label
     }()
 
@@ -114,7 +114,7 @@ class XFBaseViewController: UIViewController {
         nullDataTip.snp.makeConstraints { (make) in
             make.top.equalTo(nullDataView.snp.bottom).offset(10)
             make.centerX.equalTo(nullDataView)
-            make.size.equalTo(CGSize.init(width: 250, height: 44))
+            make.size.equalTo(CGSize.init(width: 300, height: 44))
         }
     }
     

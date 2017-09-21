@@ -26,7 +26,7 @@ class XFCheckoutViewController: XFBaseSubViewController {
                 // 更新优惠券及下单实付金额
                 var couponPrice: Float?
                 if let couponArr = confirmCoupon, couponArr.count > 0 {
-                    couponPrice = couponArr[0].number
+                    couponPrice = couponArr[0].valueFee
                 }
                 checkoutBar.updateActualAmount(totalAmount: totalPrice, expressFee: address.expressFee)
                 checkoutInfo.updateCheckout(InfoArr: [totalGoodsAmount, address.expressFee, couponPrice])

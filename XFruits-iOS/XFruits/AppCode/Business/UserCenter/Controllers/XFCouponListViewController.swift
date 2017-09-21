@@ -68,7 +68,8 @@ class XFCouponListViewController: XFBaseSubViewController {
                 weakSelf?.couponList = dataList
                 weakSelf?.couponListView.reloadData()
             } else {
-                weakSelf?.showError("抱歉，暂无优惠券信息")
+                weakSelf?.couponListView.removeFromSuperview()
+                weakSelf?.renderNullDataView()
             }
         }
     }
@@ -101,8 +102,8 @@ class XFCouponListViewController: XFBaseSubViewController {
         weak var weakSelf = self
         if let couponCode = couponInputView.text, couponCode.characters.count > 0  {
             XFCouponService.bindCoupon(params: ["couponCode":couponCode], { (result) in
-                if result is Bool, result as! Bool {
-                    if result {
+                if result is Bool {
+                    if let success: Bool = result as? Bool, success {
                         weakSelf?.showSuccess("恭喜阁下，优惠券兑换成功~")
                         weakSelf?.loadCouponList()
                         return
