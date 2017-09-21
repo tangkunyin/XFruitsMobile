@@ -20,9 +20,9 @@ class XFCouponItemCellView: UITableViewCell {
                     typeLabel.text = "直减劵"
                     titleLabel.text = "满\(couponData.conditionFee)元使用"
                 case 1002:
-                    priceLabel.text = "\(couponData.valueFee)折"
+                    priceLabel.text = "\(Int(couponData.valueFee * 10))折"
                     typeLabel.text = "折扣劵"
-                    titleLabel.text = "满\(couponData.conditionFee)元可享受\(couponData.valueFee)折优惠"
+                    titleLabel.text = "满\(couponData.conditionFee)元可享受\(Int(couponData.valueFee * 10))折优惠"
                 case 1003:
                     priceLabel.text = String(format:"¥ %.2f",couponData.valueFee)
                     typeLabel.text = "邮费劵"
