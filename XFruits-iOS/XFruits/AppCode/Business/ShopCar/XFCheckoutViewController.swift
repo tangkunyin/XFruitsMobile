@@ -89,6 +89,7 @@ class XFCheckoutViewController: XFBaseSubViewController {
         weak var weakSelf = self
         addressList.onSelectedAddress = {(address) in
             weakSelf?.confirmAddress = address
+            weakSelf?.checkoutAddress.setMyAddress(data: address)
         }
         navigationController?.pushViewController(addressList, animated: true)
     }
