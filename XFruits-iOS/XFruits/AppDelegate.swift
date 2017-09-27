@@ -106,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: WXApiDelegate {
-    
+
     func initExternalSDK(){
         
         /// 初始化客服SDK
@@ -195,6 +195,12 @@ extension AppDelegate: WXApiDelegate {
             })
         }
         return true
+    }
+    
+    func onResp(_ resp: BaseResp!) {
+        if resp.isKind(of: PayResp.self) {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "wxpay"), object: NSNumber.init(value: resp.errCode))
+        }
     }
     
     
