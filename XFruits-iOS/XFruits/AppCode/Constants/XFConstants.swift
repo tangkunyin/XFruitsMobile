@@ -38,7 +38,7 @@ struct XFConstants {
             static let appId = "2368f0801ca49"
         }
         struct Wechat {
-            static let appId = "wx67d6ad5dd456fb36"
+            static let appId = "wx7bf5a553f9431967"
         }
         struct Alipay {
             static let appId = "2017052107301341"

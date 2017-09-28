@@ -199,6 +199,9 @@ extension AppDelegate: WXApiDelegate {
     
     func onResp(_ resp: BaseResp!) {
         if resp.isKind(of: PayResp.self) {
+            var resp1 = PayResp.init()
+            resp1 = resp as! PayResp
+            print(resp1.returnKey)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "wxpay"), object: NSNumber.init(value: resp.errCode))
         }
     }

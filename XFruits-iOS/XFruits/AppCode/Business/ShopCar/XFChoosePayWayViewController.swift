@@ -163,9 +163,10 @@ extension XFChoosePayWayViewController {
         request.partnerId = jsonObject["partnerid"].string!
         request.prepayId = jsonObject["prepayid"].string!
         request.package = jsonObject["package"].string!
-        request.nonceStr = jsonObject["nonceStr"].string!
-        request.timeStamp =  UInt32(jsonObject["timestamp"].string!)!  
+        request.nonceStr = jsonObject["noncestr"].string!
+        request.timeStamp =  UInt32(jsonObject["timestamp"].string!)!
         request.sign = jsonObject["sign"].string!
+       
        NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(wxpayResult),
@@ -179,26 +180,26 @@ extension XFChoosePayWayViewController {
         if  let code:Int32 = notifacation?.object as? Int32 {
             switch (code){
                 case WXSuccess.rawValue:
-                    print("支付成功")
-                    // payinfo??
+                    showError("支付成功")
                     self.handleThePaymentResult(flag: true, payType: 2)
                     break
                 case WXErrCodeUserCancel.rawValue:
-                    print("用户点击取消并返回")
+                    showError("取消支付")
                     break
                 case WXErrCodeSentFail.rawValue:
-                    print("发送失败")
+                    showError("发送失败")
                     break
                 case WXErrCodeAuthDeny.rawValue:
-                    print("授权失败")
+                    showError("授权失败")
                     break
                 case WXErrCodeCommon.rawValue:
-                    print("普通错误类型")
+                    showError("普通错误类型")
                     break
                 default:
-                    print("支付失败，错误码\(WXSuccess.rawValue)")
+                    showError("支付失败，错误码\(WXSuccess.rawValue)")
                 }
         }
+        NotificationCenter.default.removeObserver(self)
     }
     
     fileprivate func handleThePaymentResult(flag: Bool, payType: Int, errorMsg: String = "") {
