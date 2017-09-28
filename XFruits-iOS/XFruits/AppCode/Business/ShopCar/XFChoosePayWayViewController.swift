@@ -180,7 +180,7 @@ extension XFChoosePayWayViewController {
         if  let code:Int32 = notifacation?.object as? Int32 {
             switch (code){
                 case WXSuccess.rawValue:
-                    showError("支付成功")
+                    showSuccess("支付成功")
                     self.handleThePaymentResult(flag: true, payType: 2)
                     break
                 case WXErrCodeUserCancel.rawValue:
