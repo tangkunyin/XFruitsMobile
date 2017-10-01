@@ -26,6 +26,15 @@ func localTimestamp() ->Int {
     return timeStamp
 }
 
+/// 获取系统版本号
+func getLocalVersion() -> String {
+    var localVersion:String = "1.0.0"
+    if let v:String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String{
+        localVersion = v
+    }
+    return localVersion
+}
+
 
 func isPhoneNumber(phoneNumber:String) -> Bool {
     if phoneNumber.characters.count == 0 {
