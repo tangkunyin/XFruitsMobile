@@ -17,7 +17,7 @@ class XFSettingsViewController: XFBaseSubViewController {
     fileprivate lazy var settingsDataSource: Array<Array<Dictionary<String, String>>> = {
         return [
             [
-                ["key":"版本号","value":"1.0.1"],
+                ["key":"版本号","value":getLocalVersion()],
                 ["key":"点个赞","value":XFConstants.storeUrl],
             ],
             [

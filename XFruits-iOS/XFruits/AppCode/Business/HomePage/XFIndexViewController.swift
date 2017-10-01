@@ -121,6 +121,23 @@ class XFIndexViewController: XFBaseViewController {
         return pagerView
     }()
     
+    fileprivate lazy var indexHeaderView: UIView = {
+        let view = UIView()
+        let seperator = XFSeperatorView()
+        seperator.backgroundColor = XFConstants.Color.white
+        view.addSubview(pagerView)
+        view.addSubview(seperator)
+        pagerView.snp.makeConstraints({ (make) in
+            make.left.right.top.equalTo(view)
+            make.height.equalTo(loopImageComponentHeight)
+        })
+        seperator.snp.makeConstraints({ (make) in
+            make.left.right.bottom.equalTo(view)
+            make.height.equalTo(60)
+        })
+        return view
+    }()
+    
     fileprivate lazy var articleListView: UITableView = {
         let listView = UITableView.init(frame: CGRect.zero, style: .grouped)
         listView.delegate = self
@@ -150,12 +167,12 @@ extension XFIndexViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return loopImageComponentHeight
+        return loopImageComponentHeight + 60
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            return pagerView
+            return indexHeaderView
         }
         return nil
     }

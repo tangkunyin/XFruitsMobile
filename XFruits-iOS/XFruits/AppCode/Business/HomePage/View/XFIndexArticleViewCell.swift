@@ -41,7 +41,7 @@ class XFIndexArticleViewCell: UITableViewCell {
     
     fileprivate lazy var detailLabel: UILabel = {
         let label = UILabel()
-        label.textColor = XFConstants.Color.coolGrey
+        label.textColor = XFConstants.Color.darkGray
         label.font = XFConstants.Font.pfn14
         label.textAlignment = .left
         label.numberOfLines = 0

@@ -43,7 +43,7 @@ class XFUserCenterViewController: XFBaseViewController {
                 ["title":"卡券中心", "icon":"myDiscountCoupon"]
             ],
             [
-                ["title":"私人定制", "icon":"aboutme"],
+//                ["title":"私人定制", "icon":"aboutme"],
                 ["title":"在线客服", "icon":"myService"]
             ],
             [
@@ -137,9 +137,9 @@ class XFUserCenterViewController: XFBaseViewController {
         // 无需登录的入口
         if section == 3 && row == 0 {
             //企业通道、私人定制
-            subViewController = XFWebViewController(withUrl: "https://www.10fruits.cn/customization/personal.html")
-            subViewController?.title = "私人定制"
-        } else if section == 3 && row == 1 {
+//            subViewController = XFWebViewController(withUrl: "https://www.10fruits.cn/customization/personal.html")
+//            subViewController?.title = "私人定制"
+//        } else if section == 3 && row == 1 {
             // 客服
             let chatViewController = createChatViewController(withUser: nil, goodsInfo: nil)
             chatViewController.delegate = self

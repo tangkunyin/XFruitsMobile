@@ -57,6 +57,7 @@
 		862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862C59EE1EA3677100C2323D /* XFConstants.swift */; };
 		8630B31D1EF7BC86002F5B5C /* XFSQLiteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8630B31C1EF7BC86002F5B5C /* XFSQLiteDataSource.swift */; };
 		8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8630B31E1EF7BCB1002F5B5C /* XFCartDataHelper.swift */; };
+		864CD7C01F80934A00E8B6FA /* XFSeperatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864CD7BF1F80934A00E8B6FA /* XFSeperatorView.swift */; };
 		865235C61F1AFD5A005897C3 /* XFShopCartEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865235C51F1AFD5A005897C3 /* XFShopCartEmptyView.swift */; };
 		865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AA5B71EAB9E9500E94312 /* XFEnum.swift */; };
 		865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AA5BF1EABA14C00E94312 /* XFUIFuncDefines.swift */; };
@@ -205,6 +206,7 @@
 		862C59EE1EA3677100C2323D /* XFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFConstants.swift; sourceTree = "<group>"; };
 		8630B31C1EF7BC86002F5B5C /* XFSQLiteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFSQLiteDataSource.swift; sourceTree = "<group>"; };
 		8630B31E1EF7BCB1002F5B5C /* XFCartDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCartDataHelper.swift; sourceTree = "<group>"; };
+		864CD7BF1F80934A00E8B6FA /* XFSeperatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFSeperatorView.swift; sourceTree = "<group>"; };
 		865235C51F1AFD5A005897C3 /* XFShopCartEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFShopCartEmptyView.swift; sourceTree = "<group>"; };
 		865AA5B71EAB9E9500E94312 /* XFEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEnum.swift; sourceTree = "<group>"; };
 		865AA5BF1EABA14C00E94312 /* XFUIFuncDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFUIFuncDefines.swift; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 				862672F21EFE492D0062B52B /* XFViewPager.swift */,
 				86ADDCD61F2B466C00881CFA /* XFSearchBar.swift */,
 				86ADDCDC1F2B7C5C00881CFA /* XFDescriptionItem.swift */,
+				864CD7BF1F80934A00E8B6FA /* XFSeperatorView.swift */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
 				862672F71EFE497D0062B52B /* XFBaseSubViewController.swift in Sources */,
 				16701C121F6EB431007E2CEA /* XFExpandImage.swift in Sources */,
+				864CD7C01F80934A00E8B6FA /* XFSeperatorView.swift in Sources */,
 				86FFA42A1F4898FA00FCC809 /* XFOrderDetailViewController.swift in Sources */,
 				86FFA42C1F48991800FCC809 /* XFExpressViewController.swift in Sources */,
 				86FFA4381F49CAB200FCC809 /* XFOrderDetailHeaderCell.swift in Sources */,
