@@ -7,17 +7,13 @@
 //
 
 import UIKit
-import SlideMenuControllerSwift
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    lazy var allCateListVC: XFAllCategoryListViewController = {
-        return XFAllCategoryListViewController()
-    }()
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         creatShortcutItem()
@@ -27,17 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         
-        let rootVC = XFHomeViewController()
-        
-        SlideMenuOptions.rightViewWidth = 168
-        SlideMenuOptions.contentViewOpacity = 0.75
-        SlideMenuOptions.tapGesturesEnabled = true
-        SlideMenuOptions.panGesturesEnabled = false
-        let slideRootVC = SlideMenuController(mainViewController: rootVC,
-                                              rightMenuViewController:allCateListVC)
-        slideRootVC.automaticallyAdjustsScrollViewInsets = true
-        
-        window?.rootViewController = slideRootVC
+        window?.rootViewController = XFHomeViewController()
         
         window?.makeKeyAndVisible()
         
@@ -121,17 +107,9 @@ extension AppDelegate: WXApiDelegate {
     
     /// 拉取全局唯一数据
     func fetchAdditionData() {
-        
         // 拉取地址数据
         XFAvailableAddressUtils.shared.cacheAddressAvailable()
         
-        weak var weakSelf = self
-        // 拉取所有分类数据
-        XFProductService.getAllCategoryies { (types) in
-            if let productTypes = types as? Array<ProductType> {
-                weakSelf?.allCateListVC.dataSource = productTypes
-            }
-        }
     }
     
     fileprivate func creatShortcutItem(){
@@ -201,7 +179,7 @@ extension AppDelegate: WXApiDelegate {
         if resp.isKind(of: PayResp.self) {
             var resp1 = PayResp.init()
             resp1 = resp as! PayResp
-            print(resp1.returnKey)
+            dPrint(resp1.returnKey)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "wxpay"), object: NSNumber.init(value: resp.errCode))
         }
     }

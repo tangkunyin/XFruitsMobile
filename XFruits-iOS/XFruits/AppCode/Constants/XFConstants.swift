@@ -78,6 +78,9 @@ struct XFConstants {
         
         static let singleLineAdjustOffset: CGFloat = ((1 / UIScreen.main.scale) / 2)
         
+        
+        static let XFHalfCellWidth: CGFloat = (UIScreen.main.bounds.size.width - 30) / 2
+        
     }
     
     /// 视觉规范

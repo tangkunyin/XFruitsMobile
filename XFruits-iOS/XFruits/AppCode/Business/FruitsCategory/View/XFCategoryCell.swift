@@ -12,8 +12,6 @@ import SnapKit
 import Kingfisher
 import MBProgressHUD
 
-public let XFCategoryCellWidth = (XFConstants.UI.deviceWidth - 30) / 2
-
 
 class XFCategoryCell: UICollectionViewCell {
  

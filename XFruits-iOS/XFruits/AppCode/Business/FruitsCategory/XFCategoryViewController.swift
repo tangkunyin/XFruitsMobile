@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import SlideMenuControllerSwift
 
 fileprivate let XFCellViewReuseIdentifier:String = "XFCategoryCellReuseIdentifier"
 
@@ -83,23 +82,19 @@ class XFCategoryViewController: XFBaseViewController {
     }
     
     func setNavigationBarItem() {
-        self.slideMenuController()?.delegate = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("more-list"),
                                                                  style: .plain,
                                                                  target: self,
                                                                  action: #selector(onAllItemClick))
     }
     
-    @objc fileprivate func onAllItemClick(){
-        if let slideMenuController = self.slideMenuController(),
-            let catetoryVC = slideMenuController.rightViewController as? XFAllCategoryListViewController,
-            let dataSource = catetoryVC.dataSource {
-            if dataSource.count > 0 && !slideMenuController.isRightOpen() {
-                slideMenuController.openRight()
-            } else {
-                showError("数据加载失败，请稍后再试~")
-            }
+    @objc fileprivate func onAllItemClick() {
+        let allCateVC = XFAllCategoryListViewController()
+        weak var weakSelf = self
+        allCateVC.onPageClosed = { (type) in
+            weakSelf?.dataType = type
         }
+        present(allCateVC, animated: true, completion: nil)
     }
     
     fileprivate func loadCategories() {
@@ -144,7 +139,7 @@ extension XFCategoryViewController: UICollectionViewDataSource,UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: XFCategoryCellWidth, height: 226)
+        return CGSize(width: XFConstants.UI.XFHalfCellWidth, height: 226)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -156,14 +151,5 @@ extension XFCategoryViewController: UICollectionViewDataSource,UICollectionViewD
         let item:ProductItem = dataSource[indexPath.row]
         detail.prodId = item.id
         self.navigationController?.pushViewController(detail, animated: true)
-    }
-}
-
-extension XFCategoryViewController: SlideMenuControllerDelegate {
-    
-    func rightDidClose() {
-        if let catetoryVC = self.slideMenuController()?.rightViewController as? XFAllCategoryListViewController {
-            self.dataType = catetoryVC.selectedTypeId
-        }
     }
 }

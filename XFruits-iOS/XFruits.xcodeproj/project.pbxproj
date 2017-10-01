@@ -241,7 +241,6 @@
 		86A45C691ED1186A00772D13 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		86A45C6B1ED1187D00772D13 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		86A45C711ED1209F00772D13 /* XFCommonUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCommonUtils.swift; sourceTree = "<group>"; };
-		86ADDCD31F2AC8E200881CFA /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = Carthage/Build/iOS/SlideMenuControllerSwift.framework; sourceTree = "<group>"; };
 		86ADDCD41F2AEBCE00881CFA /* XFDataGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFDataGlobal.swift; sourceTree = "<group>"; };
 		86ADDCD61F2B466C00881CFA /* XFSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFSearchBar.swift; sourceTree = "<group>"; };
 		86ADDCD81F2B64CF00881CFA /* XFCheckoutAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCheckoutAddress.swift; sourceTree = "<group>"; };
@@ -618,7 +617,6 @@
 				8618BA3A1F4027ED00AC9436 /* CoreTelephony.framework */,
 				8618BA391F4027D700AC9436 /* libc++.tbd */,
 				8618BA371F4027AA00AC9436 /* SystemConfiguration.framework */,
-				86ADDCD31F2AC8E200881CFA /* SlideMenuControllerSwift.framework */,
 				860A43021EE415FF00798678 /* HandyJSON.framework */,
 				8690FF2E1ED538E90051A16D /* SQLite.framework */,
 				8690FF2F1ED538E90051A16D /* V5Client.framework */,
@@ -799,7 +797,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SQLite.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/V5Client.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/HandyJSON.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SlideMenuControllerSwift.framework",
 			);
 			outputPaths = (
 			);

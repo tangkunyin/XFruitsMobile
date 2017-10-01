@@ -10,12 +10,13 @@ import UIKit
 import SnapKit
 import Kingfisher
 
+fileprivate let XFAllCateListCellReuseIdentifier:String = "XFAllCateListCellReuseIdentifier"
 
-class XFAllCategoryListViewController: XFBaseSubViewController {
+class XFAllCategoryListViewController: XFBaseViewController {
 
-    var productTypes :Array<ProductType> = []
+    var onPageClosed: ((Int)->Void)?
     
-    var selectedTypeId: Int = 1001
+    var productTypes: Array<ProductType> = []
     
     var dataSource:Array<ProductType>? {
         get {
@@ -24,79 +25,111 @@ class XFAllCategoryListViewController: XFBaseSubViewController {
         set {
             if let datasource = newValue {
                 productTypes = datasource
-                tableView.reloadData()
+                cateListView.reloadData()
             }
         }
     }
     
-    lazy var promotionView: UIImageView = {
-        let imageView = UIImageView(image: UIImage.imageWithNamed("xfruits-farmer-4"))
-        imageView.isUserInteractionEnabled = false
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-    
-    lazy var tableView: UITableView = {
-        let listView = UITableView(frame: CGRect.zero, style: .plain)
+    lazy var cateListView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let listView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         listView.delegate = self
         listView.dataSource = self
-        listView.bounces = false
-        listView.rowHeight = 44
-        listView.separatorColor = XFConstants.Color.separatorLine
-        listView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        listView.collectionViewLayout = layout
         listView.backgroundColor = UIColor.white
-        listView.register(CategoryCellView.self, forCellReuseIdentifier: "allCategoryListViewCell")
-        listView.tableFooterView = UIView()
+        listView.register(CategoryCellView.self, forCellWithReuseIdentifier: XFAllCateListCellReuseIdentifier)
         return listView
     }()
     
+    fileprivate lazy var dismissBtn: UIButton = {
+        let btn = UIButton.init(type: .custom)
+        btn.setImage(UIImage.imageWithNamed("dialog_close"), for: .normal)
+        btn.addTarget(self, action: #selector(onPageCloseClick), for: .touchUpInside)
+        return btn
+    }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .default
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(promotionView)
-        view.addSubview(tableView)
-        promotionView.snp.makeConstraints { (make) in
-            make.left.top.equalTo(view).offset(30)
-            make.right.equalTo(view).offset(-30)
-            make.height.equalTo(100)
+        
+        view.addSubview(cateListView)
+        view.addSubview(dismissBtn)
+        cateListView.snp.makeConstraints { (make) in
+            make.left.top.right.equalTo(view)
+            make.bottom.equalTo(dismissBtn.snp.top).offset(-10)
         }
-        tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(promotionView.snp.bottom).offset(20)
-            make.left.right.bottom.equalTo(view)
+        dismissBtn.snp.makeConstraints { (make) in
+            make.size.equalTo(24)
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(view).offset(-45)
         }
+
+        loadData()
+    }
+    
+    fileprivate func loadData() {
+        weak var weakSelf = self
+        // 拉取所有分类数据
+        XFProductService.getAllCategoryies { (types) in
+            if let productTypes = types as? Array<ProductType> {
+                weakSelf?.dataSource = productTypes
+            }
+        }
+    }
+    
+    @objc fileprivate func onPageCloseClick() {
+        dismiss(animated: true, completion: nil)
     }
     
 }
 
-extension XFAllCategoryListViewController: UITableViewDelegate,UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension XFAllCategoryListViewController: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return productTypes.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "allCategoryListViewCell") as! CategoryCellView
-        let type = productTypes[indexPath.row]
-        cell.isSelected = type.id == selectedTypeId
-        cell.dataSource = type
-        return cell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: XFAllCateListCellReuseIdentifier, for: indexPath)
+        guard let cateCell:CategoryCellView = cell as? CategoryCellView  else {
+            return cell
+        }
+        cateCell.dataSource = productTypes[indexPath.row]
+        return cateCell;
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let type: ProductType = productTypes[indexPath.row]
-        self.selectedTypeId = type.id
-        self.slideMenuController()?.closeRight()
-        tableView.reloadData()
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: XFConstants.UI.XFHalfCellWidth, height: 120)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 10, 10, 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let type: ProductType = productTypes[indexPath.row]
+        weak var weakSelf = self
+        dismiss(animated: true) {
+            if let action = weakSelf?.onPageClosed {
+                action(type.id)
+            }
+        }
+    }
+    
 }
 
-fileprivate class CategoryCellView: UITableViewCell {
+fileprivate class CategoryCellView: UICollectionViewCell {
     
     var dataSource: ProductType? {
         didSet{
             if let data = dataSource {
-                iconImageView.kf.setImage(with: URL(string: data.image))
+                iconImageView.kf.setImage(with: URL(string: data.image))  
                 categoryTitle.text = data.name
-                customAccessoryView.isHidden = !isSelected
             }
         }
     }
@@ -108,16 +141,14 @@ fileprivate class CategoryCellView: UITableViewCell {
     
     private lazy var categoryTitle: UILabel = {
         let label = UILabel()
+        label.textColor = XFConstants.Color.darkGray
+        label.font = XFConstants.Font.pfn14
+        label.textAlignment = .center
         return label
     }()
     
-    private lazy var customAccessoryView: UIImageView = {
-        let imageView = UIImageView(image: UIImage.imageWithNamed("success_big"))
-        return imageView
-    }()
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect){
+        super.init(frame: frame)
         customInit()
     }
     
@@ -126,26 +157,19 @@ fileprivate class CategoryCellView: UITableViewCell {
         customInit()
     }
     
-    private func customInit(){
-        selectionStyle = .none
+    fileprivate func customInit(){
         contentView.addSubview(iconImageView)
         contentView.addSubview(categoryTitle)
-        contentView.addSubview(customAccessoryView)
-        iconImageView.snp.makeConstraints({ (make) in
-            make.size.equalTo(CGSize(width: 35, height: 35))
-            make.centerY.equalTo(contentView)
-            make.left.equalTo(contentView).offset(10)
-            
-        })
-        categoryTitle.snp.makeConstraints({ (make) in
-            make.centerY.equalTo(contentView)
-            make.left.equalTo(iconImageView.snp.right).offset(10)
-            make.right.equalTo(customAccessoryView.snp.left).offset(-10)
-        })
-        customAccessoryView.snp.makeConstraints { (make) in
-            make.centerY.equalTo(contentView)
-            make.size.equalTo(CGSize(width: 18, height: 18))
-            make.right.equalTo(contentView).offset(-10)
+        iconImageView.snp.makeConstraints { (make) in
+            make.size.equalTo(CGSize(width: 65, height: 65))
+            make.centerX.equalTo(contentView)
+            make.top.equalTo(contentView).offset(15)
+        }
+        categoryTitle.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalTo(contentView)
+            make.top.equalTo(iconImageView.snp.bottom).offset(5)
         }
     }
+    
+    
 }
