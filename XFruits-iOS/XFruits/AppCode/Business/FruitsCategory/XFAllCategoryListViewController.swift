@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import Kingfisher
 
 fileprivate let XFAllCateListCellReuseIdentifier:String = "XFAllCateListCellReuseIdentifier"
 
@@ -128,8 +127,15 @@ fileprivate class CategoryCellView: UICollectionViewCell {
     var dataSource: ProductType? {
         didSet{
             if let data = dataSource {
-                iconImageView.kf.setImage(with: URL(string: data.image))  
                 categoryTitle.text = data.name
+                switch data.id {
+                case 1001:
+                    iconImageView.image = UIImage.imageWithNamed("type_apple")
+                case 1002:
+                    iconImageView.image = UIImage.imageWithNamed("type_pear")
+                default:
+                    break
+                }
             }
         }
     }
