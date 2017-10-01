@@ -75,6 +75,10 @@ class XFBaseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    
+        // 默认白色状态栏
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         if let navBar = self.navigationBar, clearNavigationBar {
             edgesForExtendedLayout = .all
             navBar.isTranslucent = true

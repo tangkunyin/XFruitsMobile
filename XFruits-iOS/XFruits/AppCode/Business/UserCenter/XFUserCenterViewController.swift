@@ -68,6 +68,7 @@ class XFUserCenterViewController: XFBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .default
         navigationBar?.isHidden = true
         centerTable.reloadSections(IndexSet(integer: 0), with: .none)
     }
@@ -180,7 +181,7 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 105
+            return 125
         } else if (indexPath.section == 1 && indexPath.row == 1) {
             return 90
         } else {

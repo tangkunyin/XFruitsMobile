@@ -35,7 +35,7 @@ class XFIndexViewController: XFBaseViewController {
             articleListView.reloadData()
         }
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
