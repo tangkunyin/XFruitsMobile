@@ -183,7 +183,7 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
         if indexPath.section == 0 {
             return 125
         } else if (indexPath.section == 1 && indexPath.row == 1) {
-            return 90
+            return 80
         } else {
             return 42
         }

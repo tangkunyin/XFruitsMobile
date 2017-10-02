@@ -37,14 +37,15 @@ class FourBillCollectionViewCell: UICollectionViewCell {
         addSubview(typeIcon)
         addSubview(typeDescLabel)
         typeIcon.snp.makeConstraints({ (make) in
+            make.top.equalTo(snp.top).offset(15)
             make.size.equalTo(CGSize.init(width: 26, height: 26))
             make.centerX.equalTo(self)
         })
         typeDescLabel.snp.makeConstraints({ (make) in
-            make.bottom.equalTo(snp.bottom).offset(0)
+            make.bottom.equalTo(snp.bottom).offset(-5)
             make.left.equalTo(snp.left).offset(0)
             make.right.equalTo(snp.right).offset(0)
-            make.top.equalTo(typeIcon.snp.bottom).offset(10)
+            make.top.equalTo(typeIcon.snp.bottom).offset(5)
         })
     }
 }
