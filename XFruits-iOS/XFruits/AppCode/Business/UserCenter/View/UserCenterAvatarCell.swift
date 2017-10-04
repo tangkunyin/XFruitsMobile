@@ -14,7 +14,7 @@ class UserCenterAvatarCell: UITableViewCell {
         didSet{
             if let user = user {
                 userNameLabel.text = user.username
-                identityDescriptionLabel.text = "帅帅的荣耀会员"
+                identityDescriptionLabel.text = "全宇宙排名: \(user.rank?.rank ?? 108)"
             }
         }
     }

@@ -43,11 +43,11 @@ class XFUserCenterViewController: XFBaseViewController {
                 ["title":"卡券中心", "icon":"myDiscountCoupon"]
             ],
             [
-//                ["title":"私人定制", "icon":"aboutme"],
+                ["title":"吐槽建议", "icon":"myAdvice"],
                 ["title":"在线客服", "icon":"myService"]
             ],
             [
-                ["title":"吐槽建议", "icon":"myAdvice"],
+                ["title":"关于我们", "icon":"aboutme"],
                 ["title":"设置", "icon":"app-settings"]
             ],
         ]
@@ -135,19 +135,18 @@ class XFUserCenterViewController: XFBaseViewController {
             }
         }
         // 无需登录的入口
-        if section == 3 && row == 0 {
-            //企业通道、私人定制
-//            subViewController = XFWebViewController(withUrl: "https://www.10fruits.cn/customization/personal.html")
-//            subViewController?.title = "私人定制"
-//        } else if section == 3 && row == 1 {
+        if section == 3 && row == 0 {            
+            // 吐槽建议
+            subViewController = XFWebViewController(withUrl: "https://www.10fruits.cn/suggest/suggest.html")
+            subViewController?.title = "吐槽建议"
+        } else if section == 3 && row == 1 {
             // 客服
             let chatViewController = createChatViewController(withUser: nil, goodsInfo: nil)
             chatViewController.delegate = self
             subViewController = chatViewController
         } else if section == 4 && row == 0 {
-            // 吐槽建议
-            subViewController = XFWebViewController(withUrl: "https://www.10fruits.cn/suggest/suggest.html")
-            subViewController?.title = "吐槽建议"
+            // 关于我们
+            subViewController = XFAboutCompanyViewController()
         } else if section == 4 && row == 1 {
             // 设置
             subViewController = XFSettingsViewController()

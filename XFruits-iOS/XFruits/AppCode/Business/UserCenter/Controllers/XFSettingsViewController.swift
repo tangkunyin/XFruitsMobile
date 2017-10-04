@@ -11,17 +11,17 @@ import SnapKit
 
 fileprivate let cellIdentifier = "XFSettingsCellIdentifier"
 
-/// 设置中心，版本号，关于我们
+/// 设置中心，版本号
 class XFSettingsViewController: XFBaseSubViewController {
 
     fileprivate lazy var settingsDataSource: Array<Array<Dictionary<String, String>>> = {
         return [
             [
                 ["key":"版本号","value":getLocalVersion()],
-                ["key":"点个赞","value":XFConstants.storeUrl],
+                ["key":"清理缓存","value":""],
             ],
             [
-                ["key":"关于我们","value":""],
+                ["key":"点个赞","value":XFConstants.storeUrl],
             ]
         ]
     }()
@@ -82,9 +82,8 @@ extension XFSettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let key = settingsDataSource[indexPath.section][indexPath.row]["key"]
         if "点个赞" == key {
             UIApplication.shared.openURL(URL(string:XFConstants.storeUrl)!)
-        } else if "关于我们" == key {
-            let aboutus = XFAboutCompanyViewController()
-            navigationController?.pushViewController(aboutus, animated: true)
+        } else if "清理缓存" == key {
+            showSuccess("拾个农夫兴奋的提示您：清理完成")
         }
     }
     

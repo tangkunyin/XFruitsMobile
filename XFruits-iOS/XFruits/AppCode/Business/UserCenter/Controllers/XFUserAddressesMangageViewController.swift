@@ -24,7 +24,7 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         tableView.separatorColor = XFConstants.Color.separatorLine
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.tableFooterView = UIView()
-        tableView.estimatedRowHeight = 66
+        tableView.estimatedRowHeight = 88
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.register(XFAddressesManageTableViewCell.self, forCellReuseIdentifier: addressCellIdentifier)
         return tableView
