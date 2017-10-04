@@ -17,7 +17,6 @@ struct XFBackButtonImages {
     static let defaultSets: Dictionary<String, String> = ["normal":"navi_back_white_nor","highlighted":"navi_back_white_pre"]
 }
 
-
 class XFBaseSubViewController: XFBaseViewController {
     
     /// 改变返回按钮ICON，直接设置值
@@ -60,13 +59,6 @@ class XFBaseSubViewController: XFBaseViewController {
         // 统一返回按钮样式
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: backBtn)
         
-        // 添加左划返回手势
-        let backSwipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self,
-                                                                           action: #selector(backToParentController))
-        backSwipe.delegate = self
-        backSwipe.direction = .right
-        self.view.addGestureRecognizer(backSwipe)
-        
         //监听接口返回的401
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(handelUnAuthorization),
@@ -99,12 +91,3 @@ class XFBaseSubViewController: XFBaseViewController {
         backToRootViewController()
     }
 }
-
-extension XFBaseSubViewController: UIGestureRecognizerDelegate {
-    
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-    
-}
-
