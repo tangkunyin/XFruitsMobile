@@ -30,12 +30,24 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     }()
     
     // 地址详情
-    lazy var addressLabel:UILabel = {
+    lazy var addressDetailText:UILabel = {
         let label = UILabel()
         label.font  = XFConstants.Font.pfn12
         label.textAlignment = NSTextAlignment.left
-        label.numberOfLines = 0
+        label.numberOfLines = 3
         label.lineBreakMode = .byWordWrapping
+        return label
+    }()
+    
+    // 地址类别
+    lazy var addressDefaultTag:UILabel = {
+        let label = UILabel()
+        label.text = "默认"
+        label.isHidden = true
+        label.font = XFConstants.Font.pfn10
+        label.textColor = XFConstants.Color.white
+        label.textAlignment = .center
+        label.backgroundColor = XFConstants.Color.lightishGreen
         return label
     }()
     
@@ -70,10 +82,10 @@ class XFAddressesManageTableViewCell: UITableViewCell {
     }
     
     func setMyAddress(data:XFAddress)  {
-        addressLabel.textColor = data.isDefault == 1 ? XFConstants.Color.salmon : XFConstants.Color.darkGray
+        addressDefaultTag.isHidden = data.isDefault == 1 ? false : true
         userNameLabel.text = data.recipient
         mobileLabel.text = data.cellPhone
-        addressLabel.text = "\(data.districtName)\(data.address)"
+        addressDetailText.text = "\(data.districtName)\(data.address)"
         addressCategoryBtn.setTitle(data.label, for: .normal)
     }
     
@@ -82,8 +94,9 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         contentView.addSubview(userNameLabel)
         contentView.addSubview(mobileLabel)
         contentView.addSubview(editAddressBtn)
+        contentView.addSubview(addressDefaultTag)
         contentView.addSubview(addressCategoryBtn)
-        contentView.addSubview(addressLabel)
+        contentView.addSubview(addressDetailText)
         
         userNameLabel.snp.makeConstraints({ (make) in
             make.left.top.equalTo(contentView).offset(8)
@@ -103,17 +116,23 @@ class XFAddressesManageTableViewCell: UITableViewCell {
             make.size.equalTo(CGSize(width: 30, height: 30))
         })
         
+        addressDefaultTag.snp.makeConstraints { (make) in
+            make.top.equalTo(userNameLabel.snp.bottom).offset(2)
+            make.size.equalTo(CGSize(width: 30, height: 16))
+            make.centerX.equalTo(addressCategoryBtn)
+        }
+        
         addressCategoryBtn.snp.makeConstraints({ (make) in
-            make.top.equalTo(userNameLabel.snp.bottom).offset(3)
             make.left.equalTo(userNameLabel.snp.left)
             make.size.equalTo(CGSize(width: 40, height: 20))
+            make.centerY.equalTo(addressDetailText)
         })
         
-        addressLabel.snp.makeConstraints({ (make) in
+        addressDetailText.snp.makeConstraints({ (make) in
+            make.height.equalTo(50.5)
             make.top.equalTo(userNameLabel.snp.bottom).offset(5)
             make.left.equalTo(addressCategoryBtn.snp.right).offset(5)
             make.right.equalTo(editAddressBtn.snp.left).offset(-5)
-            make.bottom.equalTo(contentView).offset(-8)
         })
 
     }

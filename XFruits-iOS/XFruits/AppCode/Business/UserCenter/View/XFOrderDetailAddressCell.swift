@@ -15,7 +15,7 @@ class XFOrderDetailAddressCell: XFAddressesManageTableViewCell {
         didSet {
             if let address = dataSource {
                 setMyAddress(data: address)
-                addressLabel.textColor = XFConstants.Color.darkGray
+                addressDetailText.textColor = XFConstants.Color.darkGray
             }
         }
     }
@@ -27,7 +27,7 @@ class XFOrderDetailAddressCell: XFAddressesManageTableViewCell {
         addSubview(userNameLabel)
         addSubview(mobileLabel)
         addSubview(addressCategoryBtn)
-        addSubview(addressLabel)
+        addSubview(addressDetailText)
         
         userNameLabel.snp.makeConstraints({ (make) in
             make.left.top.equalTo(self).offset(10)
@@ -49,14 +49,12 @@ class XFOrderDetailAddressCell: XFAddressesManageTableViewCell {
             make.right.equalTo(self).offset(-5)
         })
         
-        addressLabel.snp.makeConstraints({ (make) in
+        addressDetailText.snp.makeConstraints({ (make) in
             make.top.equalTo(mobileLabel.snp.bottom).offset(2)
             make.left.equalTo(mobileLabel.snp.left)
             make.right.equalTo(self).offset(-5)
             make.bottom.equalTo(self).offset(-2)
         })
-        
-        
     }
 
 }
