@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 
+fileprivate let DetailBackBar = [XFBackButtonImages.normal: "detail_BackNormal", XFBackButtonImages.highlighted: "detail_BackHighlight"]
+
 class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
     
     var prodId:String?
@@ -46,8 +48,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         
         self.clearNavigationBar = true
         // 设置详情页专属返回按钮
-        self.backButtonImages = [XFBackButtonImages.normal: "detail_BackHighlight",
-                                 XFBackButtonImages.highlighted: "detail_BackNormal"]
+        self.backButtonImages = DetailBackBar
         
         makeMainViewConstrains()
         
@@ -61,13 +62,17 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         }
     }
     
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let minAlphaOffset:CGFloat = 0
         let maxAlphaOffset:CGFloat = 220
         let offset:CGFloat = scrollView.contentOffset.y
         let alpha:CGFloat = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset)
         navBarBackgroundView?.alpha = alpha
+        if Int(alpha) == 1 {
+            self.backButtonImages = XFBackButtonImages.defaultSets
+        } else if alpha == 0 {
+            self.backButtonImages = DetailBackBar
+        }
     }
     
     // MARK: - fileprivate and lazy variables
