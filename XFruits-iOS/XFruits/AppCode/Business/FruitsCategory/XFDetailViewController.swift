@@ -70,8 +70,10 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         navBarBackgroundView?.alpha = alpha
         if Int(alpha) == 1 {
             self.backButtonImages = XFBackButtonImages.defaultSets
+            UIApplication.shared.statusBarStyle = .lightContent
         } else if alpha == 0 {
             self.backButtonImages = DetailBackBar
+            UIApplication.shared.statusBarStyle = .default
         }
     }
     
