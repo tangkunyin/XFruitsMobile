@@ -53,7 +53,7 @@ class XFCartUtils {
                                    cover: item.cover,
                                    primePrice: Double(item.primePrice),
                                    quantity: Int64(1),
-                                   selected: false,
+                                   selected: true,
                                    status: 0)
             if nil == obj {
                 return try XFCartDataHelper.insert(item: paramCart)

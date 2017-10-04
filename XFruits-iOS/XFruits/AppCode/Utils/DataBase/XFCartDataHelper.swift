@@ -52,7 +52,7 @@ class XFCartDataHelper: DataHelperProtocol {
                 t.column(cover)
                 t.column(primePrice)
                 t.column(quantity, defaultValue:1)
-                t.column(selected, defaultValue:false)
+                t.column(selected, defaultValue:true)
                 t.column(status, defaultValue:0)
             })
         } catch let error as NSError {
