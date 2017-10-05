@@ -21,6 +21,7 @@
 		16C9FD9C1F6C29A400A138E6 /* DVActionSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FD9B1F6C29A400A138E6 /* DVActionSheetVC.swift */; };
 		16C9FD9E1F6D513400A138E6 /* XFChangePwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FD9D1F6D513400A138E6 /* XFChangePwdViewController.swift */; };
 		16C9FDA41F6E7EF700A138E6 /* XFUserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FDA31F6E7EF700A138E6 /* XFUserInfoService.swift */; };
+		860A32AB1F860E2500301883 /* ESPullToRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A32AA1F860E2500301883 /* ESPullToRefresh.framework */; };
 		860A43011EE415FF00798678 /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
 		860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A43021EE415FF00798678 /* HandyJSON.framework */; };
 		860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A43041EE4178000798678 /* XFBaseResponse.swift */; };
@@ -99,7 +100,6 @@
 		86ADDCE11F2DD88500881CFA /* XFCouponItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCE01F2DD88500881CFA /* XFCouponItem.swift */; };
 		86BB9A871F1D2B1E00B46EBC /* XFCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BB9A861F1D2B1E00B46EBC /* XFCheckoutViewController.swift */; };
 		86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE61EAB495A009972A8 /* Alamofire.framework */; };
-		86CB2FEE1EAB495A009972A8 /* APNGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE71EAB495A009972A8 /* APNGKit.framework */; };
 		86CB2FEF1EAB495A009972A8 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE81EAB495A009972A8 /* Kingfisher.framework */; };
 		86CB2FF01EAB495A009972A8 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE91EAB495A009972A8 /* MBProgressHUD.framework */; };
 		86CB2FF21EAB495A009972A8 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FEB1EAB495A009972A8 /* SnapKit.framework */; };
@@ -167,7 +167,7 @@
 		16C9FD9B1F6C29A400A138E6 /* DVActionSheetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DVActionSheetVC.swift; sourceTree = "<group>"; };
 		16C9FD9D1F6D513400A138E6 /* XFChangePwdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFChangePwdViewController.swift; sourceTree = "<group>"; };
 		16C9FDA31F6E7EF700A138E6 /* XFUserInfoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFUserInfoService.swift; sourceTree = "<group>"; };
-		16D8A0CB1F6AC229008ECA28 /* APNGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APNGKit.framework; path = Carthage/Build/iOS/APNGKit.framework; sourceTree = "<group>"; };
+		860A32AA1F860E2500301883 /* ESPullToRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ESPullToRefresh.framework; path = Carthage/Build/iOS/ESPullToRefresh.framework; sourceTree = "<group>"; };
 		860A43021EE415FF00798678 /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HandyJSON.framework; path = Carthage/Build/iOS/HandyJSON.framework; sourceTree = "<group>"; };
 		860A43041EE4178000798678 /* XFBaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFBaseResponse.swift; sourceTree = "<group>"; };
 		860C9E551F7293BE00AF3CB7 /* XFCouponItemCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCouponItemCellView.swift; sourceTree = "<group>"; };
@@ -254,7 +254,6 @@
 		86ADDCE01F2DD88500881CFA /* XFCouponItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCouponItem.swift; sourceTree = "<group>"; };
 		86BB9A861F1D2B1E00B46EBC /* XFCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCheckoutViewController.swift; sourceTree = "<group>"; };
 		86CB2FE61EAB495A009972A8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		86CB2FE71EAB495A009972A8 /* APNGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APNGKit.framework; path = Carthage/Build/iOS/APNGKit.framework; sourceTree = "<group>"; };
 		86CB2FE81EAB495A009972A8 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		86CB2FE91EAB495A009972A8 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		86CB2FEB1EAB495A009972A8 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
@@ -299,6 +298,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				860A32AB1F860E2500301883 /* ESPullToRefresh.framework in Frameworks */,
 				8618BA441F40366E00AC9436 /* CoreMotion.framework in Frameworks */,
 				8618BA421F4035D700AC9436 /* AlipaySDK.framework in Frameworks */,
 				8618BA401F402B9800AC9436 /* libWeChatSDK.a in Frameworks */,
@@ -321,7 +321,6 @@
 				86A45C581ED1108500772D13 /* libicucore.tbd in Frameworks */,
 				86A45C561ED1106D00772D13 /* libsqlite3.tbd in Frameworks */,
 				86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */,
-				86CB2FEE1EAB495A009972A8 /* APNGKit.framework in Frameworks */,
 				86CB2FEF1EAB495A009972A8 /* Kingfisher.framework in Frameworks */,
 				86CB2FF01EAB495A009972A8 /* MBProgressHUD.framework in Frameworks */,
 				86CB2FF21EAB495A009972A8 /* SnapKit.framework in Frameworks */,
@@ -617,6 +616,7 @@
 		86CB2FE51EAB4959009972A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				860A32AA1F860E2500301883 /* ESPullToRefresh.framework */,
 				8618BA431F40366800AC9436 /* CoreMotion.framework */,
 				8618BA3A1F4027ED00AC9436 /* CoreTelephony.framework */,
 				8618BA391F4027D700AC9436 /* libc++.tbd */,
@@ -636,9 +636,7 @@
 				86A45C591ED1109100772D13 /* libstdc++.tbd */,
 				86A45C571ED1108500772D13 /* libicucore.tbd */,
 				86A45C551ED1106D00772D13 /* libsqlite3.tbd */,
-				16D8A0CB1F6AC229008ECA28 /* APNGKit.framework */,
 				86CB2FE61EAB495A009972A8 /* Alamofire.framework */,
-				86CB2FE71EAB495A009972A8 /* APNGKit.framework */,
 				86CB2FE81EAB495A009972A8 /* Kingfisher.framework */,
 				86CB2FE91EAB495A009972A8 /* MBProgressHUD.framework */,
 				86CB2FEB1EAB495A009972A8 /* SnapKit.framework */,
@@ -795,7 +793,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/APNGKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
@@ -803,6 +800,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SQLite.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/V5Client.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/HandyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ESPullToRefresh.framework",
 			);
 			outputPaths = (
 			);
