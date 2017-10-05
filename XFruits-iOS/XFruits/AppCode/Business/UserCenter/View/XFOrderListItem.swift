@@ -103,6 +103,9 @@ class XFOrderListItem: UITableViewCell {
     }()
     
     fileprivate func customInit(){
+        
+        selectionStyle = .none
+        
         initGoodsContainer()
         contentView.addSubview(titleContainer)
         contentView.addSubview(orderGoodsContainer)

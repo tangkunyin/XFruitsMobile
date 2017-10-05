@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import ESPullToRefresh
 
 fileprivate let cellIdentifier = "XFOrderListCellIdentifier"
 
@@ -15,7 +16,9 @@ class XFOrderListViewController: XFBaseSubViewController {
 
     var orderStatus: String?
     
-    var orderData: Array<XFOrderContent>?
+    var orderData: Array<XFOrderContent> = []
+    
+    fileprivate var currentPage: Int = 1
     
     fileprivate lazy var orderListView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .plain)
@@ -28,6 +31,13 @@ class XFOrderListViewController: XFBaseSubViewController {
         tableView.separatorColor = XFConstants.Color.separatorLine
         tableView.backgroundColor = XFConstants.Color.separatorLine
         tableView.register(XFOrderListItem.self, forCellReuseIdentifier: cellIdentifier)
+        weak var weakSelf = self
+        tableView.es.addPullToRefresh(animator: XFRefreshAnimator.header(), handler: {
+            weakSelf?.loadOrderData()
+        })
+        tableView.es.addInfiniteScrolling(animator: XFRefreshAnimator.footer(), handler: {
+            weakSelf?.loadOrderData(true)
+        })
         return tableView
     }()
     
@@ -37,28 +47,41 @@ class XFOrderListViewController: XFBaseSubViewController {
         loadOrderData()
     }
 
-    fileprivate func loadOrderData() {
+    fileprivate func loadOrderData(_ loadMore: Bool = false) {
         weak var weakSelf = self
-        var params: Dictionary<String, Any> = ["page":1,"size":XFConstants.pageRows]
+        var params: Dictionary<String, Any> = ["page":currentPage,"size":XFConstants.pageRows]
         if let status = orderStatus {
             params.updateValue(status, forKey: "status")
         }
         XFOrderSerivice.getOrderList(params: params) { (respData) in
-            if let order = respData as? XFOrder,
-                let orderList = order.content, orderList.count > 0 {
-                weakSelf?.renderOrderListView(data: orderList)
+            weakSelf?.orderListView.es.stopLoadingMore()
+            weakSelf?.orderListView.es.stopPullToRefresh()
+            if let order = respData as? XFOrder, let orderList = order.content, orderList.count > 0 {
+                weakSelf?.currentPage += 1
+                if loadMore {
+                    weakSelf?.orderData += orderList
+                    weakSelf?.renderOrderListView(data: weakSelf?.orderData)
+                } else {
+                    weakSelf?.renderOrderListView(data: orderList)
+                }
             } else {
-                weakSelf?.orderListView.removeFromSuperview()
-                weakSelf?.renderNullDataView()
+                if weakSelf?.currentPage == 1 {
+                    weakSelf?.orderListView.removeFromSuperview()
+                    weakSelf?.renderNullDataView()
+                } else {
+                    weakSelf?.orderListView.es.noticeNoMoreData()
+                }
             }
         }
     }
     
-    fileprivate func renderOrderListView(data: Array<XFOrderContent>){
-        self.orderData = data
-        view.addSubview(orderListView)
-        orderListView.snp.makeConstraints { (make) in
-            make.center.size.equalTo(view)
+    fileprivate func renderOrderListView(data: Array<XFOrderContent>?){
+        if let data = data {
+            self.orderData = data
+            view.addSubview(orderListView)
+            orderListView.snp.makeConstraints { (make) in
+                make.center.size.equalTo(view)
+            }
         }
     }
     
@@ -119,10 +142,7 @@ class XFOrderListViewController: XFBaseSubViewController {
 extension XFOrderListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if let orderData = orderData {
-            return orderData.count
-        }
-        return 0
+        return orderData.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -130,14 +150,14 @@ extension XFOrderListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if let orderData = orderData, section == orderData.count - 1 {
+        if section == orderData.count - 1 {
             return 0
         }
         return 10
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if let orderData = orderData, section == orderData.count - 1 {
+        if section == orderData.count - 1 {
             return nil
         }
         return UIView()
@@ -145,24 +165,19 @@ extension XFOrderListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! XFOrderListItem
-        cell.selectionStyle = .none
-        if let orderData = orderData {
-            cell.dataSource = orderData[indexPath.row]
-            weak var weakSelf = self
-            cell.onBarBtnClick = {(type, data) in
-                weakSelf?.barClickHandler(type, data)
-            }
+        cell.dataSource = orderData[indexPath.row]
+        weak var weakSelf = self
+        cell.onBarBtnClick = {(type, data) in
+            weakSelf?.barClickHandler(type, data)
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        if let orderData = orderData {
-            let orderDetail = XFOrderDetailViewController()
-            orderDetail.orderId = orderData[indexPath.row].orderId
-            navigationController?.pushViewController(orderDetail, animated: true)
-        }
+        let orderDetail = XFOrderDetailViewController()
+        orderDetail.orderId = orderData[indexPath.row].orderId
+        navigationController?.pushViewController(orderDetail, animated: true)
     }
 }
 
