@@ -29,17 +29,16 @@ class UserCenterAvatarCell: UITableViewCell {
     
     lazy var userNameLabel:UILabel = {
         let  userNameLabel = UILabel()
-        userNameLabel.text = "那个，请先登录"
+        userNameLabel.text = "那个，请登录先"
         userNameLabel.textColor = colorWithRGB(83, g: 83, b: 83)
         userNameLabel.font  = XFConstants.Font.pfn16
         return userNameLabel
     }()
     
     lazy var identityLevelImageView:UIImageView = {
-        let identityLevelImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
+        let identityLevelImageView = UIImageView.init(image: UIImage.imageWithNamed("level-crown"))
         return identityLevelImageView
     }()
-    
     
     lazy var  identityDescriptionLabel:UILabel = {
         let identityDescriptionLabel = UILabel.init()

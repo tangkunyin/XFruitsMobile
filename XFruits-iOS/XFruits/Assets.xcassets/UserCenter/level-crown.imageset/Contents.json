@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "level.png",
+      "filename" : "level-crown.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "level@2x.png",
+      "filename" : "level-crown@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "level@3x.png",
+      "filename" : "level-crown@3x.png",
       "scale" : "3x"
     }
   ],

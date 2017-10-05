@@ -57,6 +57,8 @@
 		862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862C59EE1EA3677100C2323D /* XFConstants.swift */; };
 		8630B31D1EF7BC86002F5B5C /* XFSQLiteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8630B31C1EF7BC86002F5B5C /* XFSQLiteDataSource.swift */; };
 		8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8630B31E1EF7BCB1002F5B5C /* XFCartDataHelper.swift */; };
+		863983721F85E5BE0035F0FD /* XFUserCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863983711F85E5BE0035F0FD /* XFUserCollectionViewController.swift */; };
+		863983741F85E5E80035F0FD /* XFUserScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863983731F85E5E80035F0FD /* XFUserScoreViewController.swift */; };
 		864CD7C01F80934A00E8B6FA /* XFSeperatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864CD7BF1F80934A00E8B6FA /* XFSeperatorView.swift */; };
 		865235C61F1AFD5A005897C3 /* XFShopCartEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865235C51F1AFD5A005897C3 /* XFShopCartEmptyView.swift */; };
 		865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AA5B71EAB9E9500E94312 /* XFEnum.swift */; };
@@ -206,6 +208,8 @@
 		862C59EE1EA3677100C2323D /* XFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFConstants.swift; sourceTree = "<group>"; };
 		8630B31C1EF7BC86002F5B5C /* XFSQLiteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFSQLiteDataSource.swift; sourceTree = "<group>"; };
 		8630B31E1EF7BCB1002F5B5C /* XFCartDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCartDataHelper.swift; sourceTree = "<group>"; };
+		863983711F85E5BE0035F0FD /* XFUserCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserCollectionViewController.swift; sourceTree = "<group>"; };
+		863983731F85E5E80035F0FD /* XFUserScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserScoreViewController.swift; sourceTree = "<group>"; };
 		864CD7BF1F80934A00E8B6FA /* XFSeperatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFSeperatorView.swift; sourceTree = "<group>"; };
 		865235C51F1AFD5A005897C3 /* XFShopCartEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFShopCartEmptyView.swift; sourceTree = "<group>"; };
 		865AA5B71EAB9E9500E94312 /* XFEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEnum.swift; sourceTree = "<group>"; };
@@ -691,6 +695,8 @@
 				8624CC3B1F4DE5D90008C8D3 /* XFAboutCompanyViewController.swift */,
 				16C9FD9D1F6D513400A138E6 /* XFChangePwdViewController.swift */,
 				869FBE991F70E5F50047A8B7 /* XFCouponListViewController.swift */,
+				863983711F85E5BE0035F0FD /* XFUserCollectionViewController.swift */,
+				863983731F85E5E80035F0FD /* XFUserScoreViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -853,6 +859,7 @@
 				862672ED1EFE48420062B52B /* XFNetworking.swift in Sources */,
 				8624CC3C1F4DE5D90008C8D3 /* XFAboutCompanyViewController.swift in Sources */,
 				8616F7ED1F654C03007A4669 /* XFAuthService.swift in Sources */,
+				863983741F85E5E80035F0FD /* XFUserScoreViewController.swift in Sources */,
 				862672E51EFE47010062B52B /* XFMBProgressHUD.swift in Sources */,
 				860C9E561F7293BE00AF3CB7 /* XFCouponItemCellView.swift in Sources */,
 				8616F7EF1F654CB8007A4669 /* XFProductService.swift in Sources */,
@@ -890,6 +897,7 @@
 				86FFA4141F487DF800FCC809 /* XFExpress.swift in Sources */,
 				8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */,
 				86FFA43E1F49DD5100FCC809 /* XFIndexArticleViewCell.swift in Sources */,
+				863983721F85E5BE0035F0FD /* XFUserCollectionViewController.swift in Sources */,
 				86ADDCDD1F2B7C5C00881CFA /* XFDescriptionItem.swift in Sources */,
 				86FFA4301F48999800FCC809 /* XFUserInfoViewController.swift in Sources */,
 				165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */,

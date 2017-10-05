@@ -11,24 +11,6 @@ import SwiftyJSON
 
 fileprivate let UC_CellIdentifier = "XFUserCenterUC_CellIdentifier"
 
-class XFUCenterCommonCell: UITableViewCell {
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        customInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        customInit()
-    }
-    fileprivate func customInit() {
-        textLabel?.font = XFConstants.Font.pfn14
-        textLabel?.textColor = XFConstants.Color.greyishBrown
-        accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-    }
-}
-
 class XFUserCenterViewController: XFBaseViewController {
     
     fileprivate lazy var dataSource: NSDictionary = {
@@ -40,28 +22,28 @@ class XFUserCenterViewController: XFBaseViewController {
         return [
             [
                 ["title":"地址管理", "icon":"myLocation"],
-                ["title":"卡券中心", "icon":"myDiscountCoupon"]
+                ["title":"你的收藏", "icon":"myCollection"],
+                ["title":"你的积分", "icon":"myScore"],
+                ["title":"卡券中心", "icon":"myVipCards"]
             ],
             [
                 ["title":"吐槽建议", "icon":"myAdvice"],
-                ["title":"在线客服", "icon":"myService"]
-            ],
-            [
-                ["title":"关于我们", "icon":"aboutme"],
+                ["title":"调戏客服", "icon":"myService"],
+                ["title":"拾个情怀", "icon":"myCompanyBrand"],
                 ["title":"设置", "icon":"app-settings"]
             ],
         ]
     }()
     
     lazy var centerTable: UITableView = {
-        let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+        let tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.sectionFooterHeight = 8
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
-        tableView.sectionFooterHeight = 10
-        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
+        tableView.backgroundColor = XFConstants.Color.separatorLine
         tableView.register(XFUCenterCommonCell.self, forCellReuseIdentifier: UC_CellIdentifier)
         return tableView
     }()
@@ -78,7 +60,6 @@ class XFUserCenterViewController: XFBaseViewController {
         navigationBar?.isHidden = false
     }
   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -122,12 +103,19 @@ class XFUserCenterViewController: XFBaseViewController {
                 } else if section == 1 && row == 1 {
                     // 特定类型订单
                     return
-                } else if section == 2 && row == 0 {
-                    // 地址
-                    subViewController = XFUserAddressesMangageViewController()
-                } else if section == 2 && row == 1 {
-                    //TODO 卡劵、优惠券、收藏、积分
-                    subViewController = XFCouponListViewController()
+                } else {
+                    switch row {
+                    case 0:
+                        subViewController = XFUserAddressesMangageViewController()
+                    case 1:
+                        subViewController = XFUserCollectionViewController()
+                    case 2:
+                        subViewController = XFUserScoreViewController()
+                    case 3:
+                        subViewController = XFCouponListViewController()
+                    default:
+                        return
+                    }
                 }
             } else {
                 // 进入登录页面
@@ -144,10 +132,10 @@ class XFUserCenterViewController: XFBaseViewController {
             let chatViewController = createChatViewController(withUser: nil, goodsInfo: nil)
             chatViewController.delegate = self
             subViewController = chatViewController
-        } else if section == 4 && row == 0 {
+        } else if section == 3 && row == 2 {
             // 关于我们
             subViewController = XFAboutCompanyViewController()
-        } else if section == 4 && row == 1 {
+        } else if section == 3 && row == 3 {
             // 设置
             subViewController = XFSettingsViewController()
         }
@@ -159,13 +147,9 @@ class XFUserCenterViewController: XFBaseViewController {
 }
 
 extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate {
-        
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
-    }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5;
+        return 2 + girdGroupInfo.count;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -198,7 +182,7 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
         } else if section == 1 {
             if row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: UC_CellIdentifier, for: indexPath)
-                cell.textLabel?.text = "我的订单"
+                cell.textLabel?.text = "你的订单"
                 cell.imageView?.image = UIImage.imageWithNamed("mybill")
                 return cell
             } else {
@@ -216,6 +200,13 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
             cell.imageView?.image = UIImage.imageWithNamed(source["icon"]!)
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == girdGroupInfo.count + 2 {
+            return nil
+        }
+        return UIView()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -263,3 +254,20 @@ extension XFUserCenterViewController: V5ChatViewDelegate {
     
 }
 
+class XFUCenterCommonCell: UITableViewCell {
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        customInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        customInit()
+    }
+    fileprivate func customInit() {
+        textLabel?.font = XFConstants.Font.pfn14
+        textLabel?.textColor = XFConstants.Color.greyishBrown
+        accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+    }
+}
