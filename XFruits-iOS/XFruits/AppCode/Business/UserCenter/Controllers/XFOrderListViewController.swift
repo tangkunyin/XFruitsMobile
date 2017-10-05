@@ -61,18 +61,22 @@ class XFOrderListViewController: XFBaseSubViewController {
         }
     }
     
-    //TODO. 订单内继续完成支付
+    // 订单内继续完成支付
     fileprivate func orderPayWith(order: XFOrderContent){
         let payInfo = XFOrderCommit()
         payInfo.orderId = order.orderId
         payInfo.cashFee = "\(order.cashFee)"
         payInfo.orderExpiration = order.orderExpiration
-        let payChannel = XFPayChannel()
-        payChannel.name = "支付宝"
-        payChannel.channel = 1
-        payChannel.defaultChannel = true
-        payInfo.payChannels = [payChannel]
-        
+        // TODO. 支付频道接口没有数据，此处手动造支付频道数据，如果接口返回了，则用接口数据
+        let alipayChannel = XFPayChannel()
+        alipayChannel.name = "支付宝"
+        alipayChannel.channel = 1
+        alipayChannel.defaultChannel = true
+        let wxpayChannel = XFPayChannel()
+        wxpayChannel.name = "微信"
+        wxpayChannel.channel = 2
+        wxpayChannel.defaultChannel = false
+        payInfo.payChannels = [alipayChannel, wxpayChannel]
         let payCenter = XFChoosePayWayViewController()
         payCenter.payInfo = payInfo
         navigationController?.pushViewController(payCenter, animated: true)

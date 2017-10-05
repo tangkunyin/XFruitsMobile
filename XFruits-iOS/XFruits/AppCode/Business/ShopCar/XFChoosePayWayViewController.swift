@@ -93,10 +93,8 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
         }
         if let cid = channelId, let payInfo = payInfo, let orderId = payInfo.orderId {
             let payChannel = cid == 1 ? 1 : 2
- 
             weak var weakSelf = self
             let params:[String : Any] = ["payChannel": payChannel, "orderId": orderId]
-            print(params)
             XFOrderSerivice.orderPayCommit(params: params) { (data) in
                 switch cid {
                 case 1:
@@ -167,13 +165,12 @@ extension XFChoosePayWayViewController {
         request.timeStamp =  UInt32(jsonObject["timestamp"].string!)!
         request.sign = jsonObject["sign"].string!
        
-       NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(wxpayResult),
                                                name: NSNotification.Name(rawValue: "wxpay"),
                                                object: nil)
         WXApi.send(request)
-
     }
     
     @objc private func wxpayResult(_ notifacation: Notification? = nil) {
