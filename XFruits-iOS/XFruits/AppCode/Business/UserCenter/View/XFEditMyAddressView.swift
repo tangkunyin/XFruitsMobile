@@ -313,7 +313,7 @@ class XFEditMyAddressView: UIView {
         
         self.addSubview(saveBtn)
         saveBtn.snp.makeConstraints({ (make) in
-            make.height.equalTo(45)
+            make.height.equalTo(35)
             make.left.equalTo(self).offset(20)
             make.right.bottom.equalTo(self).offset(-20)
         })

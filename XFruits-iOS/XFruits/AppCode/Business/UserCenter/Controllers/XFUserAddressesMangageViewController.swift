@@ -69,7 +69,7 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         // 底部添加地址按钮
         self.view.addSubview(addAddressBtn)
         addAddressBtn.snp.makeConstraints({ (make) in
-            make.height.equalTo(45)
+            make.height.equalTo(35)
             make.left.equalTo(view).offset(20)
             make.right.bottom.equalTo(view).offset(-20)
         })
