@@ -23,9 +23,10 @@ class XFOrderListViewController: XFBaseSubViewController {
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         tableView.tableFooterView = UIView()
+        tableView.rowHeight = 136
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
-        tableView.rowHeight = 136
+        tableView.backgroundColor = XFConstants.Color.separatorLine
         tableView.register(XFOrderListItem.self, forCellReuseIdentifier: cellIdentifier)
         return tableView
     }()
@@ -117,11 +118,29 @@ class XFOrderListViewController: XFBaseSubViewController {
 
 extension XFOrderListViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         if let orderData = orderData {
             return orderData.count
         }
         return 0
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if let orderData = orderData, section == orderData.count - 1 {
+            return 0
+        }
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if let orderData = orderData, section == orderData.count - 1 {
+            return nil
+        }
+        return UIView()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

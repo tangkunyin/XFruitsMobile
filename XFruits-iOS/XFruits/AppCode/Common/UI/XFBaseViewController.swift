@@ -56,7 +56,7 @@ class XFBaseViewController: UIViewController {
         label.font = XFConstants.Font.pfn14
         label.textAlignment = .center
         label.textColor = XFConstants.Color.darkGray
-        label.text = "未发现任何数据，请稍后再试..."
+        label.text = "暂无相关内容，请稍后再试..."
         return label
     }()
 

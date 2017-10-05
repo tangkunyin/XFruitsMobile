@@ -102,19 +102,12 @@ class XFOrderListItem: UITableViewCell {
         return view
     }()
     
-    lazy var bottomSeperator: UIView = {
-        let view = UIView()
-        view.backgroundColor = XFConstants.Color.separatorLine
-        return view
-    }()
-    
     fileprivate func customInit(){
         initGoodsContainer()
         contentView.addSubview(titleContainer)
         contentView.addSubview(orderGoodsContainer)
         contentView.addSubview(amountContainer)
         contentView.addSubview(actionContainer)
-        contentView.addSubview(bottomSeperator)
         titleContainer.snp.makeConstraints { (make) in
             make.left.top.equalTo(contentView).offset(10)
             make.right.equalTo(contentView).offset(-10)
@@ -135,10 +128,6 @@ class XFOrderListItem: UITableViewCell {
             make.top.equalTo(orderGoodsContainer.snp.bottom).offset(0)
             make.left.equalTo(amountContainer.snp.right).offset(5)
             make.height.equalTo(40)
-        }
-        bottomSeperator.snp.makeConstraints { (make) in
-            make.height.equalTo(6)
-            make.left.right.bottom.equalTo(contentView)
         }
     }
     
