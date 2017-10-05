@@ -22,6 +22,7 @@
 		16C9FD9E1F6D513400A138E6 /* XFChangePwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FD9D1F6D513400A138E6 /* XFChangePwdViewController.swift */; };
 		16C9FDA41F6E7EF700A138E6 /* XFUserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FDA31F6E7EF700A138E6 /* XFUserInfoService.swift */; };
 		860A32AB1F860E2500301883 /* ESPullToRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A32AA1F860E2500301883 /* ESPullToRefresh.framework */; };
+		860A32AD1F861E7100301883 /* XFRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A32AC1F861E7100301883 /* XFRefreshAnimator.swift */; };
 		860A43011EE415FF00798678 /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
 		860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A43021EE415FF00798678 /* HandyJSON.framework */; };
 		860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A43041EE4178000798678 /* XFBaseResponse.swift */; };
@@ -168,6 +169,7 @@
 		16C9FD9D1F6D513400A138E6 /* XFChangePwdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFChangePwdViewController.swift; sourceTree = "<group>"; };
 		16C9FDA31F6E7EF700A138E6 /* XFUserInfoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFUserInfoService.swift; sourceTree = "<group>"; };
 		860A32AA1F860E2500301883 /* ESPullToRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ESPullToRefresh.framework; path = Carthage/Build/iOS/ESPullToRefresh.framework; sourceTree = "<group>"; };
+		860A32AC1F861E7100301883 /* XFRefreshAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFRefreshAnimator.swift; sourceTree = "<group>"; };
 		860A43021EE415FF00798678 /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HandyJSON.framework; path = Carthage/Build/iOS/HandyJSON.framework; sourceTree = "<group>"; };
 		860A43041EE4178000798678 /* XFBaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFBaseResponse.swift; sourceTree = "<group>"; };
 		860C9E551F7293BE00AF3CB7 /* XFCouponItemCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCouponItemCellView.swift; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 				86ADDCD61F2B466C00881CFA /* XFSearchBar.swift */,
 				86ADDCDC1F2B7C5C00881CFA /* XFDescriptionItem.swift */,
 				864CD7BF1F80934A00E8B6FA /* XFSeperatorView.swift */,
+				860A32AC1F861E7100301883 /* XFRefreshAnimator.swift */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				862672F71EFE497D0062B52B /* XFBaseSubViewController.swift in Sources */,
 				16701C121F6EB431007E2CEA /* XFExpandImage.swift in Sources */,
 				864CD7C01F80934A00E8B6FA /* XFSeperatorView.swift in Sources */,
+				860A32AD1F861E7100301883 /* XFRefreshAnimator.swift in Sources */,
 				86FFA42A1F4898FA00FCC809 /* XFOrderDetailViewController.swift in Sources */,
 				86FFA42C1F48991800FCC809 /* XFExpressViewController.swift in Sources */,
 				86FFA4381F49CAB200FCC809 /* XFOrderDetailHeaderCell.swift in Sources */,

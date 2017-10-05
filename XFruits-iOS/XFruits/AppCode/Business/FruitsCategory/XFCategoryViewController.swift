@@ -8,12 +8,15 @@
 
 import UIKit
 import SnapKit
+import ESPullToRefresh
 
 fileprivate let XFCellViewReuseIdentifier:String = "XFCategoryCellReuseIdentifier"
 
 class XFCategoryViewController: XFBaseViewController {
     
-    var dataSource:[ProductItem] = []
+    var currentPage: Int = 1
+    
+    var dataSource: Array<ProductItem> = []
     
     var dataType: Int = 1001 {
         didSet {
@@ -38,23 +41,82 @@ class XFCategoryViewController: XFBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         setNavigationBarItem()
         makeViewConstrains()
         //加载数据
         loadCategories()
     }
     
-    lazy var headSizer:XFCategoryHeadSizer = {
+    func setNavigationBarItem() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("more-list"),
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(onAllItemClick))
+    }
+    
+    @objc fileprivate func onAllItemClick() {
+        let allCateVC = XFAllCategoryListViewController()
+        weak var weakSelf = self
+        allCateVC.onPageClosed = { (type) in
+            weakSelf?.reloadDataView()
+            weakSelf?.dataType = type
+        }
+        present(allCateVC, animated: true, completion: nil)
+    }
+    
+    fileprivate func loadCategories(_ loadMore: Bool = false) {
+        weak var weakSelf = self
+        let params:XFParams = ["type":dataType,"sort":dataSort,"sequence":1,"page":currentPage,"size":XFConstants.pageRows]
+        XFProductService.getAllProducts(params: params) { (data) in
+            weakSelf?.removeLoadingView()
+            weakSelf?.cateListView.es.stopLoadingMore()
+            weakSelf?.cateListView.es.stopPullToRefresh()
+            if let cateList = data as? CategoryList, let dataSource = cateList.content {
+                weakSelf?.currentPage += 1
+                weakSelf?.removeNullDataView()
+                if loadMore {
+                    weakSelf?.dataSource += dataSource
+                    weakSelf?.renderCateListView(data: weakSelf?.dataSource)
+                } else {
+                    // 重新拉数据
+                    weakSelf?.renderCateListView(data: dataSource)
+                }
+            } else {
+                if weakSelf?.currentPage == 1 {
+                    weakSelf?.cateListView.alpha = 0
+                    weakSelf?.renderNullDataView()
+                } else {
+                    weakSelf?.cateListView.es.noticeNoMoreData()
+                }
+            }
+        }
+    }
+    
+    fileprivate func renderCateListView(data: Array<ProductItem>?) {
+        if let data = data {
+            self.dataSource = data
+            self.cateListView.alpha = 1
+            self.cateListView.reloadData()
+        }
+    }
+    
+    fileprivate func reloadDataView() {
+        self.cateListView.alpha = 0
+        self.renderLoaddingView()
+        self.currentPage = 1
+    }
+    
+    private lazy var headSizer:XFCategoryHeadSizer = {
         let sizer = XFCategoryHeadSizer(textColor: nil, selectTextColor: nil)
         weak var weakSelf = self
         sizer.onSizerChanged = { (sort) in
+            weakSelf?.reloadDataView()
             weakSelf?.dataSort = sort
         }
         return sizer;
     }()
     
-    lazy var cateListView: UICollectionView = {
+    private lazy var cateListView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let listView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
@@ -63,6 +125,15 @@ class XFCategoryViewController: XFBaseViewController {
         listView.collectionViewLayout = layout
         listView.backgroundColor = UIColor.white
         listView.register(XFCategoryCell.self, forCellWithReuseIdentifier: XFCellViewReuseIdentifier)
+        // 下拉刷新
+        weak var weakSelf = self
+        listView.es.addPullToRefresh(animator: XFRefreshAnimator.header(), handler: {
+            weakSelf?.loadCategories()
+        })
+        // 上拉分页
+        listView.es.addInfiniteScrolling(animator: XFRefreshAnimator.footer(), handler: {
+            weakSelf?.loadCategories(true)
+        })
         return listView
     }()
     
@@ -79,47 +150,6 @@ class XFCategoryViewController: XFBaseViewController {
             make.left.right.equalTo(view)
             make.bottom.equalTo(view).offset(0)
         }
-    }
-    
-    func setNavigationBarItem() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.imageWithNamed("more-list"),
-                                                                 style: .plain,
-                                                                 target: self,
-                                                                 action: #selector(onAllItemClick))
-    }
-    
-    @objc fileprivate func onAllItemClick() {
-        let allCateVC = XFAllCategoryListViewController()
-        weak var weakSelf = self
-        allCateVC.onPageClosed = { (type) in
-            weakSelf?.dataType = type
-        }
-        present(allCateVC, animated: true, completion: nil)
-    }
-    
-    fileprivate func loadCategories() {
-        // 统一加载图
-        cateListView.alpha = 0
-        renderLoaddingView()
-        
-        weak var weakSelf = self
-        let params:XFParams = ["type":dataType,"sort":dataSort,"sequence":1,"page":1,"size":XFConstants.pageRows]
-        XFProductService.getAllProducts(params: params) { (data) in
-            weakSelf?.removeLoadingView()
-            if let cateList = data as? CategoryList, let dataSource = cateList.content {
-                weakSelf?.removeNullDataView()
-                weakSelf?.renderCateListView(data: dataSource)
-            } else {
-                weakSelf?.cateListView.alpha = 0
-                weakSelf?.renderNullDataView()
-            }
-        }
-    }
-    
-    fileprivate func renderCateListView(data: Array<ProductItem>){
-        self.dataSource = data
-        self.cateListView.alpha = 1
-        self.cateListView.reloadData()
     }
 }
 
