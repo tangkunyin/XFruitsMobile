@@ -47,6 +47,7 @@ class XFTPayModeableViewCell: UITableViewCell {
     // 备用，选中支付宝、或微信支付
     lazy var selectedBtn:UIButton = {
         let btn = UIButton.init(type: .custom)
+        btn.isUserInteractionEnabled = false
         btn.setImage(UIImage.imageWithNamed("std_icon_checkbox_uncheck"), for: .normal)
         btn.setImage(UIImage.imageWithNamed("std_icon_checkbox_check"), for: .selected)
         return btn

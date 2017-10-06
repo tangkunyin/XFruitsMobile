@@ -8,12 +8,11 @@
 
 import UIKit
 import SnapKit
-import MBProgressHUD
 
 
 fileprivate let XFCheckoutCellReuseIdentifier:String = "XFCheckoutCellReuseIdentifier"
 
-class XFCheckoutViewController: XFBaseViewController {
+class XFCheckoutViewController: XFBaseSubViewController {
 
     /// 商品总价，不含运费、邮费、优惠等
     var totalGoodsAmount: Float?
@@ -27,18 +26,13 @@ class XFCheckoutViewController: XFBaseViewController {
                 // 更新优惠券及下单实付金额
                 var couponPrice: Float?
                 if let couponArr = confirmCoupon, couponArr.count > 0 {
-                    couponPrice = couponArr[0].number
+                    couponPrice = couponArr[0].valueFee
                 }
                 checkoutBar.updateActualAmount(totalAmount: totalPrice, expressFee: address.expressFee)
                 checkoutInfo.updateCheckout(InfoArr: [totalGoodsAmount, address.expressFee, couponPrice])
             }
         }
     }
-    
-    lazy var request: XFOrderSerivice = {
-        let serviceRequest = XFOrderSerivice()
-        return serviceRequest
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +44,7 @@ class XFCheckoutViewController: XFBaseViewController {
     
     fileprivate func updateDataSource()  {
         weak var weakSelf = self
-        request.orderConfirm { (data) in
+        XFOrderSerivice.orderConfirm { (data) in
             if data is XFOrderConfirm {
                 let confirm = data as! XFOrderConfirm
                 weakSelf?.confirmCoupon = confirm.couponList
@@ -66,16 +60,16 @@ class XFCheckoutViewController: XFBaseViewController {
             buyList.append(["productId":item.id! ,"count":item.quantity!])
         }
         guard let address = confirmAddress else {
-            MBProgressHUD.showError("您必须选择一个有效的收货地址")
+            showError("您必须选择一个有效的收货地址")
             return
         }
         guard buyList.count > 0 else {
-            MBProgressHUD.showError("商品信息为空，请核对后操作")
+            showError("商品信息为空，请核对后操作")
             return
         }
         weak var weakSelf = self
         let params:[String : Any] = ["productBuyList":buyList, "addressId":address.id, "couponIds":[]]
-        request.orderCommit(params: params) { (data) in
+        XFOrderSerivice.orderCommit(params: params) { (data) in
             let result: XFOrderCommit = data as! XFOrderCommit
             if let orderId = result.orderId,
                 let expiration = result.orderExpiration, orderId.characters.count > 0 ,expiration > 0 {
@@ -95,6 +89,7 @@ class XFCheckoutViewController: XFBaseViewController {
         weak var weakSelf = self
         addressList.onSelectedAddress = {(address) in
             weakSelf?.confirmAddress = address
+            weakSelf?.checkoutAddress.setMyAddress(data: address)
         }
         navigationController?.pushViewController(addressList, animated: true)
     }

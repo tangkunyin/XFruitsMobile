@@ -24,8 +24,7 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         tableView.separatorColor = XFConstants.Color.separatorLine
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.tableFooterView = UIView()
-        tableView.estimatedRowHeight = 66
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = 92
         tableView.register(XFAddressesManageTableViewCell.self, forCellReuseIdentifier: addressCellIdentifier)
         return tableView
     }()
@@ -42,11 +41,6 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         addAddressBtn.layer.masksToBounds = true
         addAddressBtn.addTarget(self, action: #selector(addOrModifyAddressEvent(sender:)), for:.touchUpInside)
         return addAddressBtn
-    }()
-    
-    lazy var request: XFAddressService = {
-        let serviceRequest = XFAddressService()
-        return serviceRequest
     }()
     
     override func viewDidLoad() {
@@ -75,7 +69,7 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         // 底部添加地址按钮
         self.view.addSubview(addAddressBtn)
         addAddressBtn.snp.makeConstraints({ (make) in
-            make.height.equalTo(45)
+            make.height.equalTo(35)
             make.left.equalTo(view).offset(20)
             make.right.bottom.equalTo(view).offset(-20)
         })
@@ -89,7 +83,7 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
     // 获取用户所有地址
     func getUserAllAddress(){
         weak var weakSelf = self
-        request.getUserAllAddress { (data) in
+        XFAddressService.getUserAllAddress { (data) in
             if let addresses = data as? Array<XFAddress>{
                 
                 if (addresses.count > 0) {
@@ -133,7 +127,7 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         }
 
         navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.show(addAddressVC, sender: self)
+        navigationController?.pushViewController(addAddressVC, animated: true)
     }
 }
 
@@ -174,7 +168,7 @@ extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableVie
         if editingStyle == .delete{
             if let address : XFAddress = addressInfoArray[row] {
                 let addressId = address.id!
-                request.deleteAddress(addressId: addressId,params:[:] ){ (data) in
+                XFAddressService.deleteAddress(addressId: addressId,params:[:] ){ (data) in
                     if data as! Bool { // 删除成功。
                         weakSelf?.addressInfoArray.remove(at: row)
                         tableView.deleteRows(at: [indexPath], with: .fade)

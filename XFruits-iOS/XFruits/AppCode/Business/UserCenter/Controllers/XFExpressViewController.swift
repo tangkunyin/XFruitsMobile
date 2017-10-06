@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 import SnapKit
 
 fileprivate let cellIdentifier = "XFOrderExpressInfoCellIdentifier"
@@ -22,10 +21,6 @@ class XFExpressViewController: XFBaseSubViewController {
     var orderId: String = ""
     
     var expressData: XFExpress?
-    
-    fileprivate lazy var request: XFOrderSerivice = {
-        return XFOrderSerivice()
-    }()
     
     fileprivate lazy var expressInfoHeader: UIView = {
         let header = UIView()
@@ -103,7 +98,7 @@ class XFExpressViewController: XFBaseSubViewController {
     
     fileprivate func loadExpressData() {
         weak var weakSelf = self
-        request.getExpressDetail(params: ["orderId":orderId]) { (respData) in
+        XFOrderSerivice.getExpressDetail(params: ["orderId":orderId]) { (respData) in
             if let express = respData as? XFExpress,
                 let traceInfo = express.trackingInfoList, traceInfo.count > 0 {
                 weakSelf?.expressData = express
@@ -126,7 +121,7 @@ class XFExpressViewController: XFBaseSubViewController {
     @objc fileprivate func copyDeliveryNum(){
         if let express = expressData, express.trackingNum.characters.count > 0 {
             UIPasteboard.general.string = express.trackingNum
-            MBProgressHUD.showSuccess("复制成功")
+            showSuccess("复制成功")
         }
     }
 }

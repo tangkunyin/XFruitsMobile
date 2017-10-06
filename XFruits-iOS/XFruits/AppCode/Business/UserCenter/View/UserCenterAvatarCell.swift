@@ -14,14 +14,14 @@ class UserCenterAvatarCell: UITableViewCell {
         didSet{
             if let user = user {
                 userNameLabel.text = user.username
-                identityDescriptionLabel.text = "帅帅的荣耀会员"
+                identityDescriptionLabel.text = "全宇宙排名: \(user.rank?.rank ?? 108)"
             }
         }
     }
     
     lazy var avatarBtn:UIButton = {
         let avatarBtn = UIButton()
-        avatarBtn.setImage(UIImage(named:"avatar"), for: .normal)
+        avatarBtn.setImage(UIImage(named:"defaultAvatar2"), for: .normal)
         avatarBtn.layer.cornerRadius = 35
         avatarBtn.layer.masksToBounds = true
         return avatarBtn
@@ -29,17 +29,16 @@ class UserCenterAvatarCell: UITableViewCell {
     
     lazy var userNameLabel:UILabel = {
         let  userNameLabel = UILabel()
-        userNameLabel.text = "那个，请先登录"
+        userNameLabel.text = "那个，请登录先"
         userNameLabel.textColor = colorWithRGB(83, g: 83, b: 83)
         userNameLabel.font  = XFConstants.Font.pfn16
         return userNameLabel
     }()
     
     lazy var identityLevelImageView:UIImageView = {
-        let identityLevelImageView = UIImageView.init(image: UIImage.imageWithNamed("level"))
+        let identityLevelImageView = UIImageView.init(image: UIImage.imageWithNamed("level-crown"))
         return identityLevelImageView
     }()
-    
     
     lazy var  identityDescriptionLabel:UILabel = {
         let identityDescriptionLabel = UILabel.init()
@@ -70,7 +69,7 @@ class UserCenterAvatarCell: UITableViewCell {
         avatarBtn.snp.makeConstraints({ (make) in
             make.left.equalTo(snp.left).offset(10)
             make.width.height.equalTo(70)
-            make.centerY.equalTo(self)
+            make.centerY.equalTo(self).offset(5)
         })
     
         userNameLabel.snp.makeConstraints({ (make) in

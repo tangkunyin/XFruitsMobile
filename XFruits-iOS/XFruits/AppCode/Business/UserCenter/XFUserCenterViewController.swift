@@ -7,28 +7,9 @@
 //
 
 import UIKit
-import MBProgressHUD
 import SwiftyJSON
 
 fileprivate let UC_CellIdentifier = "XFUserCenterUC_CellIdentifier"
-
-class XFUCenterCommonCell: UITableViewCell {
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        customInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        customInit()
-    }
-    fileprivate func customInit() {
-        textLabel?.font = XFConstants.Font.pfn14
-        textLabel?.textColor = XFConstants.Color.greyishBrown
-        accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-    }
-}
 
 class XFUserCenterViewController: XFBaseViewController {
     
@@ -40,35 +21,36 @@ class XFUserCenterViewController: XFBaseViewController {
     lazy var girdGroupInfo: Array<Array<Dictionary<String, String>>> = {
         return [
             [
-                ["title":"地址管理", "icon":"myLocation"]
-//                ["title":"卡券中心", "icon":"myDiscountCoupon"]
-            ],
-            [
-//                ["title":"私人定制", "icon":"aboutme"],
-                ["title":"在线客服", "icon":"myService"]
+                ["title":"地址管理", "icon":"myLocation"],
+//                ["title":"你的收藏", "icon":"myCollection"],
+//                ["title":"你的积分", "icon":"myScore"],
+                ["title":"卡券中心", "icon":"myVipCards"]
             ],
             [
                 ["title":"吐槽建议", "icon":"myAdvice"],
+                ["title":"调戏客服", "icon":"myService"],
+                ["title":"拾个情怀", "icon":"myCompanyBrand"],
                 ["title":"设置", "icon":"app-settings"]
             ],
         ]
     }()
     
     lazy var centerTable: UITableView = {
-        let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+        let tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.sectionFooterHeight = 8
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
-        tableView.sectionFooterHeight = 10
-        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
+        tableView.backgroundColor = XFConstants.Color.separatorLine
         tableView.register(XFUCenterCommonCell.self, forCellReuseIdentifier: UC_CellIdentifier)
         return tableView
     }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .default
         navigationBar?.isHidden = true
         centerTable.reloadSections(IndexSet(integer: 0), with: .none)
     }
@@ -78,7 +60,6 @@ class XFUserCenterViewController: XFBaseViewController {
         navigationBar?.isHidden = false
     }
   
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -101,76 +82,76 @@ class XFUserCenterViewController: XFBaseViewController {
             navigationController?.pushViewController(orderList, animated: true)
         } else {
             weak var weakSelf = self
-            MBProgressHUD.showMessage("请您登陆后再查看\(title)订单", completion: {
+            showMessage("请您登陆后再查看\(title)订单", completion: {
                 weakSelf?.handleEntrySelect(indexPath: IndexPath(row: 2, section: 1))
             })
         }
     }
     
     fileprivate func handleEntrySelect(indexPath: IndexPath) {
+        var subViewController: UIViewController?
         let section = indexPath.section
         let row = indexPath.row
-        dPrint("\(section) --- \(row)")
         if section < 3 {
             if XFUserGlobal.shared.isLogin {
                 if section == 0 && row == 0 {
                     // 用户信息
-                    navigationController?.pushViewController(XFUserInfoViewController(), animated: true)
+                    subViewController = XFUserInfoViewController()
                 } else if section == 1 && row == 0 {
                     // 订单列表
                     jumpToOrder(title: "全部")
                 } else if section == 1 && row == 1 {
                     // 特定类型订单
                     return
-                } else if section == 2 && row == 0 {
-                    // 地址
-                    let addressManageVC = XFUserAddressesMangageViewController()
-                    navigationController?.pushViewController(addressManageVC, animated: true)
-                } else if section == 2 && row == 1 {
-                    //TODO 卡劵、优惠券、收藏、积分
-                    let webView = XFWebViewController.init(withUrl: "http://www.10fruits.cn/")
-                    webView.title = "卡劵中心"
-                    self.navigationController?.pushViewController(webView, animated: true)
+                } else {
+                    switch row {
+                    case 0:
+                        subViewController = XFUserAddressesMangageViewController()
+                    case 1:
+                        subViewController = XFCouponListViewController()
+//                    case 1:
+//                        subViewController = XFUserCollectionViewController()
+//                    case 2:
+//                        subViewController = XFUserScoreViewController()
+//                    case 3:
+//                        subViewController = XFCouponListViewController()
+                    default:
+                        return
+                    }
                 }
             } else {
                 // 进入登录页面
-                let login = XFUserLoginViewController()
-                let nav = UINavigationController.init(rootViewController: login)
-                present(nav, animated: true, completion: nil)
+                subViewController = XFUserLoginViewController()
             }
         }
         // 无需登录的入口
-        if section == 3 && row == 0 {
-            //企业通道、私人定制
-//            let webView = XFWebViewController.init(withUrl: "https://www.10fruits.cn/customization/personal.html")
-//            webView.title = "私人定制"
-//            navigationController?.pushViewController(webView, animated: true)
-//        } else if section == 3 && row == 1 {
-            // 客服
-            let chatVC = createChatViewController(withUser: nil, goodsInfo: nil)
-            chatVC.delegate = self
-            navigationController?.pushViewController(chatVC, animated: true)
-        } else if section == 4 && row == 0 {
+        if section == 3 && row == 0 {            
             // 吐槽建议
-            let webView = XFWebViewController.init(withUrl: "https://www.10fruits.cn/suggest/suggest.html")
-            webView.title = "吐槽建议"
-            navigationController?.pushViewController(webView, animated: true)
-        } else if section == 4 && row == 1 {
+            subViewController = XFWebViewController(withUrl: "https://www.10fruits.cn/suggest/suggest.html")
+            subViewController?.title = "吐槽建议"
+        } else if section == 3 && row == 1 {
+            // 客服
+            let chatViewController = createChatViewController(withUser: nil, goodsInfo: nil)
+            chatViewController.delegate = self
+            subViewController = chatViewController
+        } else if section == 3 && row == 2 {
+            // 关于我们
+            subViewController = XFAboutCompanyViewController()
+        } else if section == 3 && row == 3 {
             // 设置
-            navigationController?.pushViewController(XFSettingsViewController(), animated: true)
+            subViewController = XFSettingsViewController()
+        }
+        if let subViewController = subViewController {
+            navigationController?.pushViewController(subViewController, animated: true)
         }
     }
     
 }
 
 extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate {
-        
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat.leastNormalMagnitude
-    }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5;
+        return 2 + girdGroupInfo.count;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -185,9 +166,9 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 105
+            return 125
         } else if (indexPath.section == 1 && indexPath.row == 1) {
-            return 90
+            return 80
         } else {
             return 42
         }
@@ -203,7 +184,7 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
         } else if section == 1 {
             if row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: UC_CellIdentifier, for: indexPath)
-                cell.textLabel?.text = "我的订单"
+                cell.textLabel?.text = "你的订单"
                 cell.imageView?.image = UIImage.imageWithNamed("mybill")
                 return cell
             } else {
@@ -221,6 +202,13 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
             cell.imageView?.image = UIImage.imageWithNamed(source["icon"]!)
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == girdGroupInfo.count + 2 {
+            return nil
+        }
+        return UIView()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -268,3 +256,20 @@ extension XFUserCenterViewController: V5ChatViewDelegate {
     
 }
 
+class XFUCenterCommonCell: UITableViewCell {
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        customInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        customInit()
+    }
+    fileprivate func customInit() {
+        textLabel?.font = XFConstants.Font.pfn14
+        textLabel?.textColor = XFConstants.Color.greyishBrown
+        accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+    }
+}

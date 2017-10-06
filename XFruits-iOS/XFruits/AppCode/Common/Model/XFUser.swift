@@ -35,6 +35,9 @@ struct XFUser: HandyJSON {
     // token，等同于用户唯一标识，30天过期不是固定的
     var token:String?
     
+    // email
+    var email:String?
+    
     var rank:UserRank?
     
 }

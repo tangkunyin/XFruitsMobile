@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 import SnapKit
 
 fileprivate let XFCartCellReuseIdentifier:String = "XFShopCartCellReuseIdentifier"
@@ -43,18 +42,16 @@ class XFShopCarViewController: XFBaseViewController {
     
     fileprivate func checkoutShopCart() {
         guard selectedItemCount > 0 else {
-            MBProgressHUD.showError("请至少选择一项下单")
+            showError("请至少选择一项下单")
             return
         }
         guard selectedTotalAmount > 0 else {
-            MBProgressHUD.showError("结算总价有误，请检查")
+            showError("结算总价有误，请检查")
             return
         }
         guard XFUserGlobal.shared.isLogin else {
             // 进入登录页面
-            let login = XFUserLoginViewController()
-            let nav = UINavigationController.init(rootViewController: login)
-            present(nav, animated: true, completion: nil)
+            navigationController?.pushViewController(XFUserLoginViewController(), animated: true)
             return
         }
         let checkoutVC = XFCheckoutViewController()

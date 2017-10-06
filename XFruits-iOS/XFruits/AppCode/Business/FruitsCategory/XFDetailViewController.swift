@@ -8,8 +8,8 @@
 
 import UIKit
 import SnapKit
-import MBProgressHUD
 
+fileprivate let DetailBackBar = [XFBackButtonImages.normal: "detail_BackNormal", XFBackButtonImages.highlighted: "detail_BackHighlight"]
 
 class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
     
@@ -30,14 +30,10 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         }
     }
     
-    deinit {
-        dPrint("XFDetailViewController deinit...")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .default
     }
-    
-    lazy var request:XFCommonService = {
-        let serviceRequest = XFCommonService()
-        return serviceRequest
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,14 +48,13 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         
         self.clearNavigationBar = true
         // 设置详情页专属返回按钮
-        self.backButtonImages = [XFBackButtonImages.normal: "detail_BackHighlight",
-                                 XFBackButtonImages.highlighted: "detail_BackNormal"]
+        self.backButtonImages = DetailBackBar
         
         makeMainViewConstrains()
         
         weak var weakSelf = self
         if let prodId = prodId {
-            request.getProductDetail(pid: prodId, { (data) in
+            XFProductService.getProductDetail(pid: prodId, { (data) in
                 if let detailData = data as? ProductDetail {
                     weakSelf?._detailData = detailData
                 }
@@ -67,13 +62,19 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         }
     }
     
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let minAlphaOffset:CGFloat = 0
         let maxAlphaOffset:CGFloat = 220
         let offset:CGFloat = scrollView.contentOffset.y
         let alpha:CGFloat = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset)
         navBarBackgroundView?.alpha = alpha
+        if Int(alpha) == 1 {
+            self.backButtonImages = XFBackButtonImages.defaultSets
+            UIApplication.shared.statusBarStyle = .lightContent
+        } else if alpha == 0 {
+            self.backButtonImages = DetailBackBar
+            UIApplication.shared.statusBarStyle = .default
+        }
     }
     
     // MARK: - fileprivate and lazy variables
@@ -96,7 +97,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
                 let chatVC = createChatViewController(withUser: XFUserGlobal.shared.currentUser, goodsInfo: weakSelf?._detailData)
                 weakSelf?.navigationController?.pushViewController(chatVC, animated: true)
             case 1:
-                MBProgressHUD.showSuccess("已成功加入收藏")
+                weakSelf?.showSuccess("已成功加入收藏")
             case 2:
                 weakSelf?.addToShopCart(checkoutNow: false)
             case 3:
@@ -116,10 +117,10 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
                 if checkoutNow {
                     goToCheckout(item: item)
                 } else {
-                    MBProgressHUD.showSuccess("成功添加到果篮")
+                    showSuccess("成功添加到果篮")
                 }
             } else {
-                MBProgressHUD.showError("操作失败，请稍后尝试~")
+                showError("操作失败，请稍后尝试~")
             }
         }
     }
@@ -133,7 +134,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
                 navigationController?.pushViewController(checkoutVC, animated: true)
             }
         } else {
-            MBProgressHUD.showError("请先登录后再购买")
+            showError("请先登录后再购买")
         }
     }
     

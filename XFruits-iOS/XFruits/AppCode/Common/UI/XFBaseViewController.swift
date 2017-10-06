@@ -34,6 +34,32 @@ class XFBaseViewController: UIViewController {
         return nil
     }()
     
+    /// 私有公共组件
+    fileprivate lazy var loaddingView: UIImageView = {
+        let imageView = UIImageView.init(image: UIImage.imageWithNamed("Loading-transprent"))
+        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    fileprivate lazy var nullDataView: UIImageView = {
+        let imageView = UIImageView.init(image: UIImage.imageWithNamed("order_empty"))
+        imageView.layer.masksToBounds = true
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    fileprivate lazy var nullDataTip: UILabel = {
+        let label = UILabel()
+        label.font = XFConstants.Font.pfn14
+        label.textAlignment = .center
+        label.textColor = XFConstants.Color.darkGray
+        label.text = "暂无相关内容，请稍后再试..."
+        return label
+    }()
+
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -49,6 +75,10 @@ class XFBaseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    
+        // 默认白色状态栏
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         if let navBar = self.navigationBar, clearNavigationBar {
             edgesForExtendedLayout = .all
             navBar.isTranslucent = true
@@ -65,14 +95,6 @@ class XFBaseViewController: UIViewController {
         view.backgroundColor = UIColor.white
         
         
-    }
-    
-    func loaddingWithMsg(_ msg: String? = "玩儿命加载中...") {
-        MBProgressHUD.loaddingWithMessage(msg)
-    }
-    
-    func stopLoadding() {
-        MBProgressHUD.stopLoadding()
     }
     
     func renderLoaddingView(){
@@ -96,10 +118,10 @@ class XFBaseViewController: UIViewController {
         nullDataTip.snp.makeConstraints { (make) in
             make.top.equalTo(nullDataView.snp.bottom).offset(10)
             make.centerX.equalTo(nullDataView)
-            make.size.equalTo(CGSize.init(width: 250, height: 44))
+            make.size.equalTo(CGSize.init(width: 300, height: 44))
         }
     }
- 
+    
     func removeLoadingView() {
         MBProgressHUD.stopLoadding()
         loaddingView.removeFromSuperview()
@@ -112,29 +134,33 @@ class XFBaseViewController: UIViewController {
     }
     
     
-    /// 私有公共组件
-    fileprivate lazy var loaddingView: UIImageView = {
-        let imageView = UIImageView.init(image: UIImage.imageWithNamed("Loading-transprent"))
-        imageView.layer.masksToBounds = true
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
+}
+
+
+// MARK: - 通过基础型方法扩展
+extension XFBaseViewController {
+
+    func loaddingWithMsg(_ msg: String? = "玩儿命加载中...") {
+        MBProgressHUD.loaddingWithMessage(msg)
+    }
     
-    fileprivate lazy var nullDataView: UIImageView = {
-        let imageView = UIImageView.init(image: UIImage.imageWithNamed("order_empty"))
-        imageView.layer.masksToBounds = true
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
+    func stopLoadding() {
+        MBProgressHUD.stopLoadding()
+    }
     
-    fileprivate lazy var nullDataTip: UILabel = {
-        let label = UILabel()
-        label.font = XFConstants.Font.pfn14
-        label.textAlignment = .center
-        label.textColor = XFConstants.Color.darkGray
-        label.text = "然，并没有发现任何数据..."
-        return label
-    }()
+    func showMessage(_ msg: String, completion: (()->Void)? = nil) {
+        MBProgressHUD.showMessage(msg, completion: completion)
+    }
+    
+    func showSuccess(_ msg: String = "操作成功") {
+        MBProgressHUD.showSuccess(msg)
+    }
+    
+    func showError(_ msg: String = "操作失败") {
+        MBProgressHUD.showError(msg)
+    }
+    
+    func showProgress(_ progress: Float, msg: String? = "精彩即将亮相...", mode: MBProgressHUDMode = .annularDeterminate) {
+        MBProgressHUD.showProgress(progress, message: msg, mode: mode)
+    }
 }

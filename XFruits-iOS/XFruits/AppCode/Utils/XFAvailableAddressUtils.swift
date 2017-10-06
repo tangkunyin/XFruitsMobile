@@ -72,7 +72,7 @@ class XFAvailableAddressUtils {
     
     func cacheAddressAvailable() {
         weak var weakSelf = self
-        XFAddressService().getDistrictData { (result) in
+        XFAddressService.getDistrictData { (result) in
             if let responseJSON = result as? NSDictionary {
                 let newMd5:String = responseJSON["md5"] as! String
                 let path:String = (weakSelf?.availableAddressPath)!

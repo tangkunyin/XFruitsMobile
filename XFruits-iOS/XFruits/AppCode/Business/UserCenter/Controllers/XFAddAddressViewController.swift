@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
-
 
 class XFAddAddressViewController: XFBaseSubViewController    {
     
@@ -53,13 +51,13 @@ class XFAddAddressViewController: XFBaseSubViewController    {
                                         "isDefault":address.isDefault,
                                         "label":address.label ?? ""]
         if editStyle == 0 {  // 添加地址
-            XFAddressService().addAddress(params: addressDict) { (data) in
+            XFAddressService.addAddress(params: addressDict) { (data) in
                 weakSelf!.backToParentController()
             }
         } else if editStyle == 1 {  // 修改地址
             let addressId:String = String(addressSigleEdit!.id)
             addressDict["id"] = addressId  // 编辑模式要多传一个地址id
-            XFAddressService().modifyAddress(params: addressDict){ (data) in
+            XFAddressService.modifyAddress(params: addressDict){ (data) in
                 weakSelf!.backToParentController()
             }
         }

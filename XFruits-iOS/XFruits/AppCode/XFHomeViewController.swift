@@ -44,13 +44,13 @@ class XFHomeViewController: UITabBarController {
     }
     
     fileprivate func addChildViewControllers() {
-        addChildViewController(indexVC, title: "首页", image: "home-normal", selectedImage: "home-highlight")
+        addChildViewController(indexVC, title: "鲜景", image: "home-normal", selectedImage: "home-highlight")
 
-        addChildViewController(categoryVC, title: "所有", image: "all-normal", selectedImage: "all-highlight")
+        addChildViewController(categoryVC, title: "水货", image: "all-normal", selectedImage: "all-highlight")
         
         addChildViewController(cartVC, title: "果篮", image: "shopCart-normal", selectedImage: "shopCart-highlight")
         
-        addChildViewController(userVC, title: "我的", image: "mine-normal", selectedImage: "mine-hightlight")
+        addChildViewController(userVC, title: "你的", image: "mine-normal", selectedImage: "mine-hightlight")
     }
     
 }
@@ -65,19 +65,16 @@ extension XFHomeViewController {
                                                        image: UIImage.imageWithNamed(image),
                                                        selectedImage: UIImage.imageWithNamed(selectedImage))
         
-        let normalAttr = [NSForegroundColorAttributeName:XFConstants.Color.greyishBrown,
-                          NSFontAttributeName:XFConstants.Font.pfn10]
-        let hilighAttr = [NSForegroundColorAttributeName:XFConstants.Color.salmon,
-                          NSFontAttributeName:XFConstants.Font.pfn12]
+        let normalAttr = [NSAttributedStringKey.foregroundColor:XFConstants.Color.greyishBrown,
+                          NSAttributedStringKey.font:XFConstants.Font.pfn10]
+        let hilighAttr = [NSAttributedStringKey.foregroundColor:XFConstants.Color.salmon,
+                          NSAttributedStringKey.font:XFConstants.Font.pfn12]
         
         childController.tabBarItem.setTitleTextAttributes(normalAttr, for: UIControlState.normal)
         childController.tabBarItem.setTitleTextAttributes(hilighAttr, for: UIControlState.selected)
-        
-        childController.title = title;
+        childController.title = title
         
         let nav = XFNavigationController.init(rootViewController: childController)
-        
-        
         
         self.addChildViewController(nav)
     }

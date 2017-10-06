@@ -56,7 +56,7 @@ public enum XFHttpStatus: Int {
         case .notModify:
             return "资源未更改"
         case .unAuthoriztion:
-            return "请求未授权"
+            return "登录已过期或请求未授权"
         case .forbidden:
             return "禁止访问"
         case .notFound:
@@ -107,7 +107,7 @@ public final class XFNetworkStatus: NSObject {
     
     public var currentStatus: XFNetStateCode = .unKnown
     
-    var reachability:NetworkReachabilityManager = NetworkReachabilityManager(host: "www.qq.com")!
+    var reachability:NetworkReachabilityManager = NetworkReachabilityManager(host: "www.aliyun.com")!
     
     fileprivate override init() {
         super.init()
@@ -141,20 +141,7 @@ public final class XFNetworkStatus: NSObject {
 
 public class XFNetworking: NSObject {
     
-//    let manager: Alamofire.SessionManager = {
-//        let serverTrustPolicies: [String: ServerTrustPolicy] = [
-//            "10fruits.net": .disableEvaluation
-//        ]
-//        let configuration = URLSessionConfiguration.default
-//        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
-//
-//        return Alamofire.SessionManager(
-//            configuration: configuration,
-//            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
-//        )
-//    }()
-    
-    public func url(_ uri:String, params:XFParams? = nil) -> String {
+    public class func url(_ uri:String, params:XFParams? = nil) -> String {
         if let params = params, !params.isEmpty {
             var url:String = ApiServer.onLine + uri + "?"
             for (index, obj) in params.enumerated() {
@@ -170,39 +157,34 @@ public class XFNetworking: NSObject {
         }
     }
     
-    public func doGet(withUrl url:String,
-                      encoding:ParameterEncoding = URLEncoding.default,
-                      completion:@escaping XFNetCompletion) {
-        self.doRequest(withUrl: url, method: .get, params: nil, paramsEncoding: encoding, completion: completion)
+    public class func doGet(withUrl url:String,
+                            encoding:ParameterEncoding = URLEncoding.default,
+                            completion:@escaping XFNetCompletion) {
+        doRequest(withUrl: url, method: .get, params: nil, paramsEncoding: encoding, completion: completion)
     }
     
-    public func doPost(withUrl url:String,
-                       params:Dictionary<String,Any>,
-                       encoding:ParameterEncoding = URLEncoding.default,
-                       completion:@escaping XFNetCompletion) {
-        self.doRequest(withUrl: url, method: .post, params: params, paramsEncoding: encoding, completion: completion)
+    public class func doPost(withUrl url:String,
+                             params:Dictionary<String,Any>,
+                             encoding:ParameterEncoding = URLEncoding.default,
+                             completion:@escaping XFNetCompletion) {
+        doRequest(withUrl: url, method: .post, params: params, paramsEncoding: encoding, completion: completion)
     }
     
     
-    public func commonRequest(withUrl url:String,
-                              params:Dictionary<String,Any>? = nil,
-                              method:Alamofire.HTTPMethod = .get,
-                              encoding:ParameterEncoding = URLEncoding.default,
-                              completion:@escaping XFNetCompletion) {
-        self.doRequest(withUrl: url,
-                       method: method,
-                       params: params,
-                       paramsEncoding: encoding,
-                       needSerialize: false,
-                       completion: completion)
+    public class func commonRequest(withUrl url:String,
+                                    params:Dictionary<String,Any>? = nil,
+                                    method:Alamofire.HTTPMethod = .get,
+                                    encoding:ParameterEncoding = URLEncoding.default,
+                                    completion:@escaping XFNetCompletion) {
+        doRequest(withUrl: url, method: method, params: params, paramsEncoding: encoding, needSerialize: false, completion: completion)
     }
     
-    public func doRequest(withUrl url:String,
-                          method:Alamofire.HTTPMethod,
-                          params:Dictionary<String,Any>?,
-                          paramsEncoding:ParameterEncoding,
-                          needSerialize:Bool = true,
-                          completion:@escaping XFNetCompletion) {
+    public class func doRequest(withUrl url:String,
+                                method:Alamofire.HTTPMethod,
+                                params:Dictionary<String,Any>?,
+                                paramsEncoding:ParameterEncoding,
+                                needSerialize:Bool = true,
+                                completion:@escaping XFNetCompletion) {
         
         guard XFNetworkStatus.shareInstance.canReachable() else {
             MBProgressHUD.showError("网络不可用，请检查先~")
@@ -220,35 +202,52 @@ public class XFNetworking: NSObject {
             .validate().responseJSON { (response) in
                 switch response.result {
                 case .success(let value):
-                    if needSerialize {
-                        if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: JSON(value).rawString()) {
-                            guard let code = obj.code, let msg = obj.msg, let timestamp = obj.systemTime else {
-                                dPrint(obj)
-                                completion(false, "数据状态异常，请稍后再试~")
-                                return
-                            }
-                            //更新服务器时间
-                            XFDataGlobal.shared.serverTime = timestamp
-                            switch code {
-                            case XFHttpStatus.success.rawValue,
-                                 XFHttpStatus.notModify.rawValue,
-                                 XFHttpStatus.returnTrue.rawValue:
-                                completion(true, obj.data)
-                            default:
-                                MBProgressHUD.showError(msg)
-                                completion(false, msg)
-                            }
-                        }
-                    } else {
-                        completion(true, value)
-                    }
+                    handleSuccess(needSerialize, value: value, completion: completion)
                 case .failure(let error):
-                    dPrint(error)
-                    completion(false, error)
+                    handleFailure(error: error, completion: completion)
                 }
         }
     }
     
+    private class func handleSuccess(_ needSerialize:Bool, value:Any, completion:@escaping XFNetCompletion) {
+        if needSerialize {
+            if let obj:XFBaseResponse = XFBaseResponse.deserialize(from: JSON(value).rawString()) {
+                guard let code = obj.code, let msg = obj.msg, let timestamp = obj.systemTime else {
+                    dPrint(obj)
+                    completion(false, "数据状态异常，请稍后再试~")
+                    return
+                }
+                //更新服务器时间
+                XFDataGlobal.shared.serverTime = timestamp
+                switch code {
+                case XFHttpStatus.success.rawValue,
+                     XFHttpStatus.notModify.rawValue,
+                     XFHttpStatus.returnTrue.rawValue:
+                    completion(true, obj.data)
+                default:
+                    MBProgressHUD.showError(msg)
+                    completion(false, msg)
+                }
+            }
+        } else {
+            completion(true, value)
+        }
+    }
     
+    private class func handleFailure(error:Error, completion:@escaping XFNetCompletion) {
+        var msg: String? = error.localizedDescription
+        if let error: AFError = error as? AFError,
+            let code =  error.responseCode,
+            let status = XFHttpStatus(rawValue: code){
+            msg = status.description
+            if status == .unAuthoriztion {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: XFConstants.MessageKey.XFServerUnAuthorization),
+                                                object: msg)
+                return
+            }
+        }
+        MBProgressHUD.showError(msg)
+        completion(false, msg)
+    }
 }
 

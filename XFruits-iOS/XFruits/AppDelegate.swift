@@ -7,17 +7,13 @@
 //
 
 import UIKit
-import SlideMenuControllerSwift
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    lazy var allCateListVC: XFAllCategoryListViewController = {
-        return XFAllCategoryListViewController()
-    }()
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         creatShortcutItem()
@@ -27,17 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame:UIScreen.main.bounds)
         window?.backgroundColor = UIColor.white
         
-        let rootVC = XFHomeViewController()
-        
-        SlideMenuOptions.rightViewWidth = 168
-        SlideMenuOptions.contentViewOpacity = 0.75
-        SlideMenuOptions.tapGesturesEnabled = true
-        SlideMenuOptions.panGesturesEnabled = false
-        let slideRootVC = SlideMenuController(mainViewController: rootVC,
-                                              rightMenuViewController:allCateListVC)
-        slideRootVC.automaticallyAdjustsScrollViewInsets = true
-        
-        window?.rootViewController = slideRootVC
+        window?.rootViewController = XFHomeViewController()
         
         window?.makeKeyAndVisible()
         
@@ -96,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func navigateTo(controller: UIViewController, loginCheck:Bool) {
         if loginCheck && !XFUserGlobal.shared.isLogin {
             let realController = UINavigationController.init(rootViewController: XFUserLoginViewController())
-            window?.rootViewController?.present(realController, animated: false, completion: nil)
+            window?.rootViewController?.navigationController?.pushViewController(realController, animated: false)
         } else {
             let realController = XFNavigationController.init(rootViewController: controller)
             window?.rootViewController?.navigationController?.pushViewController(realController, animated: false)
@@ -106,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: WXApiDelegate {
-    
+
     func initExternalSDK(){
         
         /// 初始化客服SDK
@@ -121,17 +107,9 @@ extension AppDelegate: WXApiDelegate {
     
     /// 拉取全局唯一数据
     func fetchAdditionData() {
-        
         // 拉取地址数据
         XFAvailableAddressUtils.shared.cacheAddressAvailable()
         
-        weak var weakSelf = self
-        // 拉取所有分类数据
-        XFCommonService().getAllCategoryies { (types) in
-            if let productTypes = types as? Array<ProductType> {
-                weakSelf?.allCateListVC.dataSource = productTypes
-            }
-        }
     }
     
     fileprivate func creatShortcutItem(){
@@ -185,7 +163,7 @@ extension AppDelegate: WXApiDelegate {
                         for subResult in resultArr {
                             if subResult.characters.count > 10 && subResult.hasPrefix("auth_code=") {
                                 let index = subResult.index(subResult.startIndex, offsetBy: 10)
-                                authCode = subResult.substring(from: index)
+                                authCode = "\(subResult[..<index])"
                                 break
                             }
                         }
@@ -195,6 +173,15 @@ extension AppDelegate: WXApiDelegate {
             })
         }
         return true
+    }
+    
+    func onResp(_ resp: BaseResp!) {
+        if resp.isKind(of: PayResp.self) {
+            var resp1 = PayResp.init()
+            resp1 = resp as! PayResp
+            dPrint(resp1.returnKey)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "wxpay"), object: NSNumber.init(value: resp.errCode))
+        }
     }
     
     

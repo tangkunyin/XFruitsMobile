@@ -28,7 +28,7 @@ struct XFConstants {
     static let md5Key:String = "88888888"
     
     /// 分页每页的条数
-    static let pageRows:Int = 30
+    static let pageRows:Int = 10
     
     static let storeUrl: String = "https://itunes.apple.com/us/app/xfruits/id1273052310?l=zh&ls=1&mt=8"
     
@@ -38,7 +38,7 @@ struct XFConstants {
             static let appId = "2368f0801ca49"
         }
         struct Wechat {
-            static let appId = "wx67d6ad5dd456fb36"
+            static let appId = "wx7bf5a553f9431967"
         }
         struct Alipay {
             static let appId = "2017052107301341"
@@ -50,6 +50,8 @@ struct XFConstants {
     struct MessageKey {
         // 请求更新果篮数据
         static let NeedRefreshShopCartData: String = "_needRefreshShopCartData"
+        // 接口未授权消息
+        static let XFServerUnAuthorization: String = "_serverUnAuthorization"
     }
     
     
@@ -75,6 +77,9 @@ struct XFConstants {
         static let fullTabbarVCRect: CGRect = CGRect(x: 0, y: 0, width: deviceWidth, height: deviceHeight - 64 - 49)
         
         static let singleLineAdjustOffset: CGFloat = ((1 / UIScreen.main.scale) / 2)
+        
+        
+        static let XFHalfCellWidth: CGFloat = (UIScreen.main.bounds.size.width - 30) / 2
         
     }
     
@@ -103,6 +108,7 @@ struct XFConstants {
         static let greyishBrown:UIColor = colorWithRGB(83,g: 83,b: 83)//浅黑色
         static let salmon:UIColor = colorWithRGB(255,g: 102,b: 102)//苹果红
         static let pinkishGrey:UIColor = colorWithRGB(204, g: 204, b: 204)//分割线灰色
+        static let tipTextGrey:UIColor = colorWithRGB(153, g: 153, b: 153)//提示文字灰色
     }
     
     /// 通用字体

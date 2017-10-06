@@ -11,13 +11,27 @@ import HandyJSON
 
 /// 优惠券项目
 struct XFCouponItem: HandyJSON {
-    var id:String?
-    // 券类别 1001-直减券 1002-打折券 1003-免邮券
-    var coupon:String?
+    
+    var id:Int?
+    
+    var couponCode:String?
+    
+    // 1001”直减券”、1002”折扣券”、1003”邮费券”
+    var couponType:Int = 0
+    
     // 额度
-    var number:Float?
+    var valueFee:Float = 0
+    
     // 使用条件，满多少可用
-    var condition:Float?
+    var conditionFee:Float = 0
+    
     // 0-已使用 1-未使用 2-已失效
-    var status:Int?
+    var status:Int = 2
+    
+    // 生效时间
+    var validateAt:Int = 0
+    
+    // 过期时间
+    var expireAt:Int = 0
+    
 }

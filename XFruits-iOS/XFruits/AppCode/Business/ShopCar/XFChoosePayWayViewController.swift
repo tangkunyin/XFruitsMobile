@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import MBProgressHUD
-
+import SwiftyJSON
 
 fileprivate let payCellIdentifier = "XFPayCellIdentifier"
 
@@ -42,11 +41,6 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
         return btn
     }()
     
-    lazy var request: XFOrderSerivice = {
-        let serviceRequest = XFOrderSerivice()
-        return serviceRequest
-    }()
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 必须手动释放Timer，否则会导致内存泄露
@@ -98,10 +92,10 @@ class XFChoosePayWayViewController: XFBaseSubViewController {
             }
         }
         if let cid = channelId, let payInfo = payInfo, let orderId = payInfo.orderId {
-            let payChannel = cid == 1 ? 200 : 100
+            let payChannel = cid == 1 ? 1 : 2
             weak var weakSelf = self
             let params:[String : Any] = ["payChannel": payChannel, "orderId": orderId]
-            request.orderPayCommit(params: params) { (data) in
+            XFOrderSerivice.orderPayCommit(params: params) { (data) in
                 switch cid {
                 case 1:
                     weakSelf?.orderPayWithAliPay(data as! String)
@@ -151,7 +145,58 @@ extension XFChoosePayWayViewController {
     }
     
     fileprivate func orderPayWithWeixin(_ data: String){
-        MBProgressHUD.showError("微信暂不支持，请选择支付宝吧~")
+
+        if (WXApi.isWXAppInstalled() == false) {
+            showError("没有安装微信哟~")
+            return
+        }
+        if WXApi.isWXAppSupport() == false {
+            showError("当前版本微信不支持微信支付~")
+            return
+        }
+        
+        let jsonObject = JSON.init(parseJSON: data)
+        let request = PayReq.init()
+        
+        request.partnerId = jsonObject["partnerid"].string!
+        request.prepayId = jsonObject["prepayid"].string!
+        request.package = jsonObject["package"].string!
+        request.nonceStr = jsonObject["noncestr"].string!
+        request.timeStamp =  UInt32(jsonObject["timestamp"].string!)!
+        request.sign = jsonObject["sign"].string!
+       
+        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(wxpayResult),
+                                               name: NSNotification.Name(rawValue: "wxpay"),
+                                               object: nil)
+        WXApi.send(request)
+    }
+    
+    @objc private func wxpayResult(_ notifacation: Notification? = nil) {
+        if  let code:Int32 = notifacation?.object as? Int32 {
+            switch (code){
+                case WXSuccess.rawValue:
+                    showSuccess("支付成功")
+                    self.handleThePaymentResult(flag: true, payType: 2)
+                    break
+                case WXErrCodeUserCancel.rawValue:
+                    showError("取消支付")
+                    break
+                case WXErrCodeSentFail.rawValue:
+                    showError("发送失败")
+                    break
+                case WXErrCodeAuthDeny.rawValue:
+                    showError("授权失败")
+                    break
+                case WXErrCodeCommon.rawValue:
+                    showError("普通错误类型")
+                    break
+                default:
+                    showError("支付失败，错误码\(WXSuccess.rawValue)")
+                }
+        }
+        NotificationCenter.default.removeObserver(self)
     }
     
     fileprivate func handleThePaymentResult(flag: Bool, payType: Int, errorMsg: String = "") {

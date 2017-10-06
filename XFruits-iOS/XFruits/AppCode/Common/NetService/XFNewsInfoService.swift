@@ -16,8 +16,8 @@ import SwiftyJSON
 class XFNewsInfoService: XFNetworking {
 
     /// 获取首页列表
-    func getNewsList(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
-        self.doGet(withUrl: url("/index/show", params: params)) { (success, respData) in
+    class func getNewsList(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
+        doGet(withUrl: url("/index/show", params: params)) { (success, respData) in
             if success, respData is NSDictionary, let dict = respData as? NSDictionary {
                 completion(XFNewsInfo.deserialize(from: dict) ?? XFNewsInfo())
             }
@@ -25,8 +25,8 @@ class XFNewsInfoService: XFNetworking {
     }
     
     /// 获轮播图集
-    func getLoopImages(_ completion:@escaping XFResponse) {
-        self.doGet(withUrl: url("/index/loopImg")) { (success, respData) in
+    class func getLoopImages(_ completion:@escaping XFResponse) {
+        doGet(withUrl: url("/index/loopImg")) { (success, respData) in
             if success, respData is Array<Any>, let list = respData as? Array<Any> {
                 completion([XFIndexLoopImage].deserialize(from: JSON(list).rawString()) ?? [])
             }

@@ -132,9 +132,9 @@ class XFCheckoutAddress: UIView {
         })
         
         addressCategoryBtn.snp.makeConstraints({ (make) in
-            make.top.equalTo(userNameLabel.snp.bottom).offset(3)
             make.left.equalTo(userNameLabel.snp.left)
             make.size.equalTo(CGSize(width: 40, height: 20))
+            make.centerY.equalTo(addressLabel)
         })
         
         addressLabel.snp.makeConstraints({ (make) in

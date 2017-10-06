@@ -12,8 +12,6 @@ import SnapKit
 import Kingfisher
 import MBProgressHUD
 
-public let XFCategoryCellWidth = (XFConstants.UI.deviceWidth - 30) / 2
-
 
 class XFCategoryCell: UICollectionViewCell {
  
@@ -23,7 +21,7 @@ class XFCategoryCell: UICollectionViewCell {
         didSet {
             if let item = dataSource {
                 titleLabel.text = item.name
-                priceLabel.text = String(format:"%.2f",item.primePrice)
+                priceLabel.text = String(format:"¥ %.2f",item.primePrice)
                 thumbnail.kf.setImage(with: URL.init(string: item.cover),
                                       placeholder: UIImage.imageWithNamed("Loading-squre"),
                                       options: [.transition(.flipFromTop(0.8))])
@@ -43,7 +41,7 @@ class XFCategoryCell: UICollectionViewCell {
         let title = UILabel()
         title.textColor = XFConstants.Color.darkGray
         title.font = XFConstants.Font.pfn12
-        title.textAlignment = .center
+        title.textAlignment = .left
         title.numberOfLines = 1
         title.adjustsFontSizeToFitWidth = true
         title.lineBreakMode = .byTruncatingTail
@@ -84,9 +82,6 @@ class XFCategoryCell: UICollectionViewCell {
         layer.borderWidth = 1
         layer.borderColor = XFConstants.Color.commonBackground.cgColor
         
-        titleLabel.text = "拾个苹果圣诞果一箱6个"
-        priceLabel.text = "¥ 36"
-        
         addSubview(thumbnail)
         addSubview(titleLabel)
         addSubview(priceLabel)
@@ -95,7 +90,6 @@ class XFCategoryCell: UICollectionViewCell {
         makeCellConstrains()
     }
     
-  
     fileprivate func makeCellConstrains(){
         thumbnail.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self)
@@ -104,7 +98,8 @@ class XFCategoryCell: UICollectionViewCell {
         titleLabel.snp.makeConstraints { (make) in
             make.height.equalTo(30)
             make.top.equalTo(self.thumbnail.snp.bottom)
-            make.left.right.equalTo(self)
+            make.left.equalTo(self).offset(10)
+            make.right.equalTo(self).offset(-10)
             make.bottom.equalTo(self.priceLabel.snp.top)
             make.bottom.equalTo(self.cartBtn.snp.top)
         }

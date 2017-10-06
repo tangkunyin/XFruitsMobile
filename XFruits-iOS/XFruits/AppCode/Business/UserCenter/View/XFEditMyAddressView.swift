@@ -313,7 +313,7 @@ class XFEditMyAddressView: UIView {
         
         self.addSubview(saveBtn)
         saveBtn.snp.makeConstraints({ (make) in
-            make.height.equalTo(45)
+            make.height.equalTo(35)
             make.left.equalTo(self).offset(20)
             make.right.bottom.equalTo(self).offset(-20)
         })
@@ -428,7 +428,7 @@ class XFEditMyAddressView: UIView {
     }
     
     func widthForLabel(text:NSString ,font :CGFloat) -> CGFloat {
-        let size = text.size(attributes:[NSFontAttributeName:sysFontWithSize(font)])
+        let size = text.size(withAttributes:[NSAttributedStringKey.font:sysFontWithSize(font)])
         return size.width
     }
     

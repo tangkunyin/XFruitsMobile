@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import MBProgressHUD
 
 /// 果篮专用工具类
 class XFCartUtils {
@@ -54,13 +53,13 @@ class XFCartUtils {
                                    cover: item.cover,
                                    primePrice: Double(item.primePrice),
                                    quantity: Int64(1),
-                                   selected: false,
+                                   selected: true,
                                    status: 0)
             if nil == obj {
                 return try XFCartDataHelper.insert(item: paramCart)
             } else {
                 if obj?.status! == 0 {
-                    paramCart.quantity = (obj?.quantity)! + 1
+                    paramCart.quantity = Int64((obj?.quantity)!+1)
                 }
                 return try XFCartDataHelper.update(item: paramCart)
             }

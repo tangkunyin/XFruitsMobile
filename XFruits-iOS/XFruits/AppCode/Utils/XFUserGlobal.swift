@@ -39,6 +39,10 @@ class XFUserGlobal {
     }
     
     
+    /// 账户事件类型。0注册，1找回密码
+    var accountActionType:Int = 0
+    
+    
     /// 用户信息缓存文件地址
     fileprivate lazy var userCacheFilePath:String? = {
         let path:String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!

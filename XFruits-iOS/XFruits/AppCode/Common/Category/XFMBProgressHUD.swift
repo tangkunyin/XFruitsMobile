@@ -19,11 +19,11 @@ fileprivate enum MBProgressTipType:Int {
 extension MBProgressHUD {
     
     //MARK: - 操作提示
-    public class func showError(_ error:String){
+    public class func showError(_ error:String? = "操作失败"){
         self.show(text: error, type: .tipError, completion: nil)
     }
     
-    public class func showSuccess(_ success:String){
+    public class func showSuccess(_ success:String? = "操作成功"){
         self.show(text: success, type: .tipSuccess, completion: nil)
     }
     
@@ -75,7 +75,7 @@ extension MBProgressHUD {
     }
     
     //MARK: - 提示后响应某个动作
-    public class func showMessage(_ message:String, completion:(()->Void)?){
+    public class func showMessage(_ message:String?, completion:(()->Void)?){
         self.show(text: message, type: .tipNone, completion: completion)
     }
     
@@ -90,8 +90,9 @@ extension MBProgressHUD {
     }
     
     
-    fileprivate class func show(text:String ,type:MBProgressTipType, completion:(()->Void)?){
-        if let window = UIApplication.shared.keyWindow,text.characters.count > 0 {
+    fileprivate class func show(text:String? ,type:MBProgressTipType, completion:(()->Void)?){
+        if let window = UIApplication.shared.keyWindow,
+            let text = text, text.characters.count > 0 {
             self.hideHUDForView(window)
             let mbHub = MBProgressHUD.showAdded(to: window, animated: true)
             mbHub.bezelView.color = grayColor(200)
@@ -113,7 +114,7 @@ extension MBProgressHUD {
                     UIView.animate(withDuration: 0.2, animations: {
                         mbHub.transform = CGAffineTransform(scaleX: 0.8, y: 0.8);
                     }, completion: { (finish) in
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8, execute: {
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.2, execute: {
                             mbHub.removeFromSuperview()
                             if let completion = completion {
                                 completion();

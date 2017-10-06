@@ -16,8 +16,8 @@ class XFDetailHeaderView: UIView {
         didSet {
             detailViewPager.dataSource = dataSource!.cover
             titleLabel.text = dataSource!.name
-            priceLabel.text = String(format:"%.2f",dataSource!.primePrice)
-            specificationDescLabel.text = dataSource!.specification
+            priceLabel.text = String(format:"¥ %.2f",dataSource!.primePrice)
+            specificationDescLabel.text = "规格：\(dataSource!.specification)"
         }
     }
     
@@ -37,34 +37,31 @@ class XFDetailHeaderView: UIView {
     }()
     
     lazy var titleLabel: UILabel = {
-        let label = UILabel();
+        let label = UILabel()
         label.font = XFConstants.Font.pfn18
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .center
-        label.text = "拾个鲜果圣诞果一箱6个"
         return label
     }()
     
     lazy var priceLabel: UILabel = {
-        let label = UILabel();
+        let label = UILabel()
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.salmon
         label.textAlignment = .center
-        label.text = "¥ 39.00"
         return label
     }()
     
     lazy var specificationDescLabel: UILabel = {
-        let label = UILabel();
+        let label = UILabel()
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .left
-        label.text = "规格： 一箱6个、直径85mm"
         return label
     }()
     
     lazy var serviceTitleLabel: UILabel = {
-        let label = UILabel();
+        let label = UILabel()
         label.font = XFConstants.Font.pfn14
         label.textColor = XFConstants.Color.darkGray
         label.textAlignment = .left
@@ -73,20 +70,19 @@ class XFDetailHeaderView: UIView {
     }()
     
     lazy var serviceDescriptions: UIView = {
-        let view:UIView = UIView();
-        let baoyou:UIButton = self.btnWithTitle("包邮", imageName: "service_you")
-        let posun:UIButton = self.btnWithTitle("破损补寄", imageName: "service_bu")
-        let fahuo:UIButton = self.btnWithTitle("按时发货", imageName: "service_fahuo")
-        let shouhou:UIButton = self.btnWithTitle("售后无忧", imageName: "service_shouhou")
-        let tuikuan:UIButton = self.btnWithTitle("极速退款", imageName: "service_tui")
+        let view:UIView = UIView()
+        let baoyou = serviceTagView(withTitle: "包邮", imageName: "service_you")
+        let posun = serviceTagView(withTitle: "破损补寄", imageName: "service_bu")
+        let fahuo = serviceTagView(withTitle: "按时发货", imageName: "service_fahuo")
+        let shouhou = serviceTagView(withTitle: "售后无忧", imageName: "service_shouhou")
+        let tuikuan = serviceTagView(withTitle: "极速退款", imageName: "service_shantui")
         view.addSubview(baoyou)
         view.addSubview(posun)
         view.addSubview(fahuo)
         view.addSubview(shouhou)
         view.addSubview(tuikuan)
-        
         baoyou.snp.makeConstraints { (make) in
-            make.height.equalTo(26)
+            make.height.equalTo(30)
             make.width.equalTo(posun.snp.width)
             make.width.equalTo(fahuo.snp.width)
             make.left.top.equalTo(view)
@@ -175,36 +171,41 @@ class XFDetailHeaderView: UIView {
         specificationDescLabelBottomLine.snp.makeConstraints { (make) in
             make.width.equalTo(self)
             make.height.equalTo(0.4)
-            make.bottom.equalTo(self.serviceTitleLabel.snp.top)
         }
         serviceTitleLabel.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize.init(width: 44, height: 26))
+            make.size.equalTo(CGSize(width: 44, height: 30))
             make.left.equalTo(self).offset(10)
-            make.top.equalTo(specificationDescLabelBottomLine.snp.bottom)
+            make.top.equalTo(specificationDescLabelBottomLine.snp.bottom).offset(8)
             make.right.equalTo(self.serviceDescriptions.snp.left)
         }
         serviceDescriptions.snp.makeConstraints { (make) in
-            make.height.equalTo(62)
             make.left.equalTo(self.serviceTitleLabel.snp.right)
             make.top.equalTo(self.serviceTitleLabel.snp.top)
             make.right.equalTo(self).offset(-10)
-            make.bottom.equalTo(self).offset(-10)
+            make.bottom.equalTo(self).offset(-5)
         }
     }
     
-    func btnWithTitle(_ title:String,imageName:String) -> UIButton {
-        let btn = UIButton.buttonWithTitle(title,
-                                           image: imageName,
-                                           textColor: XFConstants.Color.darkGray,
-                                           textFont: XFConstants.Font.pfn12,
-                                           directionType: .left,
-                                           chAlignment: .left,
-                                           cvAlignment: .center,
-                                           cEdgeInsets: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0),
-                                           span: 6,
-                                           target: nil,
-                                           action: nil)
-        return btn
+    private func serviceTagView(withTitle title:String,imageName:String) -> UIView {
+        let tagView = UIView()
+        let tagIconView = UIImageView(image: UIImage.imageWithNamed(imageName))
+        let tagTextView = UILabel()
+        tagTextView.text = title
+        tagTextView.textColor = XFConstants.Color.darkGray
+        tagTextView.textAlignment = .left
+        tagTextView.adjustsFontSizeToFitWidth = false
+        tagTextView.font = XFConstants.Font.pfn12
+        tagView.addSubview(tagIconView)
+        tagView.addSubview(tagTextView)
+        tagIconView.snp.makeConstraints { (make) in
+            make.size.equalTo(CGSize(width: 22, height: 22))
+            make.centerY.left.equalToSuperview()
+        }
+        tagTextView.snp.makeConstraints { (make) in
+            make.left.equalTo(tagIconView.snp.right).offset(5)
+            make.top.bottom.right.equalToSuperview()
+        }
+        return tagView
     }
     
 }

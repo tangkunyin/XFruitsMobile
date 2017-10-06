@@ -16,10 +16,6 @@ class XFOrderDetailViewController: XFBaseSubViewController {
     
     var detailData: XFOrderDetail?
     
-    fileprivate lazy var request: XFOrderSerivice = {
-        return XFOrderSerivice()
-    }()
-    
     fileprivate lazy var detailListView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.delegate = self
@@ -47,7 +43,7 @@ class XFOrderDetailViewController: XFBaseSubViewController {
     fileprivate func loadOrderDetail() {
         if let id = orderId {
             weak var weakSelf = self
-            request.getOrderDetail(params: ["orderId":id], { (respData) in
+            XFOrderSerivice.getOrderDetail(params: ["orderId":id], { (respData) in
                 if let detail = respData as? XFOrderDetail {
                     weakSelf?.detailData = detail
                     weakSelf?.detailListView.reloadData()

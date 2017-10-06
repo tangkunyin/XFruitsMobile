@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import MBProgressHUD
 
 fileprivate let cellIdentifier = "XFIndexArticleCellIdentifier"
 
@@ -36,7 +35,7 @@ class XFIndexViewController: XFBaseViewController {
             articleListView.reloadData()
         }
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,10 +59,10 @@ class XFIndexViewController: XFBaseViewController {
     
     fileprivate func loadData(){
         weak var weakSelf = self
-        request.getLoopImages { (result) in
+        XFNewsInfoService.getLoopImages { (result) in
             weakSelf?.loopImages = result as? Array
         }
-        request.getNewsList(params: ["page":1,"size":XFConstants.pageRows]) { (respData) in
+        XFNewsInfoService.getNewsList(params: ["page":1,"size":XFConstants.pageRows]) { (respData) in
             if let newsInfo = respData as? XFNewsInfo,
                 let content = newsInfo.content, content.count > 0 {
                 weakSelf?.dataSource = content
@@ -113,10 +112,6 @@ class XFIndexViewController: XFBaseViewController {
         }
     }
     
-    fileprivate lazy var request: XFNewsInfoService = {
-        return XFNewsInfoService()
-    }()
-    
     fileprivate lazy var pagerView:XFViewPager = {
         let pagerView = XFViewPager(source: [""], placeHolder: "Loading-white")
         weak var weakSelf = self
@@ -124,6 +119,23 @@ class XFIndexViewController: XFBaseViewController {
             weakSelf?.handlePagerClick(withIndex: index)
         }
         return pagerView
+    }()
+    
+    fileprivate lazy var indexHeaderView: UIView = {
+        let view = UIView()
+        let seperator = XFSeperatorView()
+        seperator.backgroundColor = XFConstants.Color.white
+        view.addSubview(pagerView)
+        view.addSubview(seperator)
+        pagerView.snp.makeConstraints({ (make) in
+            make.left.right.top.equalTo(view)
+            make.height.equalTo(loopImageComponentHeight)
+        })
+        seperator.snp.makeConstraints({ (make) in
+            make.left.right.bottom.equalTo(view)
+            make.height.equalTo(60)
+        })
+        return view
     }()
     
     fileprivate lazy var articleListView: UITableView = {
@@ -155,12 +167,12 @@ extension XFIndexViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return loopImageComponentHeight
+        return loopImageComponentHeight + 60
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            return pagerView
+            return indexHeaderView
         }
         return nil
     }
