@@ -13,11 +13,6 @@ fileprivate let UC_CellIdentifier = "XFUserCenterUC_CellIdentifier"
 
 class XFUserCenterViewController: XFBaseViewController {
     
-    fileprivate lazy var dataSource: NSDictionary = {
-        let dataSource: NSDictionary = NSDictionary()
-        return dataSource
-    }()
-        
     lazy var girdGroupInfo: Array<Array<Dictionary<String, String>>> = {
         return [
             [
