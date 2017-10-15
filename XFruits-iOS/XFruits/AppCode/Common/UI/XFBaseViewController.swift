@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import MBProgressHUD
 
-class XFBaseViewController: UIViewController {
+class XFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     /// 导航栏是否透明
     lazy var clearNavigationBar: Bool = false
@@ -94,7 +94,9 @@ class XFBaseViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        
+        // 打开自带的边缘侧滑返回
+        weak var weakSelf = self
+        navigationController?.interactivePopGestureRecognizer?.delegate = weakSelf
     }
     
     func renderLoaddingView(){
