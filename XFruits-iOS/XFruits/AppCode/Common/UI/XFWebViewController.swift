@@ -52,6 +52,7 @@ class XFWebViewController: XFBaseSubViewController {
         })
         //添加进度监听
         webview.addObserver(self, forKeyPath: webViewLoadProgressKey, options: .new, context: nil)
+    
     }
     
     fileprivate func handleError(){

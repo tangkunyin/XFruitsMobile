@@ -47,6 +47,7 @@ class XFIndexViewController: XFBaseViewController {
         } else {
             renderHomeIndexView()
         }
+    
     }
     
     fileprivate func renderHomeIndexView() {

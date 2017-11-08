@@ -36,6 +36,7 @@ class XFUserCenterViewController: XFBaseViewController {
         tableView.dataSource = self
         tableView.sectionFooterHeight = 8
         tableView.showsVerticalScrollIndicator = false
+        tableView.bounces = false
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
         tableView.backgroundColor = XFConstants.Color.separatorLine
@@ -161,7 +162,7 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 125
+            return 140
         } else if (indexPath.section == 1 && indexPath.row == 1) {
             return 80
         } else {

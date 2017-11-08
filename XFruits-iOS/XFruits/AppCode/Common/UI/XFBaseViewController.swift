@@ -76,6 +76,8 @@ class XFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
+        bigTitle(forNavBar: navigationController)
+        
         // 默认白色状态栏
         UIApplication.shared.statusBarStyle = .lightContent
         
@@ -93,7 +95,7 @@ class XFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        
+    
         // 打开自带的边缘侧滑返回
         weak var weakSelf = self
         navigationController?.interactivePopGestureRecognizer?.delegate = weakSelf
