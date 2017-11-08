@@ -142,7 +142,7 @@ class XFCategoryViewController: XFBaseViewController {
         view.addSubview(cateListView)
         headSizer.snp.makeConstraints { (make) in
             make.top.equalTo(0)
-            make.height.equalTo(30)
+            make.height.equalTo(44)
             make.left.right.equalTo(view)
         }
         cateListView.snp.makeConstraints { (make) in
