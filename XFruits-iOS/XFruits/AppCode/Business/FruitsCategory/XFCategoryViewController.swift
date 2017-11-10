@@ -180,6 +180,7 @@ extension XFCategoryViewController: UICollectionViewDataSource,UICollectionViewD
         let detail = XFDetailViewController()
         let item:ProductItem = dataSource[indexPath.row]
         detail.prodId = item.id
+        detail.title = item.name
         self.navigationController?.pushViewController(detail, animated: true)
     }
 }

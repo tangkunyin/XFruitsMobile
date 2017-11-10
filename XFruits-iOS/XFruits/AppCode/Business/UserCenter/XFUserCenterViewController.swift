@@ -47,13 +47,13 @@ class XFUserCenterViewController: XFBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .default
-        navigationBar?.isHidden = true
+        navigationController?.navigationBar.isHidden = true
         centerTable.reloadSections(IndexSet(integer: 0), with: .none)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationBar?.isHidden = false
+        navigationController?.navigationBar.isHidden = false
     }
   
     override func viewDidLoad() {

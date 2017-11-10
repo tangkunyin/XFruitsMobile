@@ -193,6 +193,7 @@ extension XFShopCarViewController: UIViewControllerPreviewingDelegate {
             ,let item:XFCart = self.cartList[indexPath.row] {
             let detailVC = XFDetailViewController()
             detailVC.prodId = item.id
+            detailVC.title = item.name
             return detailVC
         }
         return nil
