@@ -52,7 +52,7 @@ class XFUserGlobal {
     
     /// 登录
     func signIn(user:XFUser) {
-        if let token:String = user.token, token.characters.count > 0 {
+        if let token:String = user.token, token.count > 0 {
             isLogin = true
             currentUser = user
             cacheUser(user)

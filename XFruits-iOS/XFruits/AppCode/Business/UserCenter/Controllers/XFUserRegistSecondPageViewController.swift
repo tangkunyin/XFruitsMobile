@@ -137,7 +137,7 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
             return
         }
         
-        guard password.characters.count >= 6 else {
+        guard password.count >= 6 else {
             showError("密码不得小于6位")
             return
         }

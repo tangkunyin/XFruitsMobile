@@ -100,7 +100,7 @@ class XFCouponListViewController: XFBaseSubViewController {
 
     @objc private func onExchangeCoupon() {
         weak var weakSelf = self
-        if let couponCode = couponInputView.text, couponCode.characters.count > 0  {
+        if let couponCode = couponInputView.text, couponCode.count > 0  {
             XFCouponService.bindCoupon(params: ["couponCode":couponCode], { (result) in
                 if result is Bool {
                     if let success: Bool = result as? Bool, success {

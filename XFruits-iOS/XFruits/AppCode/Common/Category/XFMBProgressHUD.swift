@@ -92,7 +92,7 @@ extension MBProgressHUD {
     
     fileprivate class func show(text:String? ,type:MBProgressTipType, completion:(()->Void)?){
         if let window = UIApplication.shared.keyWindow,
-            let text = text, text.characters.count > 0 {
+            let text = text, text.count > 0 {
             self.hideHUDForView(window)
             let mbHub = MBProgressHUD.showAdded(to: window, animated: true)
             mbHub.bezelView.color = grayColor(200)

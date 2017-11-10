@@ -46,7 +46,7 @@ class XFPayResultViewController: XFBaseViewController {
     
     var errorMsg: String = "" {
         didSet {
-            if errorMsg.characters.count > 0 {
+            if errorMsg.count > 0 {
                 payDescription.text = errorMsg
             }
         }

@@ -130,13 +130,13 @@ extension XFChoosePayWayViewController {
                     var errorMsg = ""
                     switch response.resultStatus {
                     case 5000:
-                        errorMsg = response.memo.characters.count != 0 ? response.memo : "重复请求"
+                        errorMsg = response.memo.count != 0 ? response.memo : "重复请求"
                     case 6001:
-                        errorMsg = response.memo.characters.count != 0 ? response.memo : "用户中途取消"
+                        errorMsg = response.memo.count != 0 ? response.memo : "用户中途取消"
                     case 6002:
-                        errorMsg = response.memo.characters.count != 0 ? response.memo : "网络连接出错"
+                        errorMsg = response.memo.count != 0 ? response.memo : "网络连接出错"
                     default:
-                        errorMsg = response.memo.characters.count != 0 ? response.memo : "其它支付错误:\(response.resultStatus)"
+                        errorMsg = response.memo.count != 0 ? response.memo : "其它支付错误:\(response.resultStatus)"
                     }
                     weakSelf?.handleThePaymentResult(flag: false, payType: 1, errorMsg: errorMsg)
                 }

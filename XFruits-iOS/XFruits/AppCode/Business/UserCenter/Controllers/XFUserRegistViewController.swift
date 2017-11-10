@@ -256,7 +256,7 @@ extension XFUserRegistViewController: UITextFieldDelegate {
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.tag == 1 {
-            if let code = textField.text, code.characters.count > 0 {
+            if let code = textField.text, code.count > 0 {
                 weak var weakSelf = self
                 let para:[String:Any]  = ["uniqueCode": uniqueCodeString, "code": code]
                 XFAuthService.vertifyImageCode(params: para) { (data) in

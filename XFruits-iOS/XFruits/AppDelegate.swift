@@ -158,10 +158,10 @@ extension AppDelegate: WXApiDelegate {
                 if result != nil, let dict = result as NSDictionary? {
                     var authCode: String = ""
                     let resultString:String = dict.value(forKey: "result") as! String
-                    if resultString.characters.count > 0 {
+                    if resultString.count > 0 {
                         let resultArr: Array<String> = resultString.components(separatedBy: "&")
                         for subResult in resultArr {
-                            if subResult.characters.count > 10 && subResult.hasPrefix("auth_code=") {
+                            if subResult.count > 10 && subResult.hasPrefix("auth_code=") {
                                 let index = subResult.index(subResult.startIndex, offsetBy: 10)
                                 authCode = "\(subResult[..<index])"
                                 break

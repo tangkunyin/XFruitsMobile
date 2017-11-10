@@ -37,7 +37,7 @@ func getLocalVersion() -> String {
 
 
 func isPhoneNumber(phoneNumber:String) -> Bool {
-    if phoneNumber.characters.count == 0 {
+    if phoneNumber.count == 0 {
         return false
     }
     let mobile = "^(13[0-9]|15[0-9]|18[0-9]|17[0-9]|147)\\d{8}$"

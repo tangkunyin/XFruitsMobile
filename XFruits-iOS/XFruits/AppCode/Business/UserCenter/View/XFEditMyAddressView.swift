@@ -325,7 +325,7 @@ class XFEditMyAddressView: UIView {
         mobileInput.text = address.cellPhone
         
         addressDescTextView.text = address.address
-        if  addressDescTextView.text.characters.count > 0 {
+        if  addressDescTextView.text.count > 0 {
             placeHolderLabel.text = ""
         }
         if(address.isDefault == 1){

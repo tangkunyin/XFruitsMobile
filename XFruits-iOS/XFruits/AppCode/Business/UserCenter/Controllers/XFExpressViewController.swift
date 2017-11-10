@@ -119,7 +119,7 @@ class XFExpressViewController: XFBaseSubViewController {
     }
 
     @objc fileprivate func copyDeliveryNum(){
-        if let express = expressData, express.trackingNum.characters.count > 0 {
+        if let express = expressData, express.trackingNum.count > 0 {
             UIPasteboard.general.string = express.trackingNum
             showSuccess("复制成功")
         }

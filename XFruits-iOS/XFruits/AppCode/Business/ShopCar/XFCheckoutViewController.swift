@@ -72,7 +72,7 @@ class XFCheckoutViewController: XFBaseSubViewController {
         XFOrderSerivice.orderCommit(params: params) { (data) in
             let result: XFOrderCommit = data as! XFOrderCommit
             if let orderId = result.orderId,
-                let expiration = result.orderExpiration, orderId.characters.count > 0 ,expiration > 0 {
+                let expiration = result.orderExpiration, orderId.count > 0 ,expiration > 0 {
                 // 重置果篮已选择的商品
                 if XFCartUtils.sharedInstance.clearSelected(carts: selectedData) {
                     let payCenter = XFChoosePayWayViewController()

@@ -200,7 +200,7 @@ class XFUserInfoViewController: XFBaseSubViewController {
     }
     
     func isEmpty(str:String) -> Bool{
-        if str.characters.count < 1 {
+        if str.count < 1 {
             return false
         }
         else{
