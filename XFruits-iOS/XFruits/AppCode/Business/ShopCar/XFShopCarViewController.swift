@@ -133,7 +133,11 @@ class XFShopCarViewController: XFBaseViewController {
             make.height.equalTo(40)
             make.top.equalTo(self.cartListView.snp.bottom).offset(0)
             make.left.right.equalTo(self.view)
-            make.bottom.equalTo(self.view)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.bottom.equalTo(self.view)
+            }
         }
     }
 }

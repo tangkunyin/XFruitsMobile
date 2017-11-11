@@ -22,7 +22,7 @@ class XFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }()
     
     fileprivate lazy var nullDataView: UIImageView = {
-        let imageView = UIImageView.init(image: UIImage.imageWithNamed("order_empty"))
+        let imageView = UIImageView.init(image: UIImage.imageWithNamed("xfruits-farmer-2"))
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
@@ -31,10 +31,10 @@ class XFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     fileprivate lazy var nullDataTip: UILabel = {
         let label = UILabel()
-        label.font = XFConstants.Font.pfn14
+        label.font = XFConstants.Font.pfn16
         label.textAlignment = .center
-        label.textColor = XFConstants.Color.darkGray
-        label.text = "暂无相关内容，请稍后再试..."
+        label.textColor = XFConstants.Color.tipTextGrey
+        label.text = "报告老板，暂未发现目标，请有缘再试~"
         return label
     }()
     
@@ -46,7 +46,7 @@ class XFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = XFConstants.Color.commonBackground
     
         // 打开自带的边缘侧滑返回
         weak var weakSelf = self
@@ -67,14 +67,13 @@ class XFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         view.addSubview(nullDataView)
         view.addSubview(nullDataTip)
         nullDataView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(view)
-            make.top.equalTo(135)
-            make.size.equalTo(CGSize.init(width: 100, height: 100))
+            make.center.equalTo(view)
+            make.size.equalTo(CGSize(width: 138, height: 130))
         }
         nullDataTip.snp.makeConstraints { (make) in
             make.top.equalTo(nullDataView.snp.bottom).offset(10)
             make.centerX.equalTo(nullDataView)
-            make.size.equalTo(CGSize.init(width: 300, height: 44))
+            make.size.equalTo(CGSize(width: 300, height: 44))
         }
     }
     

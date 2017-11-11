@@ -17,6 +17,7 @@ class XFCategoryHeadSizer: UIView {
         /// 排序类型 101综合 102销量 103新品 104价格, 默认传101
         let segmente = UISegmentedControl(items: ["综合","销量","新品","价格"])
         segmente.selectedSegmentIndex = 0
+        segmente.backgroundColor = UIColor.white
         segmente.apportionsSegmentWidthsByContent = true
         segmente.tintColor = XFConstants.Color.commonBackground
         segmente.addTarget(self, action: #selector(sizerChangedAction(_:)), for: .valueChanged)

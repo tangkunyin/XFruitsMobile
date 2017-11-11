@@ -124,7 +124,9 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         
         addressCategoryBtn.snp.makeConstraints({ (make) in
             make.left.equalTo(userNameLabel.snp.left)
-            make.size.equalTo(CGSize(width: 40, height: 20))
+            make.height.equalTo(20)
+            make.width.greaterThanOrEqualTo(40)
+            make.width.lessThanOrEqualTo(100)
             make.centerY.equalTo(addressDetailText)
         })
         

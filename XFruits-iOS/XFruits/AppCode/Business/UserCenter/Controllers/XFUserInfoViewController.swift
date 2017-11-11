@@ -54,8 +54,13 @@ class XFUserInfoViewController: XFBaseSubViewController {
         view.addSubview(loginOutBtn)
         loginOutBtn.snp.makeConstraints { (make) in
             make.left.equalTo(view).offset(20)
-            make.right.bottom.equalTo(view).offset(-20)
+            make.right.equalTo(view).offset(-20)
             make.height.equalTo(45)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+            } else {
+                make.width.bottom.equalTo(view).offset(-20)
+            }
         }
         
         // 测试获取用户信息

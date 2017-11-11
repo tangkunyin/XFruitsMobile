@@ -15,7 +15,6 @@
 		165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */; };
 		16582DC31EE4F8D400A58846 /* XFEditMyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */; };
 		16701C121F6EB431007E2CEA /* XFExpandImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16701C111F6EB431007E2CEA /* XFExpandImage.swift */; };
-		16941B691F3C04A40066A911 /* XFEmptyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16941B681F3C04A40066A911 /* XFEmptyAddressView.swift */; };
 		169FAF8F1F6A5BE800CB358C /* XFUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169FAF8E1F6A5BE800CB358C /* XFUserInfoView.swift */; };
 		16C9FD9A1F6C1FEA00A138E6 /* UIAlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FD991F6C1FEA00A138E6 /* UIAlertExtension.swift */; };
 		16C9FD9C1F6C29A400A138E6 /* DVActionSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FD9B1F6C29A400A138E6 /* DVActionSheetVC.swift */; };
@@ -23,7 +22,6 @@
 		16C9FDA41F6E7EF700A138E6 /* XFUserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FDA31F6E7EF700A138E6 /* XFUserInfoService.swift */; };
 		860A32AB1F860E2500301883 /* ESPullToRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A32AA1F860E2500301883 /* ESPullToRefresh.framework */; };
 		860A32AD1F861E7100301883 /* XFRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A32AC1F861E7100301883 /* XFRefreshAnimator.swift */; };
-		860A43011EE415FF00798678 /* V5Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8690FF2F1ED538E90051A16D /* V5Client.framework */; };
 		860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A43021EE415FF00798678 /* HandyJSON.framework */; };
 		860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A43041EE4178000798678 /* XFBaseResponse.swift */; };
 		860C9E561F7293BE00AF3CB7 /* XFCouponItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860C9E551F7293BE00AF3CB7 /* XFCouponItemCellView.swift */; };
@@ -82,16 +80,17 @@
 		86A45C561ED1106D00772D13 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C551ED1106D00772D13 /* libsqlite3.tbd */; };
 		86A45C581ED1108500772D13 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C571ED1108500772D13 /* libicucore.tbd */; };
 		86A45C5A1ED1109100772D13 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C591ED1109100772D13 /* libstdc++.tbd */; };
-		86A45C5C1ED1109800772D13 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C5B1ED1109800772D13 /* AVFoundation.framework */; };
-		86A45C5E1ED110A400772D13 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C5D1ED110A400772D13 /* AudioToolbox.framework */; };
 		86A45C601ED110AB00772D13 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C5F1ED110AB00772D13 /* CFNetwork.framework */; };
 		86A45C621ED110B500772D13 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C611ED110B500772D13 /* Security.framework */; };
-		86A45C641ED110C000772D13 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C631ED110C000772D13 /* MediaPlayer.framework */; };
 		86A45C661ED1184E00772D13 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C651ED1184E00772D13 /* AssetsLibrary.framework */; };
 		86A45C681ED1186100772D13 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C671ED1186100772D13 /* Photos.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		86A45C6A1ED1186A00772D13 /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C691ED1186A00772D13 /* PhotosUI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		86A45C6C1ED1187D00772D13 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A45C6B1ED1187D00772D13 /* libz.tbd */; };
 		86A45C721ED1209F00772D13 /* XFCommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A45C711ED1209F00772D13 /* XFCommonUtils.swift */; };
+		86A4DB501FB715690015EF92 /* XFAddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A4DB4F1FB715690015EF92 /* XFAddressListViewController.swift */; };
+		86A4DB521FB7157E0015EF92 /* XFAddressManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A4DB511FB7157E0015EF92 /* XFAddressManageViewController.swift */; };
+		86A4DB541FB728B90015EF92 /* XFRowInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A4DB531FB728B90015EF92 /* XFRowInputView.swift */; };
+		86A4DB561FB72CEB0015EF92 /* XFStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A4DB551FB72CEB0015EF92 /* XFStringExtension.swift */; };
 		86ADDCD51F2AEBCE00881CFA /* XFDataGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCD41F2AEBCE00881CFA /* XFDataGlobal.swift */; };
 		86ADDCD71F2B466C00881CFA /* XFSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCD61F2B466C00881CFA /* XFSearchBar.swift */; };
 		86ADDCD91F2B64CF00881CFA /* XFCheckoutAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCD81F2B64CF00881CFA /* XFCheckoutAddress.swift */; };
@@ -122,8 +121,6 @@
 		86FFA4141F487DF800FCC809 /* XFExpress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4131F487DF800FCC809 /* XFExpress.swift */; };
 		86FFA4161F487F4100FCC809 /* XFNewsInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */; };
 		86FFA41B1F488DEA00FCC809 /* XFWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA41A1F488D5200FCC809 /* XFWebViewController.swift */; };
-		86FFA4221F48986F00FCC809 /* XFAddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA41D1F48981F00FCC809 /* XFAddAddressViewController.swift */; };
-		86FFA4231F48986F00FCC809 /* XFUserAddressesMangageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA41E1F48981F00FCC809 /* XFUserAddressesMangageViewController.swift */; };
 		86FFA4241F48986F00FCC809 /* XFUserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA41F1F48981F00FCC809 /* XFUserLoginViewController.swift */; };
 		86FFA4251F48986F00FCC809 /* XFUserRegistSecondPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4201F48981F00FCC809 /* XFUserRegistSecondPageViewController.swift */; };
 		86FFA4261F48986F00FCC809 /* XFUserRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4211F48981F00FCC809 /* XFUserRegistViewController.swift */; };
@@ -162,7 +159,6 @@
 		165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFChoosePayWayViewController.swift; sourceTree = "<group>"; };
 		16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEditMyAddressView.swift; sourceTree = "<group>"; };
 		16701C111F6EB431007E2CEA /* XFExpandImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFExpandImage.swift; sourceTree = "<group>"; };
-		16941B681F3C04A40066A911 /* XFEmptyAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFEmptyAddressView.swift; sourceTree = "<group>"; };
 		169FAF8E1F6A5BE800CB358C /* XFUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserInfoView.swift; sourceTree = "<group>"; };
 		16C9FD991F6C1FEA00A138E6 /* UIAlertExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertExtension.swift; sourceTree = "<group>"; };
 		16C9FD9B1F6C29A400A138E6 /* DVActionSheetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DVActionSheetVC.swift; sourceTree = "<group>"; };
@@ -229,7 +225,6 @@
 		8690FEE01ED178AF0051A16D /* XFShopCartActionBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFShopCartActionBar.swift; sourceTree = "<group>"; };
 		8690FEE21ED179560051A16D /* XFAllCategoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAllCategoryListViewController.swift; sourceTree = "<group>"; };
 		8690FF2E1ED538E90051A16D /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
-		8690FF2F1ED538E90051A16D /* V5Client.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = V5Client.framework; path = Carthage/Build/iOS/V5Client.framework; sourceTree = "<group>"; };
 		8692FCD31F41EDBC00CD3F72 /* XFPayResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFPayResponse.swift; sourceTree = "<group>"; };
 		8692FCD51F42029A00CD3F72 /* XFPayResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFPayResultViewController.swift; sourceTree = "<group>"; };
 		869FBE991F70E5F50047A8B7 /* XFCouponListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCouponListViewController.swift; sourceTree = "<group>"; };
@@ -237,16 +232,17 @@
 		86A45C551ED1106D00772D13 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		86A45C571ED1108500772D13 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		86A45C591ED1109100772D13 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
-		86A45C5B1ED1109800772D13 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		86A45C5D1ED110A400772D13 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		86A45C5F1ED110AB00772D13 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		86A45C611ED110B500772D13 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		86A45C631ED110C000772D13 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		86A45C651ED1184E00772D13 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		86A45C671ED1186100772D13 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		86A45C691ED1186A00772D13 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		86A45C6B1ED1187D00772D13 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		86A45C711ED1209F00772D13 /* XFCommonUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCommonUtils.swift; sourceTree = "<group>"; };
+		86A4DB4F1FB715690015EF92 /* XFAddressListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAddressListViewController.swift; sourceTree = "<group>"; };
+		86A4DB511FB7157E0015EF92 /* XFAddressManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAddressManageViewController.swift; sourceTree = "<group>"; };
+		86A4DB531FB728B90015EF92 /* XFRowInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFRowInputView.swift; sourceTree = "<group>"; };
+		86A4DB551FB72CEB0015EF92 /* XFStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFStringExtension.swift; sourceTree = "<group>"; };
 		86ADDCD41F2AEBCE00881CFA /* XFDataGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFDataGlobal.swift; sourceTree = "<group>"; };
 		86ADDCD61F2B466C00881CFA /* XFSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFSearchBar.swift; sourceTree = "<group>"; };
 		86ADDCD81F2B64CF00881CFA /* XFCheckoutAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCheckoutAddress.swift; sourceTree = "<group>"; };
@@ -277,8 +273,6 @@
 		86FFA4131F487DF800FCC809 /* XFExpress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFExpress.swift; sourceTree = "<group>"; };
 		86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFNewsInfoService.swift; sourceTree = "<group>"; };
 		86FFA41A1F488D5200FCC809 /* XFWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFWebViewController.swift; sourceTree = "<group>"; };
-		86FFA41D1F48981F00FCC809 /* XFAddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAddAddressViewController.swift; sourceTree = "<group>"; };
-		86FFA41E1F48981F00FCC809 /* XFUserAddressesMangageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserAddressesMangageViewController.swift; sourceTree = "<group>"; };
 		86FFA41F1F48981F00FCC809 /* XFUserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserLoginViewController.swift; sourceTree = "<group>"; };
 		86FFA4201F48981F00FCC809 /* XFUserRegistSecondPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserRegistSecondPageViewController.swift; sourceTree = "<group>"; };
 		86FFA4211F48981F00FCC809 /* XFUserRegistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserRegistViewController.swift; sourceTree = "<group>"; };
@@ -309,16 +303,12 @@
 				86A45C6C1ED1187D00772D13 /* libz.tbd in Frameworks */,
 				8618BA381F4027B000AC9436 /* SystemConfiguration.framework in Frameworks */,
 				860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */,
-				860A43011EE415FF00798678 /* V5Client.framework in Frameworks */,
 				8690FF321ED538E90051A16D /* SQLite.framework in Frameworks */,
 				86A45C6A1ED1186A00772D13 /* PhotosUI.framework in Frameworks */,
 				86A45C681ED1186100772D13 /* Photos.framework in Frameworks */,
 				86A45C661ED1184E00772D13 /* AssetsLibrary.framework in Frameworks */,
-				86A45C641ED110C000772D13 /* MediaPlayer.framework in Frameworks */,
 				86A45C621ED110B500772D13 /* Security.framework in Frameworks */,
 				86A45C601ED110AB00772D13 /* CFNetwork.framework in Frameworks */,
-				86A45C5E1ED110A400772D13 /* AudioToolbox.framework in Frameworks */,
-				86A45C5C1ED1109800772D13 /* AVFoundation.framework in Frameworks */,
 				86A45C5A1ED1109100772D13 /* libstdc++.tbd in Frameworks */,
 				86A45C581ED1108500772D13 /* libicucore.tbd in Frameworks */,
 				86A45C561ED1106D00772D13 /* libsqlite3.tbd in Frameworks */,
@@ -562,6 +552,7 @@
 				868613251EACCCE400A44338 /* XFImageExtension.swift */,
 				86E8DF7D1EDBCC90000A489F /* XFButtonExtension.swift */,
 				862672E41EFE47010062B52B /* XFMBProgressHUD.swift */,
+				86A4DB551FB72CEB0015EF92 /* XFStringExtension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -574,6 +565,7 @@
 				86ADDCDC1F2B7C5C00881CFA /* XFDescriptionItem.swift */,
 				864CD7BF1F80934A00E8B6FA /* XFSeperatorView.swift */,
 				860A32AC1F861E7100301883 /* XFRefreshAnimator.swift */,
+				86A4DB531FB728B90015EF92 /* XFRowInputView.swift */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -626,16 +618,12 @@
 				8618BA371F4027AA00AC9436 /* SystemConfiguration.framework */,
 				860A43021EE415FF00798678 /* HandyJSON.framework */,
 				8690FF2E1ED538E90051A16D /* SQLite.framework */,
-				8690FF2F1ED538E90051A16D /* V5Client.framework */,
 				86A45C6B1ED1187D00772D13 /* libz.tbd */,
 				86A45C691ED1186A00772D13 /* PhotosUI.framework */,
 				86A45C671ED1186100772D13 /* Photos.framework */,
 				86A45C651ED1184E00772D13 /* AssetsLibrary.framework */,
-				86A45C631ED110C000772D13 /* MediaPlayer.framework */,
 				86A45C611ED110B500772D13 /* Security.framework */,
 				86A45C5F1ED110AB00772D13 /* CFNetwork.framework */,
-				86A45C5D1ED110A400772D13 /* AudioToolbox.framework */,
-				86A45C5B1ED1109800772D13 /* AVFoundation.framework */,
 				86A45C591ED1109100772D13 /* libstdc++.tbd */,
 				86A45C571ED1108500772D13 /* libicucore.tbd */,
 				86A45C551ED1106D00772D13 /* libsqlite3.tbd */,
@@ -666,7 +654,6 @@
 				16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */,
 				862672D41EFE43D20062B52B /* XFAddressesManageTableViewCell.swift */,
 				1641E76D1F3609EC0093DADF /* XFAlert.swift */,
-				16941B681F3C04A40066A911 /* XFEmptyAddressView.swift */,
 				86FFA4311F494A4A00FCC809 /* XFOrderListItem.swift */,
 				86FFA4331F49C3BF00FCC809 /* XFOrderDetailAddressCell.swift */,
 				86FFA4351F49C67500FCC809 /* XFOrderDetailGoodsCell.swift */,
@@ -683,8 +670,6 @@
 		86FFA41C1F48981F00FCC809 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				86FFA41D1F48981F00FCC809 /* XFAddAddressViewController.swift */,
-				86FFA41E1F48981F00FCC809 /* XFUserAddressesMangageViewController.swift */,
 				86FFA41F1F48981F00FCC809 /* XFUserLoginViewController.swift */,
 				86FFA4201F48981F00FCC809 /* XFUserRegistSecondPageViewController.swift */,
 				86FFA4211F48981F00FCC809 /* XFUserRegistViewController.swift */,
@@ -698,6 +683,8 @@
 				869FBE991F70E5F50047A8B7 /* XFCouponListViewController.swift */,
 				863983711F85E5BE0035F0FD /* XFUserCollectionViewController.swift */,
 				863983731F85E5E80035F0FD /* XFUserScoreViewController.swift */,
+				86A4DB4F1FB715690015EF92 /* XFAddressListViewController.swift */,
+				86A4DB511FB7157E0015EF92 /* XFAddressManageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -801,7 +788,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SQLite.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/V5Client.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/HandyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ESPullToRefresh.framework",
 			);
@@ -819,8 +805,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				86FFA43C1F49DCEF00FCC809 /* XFIndex.swift in Sources */,
-				86FFA4221F48986F00FCC809 /* XFAddAddressViewController.swift in Sources */,
-				86FFA4231F48986F00FCC809 /* XFUserAddressesMangageViewController.swift in Sources */,
 				86FFA4241F48986F00FCC809 /* XFUserLoginViewController.swift in Sources */,
 				86FFA4251F48986F00FCC809 /* XFUserRegistSecondPageViewController.swift in Sources */,
 				86D432631F72BB900024F99D /* XFCouponService.swift in Sources */,
@@ -857,6 +841,7 @@
 				862672D31EFE43680062B52B /* XFShopCarViewController.swift in Sources */,
 				8690FEDF1ED178900051A16D /* XFShopCartViewCell.swift in Sources */,
 				862672F51EFE49550062B52B /* XFBaseViewController.swift in Sources */,
+				86A4DB541FB728B90015EF92 /* XFRowInputView.swift in Sources */,
 				862AF70B1F0926A700409CCB /* XFComment.swift in Sources */,
 				862672ED1EFE48420062B52B /* XFNetworking.swift in Sources */,
 				8624CC3C1F4DE5D90008C8D3 /* XFAboutCompanyViewController.swift in Sources */,
@@ -871,6 +856,7 @@
 				862672D51EFE43D20062B52B /* XFAddressesManageTableViewCell.swift in Sources */,
 				16C9FD9C1F6C29A400A138E6 /* DVActionSheetVC.swift in Sources */,
 				8690FEDB1ED177B80051A16D /* XFCategoryHeadSizer.swift in Sources */,
+				86A4DB501FB715690015EF92 /* XFAddressListViewController.swift in Sources */,
 				862672E71EFE47AE0062B52B /* XFUser.swift in Sources */,
 				862C59EF1EA3677100C2323D /* XFConstants.swift in Sources */,
 				862672EB1EFE480B0062B52B /* XFProduct.swift in Sources */,
@@ -886,6 +872,7 @@
 				86ADDCE11F2DD88500881CFA /* XFCouponItem.swift in Sources */,
 				865235C61F1AFD5A005897C3 /* XFShopCartEmptyView.swift in Sources */,
 				862848531F483DD400CA52B6 /* XFAddressService.swift in Sources */,
+				86A4DB561FB72CEB0015EF92 /* XFStringExtension.swift in Sources */,
 				862672CF1EFE42EF0062B52B /* XFDetailViewController.swift in Sources */,
 				86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */,
 				860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */,
@@ -899,6 +886,7 @@
 				86FFA4141F487DF800FCC809 /* XFExpress.swift in Sources */,
 				8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */,
 				86FFA43E1F49DD5100FCC809 /* XFIndexArticleViewCell.swift in Sources */,
+				86A4DB521FB7157E0015EF92 /* XFAddressManageViewController.swift in Sources */,
 				863983721F85E5BE0035F0FD /* XFUserCollectionViewController.swift in Sources */,
 				86ADDCDD1F2B7C5C00881CFA /* XFDescriptionItem.swift in Sources */,
 				86FFA4301F48999800FCC809 /* XFUserInfoViewController.swift in Sources */,
@@ -912,7 +900,6 @@
 				1641E76E1F3609EC0093DADF /* XFAlert.swift in Sources */,
 				86FFA4361F49C67500FCC809 /* XFOrderDetailGoodsCell.swift in Sources */,
 				868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */,
-				16941B691F3C04A40066A911 /* XFEmptyAddressView.swift in Sources */,
 				86ADDCD51F2AEBCE00881CFA /* XFDataGlobal.swift in Sources */,
 				86BB9A871F1D2B1E00B46EBC /* XFCheckoutViewController.swift in Sources */,
 				862672FB1EFE4F3A0062B52B /* XFVerifyImage.swift in Sources */,

@@ -59,8 +59,7 @@ class XFDetailViewController: XFBaseSubViewController {
         view.actionHandler = {(type:Int) -> Void in
             switch type {
             case 0:
-                let chatVC = createChatViewController(withUser: XFUserGlobal.shared.currentUser, goodsInfo: weakSelf?._detailData)
-                weakSelf?.navigationController?.pushViewController(chatVC, animated: true)
+                makePhoneCall()
             case 1:
                 weakSelf?.showSuccess("已成功加入收藏")
             case 2:
@@ -125,12 +124,17 @@ class XFDetailViewController: XFBaseSubViewController {
         view.addSubview(contentView)
         view.addSubview(actionBarView)
         contentView.snp.makeConstraints { (make) in
-            make.width.top.equalTo(self.view)
+            make.width.top.equalTo(view)
         }
         actionBarView.snp.makeConstraints { (make) in
             make.height.equalTo(45)
+            make.width.equalTo(view)
             make.top.equalTo(self.contentView.snp.bottom)
-            make.width.bottom.equalTo(self.view)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.width.bottom.equalTo(view)
+            }
         }
     }
     

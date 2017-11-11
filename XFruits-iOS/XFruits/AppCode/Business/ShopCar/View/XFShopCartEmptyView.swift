@@ -38,7 +38,7 @@ class XFShopCartEmptyView: UIView {
     
     
     lazy var tipImageView: UIImageView = {
-        let imageView = UIImageView.init(image: UIImage.imageWithNamed("xfruits-farmer-2"))
+        let imageView = UIImageView.init(image: UIImage.imageWithNamed("xfruits-farmer-3"))
         return imageView
     }()
     

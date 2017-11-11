@@ -1,23 +1,23 @@
 //
-//  XFUserAddressesMangageViewController.swift
+//  XFAddressListViewController.swift
 //  XFruits
 //
-//  Created by tangkunyin on 24/06/2017.
-//  Copyright © 2017 www.10fruits.net. All rights reserved.
+//  Created by tangkunyin on 2017/11/11.
+//  Copyright © 2017年 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
 
 fileprivate let addressCellIdentifier = "XFAddressCellIdentifier"
 
-class XFUserAddressesMangageViewController: XFBaseSubViewController {
-    
+class XFAddressListViewController: XFBaseSubViewController {
+
     var addressInfoArray: Array<XFAddress?> = []
     
     var onSelectedAddress: ((XFAddress) -> Void)?
     
     // 地址列表
-    lazy var addressesTable: UITableView = {
+    lazy var addressesListView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
         tableView.delegate = self
         tableView.dataSource = self
@@ -28,10 +28,11 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         tableView.register(XFAddressesManageTableViewCell.self, forCellReuseIdentifier: addressCellIdentifier)
         return tableView
     }()
-  
+    
     // 添加地址按钮
     lazy var addAddressBtn:UIButton = {
-       let addAddressBtn = UIButton.init()
+        let addAddressBtn = UIButton.init()
+        addAddressBtn.backgroundColor = UIColor.white
         addAddressBtn.setTitle("添 加", for: .normal)
         addAddressBtn.setTitleColor(XFConstants.Color.salmon, for: .normal)
         addAddressBtn.titleLabel?.font = XFConstants.Font.pfn16
@@ -52,26 +53,21 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
             XFAvailableAddressUtils.shared.cacheAddressAvailable()
         }
         
-        // 空白地址视图
-        let emptyAddressView = XFEmptyAddressView()
-        self.view.addSubview(emptyAddressView)
-        emptyAddressView.snp.makeConstraints({ (make) in
-            make.left.right.top.bottom.equalTo(view)
-        })
-   
-        // 地址列表视图
-        self.view.addSubview(addressesTable)
-        addressesTable.snp.makeConstraints({ (make) in
+        view.addSubview(addressesListView)
+        view.addSubview(addAddressBtn)
+        addressesListView.snp.makeConstraints({ (make) in
             make.left.right.top.equalTo(view)
-            make.bottom.equalTo(view).offset(-50)
+            make.bottom.equalTo(addAddressBtn.snp.top)
         })
-    
-        // 底部添加地址按钮
-        self.view.addSubview(addAddressBtn)
         addAddressBtn.snp.makeConstraints({ (make) in
-            make.height.equalTo(35)
+            make.height.equalTo(44)
             make.left.equalTo(view).offset(20)
-            make.right.bottom.equalTo(view).offset(-20)
+            make.right.equalTo(view).offset(-20)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+            } else {
+                make.bottom.equalTo(view).offset(-20)
+            }
         })
     }
     
@@ -85,8 +81,8 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         weak var weakSelf = self
         XFAddressService.getUserAllAddress { (data) in
             if let addresses = data as? Array<XFAddress>{
-                
                 if (addresses.count > 0) {
+                    weakSelf?.removeNullDataView()
                     weakSelf?.addressInfoArray.removeAll()
                     weakSelf?.addressInfoArray = addresses
                     // 小小排序。把默认地址放在第一
@@ -98,22 +94,17 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
                             break
                         }
                     }
-                    
-                    weakSelf?.addressesTable.reloadData()
-                    weakSelf?.addressesTable.isHidden  = false  // 有地址的时候，tableview 不能隐藏
+                    weakSelf?.addressesListView.reloadData()
+                } else{
+                    weakSelf?.renderNullDataView()
                 }
-                else{
-                    // 没有地址，把 tableview 隐藏
-                    weakSelf?.addressesTable.isHidden = true
-                }
-             
             }
         }
     }
     
     // 添加或编辑地址
     @objc func addOrModifyAddressEvent(sender:UIButton?) {
-        let addAddressVC = XFAddAddressViewController()
+        let addAddressVC = XFAddressManageViewController()
         let btn:UIButton = sender!
         let tag:Int = btn.tag
         if tag >= 100 {  // 编辑模式
@@ -125,18 +116,19 @@ class XFUserAddressesMangageViewController: XFBaseSubViewController {
         else{  // 非编辑模式
             addAddressVC.editStyle = 0
         }
-
+        
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.pushViewController(addAddressVC, animated: true)
     }
+
 }
 
-extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableViewDelegate {
+extension XFAddressListViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return addressInfoArray.count
     }
-        
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: addressCellIdentifier, for: indexPath) as! XFAddressesManageTableViewCell
         cell.selectionStyle = .none
@@ -167,16 +159,13 @@ extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableVie
         weak var weakSelf = self
         if editingStyle == .delete{
             if let address : XFAddress = addressInfoArray[row] {
-                let addressId = address.id!
+                let addressId = address.id
                 XFAddressService.deleteAddress(addressId: addressId,params:[:] ){ (data) in
                     if data as! Bool { // 删除成功。
                         weakSelf?.addressInfoArray.remove(at: row)
                         tableView.deleteRows(at: [indexPath], with: .fade)
-                        if(weakSelf?.addressInfoArray.count == 0){
-                            weakSelf?.addressesTable.isHidden = true
-                        }
-                        else{
-                            weakSelf?.addressesTable.isHidden = false
+                        if weakSelf?.addressInfoArray.count == 0 {
+                            weakSelf?.renderNullDataView()
                         }
                     }
                 }
@@ -191,3 +180,4 @@ extension XFUserAddressesMangageViewController: UITableViewDataSource,UITableVie
         }
     }
 }
+

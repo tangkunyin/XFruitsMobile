@@ -34,16 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
 
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        //退出到后台时，通知 SDK 用户离线
-        V5ClientAgent.shareClient().onApplicationDidEnterBackground()
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        //移动到前台时，通知 SDK 用户上线并连接
-        V5ClientAgent.shareClient().onApplicationWillEnterForeground()
-    }
-
     func applicationDidBecomeActive(_ application: UIApplication) {
         
     }
@@ -93,14 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: WXApiDelegate {
 
-    func initExternalSDK(){
-        
-        /// 初始化客服SDK
-        V5ClientAgent.initWithSiteId(XFConstants.SDK.V5KF.siteId,
-                                     appId: XFConstants.SDK.V5KF.appId) { (status, desc) in
-            dPrint("[V5 Init result] status:\(status) desc:\(desc ?? "desc none")")
-        }
-        
+    func initExternalSDK(){ 
         // 注册微信
         WXApi.registerApp(XFConstants.SDK.Wechat.appId)
     }

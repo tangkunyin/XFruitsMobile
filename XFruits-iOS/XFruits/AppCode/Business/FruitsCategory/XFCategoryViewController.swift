@@ -32,13 +32,6 @@ class XFCategoryViewController: XFBaseViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if V5ClientAgent.shareClient().isConnected {
-            V5ClientAgent.shareClient().stopClient()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarItem()
@@ -148,7 +141,11 @@ class XFCategoryViewController: XFBaseViewController {
         cateListView.snp.makeConstraints { (make) in
             make.top.equalTo(headSizer.snp.bottom).offset(5)
             make.left.right.equalTo(view)
-            make.bottom.equalTo(view).offset(0)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.bottom.equalTo(view)
+            }
         }
     }
 }

@@ -31,7 +31,7 @@ class XFAddressService: XFNetworking {
     }
     
     
-    class func deleteAddress(addressId:Int, params:XFParams,_ completion:@escaping XFResponse) {
+    class func deleteAddress(addressId:String, params:XFParams,_ completion:@escaping XFResponse) {
         doPost(withUrl: url("/address/remove?id=\(addressId)"),params: params) { (success, respData) in
             if success  {
                 completion(respData as! Bool)
