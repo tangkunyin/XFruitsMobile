@@ -39,7 +39,6 @@
 		862672CF1EFE42EF0062B52B /* XFDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672CE1EFE42EF0062B52B /* XFDetailViewController.swift */; };
 		862672D11EFE432C0062B52B /* XFIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672D01EFE432C0062B52B /* XFIndexViewController.swift */; };
 		862672D31EFE43680062B52B /* XFShopCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672D21EFE43680062B52B /* XFShopCarViewController.swift */; };
-		862672D51EFE43D20062B52B /* XFAddressesManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672D41EFE43D20062B52B /* XFAddressesManageTableViewCell.swift */; };
 		862672DB1EFE44490062B52B /* XFUserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672DA1EFE44490062B52B /* XFUserCenterViewController.swift */; };
 		862672E51EFE47010062B52B /* XFMBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672E41EFE47010062B52B /* XFMBProgressHUD.swift */; };
 		862672E71EFE47AE0062B52B /* XFUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862672E61EFE47AE0062B52B /* XFUser.swift */; };
@@ -91,6 +90,7 @@
 		86A4DB521FB7157E0015EF92 /* XFAddressManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A4DB511FB7157E0015EF92 /* XFAddressManageViewController.swift */; };
 		86A4DB541FB728B90015EF92 /* XFRowInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A4DB531FB728B90015EF92 /* XFRowInputView.swift */; };
 		86A4DB561FB72CEB0015EF92 /* XFStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A4DB551FB72CEB0015EF92 /* XFStringExtension.swift */; };
+		86A4DB581FB750200015EF92 /* XFAddressItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A4DB571FB750200015EF92 /* XFAddressItem.swift */; };
 		86ADDCD51F2AEBCE00881CFA /* XFDataGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCD41F2AEBCE00881CFA /* XFDataGlobal.swift */; };
 		86ADDCD71F2B466C00881CFA /* XFSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCD61F2B466C00881CFA /* XFSearchBar.swift */; };
 		86ADDCD91F2B64CF00881CFA /* XFCheckoutAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCD81F2B64CF00881CFA /* XFCheckoutAddress.swift */; };
@@ -188,7 +188,6 @@
 		862672CE1EFE42EF0062B52B /* XFDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFDetailViewController.swift; sourceTree = "<group>"; };
 		862672D01EFE432C0062B52B /* XFIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFIndexViewController.swift; sourceTree = "<group>"; };
 		862672D21EFE43680062B52B /* XFShopCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFShopCarViewController.swift; sourceTree = "<group>"; };
-		862672D41EFE43D20062B52B /* XFAddressesManageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAddressesManageTableViewCell.swift; sourceTree = "<group>"; };
 		862672DA1EFE44490062B52B /* XFUserCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFUserCenterViewController.swift; sourceTree = "<group>"; };
 		862672E41EFE47010062B52B /* XFMBProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFMBProgressHUD.swift; sourceTree = "<group>"; };
 		862672E61EFE47AE0062B52B /* XFUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFUser.swift; sourceTree = "<group>"; };
@@ -243,6 +242,7 @@
 		86A4DB511FB7157E0015EF92 /* XFAddressManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAddressManageViewController.swift; sourceTree = "<group>"; };
 		86A4DB531FB728B90015EF92 /* XFRowInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFRowInputView.swift; sourceTree = "<group>"; };
 		86A4DB551FB72CEB0015EF92 /* XFStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFStringExtension.swift; sourceTree = "<group>"; };
+		86A4DB571FB750200015EF92 /* XFAddressItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAddressItem.swift; sourceTree = "<group>"; };
 		86ADDCD41F2AEBCE00881CFA /* XFDataGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFDataGlobal.swift; sourceTree = "<group>"; };
 		86ADDCD61F2B466C00881CFA /* XFSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFSearchBar.swift; sourceTree = "<group>"; };
 		86ADDCD81F2B64CF00881CFA /* XFCheckoutAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCheckoutAddress.swift; sourceTree = "<group>"; };
@@ -652,7 +652,6 @@
 				86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */,
 				86EC80F51EC86C34009AB47D /* UserCenterAvatarCell.swift */,
 				16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */,
-				862672D41EFE43D20062B52B /* XFAddressesManageTableViewCell.swift */,
 				1641E76D1F3609EC0093DADF /* XFAlert.swift */,
 				86FFA4311F494A4A00FCC809 /* XFOrderListItem.swift */,
 				86FFA4331F49C3BF00FCC809 /* XFOrderDetailAddressCell.swift */,
@@ -663,6 +662,7 @@
 				16C9FD9B1F6C29A400A138E6 /* DVActionSheetVC.swift */,
 				16701C111F6EB431007E2CEA /* XFExpandImage.swift */,
 				860C9E551F7293BE00AF3CB7 /* XFCouponItemCellView.swift */,
+				86A4DB571FB750200015EF92 /* XFAddressItem.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -839,6 +839,7 @@
 				862AF70D1F09271F00409CCB /* XFUserGlobal.swift in Sources */,
 				8630B31D1EF7BC86002F5B5C /* XFSQLiteDataSource.swift in Sources */,
 				862672D31EFE43680062B52B /* XFShopCarViewController.swift in Sources */,
+				86A4DB581FB750200015EF92 /* XFAddressItem.swift in Sources */,
 				8690FEDF1ED178900051A16D /* XFShopCartViewCell.swift in Sources */,
 				862672F51EFE49550062B52B /* XFBaseViewController.swift in Sources */,
 				86A4DB541FB728B90015EF92 /* XFRowInputView.swift in Sources */,
@@ -853,7 +854,6 @@
 				86E695201ED6AA35004864A6 /* XFCartUtils.swift in Sources */,
 				86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */,
 				862672CD1EFE42B50062B52B /* XFCategoryViewController.swift in Sources */,
-				862672D51EFE43D20062B52B /* XFAddressesManageTableViewCell.swift in Sources */,
 				16C9FD9C1F6C29A400A138E6 /* DVActionSheetVC.swift in Sources */,
 				8690FEDB1ED177B80051A16D /* XFCategoryHeadSizer.swift in Sources */,
 				86A4DB501FB715690015EF92 /* XFAddressListViewController.swift in Sources */,

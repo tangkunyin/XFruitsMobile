@@ -34,7 +34,7 @@ class XFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         label.font = XFConstants.Font.pfn16
         label.textAlignment = .center
         label.textColor = XFConstants.Color.tipTextGrey
-        label.text = "报告老板，暂未发现目标，请有缘再试~"
+        label.text = "报告老板，暂未发现目标，请稍后再试~"
         return label
     }()
     

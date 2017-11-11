@@ -25,7 +25,7 @@ class XFAddressListViewController: XFBaseSubViewController {
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 92
-        tableView.register(XFAddressesManageTableViewCell.self, forCellReuseIdentifier: addressCellIdentifier)
+        tableView.register(XFAddressItem.self, forCellReuseIdentifier: addressCellIdentifier)
         return tableView
     }()
     
@@ -130,7 +130,7 @@ extension XFAddressListViewController: UITableViewDataSource,UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: addressCellIdentifier, for: indexPath) as! XFAddressesManageTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: addressCellIdentifier, for: indexPath) as! XFAddressItem
         cell.selectionStyle = .none
         let row = indexPath.row
         if let address : XFAddress = addressInfoArray[row] {

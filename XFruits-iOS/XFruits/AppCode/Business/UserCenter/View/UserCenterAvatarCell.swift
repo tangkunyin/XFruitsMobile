@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class UserCenterAvatarCell: UITableViewCell {
   
@@ -14,17 +15,19 @@ class UserCenterAvatarCell: UITableViewCell {
         didSet{
             if let user = user {
                 userNameLabel.text = user.username
-                identityDescriptionLabel.text = "全宇宙排名: \(user.rank?.rank ?? 108)"
+                identityDescriptionLabel.text = "全宇宙排名: \(user.rank?.rank ?? 1)"
+                avatarImageView.kf.setImage(with: URL(string: user.avatar ?? ""),
+                                            placeholder: UIImage.imageWithNamed("defaultAvatar2"),
+                                            options: [.transition(.fade(1))])
             }
         }
     }
     
-    lazy var avatarBtn:UIButton = {
-        let avatarBtn = UIButton()
-        avatarBtn.setImage(UIImage(named:"defaultAvatar2"), for: .normal)
-        avatarBtn.layer.cornerRadius = 35
-        avatarBtn.layer.masksToBounds = true
-        return avatarBtn
+    lazy var avatarImageView: UIImageView = {
+        let avatarImageView = UIImageView.init(image: UIImage.imageWithNamed("defaultAvatar2"))
+        avatarImageView.layer.cornerRadius = 35
+        avatarImageView.layer.masksToBounds = true
+        return avatarImageView
     }()
     
     lazy var userNameLabel:UILabel = {
@@ -64,9 +67,9 @@ class UserCenterAvatarCell: UITableViewCell {
         addSubview(userNameLabel)
         addSubview(identityLevelImageView)
         addSubview(identityDescriptionLabel)
-        addSubview(avatarBtn)
+        addSubview(avatarImageView)
         
-        avatarBtn.snp.makeConstraints({ (make) in
+        avatarImageView.snp.makeConstraints({ (make) in
             make.left.equalTo(snp.left).offset(10)
             make.width.height.equalTo(70)
             make.centerY.equalTo(self).offset(5)
@@ -74,7 +77,7 @@ class UserCenterAvatarCell: UITableViewCell {
     
         userNameLabel.snp.makeConstraints({ (make) in
             make.centerY.equalTo(self).offset(-8)
-            make.left.equalTo(avatarBtn.snp.right).offset(15)
+            make.left.equalTo(avatarImageView.snp.right).offset(15)
         })
         
         identityLevelImageView.snp.makeConstraints({ (make) in

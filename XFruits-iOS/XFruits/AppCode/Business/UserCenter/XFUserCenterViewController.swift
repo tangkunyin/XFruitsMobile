@@ -45,27 +45,15 @@ class XFUserCenterViewController: XFBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIApplication.shared.statusBarStyle = .default
-        navigationController?.navigationBar.isHidden = true
         centerTable.reloadSections(IndexSet(integer: 0), with: .none)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.isHidden = false
-    }
-  
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 11.0, *) {
-            centerTable.setValue(2, forKey: "contentInsetAdjustmentBehavior")
-        } else {
-            automaticallyAdjustsScrollViewInsets = false
-        }
         view.addSubview(centerTable)
         centerTable.snp.makeConstraints({ (make) in
-            make.edges.equalTo(view).inset(UIEdgeInsetsMake(0, 0, 0, 0))
+            make.size.equalTo(view)
         })
     }
     
