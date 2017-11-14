@@ -63,7 +63,6 @@
 		865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AA5B71EAB9E9500E94312 /* XFEnum.swift */; };
 		865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AA5BF1EABA14C00E94312 /* XFUIFuncDefines.swift */; };
 		865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865F4F461E9A173E0059502C /* AppDelegate.swift */; };
-		865F4F4E1E9A173E0059502C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 865F4F4D1E9A173E0059502C /* Assets.xcassets */; };
 		8660D99F1F447AF800D98C18 /* XFOrderSerivice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8660D99E1F447AF800D98C18 /* XFOrderSerivice.swift */; };
 		86658BC31F5088EF00817B2C /* XFAppGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86658BC21F5088EF00817B2C /* XFAppGuideViewController.swift */; };
 		868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868613251EACCCE400A44338 /* XFImageExtension.swift */; };
@@ -99,6 +98,7 @@
 		86ADDCDF1F2DD7C100881CFA /* XFOrderConfirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCDE1F2DD7C100881CFA /* XFOrderConfirm.swift */; };
 		86ADDCE11F2DD88500881CFA /* XFCouponItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCE01F2DD88500881CFA /* XFCouponItem.swift */; };
 		86BB9A871F1D2B1E00B46EBC /* XFCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BB9A861F1D2B1E00B46EBC /* XFCheckoutViewController.swift */; };
+		86BF01891FBAD02F006C66E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 865F4F4D1E9A173E0059502C /* Assets.xcassets */; };
 		86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE61EAB495A009972A8 /* Alamofire.framework */; };
 		86CB2FEF1EAB495A009972A8 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE81EAB495A009972A8 /* Kingfisher.framework */; };
 		86CB2FF01EAB495A009972A8 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE91EAB495A009972A8 /* MBProgressHUD.framework */; };
@@ -769,7 +769,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				865F4F4E1E9A173E0059502C /* Assets.xcassets in Resources */,
+				86BF01891FBAD02F006C66E2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
