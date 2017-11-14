@@ -36,7 +36,7 @@ class XFAllCategoryListViewController: XFBaseViewController {
         listView.delegate = self
         listView.dataSource = self
         listView.collectionViewLayout = layout
-        listView.backgroundColor = UIColor.white
+        listView.backgroundColor = XFConstants.Color.commonBackground
         listView.register(CategoryCellView.self, forCellWithReuseIdentifier: XFAllCateListCellReuseIdentifier)
         return listView
     }()

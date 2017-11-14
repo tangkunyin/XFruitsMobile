@@ -23,9 +23,11 @@ class XFUserCenterViewController: XFBaseViewController {
             ],
             [
                 ["title":"吐槽建议", "icon":"myAdvice"],
-                ["title":"拾个情怀", "icon":"myCompanyBrand"],
-                ["title":"设置", "icon":"app-settings"]
+                ["title":"品牌故事", "icon":"myCompanyBrand"]
             ],
+            [
+                ["title":"设置", "icon":"app-settings"]
+            ]
         ]
     }()
     
@@ -35,7 +37,6 @@ class XFUserCenterViewController: XFBaseViewController {
         tableView.dataSource = self
         tableView.sectionFooterHeight = 8
         tableView.showsVerticalScrollIndicator = false
-        tableView.bounces = false
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
         tableView.backgroundColor = XFConstants.Color.separatorLine
@@ -53,7 +54,7 @@ class XFUserCenterViewController: XFBaseViewController {
         
         view.addSubview(centerTable)
         centerTable.snp.makeConstraints({ (make) in
-            make.size.equalTo(view)
+            make.center.size.equalTo(view)
         })
     }
     
@@ -115,7 +116,7 @@ class XFUserCenterViewController: XFBaseViewController {
         } else if section == 3 && row == 1 {
             // 关于我们
             subViewController = XFAboutCompanyViewController()
-        } else if section == 3 && row == 2 {
+        } else if section == 4 && row == 0 {
             // 设置
             subViewController = XFSettingsViewController()
         }
@@ -144,7 +145,7 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 140
+            return 125
         } else if (indexPath.section == 1 && indexPath.row == 1) {
             return 80
         } else {

@@ -87,7 +87,7 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         // 品牌logo
         view.addSubview(brandImageView)
         brandImageView.snp.makeConstraints({ (make) in
-            make.top.equalTo(view).offset(80)
+            make.top.equalTo(view).offset(60)
             make.width.equalTo(92)
             make.height.equalTo(100)
             make.centerX.equalTo(view)
