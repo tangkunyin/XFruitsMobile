@@ -12,14 +12,15 @@ class FourBillCollectionViewCell: UICollectionViewCell {
     
     lazy var typeIcon:UIImageView = {
         let icon = UIImageView()
+        icon.contentMode = .scaleAspectFit
         icon.isUserInteractionEnabled = false
         return icon
     }()
     
     lazy var typeDescLabel:UILabel = {
         let label = UILabel()
-        label.textColor = colorWithRGB(83, g: 83, b: 83)
-        label.font  = XFConstants.Font.pfn12
+        label.textColor = XFConstants.Color.darkGray
+        label.font  = XFConstants.Font.pfn14
         label.textAlignment = .center
         return label
     }()
@@ -37,15 +38,14 @@ class FourBillCollectionViewCell: UICollectionViewCell {
         addSubview(typeIcon)
         addSubview(typeDescLabel)
         typeIcon.snp.makeConstraints({ (make) in
-            make.top.equalTo(snp.top).offset(15)
-            make.size.equalTo(CGSize.init(width: 26, height: 26))
             make.centerX.equalTo(self)
+            make.top.equalTo(snp.top).offset(10)
+            make.size.equalTo(CGSize(width: 35, height: 35))
         })
         typeDescLabel.snp.makeConstraints({ (make) in
-            make.bottom.equalTo(snp.bottom).offset(-5)
-            make.left.equalTo(snp.left).offset(0)
-            make.right.equalTo(snp.right).offset(0)
+            make.left.right.equalTo(self)
             make.top.equalTo(typeIcon.snp.bottom).offset(5)
+            make.height.equalTo(25)
         })
     }
 }

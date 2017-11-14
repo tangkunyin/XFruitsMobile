@@ -8,8 +8,8 @@
 
 import UIKit
 
-fileprivate let BillCellIdentifier = "XFBillCellIdentifier"
 fileprivate let BillCellWidth = XFConstants.UI.deviceWidth / 5
+fileprivate let BillCellIdentifier = "XFBillCellIdentifier"
 
 class MyBillTableViewCell: UITableViewCell {
 
@@ -73,7 +73,7 @@ extension MyBillTableViewCell: UICollectionViewDelegate,UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: BillCellWidth, height: BillCellWidth)
+        return CGSize(width: BillCellWidth, height: 80)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
