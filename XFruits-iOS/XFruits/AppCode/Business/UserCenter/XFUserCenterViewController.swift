@@ -114,8 +114,9 @@ class XFUserCenterViewController: XFBaseViewController {
             subViewController = XFWebViewController(withUrl: "https://www.10fruits.cn/suggest/suggest.html")
             subViewController?.title = "吐槽建议"
         } else if section == 3 && row == 1 {
-            // 关于我们
-            subViewController = XFAboutCompanyViewController()
+            // 品牌介绍
+            present(XFAppGuideViewController(), animated: true, completion: nil)
+            return
         } else if section == 4 && row == 0 {
             // 设置
             subViewController = XFSettingsViewController()

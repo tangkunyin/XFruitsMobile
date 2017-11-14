@@ -14,6 +14,7 @@ class XFAppGuideViewController: UIViewController {
     
     fileprivate lazy var guideBackgroundView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.backgroundColor = UIColor.white
         scrollView.delegate = self
         scrollView.bounces = false
         scrollView.isPagingEnabled = true
@@ -43,7 +44,7 @@ class XFAppGuideViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = UIColor.white
         renderGuidePagerView()
     }
     
@@ -65,7 +66,7 @@ class XFAppGuideViewController: UIViewController {
         }
         for (index, item) in guideImageSource.enumerated() {
             let pageView:UIImageView = UIImageView.init(image: UIImage.imageWithNamed(item))
-            pageView.contentMode = .scaleAspectFill
+            pageView.contentMode = .scaleAspectFit
             pageView.layer.masksToBounds = true
             pageView.clipsToBounds = true
             pageView.isUserInteractionEnabled = true
