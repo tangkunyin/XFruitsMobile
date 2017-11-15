@@ -26,7 +26,7 @@ class XFOrderListViewController: XFBaseSubViewController {
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         tableView.tableFooterView = UIView()
-        tableView.rowHeight = 136
+        tableView.rowHeight = 166
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
         tableView.backgroundColor = XFConstants.Color.separatorLine

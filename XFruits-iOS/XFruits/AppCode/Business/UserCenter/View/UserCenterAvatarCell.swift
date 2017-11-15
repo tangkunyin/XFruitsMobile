@@ -17,14 +17,15 @@ class UserCenterAvatarCell: UITableViewCell {
                 userNameLabel.text = user.username
                 identityDescriptionLabel.text = "全宇宙排名: \(user.rank?.rank ?? 1)"
                 avatarImageView.kf.setImage(with: URL(string: user.avatar ?? ""),
-                                            placeholder: UIImage.imageWithNamed("defaultAvatar2"),
+                                            placeholder: UIImage.imageWithNamed("defaultAvatar"),
                                             options: [.transition(.fade(1))])
             }
         }
     }
     
     lazy var avatarImageView: UIImageView = {
-        let avatarImageView = UIImageView.init(image: UIImage.imageWithNamed("defaultAvatar2"))
+        let avatarImageView = UIImageView.init(image: UIImage.imageWithNamed("defaultAvatar"))
+        
         avatarImageView.layer.cornerRadius = 35
         avatarImageView.layer.masksToBounds = true
         return avatarImageView

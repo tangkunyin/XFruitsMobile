@@ -12,6 +12,8 @@ enum LABEL_TAG: Int {
     case avatar = 100,avatarExpand, nickname,sex,email, changePwd, mobile, signature
 }
 
+fileprivate let seperateLineHeight = 0.5
+
 class XFUserInfoView: UIView {
     
     var actionHandler: ((Int) -> Void)?
@@ -39,7 +41,7 @@ class XFUserInfoView: UIView {
     
     lazy var avatarImageView:UIImageView = {
        let imageView = UIImageView()
-        imageView.image = UIImage.imageWithNamed("defaultAvatar2")
+        imageView.image = UIImage.imageWithNamed("defaultAvatar")
                 imageView.layer.borderColor = UIColor.white.cgColor
                 imageView.layer.shadowColor = UIColor.lightGray.cgColor
                 imageView.layer.borderWidth = 1
@@ -194,7 +196,7 @@ class XFUserInfoView: UIView {
         self.addSubview(line1)
         line1.snp.makeConstraints { (make) in
             make.top.equalTo(avatarImageView.snp.bottom).offset(10)
-            make.height.equalTo(0.4)
+            make.height.equalTo(seperateLineHeight)
             make.left.right.equalTo(self)
         }
     
@@ -217,7 +219,7 @@ class XFUserInfoView: UIView {
         self.addSubview(line2)
         line2.snp.makeConstraints { (make) in
             make.top.equalTo(nicknameTipLabel.snp.bottom).offset(10)
-            make.height.equalTo(0.4)
+            make.height.equalTo(seperateLineHeight)
             make.left.right.equalTo(self)
         }
         
@@ -241,7 +243,7 @@ class XFUserInfoView: UIView {
         self.addSubview(line3)
         line3.snp.makeConstraints { (make) in
             make.top.equalTo(sexTipLabel.snp.bottom).offset(10)
-            make.height.equalTo(0.4)
+            make.height.equalTo(seperateLineHeight)
             make.left.right.equalTo(self)
         }
         
@@ -264,7 +266,7 @@ class XFUserInfoView: UIView {
         self.addSubview(line4)
         line4.snp.makeConstraints { (make) in
             make.top.equalTo(emailTipLabel.snp.bottom).offset(10)
-            make.height.equalTo(0.4)
+            make.height.equalTo(seperateLineHeight)
             make.left.right.equalTo(self)
         }
         
@@ -289,7 +291,7 @@ class XFUserInfoView: UIView {
         
         line5.snp.makeConstraints { (make) in
             make.top.equalTo(mobileTipLabel.snp.bottom).offset(10)
-            make.height.equalTo(0.4)
+            make.height.equalTo(seperateLineHeight)
             make.left.right.equalTo(self)
         }
         

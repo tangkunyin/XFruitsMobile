@@ -40,7 +40,7 @@ class XFCategoryCell: UICollectionViewCell {
     lazy var titleLabel:UILabel = {
         let title = UILabel()
         title.textColor = XFConstants.Color.darkGray
-        title.font = XFConstants.Font.pfn12
+        title.font = XFConstants.Font.pfn14
         title.textAlignment = .left
         title.numberOfLines = 1
         title.adjustsFontSizeToFitWidth = true
@@ -51,7 +51,7 @@ class XFCategoryCell: UICollectionViewCell {
     lazy var priceLabel:UILabel = {
         let price = UILabel()
         price.textColor = XFConstants.Color.salmon
-        price.font = XFConstants.Font.pfn12
+        price.font = XFConstants.Font.pfn14
         price.textAlignment = .left
         price.adjustsFontSizeToFitWidth = false
         price.lineBreakMode = .byTruncatingTail

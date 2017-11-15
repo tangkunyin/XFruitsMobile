@@ -21,8 +21,8 @@ class XFSettingsViewController: XFBaseSubViewController {
                 ["key":"清理缓存","value":""],
             ],
             [
-                ["key":"点个赞","value":XFConstants.storeUrl],
-                ["key":"关于我们","value":"about"]
+                ["key":"点个赞","value":XFConstants.storeUrl]
+                //,["key":"关于我们","value":"about"]
             ]
         ]
     }()

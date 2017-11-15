@@ -198,7 +198,7 @@ class XFDetailHeaderView: UIView {
         tagView.addSubview(tagIconView)
         tagView.addSubview(tagTextView)
         tagIconView.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 22, height: 22))
+            make.size.equalTo(CGSize(width: 27, height: 27))
             make.centerY.left.equalToSuperview()
         }
         tagTextView.snp.makeConstraints { (make) in

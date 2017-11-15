@@ -71,7 +71,7 @@ class XFShopCartViewCell: UITableViewCell {
     lazy var titleLabel:UILabel = {
         let title = UILabel()
         title.textColor = XFConstants.Color.darkGray
-        title.font = XFConstants.Font.pfn12
+        title.font = XFConstants.Font.pfn14
         title.textAlignment = .left
         title.numberOfLines = 1
         title.adjustsFontSizeToFitWidth = true
@@ -82,7 +82,7 @@ class XFShopCartViewCell: UITableViewCell {
     lazy var descLabel:UILabel = {
         let title = UILabel()
         title.textColor = XFConstants.Color.darkGray
-        title.font = XFConstants.Font.pfn10
+        title.font = XFConstants.Font.pfn14
         title.textAlignment = .left
         title.numberOfLines = 2
         title.adjustsFontSizeToFitWidth = false
@@ -93,7 +93,7 @@ class XFShopCartViewCell: UITableViewCell {
     lazy var priceLabel:UILabel = {
         let title = UILabel()
         title.textColor = XFConstants.Color.darkGray
-        title.font = XFConstants.Font.pfn10
+        title.font = XFConstants.Font.pfn14
         title.textAlignment = .left
         title.numberOfLines = 2
         title.adjustsFontSizeToFitWidth = false
@@ -104,7 +104,7 @@ class XFShopCartViewCell: UITableViewCell {
     lazy var quantityLabel:UILabel = {
         let title = UILabel()
         title.textColor = XFConstants.Color.darkGray
-        title.font = XFConstants.Font.pfn10
+        title.font = XFConstants.Font.pfn14
         title.textAlignment = .center
         title.numberOfLines = 1
         title.adjustsFontSizeToFitWidth = false

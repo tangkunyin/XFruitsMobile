@@ -69,7 +69,7 @@ class XFOrderDetailHeaderCell: UITableViewCell {
     fileprivate lazy var orderNumLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
-        label.font = XFConstants.Font.pfn12
+        label.font = XFConstants.Font.pfn14
         label.textAlignment = .left
         return label
     }()
@@ -77,7 +77,7 @@ class XFOrderDetailHeaderCell: UITableViewCell {
     fileprivate lazy var createTimeLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
-        label.font = XFConstants.Font.pfn12
+        label.font = XFConstants.Font.pfn14
         label.textAlignment = .left
         return label
     }()
@@ -85,7 +85,7 @@ class XFOrderDetailHeaderCell: UITableViewCell {
     fileprivate lazy var payWayLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
-        label.font = XFConstants.Font.pfn12
+        label.font = XFConstants.Font.pfn14
         label.textAlignment = .left
         return label
     }()
@@ -93,7 +93,7 @@ class XFOrderDetailHeaderCell: UITableViewCell {
     fileprivate lazy var orderAmoutLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
-        label.font = XFConstants.Font.pfn12
+        label.font = XFConstants.Font.pfn14
         label.textAlignment = .left
         return label
     }()

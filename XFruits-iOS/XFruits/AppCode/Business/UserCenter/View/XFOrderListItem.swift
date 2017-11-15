@@ -119,16 +119,16 @@ class XFOrderListItem: UITableViewCell {
         orderGoodsContainer.snp.makeConstraints { (make) in
             make.left.right.equalTo(contentView)
             make.top.equalTo(titleContainer.snp.bottom).offset(0)
-            make.height.equalTo(50)
+            make.height.equalTo(80)
         }
         amountContainer.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 130, height: 40))
+            make.size.equalTo(CGSize(width: 130, height: 30))
             make.left.equalTo(titleContainer).offset(0)
-            make.top.equalTo(orderGoodsContainer.snp.bottom).offset(0)
+            make.top.equalTo(orderGoodsContainer.snp.bottom).offset(10)
         }
         actionContainer.snp.makeConstraints { (make) in
             make.right.equalTo(titleContainer).offset(0)
-            make.top.equalTo(orderGoodsContainer.snp.bottom).offset(0)
+            make.top.equalTo(orderGoodsContainer.snp.bottom).offset(5)
             make.left.equalTo(amountContainer.snp.right).offset(5)
             make.height.equalTo(40)
         }
@@ -138,12 +138,12 @@ class XFOrderListItem: UITableViewCell {
         orderGoodsContainer.addSubview(goodsCoverContainer)
         orderGoodsContainer.addSubview(quantityContainer)
         goodsCoverContainer.snp.makeConstraints { (make) in
-            make.height.equalTo(40)
+            make.height.equalTo(80)
             make.left.top.equalTo(orderGoodsContainer).offset(5)
             make.right.equalTo(quantityContainer.snp.left).offset(-10)
         }
         quantityContainer.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 35, height: 40))
+            make.size.equalTo(CGSize(width: 35, height: 80))
             make.top.equalTo(goodsCoverContainer)
             make.right.equalTo(orderGoodsContainer).offset(-5)
         }
@@ -156,11 +156,12 @@ class XFOrderListItem: UITableViewCell {
             cover.kf.setImage(with: URL.init(string: item),
                               placeholder: UIImage.imageWithNamed("Loading-squre"),
                               options: [.transition(.fade(1))])
+            cover.contentMode = UIViewContentMode.scaleAspectFit
             cover.isUserInteractionEnabled = false
             goodsCoverContainer.addSubview(cover)
             cover.snp.makeConstraints({ (make) in
                 make.centerY.equalTo(goodsCoverContainer)
-                make.size.equalTo(CGSize(width: 40, height: 40))
+                make.size.equalTo(CGSize(width: 80, height: 80))
                 make.left.equalTo(goodsCoverContainer.snp.left).offset(index * 50 +  10)
             })
         }

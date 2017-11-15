@@ -59,7 +59,7 @@ class XFUserInfoViewController: XFBaseSubViewController {
             if #available(iOS 11.0, *) {
                 make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
             } else {
-                make.width.bottom.equalTo(view).offset(-20)
+                make.bottom.equalTo(view).offset(-20)
             }
         }
         

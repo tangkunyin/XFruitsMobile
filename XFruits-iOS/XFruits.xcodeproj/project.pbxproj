@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1613F7891FBC1DE50033E42F /* XFAddToCartAnimationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1613F7881FBC1DE50033E42F /* XFAddToCartAnimationTool.swift */; };
 		16200CF01F1B169C0008C039 /* XFAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CEE1F1B169C0008C039 /* XFAddress.swift */; };
 		16200CF51F1B7F200008C039 /* XFAvailableAddressUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */; };
 		1641E76C1F35F9D10093DADF /* XFCityChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */; };
@@ -151,6 +152,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1613F7881FBC1DE50033E42F /* XFAddToCartAnimationTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAddToCartAnimationTool.swift; sourceTree = "<group>"; };
 		16200CEE1F1B169C0008C039 /* XFAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAddress.swift; sourceTree = "<group>"; };
 		16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAvailableAddressUtils.swift; sourceTree = "<group>"; };
 		1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCityChooseView.swift; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 				862AF70C1F09271E00409CCB /* XFUserGlobal.swift */,
 				16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */,
 				86ADDCD41F2AEBCE00881CFA /* XFDataGlobal.swift */,
+				1613F7881FBC1DE50033E42F /* XFAddToCartAnimationTool.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -740,9 +743,9 @@
 				TargetAttributes = {
 					865F4F421E9A173E0059502C = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 426U84EDEE;
+						DevelopmentTeam = DN4X74J86T;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -886,6 +889,7 @@
 				86FFA4141F487DF800FCC809 /* XFExpress.swift in Sources */,
 				8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */,
 				86FFA43E1F49DD5100FCC809 /* XFIndexArticleViewCell.swift in Sources */,
+				1613F7891FBC1DE50033E42F /* XFAddToCartAnimationTool.swift in Sources */,
 				86A4DB521FB7157E0015EF92 /* XFAddressManageViewController.swift in Sources */,
 				863983721F85E5BE0035F0FD /* XFUserCollectionViewController.swift in Sources */,
 				86ADDCDD1F2B7C5C00881CFA /* XFDescriptionItem.swift in Sources */,
@@ -1029,8 +1033,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 426U84EDEE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DN4X74J86T;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1051,10 +1055,10 @@
 					"-all_load",
 				);
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = org.xfru.mall.ios.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zj.opencv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b8461cf7-cff0-4856-b7c2-850a3e3803f8";
-				PROVISIONING_PROFILE_SPECIFIER = "XFruits Dev";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Carthage/Build/iOS/V5Client.framework/**";
 				SWIFT_OBJC_BRIDGING_HEADER = "XFruits/XFruits-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1068,9 +1072,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 426U84EDEE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DN4X74J86T;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1090,10 +1094,10 @@
 					"-Objc",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.xfru.mall.ios.mobile;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zj.opencv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a0c3b3ab-5d77-4541-bd68-3194334d79f5";
-				PROVISIONING_PROFILE_SPECIFIER = "XFruits Dis";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Carthage/Build/iOS/V5Client.framework/**";
 				SWIFT_OBJC_BRIDGING_HEADER = "XFruits/XFruits-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

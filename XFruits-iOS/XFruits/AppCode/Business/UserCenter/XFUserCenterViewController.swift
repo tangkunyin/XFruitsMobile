@@ -26,7 +26,8 @@ class XFUserCenterViewController: XFBaseViewController {
                 ["title":"品牌故事", "icon":"myCompanyBrand"]
             ],
             [
-                ["title":"设置", "icon":"app-settings"]
+                ["title":"设置", "icon":"app-settings"],
+                 ["title":"关于我们", "icon":"aboutme"]
             ]
         ]
     }()
@@ -120,6 +121,9 @@ class XFUserCenterViewController: XFBaseViewController {
         } else if section == 4 && row == 0 {
             // 设置
             subViewController = XFSettingsViewController()
+        }
+        else if section == 4 && row == 1{
+             navigationController?.pushViewController(XFAboutCompanyViewController(), animated: true)
         }
         if let subViewController = subViewController {
             navigationController?.pushViewController(subViewController, animated: true)
