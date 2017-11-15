@@ -13,11 +13,6 @@ fileprivate let UC_CellIdentifier = "XFUserCenterUC_CellIdentifier"
 
 class XFUserCenterViewController: XFBaseViewController {
     
-    fileprivate lazy var dataSource: NSDictionary = {
-        let dataSource: NSDictionary = NSDictionary()
-        return dataSource
-    }()
-        
     lazy var girdGroupInfo: Array<Array<Dictionary<String, String>>> = {
         return [
             [
@@ -28,10 +23,11 @@ class XFUserCenterViewController: XFBaseViewController {
             ],
             [
                 ["title":"吐槽建议", "icon":"myAdvice"],
-                ["title":"调戏客服", "icon":"myService"],
-                ["title":"拾个情怀", "icon":"myCompanyBrand"],
-                ["title":"设置", "icon":"app-settings"]
+                ["title":"品牌故事", "icon":"myCompanyBrand"]
             ],
+            [
+                ["title":"设置", "icon":"app-settings"]
+            ]
         ]
     }()
     
@@ -50,27 +46,15 @@ class XFUserCenterViewController: XFBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIApplication.shared.statusBarStyle = .default
-        navigationBar?.isHidden = true
         centerTable.reloadSections(IndexSet(integer: 0), with: .none)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationBar?.isHidden = false
-    }
-  
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 11.0, *) {
-            centerTable.setValue(2, forKey: "contentInsetAdjustmentBehavior")
-        } else {
-            automaticallyAdjustsScrollViewInsets = false
-        }
         view.addSubview(centerTable)
         centerTable.snp.makeConstraints({ (make) in
-            make.edges.equalTo(view).inset(UIEdgeInsetsMake(0, 0, 0, 0))
+            make.center.size.equalTo(view)
         })
     }
     
@@ -106,7 +90,7 @@ class XFUserCenterViewController: XFBaseViewController {
                 } else {
                     switch row {
                     case 0:
-                        subViewController = XFUserAddressesMangageViewController()
+                        subViewController = XFAddressListViewController()
                     case 1:
                         subViewController = XFCouponListViewController()
 //                    case 1:
@@ -130,14 +114,10 @@ class XFUserCenterViewController: XFBaseViewController {
             subViewController = XFWebViewController(withUrl: "https://www.10fruits.cn/suggest/suggest.html")
             subViewController?.title = "吐槽建议"
         } else if section == 3 && row == 1 {
-            // 客服
-            let chatViewController = createChatViewController(withUser: nil, goodsInfo: nil)
-            chatViewController.delegate = self
-            subViewController = chatViewController
-        } else if section == 3 && row == 2 {
-            // 关于我们
-            subViewController = XFAboutCompanyViewController()
-        } else if section == 3 && row == 3 {
+            // 品牌介绍
+            present(XFAppGuideViewController(), animated: true, completion: nil)
+            return
+        } else if section == 4 && row == 0 {
             // 设置
             subViewController = XFSettingsViewController()
         }
@@ -215,45 +195,6 @@ extension XFUserCenterViewController: UITableViewDataSource,UITableViewDelegate 
         tableView.deselectRow(at: indexPath, animated: true)
         handleEntrySelect(indexPath: indexPath)
     }
-}
-
-extension XFUserCenterViewController: V5ChatViewDelegate {
-    /// 客户端连接成功
-    func onClientViewConnect() {
-        dPrint("客户端连接成功")
-    }
-    
-    /// 会话即将关闭
-    func clientViewDidDisappear() {
-        dPrint("客户即将离开聊天")
-    }
-    
-    /// 用户将要发送消息
-    func userWillSend(_ message: V5Message) -> V5Message {
-        // 此处可进行拦截，将客户的会话记录到我方数据库
-        dPrint("用户说：\(message.getDefaultContent())")
-        return message
-    }
-    
-    /// - 用户在会话中收到消息
-    func clientDidReceive(_ message: V5Message) {
-        // 我们的客服说了啥
-        dPrint("客服说：\(message.getDefaultContent())")
-    }
-    
-    /// - 客户服务状态改变(可在此相应改变对话页标题)
-    func clientViewController(_ chatVC: V5ChatViewController, servingStatusChange status: KV5ClientServingStatus) {
-        switch status {
-        case .ServingStatus_queue,
-             .ServingStatus_robot,
-             .ServingStatus_inTrust:
-            chatVC.title = "云客服服务中"
-        case .ServingStatus_worker:
-            chatVC.title = "\(V5ClientAgent.shareClient().config?.workerName ?? "小果拾")为您服务"
-        
-        }
-    }
-    
 }
 
 class XFUCenterCommonCell: UITableViewCell {

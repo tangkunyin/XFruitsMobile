@@ -32,13 +32,6 @@ class XFCategoryViewController: XFBaseViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if V5ClientAgent.shareClient().isConnected {
-            V5ClientAgent.shareClient().stopClient()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarItem()
@@ -142,13 +135,17 @@ class XFCategoryViewController: XFBaseViewController {
         view.addSubview(cateListView)
         headSizer.snp.makeConstraints { (make) in
             make.top.equalTo(0)
-            make.height.equalTo(30)
+            make.height.equalTo(44)
             make.left.right.equalTo(view)
         }
         cateListView.snp.makeConstraints { (make) in
             make.top.equalTo(headSizer.snp.bottom).offset(5)
             make.left.right.equalTo(view)
-            make.bottom.equalTo(view).offset(0)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.bottom.equalTo(view)
+            }
         }
     }
 }
@@ -180,6 +177,7 @@ extension XFCategoryViewController: UICollectionViewDataSource,UICollectionViewD
         let detail = XFDetailViewController()
         let item:ProductItem = dataSource[indexPath.row]
         detail.prodId = item.id
+        detail.title = item.name
         self.navigationController?.pushViewController(detail, animated: true)
     }
 }

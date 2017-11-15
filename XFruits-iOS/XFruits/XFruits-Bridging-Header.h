@@ -10,9 +10,6 @@
 #ifndef XFruits_Bridging_Header_h
 #define XFruits_Bridging_Header_h
 
-
-#import "V5ClientAgent.h"
-
 // wechat sdk
 #import "WXApi.h"
 #import "WechatAuthSDK.h"

@@ -36,7 +36,7 @@ class XFAllCategoryListViewController: XFBaseViewController {
         listView.delegate = self
         listView.dataSource = self
         listView.collectionViewLayout = layout
-        listView.backgroundColor = UIColor.white
+        listView.backgroundColor = XFConstants.Color.commonBackground
         listView.register(CategoryCellView.self, forCellWithReuseIdentifier: XFAllCateListCellReuseIdentifier)
         return listView
     }()
@@ -65,9 +65,12 @@ class XFAllCategoryListViewController: XFBaseViewController {
         dismissBtn.snp.makeConstraints { (make) in
             make.size.equalTo(24)
             make.centerX.equalTo(view)
-            make.bottom.equalTo(view).offset(-45)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-45)
+            } else {
+                make.bottom.equalTo(view).offset(-45)
+            }
         }
-
         loadData()
     }
     

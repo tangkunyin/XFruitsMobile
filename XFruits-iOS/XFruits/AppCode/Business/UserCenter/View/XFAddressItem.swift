@@ -1,15 +1,16 @@
 //
-//  XFAddressesManageTableViewCell.swift
+//  XFAddressItem.swift
 //  XFruits
 //
-//  Created by tangkunyin on 24/06/2017.
-//  Copyright © 2017 www.10fruits.net. All rights reserved.
+//  Created by tangkunyin on 2017/11/11.
+//  Copyright © 2017年 www.10fruits.net. All rights reserved.
 //
 
 import UIKit
+import SnapKit
 
-class XFAddressesManageTableViewCell: UITableViewCell {
-    
+class XFAddressItem: UITableViewCell {
+
     // 用户名
     lazy var userNameLabel:UILabel = {
         let label = UILabel()
@@ -124,7 +125,9 @@ class XFAddressesManageTableViewCell: UITableViewCell {
         
         addressCategoryBtn.snp.makeConstraints({ (make) in
             make.left.equalTo(userNameLabel.snp.left)
-            make.size.equalTo(CGSize(width: 40, height: 20))
+            make.height.equalTo(20)
+            make.width.greaterThanOrEqualTo(40)
+            make.width.lessThanOrEqualTo(100)
             make.centerY.equalTo(addressDetailText)
         })
         
@@ -134,8 +137,7 @@ class XFAddressesManageTableViewCell: UITableViewCell {
             make.left.equalTo(addressCategoryBtn.snp.right).offset(5)
             make.right.equalTo(editAddressBtn.snp.left).offset(-5)
         })
-
+        
     }
 
 }
-

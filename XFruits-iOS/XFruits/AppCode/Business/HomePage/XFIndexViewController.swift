@@ -47,6 +47,7 @@ class XFIndexViewController: XFBaseViewController {
         } else {
             renderHomeIndexView()
         }
+    
     }
     
     fileprivate func renderHomeIndexView() {
@@ -81,6 +82,7 @@ class XFIndexViewController: XFBaseViewController {
     fileprivate func jumpToProductDetail(pId: String){
         let detail = XFDetailViewController()
         detail.prodId = pId
+        detail.title = "详情"
         navigationController?.pushViewController(detail, animated: true)
     }
     

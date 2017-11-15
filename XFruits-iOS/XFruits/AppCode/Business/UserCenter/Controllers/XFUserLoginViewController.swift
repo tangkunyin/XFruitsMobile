@@ -66,7 +66,6 @@ class XFUserLoginViewController: XFBaseSubViewController {
         let btn = UIButton.init(type: .custom)
         btn.tag = 0
         btn.setTitle("注册帐号", for: .normal)
-        btn.backgroundColor = UIColor.white
         btn.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         btn.addTarget(self, action: #selector(accountHandler(_:)), for:.touchUpInside)
@@ -77,7 +76,6 @@ class XFUserLoginViewController: XFBaseSubViewController {
         let btn = UIButton.init(type: .custom)
         btn.tag = 1
         btn.setTitle("忘记密码", for: .normal)
-        btn.backgroundColor = UIColor.white
         btn.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         btn.addTarget(self, action: #selector(accountHandler(_:)), for:.touchUpInside)
@@ -97,7 +95,7 @@ class XFUserLoginViewController: XFBaseSubViewController {
         self.view.addSubview(self.registAccount)
         
         brandImageView.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.view).offset(80)
+            make.top.equalTo(self.view).offset(60)
             make.width.equalTo(92)
             make.height.equalTo(100)
             make.centerX.equalTo(self.view)
@@ -171,7 +169,6 @@ class XFUserLoginViewController: XFBaseSubViewController {
             let data = data as! XFUser
             XFUserGlobal.shared.signIn(user: data)
             if XFUserGlobal.shared.isLogin {
-                dPrint("用户已登录")
                 dPrint("Token is: \(XFUserGlobal.shared.token!)")
             }
             weakSelf?.backToParentController()

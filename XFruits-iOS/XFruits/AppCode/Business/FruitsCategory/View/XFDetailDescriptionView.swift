@@ -113,7 +113,7 @@ class XFDetailDescriptionView: UIView {
                                         let size = image.size
                                         let newOffset = floor(XFConstants.UI.deviceWidth/(size.width / size.height))
                                         imgViewHeightConstraint?.update(offset: newOffset)
-                                        weakSelf!.descBackgroundView.setNeedsUpdateConstraints()
+                                        weakSelf?.descBackgroundView.setNeedsUpdateConstraints()
                                     }
             })
         }

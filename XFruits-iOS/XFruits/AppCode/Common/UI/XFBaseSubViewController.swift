@@ -49,9 +49,15 @@ class XFBaseSubViewController: XFBaseViewController {
         return btn
     }()
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        bigTitle(forNavBar: navigationController, flag: false)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // 统一设置所有返回图标为白色
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationItem.hidesBackButton = true

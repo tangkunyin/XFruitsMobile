@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class XFOrderDetailAddressCell: XFAddressesManageTableViewCell {
+class XFOrderDetailAddressCell: XFAddressItem {
 
     var dataSource: XFAddress? {
         didSet {

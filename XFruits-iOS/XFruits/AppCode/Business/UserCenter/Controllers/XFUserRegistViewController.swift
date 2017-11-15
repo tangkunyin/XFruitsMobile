@@ -93,7 +93,6 @@ class XFUserRegistViewController: XFBaseSubViewController {
     lazy var backToLoginBtn:UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle("已有帐号？去登录", for: .normal)
-        btn.backgroundColor = UIColor.white
         btn.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         btn.addTarget(self, action: #selector(backToLoginVC(sender:)), for:.touchUpInside)
@@ -104,7 +103,6 @@ class XFUserRegistViewController: XFBaseSubViewController {
     lazy var userProtocalBtn:UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setTitle("用户协议及隐私政策", for: .normal)
-        btn.backgroundColor = UIColor.white
         btn.setTitleColor(colorWithRGB(153, g: 153, b: 153), for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         btn.addTarget(self, action: #selector(userProtocol), for:.touchUpInside)
@@ -115,7 +113,7 @@ class XFUserRegistViewController: XFBaseSubViewController {
         // 品牌logo
         view.addSubview(brandImageView)
         brandImageView.snp.makeConstraints({ (make) in
-            make.top.equalTo(view).offset(80)
+            make.top.equalTo(view).offset(60)
             make.width.equalTo(92)
             make.height.equalTo(100)
             make.centerX.equalTo(view)
@@ -256,7 +254,7 @@ extension XFUserRegistViewController: UITextFieldDelegate {
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.tag == 1 {
-            if let code = textField.text, code.characters.count > 0 {
+            if let code = textField.text, code.count > 0 {
                 weak var weakSelf = self
                 let para:[String:Any]  = ["uniqueCode": uniqueCodeString, "code": code]
                 XFAuthService.vertifyImageCode(params: para) { (data) in

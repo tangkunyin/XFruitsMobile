@@ -55,6 +55,7 @@ class XFCouponListViewController: XFBaseSubViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
         title = "我的优惠券"
         
         makeViewConstrains()
@@ -94,13 +95,17 @@ class XFCouponListViewController: XFBaseSubViewController {
             make.left.equalTo(couponInputView)
             make.right.equalTo(couponReceiveBtn)
             make.top.equalTo(couponInputView.snp.bottom).offset(15)
-            make.bottom.equalTo(view)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.bottom.equalTo(view)
+            }
         }
     }
 
     @objc private func onExchangeCoupon() {
         weak var weakSelf = self
-        if let couponCode = couponInputView.text, couponCode.characters.count > 0  {
+        if let couponCode = couponInputView.text, couponCode.count > 0  {
             XFCouponService.bindCoupon(params: ["couponCode":couponCode], { (result) in
                 if result is Bool {
                     if let success: Bool = result as? Bool, success {

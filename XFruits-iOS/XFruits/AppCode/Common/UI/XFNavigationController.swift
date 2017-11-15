@@ -36,6 +36,7 @@ class XFNavigationController: UINavigationController {
         super.viewDidLoad()
         XFNavigationController.initAppearance
         
+    
     }
     
 }

@@ -9,9 +9,7 @@
 import UIKit
 import SnapKit
 
-fileprivate let DetailBackBar = [XFBackButtonImages.normal: "detail_BackNormal", XFBackButtonImages.highlighted: "detail_BackHighlight"]
-
-class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
+class XFDetailViewController: XFBaseSubViewController {
     
     var prodId:String?
     var _detailData:ProductDetail? {
@@ -29,26 +27,9 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
             }
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        UIApplication.shared.statusBarStyle = .default
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // 处理版本差异
-        if #available(iOS 11.0, *) {
-            contentView.setValue(2, forKey: "contentInsetAdjustmentBehavior")
-        } else {
-            // 此设置仅对iOS11以前版本有效
-            automaticallyAdjustsScrollViewInsets = false
-        }
-        
-        self.clearNavigationBar = true
-        // 设置详情页专属返回按钮
-        self.backButtonImages = DetailBackBar
         
         makeMainViewConstrains()
         
@@ -62,26 +43,10 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let minAlphaOffset:CGFloat = 0
-        let maxAlphaOffset:CGFloat = 220
-        let offset:CGFloat = scrollView.contentOffset.y
-        let alpha:CGFloat = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset)
-        navBarBackgroundView?.alpha = alpha
-        if Int(alpha) == 1 {
-            self.backButtonImages = XFBackButtonImages.defaultSets
-            UIApplication.shared.statusBarStyle = .lightContent
-        } else if alpha == 0 {
-            self.backButtonImages = DetailBackBar
-            UIApplication.shared.statusBarStyle = .default
-        }
-    }
-    
     // MARK: - fileprivate and lazy variables
     fileprivate lazy var contentView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.bounces = false
-        scrollView.delegate = self
         scrollView.backgroundColor = XFConstants.Color.commonBackground
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
@@ -94,8 +59,7 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         view.actionHandler = {(type:Int) -> Void in
             switch type {
             case 0:
-                let chatVC = createChatViewController(withUser: XFUserGlobal.shared.currentUser, goodsInfo: weakSelf?._detailData)
-                weakSelf?.navigationController?.pushViewController(chatVC, animated: true)
+                makePhoneCall()
             case 1:
                 weakSelf?.showSuccess("已成功加入收藏")
             case 2:
@@ -160,12 +124,17 @@ class XFDetailViewController: XFBaseSubViewController,UIScrollViewDelegate {
         view.addSubview(contentView)
         view.addSubview(actionBarView)
         contentView.snp.makeConstraints { (make) in
-            make.width.top.equalTo(self.view)
+            make.width.top.equalTo(view)
         }
         actionBarView.snp.makeConstraints { (make) in
             make.height.equalTo(45)
+            make.width.equalTo(view)
             make.top.equalTo(self.contentView.snp.bottom)
-            make.width.bottom.equalTo(self.view)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.width.bottom.equalTo(view)
+            }
         }
     }
     

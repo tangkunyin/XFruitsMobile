@@ -19,25 +19,26 @@ class XFShopCartEmptyView: UIView {
         set (count) {
             switch count {
             case 1:
-                tipLabel.text = "拾个农夫提醒：您的果篮还未采摘水果喔~"
-                tipLabel.textColor = XFConstants.Color.coolGrey
-            case 2:
-                tipLabel.text = "依旧没有鲜果哎，去隔壁看看吧 ^_^ "
-                tipLabel.textColor = XFConstants.Color.purpleyGrey
-            case 3:
-                tipLabel.text = "没找到隔壁吗？就在你左手边啊 ：）"
-                tipLabel.textColor = XFConstants.Color.darkGray
-            case 4:
-                tipLabel.text = "还没找到果实？老夫我也是醉了..."
+                tipLabel.text = "不论再忙也要买点水果犒劳自己喔~"
                 tipLabel.textColor = XFConstants.Color.salmon
-            default:break
+            case 2:
+                tipLabel.text = "去左边的水货市场看看呗"
+                tipLabel.textColor = XFConstants.Color.darkGray
+            case 3:
+                tipLabel.text = "没有想吃的也可以去右边调戏客服嘛"
+                tipLabel.textColor = XFConstants.Color.purpleyGrey
+            case 4:
+                tipLabel.text = "不想买就算啦，表点来点去好吧..."
+                tipLabel.textColor = XFConstants.Color.coolGrey
+            default:
+                break
             }
         }
     }
     
     
     lazy var tipImageView: UIImageView = {
-        let imageView = UIImageView.init(image: UIImage.imageWithNamed("xfruits-farmer-2"))
+        let imageView = UIImageView.init(image: UIImage.imageWithNamed("xfruits-farmer-3"))
         return imageView
     }()
     

@@ -72,7 +72,7 @@ class XFCheckoutViewController: XFBaseSubViewController {
         XFOrderSerivice.orderCommit(params: params) { (data) in
             let result: XFOrderCommit = data as! XFOrderCommit
             if let orderId = result.orderId,
-                let expiration = result.orderExpiration, orderId.characters.count > 0 ,expiration > 0 {
+                let expiration = result.orderExpiration, orderId.count > 0 ,expiration > 0 {
                 // 重置果篮已选择的商品
                 if XFCartUtils.sharedInstance.clearSelected(carts: selectedData) {
                     let payCenter = XFChoosePayWayViewController()
@@ -85,7 +85,7 @@ class XFCheckoutViewController: XFBaseSubViewController {
     }
     
     @objc fileprivate func onAddressChange() {
-        let addressList = XFUserAddressesMangageViewController()
+        let addressList = XFAddressListViewController()
         weak var weakSelf = self
         addressList.onSelectedAddress = {(address) in
             weakSelf?.confirmAddress = address
@@ -102,8 +102,13 @@ class XFCheckoutViewController: XFBaseSubViewController {
             make.bottom.equalTo(checkoutBar.snp.top)
         }
         checkoutBar.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(self.view)
+            make.left.right.equalTo(self.view)
             make.height.equalTo(44)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.bottom.equalTo(self.view)
+            }
         }
         
         contentView.addSubview(checkoutGoodsListView)

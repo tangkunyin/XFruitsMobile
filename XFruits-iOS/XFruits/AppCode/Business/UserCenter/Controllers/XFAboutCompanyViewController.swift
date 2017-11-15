@@ -13,17 +13,17 @@ class XFAboutCompanyViewController: XFBaseSubViewController {
 
     lazy var aboutImageView: UIImageView = {
         let imageView = UIImageView.init(image: UIImage.imageWithNamed("about_us_static"))
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "关于我们"
-
+        view.backgroundColor = UIColor.white
         view.addSubview(aboutImageView)
         aboutImageView.snp.makeConstraints { (make) in
-            make.center.size.equalTo(view)
+            make.left.right.bottom.top.equalTo(view)
         }
     }
 

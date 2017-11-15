@@ -22,6 +22,7 @@ class XFSettingsViewController: XFBaseSubViewController {
             ],
             [
                 ["key":"点个赞","value":XFConstants.storeUrl],
+                ["key":"关于我们","value":"about"]
             ]
         ]
     }()
@@ -84,6 +85,8 @@ extension XFSettingsViewController: UITableViewDelegate, UITableViewDataSource {
             UIApplication.shared.openURL(URL(string:XFConstants.storeUrl)!)
         } else if "清理缓存" == key {
             showSuccess("拾个农夫兴奋的提示您：清理完成")
+        } else if "关于我们" == key {
+            navigationController?.pushViewController(XFAboutCompanyViewController(), animated: true)
         }
     }
     

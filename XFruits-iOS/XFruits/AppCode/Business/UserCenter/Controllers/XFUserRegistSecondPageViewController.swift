@@ -87,7 +87,7 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
         // 品牌logo
         view.addSubview(brandImageView)
         brandImageView.snp.makeConstraints({ (make) in
-            make.top.equalTo(view).offset(80)
+            make.top.equalTo(view).offset(60)
             make.width.equalTo(92)
             make.height.equalTo(100)
             make.centerX.equalTo(view)
@@ -137,7 +137,7 @@ class XFUserRegistSecondPageViewController: XFBaseSubViewController {
             return
         }
         
-        guard password.characters.count >= 6 else {
+        guard password.count >= 6 else {
             showError("密码不得小于6位")
             return
         }

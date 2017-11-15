@@ -81,3 +81,12 @@ func xfAttributes(_ fontSize: CGFloat = 14, fontColor: UIColor? = XFConstants.Co
     let attr = [NSAttributedStringKey.font:pfnFontWithSize(fontSize), NSAttributedStringKey.foregroundColor:fontColor]
     return attr as Any as! Dictionary<NSAttributedStringKey, Any>
 }
+
+//: 适配iOS11，开启大标题模式
+func bigTitle(forNavBar nav: UINavigationController?, flag: Bool = true) {
+    if #available(iOS 11.0, *) {
+        nav?.navigationBar.prefersLargeTitles = flag
+        nav?.navigationItem.largeTitleDisplayMode = .automatic
+        nav?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor:XFConstants.Color.white]
+    }
+}
