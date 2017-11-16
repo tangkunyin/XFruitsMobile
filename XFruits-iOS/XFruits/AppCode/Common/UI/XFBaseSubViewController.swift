@@ -46,6 +46,7 @@ class XFBaseSubViewController: XFBaseViewController {
         if let size = btn.image(for: .normal)?.size {
             btn.frame = CGRect.init(origin: CGPoint.zero, size: size)
         }
+//        btn.frame = CGRect.init(origin: CGPoint.zero, size: CGSize(width:20,height:20))
         return btn
     }()
 

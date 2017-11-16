@@ -103,14 +103,15 @@ class XFIndexViewController: XFBaseViewController {
     }
     
     fileprivate func handleItemClick(withData data: XFNewsContent) {
+       
         switch data.type {
-        case XFIndexConentType.html.rawValue,
-             XFIndexConentType.advertising.rawValue:
-            jumpToWebview(url: data.data)
-        case XFIndexConentType.product.rawValue:
-            jumpToProductDetail(pId: data.data)
-        default:
-            break
+            case XFIndexConentType.html.rawValue,
+                 XFIndexConentType.advertising.rawValue:
+                jumpToWebview(url: data.data,title: data.title)
+            case XFIndexConentType.product.rawValue:
+                jumpToProductDetail(pId: data.data)
+            default:
+                break
         }
     }
     

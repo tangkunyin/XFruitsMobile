@@ -34,7 +34,7 @@ class XFCategoryViewController: XFBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBarItem()
+//        setNavigationBarItem()
         makeViewConstrains()
         //加载数据
         loadCategories()
@@ -116,6 +116,7 @@ class XFCategoryViewController: XFBaseViewController {
         listView.delegate = self
         listView.dataSource = self
         listView.collectionViewLayout = layout
+        
         listView.backgroundColor = UIColor.white
         listView.register(XFCategoryCell.self, forCellWithReuseIdentifier: XFCellViewReuseIdentifier)
         // 下拉刷新

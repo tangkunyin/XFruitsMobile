@@ -20,7 +20,7 @@ class XFNavigationController: UINavigationController {
                                    NSAttributedStringKey.font:XFConstants.Font.pfn18]
     
         let barButtonItem = UIBarButtonItem.appearance()
-        barButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:XFConstants.Color.white,
+        barButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:XFConstants.Color.salmon,
                                               NSAttributedStringKey.font:XFConstants.Font.pfn18],
                                              for: UIControlState.normal)
     }()
