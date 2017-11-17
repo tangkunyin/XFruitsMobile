@@ -17,6 +17,7 @@ class XFCategoryViewController: XFBaseViewController {
     var currentPage: Int = 1
     
     var dataSource: Array<ProductItem> = []
+    var redLayers: Array<CALayer> = []
     
     var dataType: Int = 1001 {
         didSet {
@@ -149,6 +150,65 @@ class XFCategoryViewController: XFBaseViewController {
             }
         }
     }
+    //  把该端抽象出来 todo
+    func initCHLayerFromPoint (imageView:UIImageView,  startPoint:CGPoint,endPoint:CGPoint)   {
+        let chLayer  =    CALayer.init()
+        chLayer.frame = CGRect(x:startPoint.x,y:startPoint.y,width:40,height:40)
+        chLayer.contents = imageView.layer.contents
+        chLayer.cornerRadius = 15/2
+        
+        var rootVC: UIViewController = (UIApplication.shared.delegate?.window!!.rootViewController)!!
+        while rootVC.isKind(of: UINavigationController.self) {
+            rootVC = (rootVC as? UINavigationController)!.topViewController!
+        }
+        redLayers.append(chLayer)
+       rootVC.view.layer.addSublayer(chLayer)
+        
+        let path = CGMutablePath()
+        path.move(to: startPoint)
+        path.addQuadCurve(to: endPoint, control: CGPoint(x:endPoint.x,y:startPoint.y))
+        
+        let animation = CAKeyframeAnimation(keyPath: "position")
+        animation.path = path
+        animation.rotationMode = kCAAnimationRotateAuto
+        let expandAnimation = CABasicAnimation(keyPath: "transform.scale")
+        expandAnimation.duration = 0.5
+        expandAnimation.fromValue = 1
+        expandAnimation.toValue = 1.5
+        expandAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        
+        let narrowAnimation = CABasicAnimation(keyPath: "transform.scale")
+        narrowAnimation.beginTime = 0.5
+        narrowAnimation.fromValue = 1.5
+        narrowAnimation.duration = 1.5
+        narrowAnimation.toValue = 0.5
+        narrowAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        let groups:CAAnimationGroup = CAAnimationGroup()
+        groups.duration = 2
+        groups.delegate = self
+        groups.animations = [animation, expandAnimation, narrowAnimation]
+        groups.isRemovedOnCompletion = false
+        chLayer.add(groups, forKey: "groups")
+    }
+}
+
+extension XFCategoryViewController:CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool){
+        let tabView:UIView  = (self.tabBarController?.tabBar.subviews[3])!
+        let shakeAnimation = CABasicAnimation.init(keyPath: "transform.translation.y")
+        shakeAnimation.duration = 0.25
+        shakeAnimation.fromValue = NSNumber.init(value: -5)
+        shakeAnimation.toValue = NSNumber.init(value: 5)
+        shakeAnimation.autoreverses = true
+        tabView.layer.add(shakeAnimation, forKey: nil)
+        redLayers[0].removeFromSuperlayer()
+        redLayers.removeAll()
+//        CATransition *animation = [CATransition animation];
+//        animation.duration = 0.25f;
+//        _badgeLabel.text = [NSString stringWithFormat:@"%ld",_badgeNum];
+//        [_badgeLabel.layer addAnimation:animation forKey:nil];
+ 
+    }
 }
 
 extension XFCategoryViewController: UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
@@ -158,11 +218,20 @@ extension XFCategoryViewController: UICollectionViewDataSource,UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        weak var weakSelf = self
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: XFCellViewReuseIdentifier, for: indexPath)
         guard let cateCell:XFCategoryCell = cell as? XFCategoryCell  else {
             return cell
         }
         cateCell.dataSource = dataSource[indexPath.row]
+ 
+        cateCell.myClosure = { () -> Void in
+            let startPoint  =  weakSelf?.view.convert(cateCell.center, from: self.view)
+            let endPoint = CGPoint(x: XFConstants.UI.deviceWidth / 4 * 3 - 40 , y: XFConstants.UI.deviceHeight - 30)
+            weakSelf?.initCHLayerFromPoint(imageView:cateCell.thumbnail, startPoint: startPoint!, endPoint: endPoint)
+
+        }
         return cateCell;
     }
     

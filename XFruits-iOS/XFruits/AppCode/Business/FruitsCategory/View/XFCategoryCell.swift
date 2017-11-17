@@ -16,7 +16,8 @@ import MBProgressHUD
 class XFCategoryCell: UICollectionViewCell {
  
     var imgViewHeightConstraint: Constraint?
-    
+    var myClosure: (() -> Void)?
+
     var dataSource:ProductItem? {
         didSet {
             if let item = dataSource {
@@ -124,6 +125,9 @@ class XFCategoryCell: UICollectionViewCell {
             let result = XFCartUtils.sharedInstance.addItem(item: item)
             if result {
                 MBProgressHUD.showSuccess("成功添加到果篮")
+                if let myClosure = myClosure {
+                    myClosure()
+                }
             } else {
             
                 MBProgressHUD.showError("添加到果篮失败，请稍后尝试~")
