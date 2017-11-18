@@ -16,8 +16,6 @@ import MBProgressHUD
 class XFCategoryCell: UICollectionViewCell {
  
     var imgViewHeightConstraint: Constraint?
-    var myClosure: (() -> Void)?
-
     var dataSource:ProductItem? {
         didSet {
             if let item = dataSource {
@@ -121,15 +119,25 @@ class XFCategoryCell: UICollectionViewCell {
     }
     
     @objc fileprivate func addToCartFromCategoryItem(){
+        weak var weakSelf = self
+
         if let item: ProductItem = dataSource {
             let result = XFCartUtils.sharedInstance.addItem(item: item)
             if result {
                 MBProgressHUD.showSuccess("成功添加到果篮")
-                if let myClosure = myClosure {
-                    myClosure()
-                }
+                let animationToolUtil = XFAddToCartAnimationTool.shared
+                
+                let startPoint  = CGPoint(x:self.frame.origin.x + self.frame.size.width/2,y:self.frame.origin.y + self.frame.size.height)  // 这里我也不知道为啥不除以2啊
+                
+                let endPoint = CGPoint(x: XFConstants.UI.deviceWidth / 4 * 3 - 40 , y: XFConstants.UI.deviceHeight - 30)
+                animationToolUtil.startAnimation(view: (weakSelf?.thumbnail)!, startPoint: startPoint, endPoint: endPoint, andFinishBlock: { (finished) in
+                    if finished == true{
+                        let tabbarVC:XFHomeViewController = UIApplication.shared.keyWindow?.rootViewController as! XFHomeViewController
+                        let tabView = tabbarVC.tabBar.subviews[3]
+                        animationToolUtil.shakeAnimation(shakeView: tabView)
+                    }
+                })
             } else {
-            
                 MBProgressHUD.showError("添加到果篮失败，请稍后尝试~")
             }
         }
