@@ -118,6 +118,17 @@
 		86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */; };
 		86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */; };
 		86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F51EC86C34009AB47D /* UserCenterAvatarCell.swift */; };
+		86F894B51FC1D2C500AE1C93 /* libQYSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F8949D1FC1D2C500AE1C93 /* libQYSDK.a */; };
+		86F894B61FC1D2C500AE1C93 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F8949E1FC1D2C500AE1C93 /* libcrypto.a */; };
+		86F894B71FC1D2C500AE1C93 /* libevent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894B31FC1D2C500AE1C93 /* libevent.a */; };
+		86F894B81FC1D2C500AE1C93 /* QYResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 86F894B41FC1D2C500AE1C93 /* QYResource.bundle */; };
+		86F894BA1FC1D35800AE1C93 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894B91FC1D34500AE1C93 /* CoreText.framework */; };
+		86F894BC1FC1D36D00AE1C93 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894BB1FC1D36200AE1C93 /* MobileCoreServices.framework */; };
+		86F894BE1FC1D38500AE1C93 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894BD1FC1D37E00AE1C93 /* AVFoundation.framework */; };
+		86F894C01FC1D3AE00AE1C93 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894BF1FC1D3A800AE1C93 /* CoreMedia.framework */; };
+		86F894C21FC1D3C800AE1C93 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894C11FC1D3C300AE1C93 /* AudioToolbox.framework */; };
+		86F894C41FC1D41400AE1C93 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894C31FC1D41400AE1C93 /* libxml2.tbd */; };
+		86F894C61FC1D47A00AE1C93 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894C51FC1D47A00AE1C93 /* libstdc++.6.0.9.tbd */; };
 		86FFA4121F487A5600FCC809 /* XFOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4111F487A5600FCC809 /* XFOrder.swift */; };
 		86FFA4141F487DF800FCC809 /* XFExpress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4131F487DF800FCC809 /* XFExpress.swift */; };
 		86FFA4161F487F4100FCC809 /* XFNewsInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */; };
@@ -271,6 +282,35 @@
 		86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourBillCollectionViewCell.swift; sourceTree = "<group>"; };
 		86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBillTableViewCell.swift; sourceTree = "<group>"; };
 		86EC80F51EC86C34009AB47D /* UserCenterAvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterAvatarCell.swift; sourceTree = "<group>"; };
+		86F8949D1FC1D2C500AE1C93 /* libQYSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libQYSDK.a; sourceTree = "<group>"; };
+		86F8949E1FC1D2C500AE1C93 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		86F894A01FC1D2C500AE1C93 /* QYPushMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPushMessage.h; sourceTree = "<group>"; };
+		86F894A11FC1D2C500AE1C93 /* QYSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYSource.h; sourceTree = "<group>"; };
+		86F894A21FC1D2C500AE1C93 /* QYCustomUIConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYCustomUIConfig.h; sourceTree = "<group>"; };
+		86F894A41FC1D2C500AE1C93 /* QYPOPMessageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPOPMessageInfo.h; sourceTree = "<group>"; };
+		86F894A51FC1D2C500AE1C93 /* QYPOPCustomUIConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPOPCustomUIConfig.h; sourceTree = "<group>"; };
+		86F894A61FC1D2C500AE1C93 /* QYPOPSessionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPOPSessionInfo.h; sourceTree = "<group>"; };
+		86F894A71FC1D2C500AE1C93 /* QYPOPConversationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPOPConversationManager.h; sourceTree = "<group>"; };
+		86F894A81FC1D2C500AE1C93 /* QYPOPSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPOPSessionViewController.h; sourceTree = "<group>"; };
+		86F894A91FC1D2C500AE1C93 /* QYPOPSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPOPSDK.h; sourceTree = "<group>"; };
+		86F894AA1FC1D2C500AE1C93 /* QYSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYSessionViewController.h; sourceTree = "<group>"; };
+		86F894AB1FC1D2C500AE1C93 /* QYSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYSDK.h; sourceTree = "<group>"; };
+		86F894AC1FC1D2C500AE1C93 /* QYCustomActionConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYCustomActionConfig.h; sourceTree = "<group>"; };
+		86F894AD1FC1D2C500AE1C93 /* QYMessageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYMessageInfo.h; sourceTree = "<group>"; };
+		86F894AE1FC1D2C500AE1C93 /* QYUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYUserInfo.h; sourceTree = "<group>"; };
+		86F894AF1FC1D2C500AE1C93 /* QYCommodityInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYCommodityInfo.h; sourceTree = "<group>"; };
+		86F894B01FC1D2C500AE1C93 /* QYHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYHeaders.h; sourceTree = "<group>"; };
+		86F894B11FC1D2C500AE1C93 /* QYConversationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYConversationManager.h; sourceTree = "<group>"; };
+		86F894B21FC1D2C500AE1C93 /* QYSessionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYSessionInfo.h; sourceTree = "<group>"; };
+		86F894B31FC1D2C500AE1C93 /* libevent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libevent.a; sourceTree = "<group>"; };
+		86F894B41FC1D2C500AE1C93 /* QYResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = QYResource.bundle; sourceTree = "<group>"; };
+		86F894B91FC1D34500AE1C93 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		86F894BB1FC1D36200AE1C93 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		86F894BD1FC1D37E00AE1C93 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		86F894BF1FC1D3A800AE1C93 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		86F894C11FC1D3C300AE1C93 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		86F894C31FC1D41400AE1C93 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		86F894C51FC1D47A00AE1C93 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		86FFA4111F487A5600FCC809 /* XFOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrder.swift; sourceTree = "<group>"; };
 		86FFA4131F487DF800FCC809 /* XFExpress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFExpress.swift; sourceTree = "<group>"; };
 		86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFNewsInfoService.swift; sourceTree = "<group>"; };
@@ -296,26 +336,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86F894C21FC1D3C800AE1C93 /* AudioToolbox.framework in Frameworks */,
+				86F894C01FC1D3AE00AE1C93 /* CoreMedia.framework in Frameworks */,
+				8618BA3B1F4027FA00AC9436 /* CoreTelephony.framework in Frameworks */,
+				86F894BE1FC1D38500AE1C93 /* AVFoundation.framework in Frameworks */,
+				86F894BC1FC1D36D00AE1C93 /* MobileCoreServices.framework in Frameworks */,
+				86F894BA1FC1D35800AE1C93 /* CoreText.framework in Frameworks */,
 				860A32AB1F860E2500301883 /* ESPullToRefresh.framework in Frameworks */,
 				8618BA441F40366E00AC9436 /* CoreMotion.framework in Frameworks */,
 				8618BA421F4035D700AC9436 /* AlipaySDK.framework in Frameworks */,
 				8618BA401F402B9800AC9436 /* libWeChatSDK.a in Frameworks */,
 				8618BA3C1F40280500AC9436 /* libc++.tbd in Frameworks */,
-				8618BA3B1F4027FA00AC9436 /* CoreTelephony.framework in Frameworks */,
 				86A45C6C1ED1187D00772D13 /* libz.tbd in Frameworks */,
 				8618BA381F4027B000AC9436 /* SystemConfiguration.framework in Frameworks */,
+				86F894C41FC1D41400AE1C93 /* libxml2.tbd in Frameworks */,
 				860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */,
 				8690FF321ED538E90051A16D /* SQLite.framework in Frameworks */,
 				86A45C6A1ED1186A00772D13 /* PhotosUI.framework in Frameworks */,
+				86F894B61FC1D2C500AE1C93 /* libcrypto.a in Frameworks */,
 				86A45C681ED1186100772D13 /* Photos.framework in Frameworks */,
+				86F894C61FC1D47A00AE1C93 /* libstdc++.6.0.9.tbd in Frameworks */,
 				86A45C661ED1184E00772D13 /* AssetsLibrary.framework in Frameworks */,
 				86A45C621ED110B500772D13 /* Security.framework in Frameworks */,
 				86A45C601ED110AB00772D13 /* CFNetwork.framework in Frameworks */,
+				86F894B71FC1D2C500AE1C93 /* libevent.a in Frameworks */,
 				86A45C5A1ED1109100772D13 /* libstdc++.tbd in Frameworks */,
 				86A45C581ED1108500772D13 /* libicucore.tbd in Frameworks */,
 				86A45C561ED1106D00772D13 /* libsqlite3.tbd in Frameworks */,
 				86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */,
 				86CB2FEF1EAB495A009972A8 /* Kingfisher.framework in Frameworks */,
+				86F894B51FC1D2C500AE1C93 /* libQYSDK.a in Frameworks */,
 				86CB2FF01EAB495A009972A8 /* MBProgressHUD.framework in Frameworks */,
 				86CB2FF21EAB495A009972A8 /* SnapKit.framework in Frameworks */,
 				86CB2FF31EAB495A009972A8 /* SwiftyJSON.framework in Frameworks */,
@@ -543,6 +593,7 @@
 		8666D5381F2326600094FE33 /* ThirdLibs */ = {
 			isa = PBXGroup;
 			children = (
+				86F8949C1FC1D2C500AE1C93 /* QiYuSDK3.12.0 */,
 				8618BA3D1F4029F000AC9436 /* AlipaySDK15.4.1 */,
 				8618BA311F40274300AC9436 /* WeChatSDK1.7.9 */,
 			);
@@ -614,6 +665,13 @@
 		86CB2FE51EAB4959009972A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				86F894C51FC1D47A00AE1C93 /* libstdc++.6.0.9.tbd */,
+				86F894C31FC1D41400AE1C93 /* libxml2.tbd */,
+				86F894C11FC1D3C300AE1C93 /* AudioToolbox.framework */,
+				86F894BF1FC1D3A800AE1C93 /* CoreMedia.framework */,
+				86F894BD1FC1D37E00AE1C93 /* AVFoundation.framework */,
+				86F894BB1FC1D36200AE1C93 /* MobileCoreServices.framework */,
+				86F894B91FC1D34500AE1C93 /* CoreText.framework */,
 				860A32AA1F860E2500301883 /* ESPullToRefresh.framework */,
 				8618BA431F40366800AC9436 /* CoreMotion.framework */,
 				8618BA3A1F4027ED00AC9436 /* CoreTelephony.framework */,
@@ -668,6 +726,51 @@
 				86A4DB571FB750200015EF92 /* XFAddressItem.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		86F8949C1FC1D2C500AE1C93 /* QiYuSDK3.12.0 */ = {
+			isa = PBXGroup;
+			children = (
+				86F8949D1FC1D2C500AE1C93 /* libQYSDK.a */,
+				86F8949E1FC1D2C500AE1C93 /* libcrypto.a */,
+				86F8949F1FC1D2C500AE1C93 /* ExportHeaders */,
+				86F894B31FC1D2C500AE1C93 /* libevent.a */,
+				86F894B41FC1D2C500AE1C93 /* QYResource.bundle */,
+			);
+			path = QiYuSDK3.12.0;
+			sourceTree = "<group>";
+		};
+		86F8949F1FC1D2C500AE1C93 /* ExportHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				86F894A01FC1D2C500AE1C93 /* QYPushMessage.h */,
+				86F894A11FC1D2C500AE1C93 /* QYSource.h */,
+				86F894A21FC1D2C500AE1C93 /* QYCustomUIConfig.h */,
+				86F894A31FC1D2C500AE1C93 /* POP */,
+				86F894AA1FC1D2C500AE1C93 /* QYSessionViewController.h */,
+				86F894AB1FC1D2C500AE1C93 /* QYSDK.h */,
+				86F894AC1FC1D2C500AE1C93 /* QYCustomActionConfig.h */,
+				86F894AD1FC1D2C500AE1C93 /* QYMessageInfo.h */,
+				86F894AE1FC1D2C500AE1C93 /* QYUserInfo.h */,
+				86F894AF1FC1D2C500AE1C93 /* QYCommodityInfo.h */,
+				86F894B01FC1D2C500AE1C93 /* QYHeaders.h */,
+				86F894B11FC1D2C500AE1C93 /* QYConversationManager.h */,
+				86F894B21FC1D2C500AE1C93 /* QYSessionInfo.h */,
+			);
+			path = ExportHeaders;
+			sourceTree = "<group>";
+		};
+		86F894A31FC1D2C500AE1C93 /* POP */ = {
+			isa = PBXGroup;
+			children = (
+				86F894A41FC1D2C500AE1C93 /* QYPOPMessageInfo.h */,
+				86F894A51FC1D2C500AE1C93 /* QYPOPCustomUIConfig.h */,
+				86F894A61FC1D2C500AE1C93 /* QYPOPSessionInfo.h */,
+				86F894A71FC1D2C500AE1C93 /* QYPOPConversationManager.h */,
+				86F894A81FC1D2C500AE1C93 /* QYPOPSessionViewController.h */,
+				86F894A91FC1D2C500AE1C93 /* QYPOPSDK.h */,
+			);
+			path = POP;
 			sourceTree = "<group>";
 		};
 		86FFA41C1F48981F00FCC809 /* Controllers */ = {
@@ -773,6 +876,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86BF01891FBAD02F006C66E2 /* Assets.xcassets in Resources */,
+				86F894B81FC1D2C500AE1C93 /* QYResource.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1048,6 +1152,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/WeChatSDK1.7.9",
 					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/AlipaySDK15.4.1",
+					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/QiYuSDK3.12.0",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
@@ -1088,6 +1193,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/WeChatSDK1.7.9",
 					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/AlipaySDK15.4.1",
+					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/QiYuSDK3.12.0",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
