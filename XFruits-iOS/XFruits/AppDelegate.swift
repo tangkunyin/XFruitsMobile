@@ -39,8 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        
-        
+        QYSDK.shared().logout {
+            dPrint("客服退出成功")
+        }
     }
     
     fileprivate func handleShortCutAction(withOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) ->Bool {
@@ -83,7 +84,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: WXApiDelegate {
 
-    func initExternalSDK(){ 
+    func initExternalSDK() {
+        // 注册网易七鱼客服
+        QYSDK.shared().registerAppId(XFConstants.SDK.QYKF.appKey, appName: XFConstants.SDK.QYKF.appName)
+        
         // 注册微信
         WXApi.registerApp(XFConstants.SDK.Wechat.appId)
     }

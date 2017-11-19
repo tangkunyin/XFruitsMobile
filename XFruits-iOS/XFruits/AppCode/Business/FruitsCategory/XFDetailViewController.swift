@@ -59,7 +59,7 @@ class XFDetailViewController: XFBaseSubViewController {
         view.actionHandler = {(type:Int) -> Void in
             switch type {
             case 0:
-                makePhoneCall()
+                weakSelf?.createChatViewController()
             case 1:
                 weakSelf?.showSuccess("已成功加入收藏")
             case 2:
@@ -72,6 +72,17 @@ class XFDetailViewController: XFBaseSubViewController {
         }
         return view
     }()
+    
+    fileprivate func createChatViewController () {
+        let source = QYSource()
+        source.title = "吃瓜观众"
+        source.urlString = "https://www.10fruits.cn"
+        let sessionController = QYSDK.shared().sessionViewController()
+        sessionController?.sessionTitle = "拾姐姐"
+        sessionController?.source = source
+        sessionController?.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(sessionController!, animated: true)
+    }
     
     fileprivate func addToShopCart(checkoutNow: Bool) {
         if let detailData: ProductDetail = _detailData {

@@ -17,6 +17,9 @@
 // alipay sdk
 #import <AlipaySDK/AlipaySDK.h>
 
+// neteasy sdk
+#import "QYSDK.h"
+
 
 #endif /* XFruits_Bridging_Header_h */
 
