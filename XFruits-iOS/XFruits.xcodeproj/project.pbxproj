@@ -15,6 +15,8 @@
 		165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */; };
 		165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */; };
 		16582DC31EE4F8D400A58846 /* XFEditMyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */; };
+		1660E8A81FC2B819008F5669 /* XLVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1660E8A21FC2B819008F5669 /* XLVideoPlayer.m */; };
+		1660E8A91FC2B819008F5669 /* XLSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1660E8A51FC2B819008F5669 /* XLSlider.m */; };
 		16701C121F6EB431007E2CEA /* XFExpandImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16701C111F6EB431007E2CEA /* XFExpandImage.swift */; };
 		169FAF8F1F6A5BE800CB358C /* XFUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169FAF8E1F6A5BE800CB358C /* XFUserInfoView.swift */; };
 		16C9FD9A1F6C1FEA00A138E6 /* UIAlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FD991F6C1FEA00A138E6 /* UIAlertExtension.swift */; };
@@ -172,6 +174,10 @@
 		165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFTPayModeableViewCell.swift; sourceTree = "<group>"; };
 		165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFChoosePayWayViewController.swift; sourceTree = "<group>"; };
 		16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEditMyAddressView.swift; sourceTree = "<group>"; };
+		1660E8A21FC2B819008F5669 /* XLVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLVideoPlayer.m; sourceTree = "<group>"; };
+		1660E8A41FC2B819008F5669 /* XLSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSlider.h; sourceTree = "<group>"; };
+		1660E8A51FC2B819008F5669 /* XLSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSlider.m; sourceTree = "<group>"; };
+		1660E8A71FC2B819008F5669 /* XLVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLVideoPlayer.h; sourceTree = "<group>"; };
 		16701C111F6EB431007E2CEA /* XFExpandImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFExpandImage.swift; sourceTree = "<group>"; };
 		169FAF8E1F6A5BE800CB358C /* XFUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserInfoView.swift; sourceTree = "<group>"; };
 		16C9FD991F6C1FEA00A138E6 /* UIAlertExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertExtension.swift; sourceTree = "<group>"; };
@@ -377,6 +383,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1660E8A11FC2B819008F5669 /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				1660E8A21FC2B819008F5669 /* XLVideoPlayer.m */,
+				1660E8A31FC2B819008F5669 /* Slider */,
+				1660E8A71FC2B819008F5669 /* XLVideoPlayer.h */,
+			);
+			path = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		1660E8A31FC2B819008F5669 /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				1660E8A41FC2B819008F5669 /* XLSlider.h */,
+				1660E8A51FC2B819008F5669 /* XLSlider.m */,
+			);
+			path = Slider;
+			sourceTree = "<group>";
+		};
 		8618BA311F40274300AC9436 /* WeChatSDK1.7.9 */ = {
 			isa = PBXGroup;
 			children = (
@@ -595,6 +620,7 @@
 		8666D5381F2326600094FE33 /* ThirdLibs */ = {
 			isa = PBXGroup;
 			children = (
+				1660E8A11FC2B819008F5669 /* VideoPlayer */,
 				86F8949C1FC1D2C500AE1C93 /* QiYuSDK3.12.0 */,
 				8618BA3D1F4029F000AC9436 /* AlipaySDK15.4.1 */,
 				8618BA311F40274300AC9436 /* WeChatSDK1.7.9 */,
@@ -849,7 +875,6 @@
 				TargetAttributes = {
 					865F4F421E9A173E0059502C = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 426U84EDEE;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -940,6 +965,7 @@
 				8690FEE31ED179560051A16D /* XFAllCategoryListViewController.swift in Sources */,
 				86E8DF811EDC0EAB000A489F /* XFCommentItemView.swift in Sources */,
 				86ADDCD91F2B64CF00881CFA /* XFCheckoutAddress.swift in Sources */,
+				1660E8A81FC2B819008F5669 /* XLVideoPlayer.m in Sources */,
 				86ADDCDB1F2B656700881CFA /* XFCheckoutInfo.swift in Sources */,
 				86FFA4321F494A4A00FCC809 /* XFOrderListItem.swift in Sources */,
 				86A45C721ED1209F00772D13 /* XFCommonUtils.swift in Sources */,
@@ -961,6 +987,7 @@
 				863983741F85E5E80035F0FD /* XFUserScoreViewController.swift in Sources */,
 				862672E51EFE47010062B52B /* XFMBProgressHUD.swift in Sources */,
 				860C9E561F7293BE00AF3CB7 /* XFCouponItemCellView.swift in Sources */,
+				1660E8A91FC2B819008F5669 /* XLSlider.m in Sources */,
 				8616F7EF1F654CB8007A4669 /* XFProductService.swift in Sources */,
 				86E695201ED6AA35004864A6 /* XFCartUtils.swift in Sources */,
 				86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */,
@@ -1142,7 +1169,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 426U84EDEE;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1183,7 +1210,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 426U84EDEE;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

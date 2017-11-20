@@ -19,7 +19,7 @@
 
 // neteasy sdk
 #import "QYSDK.h"
-
+#import "XLVideoPlayer.h"
 
 #endif /* XFruits_Bridging_Header_h */
 

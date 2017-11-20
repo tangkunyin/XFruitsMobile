@@ -29,6 +29,7 @@ class XFIndexViewController: XFBaseViewController {
             }
         }
     }
+    var player:XLVideoPlayer!
     
     var dataSource: Array<XFNewsContent> = [] {
         didSet {
@@ -48,6 +49,11 @@ class XFIndexViewController: XFBaseViewController {
             renderHomeIndexView()
         }
     
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        player?.destroy()
+        player = nil
     }
     
     fileprivate func renderHomeIndexView() {
@@ -153,7 +159,28 @@ class XFIndexViewController: XFBaseViewController {
         listView.register(XFIndexArticleViewCell.self, forCellReuseIdentifier: cellIdentifier)
         return listView
     }()
+    
+    @objc func showVideoPlayer(tapGesture:UITapGestureRecognizer)  {
+        player?.destroy()
+        player = nil
+        let tapView = tapGesture.view
+        let indexPath:IndexPath  = IndexPath.init(row: (tapView?.tag)! - 100, section: 0)  
+        
+        let cell:XFIndexArticleViewCell = articleListView.cellForRow(at: indexPath) as! XFIndexArticleViewCell
+        player = XLVideoPlayer.init()
+        player?.videoUrl = dataSource[indexPath.row].data  //"http://xfruits-mall.oss-cn-beijing.aliyuncs.com/video/xfruits_orchard.mp4"
+        player?.playerBindTableView(articleListView, currentIndexPath: indexPath)
+        player?.frame = CGRect(x:0,y:55,width:XFConstants.UI.deviceWidth,height:228)
+        
+        cell.contentView.addSubview(player!)
 
+        weak var weakSelf = self
+
+        player.completedPlayingBlock = {(player1) -> Void in
+            player1?.destroy()
+            weakSelf?.player = nil
+        }
+     }
 }
 
 extension XFIndexViewController: UITableViewDelegate, UITableViewDataSource {
@@ -166,6 +193,11 @@ extension XFIndexViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! XFIndexArticleViewCell
         cell.selectionStyle = .none
         cell.dataSource = dataSource[indexPath.row]
+
+        let tap = UITapGestureRecognizer.init(target: self, action:#selector(showVideoPlayer))
+        cell.coverImage.addGestureRecognizer(tap)
+        cell.coverImage.tag = 100 + indexPath.row
+
         return cell
     }
     
@@ -181,7 +213,7 @@ extension XFIndexViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        handleItemClick(withData: dataSource[indexPath.row])
+//        handleItemClick(withData: dataSource[indexPath.row])
     }
     
 }
