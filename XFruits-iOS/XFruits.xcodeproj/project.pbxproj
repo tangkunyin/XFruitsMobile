@@ -98,6 +98,7 @@
 		86ADDCDD1F2B7C5C00881CFA /* XFDescriptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCDC1F2B7C5C00881CFA /* XFDescriptionItem.swift */; };
 		86ADDCDF1F2DD7C100881CFA /* XFOrderConfirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCDE1F2DD7C100881CFA /* XFOrderConfirm.swift */; };
 		86ADDCE11F2DD88500881CFA /* XFCouponItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCE01F2DD88500881CFA /* XFCouponItem.swift */; };
+		86BA081C1FC29CB300AACC6E /* XFCardStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA081B1FC29CB300AACC6E /* XFCardStockViewController.swift */; };
 		86BB9A871F1D2B1E00B46EBC /* XFCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BB9A861F1D2B1E00B46EBC /* XFCheckoutViewController.swift */; };
 		86BF01891FBAD02F006C66E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 865F4F4D1E9A173E0059502C /* Assets.xcassets */; };
 		86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE61EAB495A009972A8 /* Alamofire.framework */; };
@@ -263,6 +264,7 @@
 		86ADDCDC1F2B7C5C00881CFA /* XFDescriptionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFDescriptionItem.swift; sourceTree = "<group>"; };
 		86ADDCDE1F2DD7C100881CFA /* XFOrderConfirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrderConfirm.swift; sourceTree = "<group>"; };
 		86ADDCE01F2DD88500881CFA /* XFCouponItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCouponItem.swift; sourceTree = "<group>"; };
+		86BA081B1FC29CB300AACC6E /* XFCardStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCardStockViewController.swift; sourceTree = "<group>"; };
 		86BB9A861F1D2B1E00B46EBC /* XFCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCheckoutViewController.swift; sourceTree = "<group>"; };
 		86CB2FE61EAB495A009972A8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		86CB2FE81EAB495A009972A8 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -791,6 +793,7 @@
 				863983731F85E5E80035F0FD /* XFUserScoreViewController.swift */,
 				86A4DB4F1FB715690015EF92 /* XFAddressListViewController.swift */,
 				86A4DB511FB7157E0015EF92 /* XFAddressManageViewController.swift */,
+				86BA081B1FC29CB300AACC6E /* XFCardStockViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -926,6 +929,7 @@
 				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
 				862672F71EFE497D0062B52B /* XFBaseSubViewController.swift in Sources */,
 				16701C121F6EB431007E2CEA /* XFExpandImage.swift in Sources */,
+				86BA081C1FC29CB300AACC6E /* XFCardStockViewController.swift in Sources */,
 				864CD7C01F80934A00E8B6FA /* XFSeperatorView.swift in Sources */,
 				860A32AD1F861E7100301883 /* XFRefreshAnimator.swift in Sources */,
 				86FFA42A1F4898FA00FCC809 /* XFOrderDetailViewController.swift in Sources */,

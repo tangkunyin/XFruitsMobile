@@ -17,8 +17,8 @@ class XFUserCenterViewController: XFBaseViewController {
         return [
             [
                 ["title":"地址管理", "icon":"myLocation"],
-//                ["title":"你的收藏", "icon":"myCollection"],
-//                ["title":"你的积分", "icon":"myScore"],
+                ["title":"你的收藏", "icon":"myCollection"],
+                ["title":"你的积分", "icon":"myScore"],
                 ["title":"卡券中心", "icon":"myVipCards"]
             ],
             [
@@ -26,8 +26,7 @@ class XFUserCenterViewController: XFBaseViewController {
                 ["title":"品牌故事", "icon":"myCompanyBrand"]
             ],
             [
-                ["title":"设置", "icon":"app-settings"],
-                 ["title":"关于我们", "icon":"aboutme"]
+                ["title":"设置", "icon":"app-settings"]
             ]
         ]
     }()
@@ -93,13 +92,11 @@ class XFUserCenterViewController: XFBaseViewController {
                     case 0:
                         subViewController = XFAddressListViewController()
                     case 1:
-                        subViewController = XFCouponListViewController()
-//                    case 1:
-//                        subViewController = XFUserCollectionViewController()
-//                    case 2:
-//                        subViewController = XFUserScoreViewController()
-//                    case 3:
-//                        subViewController = XFCouponListViewController()
+                        subViewController = XFUserCollectionViewController()
+                    case 1:
+                        subViewController = XFUserCollectionViewController()
+                    case 2:
+                        subViewController = XFCardStockViewController()
                     default:
                         return
                     }
@@ -121,9 +118,6 @@ class XFUserCenterViewController: XFBaseViewController {
         } else if section == 4 && row == 0 {
             // 设置
             subViewController = XFSettingsViewController()
-        }
-        else if section == 4 && row == 1{
-             navigationController?.pushViewController(XFAboutCompanyViewController(), animated: true)
         }
         if let subViewController = subViewController {
             navigationController?.pushViewController(subViewController, animated: true)
