@@ -19,7 +19,10 @@ class XFIndexArticleViewCell: UITableViewCell {
             if let data = dataSource {
                 titleLabel.text = data.title
                 detailLabel.text = data.desc
-                
+                print(data.type)
+                if data.type != 3{
+                    pauseImageView.alpha = 0
+                }
                 coverImage.kf.setImage(with: URL.init(string: data.cover),
                                        placeholder: UIImage.imageWithNamed("Loading-white"),
                                        options: [.transition(.flipFromBottom(1))])
@@ -40,6 +43,7 @@ class XFIndexArticleViewCell: UITableViewCell {
         cover.contentMode = .scaleAspectFill
         cover.layer.masksToBounds = true
         cover.isUserInteractionEnabled = true
+
         return cover
     }()
     
@@ -83,12 +87,7 @@ class XFIndexArticleViewCell: UITableViewCell {
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
             make.height.equalTo(228)
         }
-//        playerView.snp.makeConstraints { (make) in
-//            make.left.right.equalTo(titleLabel)
-//            make.top.equalTo(titleLabel.snp.bottom).offset(5)
-//            make.height.equalTo(228)
-//        }
-        
+ 
         detailLabel.snp.makeConstraints { (make) in
             make.left.right.equalTo(titleLabel)
             make.top.equalTo(coverImage.snp.bottom).offset(5)

@@ -116,6 +116,8 @@ class XFIndexViewController: XFBaseViewController {
                 jumpToWebview(url: data.data,title: data.title)
             case XFIndexConentType.product.rawValue:
                 jumpToProductDetail(pId: data.data)
+            case XFIndexConentType.video.rawValue:
+                break
             default:
                 break
         }
@@ -168,7 +170,8 @@ class XFIndexViewController: XFBaseViewController {
         
         let cell:XFIndexArticleViewCell = articleListView.cellForRow(at: indexPath) as! XFIndexArticleViewCell
         player = XLVideoPlayer.init()
-        player?.videoUrl = dataSource[indexPath.row].data  //"http://xfruits-mall.oss-cn-beijing.aliyuncs.com/video/xfruits_orchard.mp4"
+        
+        player?.videoUrl = dataSource[indexPath.row].data
         player?.playerBindTableView(articleListView, currentIndexPath: indexPath)
         player?.frame = CGRect(x:0,y:55,width:XFConstants.UI.deviceWidth,height:228)
         
@@ -193,11 +196,11 @@ extension XFIndexViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! XFIndexArticleViewCell
         cell.selectionStyle = .none
         cell.dataSource = dataSource[indexPath.row]
-
-        let tap = UITapGestureRecognizer.init(target: self, action:#selector(showVideoPlayer))
-        cell.coverImage.addGestureRecognizer(tap)
+        if cell.dataSource?.type == 3 {
+            let tap = UITapGestureRecognizer.init(target: self, action:#selector(showVideoPlayer))
+            cell.coverImage.addGestureRecognizer(tap)
+        }
         cell.coverImage.tag = 100 + indexPath.row
-
         return cell
     }
     
@@ -213,7 +216,7 @@ extension XFIndexViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        handleItemClick(withData: dataSource[indexPath.row])
+        handleItemClick(withData: dataSource[indexPath.row])
     }
     
 }
