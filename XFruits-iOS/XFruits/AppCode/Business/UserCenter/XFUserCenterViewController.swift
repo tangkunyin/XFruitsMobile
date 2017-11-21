@@ -18,7 +18,6 @@ class XFUserCenterViewController: XFBaseViewController {
             [
                 ["title":"地址管理", "icon":"myLocation"],
                 ["title":"你的收藏", "icon":"myCollection"],
-                ["title":"你的积分", "icon":"myScore"],
                 ["title":"卡券中心", "icon":"myVipCards"]
             ],
             [
@@ -91,8 +90,6 @@ class XFUserCenterViewController: XFBaseViewController {
                     switch row {
                     case 0:
                         subViewController = XFAddressListViewController()
-                    case 1:
-                        subViewController = XFUserCollectionViewController()
                     case 1:
                         subViewController = XFUserCollectionViewController()
                     case 2:
