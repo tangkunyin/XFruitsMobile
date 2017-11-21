@@ -74,6 +74,7 @@ class XFDetailViewController: XFBaseSubViewController {
     }()
     
     fileprivate func createChatViewController () {
+        QYSDK.shared().customUIConfig().rightBarButtonItemColorBlackOrWhite = false
         let source = QYSource()
         source.title = "吃瓜观众"
         source.urlString = "https://www.10fruits.cn"
