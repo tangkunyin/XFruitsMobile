@@ -52,8 +52,11 @@ class XFBaseSubViewController: XFBaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         bigTitle(forNavBar: navigationController, flag: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
 
     override func viewDidLoad() {

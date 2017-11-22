@@ -29,7 +29,10 @@ class XFCategoryViewController: XFBaseViewController {
     
     var dataSort: Int = 101 {
         didSet {
-            loadCategories()
+            weak var weakSelf = self
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                weakSelf?.loadCategories()
+            })
         }
     }
     
@@ -117,7 +120,6 @@ class XFCategoryViewController: XFBaseViewController {
         listView.delegate = self
         listView.dataSource = self
         listView.collectionViewLayout = layout
-        
         listView.backgroundColor = UIColor.white
         listView.register(XFCategoryCell.self, forCellWithReuseIdentifier: XFCellViewReuseIdentifier)
         // 下拉刷新
@@ -165,8 +167,6 @@ extension XFCategoryViewController: UICollectionViewDataSource,UICollectionViewD
             return cell
         }
         cateCell.dataSource = dataSource[indexPath.row]
-        print(indexPath.row)
-        
         return cateCell;
     }
     

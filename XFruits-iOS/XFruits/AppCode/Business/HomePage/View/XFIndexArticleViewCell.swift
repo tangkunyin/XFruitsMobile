@@ -19,7 +19,6 @@ class XFIndexArticleViewCell: UITableViewCell {
             if let data = dataSource {
                 titleLabel.text = data.title
                 detailLabel.text = data.desc
-                print(data.type)
                 if data.type != 3{
                     pauseImageView.alpha = 0
                 }

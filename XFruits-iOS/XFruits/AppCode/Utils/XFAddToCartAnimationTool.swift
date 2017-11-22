@@ -24,7 +24,6 @@ class XFAddToCartAnimationTool: NSObject,CAAnimationDelegate {
     //MARK: - 开始走的方法
     func startAnimation(view : UIView, startPoint:CGPoint, endPoint : CGPoint, andFinishBlock completion : @escaping animationFinishedBlock) -> Void{
         layer = CALayer()
-        print(startPoint.x)
         layer?.contents = view.layer.contents
         layer?.frame = CGRect(x:startPoint.x,y:startPoint.y,width:40,height:40)
 //        layer?.contentsGravity = kCAGravityResize

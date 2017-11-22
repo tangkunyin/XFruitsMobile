@@ -43,6 +43,13 @@ class XFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         bigTitle(forNavBar: navigationController)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let transition = CATransition()
+        transition.type = "rippleEffect"
+        transition.duration = 1.0
+        view.layer.add(transition, forKey: "")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

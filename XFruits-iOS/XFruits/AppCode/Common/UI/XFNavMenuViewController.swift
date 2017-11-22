@@ -34,7 +34,7 @@ class XFNavMenuViewController: XFBaseSubViewController {
     var girdGroupInfo: Array<Array<Dictionary<String, String>>> = [[]]
     
     lazy var menuListView: UITableView = {
-        let tableView = UITableView(frame: CGRect.zero, style: .plain)
+        let tableView = UITableView(frame: CGRect.zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.sectionFooterHeight = 8

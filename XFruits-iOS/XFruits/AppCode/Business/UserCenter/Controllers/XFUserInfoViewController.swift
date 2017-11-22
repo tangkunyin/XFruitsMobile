@@ -34,9 +34,7 @@ class XFUserInfoViewController: XFBaseSubViewController {
     lazy var userInfoView :XFUserInfoView = {
         let view = XFUserInfoView()
         weak var weakSelf = self
-        
         view.actionHandler = {(type:Int) -> Void in
-            print(type)
             weakSelf?.selectEvent(type:type)  // view上的点击操作，触发不同类型的操作。
         }
         return view
@@ -80,8 +78,7 @@ class XFUserInfoViewController: XFBaseSubViewController {
     fileprivate func getUserInfo() {
          weak var weakSelf = self
         XFUseInfoService.getUserInfo { (data) in
-            if  let data:XFUser = data as? XFUser{
-                print(data)
+            if  let data:XFUser = data as? XFUser {
                 XFUserGlobal.shared.signIn(user: data)
                 weakSelf?.userInfoView.setUserInfo(data: data)
             }
@@ -230,7 +227,6 @@ class XFUserInfoViewController: XFBaseSubViewController {
 
 extension XFUserInfoViewController : UIImagePickerControllerDelegate , UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
-        print(info)
         self.dismiss(animated: true , completion: nil)
     }
     
