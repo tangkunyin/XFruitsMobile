@@ -75,13 +75,17 @@ class XFDetailViewController: XFBaseSubViewController {
     
     fileprivate func createChatViewController () {
         QYSDK.shared().customUIConfig().rightBarButtonItemColorBlackOrWhite = false
+        QYSDK.shared().customUIConfig().showImageEntry = true
+        QYSDK.shared().customUIConfig().showEmoticonEntry = true
         let source = QYSource()
         source.title = "吃瓜观众"
         source.urlString = "https://www.10fruits.cn"
         let sessionController = QYSDK.shared().sessionViewController()
         sessionController?.sessionTitle = "拾姐姐"
         sessionController?.source = source
+         
         sessionController?.hidesBottomBarWhenPushed = true
+        sessionController?.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         navigationController?.pushViewController(sessionController!, animated: true)
     }
     
