@@ -7,6 +7,7 @@
 // 登录
 
 import UIKit
+import HandyJSON
 
 class XFUserLoginViewController: XFBaseSubViewController {
     
@@ -169,7 +170,11 @@ class XFUserLoginViewController: XFBaseSubViewController {
             let data = data as! XFUser
             XFUserGlobal.shared.signIn(user: data)
             if XFUserGlobal.shared.isLogin {
-                dPrint("Token is: \(XFUserGlobal.shared.token!)")
+                dPrint("这个用户登录成功: \(XFUserGlobal.shared.token!)")
+                let quser = QYUserInfo()
+                quser.userId = data.cellPhone
+                quser.data = data.toJSONString()
+                QYSDK.shared().setUserInfo(quser)
             }
             weakSelf?.backToParentController()
         }
