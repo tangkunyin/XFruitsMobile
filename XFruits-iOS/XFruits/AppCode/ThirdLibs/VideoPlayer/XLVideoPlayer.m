@@ -539,7 +539,7 @@ static CGFloat const playBtnSideLength = 60.0f;
     NSAssert(self.videoUrl != nil, @"必须先传入视频url！！！");
     
     if ([self.videoUrl rangeOfString:@"http"].location != NSNotFound) {
-        AVPlayerItem *playerItem=[AVPlayerItem playerItemWithURL:[NSURL URLWithString:[self.videoUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+        AVPlayerItem *playerItem=[AVPlayerItem playerItemWithURL:[NSURL URLWithString:[self.videoUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]];
         return playerItem;
     }else{
         AVAsset *movieAsset  = [[AVURLAsset alloc]initWithURL:[NSURL fileURLWithPath:self.videoUrl] options:nil];

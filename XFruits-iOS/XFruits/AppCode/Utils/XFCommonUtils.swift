@@ -67,3 +67,28 @@ func stringDateByTimestamp(timeStamp:Int, formatter:String? = "yyyy-MM-dd HH:mm:
 func makePhoneCall(tel: String = "01057266082")  {
     UIApplication.shared.openURL(URL(string: "tel://\(tel)")!)
 }
+
+//: 创建会话界面
+func createChatViewController(title: String) -> UIViewController? {
+    QYSDK.shared().customUIConfig().rightBarButtonItemColorBlackOrWhite = false
+    QYSDK.shared().customUIConfig().showImageEntry = true
+    QYSDK.shared().customUIConfig().showEmoticonEntry = true
+    let source = QYSource()
+    source.title = title
+    
+    // 如果用户登录
+    if XFUserGlobal.shared.isLogin,
+        let user: XFUser = XFUserGlobal.shared.currentUser {
+        let customInfo: String = "用户名：\(user.username)，手机：\(user.cellPhone)"
+        source.customInfo = customInfo
+    } else {
+        source.customInfo = "未登录的吃瓜观众"
+    }
+    
+    let sessionController = QYSDK.shared().sessionViewController()
+    sessionController?.sessionTitle = "很高兴为您笑劳"
+    sessionController?.source = source
+    sessionController?.hidesBottomBarWhenPushed = true
+    sessionController?.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+    return sessionController
+}

@@ -59,7 +59,7 @@ class XFDetailViewController: XFBaseSubViewController {
         view.actionHandler = {(type:Int) -> Void in
             switch type {
             case 0:
-                weakSelf?.createChatViewController()
+                weakSelf?.showChatViewController()
             case 1:
                 weakSelf?.showSuccess("已成功加入收藏")
             case 2:
@@ -73,20 +73,11 @@ class XFDetailViewController: XFBaseSubViewController {
         return view
     }()
     
-    fileprivate func createChatViewController () {
-        QYSDK.shared().customUIConfig().rightBarButtonItemColorBlackOrWhite = false
-        QYSDK.shared().customUIConfig().showImageEntry = true
-        QYSDK.shared().customUIConfig().showEmoticonEntry = true
-        let source = QYSource()
-        source.title = "吃瓜观众"
-        source.urlString = "https://www.10fruits.cn"
-        let sessionController = QYSDK.shared().sessionViewController()
-        sessionController?.sessionTitle = "拾姐姐"
-        sessionController?.source = source
-         
-        sessionController?.hidesBottomBarWhenPushed = true
-        sessionController?.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
-        navigationController?.pushViewController(sessionController!, animated: true)
+    fileprivate func showChatViewController () {
+        if let product = _detailData,
+            let sessionController = createChatViewController(title: "\(product.name) -- \(product.primePrice)") {
+            navigationController?.pushViewController(sessionController, animated: true)
+        }
     }
     
     fileprivate func addToShopCart(checkoutNow: Bool) {

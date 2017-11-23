@@ -21,13 +21,13 @@ struct XFUser: HandyJSON {
     var id:Int?
     
     // 用户名称
-    var username:String?
+    var username:String = ""
+    
+    // 手机号
+    var cellPhone:String = ""
     
     // 用户性别
     var sex:Int?
-    
-    // 手机号
-    var cellPhone:String?
     
     //用户头像URL
     var avatar:String?
