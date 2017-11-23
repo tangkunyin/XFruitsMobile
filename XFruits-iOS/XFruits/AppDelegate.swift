@@ -91,12 +91,16 @@ extension AppDelegate: WXApiDelegate, UNUserNotificationCenterDelegate {
             center.delegate = self
             center.requestAuthorization(options: [.sound, .alert, .badge], completionHandler: { (granted, error) in
                 if error == nil {
-                    UIApplication.shared.registerForRemoteNotifications()
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
                 }
             })
         } else {
-            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
-            UIApplication.shared.registerForRemoteNotifications()
+            DispatchQueue.main.async {
+                UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+                UIApplication.shared.registerForRemoteNotifications()
+            }
         }
     }
     
