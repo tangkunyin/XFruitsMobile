@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import UserNotifications
+import MBProgressHUD
 
 
 @UIApplicationMain
@@ -54,11 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     navigateTo(controller: XFOrderListViewController(), loginCheck: true)
                     break
                 case XFConstants.ShortCut.Express:
-                    navigateTo(controller: XFAboutCompanyViewController(), loginCheck: true)
+                    navigateTo(controller: XFOrderListViewController(), loginCheck: true)
                     break
                 case XFConstants.ShortCut.Personal:
-                    navigateTo(controller: XFWebViewController(withUrl: "https://www.10fruits.cn/customization/personal.html"),
-                               loginCheck: false)
+                    navigateTo(controller: XFSettingsViewController(), loginCheck: false)
                     break
                 case XFConstants.ShortCut.AboutUs:
                     window?.rootViewController?.present(XFAppGuideViewController(), animated: true, completion: nil)
@@ -82,11 +83,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
-extension AppDelegate: WXApiDelegate {
+extension AppDelegate: WXApiDelegate, UNUserNotificationCenterDelegate {
 
+    fileprivate func registerForRemoteNotification() {
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            center.delegate = self
+            center.requestAuthorization(options: [.sound, .alert, .badge], completionHandler: { (granted, error) in
+                if error == nil {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            })
+        } else {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+    }
+    
     func initExternalSDK() {
         // 注册网易七鱼客服
         QYSDK.shared().registerAppId(XFConstants.SDK.QYKF.appKey, appName: XFConstants.SDK.QYKF.appName)
+        
+        // 注册推送服务
+        registerForRemoteNotification()
         
         // 注册微信
         WXApi.registerApp(XFConstants.SDK.Wechat.appId)
@@ -102,7 +121,7 @@ extension AppDelegate: WXApiDelegate {
     fileprivate func creatShortcutItem(){
         let icon1:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "Express_3D_Icon")
         let icon2:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "OrderList_3D_Icon")
-//        let icon3:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "PersonalOrdering_3D_Icon")
+        let icon3:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "PersonalOrdering_3D_Icon")
         let icon4:UIApplicationShortcutIcon = UIApplicationShortcutIcon(templateImageName: "AboutUS_3D_icon")
         let express:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.Express,
                                                                           localizedTitle: "最新物流",
@@ -114,17 +133,17 @@ extension AppDelegate: WXApiDelegate {
                                                                             localizedSubtitle: nil,
                                                                             icon: icon2,
                                                                             userInfo: nil)
-//        let personalOrdering:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.Personal,
-//                                                                                   localizedTitle: "私人定制",
-//                                                                                   localizedSubtitle: nil,
-//                                                                                   icon: icon3,
-//                                                                                   userInfo: nil)
+        let personalOrdering:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.Personal,
+                                                                                   localizedTitle: "私人定制",
+                                                                                   localizedSubtitle: nil,
+                                                                                   icon: icon3,
+                                                                                   userInfo: nil)
         let aboutXFruits:UIApplicationShortcutItem = UIApplicationShortcutItem(type: XFConstants.ShortCut.AboutUs,
                                                                                    localizedTitle: "关于我们",
                                                                                    localizedSubtitle: nil,
                                                                                    icon: icon4,
                                                                                    userInfo: nil)
-        UIApplication.shared.shortcutItems = [express, orderList, /*personalOrdering,*/ aboutXFruits]
+        UIApplication.shared.shortcutItems = [express, orderList, personalOrdering, aboutXFruits]
     }
     
     
@@ -171,5 +190,21 @@ extension AppDelegate: WXApiDelegate {
         }
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        QYSDK.shared().updateApnsToken(deviceToken)
+    }
     
+    //Called when a notification is delivered to a foreground app.
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        MBProgressHUD.showMessage(notification.request.content.userInfo.description, completion: nil)
+        completionHandler([.alert, .badge, .sound])
+    }
+    
+    //Called to let your app know which action was selected by the user for a given notification.
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        MBProgressHUD.showMessage(response.notification.request.content.userInfo.description, completion: nil)
+        completionHandler()
+    }
 }
