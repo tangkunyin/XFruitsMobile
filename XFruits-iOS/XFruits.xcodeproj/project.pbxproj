@@ -10,6 +10,9 @@
 		1613F7891FBC1DE50033E42F /* XFAddToCartAnimationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1613F7881FBC1DE50033E42F /* XFAddToCartAnimationTool.swift */; };
 		16200CF01F1B169C0008C039 /* XFAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CEE1F1B169C0008C039 /* XFAddress.swift */; };
 		16200CF51F1B7F200008C039 /* XFAvailableAddressUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */; };
+		1632FE4B1FC6D73D00186A8F /* XFCollectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1632FE4A1FC6D73D00186A8F /* XFCollectionService.swift */; };
+		1632FE4D1FC6E27500186A8F /* XFCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1632FE4C1FC6E27500186A8F /* XFCollection.swift */; };
+		1632FE4F1FC7075B00186A8F /* XFCollectionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1632FE4E1FC7075B00186A8F /* XFCollectionListCell.swift */; };
 		1641E76C1F35F9D10093DADF /* XFCityChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */; };
 		1641E76E1F3609EC0093DADF /* XFAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1641E76D1F3609EC0093DADF /* XFAlert.swift */; };
 		165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */; };
@@ -170,6 +173,9 @@
 		1613F7881FBC1DE50033E42F /* XFAddToCartAnimationTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAddToCartAnimationTool.swift; sourceTree = "<group>"; };
 		16200CEE1F1B169C0008C039 /* XFAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAddress.swift; sourceTree = "<group>"; };
 		16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAvailableAddressUtils.swift; sourceTree = "<group>"; };
+		1632FE4A1FC6D73D00186A8F /* XFCollectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCollectionService.swift; sourceTree = "<group>"; };
+		1632FE4C1FC6E27500186A8F /* XFCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCollection.swift; sourceTree = "<group>"; };
+		1632FE4E1FC7075B00186A8F /* XFCollectionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCollectionListCell.swift; sourceTree = "<group>"; };
 		1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCityChooseView.swift; sourceTree = "<group>"; };
 		1641E76D1F3609EC0093DADF /* XFAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAlert.swift; sourceTree = "<group>"; };
 		165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFTPayModeableViewCell.swift; sourceTree = "<group>"; };
@@ -527,6 +533,7 @@
 		8644307E1E9A277B00D41BCC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1632FE4C1FC6E27500186A8F /* XFCollection.swift */,
 				16200CEE1F1B169C0008C039 /* XFAddress.swift */,
 				860A43041EE4178000798678 /* XFBaseResponse.swift */,
 				862672E61EFE47AE0062B52B /* XFUser.swift */,
@@ -609,6 +616,7 @@
 		8660D99D1F447A5E00D98C18 /* NetService */ = {
 			isa = PBXGroup;
 			children = (
+				1632FE4A1FC6D73D00186A8F /* XFCollectionService.swift */,
 				8660D99E1F447AF800D98C18 /* XFOrderSerivice.swift */,
 				862848521F483DD400CA52B6 /* XFAddressService.swift */,
 				86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */,
@@ -755,6 +763,7 @@
 				16701C111F6EB431007E2CEA /* XFExpandImage.swift */,
 				860C9E551F7293BE00AF3CB7 /* XFCouponItemCellView.swift */,
 				86A4DB571FB750200015EF92 /* XFAddressItem.swift */,
+				1632FE4E1FC7075B00186A8F /* XFCollectionListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -954,6 +963,7 @@
 				8690FEE11ED178AF0051A16D /* XFShopCartActionBar.swift in Sources */,
 				86ADDCDF1F2DD7C100881CFA /* XFOrderConfirm.swift in Sources */,
 				862672F11EFE48A20062B52B /* XFHomeViewController.swift in Sources */,
+				1632FE4F1FC7075B00186A8F /* XFCollectionListCell.swift in Sources */,
 				86E8DF7E1EDBCC90000A489F /* XFButtonExtension.swift in Sources */,
 				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
 				862672F71EFE497D0062B52B /* XFBaseSubViewController.swift in Sources */,
@@ -1009,6 +1019,7 @@
 				165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */,
 				86E8DF761EDAB0C9000A489F /* XFDetailCommentView.swift in Sources */,
 				862672DB1EFE44490062B52B /* XFUserCenterViewController.swift in Sources */,
+				1632FE4D1FC6E27500186A8F /* XFCollection.swift in Sources */,
 				169FAF8F1F6A5BE800CB358C /* XFUserInfoView.swift in Sources */,
 				8692FCD61F42029A00CD3F72 /* XFPayResultViewController.swift in Sources */,
 				86FFA4281F4898D400FCC809 /* XFOrderListViewController.swift in Sources */,
@@ -1020,6 +1031,7 @@
 				86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */,
 				860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */,
 				86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */,
+				1632FE4B1FC6D73D00186A8F /* XFCollectionService.swift in Sources */,
 				8618BA2C1F3F963300AC9436 /* XFPayTimerCountDownViewCell.swift in Sources */,
 				16200CF01F1B169C0008C039 /* XFAddress.swift in Sources */,
 				86D18BA51F1E5731007643C0 /* XFCheckoutGoodsCell.swift in Sources */,

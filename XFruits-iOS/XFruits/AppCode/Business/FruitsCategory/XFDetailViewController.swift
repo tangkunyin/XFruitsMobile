@@ -61,7 +61,7 @@ class XFDetailViewController: XFBaseSubViewController {
             case 0:
                 weakSelf?.showChatViewController()
             case 1:
-                weakSelf?.showSuccess("已成功加入收藏")
+                weakSelf?.addCollection()
             case 2:
                 weakSelf?.addToShopCart(checkoutNow: false)
             case 3:
@@ -72,6 +72,18 @@ class XFDetailViewController: XFBaseSubViewController {
         }
         return view
     }()
+    
+    
+    fileprivate func addCollection(){
+        weak var weakSelf = self
+
+        let param:[String:String]  =  ["prodId":prodId!]
+        XFCollectionService.addCollection(params:param ) { (success) in
+            if success as! Bool {
+                weakSelf?.showSuccess("已成功加入收藏")
+            }
+        }
+    }
     
     fileprivate func showChatViewController () {
         if let product = _detailData,
