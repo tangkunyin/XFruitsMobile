@@ -98,22 +98,20 @@ class XFIndexViewController: XFBaseViewController {
             switch pager.type {
             case XFIndexConentType.html.rawValue,
                  XFIndexConentType.advertising.rawValue:
-                jumpToWebview(url: loopImages[index].data)
+                jumpToWebview(url: loopImages[index].data, title: loopImages[index].title)
             case XFIndexConentType.product.rawValue:
                 jumpToProductDetail(pId: loopImages[index].data)
             default:
                 break
             }
-        }
-        
+        }   
     }
     
     fileprivate func handleItemClick(withData data: XFNewsContent) {
-       
         switch data.type {
             case XFIndexConentType.html.rawValue,
                  XFIndexConentType.advertising.rawValue:
-                jumpToWebview(url: data.data,title: data.title)
+                jumpToWebview(url: data.data, title: data.title)
             case XFIndexConentType.product.rawValue:
                 jumpToProductDetail(pId: data.data)
             case XFIndexConentType.video.rawValue:
