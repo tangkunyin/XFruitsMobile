@@ -22,7 +22,7 @@ class XFSettingsViewController: XFBaseSubViewController {
             ],
             [
                 ["key":"点个赞","value":XFConstants.storeUrl],
-                ["key":"私人订制","value":""],
+                ["key":"私人定制","value":""],
                 ["key":"关于我们","value":"about"]
             ]
         ]
@@ -86,8 +86,8 @@ extension XFSettingsViewController: UITableViewDelegate, UITableViewDataSource {
             UIApplication.shared.openURL(URL(string:XFConstants.storeUrl)!)
         } else if "清理缓存" == key {
             showSuccess("拾个农夫兴奋的提示您：清理完成")
-        } else if "私人订制" == key {
-            if let sessionViewController = createChatViewController(title: "个人中心#私人订制") {
+        } else if "私人定制" == key {
+            if let sessionViewController = createChatViewController(title: "个人中心#私人定制") {
                 navigationController?.pushViewController(sessionViewController, animated: true)
             } else {
                 showError("抱歉老板，客服暂时联系不上...")
