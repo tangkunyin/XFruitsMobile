@@ -833,11 +833,11 @@
 				8624CC3B1F4DE5D90008C8D3 /* XFAboutCompanyViewController.swift */,
 				16C9FD9D1F6D513400A138E6 /* XFChangePwdViewController.swift */,
 				869FBE991F70E5F50047A8B7 /* XFCouponListViewController.swift */,
-				863983711F85E5BE0035F0FD /* XFUserCollectionViewController.swift */,
 				863983731F85E5E80035F0FD /* XFUserScoreViewController.swift */,
 				86A4DB4F1FB715690015EF92 /* XFAddressListViewController.swift */,
 				86A4DB511FB7157E0015EF92 /* XFAddressManageViewController.swift */,
 				86BA081B1FC29CB300AACC6E /* XFCardStockViewController.swift */,
+				863983711F85E5BE0035F0FD /* XFUserCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -893,7 +893,7 @@
 				TargetAttributes = {
 					865F4F421E9A173E0059502C = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 426U84EDEE;
+						DevelopmentTeam = DN4X74J86T;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1198,7 +1198,7 @@
 				CODE_SIGN_ENTITLEMENTS = XFruits/XFruits.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 426U84EDEE;
+				DEVELOPMENT_TEAM = DN4X74J86T;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1240,7 +1240,7 @@
 				CODE_SIGN_ENTITLEMENTS = XFruits/XFruits.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 426U84EDEE;
+				DEVELOPMENT_TEAM = DN4X74J86T;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

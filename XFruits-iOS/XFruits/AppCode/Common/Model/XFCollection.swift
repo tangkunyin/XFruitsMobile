@@ -3,13 +3,13 @@ import Foundation
 import HandyJSON
 
 // 收藏列表返回模型
-struct XFCollectionListResult:HandyJSON {
-    var page: Int  = 0
-    var size: Int = 0
-    var XFCollectionContent:Array<XFCollectionContent>?
-    var totalElements: Int = 0
-    var totalPages: Int = 0
-}
+//struct XFCollectionListResult:HandyJSON {
+//    var page: Int  = 0
+//    var size: Int = 0
+//    var content:Array<XFCollectionContent>?
+//    var totalElements: Int = 0
+//    var totalPages: Int = 0
+//}
 
 struct XFCollectionContent: HandyJSON {
     var id: String = ""

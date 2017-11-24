@@ -77,7 +77,7 @@ class XFDetailViewController: XFBaseSubViewController {
     fileprivate func addCollection(){
         weak var weakSelf = self
 
-        let param:[String:String]  =  ["prodId":prodId!]
+        let param:[String:String]  =  ["productId":prodId!]
         XFCollectionService.addCollection(params:param ) { (success) in
             if success as! Bool {
                 weakSelf?.showSuccess("已成功加入收藏")

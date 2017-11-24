@@ -62,7 +62,8 @@ class XFUserCollectionViewController: XFBaseSubViewController {
         XFCollectionService.getCollectionList(params: params) { (respData) in
             weakSelf?.collectionListView.es.stopLoadingMore()
             weakSelf?.collectionListView.es.stopPullToRefresh()
-            if let collection = respData as? XFCollectionListResult, let collectionList = collection.XFCollectionContent, collectionList.count > 0 {
+                      
+            if let collection = respData as? XFCollection, let collectionList = collection.content, collectionList.count > 0 {
                 weakSelf?.currentPage += 1
                 if loadMore {
                     weakSelf?.collectionData += collectionList
@@ -80,6 +81,23 @@ class XFUserCollectionViewController: XFBaseSubViewController {
             }
         }
     }
+    
+    
+    // 删除收藏
+    private func deleteCollection(_ productId:String , _ indexPath:IndexPath) {
+        weak var weakSelf = self
+        XFCollectionService.deleteCollection(params: ["productId":productId]) { (success) in
+            print(success)
+            if success as! Bool   {
+                weakSelf?.showSuccess("已删除")
+                weakSelf?.collectionData.remove(at: indexPath.row)
+                 weakSelf?.collectionListView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                if weakSelf?.collectionData.count == 0 {
+                    weakSelf?.renderNullDataView()
+                }
+            }
+        }
+    }
 }
 
 extension XFUserCollectionViewController : UITableViewDelegate, UITableViewDataSource {
@@ -93,26 +111,20 @@ extension XFUserCollectionViewController : UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return collectionData.count
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if section == collectionData.count - 1 {
-//            return 0
-//        }
         return 10
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        if section == collectionData.count - 1 {
-//            return nil
-//        }
         return UIView()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! XFCollectionListCell
-//        cell.dataSource = collectionData[indexPath.row]
+        cell.dataSource = collectionData[indexPath.row]
     //    weak var weakSelf = self
  
         return cell
@@ -120,7 +132,12 @@ extension XFUserCollectionViewController : UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
- 
+        let data:XFCollectionContent = collectionData[indexPath.row]
+        let productId = "\(data.productId)"
+        deleteCollection(productId, indexPath)
+//        deleteCollection("\(data.productId)")
+        
+       
     }
 }
 
