@@ -212,7 +212,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             })
         } else {
             DispatchQueue.main.async {
-                UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert], categories: nil))
+                UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
                 UIApplication.shared.registerForRemoteNotifications()
             }
         }
@@ -227,7 +227,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         dPrint(notification.request.content.userInfo.description)
-        completionHandler([.alert, .sound])
+        completionHandler([.alert, .sound, .badge])
     }
     
     //Called to let your app know which action was selected by the user for a given notification.

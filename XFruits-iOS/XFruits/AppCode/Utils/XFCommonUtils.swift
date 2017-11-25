@@ -69,24 +69,42 @@ func makePhoneCall(tel: String = "01057266082")  {
 }
 
 //: 创建会话界面
-func createChatViewController(title: String) -> UIViewController? {
+func createChatViewController(title: String, product: ProductDetail? = nil) -> UIViewController? {
+    
+    // 清空消息未读数
+    QYSDK.shared().conversationManager().clearUnreadCount()
+    
+    // 定义通用界面
     QYSDK.shared().customUIConfig().rightBarButtonItemColorBlackOrWhite = false
     QYSDK.shared().customUIConfig().showImageEntry = true
     QYSDK.shared().customUIConfig().showEmoticonEntry = true
+    
+    let sessionController = QYSDK.shared().sessionViewController()
+    sessionController?.sessionTitle = "很高兴为您笑劳"
+    
     let source = QYSource()
     source.title = title
     
     // 如果用户登录
     if XFUserGlobal.shared.isLogin,
         let user: XFUser = XFUserGlobal.shared.currentUser {
-        let customInfo: String = "用户名：\(user.username)，手机：\(user.cellPhone)"
-        source.customInfo = customInfo
+        source.customInfo = user.toJSONString()
     } else {
         source.customInfo = "未登录的吃瓜观众"
     }
     
-    let sessionController = QYSDK.shared().sessionViewController()
-    sessionController?.sessionTitle = "很高兴为您笑劳"
+    // 如果有商品信息
+    if let product = product {
+        let commodityInfo = QYCommodityInfo()
+        commodityInfo.title = product.name
+        commodityInfo.desc = product.specification
+        commodityInfo.pictureUrlString = product.cover[0]
+        commodityInfo.urlString = product.description[0]
+        commodityInfo.note = "价格：\(product.primePrice)"
+        commodityInfo.show = true
+        sessionController?.commodityInfo = commodityInfo
+    }
+    
     sessionController?.source = source
     sessionController?.hidesBottomBarWhenPushed = true
     sessionController?.navigationItem.rightBarButtonItem?.tintColor = UIColor.white

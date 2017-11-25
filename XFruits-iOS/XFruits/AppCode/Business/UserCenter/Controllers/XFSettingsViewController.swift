@@ -51,6 +51,16 @@ class XFSettingsViewController: XFBaseSubViewController {
         }
     }
 
+    fileprivate func cleanResourceCache() {
+        showSuccess("拾个农夫兴奋的提示您：清理完成")
+        
+        // 清理七鱼客服消息文件缓存
+        QYSDK.shared().cleanResourceCache { (error) in
+            if error == nil {
+                dPrint("消息缓存应该清理成功了....")
+            }
+        }
+    }
 }
 
 extension XFSettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -85,7 +95,7 @@ extension XFSettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if "点个赞" == key {
             UIApplication.shared.openURL(URL(string:XFConstants.storeUrl)!)
         } else if "清理缓存" == key {
-            showSuccess("拾个农夫兴奋的提示您：清理完成")
+            cleanResourceCache()
         } else if "私人定制" == key {
             if let sessionViewController = createChatViewController(title: "个人中心#私人定制") {
                 navigationController?.pushViewController(sessionViewController, animated: true)

@@ -87,7 +87,7 @@ class XFDetailViewController: XFBaseSubViewController {
     
     fileprivate func showChatViewController () {
         if let product = _detailData,
-            let sessionController = createChatViewController(title: "\(product.name) -- \(product.primePrice)") {
+            let sessionController = createChatViewController(title: "商品详情", product: product) { 
             navigationController?.pushViewController(sessionController, animated: true)
         }
     }
