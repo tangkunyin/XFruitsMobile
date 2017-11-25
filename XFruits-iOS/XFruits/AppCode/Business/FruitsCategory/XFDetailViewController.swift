@@ -76,11 +76,12 @@ class XFDetailViewController: XFBaseSubViewController {
     
     fileprivate func addCollection(){
         weak var weakSelf = self
-
         let param:[String:String]  =  ["productId":prodId!]
         XFCollectionService.addCollection(params:param ) { (success) in
             if success as! Bool {
                 weakSelf?.showSuccess("已成功加入收藏")
+            } else {
+                weakSelf?.showError("收藏失败，可能已经收藏过了奥~")
             }
         }
     }

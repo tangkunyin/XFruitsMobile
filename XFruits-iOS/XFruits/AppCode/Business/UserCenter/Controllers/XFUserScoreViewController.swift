@@ -14,6 +14,7 @@ class XFUserScoreViewController: XFBaseSubViewController {
         super.viewDidLoad()
         title = "我的积分"
     
+        renderNullDataView()
     }
 
     

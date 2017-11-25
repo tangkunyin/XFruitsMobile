@@ -22,20 +22,15 @@ final class XFCollectionService: XFNetworking {
         }
     }
     
-    
- 
-    
     // 添加收藏
     class func addCollection(params:Dictionary<String, String>, _ completion:@escaping XFResponse) {
-        print(params)
         doPost(withUrl: url("/collection/add"), params: params){ (success, respData) in
             if success , let success = respData as? Bool {
                 completion(success)
             }
         }
     }
-    
-    
+
     // 删除收藏
     class func deleteCollection(params:Dictionary<String, String>,_ completion:@escaping XFResponse) {
         doPost(withUrl: url("/collection/delete"), params: params){ (success, respData) in
@@ -44,7 +39,5 @@ final class XFCollectionService: XFNetworking {
             }
         }
     }
-    
-   
     
 }

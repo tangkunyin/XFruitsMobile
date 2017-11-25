@@ -58,11 +58,9 @@ class XFUserCollectionViewController: XFBaseSubViewController {
     fileprivate func loadcollectionData(_ loadMore: Bool = false) {
         weak var weakSelf = self
         let params: Dictionary<String, Any> = ["page":currentPage,"size":XFConstants.pageRows]
- 
         XFCollectionService.getCollectionList(params: params) { (respData) in
             weakSelf?.collectionListView.es.stopLoadingMore()
             weakSelf?.collectionListView.es.stopPullToRefresh()
-                      
             if let collection = respData as? XFCollection, let collectionList = collection.content, collectionList.count > 0 {
                 weakSelf?.currentPage += 1
                 if loadMore {
@@ -82,16 +80,14 @@ class XFUserCollectionViewController: XFBaseSubViewController {
         }
     }
     
-    
     // 删除收藏
     private func deleteCollection(_ productId:String , _ indexPath:IndexPath) {
         weak var weakSelf = self
         XFCollectionService.deleteCollection(params: ["productId":productId]) { (success) in
-            print(success)
             if success as! Bool   {
                 weakSelf?.showSuccess("已删除")
                 weakSelf?.collectionData.remove(at: indexPath.row)
-                 weakSelf?.collectionListView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                weakSelf?.collectionListView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
                 if weakSelf?.collectionData.count == 0 {
                     weakSelf?.renderNullDataView()
                 }
@@ -125,20 +121,26 @@ extension XFUserCollectionViewController : UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! XFCollectionListCell
         cell.dataSource = collectionData[indexPath.row]
-    //    weak var weakSelf = self
- 
+        cell.selectionStyle = .none
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        let data:XFCollectionContent = collectionData[indexPath.row]
-        let productId = "\(data.productId)"
-        deleteCollection(productId, indexPath)
-//        deleteCollection("\(data.productId)")
-        
-       
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let data:XFCollectionContent = collectionData[indexPath.row]
+            let productId = "\(data.productId)"
+            deleteCollection(productId, indexPath)
+        }
     }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除"
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+
 }
 
 
