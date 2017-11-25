@@ -43,6 +43,11 @@ class XFOrderListViewController: XFBaseSubViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.title == nil || self.title == "" {
+            self.title = "我的订单"
+        }
+        
         renderLoaddingView()
         loadOrderData()
     }

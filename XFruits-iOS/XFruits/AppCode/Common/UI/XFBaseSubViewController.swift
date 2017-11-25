@@ -82,6 +82,9 @@ class XFBaseSubViewController: XFBaseViewController {
             if navController.responds(to: #selector(navController.popViewController(animated:))) {
                 navController.popViewController(animated: true)
             }
+            if navController.responds(to: #selector(navController.dismiss(animated:completion:))) {
+                navController.dismiss(animated: true, completion: nil)
+            }
         }
     }
     

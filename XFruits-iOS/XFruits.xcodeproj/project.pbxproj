@@ -893,7 +893,7 @@
 				TargetAttributes = {
 					865F4F421E9A173E0059502C = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = DN4X74J86T;
+						DevelopmentTeam = 426U84EDEE;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1198,7 +1198,7 @@
 				CODE_SIGN_ENTITLEMENTS = XFruits/XFruits.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DN4X74J86T;
+				DEVELOPMENT_TEAM = 426U84EDEE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1240,7 +1240,7 @@
 				CODE_SIGN_ENTITLEMENTS = XFruits/XFruits.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DN4X74J86T;
+				DEVELOPMENT_TEAM = 426U84EDEE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

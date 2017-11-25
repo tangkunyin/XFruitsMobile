@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                                          style: .plain,
                                                                          target: self,
                                                                          action: #selector(onShortCutVCDismiss))
-            let chatVC = XFNavigationController.init(rootViewController: sessionVC)
+            let chatVC = XFNavigationController(rootViewController: sessionVC)
             return chatVC
         }
         return nil
@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     presentTo(controller: XFOrderListViewController(), loginCheck: true)
                     break
                 case XFConstants.ShortCut.Personal:
-                    presentTo(controller: creatShortcutChatviewcontroller(), loginCheck: false)
+                    presentTo(controller: creatShortcutChatviewcontroller(), loginCheck: false, needNav: false)
                     break
                 case XFConstants.ShortCut.AboutUs:
                     presentTo(controller: XFAppGuideViewController(), loginCheck: false, needNav: false)
