@@ -113,21 +113,23 @@ public final class XFNetworkStatus: NSObject {
         super.init()
         weak var weakSelf = self
         reachability.listener = { status in
-            switch status {
-            case .notReachable:
-                weakSelf!.currentStatus = .notReachable
-            case .unknown:
-                weakSelf!.currentStatus = .unKnown
-            case .reachable(let type):
-                switch type {
-                case .ethernetOrWiFi:
-                    weakSelf!.currentStatus = .wifi
-                case .wwan:
-                    weakSelf!.currentStatus = .wwan
+            if let weakSelf = weakSelf {
+                switch status {
+                case .notReachable:
+                    weakSelf.currentStatus = .notReachable
+                case .unknown:
+                    weakSelf.currentStatus = .unKnown
+                case .reachable(let type):
+                    switch type {
+                    case .ethernetOrWiFi:
+                        weakSelf.currentStatus = .wifi
+                    case .wwan:
+                        weakSelf.currentStatus = .wwan
+                    }
                 }
-            }
-            if weakSelf!.listener != nil {
-                weakSelf!.listener!(weakSelf!.currentStatus)
+                if weakSelf.listener != nil {
+                    weakSelf.listener!(weakSelf.currentStatus)
+                }
             }
         }
         reachability.startListening()
