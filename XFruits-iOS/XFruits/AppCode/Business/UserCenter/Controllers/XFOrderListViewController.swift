@@ -112,7 +112,7 @@ class XFOrderListViewController: XFBaseSubViewController {
     }
     
     // 确认收货
-    fileprivate func orderConfirmWith(orderId: String){
+    fileprivate func orderConfirm(withOrderId orderId: String){
         weak var weakSelf = self
         XFOrderSerivice.confirmOrder(params: ["orderId":orderId]) { (data) in
             weakSelf?.showMessage("收货成功，感谢支持", completion: {
@@ -121,10 +121,16 @@ class XFOrderListViewController: XFBaseSubViewController {
         }
     }
     
-    fileprivate func queryExpressWith(orderId: String){
+    fileprivate func queryExpress(withOrderId orderId: String){
         let expressVC = XFExpressViewController()
         expressVC.orderId = orderId
         navigationController?.pushViewController(expressVC, animated: true)
+    }
+    
+    fileprivate func orderComment(withOrder order: XFOrderContent) {
+        let commentVC = XFCommentViewController()
+        commentVC.order = order
+        navigationController?.pushViewController(commentVC, animated: true)
     }
     
     fileprivate func barClickHandler(_ type: Int, _ orderData: XFOrderContent){
@@ -132,12 +138,11 @@ class XFOrderListViewController: XFBaseSubViewController {
         case 0:
             orderPayWith(order: orderData)
         case 1:
-            queryExpressWith(orderId: orderData.orderId)
+            queryExpress(withOrderId: orderData.orderId)
         case 2:
-            orderConfirmWith(orderId: orderData.orderId)
+            orderConfirm(withOrderId: orderData.orderId)
         case 3:
-            //TODO. 订单评价
-            showSuccess("已收到帅帅的你滴好评咯~")
+            orderComment(withOrder: orderData)
         default:
             break
         }

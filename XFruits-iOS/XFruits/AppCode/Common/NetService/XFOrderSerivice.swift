@@ -74,4 +74,13 @@ final class XFOrderSerivice: XFNetworking {
             }
         }
     }
+    
+    /// 商品评价
+    class func orderComment(params: Dictionary<String, Any>, _ completion:@escaping XFResponse) {
+        doPost(withUrl: url("/comment/add"), params: params){ (success, respData) in
+            if success {
+                completion(respData as Any)
+            }
+        }
+    }
 }
