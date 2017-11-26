@@ -37,7 +37,7 @@ class XFCollectionListCell: UITableViewCell {
     
     lazy var coverImageView: UIImageView = {
         let coverImageView = UIImageView.init(image: UIImage.imageWithNamed("defaultAvatar"))
-//        coverImageView.layer.cornerRadius = 35
+        coverImageView.contentMode = .scaleAspectFill
         coverImageView.layer.masksToBounds = true
         return coverImageView
     }()

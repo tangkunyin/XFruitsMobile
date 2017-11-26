@@ -26,7 +26,7 @@ class XFDetailActionBarView: UIView {
     lazy var add2CollectionBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.backgroundColor = XFConstants.Color.white
-        btn.setImage(UIImage.imageWithNamed("service_collect"), for: .normal)
+        btn.setImage(UIImage.imageWithNamed("service_uncollect"), for: .normal)
         btn.tag = 1
         btn.addTarget(self, action: #selector(actionHandler(btn:)), for: .touchUpInside)
         return btn
