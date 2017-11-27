@@ -119,15 +119,19 @@ class XFOrderListItem: UITableViewCell {
     
     // MARK: - 细节渲染
     fileprivate func renderGoodsInfo(_ products:Array<XFOrderProduct>) {
+        // 先清空在渲染
+        for view: UIView in orderGoodsContainer.subviews {
+            view.removeFromSuperview()
+        }
         for (index, item) in products.enumerated() {
-            let productInfo = XFOrderGoodsView()
+            let productInfo = XFOrderGoodsItemCell()
             productInfo.goodsInfo = item
             orderGoodsContainer.addSubview(productInfo)
             productInfo.snp.makeConstraints({ (make) in
                 make.top.size.equalTo(orderGoodsContainer)
                 if index == 0 {
                     make.left.equalTo(orderGoodsContainer)
-                } else if let previousView = orderGoodsContainer.subviews[index-1] as? XFOrderGoodsView {
+                } else if let previousView = orderGoodsContainer.subviews[index-1] as? XFOrderGoodsItemCell {
                     make.left.equalTo(previousView.snp.right).offset(0)
                 }
                 if index == products.count - 1 {

@@ -177,7 +177,7 @@ extension XFOrderListViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? XFOrderListItem
         if let cell = cell {
             cell.backgroundColor = UIColor.white
-            cell.dataSource = orderData[indexPath.row]
+            cell.dataSource = orderData[indexPath.section]
             weak var weakSelf = self
             cell.onBarBtnClick = {(type, data) in
                 weakSelf?.barClickHandler(type, data)
@@ -190,7 +190,7 @@ extension XFOrderListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         let orderDetail = XFOrderDetailViewController()
-        orderDetail.orderId = orderData[indexPath.row].orderId
+        orderDetail.orderId = orderData[indexPath.section].orderId
         navigationController?.pushViewController(orderDetail, animated: true)
     }
 }
