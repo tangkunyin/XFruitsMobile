@@ -33,11 +33,10 @@ class XFOrderListItem: UITableViewCell {
     var onBarBtnClick: ((Int,XFOrderContent)->Void)?
     
     var dataSource: XFOrderContent? {
-        didSet{
-            if let data = dataSource, let covers = data.prodCover {
+        didSet {
+            if let data = dataSource, let products = data.productList {
                 titleContainer.text = "订单编号：\(data.orderId)"
-                quantityContainer.text = "x\(data.prodCover?.count ?? 0)"
-                renderGoodsCover(covers)
+                renderGoodsInfo(products)
                 switch data.status {
                 // 待支付
                 case 100:
@@ -67,26 +66,13 @@ class XFOrderListItem: UITableViewCell {
         return label
     }()
     
-    lazy var orderGoodsContainer: UIView = {
-        let container = UIView()
-        container.layer.borderColor = XFConstants.Color.separatorLine.cgColor
-        container.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
-        return container
-    }()
-    
-    lazy var goodsCoverContainer: UIScrollView = {
+    lazy var orderGoodsContainer: UIScrollView = {
         let container = UIScrollView()
         container.isUserInteractionEnabled = false
         container.showsHorizontalScrollIndicator = false
+        container.showsVerticalScrollIndicator = false
+        container.isPagingEnabled = true
         return container
-    }()
-    
-    lazy var quantityContainer: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = XFConstants.Font.pfn14
-        label.textColor = XFConstants.Color.darkGray
-        return label
     }()
     
     lazy var amountContainer: UILabel = {
@@ -103,10 +89,7 @@ class XFOrderListItem: UITableViewCell {
     }()
     
     fileprivate func customInit(){
-        
         selectionStyle = .none
-        
-        initGoodsContainer()
         contentView.addSubview(titleContainer)
         contentView.addSubview(orderGoodsContainer)
         contentView.addSubview(amountContainer)
@@ -119,7 +102,7 @@ class XFOrderListItem: UITableViewCell {
         orderGoodsContainer.snp.makeConstraints { (make) in
             make.left.right.equalTo(contentView)
             make.top.equalTo(titleContainer.snp.bottom).offset(0)
-            make.height.equalTo(80)
+            make.height.equalTo(110)
         }
         amountContainer.snp.makeConstraints { (make) in
             make.size.equalTo(CGSize(width: 130, height: 30))
@@ -134,35 +117,22 @@ class XFOrderListItem: UITableViewCell {
         }
     }
     
-    fileprivate func initGoodsContainer(){
-        orderGoodsContainer.addSubview(goodsCoverContainer)
-        orderGoodsContainer.addSubview(quantityContainer)
-        goodsCoverContainer.snp.makeConstraints { (make) in
-            make.height.equalTo(80)
-            make.left.top.equalTo(orderGoodsContainer).offset(5)
-            make.right.equalTo(quantityContainer.snp.left).offset(-10)
-        }
-        quantityContainer.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 35, height: 80))
-            make.top.equalTo(goodsCoverContainer)
-            make.right.equalTo(orderGoodsContainer).offset(-5)
-        }
-    }
-    
     // MARK: - 细节渲染
-    fileprivate func renderGoodsCover(_ covers:Array<String>){
-        for (index, item) in covers.enumerated() {
-            let cover:UIImageView = UIImageView()
-            cover.kf.setImage(with: URL.init(string: item),
-                              placeholder: UIImage.imageWithNamed("Loading-squre"),
-                              options: [.transition(.fade(1))])
-            cover.contentMode = UIViewContentMode.scaleAspectFit
-            cover.isUserInteractionEnabled = false
-            goodsCoverContainer.addSubview(cover)
-            cover.snp.makeConstraints({ (make) in
-                make.centerY.equalTo(goodsCoverContainer)
-                make.size.equalTo(CGSize(width: 80, height: 80))
-                make.left.equalTo(goodsCoverContainer.snp.left).offset(index * 50 +  10)
+    fileprivate func renderGoodsInfo(_ products:Array<XFOrderProduct>) {
+        for (index, item) in products.enumerated() {
+            let productInfo = XFOrderGoodsView()
+            productInfo.goodsInfo = item
+            orderGoodsContainer.addSubview(productInfo)
+            productInfo.snp.makeConstraints({ (make) in
+                make.top.size.equalTo(orderGoodsContainer)
+                if index == 0 {
+                    make.left.equalTo(orderGoodsContainer)
+                } else if let previousView = orderGoodsContainer.subviews[index-1] as? XFOrderGoodsView {
+                    make.left.equalTo(previousView.snp.right).offset(0)
+                }
+                if index == products.count - 1 {
+                    make.right.equalTo(orderGoodsContainer)
+                }
             })
         }
     }

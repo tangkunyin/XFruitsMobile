@@ -9,9 +9,23 @@
 import Foundation
 import HandyJSON
 
+struct XFOrderProduct: HandyJSON {
+    var id:String = ""
+    var name:String = ""
+    var cover:String = ""
+    var specification:String = ""
+    var primePrice:Float = 0
+    var sellStatus:Int?
+    var platform:Int?
+    var unit:Int?
+    var quantity:Int?
+    var delete:Bool?
+    var buyCount:Int = 0
+}
+
 struct XFOrderContent: HandyJSON {
     var orderId: String = ""
-    var prodCover: Array<String>?
+    var productList: Array<XFOrderProduct>?
     var cashFee: Float = 0
     var status: Int = 0
     var orderExpiration: Int = 0

@@ -26,7 +26,7 @@ class XFOrderListViewController: XFBaseSubViewController {
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         tableView.tableFooterView = UIView()
-        tableView.rowHeight = 166
+        tableView.rowHeight = 195
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
         tableView.backgroundColor = XFConstants.Color.separatorLine
@@ -174,13 +174,17 @@ extension XFOrderListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! XFOrderListItem
-        cell.dataSource = orderData[indexPath.row]
-        weak var weakSelf = self
-        cell.onBarBtnClick = {(type, data) in
-            weakSelf?.barClickHandler(type, data)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? XFOrderListItem
+        if let cell = cell {
+            cell.backgroundColor = UIColor.white
+            cell.dataSource = orderData[indexPath.row]
+            weak var weakSelf = self
+            cell.onBarBtnClick = {(type, data) in
+                weakSelf?.barClickHandler(type, data)
+            }
+            return cell
         }
-        return cell
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

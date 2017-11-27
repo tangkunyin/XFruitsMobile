@@ -141,8 +141,8 @@ class XFDetailHeaderView: UIView {
         detailViewPager.snp.makeConstraints { (make) in
             make.top.width.equalTo(self)
             make.bottom.equalTo(self.titleLabel.snp.top)
-            // TODO: 提前约定好宽高比
-            make.height.equalTo(floor(XFConstants.UI.deviceWidth/(1200/900)))
+            // 提前约定好宽高比，搞成正方形，高度与屏宽一致
+            make.height.equalTo(floor(XFConstants.UI.deviceWidth/(900/900)))
         }
         titleLabel.snp.makeConstraints { (make) in
             make.width.equalTo(self)
