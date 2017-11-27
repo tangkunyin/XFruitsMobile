@@ -8,30 +8,6 @@
 
 import UIKit
 
-// 订单列表商品
-class XFOrderGoodsItemCell: XFCheckoutGoodsCell {
-    
-    var goodsInfo: XFOrderProduct? {
-        didSet {
-            if let item = goodsInfo {
-                titleLabel.text = item.name
-                quantityLabel.text = "x \(item.buyCount)"
-                descLabel.text = "规格：\(item.specification)"
-                priceLabel.text = String(format:"¥ %.2f",item.primePrice)
-                thumbnail.kf.setImage(with: URL.init(string: item.cover),
-                                      placeholder: UIImage.imageWithNamed("Loading-transprent"),
-                                      options: [.transition(.fade(1.0))])
-            }
-        }
-    }
-    
-    override func customInit() {
-        super.customInit()
-        selectionStyle = .none
-    }
-    
-}
-
 // 订单详情商品
 class XFOrderDetailGoodsCell: XFCheckoutGoodsCell {
 

@@ -18,8 +18,24 @@ enum XFOrderItemBarType: Int {
     case evaluateBar = 3
 }
 
-class XFOrderListItem: UITableViewCell {
-
+class XFOrderTitleItemCell: UITableViewCell {
+    
+    var dataSource: XFOrderContent? {
+        didSet {
+            if let data = dataSource {
+                titleContainer.text = "订单编号：\(data.orderId)"
+            }
+        }
+    }
+    
+    lazy var titleContainer: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = XFConstants.Font.pfn14
+        label.textColor = XFConstants.Color.darkGray
+        return label
+    }()
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         customInit()
@@ -30,13 +46,42 @@ class XFOrderListItem: UITableViewCell {
         customInit()
     }
     
+    private func customInit() {
+        contentView.addSubview(titleContainer)
+        titleContainer.snp.makeConstraints { (make) in
+            make.edges.equalTo(contentView).inset(UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 10))
+        }
+    }
+}
+
+// 订单列表商品
+class XFOrderGoodsItemCell: XFCheckoutGoodsCell {
+    var goodsInfo: XFOrderProduct? {
+        didSet {
+            if let item = goodsInfo {
+                titleLabel.text = item.name
+                quantityLabel.text = "x \(item.buyCount)"
+                descLabel.text = "规格：\(item.specification)"
+                priceLabel.text = String(format:"¥ %.2f",item.primePrice)
+                thumbnail.kf.setImage(with: URL.init(string: item.cover),
+                                      placeholder: UIImage.imageWithNamed("Loading-transprent"),
+                                      options: [.transition(.fade(1.0))])
+            }
+        }
+    }
+    override func customInit() {
+        super.customInit()
+        selectionStyle = .none
+    }
+}
+
+class XFOrderBarItemCell: UITableViewCell {
+    
     var onBarBtnClick: ((Int,XFOrderContent)->Void)?
     
     var dataSource: XFOrderContent? {
         didSet {
-            if let data = dataSource, let products = data.productList {
-                titleContainer.text = "订单编号：\(data.orderId)"
-                renderGoodsInfo(products)
+            if let data = dataSource {
                 switch data.status {
                 // 待支付
                 case 100:
@@ -58,23 +103,6 @@ class XFOrderListItem: UITableViewCell {
         }
     }
     
-    lazy var titleContainer: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.font = XFConstants.Font.pfn14
-        label.textColor = XFConstants.Color.darkGray
-        return label
-    }()
-    
-    lazy var orderGoodsContainer: UIScrollView = {
-        let container = UIScrollView()
-        container.isUserInteractionEnabled = false
-        container.showsHorizontalScrollIndicator = false
-        container.showsVerticalScrollIndicator = false
-        container.isPagingEnabled = true
-        return container
-    }()
-    
     lazy var amountContainer: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -88,56 +116,28 @@ class XFOrderListItem: UITableViewCell {
         return view
     }()
     
-    fileprivate func customInit(){
-        selectionStyle = .none
-        contentView.addSubview(titleContainer)
-        contentView.addSubview(orderGoodsContainer)
-        contentView.addSubview(amountContainer)
-        contentView.addSubview(actionContainer)
-        titleContainer.snp.makeConstraints { (make) in
-            make.left.top.equalTo(contentView).offset(10)
-            make.right.equalTo(contentView).offset(-10)
-            make.height.equalTo(30)
-        }
-        orderGoodsContainer.snp.makeConstraints { (make) in
-            make.left.right.equalTo(contentView)
-            make.top.equalTo(titleContainer.snp.bottom).offset(0)
-            make.height.equalTo(110)
-        }
-        amountContainer.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 130, height: 30))
-            make.left.equalTo(titleContainer).offset(0)
-            make.top.equalTo(orderGoodsContainer.snp.bottom).offset(10)
-        }
-        actionContainer.snp.makeConstraints { (make) in
-            make.right.equalTo(titleContainer).offset(0)
-            make.top.equalTo(orderGoodsContainer.snp.bottom).offset(5)
-            make.left.equalTo(amountContainer.snp.right).offset(5)
-            make.height.equalTo(40)
-        }
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        customInit()
     }
     
-    // MARK: - 细节渲染
-    fileprivate func renderGoodsInfo(_ products:Array<XFOrderProduct>) {
-        // 先清空在渲染
-        for view: UIView in orderGoodsContainer.subviews {
-            view.removeFromSuperview()
+    required init?(coder aDecoder: NSCoder){
+        super.init(coder: aDecoder)
+        customInit()
+    }
+    
+    private func customInit() {
+        contentView.addSubview(amountContainer)
+        contentView.addSubview(actionContainer)
+        amountContainer.snp.makeConstraints { (make) in
+            make.width.equalTo(130)
+            make.left.equalTo(contentView).offset(10)
+            make.top.bottom.equalTo(contentView)
         }
-        for (index, item) in products.enumerated() {
-            let productInfo = XFOrderGoodsItemCell()
-            productInfo.goodsInfo = item
-            orderGoodsContainer.addSubview(productInfo)
-            productInfo.snp.makeConstraints({ (make) in
-                make.top.size.equalTo(orderGoodsContainer)
-                if index == 0 {
-                    make.left.equalTo(orderGoodsContainer)
-                } else if let previousView = orderGoodsContainer.subviews[index-1] as? XFOrderGoodsItemCell {
-                    make.left.equalTo(previousView.snp.right).offset(0)
-                }
-                if index == products.count - 1 {
-                    make.right.equalTo(orderGoodsContainer)
-                }
-            })
+        actionContainer.snp.makeConstraints { (make) in
+            make.right.equalTo(contentView).offset(-10)
+            make.left.equalTo(amountContainer.snp.right).offset(5)
+            make.top.bottom.equalTo(contentView)
         }
     }
     
@@ -192,10 +192,10 @@ class XFOrderListItem: UITableViewCell {
     }
     
     fileprivate func createActionBtn(title:String,
-                                 titleColor:UIColor,
-                                 borderColor:UIColor,
-                                 backgroundColor:UIColor,
-                                 tag:XFOrderItemBarType) -> UIButton {
+                                     titleColor:UIColor,
+                                     borderColor:UIColor,
+                                     backgroundColor:UIColor,
+                                     tag:XFOrderItemBarType) -> UIButton {
         let btn = UIButton.init(type: .custom)
         btn.tag = tag.rawValue
         btn.setTitle(title, for: .normal)
@@ -214,5 +214,4 @@ class XFOrderListItem: UITableViewCell {
             completion(btn.tag, data)
         }
     }
-    
 }
