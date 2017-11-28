@@ -21,7 +21,7 @@ class XFCommentViewController: XFBaseSubViewController {
 
     var order: XFOrderContent?
     
-    var orderId: String = ""
+    var tag: String = defaultTags[0]
     
     lazy var commentSizer: UISegmentedControl = {
         let segmente = UISegmentedControl(items: defaultTags)
@@ -35,6 +35,7 @@ class XFCommentViewController: XFBaseSubViewController {
         segmente.apportionsSegmentWidthsByContent = true
         segmente.backgroundColor = XFConstants.Color.white
         segmente.tintColor = XFConstants.Color.salmon
+        segmente.addTarget(self, action: #selector(sizerChangedAction(_:)), for: .valueChanged)
         return segmente
     }()
     
@@ -62,12 +63,8 @@ class XFCommentViewController: XFBaseSubViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let order = order {
-            title = "说出你的心里话"
-            orderId = order.orderId
-            makeCommentAddConstrains()
-        }
-    
+        title = "说出你的心里话"
+        makeCommentAddConstrains()
         
     }
     
@@ -94,13 +91,32 @@ class XFCommentViewController: XFBaseSubViewController {
             make.right.equalTo(view).offset(-20)
         }
     }
+    
+    @objc private func sizerChangedAction(_ segment:UISegmentedControl) {
+        tag = defaultTags[segment.selectedSegmentIndex]
+    }
 
     @objc private func saveComment() {
         guard !commentText.text.isEmpty else {
             showError("心里话总要说一句吧")
             return
         }
-        
+        weak var weakSelf = self
+        if let order = order, let products = order.productList {
+            let pids = products.flatMap({ (product) -> String? in
+                return product.id
+            })
+            let params: Dictionary<String, Any> = ["orderId": order.orderId, "prodId":pids, "tag": tag, "content": commentText.text!]
+            XFOrderSerivice.orderComment(params: params) { (data) in
+                weakSelf?.showMessage("感谢您的评价", completion: {
+                    weakSelf?.backToParentController()
+                })
+            }
+        } else {
+            showMessage("订单数据不全，无法评价", completion: {
+                weakSelf?.backToParentController()
+            })
+        }
     }
 }
 
