@@ -43,10 +43,6 @@ class XFBaseSubViewController: XFBaseViewController {
         btn.setImage(UIImage.imageWithNamed(images[XFBackButtonImages.normal]!), for: .normal)
         btn.setImage(UIImage.imageWithNamed(images[XFBackButtonImages.highlighted]!), for: .highlighted)
         btn.addTarget(self, action: #selector(backToParentController), for: .touchUpInside)
-        if let size = btn.image(for: .normal)?.size {
-            btn.frame = CGRect.init(origin: CGPoint.zero, size: size)
-        }
-//        btn.frame = CGRect.init(origin: CGPoint.zero, size: CGSize(width:20,height:20))
         return btn
     }()
 
