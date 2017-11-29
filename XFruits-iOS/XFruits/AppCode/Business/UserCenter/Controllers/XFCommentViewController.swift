@@ -106,10 +106,14 @@ class XFCommentViewController: XFBaseSubViewController {
             let pids = products.flatMap({ (product) -> String? in
                 return product.id
             })
-            let params: Dictionary<String, Any> = ["orderId": order.orderId, "prodId":pids, "tag": tag, "content": commentText.text!]
+            let params: Dictionary<String, Any> = ["orderId": order.orderId,
+                                                   "prodIdList": pids.joined(separator: ","),
+                                                   "tag": tag,
+                                                   "content": commentText.text!]
+            dPrint(params)
             XFOrderSerivice.orderComment(params: params) { (data) in
                 weakSelf?.showMessage("感谢您的评价", completion: {
-                    weakSelf?.backToParentController()
+                    weakSelf?.backToRootViewController()
                 })
             }
         } else {

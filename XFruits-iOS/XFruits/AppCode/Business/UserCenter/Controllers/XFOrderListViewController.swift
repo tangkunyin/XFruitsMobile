@@ -51,7 +51,7 @@ class XFOrderListViewController: XFBaseSubViewController {
         renderLoaddingView()
         loadOrderData()
     }
-
+    
     fileprivate func loadOrderData(_ loadMore: Bool = false) {
         weak var weakSelf = self
         var params: Dictionary<String, Any> = ["page":currentPage,"size":XFConstants.pageRows]
