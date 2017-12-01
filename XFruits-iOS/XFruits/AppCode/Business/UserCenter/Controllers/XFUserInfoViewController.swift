@@ -70,9 +70,12 @@ class XFUserInfoViewController: XFBaseSubViewController {
         super.viewWillAppear(animated)
     }
     
-    @objc fileprivate func onLoginOut(){
-        XFUserGlobal.shared.signOff()
-        backToParentController()
+    @objc fileprivate func onLoginOut() {
+        weak var weakSelf = self
+        QYSDK.shared().logout {
+            XFUserGlobal.shared.signOff()
+            weakSelf?.backToParentController()
+        }
     }
     
     fileprivate func getUserInfo() {
@@ -87,12 +90,9 @@ class XFUserInfoViewController: XFBaseSubViewController {
     
     // 更新用户信息
     fileprivate func updateUserInfo(params:XFParams) {
-        
         weak var weakSelf = self
         XFUseInfoService.updateUserInfo(params: params) { (data) in
-            
             if let resp = data as? NSNumber , resp == 1{
-//                print(data)
                 MBProgressHUD.showSuccess("更新用户信息成功~")
                 weakSelf?.getUserInfo()
             }

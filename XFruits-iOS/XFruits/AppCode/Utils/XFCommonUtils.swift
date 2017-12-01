@@ -89,6 +89,22 @@ func createChatViewController(title: String, product: ProductDetail? = nil) -> U
     if XFUserGlobal.shared.isLogin,
         let user: XFUser = XFUserGlobal.shared.currentUser {
         source.customInfo = user.toJSONString()
+        // 用户信息
+        let quser = QYUserInfo()
+        quser.userId = user.cellPhone
+        // CRM 信息
+        let extInfo: Array<Any?> = [
+            ["key":"real_name", "value":user.username],
+            ["key":"mobile_phone", "hidden":false],
+            ["key":"email", "value":user.email],
+            ["index":0, "key":"account", "label":"账号", "value":user.cellPhone , "href":user.avatar ?? ""],
+            ["index":1, "key":"sex", "label":"性别", "value":user.sex ?? 0]
+        ]
+        quser.data = JSON(extInfo).stringValue
+        QYSDK.shared().setUserInfo(quser)
+        QYSDK.shared().customUIConfig().customerHeadImageUrl = user.avatar
+        // 访客等级
+        sessionController?.vipLevel = user.rank?.rank ?? 0
     } else {
         source.customInfo = "未登录的吃瓜观众"
     }

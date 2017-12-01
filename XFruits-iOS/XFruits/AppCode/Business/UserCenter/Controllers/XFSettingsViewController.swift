@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 fileprivate let cellIdentifier = "XFSettingsCellIdentifier"
 
@@ -52,14 +53,16 @@ class XFSettingsViewController: XFBaseSubViewController {
     }
 
     fileprivate func cleanResourceCache() {
-        showSuccess("拾个农夫兴奋的提示您：清理完成")
-        
+        // 清理本地图片缓存 http://onevcat.github.io/Kingfisher/Classes/ImageCache.html
+        ImageCache.default.clearMemoryCache()
+        ImageCache.default.clearDiskCache()
         // 清理七鱼客服消息文件缓存
         QYSDK.shared().cleanResourceCache { (error) in
             if error == nil {
                 dPrint("消息缓存应该清理成功了....")
             }
         }
+        showSuccess("清理 >_> 完成")
     }
 }
 

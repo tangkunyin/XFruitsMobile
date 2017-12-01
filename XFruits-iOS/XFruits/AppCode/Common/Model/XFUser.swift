@@ -41,4 +41,3 @@ struct XFUser: HandyJSON {
     var rank:UserRank?
     
 }
-

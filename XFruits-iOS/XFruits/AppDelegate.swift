@@ -125,7 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         QYSDK.shared().logout {
-            dPrint("客服退出成功")
+            dPrint("用户退出成功")
         }
     }
 
