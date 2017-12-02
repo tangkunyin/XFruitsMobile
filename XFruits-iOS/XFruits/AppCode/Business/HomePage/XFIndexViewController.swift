@@ -12,7 +12,7 @@ import SnapKit
 fileprivate let cellIdentifier = "XFIndexArticleCellIdentifier"
 
 // 约定好宽高比
-fileprivate let loopImageComponentHeight = floor(XFConstants.UI.deviceWidth/(1920/1080))
+fileprivate let loopImageComponentHeight = floor(XFConstants.UI.deviceWidth/(1080/720))
 
 class XFIndexViewController: XFBaseViewController {
     
@@ -122,7 +122,7 @@ class XFIndexViewController: XFBaseViewController {
     }
     
     fileprivate lazy var pagerView:XFViewPager = {
-        let pagerView = XFViewPager(source: [""], placeHolder: "Loading-white")
+        let pagerView = XFViewPager(source: [""], placeHolder: "Loading-squre-white")
         weak var weakSelf = self
         pagerView.pagerDidClicked = {(index:Int) -> Void in
             weakSelf?.handlePagerClick(withIndex: index)

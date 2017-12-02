@@ -23,7 +23,7 @@ class XFIndexArticleViewCell: UITableViewCell {
                     pauseImageView.alpha = 0
                 }
                 coverImage.kf.setImage(with: URL.init(string: data.cover),
-                                       placeholder: UIImage.imageWithNamed("Loading-white"),
+                                       placeholder: UIImage.imageWithNamed("Loading-squre-white"),
                                        options: [.transition(.flipFromBottom(1))])
             }
         }

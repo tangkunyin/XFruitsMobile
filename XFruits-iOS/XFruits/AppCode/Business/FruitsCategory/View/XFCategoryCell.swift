@@ -22,14 +22,14 @@ class XFCategoryCell: UICollectionViewCell {
                 titleLabel.text = item.name
                 priceLabel.text = String(format:"¥ %.2f",item.primePrice)
                 thumbnail.kf.setImage(with: URL.init(string: item.cover),
-                                      placeholder: UIImage.imageWithNamed("Loading-squre"),
+                                      placeholder: UIImage.imageWithNamed("Loading-squre-white"),
                                       options: [.transition(.flipFromTop(0.8))])
             }
         }
     }
     
     lazy var thumbnail:UIImageView = {
-        let imageView = UIImageView.init(image: UIImage.imageWithNamed("Loading-transprent"))
+        let imageView = UIImageView.init(image: UIImage.imageWithNamed("Loading-squre-transparent"))
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true

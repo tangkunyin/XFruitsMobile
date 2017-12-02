@@ -14,7 +14,7 @@ class XFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     /// 私有公共组件
     fileprivate lazy var loaddingView: UIImageView = {
-        let imageView = UIImageView.init(image: UIImage.imageWithNamed("Loading-transprent"))
+        let imageView = UIImageView.init(image: UIImage.imageWithNamed("Loading-squre-transparent"))
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
@@ -22,7 +22,7 @@ class XFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }()
     
     fileprivate lazy var nullDataView: UIImageView = {
-        let imageView = UIImageView.init(image: UIImage.imageWithNamed("xfruits-farmer-2"))
+        let imageView = UIImageView.init(image: UIImage.imageWithNamed("xfruits-farmer-3"))
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
@@ -65,7 +65,7 @@ class XFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         view.addSubview(loaddingView)
         loaddingView.snp.makeConstraints { (make) in
             make.center.equalTo(view)
-            make.size.equalTo(CGSize.init(width: 240, height: 135))
+            make.size.equalTo(CGSize.init(width: 240, height: 240))
         }
     }
     
@@ -74,8 +74,9 @@ class XFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         view.addSubview(nullDataView)
         view.addSubview(nullDataTip)
         nullDataView.snp.makeConstraints { (make) in
-            make.center.equalTo(view)
-            make.size.equalTo(CGSize(width: 138, height: 130))
+            make.centerX.equalTo(view)
+            make.top.equalTo(135)
+            make.size.equalTo(CGSize(width: 240, height: 227))
         }
         nullDataTip.snp.makeConstraints { (make) in
             make.top.equalTo(nullDataView.snp.bottom).offset(10)

@@ -32,7 +32,7 @@ class XFDetailHeaderView: UIView {
     }
     
     lazy var detailViewPager: XFViewPager = {
-        let pager = XFViewPager.init(placeHolder: "Loading-white")
+        let pager = XFViewPager.init(placeHolder: "Loading-squre-white")
         return pager
     }()
     

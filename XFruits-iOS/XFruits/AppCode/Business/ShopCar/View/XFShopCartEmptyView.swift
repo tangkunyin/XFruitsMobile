@@ -38,7 +38,7 @@ class XFShopCartEmptyView: UIView {
     
     
     lazy var tipImageView: UIImageView = {
-        let imageView = UIImageView.init(image: UIImage.imageWithNamed("xfruits-farmer-3"))
+        let imageView = UIImageView.init(image: UIImage.imageWithNamed("xfruits-farmer-2"))
         return imageView
     }()
     
@@ -65,7 +65,8 @@ class XFShopCartEmptyView: UIView {
         addSubview(tipImageView)
         addSubview(tipLabel)
         tipImageView.snp.makeConstraints { (make) in
-            make.center.equalTo(self)
+            make.centerX.equalTo(self)
+            make.top.equalTo(135)
             make.size.equalTo(CGSize.init(width: 160, height: 151))
         }
         tipLabel.snp.makeConstraints { (make) in

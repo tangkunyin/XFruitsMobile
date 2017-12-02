@@ -64,7 +64,7 @@ class XFOrderGoodsItemCell: XFCheckoutGoodsCell {
                 descLabel.text = "规格：\(item.specification)"
                 priceLabel.text = String(format:"¥ %.2f",item.primePrice)
                 thumbnail.kf.setImage(with: URL.init(string: item.cover),
-                                      placeholder: UIImage.imageWithNamed("Loading-transprent"),
+                                      placeholder: UIImage.imageWithNamed("Loading-squre-transparent"),
                                       options: [.transition(.fade(1.0))])
             }
         }

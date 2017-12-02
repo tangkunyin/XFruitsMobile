@@ -105,7 +105,7 @@ class XFDetailDescriptionView: UIView {
             })
             weak var weakSelf = self
             imageView.kf.setImage(with: URL.init(string: item),
-                                  placeholder: UIImage.imageWithNamed("Loading-transprent"),
+                                  placeholder: UIImage.imageWithNamed("Loading-squre-transparent"),
                                   options: [.transition(.fade(1))],
                                   progressBlock: nil,
                                   completionHandler: { (image, error, type, url) in
