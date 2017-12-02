@@ -85,7 +85,9 @@ class XFAllCategoryListViewController: XFBaseViewController {
     }
     
     @objc fileprivate func onPageCloseClick() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            UIApplication.shared.statusBarStyle = .lightContent
+        }
     }
     
 }
