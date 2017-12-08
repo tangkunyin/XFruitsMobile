@@ -10,8 +10,6 @@ import UIKit
 import SnapKit
 import ESPullToRefresh
 
-fileprivate let cellIdentifier = "XFOrderListCellIdentifier"
-
 class XFOrderListViewController: XFBaseSubViewController {
 
     var orderStatus: String?
@@ -25,12 +23,14 @@ class XFOrderListViewController: XFBaseSubViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
+        tableView.sectionFooterHeight = 10
         tableView.tableFooterView = UIView()
-        tableView.rowHeight = 136
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.separatorColor = XFConstants.Color.separatorLine
         tableView.backgroundColor = XFConstants.Color.separatorLine
-        tableView.register(XFOrderListItem.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(XFOrderTitleItemCell.self, forCellReuseIdentifier: "title")
+        tableView.register(XFOrderGoodsItemCell.self, forCellReuseIdentifier: "goods")
+        tableView.register(XFOrderBarItemCell.self, forCellReuseIdentifier: "actionBar")
         weak var weakSelf = self
         tableView.es.addPullToRefresh(animator: XFRefreshAnimator.header(), handler: {
             weakSelf?.loadOrderData()
@@ -43,10 +43,15 @@ class XFOrderListViewController: XFBaseSubViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.title == nil || self.title == "" {
+            self.title = "我的订单"
+        }
+        
         renderLoaddingView()
         loadOrderData()
     }
-
+    
     fileprivate func loadOrderData(_ loadMore: Bool = false) {
         weak var weakSelf = self
         var params: Dictionary<String, Any> = ["page":currentPage,"size":XFConstants.pageRows]
@@ -107,7 +112,7 @@ class XFOrderListViewController: XFBaseSubViewController {
     }
     
     // 确认收货
-    fileprivate func orderConfirmWith(orderId: String){
+    fileprivate func orderConfirm(withOrderId orderId: String){
         weak var weakSelf = self
         XFOrderSerivice.confirmOrder(params: ["orderId":orderId]) { (data) in
             weakSelf?.showMessage("收货成功，感谢支持", completion: {
@@ -116,10 +121,16 @@ class XFOrderListViewController: XFBaseSubViewController {
         }
     }
     
-    fileprivate func queryExpressWith(orderId: String){
+    fileprivate func queryExpress(withOrderId orderId: String){
         let expressVC = XFExpressViewController()
         expressVC.orderId = orderId
         navigationController?.pushViewController(expressVC, animated: true)
+    }
+    
+    fileprivate func orderComment(withOrder order: XFOrderContent) {
+        let commentVC = XFCommentViewController()
+        commentVC.order = order
+        navigationController?.pushViewController(commentVC, animated: true)
     }
     
     fileprivate func barClickHandler(_ type: Int, _ orderData: XFOrderContent){
@@ -127,12 +138,11 @@ class XFOrderListViewController: XFBaseSubViewController {
         case 0:
             orderPayWith(order: orderData)
         case 1:
-            queryExpressWith(orderId: orderData.orderId)
+            queryExpress(withOrderId: orderData.orderId)
         case 2:
-            orderConfirmWith(orderId: orderData.orderId)
+            orderConfirm(withOrderId: orderData.orderId)
         case 3:
-            //TODO. 订单评价
-            showSuccess("已收到帅帅的你滴好评咯~")
+            orderComment(withOrder: orderData)
         default:
             break
         }
@@ -146,7 +156,10 @@ extension XFOrderListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if let products = orderData[section].productList {
+            return products.count + 2
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -156,27 +169,53 @@ extension XFOrderListViewController: UITableViewDelegate, UITableViewDataSource 
         return 10
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let products = orderData[indexPath.section].productList {
+            if indexPath.row == 0 {
+                return 40
+            } else if indexPath.row == products.count + 1 {
+                return 40
+            } else {
+                return 110
+            }
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let products = orderData[indexPath.section].productList {
+            if indexPath.row == 0,
+                let cell = tableView.dequeueReusableCell(withIdentifier: "title") as? XFOrderTitleItemCell {
+                cell.dataSource = orderData[indexPath.section]
+                return cell
+            } else if indexPath.row == products.count + 1,
+                let cell = tableView.dequeueReusableCell(withIdentifier: "actionBar") as? XFOrderBarItemCell {
+                cell.dataSource = orderData[indexPath.section]
+                weak var weakSelf = self
+                cell.onBarBtnClick = {(type, data) in
+                    weakSelf?.barClickHandler(type, data)
+                }
+                return cell
+            } else if products.count > 0, products.count > indexPath.row - 1,
+                let cell = tableView.dequeueReusableCell(withIdentifier: "goods") as? XFOrderGoodsItemCell {
+                cell.goodsInfo = products[indexPath.row - 1]
+                return cell
+            }
+        }
+        return UITableViewCell()
+    }
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if section == orderData.count - 1 {
+        if section == 0 {
             return nil
         }
         return UIView()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! XFOrderListItem
-        cell.dataSource = orderData[indexPath.row]
-        weak var weakSelf = self
-        cell.onBarBtnClick = {(type, data) in
-            weakSelf?.barClickHandler(type, data)
-        }
-        return cell
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         let orderDetail = XFOrderDetailViewController()
-        orderDetail.orderId = orderData[indexPath.row].orderId
+        orderDetail.orderId = orderData[indexPath.section].orderId
         navigationController?.pushViewController(orderDetail, animated: true)
     }
 }

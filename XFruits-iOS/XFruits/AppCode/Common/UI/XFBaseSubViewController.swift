@@ -43,16 +43,16 @@ class XFBaseSubViewController: XFBaseViewController {
         btn.setImage(UIImage.imageWithNamed(images[XFBackButtonImages.normal]!), for: .normal)
         btn.setImage(UIImage.imageWithNamed(images[XFBackButtonImages.highlighted]!), for: .highlighted)
         btn.addTarget(self, action: #selector(backToParentController), for: .touchUpInside)
-        if let size = btn.image(for: .normal)?.size {
-            btn.frame = CGRect.init(origin: CGPoint.zero, size: size)
-        }
         return btn
     }()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         bigTitle(forNavBar: navigationController, flag: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
 
     override func viewDidLoad() {
@@ -77,6 +77,9 @@ class XFBaseSubViewController: XFBaseViewController {
         if let navController = self.navigationController {
             if navController.responds(to: #selector(navController.popViewController(animated:))) {
                 navController.popViewController(animated: true)
+            }
+            if navController.responds(to: #selector(navController.dismiss(animated:completion:))) {
+                navController.dismiss(animated: true, completion: nil)
             }
         }
     }

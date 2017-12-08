@@ -19,10 +19,6 @@ class XFNavigationController: UINavigationController {
         bar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:XFConstants.Color.white,
                                    NSAttributedStringKey.font:XFConstants.Font.pfn18]
     
-        let barButtonItem = UIBarButtonItem.appearance()
-        barButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:XFConstants.Color.white,
-                                              NSAttributedStringKey.font:XFConstants.Font.pfn18],
-                                             for: UIControlState.normal)
     }()
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {

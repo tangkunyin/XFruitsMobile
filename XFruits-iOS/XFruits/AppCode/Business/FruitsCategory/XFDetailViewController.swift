@@ -12,6 +12,7 @@ import SnapKit
 class XFDetailViewController: XFBaseSubViewController {
     
     var prodId:String?
+    
     var _detailData:ProductDetail? {
         didSet {
             if let dataSource = _detailData {
@@ -21,6 +22,9 @@ class XFDetailViewController: XFBaseSubViewController {
                 if let comments = dataSource.commentList, comments.count > 1 {
                     hasComments = true
                     commentView.dataSource = comments
+                }
+                if dataSource.isCollected {
+                    actionBarView.add2CollectionBtn.setImage(UIImage.imageWithNamed("service_collect"), for: .normal)
                 }
                 updateSubViewContraints(hasComments: hasComments)
                 view.setNeedsUpdateConstraints()
@@ -59,9 +63,9 @@ class XFDetailViewController: XFBaseSubViewController {
         view.actionHandler = {(type:Int) -> Void in
             switch type {
             case 0:
-                makePhoneCall()
+                weakSelf?.showChatViewController()
             case 1:
-                weakSelf?.showSuccess("已成功加入收藏")
+                weakSelf?.addCollection()
             case 2:
                 weakSelf?.addToShopCart(checkoutNow: false)
             case 3:
@@ -72,6 +76,36 @@ class XFDetailViewController: XFBaseSubViewController {
         }
         return view
     }()
+    
+    fileprivate func addCollection() {
+        if XFUserGlobal.shared.isLogin, let prodId = prodId {
+            weak var weakSelf = self
+            let param:[String:String]  =  ["productId":prodId]
+            XFCollectionService.addCollection(params:param ) { (success) in
+                if success as! Bool {
+                    weakSelf?.actionBarView.add2CollectionBtn.setImage(UIImage.imageWithNamed("service_collect"), for: .normal)
+                } else {
+                    //MARK: TODO. 理论上服务器应该对此做兼容，如果收藏则取消收藏。此处帮服务器做兼容。。。
+                    XFCollectionService.deleteCollection(params: ["productId":weakSelf?.prodId ?? ""]) { (success) in
+                        if success as! Bool   {
+                            weakSelf?.actionBarView.add2CollectionBtn.setImage(UIImage.imageWithNamed("service_uncollect"), for: .normal)
+                        } else {
+                            weakSelf?.showError("操作失败，请稍后再试")
+                        }
+                    }
+                }
+            }
+        } else {
+            showError("请先登录后再收藏")
+        }
+    }
+    
+    fileprivate func showChatViewController () {
+        if let product = _detailData,
+            let sessionController = createChatViewController(title: "商品详情", product: product) { 
+            navigationController?.pushViewController(sessionController, animated: true)
+        }
+    }
     
     fileprivate func addToShopCart(checkoutNow: Bool) {
         if let detailData: ProductDetail = _detailData {

@@ -21,10 +21,11 @@ class XFAddressListViewController: XFBaseSubViewController {
         let tableView = UITableView(frame: CGRect.zero, style: UITableViewStyle.plain)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorColor = XFConstants.Color.separatorLine
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 92
+        tableView.separatorColor = XFConstants.Color.separatorLine
+        tableView.backgroundColor = XFConstants.Color.commonBackground
         tableView.register(XFAddressItem.self, forCellReuseIdentifier: addressCellIdentifier)
         return tableView
     }()

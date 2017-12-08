@@ -37,6 +37,11 @@ struct XFConstants {
             static let siteId = "145039"
             static let appId = "2368f0801ca49"
         }
+        // http://qiyukf.com/newdoc/html/iOS_SDK_Guide.html
+        struct QYKF {
+            static let appKey = "114497f7a5e216563678d32ea5bc0fb9"
+            static let appName = "拾个鲜果"
+        }
         struct Wechat {
             static let appId = "wx7bf5a553f9431967"
         }

@@ -51,6 +51,7 @@ class ProductDetail: HandyJSON {
     var description:Array<String> = [""]
     var service:Array<ProductDetailService>?
     var commentList:Array<XFComment>?
+    var isCollected:Bool = false
     
     required init() {}
     

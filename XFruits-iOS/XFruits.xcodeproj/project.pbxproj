@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1613F7891FBC1DE50033E42F /* XFAddToCartAnimationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1613F7881FBC1DE50033E42F /* XFAddToCartAnimationTool.swift */; };
 		16200CF01F1B169C0008C039 /* XFAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CEE1F1B169C0008C039 /* XFAddress.swift */; };
 		16200CF51F1B7F200008C039 /* XFAvailableAddressUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */; };
+		1632FE4B1FC6D73D00186A8F /* XFCollectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1632FE4A1FC6D73D00186A8F /* XFCollectionService.swift */; };
+		1632FE4D1FC6E27500186A8F /* XFCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1632FE4C1FC6E27500186A8F /* XFCollection.swift */; };
+		1632FE4F1FC7075B00186A8F /* XFCollectionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1632FE4E1FC7075B00186A8F /* XFCollectionListCell.swift */; };
 		1641E76C1F35F9D10093DADF /* XFCityChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */; };
 		1641E76E1F3609EC0093DADF /* XFAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1641E76D1F3609EC0093DADF /* XFAlert.swift */; };
 		165608D91EDACA6000D325D4 /* XFTPayModeableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */; };
 		165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */; };
 		16582DC31EE4F8D400A58846 /* XFEditMyAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */; };
+		1660E8A81FC2B819008F5669 /* XLVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1660E8A21FC2B819008F5669 /* XLVideoPlayer.m */; };
+		1660E8A91FC2B819008F5669 /* XLSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1660E8A51FC2B819008F5669 /* XLSlider.m */; };
 		16701C121F6EB431007E2CEA /* XFExpandImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16701C111F6EB431007E2CEA /* XFExpandImage.swift */; };
 		169FAF8F1F6A5BE800CB358C /* XFUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169FAF8E1F6A5BE800CB358C /* XFUserInfoView.swift */; };
 		16C9FD9A1F6C1FEA00A138E6 /* UIAlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C9FD991F6C1FEA00A138E6 /* UIAlertExtension.swift */; };
@@ -25,6 +31,7 @@
 		860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860A43021EE415FF00798678 /* HandyJSON.framework */; };
 		860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860A43041EE4178000798678 /* XFBaseResponse.swift */; };
 		860C9E561F7293BE00AF3CB7 /* XFCouponItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860C9E551F7293BE00AF3CB7 /* XFCouponItemCellView.swift */; };
+		86128A3D1FC711D200391E51 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86128A3C1FC711C900391E51 /* UserNotifications.framework */; };
 		8616F7ED1F654C03007A4669 /* XFAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616F7EC1F654C03007A4669 /* XFAuthService.swift */; };
 		8616F7EF1F654CB8007A4669 /* XFProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8616F7EE1F654CB8007A4669 /* XFProductService.swift */; };
 		8618BA2C1F3F963300AC9436 /* XFPayTimerCountDownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618BA2B1F3F963300AC9436 /* XFPayTimerCountDownViewCell.swift */; };
@@ -60,11 +67,13 @@
 		863983741F85E5E80035F0FD /* XFUserScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863983731F85E5E80035F0FD /* XFUserScoreViewController.swift */; };
 		864CD7C01F80934A00E8B6FA /* XFSeperatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864CD7BF1F80934A00E8B6FA /* XFSeperatorView.swift */; };
 		865235C61F1AFD5A005897C3 /* XFShopCartEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865235C51F1AFD5A005897C3 /* XFShopCartEmptyView.swift */; };
+		865465191FC321A60007FAC6 /* XFNavMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865465181FC321A60007FAC6 /* XFNavMenuViewController.swift */; };
 		865AA5B81EAB9E9500E94312 /* XFEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AA5B71EAB9E9500E94312 /* XFEnum.swift */; };
 		865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AA5BF1EABA14C00E94312 /* XFUIFuncDefines.swift */; };
 		865F4F471E9A173E0059502C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865F4F461E9A173E0059502C /* AppDelegate.swift */; };
 		8660D99F1F447AF800D98C18 /* XFOrderSerivice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8660D99E1F447AF800D98C18 /* XFOrderSerivice.swift */; };
 		86658BC31F5088EF00817B2C /* XFAppGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86658BC21F5088EF00817B2C /* XFAppGuideViewController.swift */; };
+		8684682A1FCA8883002B439A /* XFCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868468291FCA8883002B439A /* XFCommentViewController.swift */; };
 		868613261EACCCE400A44338 /* XFImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868613251EACCCE400A44338 /* XFImageExtension.swift */; };
 		8690FEDB1ED177B80051A16D /* XFCategoryHeadSizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEDA1ED177B80051A16D /* XFCategoryHeadSizer.swift */; };
 		8690FEDD1ED178120051A16D /* XFCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8690FEDC1ED178120051A16D /* XFCategoryCell.swift */; };
@@ -97,6 +106,7 @@
 		86ADDCDD1F2B7C5C00881CFA /* XFDescriptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCDC1F2B7C5C00881CFA /* XFDescriptionItem.swift */; };
 		86ADDCDF1F2DD7C100881CFA /* XFOrderConfirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCDE1F2DD7C100881CFA /* XFOrderConfirm.swift */; };
 		86ADDCE11F2DD88500881CFA /* XFCouponItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADDCE01F2DD88500881CFA /* XFCouponItem.swift */; };
+		86BA081C1FC29CB300AACC6E /* XFCardStockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA081B1FC29CB300AACC6E /* XFCardStockViewController.swift */; };
 		86BB9A871F1D2B1E00B46EBC /* XFCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BB9A861F1D2B1E00B46EBC /* XFCheckoutViewController.swift */; };
 		86BF01891FBAD02F006C66E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 865F4F4D1E9A173E0059502C /* Assets.xcassets */; };
 		86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86CB2FE61EAB495A009972A8 /* Alamofire.framework */; };
@@ -117,6 +127,17 @@
 		86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */; };
 		86EC80F71EC86C34009AB47D /* MyBillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */; };
 		86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC80F51EC86C34009AB47D /* UserCenterAvatarCell.swift */; };
+		86F894B51FC1D2C500AE1C93 /* libQYSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F8949D1FC1D2C500AE1C93 /* libQYSDK.a */; };
+		86F894B61FC1D2C500AE1C93 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F8949E1FC1D2C500AE1C93 /* libcrypto.a */; };
+		86F894B71FC1D2C500AE1C93 /* libevent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894B31FC1D2C500AE1C93 /* libevent.a */; };
+		86F894B81FC1D2C500AE1C93 /* QYResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 86F894B41FC1D2C500AE1C93 /* QYResource.bundle */; };
+		86F894BA1FC1D35800AE1C93 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894B91FC1D34500AE1C93 /* CoreText.framework */; };
+		86F894BC1FC1D36D00AE1C93 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894BB1FC1D36200AE1C93 /* MobileCoreServices.framework */; };
+		86F894BE1FC1D38500AE1C93 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894BD1FC1D37E00AE1C93 /* AVFoundation.framework */; };
+		86F894C01FC1D3AE00AE1C93 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894BF1FC1D3A800AE1C93 /* CoreMedia.framework */; };
+		86F894C21FC1D3C800AE1C93 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894C11FC1D3C300AE1C93 /* AudioToolbox.framework */; };
+		86F894C41FC1D41400AE1C93 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894C31FC1D41400AE1C93 /* libxml2.tbd */; };
+		86F894C61FC1D47A00AE1C93 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F894C51FC1D47A00AE1C93 /* libstdc++.6.0.9.tbd */; };
 		86FFA4121F487A5600FCC809 /* XFOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4111F487A5600FCC809 /* XFOrder.swift */; };
 		86FFA4141F487DF800FCC809 /* XFExpress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4131F487DF800FCC809 /* XFExpress.swift */; };
 		86FFA4161F487F4100FCC809 /* XFNewsInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */; };
@@ -151,13 +172,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1613F7881FBC1DE50033E42F /* XFAddToCartAnimationTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAddToCartAnimationTool.swift; sourceTree = "<group>"; };
 		16200CEE1F1B169C0008C039 /* XFAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAddress.swift; sourceTree = "<group>"; };
 		16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAvailableAddressUtils.swift; sourceTree = "<group>"; };
+		1632FE4A1FC6D73D00186A8F /* XFCollectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCollectionService.swift; sourceTree = "<group>"; };
+		1632FE4C1FC6E27500186A8F /* XFCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCollection.swift; sourceTree = "<group>"; };
+		1632FE4E1FC7075B00186A8F /* XFCollectionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCollectionListCell.swift; sourceTree = "<group>"; };
 		1641E76B1F35F96F0093DADF /* XFCityChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCityChooseView.swift; sourceTree = "<group>"; };
 		1641E76D1F3609EC0093DADF /* XFAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAlert.swift; sourceTree = "<group>"; };
 		165608D61EDACA6000D325D4 /* XFTPayModeableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFTPayModeableViewCell.swift; sourceTree = "<group>"; };
 		165608DA1EDACA6900D325D4 /* XFChoosePayWayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFChoosePayWayViewController.swift; sourceTree = "<group>"; };
 		16582DC21EE4F8D400A58846 /* XFEditMyAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEditMyAddressView.swift; sourceTree = "<group>"; };
+		1660E8A21FC2B819008F5669 /* XLVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLVideoPlayer.m; sourceTree = "<group>"; };
+		1660E8A41FC2B819008F5669 /* XLSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLSlider.h; sourceTree = "<group>"; };
+		1660E8A51FC2B819008F5669 /* XLSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLSlider.m; sourceTree = "<group>"; };
+		1660E8A71FC2B819008F5669 /* XLVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLVideoPlayer.h; sourceTree = "<group>"; };
 		16701C111F6EB431007E2CEA /* XFExpandImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFExpandImage.swift; sourceTree = "<group>"; };
 		169FAF8E1F6A5BE800CB358C /* XFUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserInfoView.swift; sourceTree = "<group>"; };
 		16C9FD991F6C1FEA00A138E6 /* UIAlertExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertExtension.swift; sourceTree = "<group>"; };
@@ -169,6 +198,8 @@
 		860A43021EE415FF00798678 /* HandyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HandyJSON.framework; path = Carthage/Build/iOS/HandyJSON.framework; sourceTree = "<group>"; };
 		860A43041EE4178000798678 /* XFBaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFBaseResponse.swift; sourceTree = "<group>"; };
 		860C9E551F7293BE00AF3CB7 /* XFCouponItemCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCouponItemCellView.swift; sourceTree = "<group>"; };
+		86128A3C1FC711C900391E51 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		86128A3E1FC71E4D00391E51 /* XFruits.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XFruits.entitlements; sourceTree = "<group>"; };
 		8616F7EC1F654C03007A4669 /* XFAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFAuthService.swift; sourceTree = "<group>"; };
 		8616F7EE1F654CB8007A4669 /* XFProductService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFProductService.swift; sourceTree = "<group>"; };
 		8618BA2B1F3F963300AC9436 /* XFPayTimerCountDownViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFPayTimerCountDownViewCell.swift; sourceTree = "<group>"; };
@@ -209,6 +240,7 @@
 		863983731F85E5E80035F0FD /* XFUserScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFUserScoreViewController.swift; sourceTree = "<group>"; };
 		864CD7BF1F80934A00E8B6FA /* XFSeperatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFSeperatorView.swift; sourceTree = "<group>"; };
 		865235C51F1AFD5A005897C3 /* XFShopCartEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFShopCartEmptyView.swift; sourceTree = "<group>"; };
+		865465181FC321A60007FAC6 /* XFNavMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFNavMenuViewController.swift; sourceTree = "<group>"; };
 		865AA5B71EAB9E9500E94312 /* XFEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFEnum.swift; sourceTree = "<group>"; };
 		865AA5BF1EABA14C00E94312 /* XFUIFuncDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFUIFuncDefines.swift; sourceTree = "<group>"; };
 		865F4F431E9A173E0059502C /* XFruits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XFruits.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +249,7 @@
 		865F4F521E9A173E0059502C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8660D99E1F447AF800D98C18 /* XFOrderSerivice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrderSerivice.swift; sourceTree = "<group>"; };
 		86658BC21F5088EF00817B2C /* XFAppGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFAppGuideViewController.swift; sourceTree = "<group>"; };
+		868468291FCA8883002B439A /* XFCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCommentViewController.swift; sourceTree = "<group>"; };
 		868613251EACCCE400A44338 /* XFImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFImageExtension.swift; sourceTree = "<group>"; };
 		8690FEDA1ED177B80051A16D /* XFCategoryHeadSizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCategoryHeadSizer.swift; sourceTree = "<group>"; };
 		8690FEDC1ED178120051A16D /* XFCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCategoryCell.swift; sourceTree = "<group>"; };
@@ -250,6 +283,7 @@
 		86ADDCDC1F2B7C5C00881CFA /* XFDescriptionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFDescriptionItem.swift; sourceTree = "<group>"; };
 		86ADDCDE1F2DD7C100881CFA /* XFOrderConfirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrderConfirm.swift; sourceTree = "<group>"; };
 		86ADDCE01F2DD88500881CFA /* XFCouponItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCouponItem.swift; sourceTree = "<group>"; };
+		86BA081B1FC29CB300AACC6E /* XFCardStockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFCardStockViewController.swift; sourceTree = "<group>"; };
 		86BB9A861F1D2B1E00B46EBC /* XFCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XFCheckoutViewController.swift; sourceTree = "<group>"; };
 		86CB2FE61EAB495A009972A8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		86CB2FE81EAB495A009972A8 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -269,6 +303,35 @@
 		86EC80F31EC86C34009AB47D /* FourBillCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourBillCollectionViewCell.swift; sourceTree = "<group>"; };
 		86EC80F41EC86C34009AB47D /* MyBillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBillTableViewCell.swift; sourceTree = "<group>"; };
 		86EC80F51EC86C34009AB47D /* UserCenterAvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterAvatarCell.swift; sourceTree = "<group>"; };
+		86F8949D1FC1D2C500AE1C93 /* libQYSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libQYSDK.a; sourceTree = "<group>"; };
+		86F8949E1FC1D2C500AE1C93 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		86F894A01FC1D2C500AE1C93 /* QYPushMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPushMessage.h; sourceTree = "<group>"; };
+		86F894A11FC1D2C500AE1C93 /* QYSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYSource.h; sourceTree = "<group>"; };
+		86F894A21FC1D2C500AE1C93 /* QYCustomUIConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYCustomUIConfig.h; sourceTree = "<group>"; };
+		86F894A41FC1D2C500AE1C93 /* QYPOPMessageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPOPMessageInfo.h; sourceTree = "<group>"; };
+		86F894A51FC1D2C500AE1C93 /* QYPOPCustomUIConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPOPCustomUIConfig.h; sourceTree = "<group>"; };
+		86F894A61FC1D2C500AE1C93 /* QYPOPSessionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPOPSessionInfo.h; sourceTree = "<group>"; };
+		86F894A71FC1D2C500AE1C93 /* QYPOPConversationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPOPConversationManager.h; sourceTree = "<group>"; };
+		86F894A81FC1D2C500AE1C93 /* QYPOPSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPOPSessionViewController.h; sourceTree = "<group>"; };
+		86F894A91FC1D2C500AE1C93 /* QYPOPSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYPOPSDK.h; sourceTree = "<group>"; };
+		86F894AA1FC1D2C500AE1C93 /* QYSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYSessionViewController.h; sourceTree = "<group>"; };
+		86F894AB1FC1D2C500AE1C93 /* QYSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYSDK.h; sourceTree = "<group>"; };
+		86F894AC1FC1D2C500AE1C93 /* QYCustomActionConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYCustomActionConfig.h; sourceTree = "<group>"; };
+		86F894AD1FC1D2C500AE1C93 /* QYMessageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYMessageInfo.h; sourceTree = "<group>"; };
+		86F894AE1FC1D2C500AE1C93 /* QYUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYUserInfo.h; sourceTree = "<group>"; };
+		86F894AF1FC1D2C500AE1C93 /* QYCommodityInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYCommodityInfo.h; sourceTree = "<group>"; };
+		86F894B01FC1D2C500AE1C93 /* QYHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYHeaders.h; sourceTree = "<group>"; };
+		86F894B11FC1D2C500AE1C93 /* QYConversationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYConversationManager.h; sourceTree = "<group>"; };
+		86F894B21FC1D2C500AE1C93 /* QYSessionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYSessionInfo.h; sourceTree = "<group>"; };
+		86F894B31FC1D2C500AE1C93 /* libevent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libevent.a; sourceTree = "<group>"; };
+		86F894B41FC1D2C500AE1C93 /* QYResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = QYResource.bundle; sourceTree = "<group>"; };
+		86F894B91FC1D34500AE1C93 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		86F894BB1FC1D36200AE1C93 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		86F894BD1FC1D37E00AE1C93 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		86F894BF1FC1D3A800AE1C93 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		86F894C11FC1D3C300AE1C93 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		86F894C31FC1D41400AE1C93 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		86F894C51FC1D47A00AE1C93 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		86FFA4111F487A5600FCC809 /* XFOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFOrder.swift; sourceTree = "<group>"; };
 		86FFA4131F487DF800FCC809 /* XFExpress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFExpress.swift; sourceTree = "<group>"; };
 		86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XFNewsInfoService.swift; sourceTree = "<group>"; };
@@ -294,26 +357,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86128A3D1FC711D200391E51 /* UserNotifications.framework in Frameworks */,
+				86F894C21FC1D3C800AE1C93 /* AudioToolbox.framework in Frameworks */,
+				86F894C01FC1D3AE00AE1C93 /* CoreMedia.framework in Frameworks */,
+				8618BA3B1F4027FA00AC9436 /* CoreTelephony.framework in Frameworks */,
+				86F894BE1FC1D38500AE1C93 /* AVFoundation.framework in Frameworks */,
+				86F894BC1FC1D36D00AE1C93 /* MobileCoreServices.framework in Frameworks */,
+				86F894BA1FC1D35800AE1C93 /* CoreText.framework in Frameworks */,
 				860A32AB1F860E2500301883 /* ESPullToRefresh.framework in Frameworks */,
 				8618BA441F40366E00AC9436 /* CoreMotion.framework in Frameworks */,
 				8618BA421F4035D700AC9436 /* AlipaySDK.framework in Frameworks */,
 				8618BA401F402B9800AC9436 /* libWeChatSDK.a in Frameworks */,
 				8618BA3C1F40280500AC9436 /* libc++.tbd in Frameworks */,
-				8618BA3B1F4027FA00AC9436 /* CoreTelephony.framework in Frameworks */,
 				86A45C6C1ED1187D00772D13 /* libz.tbd in Frameworks */,
 				8618BA381F4027B000AC9436 /* SystemConfiguration.framework in Frameworks */,
+				86F894C41FC1D41400AE1C93 /* libxml2.tbd in Frameworks */,
 				860A43031EE415FF00798678 /* HandyJSON.framework in Frameworks */,
 				8690FF321ED538E90051A16D /* SQLite.framework in Frameworks */,
 				86A45C6A1ED1186A00772D13 /* PhotosUI.framework in Frameworks */,
+				86F894B61FC1D2C500AE1C93 /* libcrypto.a in Frameworks */,
 				86A45C681ED1186100772D13 /* Photos.framework in Frameworks */,
+				86F894C61FC1D47A00AE1C93 /* libstdc++.6.0.9.tbd in Frameworks */,
 				86A45C661ED1184E00772D13 /* AssetsLibrary.framework in Frameworks */,
 				86A45C621ED110B500772D13 /* Security.framework in Frameworks */,
 				86A45C601ED110AB00772D13 /* CFNetwork.framework in Frameworks */,
+				86F894B71FC1D2C500AE1C93 /* libevent.a in Frameworks */,
 				86A45C5A1ED1109100772D13 /* libstdc++.tbd in Frameworks */,
 				86A45C581ED1108500772D13 /* libicucore.tbd in Frameworks */,
 				86A45C561ED1106D00772D13 /* libsqlite3.tbd in Frameworks */,
 				86CB2FED1EAB495A009972A8 /* Alamofire.framework in Frameworks */,
 				86CB2FEF1EAB495A009972A8 /* Kingfisher.framework in Frameworks */,
+				86F894B51FC1D2C500AE1C93 /* libQYSDK.a in Frameworks */,
 				86CB2FF01EAB495A009972A8 /* MBProgressHUD.framework in Frameworks */,
 				86CB2FF21EAB495A009972A8 /* SnapKit.framework in Frameworks */,
 				86CB2FF31EAB495A009972A8 /* SwiftyJSON.framework in Frameworks */,
@@ -323,6 +397,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1660E8A11FC2B819008F5669 /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				1660E8A21FC2B819008F5669 /* XLVideoPlayer.m */,
+				1660E8A31FC2B819008F5669 /* Slider */,
+				1660E8A71FC2B819008F5669 /* XLVideoPlayer.h */,
+			);
+			path = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		1660E8A31FC2B819008F5669 /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				1660E8A41FC2B819008F5669 /* XLSlider.h */,
+				1660E8A51FC2B819008F5669 /* XLSlider.m */,
+			);
+			path = Slider;
+			sourceTree = "<group>";
+		};
 		8618BA311F40274300AC9436 /* WeChatSDK1.7.9 */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +539,7 @@
 		8644307E1E9A277B00D41BCC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1632FE4C1FC6E27500186A8F /* XFCollection.swift */,
 				16200CEE1F1B169C0008C039 /* XFAddress.swift */,
 				860A43041EE4178000798678 /* XFBaseResponse.swift */,
 				862672E61EFE47AE0062B52B /* XFUser.swift */,
@@ -469,6 +563,7 @@
 				862672F61EFE497D0062B52B /* XFBaseSubViewController.swift */,
 				862672F81EFE499D0062B52B /* XFNavigationController.swift */,
 				86658BC21F5088EF00817B2C /* XFAppGuideViewController.swift */,
+				865465181FC321A60007FAC6 /* XFNavMenuViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -493,6 +588,7 @@
 				862AF70C1F09271E00409CCB /* XFUserGlobal.swift */,
 				16200CF41F1B7F200008C039 /* XFAvailableAddressUtils.swift */,
 				86ADDCD41F2AEBCE00881CFA /* XFDataGlobal.swift */,
+				1613F7881FBC1DE50033E42F /* XFAddToCartAnimationTool.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -517,6 +613,7 @@
 		865F4F451E9A173E0059502C /* XFruits */ = {
 			isa = PBXGroup;
 			children = (
+				86128A3E1FC71E4D00391E51 /* XFruits.entitlements */,
 				864430751E9A242000D41BCC /* AppCode */,
 				864430741E9A23CD00D41BCC /* AppSystem */,
 			);
@@ -526,6 +623,7 @@
 		8660D99D1F447A5E00D98C18 /* NetService */ = {
 			isa = PBXGroup;
 			children = (
+				1632FE4A1FC6D73D00186A8F /* XFCollectionService.swift */,
 				8660D99E1F447AF800D98C18 /* XFOrderSerivice.swift */,
 				862848521F483DD400CA52B6 /* XFAddressService.swift */,
 				86FFA4151F487F4100FCC809 /* XFNewsInfoService.swift */,
@@ -540,6 +638,8 @@
 		8666D5381F2326600094FE33 /* ThirdLibs */ = {
 			isa = PBXGroup;
 			children = (
+				1660E8A11FC2B819008F5669 /* VideoPlayer */,
+				86F8949C1FC1D2C500AE1C93 /* QiYuSDK3.12.0 */,
 				8618BA3D1F4029F000AC9436 /* AlipaySDK15.4.1 */,
 				8618BA311F40274300AC9436 /* WeChatSDK1.7.9 */,
 			);
@@ -611,6 +711,14 @@
 		86CB2FE51EAB4959009972A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				86128A3C1FC711C900391E51 /* UserNotifications.framework */,
+				86F894C51FC1D47A00AE1C93 /* libstdc++.6.0.9.tbd */,
+				86F894C31FC1D41400AE1C93 /* libxml2.tbd */,
+				86F894C11FC1D3C300AE1C93 /* AudioToolbox.framework */,
+				86F894BF1FC1D3A800AE1C93 /* CoreMedia.framework */,
+				86F894BD1FC1D37E00AE1C93 /* AVFoundation.framework */,
+				86F894BB1FC1D36200AE1C93 /* MobileCoreServices.framework */,
+				86F894B91FC1D34500AE1C93 /* CoreText.framework */,
 				860A32AA1F860E2500301883 /* ESPullToRefresh.framework */,
 				8618BA431F40366800AC9436 /* CoreMotion.framework */,
 				8618BA3A1F4027ED00AC9436 /* CoreTelephony.framework */,
@@ -663,8 +771,54 @@
 				16701C111F6EB431007E2CEA /* XFExpandImage.swift */,
 				860C9E551F7293BE00AF3CB7 /* XFCouponItemCellView.swift */,
 				86A4DB571FB750200015EF92 /* XFAddressItem.swift */,
+				1632FE4E1FC7075B00186A8F /* XFCollectionListCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		86F8949C1FC1D2C500AE1C93 /* QiYuSDK3.12.0 */ = {
+			isa = PBXGroup;
+			children = (
+				86F8949D1FC1D2C500AE1C93 /* libQYSDK.a */,
+				86F8949E1FC1D2C500AE1C93 /* libcrypto.a */,
+				86F8949F1FC1D2C500AE1C93 /* ExportHeaders */,
+				86F894B31FC1D2C500AE1C93 /* libevent.a */,
+				86F894B41FC1D2C500AE1C93 /* QYResource.bundle */,
+			);
+			path = QiYuSDK3.12.0;
+			sourceTree = "<group>";
+		};
+		86F8949F1FC1D2C500AE1C93 /* ExportHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				86F894A01FC1D2C500AE1C93 /* QYPushMessage.h */,
+				86F894A11FC1D2C500AE1C93 /* QYSource.h */,
+				86F894A21FC1D2C500AE1C93 /* QYCustomUIConfig.h */,
+				86F894A31FC1D2C500AE1C93 /* POP */,
+				86F894AA1FC1D2C500AE1C93 /* QYSessionViewController.h */,
+				86F894AB1FC1D2C500AE1C93 /* QYSDK.h */,
+				86F894AC1FC1D2C500AE1C93 /* QYCustomActionConfig.h */,
+				86F894AD1FC1D2C500AE1C93 /* QYMessageInfo.h */,
+				86F894AE1FC1D2C500AE1C93 /* QYUserInfo.h */,
+				86F894AF1FC1D2C500AE1C93 /* QYCommodityInfo.h */,
+				86F894B01FC1D2C500AE1C93 /* QYHeaders.h */,
+				86F894B11FC1D2C500AE1C93 /* QYConversationManager.h */,
+				86F894B21FC1D2C500AE1C93 /* QYSessionInfo.h */,
+			);
+			path = ExportHeaders;
+			sourceTree = "<group>";
+		};
+		86F894A31FC1D2C500AE1C93 /* POP */ = {
+			isa = PBXGroup;
+			children = (
+				86F894A41FC1D2C500AE1C93 /* QYPOPMessageInfo.h */,
+				86F894A51FC1D2C500AE1C93 /* QYPOPCustomUIConfig.h */,
+				86F894A61FC1D2C500AE1C93 /* QYPOPSessionInfo.h */,
+				86F894A71FC1D2C500AE1C93 /* QYPOPConversationManager.h */,
+				86F894A81FC1D2C500AE1C93 /* QYPOPSessionViewController.h */,
+				86F894A91FC1D2C500AE1C93 /* QYPOPSDK.h */,
+			);
+			path = POP;
 			sourceTree = "<group>";
 		};
 		86FFA41C1F48981F00FCC809 /* Controllers */ = {
@@ -681,10 +835,12 @@
 				8624CC3B1F4DE5D90008C8D3 /* XFAboutCompanyViewController.swift */,
 				16C9FD9D1F6D513400A138E6 /* XFChangePwdViewController.swift */,
 				869FBE991F70E5F50047A8B7 /* XFCouponListViewController.swift */,
-				863983711F85E5BE0035F0FD /* XFUserCollectionViewController.swift */,
 				863983731F85E5E80035F0FD /* XFUserScoreViewController.swift */,
 				86A4DB4F1FB715690015EF92 /* XFAddressListViewController.swift */,
 				86A4DB511FB7157E0015EF92 /* XFAddressManageViewController.swift */,
+				86BA081B1FC29CB300AACC6E /* XFCardStockViewController.swift */,
+				863983711F85E5BE0035F0FD /* XFUserCollectionViewController.swift */,
+				868468291FCA8883002B439A /* XFCommentViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -742,7 +898,12 @@
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = 426U84EDEE;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -770,6 +931,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86BF01891FBAD02F006C66E2 /* Assets.xcassets in Resources */,
+				86F894B81FC1D2C500AE1C93 /* QYResource.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -815,10 +977,12 @@
 				8690FEE11ED178AF0051A16D /* XFShopCartActionBar.swift in Sources */,
 				86ADDCDF1F2DD7C100881CFA /* XFOrderConfirm.swift in Sources */,
 				862672F11EFE48A20062B52B /* XFHomeViewController.swift in Sources */,
+				1632FE4F1FC7075B00186A8F /* XFCollectionListCell.swift in Sources */,
 				86E8DF7E1EDBCC90000A489F /* XFButtonExtension.swift in Sources */,
 				865AA5C01EABA14C00E94312 /* XFUIFuncDefines.swift in Sources */,
 				862672F71EFE497D0062B52B /* XFBaseSubViewController.swift in Sources */,
 				16701C121F6EB431007E2CEA /* XFExpandImage.swift in Sources */,
+				86BA081C1FC29CB300AACC6E /* XFCardStockViewController.swift in Sources */,
 				864CD7C01F80934A00E8B6FA /* XFSeperatorView.swift in Sources */,
 				860A32AD1F861E7100301883 /* XFRefreshAnimator.swift in Sources */,
 				86FFA42A1F4898FA00FCC809 /* XFOrderDetailViewController.swift in Sources */,
@@ -829,9 +993,11 @@
 				8690FEE31ED179560051A16D /* XFAllCategoryListViewController.swift in Sources */,
 				86E8DF811EDC0EAB000A489F /* XFCommentItemView.swift in Sources */,
 				86ADDCD91F2B64CF00881CFA /* XFCheckoutAddress.swift in Sources */,
+				1660E8A81FC2B819008F5669 /* XLVideoPlayer.m in Sources */,
 				86ADDCDB1F2B656700881CFA /* XFCheckoutInfo.swift in Sources */,
 				86FFA4321F494A4A00FCC809 /* XFOrderListItem.swift in Sources */,
 				86A45C721ED1209F00772D13 /* XFCommonUtils.swift in Sources */,
+				8684682A1FCA8883002B439A /* XFCommentViewController.swift in Sources */,
 				869FBE9A1F70E5F50047A8B7 /* XFCouponListViewController.swift in Sources */,
 				86D18BA71F1E5843007643C0 /* XFCheckoutActionBar.swift in Sources */,
 				862672F91EFE499D0062B52B /* XFNavigationController.swift in Sources */,
@@ -850,6 +1016,7 @@
 				863983741F85E5E80035F0FD /* XFUserScoreViewController.swift in Sources */,
 				862672E51EFE47010062B52B /* XFMBProgressHUD.swift in Sources */,
 				860C9E561F7293BE00AF3CB7 /* XFCouponItemCellView.swift in Sources */,
+				1660E8A91FC2B819008F5669 /* XLSlider.m in Sources */,
 				8616F7EF1F654CB8007A4669 /* XFProductService.swift in Sources */,
 				86E695201ED6AA35004864A6 /* XFCartUtils.swift in Sources */,
 				86EC80F81EC86C34009AB47D /* UserCenterAvatarCell.swift in Sources */,
@@ -863,9 +1030,11 @@
 				86658BC31F5088EF00817B2C /* XFAppGuideViewController.swift in Sources */,
 				86E8DF781EDAB0D6000A489F /* XFDetailDescriptionView.swift in Sources */,
 				16582DC31EE4F8D400A58846 /* XFEditMyAddressView.swift in Sources */,
+				865465191FC321A60007FAC6 /* XFNavMenuViewController.swift in Sources */,
 				165608DB1EDACA6900D325D4 /* XFChoosePayWayViewController.swift in Sources */,
 				86E8DF761EDAB0C9000A489F /* XFDetailCommentView.swift in Sources */,
 				862672DB1EFE44490062B52B /* XFUserCenterViewController.swift in Sources */,
+				1632FE4D1FC6E27500186A8F /* XFCollection.swift in Sources */,
 				169FAF8F1F6A5BE800CB358C /* XFUserInfoView.swift in Sources */,
 				8692FCD61F42029A00CD3F72 /* XFPayResultViewController.swift in Sources */,
 				86FFA4281F4898D400FCC809 /* XFOrderListViewController.swift in Sources */,
@@ -877,6 +1046,7 @@
 				86E8DF741EDAB0BB000A489F /* XFDetailHeaderView.swift in Sources */,
 				860A43051EE4178000798678 /* XFBaseResponse.swift in Sources */,
 				86EC80F61EC86C34009AB47D /* FourBillCollectionViewCell.swift in Sources */,
+				1632FE4B1FC6D73D00186A8F /* XFCollectionService.swift in Sources */,
 				8618BA2C1F3F963300AC9436 /* XFPayTimerCountDownViewCell.swift in Sources */,
 				16200CF01F1B169C0008C039 /* XFAddress.swift in Sources */,
 				86D18BA51F1E5731007643C0 /* XFCheckoutGoodsCell.swift in Sources */,
@@ -886,6 +1056,7 @@
 				86FFA4141F487DF800FCC809 /* XFExpress.swift in Sources */,
 				8630B31F1EF7BCB1002F5B5C /* XFCartDataHelper.swift in Sources */,
 				86FFA43E1F49DD5100FCC809 /* XFIndexArticleViewCell.swift in Sources */,
+				1613F7891FBC1DE50033E42F /* XFAddToCartAnimationTool.swift in Sources */,
 				86A4DB521FB7157E0015EF92 /* XFAddressManageViewController.swift in Sources */,
 				863983721F85E5BE0035F0FD /* XFUserCollectionViewController.swift in Sources */,
 				86ADDCDD1F2B7C5C00881CFA /* XFDescriptionItem.swift in Sources */,
@@ -1028,8 +1199,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = XFruits/XFruits.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 426U84EDEE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1044,6 +1216,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/WeChatSDK1.7.9",
 					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/AlipaySDK15.4.1",
+					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/QiYuSDK3.12.0",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
@@ -1053,8 +1226,8 @@
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = org.xfru.mall.ios.mobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b8461cf7-cff0-4856-b7c2-850a3e3803f8";
-				PROVISIONING_PROFILE_SPECIFIER = "XFruits Dev";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Carthage/Build/iOS/V5Client.framework/**";
 				SWIFT_OBJC_BRIDGING_HEADER = "XFruits/XFruits-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1068,8 +1241,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_ENTITLEMENTS = XFruits/XFruits.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 426U84EDEE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1084,6 +1258,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/WeChatSDK1.7.9",
 					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/AlipaySDK15.4.1",
+					"$(PROJECT_DIR)/XFruits/AppCode/ThirdLibs/QiYuSDK3.12.0",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
@@ -1092,8 +1267,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.xfru.mall.ios.mobile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a0c3b3ab-5d77-4541-bd68-3194334d79f5";
-				PROVISIONING_PROFILE_SPECIFIER = "XFruits Dis";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Carthage/Build/iOS/V5Client.framework/**";
 				SWIFT_OBJC_BRIDGING_HEADER = "XFruits/XFruits-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

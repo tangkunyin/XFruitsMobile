@@ -35,6 +35,13 @@ class XFWebViewController: XFBaseSubViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+       
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(webview)
+        
         if let urlString = urlString, let url = URL(string: urlString) {
             var request = URLRequest(url: url)
             request.timeoutInterval = 30
@@ -42,11 +49,7 @@ class XFWebViewController: XFBaseSubViewController {
         } else {
             handleError()
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(webview)
+        
         webview.snp.makeConstraints({ (make) in
             make.center.size.equalTo(view)
         })

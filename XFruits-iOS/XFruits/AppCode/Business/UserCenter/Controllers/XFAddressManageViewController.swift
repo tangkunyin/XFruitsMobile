@@ -43,23 +43,25 @@ class XFAddressManageViewController: XFBaseSubViewController {
         }
     }
     
-    func saveAddress(address :XFAddress) {
+    private func onAddressUpdate() {
+        stopLoadding()
+        backToParentController()
+    }
+    
+    private func saveAddress(address :XFAddress) {
         weak var weakSelf = self
-        var addressDict:[String:Any]  = ["code":address.districtCode,
-                                         "address":address.address,
-                                         "recipient":address.recipient,
-                                         "cellPhone":address.cellPhone,
-                                         "isDefault":address.isDefault,
-                                         "label":address.label]
+        var addressDict:[String:Any]  = ["code":address.districtCode, "address":address.address, "recipient":address.recipient,
+                                         "cellPhone":address.cellPhone, "isDefault":address.isDefault, "label":address.label]
+        loaddingWithMsg("操作中，请稍后...")
         if editStyle == 0 {  // 添加地址
             XFAddressService.addAddress(params: addressDict) { (data) in
-                weakSelf!.backToParentController()
+                weakSelf?.onAddressUpdate()
             }
         } else if editStyle == 1 {  // 修改地址
             let addressId:String = addressSigleEdit!.id
             addressDict["id"] = addressId  // 编辑模式要多传一个地址id
             XFAddressService.modifyAddress(params: addressDict){ (data) in
-                weakSelf?.backToParentController()
+                weakSelf?.onAddressUpdate()
             }
         }
     }

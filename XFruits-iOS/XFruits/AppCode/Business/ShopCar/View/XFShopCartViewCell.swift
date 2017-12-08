@@ -22,7 +22,7 @@ class XFShopCartViewCell: UITableViewCell {
                 descLabel.text = "规格：\(item.desc ?? "其他")"
                 priceLabel.text = String(format:"¥ %.2f",item.primePrice!)
                 thumbnail.kf.setImage(with: URL.init(string: item.cover!),
-                                      placeholder: UIImage.imageWithNamed("Loading-transprent"),
+                                      placeholder: UIImage.imageWithNamed("Loading-squre-transparent"),
                                       options: [.transition(.fade(0.8))])
             }
         }
@@ -71,7 +71,7 @@ class XFShopCartViewCell: UITableViewCell {
     lazy var titleLabel:UILabel = {
         let title = UILabel()
         title.textColor = XFConstants.Color.darkGray
-        title.font = XFConstants.Font.pfn12
+        title.font = XFConstants.Font.pfn14
         title.textAlignment = .left
         title.numberOfLines = 1
         title.adjustsFontSizeToFitWidth = true
@@ -82,7 +82,7 @@ class XFShopCartViewCell: UITableViewCell {
     lazy var descLabel:UILabel = {
         let title = UILabel()
         title.textColor = XFConstants.Color.darkGray
-        title.font = XFConstants.Font.pfn10
+        title.font = XFConstants.Font.pfn14
         title.textAlignment = .left
         title.numberOfLines = 2
         title.adjustsFontSizeToFitWidth = false
@@ -93,7 +93,7 @@ class XFShopCartViewCell: UITableViewCell {
     lazy var priceLabel:UILabel = {
         let title = UILabel()
         title.textColor = XFConstants.Color.darkGray
-        title.font = XFConstants.Font.pfn10
+        title.font = XFConstants.Font.pfn14
         title.textAlignment = .left
         title.numberOfLines = 2
         title.adjustsFontSizeToFitWidth = false
@@ -104,7 +104,7 @@ class XFShopCartViewCell: UITableViewCell {
     lazy var quantityLabel:UILabel = {
         let title = UILabel()
         title.textColor = XFConstants.Color.darkGray
-        title.font = XFConstants.Font.pfn10
+        title.font = XFConstants.Font.pfn14
         title.textAlignment = .center
         title.numberOfLines = 1
         title.adjustsFontSizeToFitWidth = false

@@ -34,9 +34,7 @@ class XFUserInfoViewController: XFBaseSubViewController {
     lazy var userInfoView :XFUserInfoView = {
         let view = XFUserInfoView()
         weak var weakSelf = self
-        
         view.actionHandler = {(type:Int) -> Void in
-            print(type)
             weakSelf?.selectEvent(type:type)  // view上的点击操作，触发不同类型的操作。
         }
         return view
@@ -59,7 +57,7 @@ class XFUserInfoViewController: XFBaseSubViewController {
             if #available(iOS 11.0, *) {
                 make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
             } else {
-                make.width.bottom.equalTo(view).offset(-20)
+                make.bottom.equalTo(view).offset(-20)
             }
         }
         
@@ -72,16 +70,18 @@ class XFUserInfoViewController: XFBaseSubViewController {
         super.viewWillAppear(animated)
     }
     
-    @objc fileprivate func onLoginOut(){
-        XFUserGlobal.shared.signOff()
-        backToParentController()
+    @objc fileprivate func onLoginOut() {
+        weak var weakSelf = self
+        QYSDK.shared().logout {
+            XFUserGlobal.shared.signOff()
+            weakSelf?.backToParentController()
+        }
     }
     
     fileprivate func getUserInfo() {
          weak var weakSelf = self
         XFUseInfoService.getUserInfo { (data) in
-            if  let data:XFUser = data as? XFUser{
-                print(data)
+            if  let data:XFUser = data as? XFUser {
                 XFUserGlobal.shared.signIn(user: data)
                 weakSelf?.userInfoView.setUserInfo(data: data)
             }
@@ -90,12 +90,9 @@ class XFUserInfoViewController: XFBaseSubViewController {
     
     // 更新用户信息
     fileprivate func updateUserInfo(params:XFParams) {
-        
         weak var weakSelf = self
         XFUseInfoService.updateUserInfo(params: params) { (data) in
-            
             if let resp = data as? NSNumber , resp == 1{
-//                print(data)
                 MBProgressHUD.showSuccess("更新用户信息成功~")
                 weakSelf?.getUserInfo()
             }
@@ -230,7 +227,6 @@ class XFUserInfoViewController: XFBaseSubViewController {
 
 extension XFUserInfoViewController : UIImagePickerControllerDelegate , UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
-        print(info)
         self.dismiss(animated: true , completion: nil)
     }
     

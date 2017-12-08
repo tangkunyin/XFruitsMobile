@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import ESPullToRefresh
 
 fileprivate let XFCellViewReuseIdentifier:String = "XFCategoryCellReuseIdentifier"
 
@@ -17,6 +16,7 @@ class XFCategoryViewController: XFBaseViewController {
     var currentPage: Int = 1
     
     var dataSource: Array<ProductItem> = []
+    var redLayers: Array<CALayer> = []
     
     var dataType: Int = 1001 {
         didSet {
@@ -28,7 +28,10 @@ class XFCategoryViewController: XFBaseViewController {
     
     var dataSort: Int = 101 {
         didSet {
-            loadCategories()
+            weak var weakSelf = self
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                weakSelf?.loadCategories()
+            })
         }
     }
     
@@ -62,8 +65,6 @@ class XFCategoryViewController: XFBaseViewController {
         let params:XFParams = ["type":dataType,"sort":dataSort,"sequence":1,"page":currentPage,"size":XFConstants.pageRows]
         XFProductService.getAllProducts(params: params) { (data) in
             weakSelf?.removeLoadingView()
-            weakSelf?.cateListView.es.stopLoadingMore()
-            weakSelf?.cateListView.es.stopPullToRefresh()
             if let cateList = data as? CategoryList, let dataSource = cateList.content {
                 weakSelf?.currentPage += 1
                 weakSelf?.removeNullDataView()
@@ -78,8 +79,6 @@ class XFCategoryViewController: XFBaseViewController {
                 if weakSelf?.currentPage == 1 {
                     weakSelf?.cateListView.alpha = 0
                     weakSelf?.renderNullDataView()
-                } else {
-                    weakSelf?.cateListView.es.noticeNoMoreData()
                 }
             }
         }
@@ -113,20 +112,14 @@ class XFCategoryViewController: XFBaseViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let listView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        listView.bounces = true
         listView.delegate = self
         listView.dataSource = self
         listView.collectionViewLayout = layout
         listView.backgroundColor = UIColor.white
+        listView.showsVerticalScrollIndicator = false
+        listView.showsHorizontalScrollIndicator = false
         listView.register(XFCategoryCell.self, forCellWithReuseIdentifier: XFCellViewReuseIdentifier)
-        // 下拉刷新
-        weak var weakSelf = self
-        listView.es.addPullToRefresh(animator: XFRefreshAnimator.header(), handler: {
-            weakSelf?.loadCategories()
-        })
-        // 上拉分页
-        listView.es.addInfiniteScrolling(animator: XFRefreshAnimator.footer(), handler: {
-            weakSelf?.loadCategories(true)
-        })
         return listView
     }()
     
@@ -157,6 +150,7 @@ extension XFCategoryViewController: UICollectionViewDataSource,UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: XFCellViewReuseIdentifier, for: indexPath)
         guard let cateCell:XFCategoryCell = cell as? XFCategoryCell  else {
             return cell

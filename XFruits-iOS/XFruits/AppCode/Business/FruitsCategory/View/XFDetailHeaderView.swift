@@ -32,7 +32,7 @@ class XFDetailHeaderView: UIView {
     }
     
     lazy var detailViewPager: XFViewPager = {
-        let pager = XFViewPager.init(placeHolder: "Loading-white")
+        let pager = XFViewPager.init(placeHolder: "Loading-squre-white")
         return pager
     }()
     
@@ -141,8 +141,8 @@ class XFDetailHeaderView: UIView {
         detailViewPager.snp.makeConstraints { (make) in
             make.top.width.equalTo(self)
             make.bottom.equalTo(self.titleLabel.snp.top)
-            // TODO: 提前约定好宽高比
-            make.height.equalTo(floor(XFConstants.UI.deviceWidth/(1200/900)))
+            // 提前约定好宽高比，搞成正方形，高度与屏宽一致
+            make.height.equalTo(floor(XFConstants.UI.deviceWidth/(900/900)))
         }
         titleLabel.snp.makeConstraints { (make) in
             make.width.equalTo(self)
@@ -198,7 +198,7 @@ class XFDetailHeaderView: UIView {
         tagView.addSubview(tagIconView)
         tagView.addSubview(tagTextView)
         tagIconView.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 22, height: 22))
+            make.size.equalTo(CGSize(width: 27, height: 27))
             make.centerY.left.equalToSuperview()
         }
         tagTextView.snp.makeConstraints { (make) in

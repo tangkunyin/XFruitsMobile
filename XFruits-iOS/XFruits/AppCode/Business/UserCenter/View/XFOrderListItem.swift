@@ -18,8 +18,24 @@ enum XFOrderItemBarType: Int {
     case evaluateBar = 3
 }
 
-class XFOrderListItem: UITableViewCell {
-
+class XFOrderTitleItemCell: UITableViewCell {
+    
+    var dataSource: XFOrderContent? {
+        didSet {
+            if let data = dataSource {
+                titleContainer.text = "订单编号：\(data.orderId)"
+            }
+        }
+    }
+    
+    lazy var titleContainer: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = XFConstants.Font.pfn14
+        label.textColor = XFConstants.Color.darkGray
+        return label
+    }()
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         customInit()
@@ -30,14 +46,42 @@ class XFOrderListItem: UITableViewCell {
         customInit()
     }
     
+    private func customInit() {
+        contentView.addSubview(titleContainer)
+        titleContainer.snp.makeConstraints { (make) in
+            make.edges.equalTo(contentView).inset(UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 10))
+        }
+    }
+}
+
+// 订单列表商品
+class XFOrderGoodsItemCell: XFCheckoutGoodsCell {
+    var goodsInfo: XFOrderProduct? {
+        didSet {
+            if let item = goodsInfo {
+                titleLabel.text = item.name
+                quantityLabel.text = "x \(item.buyCount)"
+                descLabel.text = "规格：\(item.specification)"
+                priceLabel.text = String(format:"¥ %.2f",item.primePrice)
+                thumbnail.kf.setImage(with: URL.init(string: item.cover),
+                                      placeholder: UIImage.imageWithNamed("Loading-squre-transparent"),
+                                      options: [.transition(.fade(1.0))])
+            }
+        }
+    }
+    override func customInit() {
+        super.customInit()
+        selectionStyle = .none
+    }
+}
+
+class XFOrderBarItemCell: UITableViewCell {
+    
     var onBarBtnClick: ((Int,XFOrderContent)->Void)?
     
     var dataSource: XFOrderContent? {
-        didSet{
-            if let data = dataSource, let covers = data.prodCover {
-                titleContainer.text = "订单编号：\(data.orderId)"
-                quantityContainer.text = "x\(data.prodCover?.count ?? 0)"
-                renderGoodsCover(covers)
+        didSet {
+            if let data = dataSource {
                 switch data.status {
                 // 待支付
                 case 100:
@@ -59,36 +103,6 @@ class XFOrderListItem: UITableViewCell {
         }
     }
     
-    lazy var titleContainer: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.font = XFConstants.Font.pfn14
-        label.textColor = XFConstants.Color.darkGray
-        return label
-    }()
-    
-    lazy var orderGoodsContainer: UIView = {
-        let container = UIView()
-        container.layer.borderColor = XFConstants.Color.separatorLine.cgColor
-        container.layer.borderWidth = XFConstants.UI.singleLineAdjustOffset
-        return container
-    }()
-    
-    lazy var goodsCoverContainer: UIScrollView = {
-        let container = UIScrollView()
-        container.isUserInteractionEnabled = false
-        container.showsHorizontalScrollIndicator = false
-        return container
-    }()
-    
-    lazy var quantityContainer: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = XFConstants.Font.pfn14
-        label.textColor = XFConstants.Color.darkGray
-        return label
-    }()
-    
     lazy var amountContainer: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -102,67 +116,28 @@ class XFOrderListItem: UITableViewCell {
         return view
     }()
     
-    fileprivate func customInit(){
-        
-        selectionStyle = .none
-        
-        initGoodsContainer()
-        contentView.addSubview(titleContainer)
-        contentView.addSubview(orderGoodsContainer)
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        customInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder){
+        super.init(coder: aDecoder)
+        customInit()
+    }
+    
+    private func customInit() {
         contentView.addSubview(amountContainer)
         contentView.addSubview(actionContainer)
-        titleContainer.snp.makeConstraints { (make) in
-            make.left.top.equalTo(contentView).offset(10)
-            make.right.equalTo(contentView).offset(-10)
-            make.height.equalTo(30)
-        }
-        orderGoodsContainer.snp.makeConstraints { (make) in
-            make.left.right.equalTo(contentView)
-            make.top.equalTo(titleContainer.snp.bottom).offset(0)
-            make.height.equalTo(50)
-        }
         amountContainer.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 130, height: 40))
-            make.left.equalTo(titleContainer).offset(0)
-            make.top.equalTo(orderGoodsContainer.snp.bottom).offset(0)
+            make.width.equalTo(130)
+            make.left.equalTo(contentView).offset(10)
+            make.top.bottom.equalTo(contentView)
         }
         actionContainer.snp.makeConstraints { (make) in
-            make.right.equalTo(titleContainer).offset(0)
-            make.top.equalTo(orderGoodsContainer.snp.bottom).offset(0)
+            make.right.equalTo(contentView).offset(-10)
             make.left.equalTo(amountContainer.snp.right).offset(5)
-            make.height.equalTo(40)
-        }
-    }
-    
-    fileprivate func initGoodsContainer(){
-        orderGoodsContainer.addSubview(goodsCoverContainer)
-        orderGoodsContainer.addSubview(quantityContainer)
-        goodsCoverContainer.snp.makeConstraints { (make) in
-            make.height.equalTo(40)
-            make.left.top.equalTo(orderGoodsContainer).offset(5)
-            make.right.equalTo(quantityContainer.snp.left).offset(-10)
-        }
-        quantityContainer.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 35, height: 40))
-            make.top.equalTo(goodsCoverContainer)
-            make.right.equalTo(orderGoodsContainer).offset(-5)
-        }
-    }
-    
-    // MARK: - 细节渲染
-    fileprivate func renderGoodsCover(_ covers:Array<String>){
-        for (index, item) in covers.enumerated() {
-            let cover:UIImageView = UIImageView()
-            cover.kf.setImage(with: URL.init(string: item),
-                              placeholder: UIImage.imageWithNamed("Loading-squre"),
-                              options: [.transition(.fade(1))])
-            cover.isUserInteractionEnabled = false
-            goodsCoverContainer.addSubview(cover)
-            cover.snp.makeConstraints({ (make) in
-                make.centerY.equalTo(goodsCoverContainer)
-                make.size.equalTo(CGSize(width: 40, height: 40))
-                make.left.equalTo(goodsCoverContainer.snp.left).offset(index * 50 +  10)
-            })
+            make.top.bottom.equalTo(contentView)
         }
     }
     
@@ -217,10 +192,10 @@ class XFOrderListItem: UITableViewCell {
     }
     
     fileprivate func createActionBtn(title:String,
-                                 titleColor:UIColor,
-                                 borderColor:UIColor,
-                                 backgroundColor:UIColor,
-                                 tag:XFOrderItemBarType) -> UIButton {
+                                     titleColor:UIColor,
+                                     borderColor:UIColor,
+                                     backgroundColor:UIColor,
+                                     tag:XFOrderItemBarType) -> UIButton {
         let btn = UIButton.init(type: .custom)
         btn.tag = tag.rawValue
         btn.setTitle(title, for: .normal)
@@ -239,5 +214,4 @@ class XFOrderListItem: UITableViewCell {
             completion(btn.tag, data)
         }
     }
-    
 }

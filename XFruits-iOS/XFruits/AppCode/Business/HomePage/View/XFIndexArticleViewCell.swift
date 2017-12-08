@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import MediaPlayer
+import AVKit
 
 class XFIndexArticleViewCell: UITableViewCell {
 
@@ -17,14 +19,17 @@ class XFIndexArticleViewCell: UITableViewCell {
             if let data = dataSource {
                 titleLabel.text = data.title
                 detailLabel.text = data.desc
+                if data.type != 3{
+                    pauseImageView.alpha = 0
+                }
                 coverImage.kf.setImage(with: URL.init(string: data.cover),
-                                       placeholder: UIImage.imageWithNamed("Loading-white"),
+                                       placeholder: UIImage.imageWithNamed("Loading-squre-white"),
                                        options: [.transition(.flipFromBottom(1))])
             }
         }
     }
     
-    fileprivate lazy var titleLabel: UILabel = {
+      lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
         label.font = XFConstants.Font.pfn16
@@ -32,14 +37,28 @@ class XFIndexArticleViewCell: UITableViewCell {
         return label
     }()
     
-    fileprivate lazy var coverImage: UIImageView = {
+      lazy var coverImage: UIImageView = {
         let cover = UIImageView()
         cover.contentMode = .scaleAspectFill
         cover.layer.masksToBounds = true
+        cover.isUserInteractionEnabled = true
+
         return cover
     }()
     
-    fileprivate lazy var detailLabel: UILabel = {
+//      lazy var playerView:XLVideoPlayer = {
+//        let player = XLVideoPlayer.init()
+//        player.videoUrl = ""
+//      
+//        return player
+//    }()
+    
+      lazy var pauseImageView:UIImageView = {
+       let imageView = UIImageView.init(image: UIImage.imageWithNamed("play"))
+        return imageView
+    }()
+    
+      lazy var detailLabel: UILabel = {
         let label = UILabel()
         label.textColor = XFConstants.Color.darkGray
         label.font = XFConstants.Font.pfn14
@@ -53,7 +72,10 @@ class XFIndexArticleViewCell: UITableViewCell {
     fileprivate func customInit(){
         contentView.addSubview(titleLabel)
         contentView.addSubview(coverImage)
+//        contentView.addSubview(playerView)
         contentView.addSubview(detailLabel)
+        contentView.addSubview(pauseImageView)
+        
         titleLabel.snp.makeConstraints { (make) in
             make.left.top.equalTo(contentView).offset(10)
             make.right.equalTo(contentView).offset(-10)
@@ -64,12 +86,18 @@ class XFIndexArticleViewCell: UITableViewCell {
             make.top.equalTo(titleLabel.snp.bottom).offset(5)
             make.height.equalTo(228)
         }
+ 
         detailLabel.snp.makeConstraints { (make) in
             make.left.right.equalTo(titleLabel)
             make.top.equalTo(coverImage.snp.bottom).offset(5)
             make.height.equalTo(40)
             make.height.lessThanOrEqualTo(80)
             make.bottom.equalTo(contentView).offset(-10)
+        }
+        
+        pauseImageView.snp.makeConstraints { (make ) in
+            make.center.equalTo(contentView)
+            make.size.equalTo(50)
         }
         
     }

@@ -12,7 +12,7 @@ import SnapKit
 fileprivate let cellIdentifier = "XFIndexArticleCellIdentifier"
 
 // 约定好宽高比
-fileprivate let loopImageComponentHeight = floor(XFConstants.UI.deviceWidth/(1920/1080))
+fileprivate let loopImageComponentHeight = floor(XFConstants.UI.deviceWidth/(1080/720))
 
 class XFIndexViewController: XFBaseViewController {
     
@@ -29,13 +29,14 @@ class XFIndexViewController: XFBaseViewController {
             }
         }
     }
+    var player:XLVideoPlayer!
     
     var dataSource: Array<XFNewsContent> = [] {
         didSet {
             articleListView.reloadData()
         }
     }
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +49,11 @@ class XFIndexViewController: XFBaseViewController {
             renderHomeIndexView()
         }
     
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        player?.destroy()
+        player = nil
     }
     
     fileprivate func renderHomeIndexView() {
@@ -92,30 +98,31 @@ class XFIndexViewController: XFBaseViewController {
             switch pager.type {
             case XFIndexConentType.html.rawValue,
                  XFIndexConentType.advertising.rawValue:
-                jumpToWebview(url: loopImages[index].data)
+                jumpToWebview(url: loopImages[index].data, title: loopImages[index].title)
             case XFIndexConentType.product.rawValue:
                 jumpToProductDetail(pId: loopImages[index].data)
             default:
                 break
             }
-        }
-        
+        }   
     }
     
     fileprivate func handleItemClick(withData data: XFNewsContent) {
         switch data.type {
-        case XFIndexConentType.html.rawValue,
-             XFIndexConentType.advertising.rawValue:
-            jumpToWebview(url: data.data)
-        case XFIndexConentType.product.rawValue:
-            jumpToProductDetail(pId: data.data)
-        default:
-            break
+            case XFIndexConentType.html.rawValue,
+                 XFIndexConentType.advertising.rawValue:
+                jumpToWebview(url: data.data, title: data.title)
+            case XFIndexConentType.product.rawValue:
+                jumpToProductDetail(pId: data.data)
+            case XFIndexConentType.video.rawValue:
+                break
+            default:
+                break
         }
     }
     
     fileprivate lazy var pagerView:XFViewPager = {
-        let pagerView = XFViewPager(source: [""], placeHolder: "Loading-white")
+        let pagerView = XFViewPager(source: [""], placeHolder: "Loading-squre-white")
         weak var weakSelf = self
         pagerView.pagerDidClicked = {(index:Int) -> Void in
             weakSelf?.handlePagerClick(withIndex: index)
@@ -152,7 +159,29 @@ class XFIndexViewController: XFBaseViewController {
         listView.register(XFIndexArticleViewCell.self, forCellReuseIdentifier: cellIdentifier)
         return listView
     }()
+    
+    @objc func showVideoPlayer(tapGesture:UITapGestureRecognizer)  {
+        player?.destroy()
+        player = nil
+        let tapView = tapGesture.view
+        let indexPath:IndexPath  = IndexPath.init(row: (tapView?.tag)! - 100, section: 0)  
+        
+        let cell:XFIndexArticleViewCell = articleListView.cellForRow(at: indexPath) as! XFIndexArticleViewCell
+        player = XLVideoPlayer.init()
+        
+        player?.videoUrl = dataSource[indexPath.row].data
+        player?.playerBindTableView(articleListView, currentIndexPath: indexPath)
+        player?.frame = CGRect(x:0,y:55,width:XFConstants.UI.deviceWidth,height:228)
+        
+        cell.contentView.addSubview(player!)
 
+        weak var weakSelf = self
+
+        player.completedPlayingBlock = {(player1) -> Void in
+            player1?.destroy()
+            weakSelf?.player = nil
+        }
+     }
 }
 
 extension XFIndexViewController: UITableViewDelegate, UITableViewDataSource {
@@ -165,6 +194,11 @@ extension XFIndexViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! XFIndexArticleViewCell
         cell.selectionStyle = .none
         cell.dataSource = dataSource[indexPath.row]
+        if cell.dataSource?.type == 3 {
+            let tap = UITapGestureRecognizer.init(target: self, action:#selector(showVideoPlayer))
+            cell.coverImage.addGestureRecognizer(tap)
+        }
+        cell.coverImage.tag = 100 + indexPath.row
         return cell
     }
     
