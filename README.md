@@ -5,9 +5,9 @@
 ### 使用
 
 ```
-git clone https://git.coding.net/shuoit/XFruitsMobile.git
+git clone git@github.com:tangkunyin/XFruitsMobile.git
 
-cd XFruits/
+cd XFruits-iOS/
 
 ```
 
